@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Entity Sports API</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;cURL&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,7 +211,7 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="cURL">cURL</a>
               <a href="#" data-language-name="ruby">ruby</a>
               <a href="#" data-language-name="python">python</a>
               <a href="#" data-language-name="javascript">javascript</a>
@@ -225,24 +225,98 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Kittens">Get All Kittens</a>
+                    <a href="#getting-your-keys" class="toc-h2 toc-link" data-title="Getting Started">Getting your Keys</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Kittens">Get a Specific Kitten</a>
+                    <a href="#obtaining-token" class="toc-h2 toc-link" data-title="Getting Started">Obtaining Token</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Kittens">Delete a Specific Kitten</a>
+                    <a href="#making-your-first-request" class="toc-h2 toc-link" data-title="Getting Started">Making your First Request</a>
+                  </li>
+                  <li>
+                    <a href="#http-status-code" class="toc-h2 toc-link" data-title="Getting Started">HTTP Status Code</a>
+                  </li>
+                  <li>
+                    <a href="#api-response" class="toc-h2 toc-link" data-title="Getting Started">API Response</a>
+                  </li>
+                  <li>
+                    <a href="#pagination" class="toc-h2 toc-link" data-title="Getting Started">Pagination</a>
+                  </li>
+                  <li>
+                    <a href="#api-objects" class="toc-h2 toc-link" data-title="Getting Started">API Objects</a>
+                  </li>
+                  <li>
+                    <a href="#supports-cache" class="toc-h2 toc-link" data-title="Getting Started">Supports Cache</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#cricket-api-v2" class="toc-h1 toc-link" data-title="CRICKET API V2">CRICKET API V2</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#seasons-api" class="toc-h2 toc-link" data-title="CRICKET API V2">Seasons API</a>
+                  </li>
+                  <li>
+                    <a href="#season-competitions-api" class="toc-h2 toc-link" data-title="CRICKET API V2">Season Competitions API</a>
+                  </li>
+                  <li>
+                    <a href="#competition-matches-api" class="toc-h2 toc-link" data-title="CRICKET API V2">Competition Matches API</a>
+                  </li>
+                  <li>
+                    <a href="#competition-teams-api" class="toc-h2 toc-link" data-title="CRICKET API V2">Competition Teams API</a>
+                  </li>
+                  <li>
+                    <a href="#competition-standings-api" class="toc-h2 toc-link" data-title="CRICKET API V2">Competition Standings API</a>
+                  </li>
+                  <li>
+                    <a href="#competition-player-ranks-api" class="toc-h2 toc-link" data-title="CRICKET API V2">Competition Player Ranks API</a>
+                  </li>
+                  <li>
+                    <a href="#competition-teamranks-api" class="toc-h2 toc-link" data-title="CRICKET API V2">Competition Teamranks API</a>
+                  </li>
+                  <li>
+                    <a href="#competition-stats-type-api" class="toc-h2 toc-link" data-title="CRICKET API V2">Competition Stats Type API</a>
+                  </li>
+                  <li>
+                    <a href="#competition-stat-api" class="toc-h2 toc-link" data-title="CRICKET API V2">Competition Stat API</a>
+                  </li>
+                  <li>
+                    <a href="#recent-matches-api" class="toc-h2 toc-link" data-title="CRICKET API V2">Recent Matches API</a>
+                  </li>
+                  <li>
+                    <a href="#team-api" class="toc-h2 toc-link" data-title="CRICKET API V2">Team API</a>
+                  </li>
+                  <li>
+                    <a href="#team-matches-api" class="toc-h2 toc-link" data-title="CRICKET API V2">Team Matches API</a>
+                  </li>
+                  <li>
+                    <a href="#match-status-codes" class="toc-h2 toc-link" data-title="CRICKET API V2">Match Status Codes</a>
+                  </li>
+                  <li>
+                    <a href="#match-game-state-codes" class="toc-h2 toc-link" data-title="CRICKET API V2">Match Game State Codes</a>
+                  </li>
+                  <li>
+                    <a href="#match-format-codes" class="toc-h2 toc-link" data-title="CRICKET API V2">Match Format Codes</a>
+                  </li>
+                  <li>
+                    <a href="#match-domestic-codes" class="toc-h2 toc-link" data-title="CRICKET API V2">Match Domestic Codes</a>
+                  </li>
+                  <li>
+                    <a href="#playing-role-parameter" class="toc-h2 toc-link" data-title="CRICKET API V2">Playing Role Parameter</a>
+                  </li>
+                  <li>
+                    <a href="#match-squad-role-parameter" class="toc-h2 toc-link" data-title="CRICKET API V2">Match Squad Role Parameter</a>
+                  </li>
+                  <li>
+                    <a href="#international-team-id" class="toc-h2 toc-link" data-title="CRICKET API V2">International Team Id</a>
+                  </li>
+                  <li>
+                    <a href="#t20-cricket-league-teams-id" class="toc-h2 toc-link" data-title="CRICKET API V2">T20 Cricket League Teams ID</a>
+                  </li>
+              </ul>
           </li>
       </div>
         <ul class="toc-footer">
@@ -254,245 +328,2290 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Entity Sports application programming interfaces (API) give you access to our sports data. You can use our Entity Sports API to build web and mobile sports application. Either it&#39;s fantasy sports or live score our data full fills requirements for all type of applications. </p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>Entity Sports API deliver season, competition, teams, matches, player, statistical data for Cricket and Soccer.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
+<p>Since the API is true to RESTful principles, it’s easy to interact with using any tool capable of performing HTTP requests, such as Postman or cURL. </p>
+<h1 id='getting-started'>Getting Started</h1><h2 id='getting-your-keys'>Getting your Keys</h2>
+<p>You will need an active access key and secret key with a valid subsciption to start using our API. Please visit entitysport.com to request your keys and subscription.</p>
+<h2 id='obtaining-token'>Obtaining Token</h2>
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -d <span class="s2">"access_key=YOURACCESSKEY"</span> <span class="se">\</span>
+   -d <span class="s2">"secret_key=YOURSECRETKEY"</span> <span class="se">\</span>
+   https://rest.entitysport.com/v2/auth/
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1|X#aFhlzAsd"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expires"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12312312312"</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-31 16:25:52"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"api_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
 </span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
+<p>To access any API, you need a token. A token can be generated using your keys. Token is a piece of information that would allow you to access our API data for a short period of time (expire time). Auth API provides you the token, by validating your keys. Request to our Auth API whenever the access token is expired or unavailable.</p>
+<h3 id='request'>Request</h3>
+<ul>
+<li>Path: /v2/auth/</li>
+<li>Method: Post</li>
+<li>POST Parameters
+
+<ul>
+<li>access_key - Access Key of your Application.</li>
+<li>secret_key - Secret key of your Application.</li>
+</ul></li>
+</ul>
+<h3 id='response'>Response</h3>
+<ul>
+<li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
+<li><code style="color:#c7254e";>response.token:</code> access token.</li>
+<li><code style="color:#c7254e";>response.expires:</code> access token expire timestamp.</li>
+</ul>
+<h2 id='making-your-first-request'>Making your First Request</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/?token=[ACCESS_TOKEN]"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"api_doc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/doc/"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status_codes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Failure"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"invalid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid Request"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unauthorized"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Un authorized"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"etag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8fc93de066d8d802a36e0882ecc77fdb"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-31 16:29:11"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-31 16:29:11"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"api_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>It&#39;s very easy to start using the EntitySport Cricket API. By passing your <strong>token</strong> as <code>token</code> to our api server, you can get access to our API data instantly.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<p><code>GET http://rest.entitysport.com/v2/?token=[ACCESS_TOKEN]</code></p>
+<h2 id='http-status-code'>HTTP Status Code</h2>
+<p>All API request will resolve with any of the following http header status.</p>
+
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
+<th>Response Code</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>200</td>
+<td>API request valid, informations ready to access</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>304</td>
+<td>API request valid, but data was not modified since last accessed (compared using Etag)</td>
 </tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request -- Your request sucks</td>
+<td>Client side error. occurs for invalid request</td>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized -- Your API key is wrong</td>
+<td>occurs for unauthorized request</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only</td>
+<td>501</td>
+<td>Server side error. Internal server error, unable to process your request</td>
+</tr>
+</tbody></table>
+<h2 id='api-response'>API Response</h2><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"etag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8fc93de066d8d802a36e0882ecc77fdb"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-31 16:29:11"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-31 16:29:11"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"api_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>All successfull API request will return json output. The basic structure of data is available on all of the calls.</p>
+<h3 id='status-possible-values-are-as-follows'>Status - Possible Values are as follows :</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ok</td>
+<td>A successfull response</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found</td>
+<td>error</td>
+<td>if the request contains error</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method</td>
+<td>unauthorized</td>
+<td>if the request is not authorized, usually for invalid/expired access token</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json</td>
+<td>accessdenied</td>
+<td>if your app try to access non permitted data</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><code style="color:#c7254e";>response:</code> contains the main data of the response. value can be string, number, array or object.</li>
+<li><code style="color:#c7254e";>etag:</code> etag generate for the current content. can be used to check if a document was modified since the last etag provided by the client.</li>
+<li><code style="color:#c7254e";>datetime:</code> document serving datetime (UTC+0).</li>
+<li><code style="color:#c7254e";>modified:</code> document last modified datetime (UTC+0).</li>
+</ul>
+<h2 id='pagination'>Pagination</h2>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>per_page</td>
+<td>Number</td>
+<td>Number of items to list in each API request</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers</td>
+<td>paged</td>
+<td>Number</td>
+<td>Page Number for request</td>
+</tr>
+</tbody></table>
+
+<aside class="success">/?token=[ACCESS_TOKEN]&per_page=5&&paged=3</aside>
+<h2 id='api-objects'>API Objects</h2>
+<p>There are some informations that we call as OBJECT. A response can contain a single object, or multiple objects or no objects at all. It is important get famililar with our objects.</p>
+
+<p>We have 7 Obejcts in total. A object is a set of data, which contains a unique identifier, and directly relates to other objects. ie: match object connects inning object, team object. </p>
+
+<p>Each object has a unique identifier which start with the first character of object name, and <strong>id</strong> as suffix. ie: competition unique identified named as <strong>cid</strong>, for match it&#39;s <strong>mid</strong>, for player it&#39;s <strong>pid</strong>, for team, it&#39;s <strong>tid</strong> and for season - <strong>sid</strong>.</p>
+
+<ul>
+<li><p><strong>Season:</strong>
+A seaon is a year timeframe. ie: 2016, 2014-15 etc. Tournaments played between March to September is marked with current year as season name. From October - February, it is marked with cross year, four digit from current year, and 2 digit from next year, separated by a hyphen, ie: 2015-16.</p></li>
+<li><p><strong>Competition:</strong>
+Competition is a tour, or tournament, or throphy cup. A competition contains information matches, teams, player performance, table standings, season, dates, type, category etc</p></li>
+<li><p><strong>Round:</strong>
+Round act as a sub-competition of another competition. When a tournament demands group stage matches, or a tour contains different format matches (as series), we keep their data as round.</p></li>
+<li><p><strong>Match:</strong>
+Match is the core part of our api. A match makes connection between teams, competition, round, players and innings.</p></li>
+<li><p><strong>Inning:</strong>
+Inning hold single match inning data.</p></li>
+<li><p><strong>Team:</strong>
+A generic sports team, having a name, logo, country and type of team.</p></li>
+<li><p><strong>Player:</strong>
+A generic sports player.</p></li>
+</ul>
+<h2 id='supports-cache'>Supports Cache</h2>
+<p>Our API supports <code>Etag</code> based caching. In all response, if a cache is applicable for the request, we will provide you etag. You can also get etag from the response header. When you make request with a etag, we will return 304 status if data is not modified. </p>
+
+<p>It&#39;s very useful, when you are calling same api multiple times ie: <strong>live score update</strong>, you will save lots of bandwidth. And you don&#39;t need to refresh the screen, if nothing is changed.</p>
+<h1 id='cricket-api-v2'>CRICKET API V2</h1><h2 id='seasons-api'>Seasons API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/seasons/?token=[ACCESS_TOKEN]"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"seasons"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201617"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-17"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"competitions_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/seasons/201617/competitions"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Provides information of all avaialable cricket seasons you have access. A season is named as complete year ie: 2016 for all tournaments that happens between march to october of the correspoding year, or name cross year ie: 2016-17 for matches happens between November-February or vice versa.</p>
+<h3 id='request-2'>Request</h3>
+<ul>
+<li>Path: /v2/seasons/</li>
+<li>Method: GET</li>
+<li>Parameters </li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>{ACCESS_TOKEN}</td>
+<td>API Access token</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<ul>
+<li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
+<li><code style="color:#c7254e";>response.seasons:</code> an array of all available season objects you have access in.</li>
+</ul>
+<h3 id='reference'>Reference</h3><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201617"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-17"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"competitions_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/seasons/201617/competitions"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sid</td>
+<td>integer</td>
+<td>season id</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&#39;m a teapot</td>
+<td>name</td>
+<td>string</td>
+<td>season representational name</td>
 </tr>
 <tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>competitions_url</td>
+<td>string</td>
+<td>API URL address for competitions played on the season</td>
+</tr>
+</tbody></table>
+<h2 id='season-competitions-api'>Season Competitions API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/seasons/{sid}/competitions?token=[ACCESS_TOKEN]&amp;per_page=10&amp;&amp;paged=1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"competitions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"cid"</span><span class="p">:</span><span class="w"> </span><span class="mi">4904</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"England tour of India"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tour"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"international"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"match_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mixed"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"live"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"season"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016/17"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"datestart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-09"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"dateend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-01"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"total_matches"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"total_rounds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"total_teams"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"matches_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/competitions/4904/matches"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"teams_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/competitions/4904/teams"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"teamranks_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/competitions/4904/teamranks"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"playerranks_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/competitions/4904/playerranks"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"standings_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/competitions/4904/standings"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"rounds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"rid"</span><span class="p">:</span><span class="w"> </span><span class="mi">4905</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"England in India Test Series"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"series"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"match_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"datestart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-09"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"dateend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-20"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"matches_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/round/4905/matches"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"teams_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/round/4905/teams"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"rid"</span><span class="p">:</span><span class="w"> </span><span class="mi">4906</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"England in India ODI Series"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"series"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"match_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"odi"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"datestart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-15"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"dateend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-22"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"matches_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/round/4906/matches"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"teams_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/round/4906/teams"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"rid"</span><span class="p">:</span><span class="w"> </span><span class="mi">4907</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"England in India T20I Series"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"series"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"match_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t20i"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"datestart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-26"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"dateend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-01"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"matches_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/round/4907/matches"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"teams_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/round/4907/teams"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"total_competitions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This will list all available competitions those you are subscribed and can access for specified season. Season is named using 4 digit year, ex: <strong>2010</strong>, or Year combo, ex: <strong>2010-11</strong>. </p>
+
+<p>It will list 10 competitions data per request. If there is more than 10 competitions, you will get extra value under response node, <code>next_page</code> and <code>prev_page</code>. You can either use that link to paginate through all of the items, or can use replace the page parameter to jump to a specific page if exists.</p>
+<h3 id='request-3'>Request</h3>
+<ul>
+<li>Path: /v2/seasons/[SID(season id)]/competitons</li>
+<li>Method: GET</li>
+<li>Parameters </li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>{ACCESS_TOKEN}</td>
+<td>API Access token</td>
 </tr>
 <tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td>per_page</td>
+<td>Number</td>
+<td>Number of competition to list in each API request</td>
 </tr>
 <tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>paged</td>
+<td>Number</td>
+<td>Page Number for request</td>
+</tr>
+</tbody></table>
+<h3 id='response-3'>Response</h3>
+<ul>
+<li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
+<li><code style="color:#c7254e";>response.cometitions:</code> array of competition cards.</li>
+<li><code style="color:#c7254e";>response.total_cometitions:</code> total number of competitions listed under the season.</li>
+<li><code style="color:#c7254e";>response.total_pages:</code> total number of competitions for the current season.</li>
+</ul>
+<h3 id='reference-2'>Reference</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cid</td>
+<td>integer</td>
+<td>competition id</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>competition name/title</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>competition type, possible values are tour, tournament, series</td>
+</tr>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>competition category, possible values are international, domestic, youth, women</td>
+</tr>
+<tr>
+<td>match_format</td>
+<td>string</td>
+<td>played match format. a competition can hold multiple match types, ie odi, test etc. possible values are mixed, odi, test, t20i, firstclass, lista, t20, youthodi, youtht20, womenodi, woment20</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>competition status. possible values are live (currently ongoing), fixture (upcoming), result (completed)</td>
+</tr>
+<tr>
+<td>season</td>
+<td>string</td>
+<td>competition season name</td>
+</tr>
+<tr>
+<td>datestart</td>
+<td>date</td>
+<td>competition first match date</td>
+</tr>
+<tr>
+<td>dateend</td>
+<td>date</td>
+<td>competition last match date</td>
+</tr>
+<tr>
+<td>total_matches</td>
+<td>integer</td>
+<td>number of total matches</td>
+</tr>
+<tr>
+<td>total_rounds</td>
+<td>integer</td>
+<td>number of total rounds</td>
+</tr>
+<tr>
+<td>total_teams</td>
+<td>integer</td>
+<td>number of total teams</td>
+</tr>
+<tr>
+<td>matches_url</td>
+<td>string</td>
+<td>api url for matches data</td>
+</tr>
+<tr>
+<td>teams_url</td>
+<td>string</td>
+<td>api url for teams data</td>
+</tr>
+<tr>
+<td>standings_url</td>
+<td>string</td>
+<td>api url for standings data</td>
+</tr>
+<tr>
+<td>rounds</td>
+<td>array</td>
+<td>an array of rounds played in the competition, see round object reference.</td>
+</tr>
+</tbody></table>
+<h2 id='competition-matches-api'>Competition Matches API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/competitions/{cid}/matches/?token=[ACCESS_TOKEN]&amp;per_page=10&amp;&amp;paged=1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"matches"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"match_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">406</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comilla Victorians vs Chittagong Vikings"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1st Match"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"format"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"format_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T20"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Completed"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"game_state"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"game_state_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chittagong Vikings won by 29 runs"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"domestic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"competition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"competition_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4785</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bangladesh Premier League"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"teama"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4786</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comilla Victorians"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CV"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"132/8"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.0"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"teamb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4787</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chittagong Vikings"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHV"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"161/3"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.0"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"date_start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-08 08:00:00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"date_start_ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1478592000</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"date_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-08 18:00:00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shere Bangla National Stadium"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mirpur"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"umpires"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gazi Sohel (Bangladesh), REJ Martinesz (Sri Lanka), Masudur Rahman (Bangladesh, TV)"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"referee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Raqibul Hasan (Bangladesh)"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"equation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"live"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHV won by 29 runs"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"win_margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29 runs"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"scorecard"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/matches/406/scorecard"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/matches/406/summary"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"commentary1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/matches/406/commentary1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"commentary2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/matches/406/commentary2"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/matches/406/statistics"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"toss"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comilla Victorians won the toss &amp; elected to field"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"winner"</span><span class="p">:</span><span class="w"> </span><span class="mi">4786</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"decision"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"total_matches"</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>A competition is a tour that one country takes on to another country, or a local (ie: IPL) &amp; internation throphy league (ie: ICC World Cup). </p>
+
+<p>A competition contains playing teams, match schedules, results, team performance &amp; player performance statisticsal information. </p>
+
+<p>Competition matches node lists all of the scheduled,played,live matches for the specified competition. </p>
+<h3 id='request-4'>Request</h3>
+<ul>
+<li>Path: /v2/competitions/[COMPETITION_ID]/matches/</li>
+<li>Method: GET</li>
+<li>Parameters </li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>{ACCESS_TOKEN}</td>
+<td>API Access token</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>Number</td>
+<td>Number of matches to list in each API request</td>
+</tr>
+<tr>
+<td>paged</td>
+<td>Number</td>
+<td>Page Number for request</td>
+</tr>
+</tbody></table>
+<h3 id='response-4'>Response</h3>
+<ul>
+<li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
+<li><code style="color:#c7254e";>response.matches:</code> an array of all available match objects.</li>
+</ul>
+<h3 id='reference-3'>Reference</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mid</td>
+<td>interger</td>
+<td>match id</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>match name/title</td>
+</tr>
+<tr>
+<td>subtitle</td>
+<td>string</td>
+<td>contains either the match format + number or important event name, ie: Final, 2nd ODI, 1st Quarterfinal.</td>
+</tr>
+<tr>
+<td>format</td>
+<td>interger</td>
+<td>numerical representation of match format. see match_formats reference.</td>
+</tr>
+<tr>
+<td>format_str</td>
+<td>string</td>
+<td>match format name</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>numerical representation of match status. see match_statuss reference.</td>
+</tr>
+<tr>
+<td>status_str</td>
+<td>string</td>
+<td>match status name.</td>
+</tr>
+<tr>
+<td>game_state</td>
+<td>string</td>
+<td>numerical representation of match game_state. game state is available for live match only.</td>
+</tr>
+<tr>
+<td>game_state_str</td>
+<td>string</td>
+<td>match game_state name.</td>
+</tr>
+<tr>
+<td>status_note</td>
+<td>string</td>
+<td>a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.</td>
+</tr>
+<tr>
+<td>datestart</td>
+<td>date</td>
+<td>match first match date</td>
+</tr>
+<tr>
+<td>dateend</td>
+<td>date</td>
+<td>match last match date</td>
+</tr>
+<tr>
+<td>total_matches</td>
+<td>interger</td>
+<td>number of total matches</td>
+</tr>
+<tr>
+<td>total_rounds</td>
+<td>interger</td>
+<td>number of total rounds</td>
+</tr>
+<tr>
+<td>total_teams</td>
+<td>interger</td>
+<td>number of total teams</td>
+</tr>
+<tr>
+<td>matches_url</td>
+<td>string</td>
+<td>api url for matches data</td>
+</tr>
+<tr>
+<td>teams_url</td>
+<td>string</td>
+<td>api url for teams data</td>
+</tr>
+<tr>
+<td>standings_url</td>
+<td>string</td>
+<td>api url for standing table data</td>
+</tr>
+<tr>
+<td>rounds</td>
+<td>array</td>
+<td>an array of rounds played in the match, see round object reference.</td>
+</tr>
+</tbody></table>
+<h2 id='competition-teams-api'>Competition Teams API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/competitions/{cid}/teams/?token=[ACCESS_TOKEN]
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"teams"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"tid"</span><span class="p">:</span><span class="w"> </span><span class="mi">4786</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comilla Victorians"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"abbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CV"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"thumb_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"alt_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Victorians"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"players"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">220</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dwayne Bravo"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bravo"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dwayne"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bravo"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"popular_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bravo"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1983-10-07"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"birthplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trinidad"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wi"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primary_team"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"tid"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gujarat Lions"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GL"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"thumb_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"....bravo.jpg"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"....bravo.jpg"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"playing_role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"batting_style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RHB"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"bowling_style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RA medium fast"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fielding_position"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"recent_match"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"recent_appearance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="err">....</span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"total_teams"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Competition teams api provides information of all playing teams with players. </p>
+<h3 id='request-5'>Request</h3>
+<ul>
+<li>Path: /v2/competitions/[COMPETITION_ID]/teams/</li>
+<li>Method: GET</li>
+<li>Parameters </li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>{ACCESS_TOKEN}</td>
+<td>API Access token</td>
+</tr>
+</tbody></table>
+<h3 id='response-5'>Response</h3>
+<ul>
+<li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
+<li><code style="color:#c7254e";>response.teams:</code> an array of all available team objects.</li>
+<li><code style="color:#c7254e";>response.teams.players:</code> an array of all available player objects who played on the game for the team.</li>
+</ul>
+<h2 id='competition-standings-api'>Competition Standings API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/competitions/4904/standings/?token=[ACCESS_TOKEN]
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"standing_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"per_round"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"standings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"round"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rid"</span><span class="p">:</span><span class="w"> </span><span class="mi">90820</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IPL T20 2017"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"group"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"match_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t20"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"datestart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-05"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"dateend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-14"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"standings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"593"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"played"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"win"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"draw"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"loss"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nr"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"overfor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"272.1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"runfor"</span><span class="p">:</span><span class="w"> </span><span class="mi">2407</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"overagainst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"278.1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"runagainst"</span><span class="p">:</span><span class="w"> </span><span class="mi">2242</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"netrr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.784"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"points"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"tid"</span><span class="p">:</span><span class="w"> </span><span class="mi">593</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai Indians"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"abbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MI"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"thumb_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cricket.entitysport.com/assets/uploads/2016/04/MI.png"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cricket.entitysport.com/assets/uploads/2016/04/MI-32x32.png"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"club"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"alt_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mum Indians"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Competition standings node provides standing table for all of the round or groups for the specified competition.</p>
+<h3 id='request-6'>Request</h3>
+<ul>
+<li>Path: /v2/competitions/[COMPETITION_ID]/standings/</li>
+<li>Method: GET</li>
+<li>Parameters<br></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>{ACCESS_TOKEN}</td>
+<td>API Access token</td>
+</tr>
+</tbody></table>
+<h3 id='response-6'>Response</h3>
+<ul>
+<li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response.</li>
+<li><code style="color:#c7254e";>response.standing_type:</code> would return either &quot;completed&quot;, &quot;per_round&quot;.
+
+<ul>
+<li><code style="color:#c7254e";>completed: </code>indicates the standing is calculated for the full season, not group or round wise (ie: Ranji Throphy).</li>
+<li><code style="color:#c7254e";>per_round: </code>indicates the tournament was played in groups, and the standing is available group wise (ie: Worldcup Group Stage).</li>
+</ul></li>
+<li><code style="color:#c7254e";>response.standings: </code> an array of standings data. each standing array item contain a team object. if tournament was played in round, standings will be come inside rounds array.</li>
+</ul>
+<h2 id='competition-player-ranks-api'>Competition Player Ranks API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/competitions/4904/playerranks/?token=[ACCESS_TOKEN]
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"ranking_types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"runscored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Total Run"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"highestscore"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Highest Run"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hundredscored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hundreds"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fiftyscored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fifties"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fourscored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fours"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sixscored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sixes"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"strikerate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Strike Rate"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"wickettaken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wickets taken"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"worstecon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Worst econ"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bestecon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best econ"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"rankings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"runscored"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"678"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"player_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"highestscore"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"126"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"player_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"hundredscored"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"player_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"161"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"fiftyscored"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"player_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"595"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"fourscored"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"player_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"596"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"sixscored"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"player_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"strikerate"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"350.00"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"player_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"wickettaken"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"player_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"434"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"bestecon"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.75"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"player_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55682"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"worstecon"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16.36"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"player_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"604"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"players"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"29"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brendon McCullum"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BB McCullum"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brendon"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McCullum"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Barrie"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1981-09-27"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"birthplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nz"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"primary_team"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"thumb_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cricket.entitysport.com/assets/uploads/2016/01/mccullum-120x120.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cricket.entitysport.com/assets/uploads/2016/01/mccullum-32x32.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"playing_role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wkbat"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"batting_style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Right-hand bat"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bowling_style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Right-arm medium"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fielding_position"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"recent_match"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"recent_appearance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Competition player ranks api provides top players performance data ie: maximum run scorer, maximum six hitter etc. </p>
+<h3 id='request-7'>Request</h3>
+<ul>
+<li>Path: /v2/competitions/[COMPETITION_ID]/playerranks/</li>
+<li>Method: GET</li>
+<li>Parameters </li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>{ACCESS_TOKEN}</td>
+<td>API Access token</td>
+</tr>
+</tbody></table>
+<h3 id='response-7'>Response</h3>
+<ul>
+<li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
+<li><code style="color:#c7254e";>response.ranking_types:</code> an array of rank types</li>
+<li><code style="color:#c7254e";>response.rankings:</code> an array of player ranks data. data will come for each rank type separately.</li>
+<li><code style="color:#c7254e";>response.players:</code> an array of player objects.</li>
+</ul>
+<h2 id='competition-teamranks-api'>Competition Teamranks API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/competitions/4904/teamranks/?token=[ACCESS_TOKEN]
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"ranking_types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"runscored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Total Run Scored"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"highestscore"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Highest Run / Inning"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fiftyscored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fifties"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sixscored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sixes"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fourscored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fours"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"wickettaken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wickets taken"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"catchtaken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Catches taken"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"rankings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"593"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"runscored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2979"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fiftyscored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sixscored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"130"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fourscored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"252"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"catchtaken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"highestscore"</span><span class="p">:</span><span class="w"> </span><span class="s2">"223"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"wickettaken"</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"teams"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"591"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"tid"</span><span class="p">:</span><span class="w"> </span><span class="mi">591</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kolkata Knight Riders"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"abbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KKR"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"thumb_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cricket.entitysport.com/assets/uploads/2016/04/KKR-1-120x80.png"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cricket.entitysport.com/assets/uploads/2016/04/KKR-1-32x32.png"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"club"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"alt_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KKR"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Competition team ranks api provides all teams performance data ie: maximum run scorer, maximum six hitter etc. </p>
+<h3 id='request-8'>Request</h3>
+<ul>
+<li>Path: /v2/competitions/[COMPETITION_ID]/teamranks/</li>
+<li>Method: GET</li>
+<li>Parameters </li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>{ACCESS_TOKEN}</td>
+<td>API Access token</td>
+</tr>
+</tbody></table>
+<h3 id='response-8'>Response</h3>
+<ul>
+<li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
+<li><code style="color:#c7254e";>response.ranking_types:</code> an array of rank types</li>
+<li><code style="color:#c7254e";>response.rankings:</code> an array of team ranks data. data will come for each rank type separately.</li>
+<li><code style="color:#c7254e";>response.teams:</code> an array of team objects.</li>
+</ul>
+<h2 id='competition-stats-type-api'>Competition Stats Type API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/competitions/90738/stats/?token=[ACCESS_TOKEN]"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"formats"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"t20"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"stat_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"group_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Batting"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"batting_most_runs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most Runs"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_most_runs_innings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Highest Individual Score"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_highest_strikerate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Highest Strike Rates"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_highest_strikerate_innings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Highest Strike Rates (Innings)"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_highest_average"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Highest Average"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_most_run100"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most Centuries"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_most_run50"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most Fifties"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_most_run6"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most Sixes"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_most_run6_innings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most Sixes (Innings)"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_most_run4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most Fours"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_most_run4_innings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most Fours (Innings)"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"group_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bowling"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"bowling_top_wicket_takers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Top Wicket Takers"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_best_economy_rates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best Economy Rates"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_best_economy_rates_innings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best Economy Rates (Innings)"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_best_bowling_figures"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best Bowling Figures"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_best_strike_rates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best Strike Rates"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_best_strike_rates_innings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best Strike Rates (Innings)"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_best_averages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best Averages"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_most_runs_conceded_innings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most runs conceded in an innings"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_four_wickets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Four Wickets"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_five_wickets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Five Wickets"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_maidens"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maidens"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"group_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Team"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"team_total_runs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Total Runs"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"team_total_run100"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most Centuries"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"team_total_run50"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most Fifties"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"team_total_wickets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Total Wickets"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Competition stats provides information of players statistics and performance. As well as team wise player statistics. The root stats path provide a list of all available statistics available for the competition. </p>
+<h3 id='request-9'>Request</h3>
+<ul>
+<li>Path: /v2/competitions/[COMPETITION_ID]/stats/</li>
+<li>Method: GET</li>
+<li>Parameters </li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>{ACCESS_TOKEN}</td>
+<td>API Access token</td>
+</tr>
+</tbody></table>
+<h3 id='response-9'>Response</h3>
+<ul>
+<li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
+<li><code style="color:#c7254e";>response.formats:</code> an array of match formats played. stat can be filtered with this information</li>
+<li><code style="color:#c7254e";>response.stat_types:</code> an array of stat types, supplied in group (batting, bowling, team)</li>
+</ul>
+<h2 id='competition-stat-api'>Competition Stat API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/competitions/4904/stats/batting_most_runs/?token=[ACCESS_TOKEN]&amp;per_page=10&amp;&amp;paged=1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"formats"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"t20"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"stat_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"group_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Batting"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"batting_most_runs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most Runs"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_most_runs_innings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Highest Individual Score"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_highest_strikerate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Highest Strike Rates"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_highest_strikerate_innings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Highest Strike Rates (Innings)"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_highest_average"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Highest Average"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_most_run100"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most Centuries"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_most_run50"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most Fifties"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_most_run6"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most Sixes"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_most_run6_innings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most Sixes (Innings)"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_most_run4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most Fours"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_most_run4_innings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most Fours (Innings)"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"group_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bowling"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"bowling_top_wicket_takers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Top Wicket Takers"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_best_economy_rates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best Economy Rates"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_best_economy_rates_innings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best Economy Rates (Innings)"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_best_bowling_figures"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best Bowling Figures"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_best_strike_rates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best Strike Rates"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_best_strike_rates_innings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best Strike Rates (Innings)"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_best_averages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best Averages"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_most_runs_conceded_innings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most runs conceded in an innings"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_four_wickets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Four Wickets"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_five_wickets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Five Wickets"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_maidens"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maidens"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"group_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Team"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"team_total_runs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Total Runs"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"team_total_run100"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most Centuries"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"team_total_run50"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most Fifties"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"team_total_wickets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Total Wickets"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t20"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"matches"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"innings"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"notout"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"runs"</span><span class="p">:</span><span class="w"> </span><span class="mi">641</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"balls"</span><span class="p">:</span><span class="w"> </span><span class="mi">452</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"highest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"126"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"run100"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"run50"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"run4"</span><span class="p">:</span><span class="w"> </span><span class="mi">63</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"run6"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"average"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58.27"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"strike"</span><span class="p">:</span><span class="w"> </span><span class="s2">"141.81"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"catches"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"stumpings"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-22 01:39:42"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"tid"</span><span class="p">:</span><span class="w"> </span><span class="mi">658</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sunrisers Hyderabad"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"abbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SRH"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"thumb_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"club"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"alt_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sunrisers"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"player"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"David Warner"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DA Warner"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"David"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Warner"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andrew"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1986-10-27"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"birthplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"au"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"primary_team"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="s2">"thumb_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"playing_role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batting_style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LHB"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bowling_style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Legbreak"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"fielding_position"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"recent_match"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"recent_appearance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Provides information of a specific type of stats, ie batting_most_runs, bowling_best_averages, team_total_runs. It&#39;s root stats path provide a list of all available statistics available for the competition. </p>
+<h3 id='request-10'>Request</h3>
+<ul>
+<li>Path: /v2/competitions/[COMPETITION_ID]/stats/[STAT_TYPE]</li>
+<li>Method: GET</li>
+<li>Parameters </li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>{ACCESS_TOKEN}</td>
+<td>API Access token</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>Number</td>
+<td>Number of players to list in each API request</td>
+</tr>
+<tr>
+<td>paged</td>
+<td>Number</td>
+<td>Page Number for request</td>
+</tr>
+</tbody></table>
+<h3 id='response-10'>Response</h3>
+<ul>
+<li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
+<li><code style="color:#c7254e";>response.formats:</code> an array of match formats played. stat can be filtered with this information.</li>
+<li><code style="color:#c7254e";>response.stat_types:</code> an array of stat types, supplied in group (batting, bowling, team).</li>
+</ul>
+<h2 id='recent-matches-api'>Recent Matches API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/matches/?token=[ACCESS_TOKEN]"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/matches/?token=[ACCESS_TOKEN]&amp;status=2&amp;per_page=10&amp;&amp;paged=1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"match_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19866</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trinbago Knight Riders vs Guyana Amazon Warriors"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9th Match"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"format"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"format_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T20"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Completed"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"game_state"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"game_state_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T&amp;T Riders won by 7 wickets (with 6 balls remaining)"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"domestic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"competition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"cid"</span><span class="p">:</span><span class="w"> </span><span class="mi">91396</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caribbean Premier League"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"abbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"caribbean-premier-league-2017"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"series"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"domestic"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"match_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t20"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"live"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"season"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"datestart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-04"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"dateend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-09"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"total_matches"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"total_rounds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"total_teams"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wi"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"teama"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18250</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trinbago Knight Riders"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TKR"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cricket.entitysport.com/assets/uploads/2016/03/trinidad-tobago-red-steel-120x80.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"162/3"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"teamb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18245</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guyana Amazon Warriors"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AmWar"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cricket.entitysport.com/assets/uploads/2016/03/guyana-amazon-warriors-120x80.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"156/7"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"date_start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-12 01:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_start_ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1502499600</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-11 10:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Queen's Park Oval, Port of Spain"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trinidad"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"umpires"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gregory Brathwaite (West Indies), Langton Rusere (Zimbabwe), Nigel Duguid (West Indies, TV)"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"referee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Denavon Hayles (West Indies)"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"equation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"live"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"win_margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"commentary1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/match/19866/commentary1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"commentary2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/match/19866/commentary2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"toss"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trinbago Knight Riders won the toss &amp; elected to field"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"winner"</span><span class="p">:</span><span class="w"> </span><span class="mi">18250</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"decision"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2219"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">2219</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Matches api provide access to all of our matches. </p>
+<h3 id='request-11'>Request</h3>
+<ul>
+<li>Path: /v2/matches/</li>
+<li>Method: GET</li>
+<li>Parameters </li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>number</td>
+<td>filter matches by status (ie: live, completed). see properties reference for match status codes</td>
+</tr>
+<tr>
+<td>format</td>
+<td>number</td>
+<td>filter matches by format (ie: odi, test). see properties reference for match format codes</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>API access token</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>number</td>
+<td>Number of competition to list in each api request</td>
+</tr>
+<tr>
+<td>paged</td>
+<td>number</td>
+<td>Page number for request</td>
+</tr>
+</tbody></table>
+<h3 id='response-11'>Response</h3>
+<ul>
+<li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
+<li><code style="color:#c7254e";>response.matches:</code> an array of all available matches objects.</li>
+</ul>
+<h2 id='team-api'>Team API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/teams/4787/?token=[ACCESS_TOKEN]"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"tid"</span><span class="p">:</span><span class="w"> </span><span class="mi">4787</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chittagong Vikings"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"....vikings.png"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"club"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"abbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHV"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"thumb_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"....vikings.png"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"alt_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vikings"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Provides information of a team. </p>
+<h3 id='request-12'>Request</h3>
+<ul>
+<li>Path: /v2/teams/[TEAM_ID]/</li>
+<li>Method: GET</li>
+<li>Parameters </li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>{ACCESS_TOKEN}</td>
+<td>API Access token</td>
+</tr>
+</tbody></table>
+<h3 id='response-12'>Response</h3>
+<ul>
+<li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
+<li><code style="color:#c7254e";>response.tid:</code> Team id</li>
+<li><code style="color:#c7254e";>response.title:</code> Team Name</li>
+<li><code style="color:#c7254e";>response.abbr:</code> Team Name abbreviation</li>
+<li><code style="color:#c7254e";>response.thumb_url:</code> Team thumbnail url</li>
+<li><code style="color:#c7254e";>response.alt_name:</code> Team alternative name</li>
+</ul>
+<h2 id='team-matches-api'>Team Matches API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/teams/4787/matches/?token=[ACCESS_TOKEN]&amp;status=2&amp;per_page=10&amp;&amp;paged=1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"matches"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"match_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18909</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"England vs South Africa"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4th Test"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"format"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"format_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Completed"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"game_state"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"game_state_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"England won by 177 runs"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"domestic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"competition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"cid"</span><span class="p">:</span><span class="w"> </span><span class="mi">90692</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"South Africa tour of England"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"abbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"satoe-17"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tour"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"international"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"match_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mixed"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"result"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"season"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"datestart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-24"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"dateend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-08"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"total_matches"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"total_rounds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"total_teams"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"teama"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">490</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"England"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENG"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">".../england.png"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"362/10 &amp; 243/10"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"108.4 &amp; 69.1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"teamb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"South Africa"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SA"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">".../south-africa.png"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"226/10 &amp; 202/10"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72.1 &amp; 62.5"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"date_start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-04 10:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_start_ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1501840800</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-08 20:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Old Trafford"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manchester"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"umpires"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aleem Dar (Pakistan), Kumar Dharmasena (Sri Lanka), Joel Wilson (West Indies, TV)"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"referee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ranjan Madugalle (Sri Lanka)"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"equation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"live"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENG won by 177 runs"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"win_margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"177 runs"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"commentary1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/match/18909/commentary1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"commentary2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/match/18909/commentary2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"commentary3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/match/18909/commentary3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"commentary4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v2/match/18909/commentary4"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"toss"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"England won the toss &amp; elected to bat"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"winner"</span><span class="p">:</span><span class="w"> </span><span class="mi">490</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"decision"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"total_matches"</span><span class="p">:</span><span class="w"> </span><span class="s2">"63"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">63</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Provides information of a team. </p>
+<h3 id='request-13'>Request</h3>
+<ul>
+<li>Path: /v2/teams/[TEAM_ID]/matches</li>
+<li>Method: GET</li>
+<li>Parameters </li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>{ACCESS_TOKEN}</td>
+<td>API Access token</td>
+</tr>
+<tr>
+<td>status</td>
+<td>number</td>
+<td>filter matches by status (ie: live, completed). see properties reference for match status codes</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>Number</td>
+<td>Number of competition to list in each API request</td>
+</tr>
+<tr>
+<td>paged</td>
+<td>Number</td>
+<td>Page Number for request</td>
+</tr>
+</tbody></table>
+<h3 id='response-13'>Response</h3>
+<ul>
+<li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
+<li><code style="color:#c7254e";>response.matches:</code> array of matches objects.</li>
+</ul>
+<h2 id='match-status-codes'>Match Status Codes</h2>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Scheduled</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Live</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Cancelled / Abandoned</td>
+</tr>
+</tbody></table>
+<h2 id='match-game-state-codes'>Match Game State Codes</h2>
+<aside class="success">game_state is only used for live match</aside>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Starts Shortly</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Toss</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Play Ongoing</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Delayed</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Drinks Break</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Innings Break</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Day Break</td>
+</tr>
+</tbody></table>
+<h2 id='match-format-codes'>Match Format Codes</h2>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>ODI (One Day International)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>TEST</td>
+</tr>
+<tr>
+<td>3</td>
+<td>T20I (Twenty20 International)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>List A (Limited Over Domestic Match)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>First Class</td>
+</tr>
+<tr>
+<td>6</td>
+<td>T20(Domestic)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Women ODI</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Women T20</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Youth ODI</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Youth T20</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Others</td>
+</tr>
+</tbody></table>
+<h2 id='match-domestic-codes'>Match Domestic Codes</h2>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>International Match</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Domestic Match</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>Match Toss Decision</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Batting</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Fielding</td>
+</tr>
+</tbody></table>
+<h2 id='playing-role-parameter'>Playing Role Parameter</h2>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bat</td>
+<td>Batsman</td>
+</tr>
+<tr>
+<td>bowl</td>
+<td>Bowler</td>
+</tr>
+<tr>
+<td>all</td>
+<td>All Rounder</td>
+</tr>
+<tr>
+<td>WK</td>
+<td>Wicketkeeper</td>
+</tr>
+</tbody></table>
+<h2 id='match-squad-role-parameter'>Match Squad Role Parameter</h2>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bat</td>
+<td>Batsman</td>
+</tr>
+<tr>
+<td>bowl</td>
+<td>Bowler</td>
+</tr>
+<tr>
+<td>all</td>
+<td>All Rounder</td>
+</tr>
+<tr>
+<td>WK</td>
+<td>Wicketkeeper</td>
+</tr>
+<tr>
+<td>cap</td>
+<td>Captain of playing XI</td>
+</tr>
+<tr>
+<td>bench</td>
+<td>Player is not selected in Playing XI and benched</td>
+</tr>
+</tbody></table>
+<h2 id='international-team-id'>International Team Id</h2>
+<p>International Team Names and Team ID</p>
+
+<table><thead>
+<tr>
+<th>Team Name</th>
+<th>Team ID</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Afghanistan</td>
+<td>498</td>
+</tr>
+<tr>
+<td>Australia</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Australia Women</td>
+<td>8652</td>
+</tr>
+<tr>
+<td>Bangladesh</td>
+<td>23</td>
+</tr>
+<tr>
+<td>Bangladesh Women</td>
+<td>10712</td>
+</tr>
+<tr>
+<td>England</td>
+<td>490</td>
+</tr>
+<tr>
+<td>England Women</td>
+<td>9534</td>
+</tr>
+<tr>
+<td>India</td>
+<td>25</td>
+</tr>
+<tr>
+<td>India Women</td>
+<td>9536</td>
+</tr>
+<tr>
+<td>Ireland</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Ireland Women</td>
+<td>10511</td>
+</tr>
+<tr>
+<td>New Zealand</td>
+<td>7</td>
+</tr>
+<tr>
+<td>New Zealand Women</td>
+<td>8650</td>
+</tr>
+<tr>
+<td>Pakistan</td>
+<td>13</td>
+</tr>
+<tr>
+<td>Pakistan Women</td>
+<td>10259</td>
+</tr>
+<tr>
+<td>South Africa</td>
+<td>19</td>
+</tr>
+<tr>
+<td>South Africa Women</td>
+<td>10279</td>
+</tr>
+<tr>
+<td>Sri Lanka</td>
+<td>21</td>
+</tr>
+<tr>
+<td>Sri Lanka Women</td>
+<td>10277</td>
+</tr>
+<tr>
+<td>West Indies</td>
+<td>17</td>
+</tr>
+<tr>
+<td>West Indies Women</td>
+<td>10272</td>
+</tr>
+<tr>
+<td>Zimbabwe</td>
+<td>493</td>
+</tr>
+<tr>
+<td>Zimbabwe Women</td>
+<td>14619</td>
+</tr>
+<tr>
+<td>Scotland</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Scotland Women</td>
+<td>14624</td>
+</tr>
+<tr>
+<td>Netherlands</td>
+<td>1824</td>
+</tr>
+<tr>
+<td>Netherlands Women</td>
+<td>14627</td>
+</tr>
+<tr>
+<td>Kenya</td>
+<td>9160</td>
+</tr>
+<tr>
+<td>Fiji</td>
+<td>9140</td>
+</tr>
+<tr>
+<td>Namibia</td>
+<td>10798</td>
+</tr>
+<tr>
+<td>Nepal</td>
+<td>10814</td>
+</tr>
+<tr>
+<td>Nepal Women</td>
+<td>26768</td>
+</tr>
+<tr>
+<td>Hong Kong</td>
+<td>1544</td>
+</tr>
+<tr>
+<td>Hong Kong Women</td>
+<td>26771</td>
+</tr>
+<tr>
+<td>Oman</td>
+<td>1546</td>
+</tr>
+<tr>
+<td>Canada</td>
+<td>6791</td>
+</tr>
+<tr>
+<td>United Arab Emirates</td>
+<td>15</td>
+</tr>
+</tbody></table>
+<h2 id='t20-cricket-league-teams-id'>T20 Cricket League Teams ID</h2>
+<p>T20 Cricket League Team Names and Team ID</p>
+<h3 id='indian-premier-league-teams-india'>Indian Premier League Teams (India)</h3>
+<table><thead>
+<tr>
+<th>Team Name</th>
+<th>Team ID</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Chennai Super Kings</td>
+<td>610</td>
+</tr>
+<tr>
+<td>Delhi Daredevils</td>
+<td>612</td>
+</tr>
+<tr>
+<td>Kings XI Punjab</td>
+<td>627</td>
+</tr>
+<tr>
+<td>Kolkata Knight Riders</td>
+<td>591</td>
+</tr>
+<tr>
+<td>Mumbai Indians</td>
+<td>593</td>
+</tr>
+<tr>
+<td>Rajasthan Royals</td>
+<td>629</td>
+</tr>
+<tr>
+<td>Royal Challengers Bangalore</td>
+<td>646</td>
+</tr>
+<tr>
+<td>Sunrisers Hyderabad</td>
+<td>658</td>
+</tr>
+<tr>
+<td>Gujarat Lions</td>
+<td>10062</td>
+</tr>
+<tr>
+<td>Rising Pune Supergiants</td>
+<td>10059</td>
+</tr>
+</tbody></table>
+<h3 id='big-bash-league-teams-australia'>Big Bash League Teams (Australia)</h3>
+<table><thead>
+<tr>
+<th>Team Name</th>
+<th>Team ID</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Adelaide Strikers</td>
+<td>14205</td>
+</tr>
+<tr>
+<td>Brisbane Heat</td>
+<td>14208</td>
+</tr>
+<tr>
+<td>Hobart Hurricanes</td>
+<td>14212</td>
+</tr>
+<tr>
+<td>Melbourne Renegades</td>
+<td>14209</td>
+</tr>
+<tr>
+<td>Melbourne Stars</td>
+<td>14206</td>
+</tr>
+<tr>
+<td>Perth Scorchers</td>
+<td>14214</td>
+</tr>
+<tr>
+<td>Sydney Sixers</td>
+<td>14203</td>
+</tr>
+<tr>
+<td>Sydney Thunder</td>
+<td>14202</td>
+</tr>
+</tbody></table>
+<h3 id='pakistan-super-league-teams-pakistan'>Pakistan Super League Teams (Pakistan)</h3>
+<table><thead>
+<tr>
+<th>Team Name</th>
+<th>Team ID</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Islamabad United</td>
+<td>14464</td>
+</tr>
+<tr>
+<td>Karachi Kings</td>
+<td>14469</td>
+</tr>
+<tr>
+<td>Lahore Qalandars</td>
+<td>14470</td>
+</tr>
+<tr>
+<td>Peshawar Zalmi</td>
+<td>14467</td>
+</tr>
+<tr>
+<td>Quetta Gladiators</td>
+<td>14465</td>
+</tr>
+</tbody></table>
+<h3 id='ram-slam-league-teams-south-africa'>Ram Slam League Teams(South Africa)</h3>
+<table><thead>
+<tr>
+<th>Team Name</th>
+<th>Team ID</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Cape Cobras</td>
+<td>12330</td>
+</tr>
+<tr>
+<td>Dolphins</td>
+<td>12342</td>
+</tr>
+<tr>
+<td>Knights</td>
+<td>12332</td>
+</tr>
+<tr>
+<td>Lions</td>
+<td>12340</td>
+</tr>
+<tr>
+<td>Titans</td>
+<td>12335</td>
+</tr>
+<tr>
+<td>Warriors</td>
+<td>90443</td>
+</tr>
+</tbody></table>
+<h3 id='super-smash-t20-new-zealand'>Super Smash T20(New Zealand)</h3>
+<table><thead>
+<tr>
+<th>Team Name</th>
+<th>Team ID</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Auckland</td>
+<td>13231</td>
+</tr>
+<tr>
+<td>Canterbury</td>
+<td>13223</td>
+</tr>
+<tr>
+<td>Central Districts</td>
+<td>13222</td>
+</tr>
+<tr>
+<td>Northern Districts</td>
+<td>13226</td>
+</tr>
+<tr>
+<td>Otago</td>
+<td>13229</td>
+</tr>
+<tr>
+<td>Wellington</td>
+<td>13225</td>
+</tr>
+</tbody></table>
+<h3 id='caribbean-premier-league-teams-west-indies'>Caribbean Premier League Teams (West Indies)</h3>
+<table><thead>
+<tr>
+<th>Team Name</th>
+<th>Team ID</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Antigua Hawksbills</td>
+<td>29441</td>
+</tr>
+<tr>
+<td>Guyana Amazon Warriors</td>
+<td>18245</td>
+</tr>
+<tr>
+<td>Jamaica Tallawahs</td>
+<td>18253</td>
+</tr>
+<tr>
+<td>St Lucia Zouks</td>
+<td>18248</td>
+</tr>
+<tr>
+<td>Trinbago Knight Riders</td>
+<td>18250</td>
+</tr>
+</tbody></table>
+<h3 id='bangladesh-premier-league-bangladesh'>Bangladesh Premier League (Bangladesh)</h3>
+<table><thead>
+<tr>
+<th>Team Name</th>
+<th>Team ID</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Barisal Bulls</td>
+<td>14096</td>
+</tr>
+<tr>
+<td>Chittagong Vikings</td>
+<td>14091</td>
+</tr>
+<tr>
+<td>Comilla Victorians</td>
+<td>14094</td>
+</tr>
+<tr>
+<td>Dhaka Dynamites</td>
+<td>14093</td>
+</tr>
+<tr>
+<td>Khulna Titans</td>
+<td>90438</td>
+</tr>
+<tr>
+<td>Rajshahi Kings</td>
+<td>65163</td>
+</tr>
+<tr>
+<td>Rangpur Riders</td>
+<td>14090</td>
+</tr>
+</tbody></table>
+<h3 id='netwest-t20-blast-england'>Netwest T20 Blast (England)</h3>
+<table><thead>
+<tr>
+<th>Team Name</th>
+<th>Team ID</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Derbyshire</td>
+<td>7013</td>
+</tr>
+<tr>
+<td>Durham</td>
+<td>7548</td>
+</tr>
+<tr>
+<td>Essex</td>
+<td>7006</td>
+</tr>
+<tr>
+<td>Glamorgan</td>
+<td>7020</td>
+</tr>
+<tr>
+<td>Gloucestershire</td>
+<td>7017</td>
+</tr>
+<tr>
+<td>Hampshire</td>
+<td>7047</td>
+</tr>
+<tr>
+<td>Kent</td>
+<td>6188</td>
+</tr>
+<tr>
+<td>Lancashire</td>
+<td>7023</td>
+</tr>
+<tr>
+<td>Leicestershire</td>
+<td>7025</td>
+</tr>
+<tr>
+<td>Middlesex</td>
+<td>7044</td>
+</tr>
+<tr>
+<td>Northamptonshire</td>
+<td>7038</td>
+</tr>
+<tr>
+<td>Nottinghamshire</td>
+<td>6035</td>
+</tr>
+<tr>
+<td>Somerset</td>
+<td>7010</td>
+</tr>
+<tr>
+<td>Surrey</td>
+<td>6995</td>
+</tr>
+<tr>
+<td>Sussex</td>
+<td>5721</td>
+</tr>
+<tr>
+<td>Warwickshire</td>
+<td>7002</td>
+</tr>
+<tr>
+<td>Worcestershire</td>
+<td>7000</td>
+</tr>
+<tr>
+<td>Yorkshire</td>
+<td>7050</td>
 </tr>
 </tbody></table>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="cURL">cURL</a>
                 <a href="#" data-language-name="ruby">ruby</a>
                 <a href="#" data-language-name="python">python</a>
                 <a href="#" data-language-name="javascript">javascript</a>
