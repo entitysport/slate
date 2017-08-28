@@ -40,7 +40,8 @@ You will need an active access key and secret key with a valid subsciption to st
 curl -X POST \
    -d "access_key=YOURACCESSKEY" \
    -d "secret_key=YOURSECRETKEY" \
-   https://rest.entitysport.com/v2/auth/
+   -d "extend=1" \
+   http://rest.entitysport.com/v2/auth
 ```
 
 > The above command returns JSON structured like this:
@@ -198,7 +199,194 @@ Our API supports `Etag` based caching. In all response, if a cache is applicable
 
 It's very useful, when you are calling same api multiple times ie: **live score update**, you will save lots of bandwidth. And you don't need to refresh the screen, if nothing is changed.
 
-# CRICKET API V2
+# Cricket Plans Coverage
+
+## Basic
+
+
+### International Matches
+
+Format | Competition/Teams | Score Update | Match Statistics | Competition Statistics | Wagon Wheel
+--------- | -------------- | ------------ | -----------------| ---------------------- | -----------
+Test (Men) | ICC Full Members | Real Time | No | Yes | No
+ODI (Men) | ICC Full Members | Real Time | No| Yes | No
+T20I (Men) | ICC Full Members | Real Time | No | Yes | No
+ODI (Women) | ICC Full Members | Real Time | No | Yes | NO
+T20I (Women) | ICC Full Members | Real Time | No | Yes | NO
+
+## Pro
+
+### International Matches
+
+Format | Competition/Teams | Score Update | Match Statistics | Competition Statistics | Wagon Wheel
+--------- | -------------- | ------------ | -----------------| ---------------------- | -----------
+Test (Men) | ICC Full Members | Real Time | No | Yes | No
+ODI (Men) | ICC Full Members | Real Time | No| Yes | No
+T20I (Men) | ICC Full Members | Real Time | No | Yes | No
+ODI (Women) | ICC Full Members | Real Time | No | Yes | NO
+T20I (Women) | ICC Full Members | Real Time | No | Yes | NO
+
+### Domestic T20 Leagues
+
+Country | Competition | Score Update | Match Statistics | Competition Statistics | Wagon Wheel
+--------- | -------------- | ------------ | -----------------| ---------------------- | -----------
+Australia | Big Bash League(BBL) | Real Time | No | Yes | No
+Bangladesh | Bangladesh Premier League(BPL) | Real Time | No | Yes | No
+England | Natwest T20 Blast | Real Time | No | Yes | No
+India | Indian Premier League(IPL) | Real Time | No | Yes | No
+India | Tamilnadu Premier League(TNPL) | Real Time | No | Yes | No
+New Zealand | Super Smash T20 | Not Live | No | Yes | NO
+Pakistan | Pakistan Super League(PSL) | Real Time | No | Yes | No
+South Africa | Ram Slam League | Real Time | No | Yes | No
+Westindies | Caribbean Premier League(CPL) | Real Time | No | Yes | No
+
+
+## Business
+
+### International Matches
+
+Format | Competition/Teams | Score Update | Match Statistics | Competition Statistics | Wagon Wheel
+--------- | -------------- | ------------ | -----------------| ---------------------- | -----------
+Test (Men) | ICC Full Members | Real Time | No | Yes | No
+ODI (Men) | ICC Full Members | Real Time | No| Yes | No
+T20I (Men) | ICC Full Members | Real Time | No | Yes | No
+ODI (Women) | ICC Full Members | Real Time | No | Yes | NO
+T20I (Women) | ICC Full Members | Real Time | No | Yes | NO
+
+### Domestic T20 Leagues
+
+Country | Competition | Score Update | Match Statistics | Competition Statistics | Wagon Wheel
+--------- | -------------- | ------------ | -----------------| ---------------------- | -----------
+Australia | Big Bash League(BBL) | Real Time | No | Yes | No
+Bangladesh | Bangladesh Premier League(BPL) | Real Time | No | Yes | No
+England | Natwest T20 Blast | Real Time | No | Yes | No
+India | Indian Premier League(IPL) | Real Time | No | Yes | No
+India | Tamilnadu Premier League(TNPL) | Real Time | No | Yes | No
+New Zealand | Super Smash T20 | Not Live | No | Yes | NO
+Pakistan | Pakistan Super League(PSL) | Real Time | No | Yes | No
+South Africa | Ram Slam League | Real Time | No | Yes | No
+Westindies | Caribbean Premier League(CPL) | Real Time | No | Yes | No
+
+### List A & First Class Competitions
+
+Country | Competition | Score Update | Match Statistics | Competition Statistics | Wagon Wheel
+--------- | -------------- | ------------ | -----------------| ---------------------- | -----------
+Australia | Matador BBQs One-Day Cup | Real Time | No | Yes | No
+Australia | Sheffield Shield | Real Time | Yes | Yes | No
+England | County Championship Division One | Real Time | No | Yes | Yes
+England | County Championship Division Two | Real Time | No | Yes | Yes
+England | Royal London One-Day Cup | Real Time | No | Yes | Yes
+India | Deodhar Trophy | Not Live | No | Yes | No
+India | Duleep Trophy | Real Time | No | Yes | No
+India | Irani Cup | Real Time | No | Yes | No
+India | Ranji Trophy | Not Live | No | Yes | No
+India | Vijay Hazare Trophy | Not Live | No | Yes | No
+New Zealand | Plunket Shield | Not Live | No | Yes | No
+New Zealand | The Ford Trophy | Not Live | No | Yes | No
+South Africa | Sunfoil Series | Real Time | No | Yes | No
+South Africa | Momentum One Day Cup | Real Time | No | Yes | No
+
+
+## Classic
+
+Classic Plan will include all available International competitions and features covered by Entity Sports.
+
+### International Matches
+
+Format | Competition/Teams | Score Update | Match Statistics | Competition Statistics | Wagon Wheel
+--------- | -------------- | ------------ | -----------------| ---------------------- | -----------
+Test (Men) | ICC Full Members | Real Time | Yes | Yes | Yes
+ODI (Men) | ICC Full Members | Real Time | Yes | Yes | Yes
+T20I (Men) | ICC Full Members | Real Time | Yes | Yes | Yes
+ODI (Women) | ICC Full Members | Real Time | Yes | Yes | NO
+T20I (Women) | ICC Full Members | Real Time | Yes | Yes | NO
+
+
+## Elite
+
+Elite Plan will include all available International & Domestic T20 competitions and features covered by Entity Sports.
+
+### International Matches
+
+Format | Competition/Teams | Score Update | Match Statistics | Competition Statistics | Wagon Wheel
+--------- | -------------- | ------------ | -----------------| ---------------------- | -----------
+Test (Men) | ICC Full Members | Real Time | Yes | Yes | Yes
+ODI (Men) | ICC Full Members | Real Time | Yes | Yes | Yes
+T20I (Men) | ICC Full Members | Real Time | Yes | Yes | Yes
+ODI (Women) | ICC Full Members | Real Time | Yes | Yes | NO
+T20I (Women) | ICC Full Members | Real Time | Yes | Yes | NO
+
+### Domestic T20 Leagues
+
+Country | Competition | Score Update | Match Statistics | Competition Statistics | Wagon Wheel
+--------- | -------------- | ------------ | -----------------| ---------------------- | -----------
+Australia | Big Bash League(BBL) | Real Time | Yes | Yes | No
+Bangladesh | Bangladesh Premier League(BPL) | Real Time | Yes | Yes | No
+England | Natwest T20 Blast | Real Time | Yes | Yes | Yes
+India | Indian Premier League(IPL) | Real Time | Yes | Yes | Yes
+India | Tamilnadu Premier League(TNPL) | Real Time | Yes | Yes | No
+New Zealand | Super Smash T20 | Not Live | Yes | Yes | NO
+Pakistan | Pakistan Super League(PSL) | Real Time | Yes | Yes | No
+South Africa | Ram Slam League | Real Time | Yes | Yes | No
+Westindies | Caribbean Premier League(CPL) | Real Time | Yes | Yes | Yes
+
+
+## Premium
+
+Premium Plan will include all available tours, competition and features covered by Entity Sports.
+
+### International Matches
+
+Format | Competition/Teams | Score Update | Match Statistics | Competition Statistics | Wagon Wheel
+--------- | -------------- | ------------ | -----------------| ---------------------- | -----------
+Test (Men) | ICC Full Members | Real Time | Yes | Yes | Yes
+ODI (Men) | ICC Full Members | Real Time | Yes | Yes | Yes
+T20I (Men) | ICC Full Members | Real Time | Yes | Yes | Yes
+ODI (Women) | ICC Full Members | Real Time | Yes | Yes | NO
+T20I (Women) | ICC Full Members | Real Time | Yes | Yes | NO
+
+### Domestic T20 Leagues
+
+Country | Competition | Score Update | Match Statistics | Competition Statistics | Wagon Wheel
+--------- | -------------- | ------------ | -----------------| ---------------------- | -----------
+Australia | Big Bash League(BBL) | Real Time | Yes | Yes | No
+Bangladesh | Bangladesh Premier League(BPL) | Real Time | Yes | Yes | No
+England | Natwest T20 Blast | Real Time | Yes | Yes | Yes
+India | Indian Premier League(IPL) | Real Time | Yes | Yes | Yes
+India | Tamilnadu Premier League(TNPL) | Real Time | Yes | Yes | No
+New Zealand | Super Smash T20 | Not Live | Yes | Yes | NO
+Pakistan | Pakistan Super League(PSL) | Real Time | Yes | Yes | No
+South Africa | Ram Slam League | Real Time | Yes | Yes | No
+Westindies | Caribbean Premier League(CPL) | Real Time | Yes | Yes | Yes
+
+### List A & First Class Competitions
+
+Country | Competition | Score Update | Match Statistics | Competition Statistics | Wagon Wheel
+--------- | -------------- | ------------ | -----------------| ---------------------- | -----------
+Australia | Matador BBQs One-Day Cup | Real Time | Yes | Yes | No
+Australia | Sheffield Shield | Real Time | Yes | Yes | No
+England | County Championship Division One | Real Time | Yes | Yes | Yes
+England | County Championship Division Two | Real Time | Yes | Yes | Yes
+England | Royal London One-Day Cup | Real Time | Yes | Yes | Yes
+India | Deodhar Trophy | Not Live | Yes | Yes | No
+India | Duleep Trophy | Real Time | Yes | Yes | No
+India | Irani Cup | Real Time | Yes | Yes | No
+India | Ranji Trophy | Not Live | Yes | Yes | No
+India | Vijay Hazare Trophy | Not Live | Yes | Yes | No
+New Zealand | Plunket Shield | Not Live | Yes | Yes | No
+New Zealand | The Ford Trophy | Not Live | Yes | Yes | No
+South Africa | Sunfoil Series | Real Time | Yes | Yes | No
+South Africa | Momentum One Day Cup | Real Time | Yes | Yes | No
+
+
+
+
+
+
+
+
+
+# Cricket API V2
 
 ## Seasons API
 
@@ -838,7 +1026,7 @@ token | {ACCESS_TOKEN} | API Access token
 * <code style="color:#c7254e";>response.rankings:</code> an array of team ranks data. data will come for each rank type separately.
 * <code style="color:#c7254e";>response.teams:</code> an array of team objects.
 
-## Competition Stats Type API
+## Competition Statistic Type API
 
 ```shell
 curl -X GET "http://rest.entitysport.com/v2/competitions/90738/stats/?token=[ACCESS_TOKEN]"
@@ -916,7 +1104,7 @@ token | {ACCESS_TOKEN} | API Access token
 * <code style="color:#c7254e";>response.formats:</code> an array of match formats played. stat can be filtered with this information
 * <code style="color:#c7254e";>response.stat_types:</code> an array of stat types, supplied in group (batting, bowling, team)
 
-## Competition Stat API
+## Competition Statistic API
 
 ```shell
 curl -X GET "http://rest.entitysport.com/v2/competitions/4904/stats/batting_most_runs/?token=[ACCESS_TOKEN]&per_page=10&&paged=1"
@@ -1302,6 +1490,8 @@ paged |	Number | Page Number for request
 * <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
 * <code style="color:#c7254e";>response.matches:</code> array of matches objects.
 
+
+# Cricket Reference
 
 ## Match Status Codes
 
