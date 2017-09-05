@@ -18,9 +18,9 @@ search: true
 
 Entity Sports application programming interfaces (API) give you access to our sports data. You can use our Entity Sports API to build web and mobile sports application. Either it's fantasy sports or live score our data full fills requirements for all type of applications. 
 
-Entity Sports API deliver season, competition, teams, matches, player, statistical data for Cricket and Soccer.
+Entity Sports API deliver season, competition, teams, matches, player, statistical data for Cricket and Soccer.Since the API is true to RESTful principles, it’s easy to interact with using any tool capable of performing HTTP requests, such as Postman or cURL. 
 
-Since the API is true to RESTful principles, it’s easy to interact with using any tool capable of performing HTTP requests, such as Postman or cURL. To allow you to interact securely with our API from a client-side web application (though you should remember that you should never expose your API keys in any public website's client-side code). JSON will be returned in all responses from the API, including errors. 
+To allow you to interact securely with our API from a client-side web application (though you should remember that you should never expose your API keys in any public website's client-side code). JSON will be returned in all responses from the API, including errors. 
 
 
 # Getting Started
@@ -60,7 +60,6 @@ curl -X POST \
         "token": "1|X#aFhlzAsd",
         "expires": "12312312312",
     },
-    "datetime": "2017-01-31 16:25:52",
     "api_version": "2.0"
 }
 
@@ -97,21 +96,18 @@ curl -X GET "http://rest.entitysport.com/v2/?token=[ACCESS_TOKEN]"
 > The above command returns JSON structured like this:
 
 ```json
-
 {
     "status": "ok",
     "response": {
-        "api_doc": "/v2/doc/",
+        "api_doc": "http://doc.entitysport.com/",
         "status_codes": {
             "ok": "Success",
             "error": "Failure",
             "invalid": "Invalid Request",
-            "unauthorized": "Un authorized"
+            "unauthorized": "Un authorized",
+            "noaccess": "No access to requested resource"
         }
     },
-    "etag": "8fc93de066d8d802a36e0882ecc77fdb",
-    "modified": "2017-01-31 16:29:11",
-    "datetime": "2017-01-31 16:29:11",
     "api_version": "2.0"
 }
 
@@ -282,10 +278,10 @@ Westindies | Caribbean Premier League(CPL) | Real Time | No | Yes | No
 Country | Competition | Score Update | Match Statistics | Competition Statistics | Wagon Wheel
 --------- | -------------- | ------------ | -----------------| ---------------------- | -----------
 Australia | Matador BBQs One-Day Cup | Real Time | No | Yes | No
-Australia | Sheffield Shield | Real Time | Yes | Yes | No
-England | County Championship Division One | Real Time | No | Yes | Yes
-England | County Championship Division Two | Real Time | No | Yes | Yes
-England | Royal London One-Day Cup | Real Time | No | Yes | Yes
+Australia | Sheffield Shield | Real Time | No | Yes | No
+England | County Championship Division One | Real Time | No | Yes | No
+England | County Championship Division Two | Real Time | No | Yes | No
+England | Royal London One-Day Cup | Real Time | No | Yes | No
 India | Deodhar Trophy | Not Live | No | Yes | No
 India | Duleep Trophy | Real Time | No | Yes | No
 India | Irani Cup | Real Time | No | Yes | No
@@ -565,6 +561,96 @@ dateend | date | round last match date
 matches_url | string | api url for matches data
 teams_url | string | api url for teams data
 
+## Competitions Overview API
+
+```shell
+curl -X GET "http://rest.entitysport.com/v2/competitions/91396?token=[ACCESS_TOKEN]"
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+    "status": "ok",
+    "response": {
+        "cid": 91396,
+        "title": "Caribbean Premier League",
+        "abbr": "caribbean-premier-league-2017",
+        "category": "domestic",
+        "game_format": "t20",
+        "status": "live",
+        "season": "2017",
+        "datestart": "2017-08-04",
+        "dateend": "2017-09-09",
+        "total_matches": "34",
+        "total_rounds": "1",
+        "total_teams": "6",
+        "country": "wi",
+        "table": "1",
+        "rounds": [
+            {
+                "rid": 104883,
+                "order": 1,
+                "name": "Group Stage",
+                "type": "group",
+                "match_format": "t20",
+                "datestart": "2017-08-05",
+                "dateend": "2017-09-04"
+            }
+        ]
+    },
+    "etag": "47ad73992b654633b91a3d324702935b",
+    "modified": "2017-09-05 09:50:54",
+    "datetime": "2017-09-05 20:48:39",
+    "api_version": "2.0"
+}
+```
+Competition Object Overview API.
+
+### Request
+* Path: /v2/competitons/[cid(competition id)]/
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+title | string | competition name/title
+abbr | string | competition name abbreviation
+category | string | competition category, possible values are international, domestic, youth, women
+game_format | string | played match format. a competition can hold multiple match types, ie odi, test etc. possible values are mixed, odi, test, t20i, firstclass, lista, t20, youthodi, youtht20, womenodi, woment20
+status | string | competition status. possible values are live (currently ongoing), fixture (upcoming), result (completed)
+season | string | competition season name
+datestart | date | competition first match date
+dateend | date | competition last match date
+total_matches | integer | number of total matches
+total_rounds | integer | number of total rounds
+total_teams | integer | number of total teams
+country  | string | Country ISO Code
+table  | integer | total number of standing tables
+rounds | array | an array of rounds played in the competition, <a href="#competition-round-properties">see round object reference.</a>
+
+<h3 id="competition-round-properties">Round Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+rid | integer | round id
+order | integer | round sort order
+name | string | Round name/title
+type | string | round type group, konckout stage, series
+match_format | string | played match format. a competition can hold multiple match types, ie odi, test etc. possible values are mixed, odi, test, t20i, firstclass, lista, t20, youthodi, youtht20, womenodi, woment20
+datestart | date | round first match date
+dateend | date | round last match date
 
 
 ## Competition Matches API
@@ -1151,9 +1237,59 @@ curl -X GET "http://rest.entitysport.com/v2/competitions/91402/stats/batting_mos
 {
     "status": "ok",
     "response": {
+        "stats": [
+            {
+                "matches": 10,
+                "innings": 10,
+                "notout": 1,
+                "runs": 382,
+                "balls": 260,
+                "highest": "92",
+                "run100": 0,
+                "run50": 3,
+                "run4": 32,
+                "run6": 19,
+                "average": "42.44",
+                "strike": "146.92",
+                "catches": 5,
+                "stumpings": 2,
+                "updated": "2017-09-04 06:54:29",
+                "team": {
+                    "tid": 18245,
+                    "title": "Guyana Amazon Warriors",
+                    "abbr": "GAW",
+                    "thumb_url": "../assets/uploads/2016/03/guyana-amazon-warriors-120x80.jpg",
+                    "logo_url": "../assets/uploads/2016/03/guyana-amazon-warriors-32x32.jpg",
+                    "alt_name": "Amazon",
+                    "type": "club",
+                    "country": "wi"
+                },
+                "player": {
+                    "pid": 50098,
+                    "title": "Chadwick Walton",
+                    "short_name": "CAK Walton",
+                    "first_name": "Chadwick",
+                    "last_name": "Walton",
+                    "middle_name": "Antonio Kirkpatrick",
+                    "birthdate": "1985-07-03",
+                    "birthplace": "",
+                    "country": "wi",
+                    "primary_team": [],
+                    "thumb_url": "../assets/uploads/2016/03/walton-120x120.jpg",
+                    "logo_url": "../assets/uploads/2016/03/walton-32x32.jpg",
+                    "playing_role": "wkbat",
+                    "batting_style": "Right-hand bat",
+                    "bowling_style": "",
+                    "fielding_position": "",
+                    "recent_match": 18944,
+                    "recent_appearance": 1490545800
+                }
+            }
+        ],
+        "total_items": 94,
+        "total_pages": 94,
         "formats": [
-            "odi",
-            "test"
+            "t20"
         ],
         "stat_types": [
             {
@@ -1198,78 +1334,61 @@ curl -X GET "http://rest.entitysport.com/v2/competitions/91402/stats/batting_mos
                 }
             }
         ],
-        "format": "odi",
-        "stats": [
-            {
-                "matches": 4,
-                "innings": 4,
-                "notout": 1,
-                "runs": 286,
-                "balls": 291,
-                "highest": "124*",
-                "run100": 2,
-                "run50": 1,
-                "run4": 32,
-                "run6": 8,
-                "average": "95.33",
-                "strike": "98.28",
-                "catches": 2,
-                "stumpings": 0,
-                "updated": "2017-09-01 01:44:03",
-                "team": {
-                    "tid": 25,
-                    "title": "India",
-                    "abbr": "INDIA",
-                    "thumb_url": "../assets/uploads/2016/01/india.png",
-                    "logo_url": "../assets/uploads/2016/01/india-32x32.png",
-                    "type": "country",
-                    "country": "in",
-                    "alt_name": "India"
-                },
-                "player": {
-                    "pid": 115,
-                    "title": "Rohit Sharma",
-                    "short_name": "RG Sharma",
-                    "first_name": "Rohit",
-                    "last_name": "Sharma",
-                    "middle_name": "Gurunath",
-                    "birthdate": "1987-04-30",
-                    "birthplace": "",
-                    "country": "in",
-                    "primary_team": [],
-                    "thumb_url": "../assets/uploads/2016/04/rohit-sharma-120x120.jpg",
-                    "logo_url": "../assets/uploads/2016/04/rohit-sharma-32x32.jpg",
-                    "playing_role": "bat",
-                    "batting_style": "Right-hand bat",
-                    "bowling_style": "Right-arm offbreak",
-                    "fielding_position": "",
-                    "recent_match": 17769,
-                    "recent_appearance": 1496568600
-                }
-            }
-        ],
+        "format": "t20",
         "teams": [
             {
-                "team_id": 21,
-                "name": "Sri Lanka",
-                "short_name": "SL",
-                "country_iso": "lk",
-                "type": "country",
-                "logo_url": "../assets/uploads/2016/01/sri-lanka-32x32.png"
+                "team_id": 18243,
+                "name": "Barbados Tridents",
+                "short_name": "BT",
+                "country_iso": "bb",
+                "type": "club",
+                "logo_url": "../assets/uploads/2016/03/barbados-tridents-32x32.jpg"
             },
             {
-                "team_id": 25,
-                "name": "India",
-                "short_name": "INDIA",
-                "country_iso": "in",
-                "type": "country",
-                "logo_url": "../assets/uploads/2016/01/india-32x32.png"
+                "team_id": 18245,
+                "name": "Guyana Amazon Warriors",
+                "short_name": "GAW",
+                "country_iso": "wi",
+                "type": "club",
+                "logo_url": "../assets/uploads/2016/03/guyana-amazon-warriors-32x32.jpg"
+            },
+            {
+                "team_id": 18248,
+                "name": "St Lucia Stars",
+                "short_name": "STARS",
+                "country_iso": "wi",
+                "type": "club",
+                "logo_url": "../assets/uploads/2016/03/st-lucia-zouks-32x32.jpg"
+            },
+            {
+                "team_id": 18250,
+                "name": "Trinbago Knight Riders",
+                "short_name": "TKR",
+                "country_iso": "wi",
+                "type": "club",
+                "logo_url": "../assets/uploads/2017/08/Trinbago-Knight-Riders-32x32.png"
+            },
+            {
+                "team_id": 18253,
+                "name": "Jamaica Tallawahs",
+                "short_name": "JT",
+                "country_iso": "wi",
+                "type": "club",
+                "logo_url": "../assets/uploads/2016/03/jamaica-tallawahs-32x32.jpg"
+            },
+            {
+                "team_id": 18256,
+                "name": "St Kitts and Nevis Patriots",
+                "short_name": "STKNP",
+                "country_iso": "wi",
+                "type": "club",
+                "logo_url": "../assets/uploads/2017/07/patriots_icon-32x32.png"
             }
         ]
     },
-    "etag": "4ec081717b7a116e443e05a9daf57b78",
-    "modified": "2017-09-01 02:24:19",
-    "datetime": "2017-09-01 02:24:19",
+    "etag": "7ffaca10f79d987f6fc657b44d7a7afc",
+    "modified": "2017-09-05 02:39:28",
+    "datetime": "2017-09-05 02:39:28",
     "api_version": "2.0"
 }
 ```
@@ -1303,6 +1422,9 @@ formats | string | formats of matches
 stats_type | array | an array of batting and bowling statistic type <a href="#stats-type-properties">see stats type properties</a>  
 format | string | formats of matches
 stats | array | array of batsman, bowler, team statistic data <a href="#competition-stats">see Batting Stats properties</a>, <a href="#competition-bowling-stats">see Bowling Stats properties</a>, <a href="#competition-team-stats">see Team Stats properties</a>
+total_items | integer | total number of elements available
+total_pages | integer | total number of pages with data
+formats | array | an array of containing format strings
 
 
 <h3 id="competition-stats">Batting Stats Properties</h3> 
@@ -1572,6 +1694,188 @@ text | string | Toss result text with team name
 winner | integer | team id of toss winning team
 decision | integer | numerical representation of decision made by toss winning team.
 
+
+## Match Info API
+
+```shell
+curl -X GET "http://rest.entitysport.com/v2/matches/19887/info?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "status": "ok",
+    "response": {
+        "match_id": 19887,
+        "title": "Barbados Tridents vs St Kitts and Nevis Patriots",
+        "subtitle": "30th Match",
+        "format": 6,
+        "format_str": "T20",
+        "status": 2,
+        "status_str": "Completed",
+        "status_note": "Patriots won by 10 wickets (with 78 balls remaining)",
+        "game_state": 0,
+        "game_state_str": "Default",
+        "competition": {
+            "cid": 91396,
+            "title": "Caribbean Premier League",
+            "abbr": "caribbean-premier-league-2017",
+            "type": "tournament",
+            "category": "domestic",
+            "match_format": "t20",
+            "status": "live",
+            "season": "2017",
+            "datestart": "2017-08-04",
+            "dateend": "2017-09-09",
+            "total_matches": "34",
+            "total_rounds": "1",
+            "total_teams": "7",
+            "country": "wi"
+        },
+        "teama": {
+            "team_id": 18243,
+            "name": "Barbados Tridents",
+            "short_name": "BT",
+            "logo_url": "../assets/uploads/2016/03/barbados-tridents-120x80.jpg",
+            "scores_full": "128/9 (20 ov)",
+            "scores": "128/9",
+            "overs": "20"
+        },
+        "teamb": {
+            "team_id": 18256,
+            "name": "St Kitts and Nevis Patriots",
+            "short_name": "STKNP",
+            "logo_url": "../assets/uploads/2017/07/patriots_icon-120x120.png",
+            "scores_full": "129/0 (7 ov)",
+            "scores": "129/0",
+            "overs": "7"
+        },
+        "date_start": "2017-09-03 22:00:00",
+        "date_end": "2017-09-04 23:59:00",
+        "timestamp_start": 1504476000,
+        "timestamp_end": 1504569540,
+        "venue": {
+            "name": "Kensington Oval, Bridgetown",
+            "location": "Barbados",
+            "timezone": "0"
+        },
+        "umpires": "Johan Cloete (South Africa), Leslie Reifer (West Indies), Zahid Bassarath (West Indies, TV)",
+        "referee": "Dev Govindjee (South Africa)",
+        "equation": "",
+        "live": "",
+        "result": "",
+        "win_margin": "",
+        "commentary": 1,
+        "wagon": 1,
+        "latest_inning_number": 2,
+        "toss": {
+            "text": "St Kitts and Nevis Patriots won the toss & elected to field",
+            "winner": 18256,
+            "decision": 2
+        }
+    },
+    "etag": "fb3f0f904913325ac146aa1886e86bdc",
+    "modified": "2017-09-04 01:41:05",
+    "datetime": "2017-09-04 06:03:06",
+    "api_version": "2.0"
+}
+```
+Match Info API provide general match information. 
+
+###Request
+* Path: /v2/matches/[MATCH_ID]/info
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | string | API access token
+
+###Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+match_id | interger  |  match id
+title | string | match name/title
+subtitle  |  string | contains either the match format + number or important event name, ie: Final, 2nd ODI, 1st Quarterfinal.
+format | interger  |  numerical representation of match format. see match_formats reference.
+format_str | string | match format name
+status | string | numerical representation of match status. see match_statuss reference.
+status_str | string | match status name.
+status_note | string | a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.
+game_state | string | numerical representation of match game_state. game state is available for live match only.
+game_state_str | string | match game_state name.
+competition | array  |  an array of parent competition details of the match, <a href="#competition-info-properties">see competition object properties.</a>
+team | array  |  an array of teams participating in the match, <a href="#team-info-card">see team match properties.</a>
+date_start  |  date  |  match start date
+date_end | date  |  match end date
+timestamp_start  |  integer  |  match start timestamp
+timestamp_end | integer  |  match end timestamp
+venue | array  |  an array of venue details of the match, <a href="#venue-info-properties">see venue object properties.</a>
+umpires | string | umpires of the match.
+referee | string | referee of the match.
+equation | string | match result condition.
+live | string | live match status note.
+win_margin | string | match win margin.
+commentary | interger  |  numerical representation of commentary available or not for match.
+wagon | interger  |  numerical representation of wagon available or not for match.
+latest_inning_number | interger  |  latest or active innings number.
+toss | array  |  an array of toss details of the match, <a href="#toss-info-properties">see toss object properties.</a>
+
+<h3 id="competition-info-properties">Competition Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+title | string | competition name/title
+abbr | string | competition name abbreviation
+season | string | competition season name
+datestart | date | competition first match date
+dateend | date | competition last match date
+total_matches | integer | number of total matches
+total_rounds | integer | number of total rounds
+total_teams | integer | number of total teams
+category | string | competition category, possible values are international, domestic, youth, women
+match_format | string | played match format. a competition can hold multiple match types, ie odi, test etc. possible values are mixed, odi, test, t20i, firstclass, lista, t20, youthodi, youtht20, womenodi, woment20
+status | string | competition status. possible values are live (currently ongoing), fixture (upcoming), result (completed)
+country  | string | Country ISO Code
+type  | string | competition type, possible values are tour, tournament, series
+
+
+<h3 id="team-info-card">Team Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+team_id | integer | team id
+name | string | team name
+short_name | string | team short name
+logo_url | string | team logo url
+scores_full | string | team full score
+scores | string | team score
+overs | string | overs played by team
+
+
+<h3 id="venue-info-properties">Venue Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+name | string | Venue name/title
+location | string | City Name
+timezone | string | number of hours ahead of GMT if value is positive or number of hours behind GMT if value if negative
+
+<h3 id="toss-info-properties">Toss Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+text | string | Toss result text with team name
+winner | integer | team id of toss winning team
+decision | integer | numerical representation of decision made by toss winning team.
 
 
 
@@ -13164,1295 +13468,269 @@ curl -X GET "http://rest.entitysport.com/v2/matches/19899/statistics?token=[ACCE
 {
     "status": "ok",
     "response": {
-        "1": {
-            "manhattan": [
-                {
-                    "over": 1,
-                    "runs": 5,
-                    "bats": [
+        "innings": [
+            {
+                "iid": 43691,
+                "number": 1,
+                "title": "India inning",
+                "runs": 375,
+                "overs": "50",
+                "wickets": 5,
+                "status": 2,
+                "result": 0,
+                "batting_team_id": 25,
+                "fielding_team_id": 21,
+                "fows": [
+                    {
+                        "batsman_id": 117,
+                        "runs": 4,
+                        "balls_faced": 6,
+                        "how_out": "c PM Pushpakumara b MVT Fernando",
+                        "score_at_dismissal": 6,
+                        "overs_at_dismissal": 1.3
+                    }
+                ],
+                "statistics": {
+                    "manhattan": [
                         {
-                            "p": 115,
-                            "r": 1,
-                            "b": 3,
-                            "4s": 0,
-                            "6s": 0
-                        },
-                        {
-                            "p": 117,
-                            "r": 4,
-                            "b": 3,
-                            "4s": 1,
-                            "6s": 0
+                            "over": 1,
+                            "runs": 5
                         }
                     ],
-                    "bowls": [
+                    "worm": [
                         {
-                            "p": 67,
-                            "r": 6,
-                            "o": 1,
-                            "m": 0,
-                            "w": 0
+                            "over": 1,
+                            "runs": 6
                         }
                     ],
-                    "score": "6/0"
-                },
-                {
-                    "over": 2,
-                    "runs": 0,
-                    "bats": [
+                    "runrates": [
                         {
-                            "p": 115,
-                            "r": 1,
-                            "b": 3,
-                            "4s": 0,
-                            "6s": 0
-                        },
-                        {
-                            "p": 119,
-                            "r": 0,
-                            "b": 3,
-                            "4s": 0,
-                            "6s": 0
+                            "over": 1,
+                            "runrate": "5.00"
                         }
                     ],
-                    "bowls": [
+                    "partnership": [
                         {
-                            "p": 43985,
-                            "r": 0,
-                            "o": 1,
-                            "m": 1,
-                            "w": 1
-                        },
-                        {
-                            "p": 67,
-                            "r": 6,
-                            "o": 1,
-                            "m": 0,
-                            "w": 0
+                            "batsmen": [
+                                {
+                                    "batsman_id": 115,
+                                    "balls_faced": 3,
+                                    "runs": 1,
+                                    "run4": 0,
+                                    "run6": 0
+                                },
+                                {
+                                    "batsman_id": 117,
+                                    "balls_faced": 6,
+                                    "runs": 4,
+                                    "run4": 1,
+                                    "run6": 0
+                                }
+                            ],
+                            "balls_faced": 9,
+                            "runs": 6,
+                            "order": 1
                         }
                     ],
-                    "score": "6/1"
-                },
-                {
-                    "over": 3,
-                    "runs": 4,
-                    "bats": [
+                    "runtypes": [
                         {
-                            "p": 115,
-                            "r": 3,
-                            "b": 5,
-                            "4s": 0,
-                            "6s": 0
-                        },
-                        {
-                            "p": 119,
-                            "r": 2,
-                            "b": 7,
-                            "4s": 0,
-                            "6s": 0
+                            "run": 0,
+                            "amount": 113
                         }
                     ],
-                    "bowls": [
+                    "wickets": [
                         {
-                            "p": 67,
-                            "r": 11,
-                            "o": 2,
-                            "m": 0,
-                            "w": 0
-                        },
-                        {
-                            "p": 43985,
-                            "r": 0,
-                            "o": 1,
-                            "m": 1,
-                            "w": 1
+                            "dismissal": "caught",
+                            "amount": 5
                         }
                     ],
-                    "score": "11/1"
-                },
-                {
-                    "over": 4,
-                    "runs": 13,
-                    "bats": [
+                    "p2p": [
                         {
-                            "p": 115,
-                            "r": 3,
-                            "b": 5,
-                            "4s": 0,
-                            "6s": 0
-                        },
-                        {
-                            "p": 119,
-                            "r": 15,
-                            "b": 13,
-                            "4s": 3,
-                            "6s": 0
+                            "batsman_id": 115,
+                            "bowler_id": 67,
+                            "runs": 21,
+                            "balls": 18,
+                            "run4": 3,
+                            "run6": 0,
+                            "run0": 6,
+                            "run1": 9,
+                            "run2": 0,
+                            "run3": 0,
+                            "run5": 0,
+                            "run6p": 0
                         }
                     ],
-                    "bowls": [
-                        {
-                            "p": 43985,
-                            "r": 13,
-                            "o": 2,
-                            "m": 1,
-                            "w": 1
-                        },
-                        {
-                            "p": 67,
-                            "r": 11,
-                            "o": 2,
-                            "m": 0,
-                            "w": 0
-                        }
-                    ],
-                    "score": "24/1"
-                },
-                {
-                    "over": 5,
-                    "runs": 5,
-                    "bats": [
-                        {
-                            "p": 115,
-                            "r": 3,
-                            "b": 7,
-                            "4s": 0,
-                            "6s": 0
-                        },
-                        {
-                            "p": 119,
-                            "r": 20,
-                            "b": 17,
-                            "4s": 4,
-                            "6s": 0
-                        }
-                    ],
-                    "bowls": [
-                        {
-                            "p": 59,
-                            "r": 5,
-                            "o": 1,
-                            "m": 0,
-                            "w": 0
-                        },
-                        {
-                            "p": 43985,
-                            "r": 13,
-                            "o": 2,
-                            "m": 1,
-                            "w": 1
-                        }
-                    ],
-                    "score": "29/1"
-                }
-            ],
-            "worm": [
-                {
-                    "over": 1,
-                    "runs": 5,
-                    "bats": [
-                        {
-                            "p": 115,
-                            "r": 1,
-                            "b": 3,
-                            "4s": 0,
-                            "6s": 0
-                        },
-                        {
-                            "p": 117,
-                            "r": 4,
-                            "b": 3,
-                            "4s": 1,
-                            "6s": 0
-                        }
-                    ],
-                    "bowls": [
-                        {
-                            "p": 67,
-                            "r": 6,
-                            "o": 1,
-                            "m": 0,
-                            "w": 0
-                        }
-                    ],
-                    "score": "6/0"
-                },
-                {
-                    "over": 2,
-                    "runs": 5,
-                    "bats": [
-                        {
-                            "p": 115,
-                            "r": 1,
-                            "b": 3,
-                            "4s": 0,
-                            "6s": 0
-                        },
-                        {
-                            "p": 119,
-                            "r": 0,
-                            "b": 3,
-                            "4s": 0,
-                            "6s": 0
-                        }
-                    ],
-                    "bowls": [
-                        {
-                            "p": 43985,
-                            "r": 0,
-                            "o": 1,
-                            "m": 1,
-                            "w": 1
-                        },
-                        {
-                            "p": 67,
-                            "r": 6,
-                            "o": 1,
-                            "m": 0,
-                            "w": 0
-                        }
-                    ],
-                    "score": "6/1"
-                },
-                {
-                    "over": 3,
-                    "runs": 9,
-                    "bats": [
-                        {
-                            "p": 115,
-                            "r": 3,
-                            "b": 5,
-                            "4s": 0,
-                            "6s": 0
-                        },
-                        {
-                            "p": 119,
-                            "r": 2,
-                            "b": 7,
-                            "4s": 0,
-                            "6s": 0
-                        }
-                    ],
-                    "bowls": [
-                        {
-                            "p": 67,
-                            "r": 11,
-                            "o": 2,
-                            "m": 0,
-                            "w": 0
-                        },
-                        {
-                            "p": 43985,
-                            "r": 0,
-                            "o": 1,
-                            "m": 1,
-                            "w": 1
-                        }
-                    ],
-                    "score": "11/1"
-                },
-                {
-                    "over": 4,
-                    "runs": 22,
-                    "bats": [
-                        {
-                            "p": 115,
-                            "r": 3,
-                            "b": 5,
-                            "4s": 0,
-                            "6s": 0
-                        },
-                        {
-                            "p": 119,
-                            "r": 15,
-                            "b": 13,
-                            "4s": 3,
-                            "6s": 0
-                        }
-                    ],
-                    "bowls": [
-                        {
-                            "p": 43985,
-                            "r": 13,
-                            "o": 2,
-                            "m": 1,
-                            "w": 1
-                        },
-                        {
-                            "p": 67,
-                            "r": 11,
-                            "o": 2,
-                            "m": 0,
-                            "w": 0
-                        }
-                    ],
-                    "score": "24/1"
-                },
-                {
-                    "over": 5,
-                    "runs": 27,
-                    "bats": [
-                        {
-                            "p": 115,
-                            "r": 3,
-                            "b": 7,
-                            "4s": 0,
-                            "6s": 0
-                        },
-                        {
-                            "p": 119,
-                            "r": 20,
-                            "b": 17,
-                            "4s": 4,
-                            "6s": 0
-                        }
-                    ],
-                    "bowls": [
-                        {
-                            "p": 59,
-                            "r": 5,
-                            "o": 1,
-                            "m": 0,
-                            "w": 0
-                        },
-                        {
-                            "p": 43985,
-                            "r": 13,
-                            "o": 2,
-                            "m": 1,
-                            "w": 1
-                        }
-                    ],
-                    "score": "29/1"
-                }
-            ],
-            "partnership": [
-                {
-                    "batsman1_id": 115,
-                    "batsman1_balls": 89,
-                    "batsman1_runs": 104,
-                    "batsman1_run4": 11,
-                    "batsman1_run6": 3,
-                    "batsman2_id": 117,
-                    "batsman2_balls": 6,
-                    "batsman2_runs": 4,
-                    "batsman2_run4": 1,
-                    "batsman2_run6": 0,
-                    "total_balls": 306,
-                    "total_runs": 375,
-                    "partnership_order": 1
-                }
-            ],
-            "runtypes": [
-                {
-                    "run": 0,
-                    "amount": 113
-                },
-                {
-                    "run": 1,
-                    "amount": 129
-                },
-                {
-                    "run": 2,
-                    "amount": 17
-                },
-                {
-                    "run": 3,
-                    "amount": 1
-                },
-                {
-                    "run": 4,
-                    "amount": 39
-                },
-                {
-                    "run": 5,
-                    "amount": 0
-                },
-                {
-                    "run": 6,
-                    "amount": 7
-                }
-            ],
-            "p2p": {
-                "115_67": {
-                    "batsman_id": 115,
-                    "bowler_id": 67,
-                    "runs": 21,
-                    "balls": 18,
-                    "run4": 3,
-                    "run6": 0,
-                    "run0": 6,
-                    "run1": 9,
-                    "run2": 0,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                },
-                "117_67": {
-                    "batsman_id": 117,
-                    "bowler_id": 67,
-                    "runs": 4,
-                    "balls": 3,
-                    "run4": 1,
-                    "run6": 0,
-                    "run0": 2,
-                    "run1": 0,
-                    "run2": 0,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                },
-                "117_43985": {
-                    "batsman_id": 117,
-                    "bowler_id": 43985,
-                    "runs": 0,
-                    "balls": 3,
-                    "run4": 0,
-                    "run6": 0,
-                    "run0": 3,
-                    "run1": 0,
-                    "run2": 0,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                },
-                "119_43985": {
-                    "batsman_id": 119,
-                    "bowler_id": 43985,
-                    "runs": 45,
-                    "balls": 24,
-                    "run4": 7,
-                    "run6": 1,
-                    "run0": 8,
-                    "run1": 5,
-                    "run2": 3,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                },
-                "119_67": {
-                    "batsman_id": 119,
-                    "bowler_id": 67,
-                    "runs": 8,
-                    "balls": 12,
-                    "run4": 1,
-                    "run6": 0,
-                    "run0": 7,
-                    "run1": 4,
-                    "run2": 0,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                },
-                "119_59": {
-                    "batsman_id": 119,
-                    "bowler_id": 59,
-                    "runs": 6,
-                    "balls": 6,
-                    "run4": 1,
-                    "run6": 0,
-                    "run0": 3,
-                    "run1": 2,
-                    "run2": 0,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                },
-                "115_59": {
-                    "batsman_id": 115,
-                    "bowler_id": 59,
-                    "runs": 12,
-                    "balls": 13,
-                    "run4": 1,
-                    "run6": 1,
-                    "run0": 10,
-                    "run1": 0,
-                    "run2": 1,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                },
-                "119_43743": {
-                    "batsman_id": 119,
-                    "bowler_id": 43743,
-                    "runs": 28,
-                    "balls": 22,
-                    "run4": 2,
-                    "run6": 1,
-                    "run0": 6,
-                    "run1": 12,
-                    "run2": 1,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                },
-                "115_43743": {
-                    "batsman_id": 115,
-                    "bowler_id": 43743,
-                    "runs": 23,
-                    "balls": 20,
-                    "run4": 2,
-                    "run6": 1,
-                    "run0": 8,
-                    "run1": 9,
-                    "run2": 0,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
+                    "extras": {
+                        "runwides": 6,
+                        "runnoballs": 0,
+                        "runbyes": 0,
+                        "runlegbyes": 5
+                    }
                 }
             },
-            "wickets": [
-                {
-                    "dismissal": "cought",
-                    "amount": 5
+            {
+                "iid": 43695,
+                "number": 2,
+                "title": "Sri Lanka inning",
+                "runs": 207,
+                "overs": "42.4",
+                "wickets": 10,
+                "status": 2,
+                "result": 1,
+                "batting_team_id": 21,
+                "fielding_team_id": 25,
+                "fows": [
+                    {
+                        "batsman_id": 1763,
+                        "runs": 14,
+                        "balls_faced": 11,
+                        "how_out": "c MS Dhoni b SN Thakur",
+                        "score_at_dismissal": 22,
+                        "overs_at_dismissal": 2.4
+                    }
+                ],
+                "statistics": {
+                    "manhattan": [
+                        {
+                            "over": 1,
+                            "runs": 3
+                        }
+                    ],
+                    "worm": [
+                        {
+                            "over": 1,
+                            "runs": 3
+                        }
+                    ],
+                    "runrates": [
+                        {
+                            "over": 1,
+                            "runrate": "3.00"
+                        }
+                    ],
+                    "partnership": [
+                        {
+                            "batsmen": [
+                                {
+                                    "batsman_id": 1763,
+                                    "balls_faced": 13,
+                                    "runs": 14,
+                                    "run4": 3,
+                                    "run6": 0
+                                },
+                                {
+                                    "batsman_id": 37436,
+                                    "balls_faced": 5,
+                                    "runs": 2,
+                                    "run4": 0,
+                                    "run6": 0
+                                }
+                            ],
+                            "balls_faced": 18,
+                            "runs": 22,
+                            "order": 1
+                        }
+                    ],
+                    "runtypes": [
+                        {
+                            "run": 0,
+                            "amount": 163
+                        },
+                        {
+                            "run": 1,
+                            "amount": 68
+                        },
+                        {
+                            "run": 2,
+                            "amount": 7
+                        },
+                        {
+                            "run": 3,
+                            "amount": 0
+                        },
+                        {
+                            "run": 4,
+                            "amount": 22
+                        },
+                        {
+                            "run": 5,
+                            "amount": 0
+                        },
+                        {
+                            "run": 6,
+                            "amount": 4
+                        }
+                    ],
+                    "wickets": [
+                        {
+                            "dismissal": "caught",
+                            "amount": 7
+                        },
+                        {
+                            "dismissal": "run out",
+                            "amount": 2
+                        },
+                        {
+                            "dismissal": "bowled",
+                            "amount": 1
+                        }
+                    ],
+                    "p2p": [
+                        {
+                            "batsman_id": 1763,
+                            "bowler_id": 810,
+                            "runs": 5,
+                            "balls": 6,
+                            "run4": 1,
+                            "run6": 0,
+                            "run0": 4,
+                            "run1": 1,
+                            "run2": 0,
+                            "run3": 0,
+                            "run5": 0,
+                            "run6p": 0
+                        }
+                    ],
+                    "extras": {
+                        "runwides": 12,
+                        "runnoballs": 0,
+                        "runbyes": 0,
+                        "runlegbyes": 1
+                    }
                 }
-            ],
-            "extras": {
-                "runwides": 6,
-                "runnoballs": 0,
-                "runbyes": 0,
-                "runlegbyes": 5
+            }
+        ],
+        "teams": [
+            {
+                "team_id": 21,
+                "name": "Sri Lanka",
+                "short_name": "SL",
+                "country_iso": "lk",
+                "type": "country",
+                "logo_url": "../assets/uploads/2016/01/sri-lanka-32x32.png"
             },
-            "runrates": [
-                {
-                    "over": 1,
-                    "runtotal": 5,
-                    "runrate": "5.00"
-                },
-                {
-                    "over": 2,
-                    "runtotal": 5,
-                    "runrate": "2.50"
-                },
-                {
-                    "over": 3,
-                    "runtotal": 9,
-                    "runrate": "3.00"
-                },
-                {
-                    "over": 4,
-                    "runtotal": 22,
-                    "runrate": "5.50"
-                }
-            ],
-            "players": []
-        },
-        "2": {
-            "manhattan": [
-                {
-                    "over": 1,
-                    "runs": 3,
-                    "bats": [
-                        {
-                            "p": 1763,
-                            "r": 1,
-                            "b": 1,
-                            "4s": 0,
-                            "6s": 0
-                        },
-                        {
-                            "p": 37436,
-                            "r": 2,
-                            "b": 5,
-                            "4s": 0,
-                            "6s": 0
-                        }
-                    ],
-                    "bowls": [
-                        {
-                            "p": 810,
-                            "r": 3,
-                            "o": 1,
-                            "m": 0,
-                            "w": 0
-                        }
-                    ],
-                    "score": "3/0"
-                },
-                {
-                    "over": 2,
-                    "runs": 9,
-                    "bats": [
-                        {
-                            "p": 1763,
-                            "r": 10,
-                            "b": 7,
-                            "4s": 2,
-                            "6s": 0
-                        },
-                        {
-                            "p": 37436,
-                            "r": 2,
-                            "b": 5,
-                            "4s": 0,
-                            "6s": 0
-                        }
-                    ],
-                    "bowls": [
-                        {
-                            "p": 607,
-                            "r": 14,
-                            "o": 1,
-                            "m": 0,
-                            "w": 0
-                        },
-                        {
-                            "p": 810,
-                            "r": 3,
-                            "o": 1,
-                            "m": 0,
-                            "w": 0
-                        }
-                    ],
-                    "score": "17/0"
-                },
-                {
-                    "over": 3,
-                    "runs": 4,
-                    "bats": [
-                        {
-                            "p": 43953,
-                            "r": 0,
-                            "b": 2,
-                            "4s": 0,
-                            "6s": 0
-                        },
-                        {
-                            "p": 37436,
-                            "r": 2,
-                            "b": 5,
-                            "4s": 0,
-                            "6s": 0
-                        }
-                    ],
-                    "bowls": [
-                        {
-                            "p": 810,
-                            "r": 8,
-                            "o": 2,
-                            "m": 0,
-                            "w": 1
-                        },
-                        {
-                            "p": 607,
-                            "r": 14,
-                            "o": 1,
-                            "m": 0,
-                            "w": 0
-                        }
-                    ],
-                    "score": "22/1"
-                },
-                {
-                    "over": 4,
-                    "runs": 1,
-                    "bats": [
-                        {
-                            "p": 43953,
-                            "r": 0,
-                            "b": 3,
-                            "4s": 0,
-                            "6s": 0
-                        },
-                        {
-                            "p": 37436,
-                            "r": 3,
-                            "b": 10,
-                            "4s": 0,
-                            "6s": 0
-                        }
-                    ],
-                    "bowls": [
-                        {
-                            "p": 607,
-                            "r": 15,
-                            "o": 2,
-                            "m": 0,
-                            "w": 0
-                        },
-                        {
-                            "p": 810,
-                            "r": 8,
-                            "o": 2,
-                            "m": 0,
-                            "w": 1
-                        }
-                    ],
-                    "score": "23/1"
-                },
-                {
-                    "over": 5,
-                    "runs": 3,
-                    "bats": [
-                        {
-                            "p": 43953,
-                            "r": 1,
-                            "b": 7,
-                            "4s": 0,
-                            "6s": 0
-                        },
-                        {
-                            "p": 37436,
-                            "r": 5,
-                            "b": 12,
-                            "4s": 0,
-                            "6s": 0
-                        }
-                    ],
-                    "bowls": [
-                        {
-                            "p": 810,
-                            "r": 11,
-                            "o": 3,
-                            "m": 0,
-                            "w": 1
-                        },
-                        {
-                            "p": 607,
-                            "r": 15,
-                            "o": 2,
-                            "m": 0,
-                            "w": 0
-                        }
-                    ],
-                    "score": "26/1"
-                }
-            ],
-            "worm": [
-                {
-                    "over": 1,
-                    "runs": 3,
-                    "bats": [
-                        {
-                            "p": 1763,
-                            "r": 1,
-                            "b": 1,
-                            "4s": 0,
-                            "6s": 0
-                        },
-                        {
-                            "p": 37436,
-                            "r": 2,
-                            "b": 5,
-                            "4s": 0,
-                            "6s": 0
-                        }
-                    ],
-                    "bowls": [
-                        {
-                            "p": 810,
-                            "r": 3,
-                            "o": 1,
-                            "m": 0,
-                            "w": 0
-                        }
-                    ],
-                    "score": "3/0"
-                },
-                {
-                    "over": 2,
-                    "runs": 12,
-                    "bats": [
-                        {
-                            "p": 1763,
-                            "r": 10,
-                            "b": 7,
-                            "4s": 2,
-                            "6s": 0
-                        },
-                        {
-                            "p": 37436,
-                            "r": 2,
-                            "b": 5,
-                            "4s": 0,
-                            "6s": 0
-                        }
-                    ],
-                    "bowls": [
-                        {
-                            "p": 607,
-                            "r": 14,
-                            "o": 1,
-                            "m": 0,
-                            "w": 0
-                        },
-                        {
-                            "p": 810,
-                            "r": 3,
-                            "o": 1,
-                            "m": 0,
-                            "w": 0
-                        }
-                    ],
-                    "score": "17/0"
-                },
-                {
-                    "over": 3,
-                    "runs": 16,
-                    "bats": [
-                        {
-                            "p": 43953,
-                            "r": 0,
-                            "b": 2,
-                            "4s": 0,
-                            "6s": 0
-                        },
-                        {
-                            "p": 37436,
-                            "r": 2,
-                            "b": 5,
-                            "4s": 0,
-                            "6s": 0
-                        }
-                    ],
-                    "bowls": [
-                        {
-                            "p": 810,
-                            "r": 8,
-                            "o": 2,
-                            "m": 0,
-                            "w": 1
-                        },
-                        {
-                            "p": 607,
-                            "r": 14,
-                            "o": 1,
-                            "m": 0,
-                            "w": 0
-                        }
-                    ],
-                    "score": "22/1"
-                },
-                {
-                    "over": 4,
-                    "runs": 17,
-                    "bats": [
-                        {
-                            "p": 43953,
-                            "r": 0,
-                            "b": 3,
-                            "4s": 0,
-                            "6s": 0
-                        },
-                        {
-                            "p": 37436,
-                            "r": 3,
-                            "b": 10,
-                            "4s": 0,
-                            "6s": 0
-                        }
-                    ],
-                    "bowls": [
-                        {
-                            "p": 607,
-                            "r": 15,
-                            "o": 2,
-                            "m": 0,
-                            "w": 0
-                        },
-                        {
-                            "p": 810,
-                            "r": 8,
-                            "o": 2,
-                            "m": 0,
-                            "w": 1
-                        }
-                    ],
-                    "score": "23/1"
-                },
-                {
-                    "over": 5,
-                    "runs": 20,
-                    "bats": [
-                        {
-                            "p": 43953,
-                            "r": 1,
-                            "b": 7,
-                            "4s": 0,
-                            "6s": 0
-                        },
-                        {
-                            "p": 37436,
-                            "r": 5,
-                            "b": 12,
-                            "4s": 0,
-                            "6s": 0
-                        }
-                    ],
-                    "bowls": [
-                        {
-                            "p": 810,
-                            "r": 11,
-                            "o": 3,
-                            "m": 0,
-                            "w": 1
-                        },
-                        {
-                            "p": 607,
-                            "r": 15,
-                            "o": 2,
-                            "m": 0,
-                            "w": 0
-                        }
-                    ],
-                    "score": "26/1"
-                }
-            ],
-            "partnership": [
-                {
-                    "batsman1_id": 1763,
-                    "batsman1_balls": 13,
-                    "batsman1_runs": 14,
-                    "batsman1_run4": 3,
-                    "batsman1_run6": 0,
-                    "batsman2_id": 37436,
-                    "batsman2_balls": 24,
-                    "batsman2_runs": 11,
-                    "batsman2_run4": 1,
-                    "batsman2_run6": 0,
-                    "total_balls": 264,
-                    "total_runs": 207,
-                    "partnership_order": 1
-                }
-            ],
-            "runtypes": [
-                {
-                    "run": 0,
-                    "amount": 163
-                },
-                {
-                    "run": 1,
-                    "amount": 68
-                },
-                {
-                    "run": 2,
-                    "amount": 7
-                },
-                {
-                    "run": 3,
-                    "amount": 0
-                },
-                {
-                    "run": 4,
-                    "amount": 22
-                },
-                {
-                    "run": 5,
-                    "amount": 0
-                },
-                {
-                    "run": 6,
-                    "amount": 4
-                }
-            ],
-            "p2p": {
-                "1763_810": {
-                    "batsman_id": 1763,
-                    "bowler_id": 810,
-                    "runs": 5,
-                    "balls": 6,
-                    "run4": 1,
-                    "run6": 0,
-                    "run0": 4,
-                    "run1": 1,
-                    "run2": 0,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                },
-                "37436_810": {
-                    "batsman_id": 37436,
-                    "bowler_id": 810,
-                    "runs": 4,
-                    "balls": 7,
-                    "run4": 0,
-                    "run6": 0,
-                    "run0": 4,
-                    "run1": 2,
-                    "run2": 1,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                },
-                "1763_607": {
-                    "batsman_id": 1763,
-                    "bowler_id": 607,
-                    "runs": 9,
-                    "balls": 7,
-                    "run4": 2,
-                    "run6": 0,
-                    "run0": 4,
-                    "run1": 1,
-                    "run2": 0,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                },
-                "43953_810": {
-                    "batsman_id": 43953,
-                    "bowler_id": 810,
-                    "runs": 1,
-                    "balls": 6,
-                    "run4": 0,
-                    "run6": 0,
-                    "run0": 5,
-                    "run1": 1,
-                    "run2": 0,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                },
-                "37436_607": {
-                    "batsman_id": 37436,
-                    "bowler_id": 607,
-                    "runs": 7,
-                    "balls": 17,
-                    "run4": 1,
-                    "run6": 0,
-                    "run0": 14,
-                    "run1": 1,
-                    "run2": 1,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                },
-                "43953_607": {
-                    "batsman_id": 43953,
-                    "bowler_id": 607,
-                    "runs": 0,
-                    "balls": 1,
-                    "run4": 0,
-                    "run6": 0,
-                    "run0": 1,
-                    "run1": 0,
-                    "run2": 0,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                },
-                "49_810": {
-                    "batsman_id": 49,
-                    "bowler_id": 810,
-                    "runs": 5,
-                    "balls": 11,
-                    "run4": 1,
-                    "run6": 0,
-                    "run0": 9,
-                    "run1": 1,
-                    "run2": 0,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                },
-                "59_810": {
-                    "batsman_id": 59,
-                    "bowler_id": 810,
-                    "runs": 6,
-                    "balls": 9,
-                    "run4": 1,
-                    "run6": 0,
-                    "run0": 6,
-                    "run1": 2,
-                    "run2": 0,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                },
-                "49_607": {
-                    "batsman_id": 49,
-                    "bowler_id": 607,
-                    "runs": 1,
-                    "balls": 3,
-                    "run4": 0,
-                    "run6": 0,
-                    "run0": 2,
-                    "run1": 1,
-                    "run2": 0,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                },
-                "59_607": {
-                    "batsman_id": 59,
-                    "bowler_id": 607,
-                    "runs": 1,
-                    "balls": 3,
-                    "run4": 0,
-                    "run6": 0,
-                    "run0": 2,
-                    "run1": 1,
-                    "run2": 0,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                },
-                "59_727": {
-                    "batsman_id": 59,
-                    "bowler_id": 727,
-                    "runs": 19,
-                    "balls": 24,
-                    "run4": 2,
-                    "run6": 0,
-                    "run0": 13,
-                    "run1": 7,
-                    "run2": 2,
-                    "run3": 0,
-                    "run5": 0,
-                    "run6p": 0
-                }
-            },
-            "wickets": [
-                {
-                    "dismissal": "cought",
-                    "amount": 7
-                },
-                {
-                    "dismissal": "run out",
-                    "amount": 2
-                },
-                {
-                    "dismissal": "bowled",
-                    "amount": 1
-                }
-            ],
-            "extras": {
-                "runwides": 12,
-                "runnoballs": 0,
-                "runbyes": 0,
-                "runlegbyes": 1
-            },
-            "runrates": [
-                {
-                    "over": 1,
-                    "runtotal": 3,
-                    "runrate": "3.00"
-                },
-                {
-                    "over": 2,
-                    "runtotal": 12,
-                    "runrate": "6.00"
-                },
-                {
-                    "over": 3,
-                    "runtotal": 16,
-                    "runrate": "5.33"
-                },
-                {
-                    "over": 4,
-                    "runtotal": 17,
-                    "runrate": "4.25"
-                },
-                {
-                    "over": 5,
-                    "runtotal": 20,
-                    "runrate": "4.00"
-                },
-                {
-                    "over": 6,
-                    "runtotal": 22,
-                    "runrate": "3.67"
-                },
-                {
-                    "over": 7,
-                    "runtotal": 26,
-                    "runrate": "3.71"
-                },
-                {
-                    "over": 8,
-                    "runtotal": 30,
-                    "runrate": "3.75"
-                },
-                {
-                    "over": 9,
-                    "runtotal": 31,
-                    "runrate": "3.44"
-                },
-                {
-                    "over": 10,
-                    "runtotal": 33,
-                    "runrate": "3.30"
-                }
-            ],
-            "players": []
-        },
-        "match_id": 19899,
-        "title": "Sri Lanka vs India",
-        "subtitle": "4th ODI",
-        "format": 1,
-        "status": 2,
-        "status_str": "Completed",
-        "status_note": "India won by 168 runs",
-        "game_state": 0,
-        "game_state_str": "Default",
-        "competition": {
-            "cid": 91402,
-            "title": "India tour of Sri Lanka",
-            "abbr": "sri-lanka-v-india-2017",
-            "type": "series",
-            "category": "international",
-            "match_format": "mixed",
-            "status": "live",
-            "season": "2017",
-            "datestart": "2017-07-19",
-            "dateend": "2017-09-06",
-            "total_matches": "9",
-            "total_rounds": "2",
-            "total_teams": "2",
-            "country": "int"
-        },
-        "teama": {
-            "team_id": 21,
-            "name": "Sri Lanka",
-            "short_name": "SL",
-            "logo_url": "../assets/uploads/2016/01/sri-lanka.png",
-            "scores_full": "*207/10 (42.4 ov)",
-            "scores": "207/10",
-            "overs": "42.4"
-        },
-        "teamb": {
-            "team_id": 25,
-            "name": "India",
-            "short_name": "INDIA",
-            "logo_url": "../assets/uploads/2016/01/india.png",
-            "scores_full": "375/5 (50 ov)",
-            "scores": "375/5",
-            "overs": "50"
-        },
-        "date_start": "2017-08-31 09:00:00",
-        "date_end": "2017-08-31 19:00:00",
-        "timestamp_start": 1504170000,
-        "timestamp_end": 1504206000,
-        "venue": {
-            "name": "R.Premadasa Stadium, Khettarama",
-            "location": "Colombo",
-            "timezone": "5.5"
-        },
-        "umpires": "Paul Reiffel (Australia), Raveendra Wimalasiri (Sri Lanka), Joel Wilson (West Indies, TV)",
-        "referee": "Andy Pycroft (Zimbabwe)",
-        "equation": "",
-        "live": "",
-        "result": "INDIA won by 168 runs",
-        "win_margin": "168 runs",
-        "commentary": 1,
-        "wagon": 1,
-        "latest_inning_number": 2,
-        "toss": {
-            "text": "India won the toss & elected to bat",
-            "winner": 25,
-            "decision": 1
-        },
-        "current_over": "",
-        "previous_over": "",
-        "man_of_the_match": "",
-        "man_of_the_series": "",
-        "is_followon": 0,
-        "team_batting_first": "",
-        "team_batting_second": "",
-        "last_five_overs": "",
-        "live_inning_number": ""
+            {
+                "team_id": 25,
+                "name": "India",
+                "short_name": "INDIA",
+                "country_iso": "in",
+                "type": "country",
+                "logo_url": "../assets/uploads/2016/01/india-32x32.png"
+            }
+        ],
+        "players": [
+            {
+                "player_id": 49,
+                "name": "Lahiru Thirimanne",
+                "short_name": "HDRL Thirimanne",
+                "country_iso": "lk",
+                "logo_url": "../assets/uploads/2016/01/thirimanne-32x32.jpg"
+            }
+        ]
     },
-    "etag": "230a4b24c47ad8d671c4da3c8a9908e9",
-    "modified": "2017-09-02 22:24:22",
-    "datetime": "2017-09-02 22:24:22",
+    "etag": "d38839b267efbf87b0c05d8960436c87",
+    "modified": "2017-09-05 02:34:33",
+    "datetime": "2017-09-05 02:34:33",
     "api_version": "2.0"
 }
 ```
@@ -14486,73 +13764,85 @@ token | {ACCESS_TOKEN} | API Access token
 
 Parameter | Value | Description
 --------- | ------- | -----------
-number | object  |  inning number objects containing the statistics type details <a href="#statistics-match-manhattan">see Manhattan Statistics properties</a>,  <a href="#statistics-match-manhattan">see Worm Statistics properties</a>,  <a href="#statistics-match-partnership">see Partnership Statistics properties</a>,  <a href="#statistics-match-runtypes">see Run Type Statistics properties</a>,  <a href="#statistics-match-p2p">see Player vs Player Statistics properties</a>,   <a href="#statistics-match-wicket">see Wicket Statistics properties</a>,  <a href="#statistics-match-extras">see Extras Statistics properties</a>,  <a href="#statistics-match-runrates">see Runrates Statistics properties</a> 
-match_id | interger  |  match id
+innings | array | an array of innings object <a href="#innings-statistics">see innings properties</a>
+teams | array | an array of teams object <a href="#team-matchstats-cards">see teams properties</a>
+players | array | an array of innings object <a href="#player-statistics">see player properties</a>
+
+<h3 id="innings-statistics">Innings Statistic Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+iid | interger  |  inning id
+number | interger  |  inning number 
 title | string | match name/title
-subtitle  |  string | contains either the match format + number or important event name, ie: Final, 2nd ODI, 1st Quarterfinal.
-format | interger  |  numerical representation of match format. see match_formats reference.
-status | string | numerical representation of match status. see match_statuss reference.
-status_str | string | match status name.
-status_note | string | a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.
-game_state | string | numerical representation of match game_state. game state is available for live match only.
-game_state_str | string | match game_state name.
-competition | array  |  an array of parent competition details of the match, <a href="#competition-matchstats-properties">see competition object properties.</a>
-team | array  |  an array of teams participating in the match, <a href="#team-matchstats-card">see team match properties.</a>
-date_start  |  date  |  match start date
-date_end | date  |  match end date
-timestamp_start  |  integer  |  match start timestamp
-timestamp_end | integer  |  match end timestamp
-venue | array  |  an array of venue details of the match, <a href="#venue-matchstats-properties">see venue object properties.</a>
-umpires | string | umpires of the match.
-referee | string | referee of the match.
-equation | string | match result condition.
-live | string | live match status note.
-result | string | result status note
-win_margin | string | match win margin.
-commentary | interger  |  numerical representation of commentary available or not for match.
-wagon | interger  |  numerical representation of wagon available or not for match.
-latest_inning_number | interger  |  latest or active innings number.
-toss | array  |  an array of toss details of the match, <a href="#toss-matchstats-properties">see toss object properties.</a>
-current_over | string  |  current over runs.
-previous_over | string  |  last over runs.
-man_of_the_match | object  |  A set of of player objects. <a href="#mot-matchstats-properties">see man of the match object properties.</a>
-man_of_the_series | object  |  A set of player objects. <a href="#mot-matchstats-properties">see man of the series object properties.</a>
-is_followon | interger  |  numerical representation of followon or not for match.
-team_batting_first | string  |  rteam batting first name
-team_batting_second | string  |  team batting second name
-last_five_overs | string  |  runs scored and wicket lost in last 5 overs
-live_inning_number | interger  |  live inning number
+runs | interger  |  runs scored in the inning
+overs | interger  |  overs bowled in the inning
+wickets | interger  |  total wickets fall in the inning
+status | integer | match status
+result | interger  |  innings status
+batting_team_id | interger  |  batting team id
+fielding_team_id | interger  |  bowling team id
+fows | array | an array of fall of wicket object details. <a href="#fows-statistic">see fall of wickets Properties</a>
+statistic | object  | objects containing the statistics type details <a href="#statistics-match-manhattan">see Manhattan Statistics properties</a>,  <a href="#statistics-match-worm">see Worm Statistics properties</a>,  <a href="#statistics-match-partnership">see Partnership Statistics properties</a>,  <a href="#statistics-match-runtypes">see Run Type Statistics properties</a>,  <a href="#statistics-match-p2p">see Player vs Player Statistics properties</a>,   <a href="#statistics-match-wicket">see Wicket Statistics properties</a>,  <a href="#statistics-match-extras">see Extras Statistics properties</a>,  <a href="#statistics-match-runrates">see Runrates Statistics properties</a> 
+
+
+<h3 id="fows-statistic">Fall of Wickets Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+batsman_id | integer | player id
+runs | integer | Number of runs scored by batsman
+balls_faced | integer | number of balls balls faced by batsman
+how_out | string | batsman dismissal details
+score_at_dismissal | integer | team score at dismissal
+overs_at_dismissal | string | overs at dismissal
+
 
 
 <h3 id="statistics-match-manhattan">Manhattan Properties</h3>
 
 Parameter | Value | Description
 --------- | ------- | -----------
-over | string | over value
+over | integer | over value
 runs | integer | runs scored in over
-bats | array | an array playing batsman object <a href="#matchstats-bat">see bats object properties.</a>
-bowls | array | an array playing bowler object <a href="#matchstats-bowl">see bowls object properties.</a>
-score | string | inning score at the end if the over
 
-<h3 id="matchstats-bat">Bats Properties</h3>
+
+<h3 id="statistics-match-worm">Worm Properties</h3>
 
 Parameter | Value | Description
 --------- | ------- | -----------
-p | integer | player id
-r | integer | runs scored by batsman in inning
-b | integer | balls faced by batsman in inning
-4s | integer | number of 4s hit by batsman in inning
-6s | integer | number of 6s hit by batsman in inning
+over | integer | over value
+runs | integer | team runs after nth over
 
-<h3 id="matchstats-bowl">Bowls Properties</h3>
+
+<h3 id="statistics-match-runrates">Run Rate Properties</h3>
 
 Parameter | Value | Description
 --------- | ------- | -----------
-p | integer | player id
-r | integer | runs conceded by bowler in inning
-o | string | overs bowled by bowler in inning
-m | integer | maiden overs bowled by bowler in inning
-w | integer | wickets taken by bowler in inning
+over | string | number of overs
+runrate | string | runrate after the over
+
+
+<h3 id="statistics-match-partnership">Partnership Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+batsmen | array | an array of batsmen details included in partnership <a href="#batsmen-partnership">see batsman properties</a>
+balls_faced | integer | balls faced by batsmen in partnership
+runs | integer | total runs of partnership
+order | integer | order number of partnership
+
+
+<h3 id="batsmen-partnership">Batsman Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+batsman_id | integer | batsman id
+balls_faced | integer | balls faced by batsman in partnership
+runs | integer | runs scored by batsman in partnership
+run4 | integer | number of 4s hit by batsman in partnership
+run6 | integer | number of 6s hit by batsman in partnership
+
 
 <h3 id="statistics-match-runtypes">Run Type Properties</h3>
 
@@ -14561,12 +13851,13 @@ Parameter | Value | Description
 runs | integer | total runs scored by type
 amount | integer | Number of times this scoring method used in inning
 
-<h3 id="statistics-match-runtypes">Run Type Properties</h3>
+<h3 id="statistics-match-wicket">Wickets Properties</h3>
 
 Parameter | Value | Description
 --------- | ------- | -----------
-runs | integer | total runs scored by type
-amount | integer | Number of times this scoring method used in inning
+dismissal | string | dismissal method type
+amount | string | number of batsman got out by this method type
+
 
 <h3 id="statistics-match-p2p">Player vs Player Properties</h3>
 
@@ -14586,13 +13877,6 @@ Parameter | Value | Description
  run6p | integer | Number of times 6 plus or more than six runs scored by batsman against bowler
 
 
-<h3 id="statistics-match-wicket">Wickets Properties</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-dismissal | string | dismissal method type
-amount | string | number of batsman got out by this method type
-
 <h3 id="statistics-match-extras">Extras Properties</h3>
 
 Parameter | Value | Description
@@ -14602,35 +13886,6 @@ runnoballs | integer | number of no balls
 runbyes | integer | number of byes
 runlegbyes | integer | number of legbyes
 
-<h3 id="statistics-match-runrates">Run Rate Properties</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-over | string | number of overs
-runtotal | integer | total runs after the over
-runrate | string | runrate after the over
-
-
-<h3 id="competition-matchstats-properties">Competition Properties</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-cid | integer | competition id
-title | string | competition name/title
-abbr | string | competition name abbreviation
-type  | string | competition type, possible values are tour, tournament, series
-category | string | competition category, possible values are international, domestic, youth, women
-match_format | string | played match format. a competition can hold multiple match types, ie odi, test etc. possible values are mixed, odi, test, t20i, firstclass, lista, t20, youthodi, youtht20, womenodi, woment20
-status | string | competition status. possible values are live (currently ongoing), fixture (upcoming), result (completed)
-season | string | competition season name
-datestart | date | competition first match date
-dateend | date | competition last match date
-total_matches | integer | number of total matches
-total_rounds | integer | number of total rounds
-total_teams | integer | number of total teams
-country  | string | Country ISO Code
-
-
 
 <h3 id="team-matchstats-card">Team Properties</h3>
 
@@ -14639,35 +13894,20 @@ Parameter | Value | Description
 team_id | integer | team id
 name | string | team name
 short_name | string | team short name
+country_iso | string | Country ISO Code
+type | string | team type country or club
 logo_url | string | team logo url
-scores_full | string | team full score
-scores | string | team score
-overs | string | overs played by team
 
 
-<h3 id="venue-matchstats-properties">Venue Properties</h3>
+<h3 id="player-statistics">Player Properties</h3>
 
 Parameter | Value | Description
 --------- | ------- | -----------
-name | string | Venue name/title
-location | string | City Name
-timezone | string | number of hours ahead of GMT if value is positive or number of hours behind GMT if value if negative
-
-<h3 id="toss-matchstats-properties">Toss Properties</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-text | string | Toss result text with team name
-winner | integer | team id of toss winning team
-decision | integer | numerical representation of decision made by toss winning team.
-
-<h3 id="mot-matchstats-properties">Man of the Match/Series Properties</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-pid | integer | player id 
+player_id | integer | player id
 name | string | player name
-thumb_url | url | player image url
+short_name | string | player short name
+country_iso | string | Country ISO Code
+logo_url | string | player logo url
 
 
 ## Match Wagon Wheel API
@@ -15065,6 +14305,89 @@ integer | z co-ordinate value
 string | ball event text string no run, run, extra runs, out
 string | over number
 
+
+## Player Search API
+
+```shell
+curl -X GET "http://rest.entitysport.com/v2/players?token=[ACCESS_TOKEN]"
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+    "status": "ok",
+    "response": {
+        "items": [
+        {
+            "pid": 119,
+            "title": "Virat Kohli",
+            "short_name": "V Kohli",
+            "first_name": "Virat",
+            "last_name": "Kohli",
+            "middle_name": "",
+            "birthdate": "1988-11-05",
+            "birthplace": "",
+            "country": "in",
+            "primary_team": [],
+            "thumb_url": "../assets/uploads/2016/01/kohli-120x120.jpg",
+            "logo_url": "../assets/uploads/2016/01/kohli-32x32.jpg",
+            "playing_role": "bat",
+            "batting_style": "Right-hand bat",
+            "bowling_style": "Right-arm medium",
+            "fielding_position": "",
+            "recent_match": 18687,
+            "recent_appearance": 1488600000
+        }
+      ],
+      "total_items": "10000",
+      "total_pages": 10000
+    }, 
+    "etag": "ab9cfa02833139f6ade39a8458c1e0b9",
+    "modified": "2017-09-03 05:32:16",
+    "datetime": "2017-09-03 05:32:16",
+    "api_version": "2.0"
+}
+```
+Player Search API provides access to all cricket players profile data on our database. 
+
+###Request
+* Path: /v2/players/
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+per_page  | integer | Number of items to list in each API request
+paged | integer | Page Number for request
+
+
+###Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+title | string | player name
+short_name | string | player short name
+first_name | string | player first name
+last_name | string | player last name
+middle_name | string | player middle name
+birthdate | date | player date of birth
+birthplace | string | player birth place
+country | string | Country ISO Code
+thumb_url | string | player logo thumbnail url
+logo_url | string | player logo url
+playing_role | string | player playing role
+batting_style | string | player batting style
+bowling_style | string | player bowling style
+fielding_position | string | player fielding position
+recent_match | integer | match id of last played match
+recent_appearance | integer | timestamp of last played match
 
 ## Player Profile API
 
@@ -15662,14 +14985,25 @@ paged |	integer | Page Number for request
 
 # Cricket Reference
 
-## Match Status Codes
+## Match status Codes
 
 Code | Description
 --------- | ------- 
 1  |  Scheduled
 2  |  Completed
 3  |  Live
-4  |  Cancelled / Abandoned
+
+
+## Inning result Codes
+
+Code | Description
+--------- | ------- 
+0  |  default
+1  |  All Out
+2  |  Declared
+3  |  Target Reached
+4  |  Over Reached
+
 
 ## Match Game State Codes
 
@@ -15709,7 +15043,7 @@ Code | Description
 0  |  International Match
 1  |  Domestic Match
 
-* Match Toss Decision
+## Match Toss Decision
 
 Code | Description
 --------- | ------- 
@@ -15734,7 +15068,8 @@ bowl  |  Bowler
 all   |  All Rounder
 WK    |  Wicketkeeper
 cap   |  Captain of playing XI
-bench |  Player is not selected in Playing XI and benched
+wkcap |  wicketkeeper and captain
+squad |  Player is not selected in Playing XI and benched
 
 ## International Team Id
 
