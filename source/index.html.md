@@ -5,7 +5,6 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - cURL
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -508,7 +507,7 @@ This will list all available competitions those you are subscribed and can acces
 It will list 10 competitions data per request. If there is more than 10 competitions, you will get extra value under response node, `next_page` and `prev_page`. You can either use that link to paginate through all of the items, or can use replace the page parameter to jump to a specific page if exists.
 
 ### Request
-* Path: /v2/seasons/[SID(season id)]/competitons
+* Path: /v2/seasons/[sid(season id)]/competitons
 * Method: GET
 * Parameters 
 
@@ -755,7 +754,7 @@ Competition matches node lists all of the scheduled,played,live matches for the 
 
 ### Request
 
-* Path: /v2/competitions/[COMPETITION_ID]/matches/
+* Path: /v2/competitions/[cid(competition id)]/matches/
 * Method: GET
 * Parameters 
 
@@ -777,12 +776,12 @@ Parameter | Value | Description
 match_id | interger  |  match id
 title | string | match name/title
 subtitle  |  string | contains either the match format + number or important event name, ie: Final, 2nd ODI, 1st Quarterfinal.
-format | interger  |  numerical representation of match format. see match_formats reference.
+format | interger  |  numerical representation of match format. see match_formats reference.<a href="#cricket-reference">See Cricket Reference</a>
 format_str | string | match format name
-status | string | numerical representation of match status. see match_statuss reference.
+status | string | numerical representation of match status. see match_statuss reference.<a href="#cricket-reference">See Cricket Reference</a>
 status_str | string | match status name.
 status_note | string | a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.
-game_state | string | numerical representation of match game_state. game state is available for live match only.
+game_state | string | numerical representation of match game_state. game state is available for live match only. <a href="#cricket-reference">See Cricket Reference</a>
 game_state_str | string | match game_state name.
 competition | array  |  an array of parent competition details of the match, <a href="#competition-properties">see competition object properties.</a>
 team | array  |  an array of teams participating in the match, <a href="#team-match-card">see team match properties.</a>
@@ -815,8 +814,8 @@ total_matches | integer | number of total matches
 total_rounds | integer | number of total rounds
 total_teams | integer | number of total teams
 category | string | competition category, possible values are international, domestic, youth, women
-match_format | string | played match format. a competition can hold multiple match types, ie odi, test etc. possible values are mixed, odi, test, t20i, firstclass, lista, t20, youthodi, youtht20, womenodi, woment20
-status | string | competition status. possible values are live (currently ongoing), fixture (upcoming), result (completed)
+match_format | string | played match format. a competition can hold multiple match types, ie odi, test etc. possible values are mixed, odi, test, t20i, firstclass, lista, t20, youthodi, youtht20, womenodi, woment20 <a href="#cricket-reference">See Cricket Reference</a>
+status | string | competition status. possible values are live (currently ongoing), fixture (upcoming), result (completed) <a href="#cricket-reference">See Cricket Reference</a>
 country  | string | Country ISO Code
 type  | string | competition type, possible values are tour, tournament, series
 
@@ -943,7 +942,7 @@ Competition teams API provides information of all playing participating teams in
 
 ### Request
 
-* Path: /v2/competitions/[COMPETITION_ID]/teams/
+* Path: /v2/competitions/[cid(competition id)]/teams/
 * Method: GET
 * Parameters 
 
@@ -1056,7 +1055,7 @@ Competition standings node provides standing table for all of the round or group
 
 ### Request
 
-* Path: /v2/competitions/[COMPETITION_ID]/standings/
+* Path: /v2/competitions/[cid(competition id)]/standings/
 * Method: GET
 * Parameters  
 
@@ -1195,7 +1194,7 @@ Competition stats provides information of players statistics and performance. As
 
 ### Request
 
-* Path: /v2/competitions/[COMPETITION_ID]/stats/
+* Path: /v2/competitions/[cid(competition id)]/stats/
 * Method: GET
 * Parameters 
 
@@ -1395,7 +1394,7 @@ curl -X GET "http://rest.entitysport.com/v2/competitions/91402/stats/batting_mos
 Provides information of a specific type of stats, ie batting_most_runs, bowling_best_averages, team_total_runs. It's root stats path provide a list of all available statistics available for the competition. 
 
 ###Request
-* Path: /v2/competitions/[COMPETITION_ID]/stats/[STAT_TYPE]
+* Path: /v2/competitions/[cid(competition id)]/stats/[STAT_TYPE]
 * Method: GET
 * Parameters 
 
@@ -4181,7 +4180,7 @@ number | integer | inning number
 name | string | inning name
 short_name | string | inning short name
 status | integer | numerical representation of inning status
-result | integer | numerical representation of result
+result | integer | numerical representation of inning result status
 batting_team_id | integer | team id of batting team
 fielding_team_id | integer | team id of fielding team
 scores | string | team score
@@ -5506,7 +5505,7 @@ number | integer | inning number
 name | string | inning name
 short_name | string | inning short name
 status | integer | numerical representation of inning status
-result | integer | numerical representation of result
+result | integer | numerical representation of inning result status
 batting_team_id | integer | team id of batting team
 fielding_team_id | integer | team id of fielding team
 scores | string | team score
@@ -12435,7 +12434,7 @@ number | integer | inning number
 name | string | inning name
 short_name | string | inning short name
 status | integer | numerical representation of inning status
-result | integer | numerical representation of result
+result | integer | numerical representation of inning result status
 batting_team_id | integer | team id of batting team
 fielding_team_id | integer | team id of fielding team
 scores | string | team score
@@ -13778,8 +13777,8 @@ title | string | match name/title
 runs | interger  |  runs scored in the inning
 overs | interger  |  overs bowled in the inning
 wickets | interger  |  total wickets fall in the inning
-status | integer | match status
-result | interger  |  innings status
+status | integer | innings status 
+result | interger  |  innings result status
 batting_team_id | interger  |  batting team id
 fielding_team_id | interger  |  bowling team id
 fows | array | an array of fall of wicket object details. <a href="#fows-statistic">see fall of wickets Properties</a>
@@ -14881,14 +14880,14 @@ curl -X GET "http://rest.entitysport.com/v2/teams/25/matches?status=2&token=[ACC
     "response": {
         "items": [
             {
-                "match_id": 19899,
+                "match_id": 19900,
                 "title": "Sri Lanka vs India",
-                "subtitle": "4th ODI",
+                "subtitle": "5th ODI",
                 "format": 1,
                 "format_str": "ODI",
                 "status": 2,
                 "status_str": "Completed",
-                "status_note": "India won by 168 runs",
+                "status_note": "India won by 6 wickets (with 21 balls remaining)",
                 "game_state": 0,
                 "game_state_str": "Default",
                 "domestic": "0",
@@ -14913,50 +14912,50 @@ curl -X GET "http://rest.entitysport.com/v2/teams/25/matches?status=2&token=[ACC
                     "name": "Sri Lanka",
                     "short_name": "SL",
                     "logo_url": "../assets/uploads/2016/01/sri-lanka.png",
-                    "scores_full": "*207/10 (42.4 ov)",
-                    "scores": "207/10",
-                    "overs": "42.4"
+                    "scores_full": "238/10 (49.4 ov)",
+                    "scores": "238/10",
+                    "overs": "49.4"
                 },
                 "teamb": {
                     "team_id": 25,
                     "name": "India",
                     "short_name": "INDIA",
                     "logo_url": "../assets/uploads/2016/01/india.png",
-                    "scores_full": "375/5 (50 ov)",
-                    "scores": "375/5",
-                    "overs": "50"
+                    "scores_full": "*239/4 (46.3 ov)",
+                    "scores": "239/4",
+                    "overs": "46.3"
                 },
-                "date_start": "2017-08-31 09:00:00",
-                "date_end": "2017-08-31 19:00:00",
-                "timestamp_start": 1504170000,
-                "timestamp_end": 1504206000,
+                "date_start": "2017-09-03 09:00:00",
+                "date_end": "2017-09-03 23:59:00",
+                "timestamp_start": 1504429200,
+                "timestamp_end": 1504483140,
                 "venue": {
                     "name": "R.Premadasa Stadium, Khettarama",
                     "location": "Colombo",
                     "timezone": "5.5"
                 },
-                "umpires": "Paul Reiffel (Australia), Raveendra Wimalasiri (Sri Lanka), Joel Wilson (West Indies, TV)",
+                "umpires": "Ranmore Martinesz (Sri Lanka), Joel Wilson (West Indies), Paul Reiffel (Australia, TV)",
                 "referee": "Andy Pycroft (Zimbabwe)",
                 "equation": "",
                 "live": "",
-                "result": "INDIA won by 168 runs",
-                "win_margin": "168 runs",
+                "result": "INDIA won by 6 wickets",
+                "win_margin": "6 wickets",
                 "commentary": 1,
                 "wagon": 1,
                 "latest_inning_number": 2,
                 "toss": {
-                    "text": "India won the toss & elected to bat",
-                    "winner": 25,
+                    "text": "Sri Lanka won the toss & elected to bat",
+                    "winner": 21,
                     "decision": 1
                 }
             }
         ],
-        "total_items": "65",
-        "total_pages": 65
+        "total_items": "66",
+        "total_pages": 66
     },
-    "etag": "19de70a2a94939244e69f330c75634c3",
-    "modified": "2017-09-01 15:39:13",
-    "datetime": "2017-09-01 15:39:13",
+    "etag": "94757f8eae0f95789b12d607b65798e7",
+    "modified": "2017-09-06 02:49:54",
+    "datetime": "2017-09-06 02:49:54",
     "api_version": "2.0"
 }
 ```
@@ -14980,7 +14979,299 @@ paged |	integer | Page Number for request
 * <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
 * <code style="color:#c7254e";>response.matches:</code> array of matches objects.
 
+### Reference
 
+Parameter | Value | Description
+--------- | ------- | -----------
+items | array  |  an array of match objects <a href="#items">Match Object Properties</a>
+total_items | integer | total items 
+total_pages | integer | total pages consisting of data objects
+
+
+<h3 id="items">Match Object Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+match_id | interger  |  match id
+title | string | match name/title
+subtitle  |  string | contains either the match format + number or important event name, ie: Final, 2nd ODI, 1st Quarterfinal.
+format | interger  |  numerical representation of match format. see match_formats reference.
+format_str | string | match format name
+status | string | numerical representation of match status. see match_statuss reference.
+status_str | string | match status name.
+status_note | string | a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.
+game_state | string | numerical representation of match game_state. game state is available for live match only.
+game_state_str | string | match game_state name.
+domestic | integer | numerical representation of match category type
+competition | array  |  an array of parent competition details of the match, <a href="#competition-team-properties">see competition object properties.</a>
+team | array  |  an array of teams participating in the match, <a href="#team-team-match-card">see team match properties.</a>
+date_start  |  date  |  match start date
+date_end | date  |  match end date
+timestamp_start  |  integer  |  match start timestamp
+timestamp_end | integer  |  match end timestamp
+venue | array  |  an array of venue details of the match, <a href="#venue-team-properties">see venue object properties.</a>
+umpires | string | umpires of the match.
+referee | string | referee of the match.
+equation | string | match result condition.
+live | string | live match status note.
+result | string | result status note.
+win_margin | string | match win margin.
+commentary | interger  |  numerical representation of commentary available or not for match.
+wagon | interger  |  numerical representation of wagon available or not for match.
+latest_inning_number | interger  |  latest or active innings number.
+toss | array  |  an array of toss details of the match, <a href="#toss-team-properties">see toss object properties.</a>
+
+<h3 id="competition-team-properties">Competition Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+title | string | competition name/title
+abbr | string | competition name abbreviation
+season | string | competition season name
+datestart | date | competition first match date
+dateend | date | competition last match date
+total_matches | integer | number of total matches
+total_rounds | integer | number of total rounds
+total_teams | integer | number of total teams
+category | string | competition category, possible values are international, domestic, youth, women
+match_format | string | played match format. a competition can hold multiple match types, ie odi, test etc. possible values are mixed, odi, test, t20i, firstclass, lista, t20, youthodi, youtht20, womenodi, woment20
+status | string | competition status. possible values are live (currently ongoing), fixture (upcoming), result (completed)
+country  | string | Country ISO Code
+type  | string | competition type, possible values are tour, tournament, series
+
+
+<h3 id="team-team-match-card">Team Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+team_id | integer | team id
+name | string | team name
+short_name | string | team short name
+logo_url | string | team logo url
+scores_full | string | team full score
+scores | string | team score
+overs | string | overs played by team
+
+
+<h3 id="venue-team-properties">Venue Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+name | string | Venue name/title
+location | string | City Name
+timezone | string | number of hours ahead of GMT if value is positive or number of hours behind GMT if value if negative
+
+<h3 id="toss-team-properties">Toss Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+text | string | Toss result text with team name
+winner | integer | team id of toss winning team
+decision | integer | numerical representation of decision made by toss winning team.
+
+## ICC Ranking API
+
+```shell
+curl -X GET "http://rest.entitysport.com/v2/iccranks?token=[ACCESS_TOKEN]"
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+    "status": "ok",
+    "response": {
+        "ranks": {
+            "batsmen": {
+                "odis": [
+                    {
+                        "rank": "1",
+                        "player": "Virat Kohli",
+                        "team": "India",
+                        "rating": "887"
+                    }
+                ],
+                "tests": [
+                    {
+                        "rank": "1",
+                        "player": "Steve Smith",
+                        "team": "Australia",
+                        "rating": "938"
+                    }
+                ],
+                "t20s": [
+                    {
+                        "rank": "1",
+                        "player": "Virat Kohli",
+                        "team": "India",
+                        "rating": "804"
+                    }
+                ]
+            },
+            "bowlers": {
+                "odis": [
+                    {
+                        "rank": "1",
+                        "player": "Josh Hazlewood",
+                        "team": "Australia",
+                        "rating": "732"
+                    }
+                ],
+                "tests": [
+                    {
+                        "rank": "1",
+                        "player": "Ravindra Jadeja",
+                        "team": "India",
+                        "rating": "884"
+                    }
+                ],
+                "t20s": [
+                    {
+                        "rank": "1",
+                        "player": "Imad Wasim",
+                        "team": "Pakistan",
+                        "rating": "780"
+                    }
+                ]
+            },
+            "all-rounders": {
+                "odis": [
+                    {
+                        "rank": "1",
+                        "player": "Shakib Al Hasan",
+                        "team": "Bangladesh",
+                        "rating": "353"
+                    }
+                ],
+                "tests": [
+                    {
+                        "rank": "1",
+                        "player": "Shakib Al Hasan",
+                        "team": "Bangladesh",
+                        "rating": "489"
+                    }
+                ],
+                "t20s": [
+                    {
+                        "rank": "1",
+                        "player": "Shakib Al Hasan",
+                        "team": "Bangladesh",
+                        "rating": "353"
+                    }
+                ]
+            },
+            "teams": {
+                "odis": [
+                    {
+                        "rank": "1",
+                        "team": "South Africa",
+                        "points": "5957",
+                        "rating": "119"
+                    }
+                ],
+                "tests": [
+                    {
+                        "rank": "1",
+                        "team": "India",
+                        "points": "4493",
+                        "rating": "125"
+                    }
+                ],
+                "t20s": [
+                    {
+                        "rank": "1",
+                        "team": "New Zealand",
+                        "points": "1625",
+                        "rating": "125"
+                    }
+                ]
+            }
+        },
+        "groups": {
+            "teams": "Teams",
+            "batsmen": "Batsmen",
+            "bowlers": "Bowlers",
+            "all-rounders": "All Rounders"
+        },
+        "formats": {
+            "odis": "ODI",
+            "tests": "Test",
+            "t20s": "T20"
+        }
+    },
+    "etag": "2ac2ae78cd62d84455b9767f4d4a335b",
+    "modified": "2017-09-05 23:48:38",
+    "datetime": "2017-09-05 23:48:38",
+    "api_version": "2.0"
+}
+```
+Provides information of a team. 
+
+###Request
+* Path: /v2/iccranks/
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+
+
+###Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.ranks:</code> ranking details.
+* <code style="color:#c7254e";>response.ranks.batsmen:</code> bastman ranking details.
+* <code style="color:#c7254e";>response.ranks.bowlers:</code> bowlers ranking details.
+* <code style="color:#c7254e";>response.ranks.allrounders:</code> all-rounders ranking details.
+* <code style="color:#c7254e";>response.ranks.teams:</code> teams ranking details.
+* <code style="color:#c7254e";>response.groups:</code> ranking groups.
+* <code style="color:#c7254e";>response.formats:</code> ranking formats.
+
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+ranks | objects | ranking objects <a href="#ranking-object">see Batsmen, Bowlers, All Rounders Ranking Properties</a>, <a href="#ranking-team-object">see Team Ranking Properties</a>
+groups | objects | groups objects <a href="#ranking-group">see ranking group properties</a>
+formats | objects | formats objects <a href="#ranking-format">see ranking format properties</a>
+
+
+<h3 id="ranking-object">Batsmen, Bowlers, All Rounders Ranking Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+rank | integer | ranking order
+player | string | player name
+team | string | team name
+rating | integer | rating points
+
+<h3 id="ranking-team-object">Team Ranking Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+rank | integer | ranking order
+team | string | team name
+points | integer | team points
+rating | integer | rating points
+
+<h3 id="ranking-group">Ranking Groups Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+teams | string | Teams Group
+batsmen | string | Batsmen Group
+bowlers | string | Bowlers Group
+all-rounders | string | All Rounders
+
+<h3 id="ranking-format">Ranking Formats Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+odis | string | ODI Formats
+tests | string | Test Formats
+t20s | string | T20 Formats
 
 
 # Cricket Reference
@@ -14993,6 +15284,14 @@ Code | Description
 2  |  Completed
 3  |  Live
 
+## Innings status Codes
+
+Code | Description
+--------- | ------- 
+1  |  Scheduled
+2  |  Completed
+3  |  Live
+4  |  Abandoned
 
 ## Inning result Codes
 
@@ -15004,6 +15303,12 @@ Code | Description
 3  |  Target Reached
 4  |  Over Reached
 
+## Wagon and Commentary Codes on Match Objects
+
+Code | Description
+--------- | ------- 
+0  |  Not Available
+1  |  Available
 
 ## Match Game State Codes
 
