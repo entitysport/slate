@@ -1634,7 +1634,7 @@ A generic sports player.</p></li>
 </span></code></pre>
 <p>This will list all available competitions those you are subscribed and can access for specified season. Season is named using 4 digit year, ex: <strong>2010</strong>, or Year combo, ex: <strong>2010-11</strong>. </p>
 
-<p>It will list 10 competitions data per request. If there is more than 10 competitions, you will get extra value under response node, <code>next_page</code> and <code>prev_page</code>. You can either use that link to paginate through all of the items, or can use replace the page parameter to jump to a specific page if exists.</p>
+<p>It will list 10 competitions data per request. If there is more than 10 competitions, you will get extra value under response node. You can use the page parameter to jump to a specific page if exists.</p>
 <h3 id='request-3'>Request</h3>
 <ul>
 <li>Path: /v2/seasons/[sid(season id)]/competitons</li>
@@ -2102,7 +2102,7 @@ A generic sports player.</p></li>
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>A competition is a tour that one country takes on to another country, or a local (ie: IPL) &amp; international league (ie: ICC World Cup). </p>
+<p>A competition is a tour that one country takes on to another country, or a local &amp; international league. </p>
 
 <p>A competition contains playing teams, match schedules, results, team performance &amp; player performance statistical information. </p>
 
@@ -3338,21 +3338,6 @@ A generic sports player.</p></li>
 </tr>
 </thead><tbody>
 <tr>
-<td>formats</td>
-<td>string</td>
-<td>formats of matches</td>
-</tr>
-<tr>
-<td>stats_type</td>
-<td>array</td>
-<td>an array of batting and bowling statistic type <a href="#stats-type-properties">see stats type properties</a></td>
-</tr>
-<tr>
-<td>format</td>
-<td>string</td>
-<td>formats of matches</td>
-</tr>
-<tr>
 <td>stats</td>
 <td>array</td>
 <td>array of batsman, bowler, team statistic data <a href="#competition-stats">see Batting Stats properties</a>, <a href="#competition-bowling-stats">see Bowling Stats properties</a>, <a href="#competition-team-stats">see Team Stats properties</a></td>
@@ -3369,8 +3354,23 @@ A generic sports player.</p></li>
 </tr>
 <tr>
 <td>formats</td>
+<td>string</td>
+<td>formats of matches</td>
+</tr>
+<tr>
+<td>stats_type</td>
 <td>array</td>
-<td>an array of containing format strings</td>
+<td>an array of batting and bowling statistic type <a href="#stats-type-properties">see stats type properties</a></td>
+</tr>
+<tr>
+<td>format</td>
+<td>string</td>
+<td>formats of matches</td>
+</tr>
+<tr>
+<td>teams</td>
+<td>array</td>
+<td>an array of teams <a href="#competition-stats-team">see team propeties</a></td>
 </tr>
 </tbody></table>
 
@@ -3471,11 +3471,11 @@ A generic sports player.</p></li>
 <tr>
 <td>teams</td>
 <td>array</td>
-<td>an array of teams properties <a href="#competition-stats-teams">see teams properties</a></td>
+<td>an array of teams properties <a href="#competition-playerstats-teams">see teams properties</a></td>
 </tr>
 </tbody></table>
 
-<h3 id="competition-stats-team">Team Properties</h3>
+<h3 id="competition-playerstats-team">Team Properties</h3>
 
 <table><thead>
 <tr>
@@ -3510,6 +3510,11 @@ A generic sports player.</p></li>
 <td>team logo url</td>
 </tr>
 <tr>
+<td>alt_name</td>
+<td>string</td>
+<td>team alternative name</td>
+</tr>
+<tr>
 <td>type</td>
 <td>string</td>
 <td>team type Country(International Team) or Club</td>
@@ -3518,11 +3523,6 @@ A generic sports player.</p></li>
 <td>country</td>
 <td>string</td>
 <td>Country ISO Code</td>
-</tr>
-<tr>
-<td>alt_name</td>
-<td>string</td>
-<td>team alternative name</td>
 </tr>
 </tbody></table>
 
