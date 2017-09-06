@@ -342,6 +342,9 @@
                   <li>
                     <a href="#team-matches-api" class="toc-h2 toc-link" data-title="Cricket API V2">Team Matches API</a>
                   </li>
+                  <li>
+                    <a href="#icc-ranking-api" class="toc-h2 toc-link" data-title="Cricket API V2">ICC Ranking API</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -351,7 +354,13 @@
                     <a href="#match-status-codes" class="toc-h2 toc-link" data-title="Cricket Reference">Match status Codes</a>
                   </li>
                   <li>
+                    <a href="#innings-status-codes" class="toc-h2 toc-link" data-title="Cricket Reference">Innings status Codes</a>
+                  </li>
+                  <li>
                     <a href="#inning-result-codes" class="toc-h2 toc-link" data-title="Cricket Reference">Inning result Codes</a>
+                  </li>
+                  <li>
+                    <a href="#wagon-and-commentary-codes-on-match-objects" class="toc-h2 toc-link" data-title="Cricket Reference">Wagon and Commentary Codes on Match Objects</a>
                   </li>
                   <li>
                     <a href="#match-game-state-codes" class="toc-h2 toc-link" data-title="Cricket Reference">Match Game State Codes</a>
@@ -381,7 +390,6 @@
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
             <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -1629,7 +1637,7 @@ A generic sports player.</p></li>
 <p>It will list 10 competitions data per request. If there is more than 10 competitions, you will get extra value under response node, <code>next_page</code> and <code>prev_page</code>. You can either use that link to paginate through all of the items, or can use replace the page parameter to jump to a specific page if exists.</p>
 <h3 id='request-3'>Request</h3>
 <ul>
-<li>Path: /v2/seasons/[SID(season id)]/competitons</li>
+<li>Path: /v2/seasons/[sid(season id)]/competitons</li>
 <li>Method: GET</li>
 <li>Parameters </li>
 </ul>
@@ -2101,7 +2109,7 @@ A generic sports player.</p></li>
 <p>Competition matches node lists all of the scheduled,played,live matches for the specified competition. </p>
 <h3 id='request-5'>Request</h3>
 <ul>
-<li>Path: /v2/competitions/[COMPETITION_ID]/matches/</li>
+<li>Path: /v2/competitions/[cid(competition id)]/matches/</li>
 <li>Method: GET</li>
 <li>Parameters </li>
 </ul>
@@ -2160,7 +2168,7 @@ A generic sports player.</p></li>
 <tr>
 <td>format</td>
 <td>interger</td>
-<td>numerical representation of match format. see match_formats reference.</td>
+<td>numerical representation of match format. see match_formats reference.<a href="#cricket-reference">See Cricket Reference</a></td>
 </tr>
 <tr>
 <td>format_str</td>
@@ -2170,7 +2178,7 @@ A generic sports player.</p></li>
 <tr>
 <td>status</td>
 <td>string</td>
-<td>numerical representation of match status. see match_statuss reference.</td>
+<td>numerical representation of match status. see match_statuss reference.<a href="#cricket-reference">See Cricket Reference</a></td>
 </tr>
 <tr>
 <td>status_str</td>
@@ -2185,7 +2193,7 @@ A generic sports player.</p></li>
 <tr>
 <td>game_state</td>
 <td>string</td>
-<td>numerical representation of match game_state. game state is available for live match only.</td>
+<td>numerical representation of match game_state. game state is available for live match only. <a href="#cricket-reference">See Cricket Reference</a></td>
 </tr>
 <tr>
 <td>game_state_str</td>
@@ -2336,12 +2344,12 @@ A generic sports player.</p></li>
 <tr>
 <td>match_format</td>
 <td>string</td>
-<td>played match format. a competition can hold multiple match types, ie odi, test etc. possible values are mixed, odi, test, t20i, firstclass, lista, t20, youthodi, youtht20, womenodi, woment20</td>
+<td>played match format. a competition can hold multiple match types, ie odi, test etc. possible values are mixed, odi, test, t20i, firstclass, lista, t20, youthodi, youtht20, womenodi, woment20 <a href="#cricket-reference">See Cricket Reference</a></td>
 </tr>
 <tr>
 <td>status</td>
 <td>string</td>
-<td>competition status. possible values are live (currently ongoing), fixture (upcoming), result (completed)</td>
+<td>competition status. possible values are live (currently ongoing), fixture (upcoming), result (completed) <a href="#cricket-reference">See Cricket Reference</a></td>
 </tr>
 <tr>
 <td>country</td>
@@ -2538,7 +2546,7 @@ A generic sports player.</p></li>
 <p>Competition teams API provides information of all playing participating teams in competition. </p>
 <h3 id='request-6'>Request</h3>
 <ul>
-<li>Path: /v2/competitions/[COMPETITION_ID]/teams/</li>
+<li>Path: /v2/competitions/[cid(competition id)]/teams/</li>
 <li>Method: GET</li>
 <li>Parameters </li>
 </ul>
@@ -2766,7 +2774,7 @@ A generic sports player.</p></li>
 <p>Competition standings node provides standing table for all of the round or groups for the specified competition.</p>
 <h3 id='request-7'>Request</h3>
 <ul>
-<li>Path: /v2/competitions/[COMPETITION_ID]/standings/</li>
+<li>Path: /v2/competitions/[cid(competition id)]/standings/</li>
 <li>Method: GET</li>
 <li>Parameters<br></li>
 </ul>
@@ -3052,7 +3060,7 @@ A generic sports player.</p></li>
 <p>Competition stats provides information of players statistics and performance. As well as team wise player statistics. The root stats path provide a list of all available statistics available for the competition. </p>
 <h3 id='request-8'>Request</h3>
 <ul>
-<li>Path: /v2/competitions/[COMPETITION_ID]/stats/</li>
+<li>Path: /v2/competitions/[cid(competition id)]/stats/</li>
 <li>Method: GET</li>
 <li>Parameters </li>
 </ul>
@@ -3282,7 +3290,7 @@ A generic sports player.</p></li>
 <p>Provides information of a specific type of stats, ie batting_most_runs, bowling_best_averages, team_total_runs. It&#39;s root stats path provide a list of all available statistics available for the competition. </p>
 <h3 id='request-9'>Request</h3>
 <ul>
-<li>Path: /v2/competitions/[COMPETITION_ID]/stats/[STAT_TYPE]</li>
+<li>Path: /v2/competitions/[cid(competition id)]/stats/[STAT_TYPE]</li>
 <li>Method: GET</li>
 <li>Parameters </li>
 </ul>
@@ -7159,7 +7167,7 @@ A generic sports player.</p></li>
 <tr>
 <td>result</td>
 <td>integer</td>
-<td>numerical representation of result</td>
+<td>numerical representation of inning result status</td>
 </tr>
 <tr>
 <td>batting_team_id</td>
@@ -9191,7 +9199,7 @@ A generic sports player.</p></li>
 <tr>
 <td>result</td>
 <td>integer</td>
-<td>numerical representation of result</td>
+<td>numerical representation of inning result status</td>
 </tr>
 <tr>
 <td>batting_team_id</td>
@@ -17220,7 +17228,7 @@ A generic sports player.</p></li>
 <tr>
 <td>result</td>
 <td>integer</td>
-<td>numerical representation of result</td>
+<td>numerical representation of inning result status</td>
 </tr>
 <tr>
 <td>batting_team_id</td>
@@ -19042,12 +19050,12 @@ A generic sports player.</p></li>
 <tr>
 <td>status</td>
 <td>integer</td>
-<td>match status</td>
+<td>innings status</td>
 </tr>
 <tr>
 <td>result</td>
 <td>interger</td>
-<td>innings status</td>
+<td>innings result status</td>
 </tr>
 <tr>
 <td>batting_team_id</td>
@@ -21220,14 +21228,14 @@ A generic sports player.</p></li>
     </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"match_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19899</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"match_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19900</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sri Lanka vs India"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4th ODI"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5th ODI"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"format"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"format_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ODI"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"status_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Completed"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"status_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India won by 168 runs"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India won by 6 wickets (with 21 balls remaining)"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"game_state"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"game_state_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"domestic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -21252,50 +21260,50 @@ A generic sports player.</p></li>
                     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sri Lanka"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SL"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"../assets/uploads/2016/01/sri-lanka.png"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"scores_full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*207/10 (42.4 ov)"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"207/10"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.4"</span><span class="w">
+                    </span><span class="s2">"scores_full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"238/10 (49.4 ov)"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"238/10"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.4"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="s2">"teamb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIA"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"../assets/uploads/2016/01/india.png"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"scores_full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"375/5 (50 ov)"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"375/5"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50"</span><span class="w">
+                    </span><span class="s2">"scores_full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*239/4 (46.3 ov)"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"239/4"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46.3"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"date_start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-31 09:00:00"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"date_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-31 19:00:00"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"timestamp_start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1504170000</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"timestamp_end"</span><span class="p">:</span><span class="w"> </span><span class="mi">1504206000</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"date_start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-03 09:00:00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"date_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-03 23:59:00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timestamp_start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1504429200</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timestamp_end"</span><span class="p">:</span><span class="w"> </span><span class="mi">1504483140</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"R.Premadasa Stadium, Khettarama"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Colombo"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.5"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"umpires"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paul Reiffel (Australia), Raveendra Wimalasiri (Sri Lanka), Joel Wilson (West Indies, TV)"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"umpires"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ranmore Martinesz (Sri Lanka), Joel Wilson (West Indies), Paul Reiffel (Australia, TV)"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"referee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andy Pycroft (Zimbabwe)"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"equation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"live"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIA won by 168 runs"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"win_margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"168 runs"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIA won by 6 wickets"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"win_margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6 wickets"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"commentary"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"wagon"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"latest_inning_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"toss"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India won the toss &amp; elected to bat"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"winner"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sri Lanka won the toss &amp; elected to bat"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"winner"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"decision"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="s2">"65"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="w">
+        </span><span class="s2">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">66</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"etag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19de70a2a94939244e69f330c75634c3"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-01 15:39:13"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-01 15:39:13"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"etag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94757f8eae0f95789b12d607b65798e7"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-06 02:49:54"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-06 02:49:54"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"api_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -21340,6 +21348,667 @@ A generic sports player.</p></li>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.matches:</code> array of matches objects.</li>
 </ul>
+<h3 id='reference-22'>Reference</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>items</td>
+<td>array</td>
+<td>an array of match objects <a href="#items">Match Object Properties</a></td>
+</tr>
+<tr>
+<td>total_items</td>
+<td>integer</td>
+<td>total items</td>
+</tr>
+<tr>
+<td>total_pages</td>
+<td>integer</td>
+<td>total pages consisting of data objects</td>
+</tr>
+</tbody></table>
+
+<h3 id="items">Match Object Properties</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>match_id</td>
+<td>interger</td>
+<td>match id</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>match name/title</td>
+</tr>
+<tr>
+<td>subtitle</td>
+<td>string</td>
+<td>contains either the match format + number or important event name, ie: Final, 2nd ODI, 1st Quarterfinal.</td>
+</tr>
+<tr>
+<td>format</td>
+<td>interger</td>
+<td>numerical representation of match format. see match_formats reference.</td>
+</tr>
+<tr>
+<td>format_str</td>
+<td>string</td>
+<td>match format name</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>numerical representation of match status. see match_statuss reference.</td>
+</tr>
+<tr>
+<td>status_str</td>
+<td>string</td>
+<td>match status name.</td>
+</tr>
+<tr>
+<td>status_note</td>
+<td>string</td>
+<td>a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.</td>
+</tr>
+<tr>
+<td>game_state</td>
+<td>string</td>
+<td>numerical representation of match game_state. game state is available for live match only.</td>
+</tr>
+<tr>
+<td>game_state_str</td>
+<td>string</td>
+<td>match game_state name.</td>
+</tr>
+<tr>
+<td>domestic</td>
+<td>integer</td>
+<td>numerical representation of match category type</td>
+</tr>
+<tr>
+<td>competition</td>
+<td>array</td>
+<td>an array of parent competition details of the match, <a href="#competition-team-properties">see competition object properties.</a></td>
+</tr>
+<tr>
+<td>team</td>
+<td>array</td>
+<td>an array of teams participating in the match, <a href="#team-team-match-card">see team match properties.</a></td>
+</tr>
+<tr>
+<td>date_start</td>
+<td>date</td>
+<td>match start date</td>
+</tr>
+<tr>
+<td>date_end</td>
+<td>date</td>
+<td>match end date</td>
+</tr>
+<tr>
+<td>timestamp_start</td>
+<td>integer</td>
+<td>match start timestamp</td>
+</tr>
+<tr>
+<td>timestamp_end</td>
+<td>integer</td>
+<td>match end timestamp</td>
+</tr>
+<tr>
+<td>venue</td>
+<td>array</td>
+<td>an array of venue details of the match, <a href="#venue-team-properties">see venue object properties.</a></td>
+</tr>
+<tr>
+<td>umpires</td>
+<td>string</td>
+<td>umpires of the match.</td>
+</tr>
+<tr>
+<td>referee</td>
+<td>string</td>
+<td>referee of the match.</td>
+</tr>
+<tr>
+<td>equation</td>
+<td>string</td>
+<td>match result condition.</td>
+</tr>
+<tr>
+<td>live</td>
+<td>string</td>
+<td>live match status note.</td>
+</tr>
+<tr>
+<td>result</td>
+<td>string</td>
+<td>result status note.</td>
+</tr>
+<tr>
+<td>win_margin</td>
+<td>string</td>
+<td>match win margin.</td>
+</tr>
+<tr>
+<td>commentary</td>
+<td>interger</td>
+<td>numerical representation of commentary available or not for match.</td>
+</tr>
+<tr>
+<td>wagon</td>
+<td>interger</td>
+<td>numerical representation of wagon available or not for match.</td>
+</tr>
+<tr>
+<td>latest_inning_number</td>
+<td>interger</td>
+<td>latest or active innings number.</td>
+</tr>
+<tr>
+<td>toss</td>
+<td>array</td>
+<td>an array of toss details of the match, <a href="#toss-team-properties">see toss object properties.</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="competition-team-properties">Competition Properties</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cid</td>
+<td>integer</td>
+<td>competition id</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>competition name/title</td>
+</tr>
+<tr>
+<td>abbr</td>
+<td>string</td>
+<td>competition name abbreviation</td>
+</tr>
+<tr>
+<td>season</td>
+<td>string</td>
+<td>competition season name</td>
+</tr>
+<tr>
+<td>datestart</td>
+<td>date</td>
+<td>competition first match date</td>
+</tr>
+<tr>
+<td>dateend</td>
+<td>date</td>
+<td>competition last match date</td>
+</tr>
+<tr>
+<td>total_matches</td>
+<td>integer</td>
+<td>number of total matches</td>
+</tr>
+<tr>
+<td>total_rounds</td>
+<td>integer</td>
+<td>number of total rounds</td>
+</tr>
+<tr>
+<td>total_teams</td>
+<td>integer</td>
+<td>number of total teams</td>
+</tr>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>competition category, possible values are international, domestic, youth, women</td>
+</tr>
+<tr>
+<td>match_format</td>
+<td>string</td>
+<td>played match format. a competition can hold multiple match types, ie odi, test etc. possible values are mixed, odi, test, t20i, firstclass, lista, t20, youthodi, youtht20, womenodi, woment20</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>competition status. possible values are live (currently ongoing), fixture (upcoming), result (completed)</td>
+</tr>
+<tr>
+<td>country</td>
+<td>string</td>
+<td>Country ISO Code</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>competition type, possible values are tour, tournament, series</td>
+</tr>
+</tbody></table>
+
+<h3 id="team-team-match-card">Team Properties</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>team_id</td>
+<td>integer</td>
+<td>team id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>team name</td>
+</tr>
+<tr>
+<td>short_name</td>
+<td>string</td>
+<td>team short name</td>
+</tr>
+<tr>
+<td>logo_url</td>
+<td>string</td>
+<td>team logo url</td>
+</tr>
+<tr>
+<td>scores_full</td>
+<td>string</td>
+<td>team full score</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>string</td>
+<td>team score</td>
+</tr>
+<tr>
+<td>overs</td>
+<td>string</td>
+<td>overs played by team</td>
+</tr>
+</tbody></table>
+
+<h3 id="venue-team-properties">Venue Properties</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Venue name/title</td>
+</tr>
+<tr>
+<td>location</td>
+<td>string</td>
+<td>City Name</td>
+</tr>
+<tr>
+<td>timezone</td>
+<td>string</td>
+<td>number of hours ahead of GMT if value is positive or number of hours behind GMT if value if negative</td>
+</tr>
+</tbody></table>
+
+<h3 id="toss-team-properties">Toss Properties</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>Toss result text with team name</td>
+</tr>
+<tr>
+<td>winner</td>
+<td>integer</td>
+<td>team id of toss winning team</td>
+</tr>
+<tr>
+<td>decision</td>
+<td>integer</td>
+<td>numerical representation of decision made by toss winning team.</td>
+</tr>
+</tbody></table>
+<h2 id='icc-ranking-api'>ICC Ranking API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/iccranks?token=[ACCESS_TOKEN]"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"ranks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"batsmen"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"odis"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"player"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Virat Kohli"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"887"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"tests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"player"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve Smith"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"938"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"t20s"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"player"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Virat Kohli"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"804"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"bowlers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"odis"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"player"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Josh Hazlewood"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"732"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"tests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"player"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ravindra Jadeja"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"884"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"t20s"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"player"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Imad Wasim"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pakistan"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"780"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"all-rounders"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"odis"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"player"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shakib Al Hasan"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bangladesh"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"353"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"tests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"player"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shakib Al Hasan"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bangladesh"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"489"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"t20s"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"player"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shakib Al Hasan"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bangladesh"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"353"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"teams"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"odis"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"South Africa"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"points"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5957"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"119"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"tests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"points"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4493"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"125"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"t20s"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Zealand"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"points"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1625"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"125"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"teams"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teams"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"batsmen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Batsmen"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bowlers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bowlers"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"all-rounders"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All Rounders"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"formats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"odis"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ODI"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tests"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"t20s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T20"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"etag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2ac2ae78cd62d84455b9767f4d4a335b"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-05 23:48:38"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-05 23:48:38"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"api_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Provides information of a team. </p>
+<h3 id='request-24'>Request</h3>
+<ul>
+<li>Path: /v2/iccranks/</li>
+<li>Method: GET</li>
+<li>Parameters </li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>{ACCESS_TOKEN}</td>
+<td>API Access token</td>
+</tr>
+</tbody></table>
+<h3 id='response-24'>Response</h3>
+<ul>
+<li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
+<li><code style="color:#c7254e";>response.ranks:</code> ranking details.</li>
+<li><code style="color:#c7254e";>response.ranks.batsmen:</code> bastman ranking details.</li>
+<li><code style="color:#c7254e";>response.ranks.bowlers:</code> bowlers ranking details.</li>
+<li><code style="color:#c7254e";>response.ranks.allrounders:</code> all-rounders ranking details.</li>
+<li><code style="color:#c7254e";>response.ranks.teams:</code> teams ranking details.</li>
+<li><code style="color:#c7254e";>response.groups:</code> ranking groups.</li>
+<li><code style="color:#c7254e";>response.formats:</code> ranking formats.</li>
+</ul>
+<h3 id='reference-23'>Reference</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ranks</td>
+<td>objects</td>
+<td>ranking objects <a href="#ranking-object">see Batsmen, Bowlers, All Rounders Ranking Properties</a>, <a href="#ranking-team-object">see Team Ranking Properties</a></td>
+</tr>
+<tr>
+<td>groups</td>
+<td>objects</td>
+<td>groups objects <a href="#ranking-group">see ranking group properties</a></td>
+</tr>
+<tr>
+<td>formats</td>
+<td>objects</td>
+<td>formats objects <a href="#ranking-format">see ranking format properties</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="ranking-object">Batsmen, Bowlers, All Rounders Ranking Properties</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rank</td>
+<td>integer</td>
+<td>ranking order</td>
+</tr>
+<tr>
+<td>player</td>
+<td>string</td>
+<td>player name</td>
+</tr>
+<tr>
+<td>team</td>
+<td>string</td>
+<td>team name</td>
+</tr>
+<tr>
+<td>rating</td>
+<td>integer</td>
+<td>rating points</td>
+</tr>
+</tbody></table>
+
+<h3 id="ranking-team-object">Team Ranking Properties</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rank</td>
+<td>integer</td>
+<td>ranking order</td>
+</tr>
+<tr>
+<td>team</td>
+<td>string</td>
+<td>team name</td>
+</tr>
+<tr>
+<td>points</td>
+<td>integer</td>
+<td>team points</td>
+</tr>
+<tr>
+<td>rating</td>
+<td>integer</td>
+<td>rating points</td>
+</tr>
+</tbody></table>
+
+<h3 id="ranking-group">Ranking Groups Properties</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>teams</td>
+<td>string</td>
+<td>Teams Group</td>
+</tr>
+<tr>
+<td>batsmen</td>
+<td>string</td>
+<td>Batsmen Group</td>
+</tr>
+<tr>
+<td>bowlers</td>
+<td>string</td>
+<td>Bowlers Group</td>
+</tr>
+<tr>
+<td>all-rounders</td>
+<td>string</td>
+<td>All Rounders</td>
+</tr>
+</tbody></table>
+
+<h3 id="ranking-format">Ranking Formats Properties</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>odis</td>
+<td>string</td>
+<td>ODI Formats</td>
+</tr>
+<tr>
+<td>tests</td>
+<td>string</td>
+<td>Test Formats</td>
+</tr>
+<tr>
+<td>t20s</td>
+<td>string</td>
+<td>T20 Formats</td>
+</tr>
+</tbody></table>
 <h1 id='cricket-reference'>Cricket Reference</h1><h2 id='match-status-codes'>Match status Codes</h2>
 <table><thead>
 <tr>
@@ -21358,6 +22027,30 @@ A generic sports player.</p></li>
 <tr>
 <td>3</td>
 <td>Live</td>
+</tr>
+</tbody></table>
+<h2 id='innings-status-codes'>Innings status Codes</h2>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Scheduled</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Live</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Abandoned</td>
 </tr>
 </tbody></table>
 <h2 id='inning-result-codes'>Inning result Codes</h2>
@@ -21386,6 +22079,22 @@ A generic sports player.</p></li>
 <tr>
 <td>4</td>
 <td>Over Reached</td>
+</tr>
+</tbody></table>
+<h2 id='wagon-and-commentary-codes-on-match-objects'>Wagon and Commentary Codes on Match Objects</h2>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Not Available</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Available</td>
 </tr>
 </tbody></table>
 <h2 id='match-game-state-codes'>Match Game State Codes</h2>
