@@ -13651,7 +13651,7 @@ squads | array | an array of squad players <a href="#squad-array">see squads pro
 Parameter | Value | Description
 --------- | ------- | -----------
 player_id | integer | player id
-role | string | player role bat,bowl,wk,all <a href="match-squad-role-parameter">Match Squad Role Parameter</a>
+role | string | player role bat,bowl,wk,all <a href="#match-squad-role-parameter">Match Squad Role Parameter</a>
 role_str | string | player role stirng wk or cap
 
 
