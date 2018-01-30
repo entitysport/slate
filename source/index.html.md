@@ -601,10 +601,10 @@ game_state | string | numerical representation of match game_state. game state i
 game_state_str | string | match game_state name.
 competition | array  |  an array of parent competition details of the match, <a href="#competition-properties">see competition object properties.</a>
 team | array  |  an array of teams participating in the match, <a href="#team-match-card">see team match properties.</a>
-date_start  |  date  |  match start date
-date_end | date  |  match end date
-timestamp_start  |  integer  |  match start timestamp
-timestamp_end | integer  |  match end timestamp
+date_start  |  date  |  match start date in in GMT(UTC +0)
+date_end | date  |  match end date in GMT(UTC +0)
+timestamp_start  |  integer  |  match start timestamp in GMT(UTC +0).
+timestamp_end | integer  |  match end timestamp in GMT(UTC +0).
 venue | array  |  an array of venue details of the match, <a href="#venue-properties">see venue object properties.</a>
 umpires | string | umpires of the match.
 referee | string | referee of the match.
@@ -1445,10 +1445,10 @@ game_state | string | numerical representation of match game_state. game state i
 game_state_str | string | match game_state name.
 competition | array  |  an array of parent competition details of the match, <a href="#competition-match-properties">see competition object properties.</a>
 team | array  |  an array of teams participating in the match, <a href="#team-recent-match-card">see team match properties.</a>
-date_start  |  date  |  match start date
-date_end | date  |  match end date
-timestamp_start  |  integer  |  match start timestamp
-timestamp_end | integer  |  match end timestamp
+date_start  |  date  |  match start date in GMT(UTC +0)
+date_end | date  |  match end date in GMT(UTC +0)
+timestamp_start  |  integer  |  match start timestamp in GMT(UTC +0)
+timestamp_end | integer  |  match end timestamp in GMT(UTC +0)
 venue | array  |  an array of venue details of the match, <a href="#venue-recent-properties">see venue object properties.</a>
 umpires | string | umpires of the match.
 referee | string | referee of the match.
@@ -1628,10 +1628,10 @@ game_state | string | numerical representation of match game_state. game state i
 game_state_str | string | match game_state name.
 competition | array  |  an array of parent competition details of the match, <a href="#competition-info-properties">see competition object properties.</a>
 team | array  |  an array of teams participating in the match, <a href="#team-info-card">see team match properties.</a>
-date_start  |  date  |  match start date
-date_end | date  |  match end date
-timestamp_start  |  integer  |  match start timestamp
-timestamp_end | integer  |  match end timestamp
+date_start  |  date  |  match start date in GMT(UTC +0)
+date_end | date  |  match end date in GMT(UTC +0)
+timestamp_start  |  integer  |  match start timestamp in GMT(UTC +0)
+timestamp_end | integer  |  match end timestamp in GMT(UTC +0)
 venue | array  |  an array of venue details of the match, <a href="#venue-info-properties">see venue object properties.</a>
 umpires | string | umpires of the match.
 referee | string | referee of the match.
@@ -4141,10 +4141,10 @@ game_state | string | numerical representation of match game_state. game state i
 game_state_str | string | match game_state name.
 competition | array  |  an array of parent competition details of the match, <a href="#competition-matchsummary-properties">see competition object properties.</a>
 team | array  |  an array of teams participating in the match, <a href="#team-matchsummary-card">see team match properties.</a>
-date_start  |  date  |  match start date
-date_end | date  |  match end date
-timestamp_start  |  integer  |  match start timestamp
-timestamp_end | integer  |  match end timestamp
+date_start  |  date  |  match start date in GMT(UTC +0)
+date_end | date  |  match end date in GMT(UTC +0)
+timestamp_start  |  integer  |  match start timestamp in GMT(UTC +0)
+timestamp_end | integer  |  match end timestamp in GMT(UTC +0)
 venue | array  |  an array of venue details of the match, <a href="#venue-matchsummary-properties">see venue object properties.</a>
 umpires | string | umpires of the match.
 referee | string | referee of the match.
@@ -5640,10 +5640,10 @@ game_state | string | numerical representation of match game_state. game state i
 game_state_str | string | match game_state name.
 competition | array  |  an array of parent competition details of the match, <a href="#competition-inning-properties">see competition object properties.</a>
 team | array  |  an array of teams participating in the match, <a href="#team-inning-card">see team match properties.</a>
-date_start  |  date  |  match start date
-date_end | date  |  match end date
-timestamp_start  |  integer  |  match start timestamp
-timestamp_end | integer  |  match end timestamp
+date_start  |  date  |  match start date in GMT(UTC +0)
+date_end | date  |  match end date in GMT(UTC +0)
+timestamp_start  |  integer  |  match start timestamp in GMT(UTC +0)
+timestamp_end | integer  |  match end timestamp in GMT(UTC +0)
 venue | array  |  an array of venue details of the match, <a href="#venue-inning-properties">see venue object properties.</a>
 umpires | string | umpires of the match.
 referee | string | referee of the match.
@@ -14424,10 +14424,10 @@ game_state | string | numerical representation of match game_state. game state i
 game_state_str | string | match game_state name.
 competition | array  |  an array of parent competition details of the match, <a href="#competition-matchwagon-properties">see competition object properties.</a>
 team | array  |  an array of teams participating in the match, <a href="#team-matchwagon-card">see team match properties.</a>
-date_start  |  date  |  match start date
-date_end | date  |  match end date
-timestamp_start  |  integer  |  match start timestamp
-timestamp_end | integer  |  match end timestamp
+date_start  |  date  |  match start date in GMT(UTC +0)
+date_end | date  |  match end date in GMT(UTC +0)
+timestamp_start  |  integer  |  match start timestamp in GMT(UTC +0)
+timestamp_end | integer  |  match end timestamp in GMT(UTC +0)
 venue | array  |  an array of venue details of the match, <a href="#venue-matchwagon-properties">see venue object properties.</a>
 umpires | string | umpires of the match.
 referee | string | referee of the match.
@@ -15239,10 +15239,10 @@ game_state_str | string | match game_state name.
 domestic | integer | numerical representation of match category type
 competition | array  |  an array of parent competition details of the match, <a href="#competition-team-properties">see competition object properties.</a>
 team | array  |  an array of teams participating in the match, <a href="#team-team-match-card">see team match properties.</a>
-date_start  |  date  |  match start date
-date_end | date  |  match end date
-timestamp_start  |  integer  |  match start timestamp
-timestamp_end | integer  |  match end timestamp
+date_start  |  date  |  match start date in GMT(UTC +0)
+date_end | date  |  match end date in GMT(UTC +0)
+timestamp_start  |  integer  |  match start timestamp in GMT(UTC +0)
+timestamp_end | integer  |  match end timestamp in GMT(UTC +0)
 venue | array  |  an array of venue details of the match, <a href="#venue-team-properties">see venue object properties.</a>
 umpires | string | umpires of the match.
 referee | string | referee of the match.
@@ -15699,6 +15699,7 @@ Karachi Kings	|  14469
 Lahore Qalandars |  14470
 Peshawar Zalmi	|  14467
 Quetta Gladiators | 14465
+Multan Sultans | 108678
 
 ### Ram Slam League Teams(South Africa)
 
