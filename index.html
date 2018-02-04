@@ -234,7 +234,7 @@
                     <a href="#making-your-first-request" class="toc-h2 toc-link" data-title="Getting Started">Making your First Request</a>
                   </li>
                   <li>
-                    <a href="#http-status-code" class="toc-h2 toc-link" data-title="Getting Started">HTTP Status Code</a>
+                    <a href="#https-status-code" class="toc-h2 toc-link" data-title="Getting Started">https Status Code</a>
                   </li>
                   <li>
                     <a href="#api-response" class="toc-h2 toc-link" data-title="Getting Started">API Response</a>
@@ -367,7 +367,7 @@
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='httpss://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -376,7 +376,7 @@
         <h1 id='introduction'>Introduction</h1>
 <p>Entity Sports application programming interfaces (API) give you access to our sports data. You can use our Entity Sports API to build web and mobile sports application. Either it&#39;s fantasy sports or live score our data full fills requirements for all type of applications. </p>
 
-<p>Entity Sports API deliver season, competition, teams, matches, player, statistical data for Cricket and Soccer.Since the API is true to RESTful principles, it’s easy to interact with using any tool capable of performing HTTP requests, such as Postman or cURL. </p>
+<p>Entity Sports API deliver season, competition, teams, matches, player, statistical data for Cricket and Soccer.Since the API is true to RESTful principles, it’s easy to interact with using any tool capable of performing https requests, such as Postman or cURL. </p>
 
 <p>To allow you to interact securely with our API from a client-side web application (though you should remember that you should never expose your API keys in any public website&#39;s client-side code). JSON will be returned in all responses from the API, including errors. </p>
 <h1 id='getting-started'>Getting Started</h1><h2 id='getting-your-keys'>Getting your Keys</h2>
@@ -389,7 +389,7 @@
    -d <span class="s2">"access_key=YOURACCESSKEY"</span> <span class="se">\</span>
    -d <span class="s2">"secret_key=YOURSECRETKEY"</span> <span class="se">\</span>
    -d <span class="s2">"extend=1"</span> <span class="se">\</span>
-   http://rest.entitysport.com/v2/auth
+   https://rest.entitysport.com/v2/auth
 </code></pre>
 <blockquote>
 <p>Authentication request without extend parameter</p>
@@ -397,7 +397,7 @@
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
    -d <span class="s2">"access_key=YOURACCESSKEY"</span> <span class="se">\</span>
    -d <span class="s2">"secret_key=YOURSECRETKEY"</span> <span class="se">\</span>
-   http://rest.entitysport.com/v2/auth
+   https://rest.entitysport.com/v2/auth
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -436,7 +436,7 @@ If "extend" parameter is not used, Then the generated token will expire in 1 hou
 <li><code style="color:#c7254e";>response.token:</code> access token.</li>
 <li><code style="color:#c7254e";>response.expires:</code> access token expire timestamp.</li>
 </ul>
-<h2 id='making-your-first-request'>Making your First Request</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/?token=[ACCESS_TOKEN]"</span>
+<h2 id='making-your-first-request'>Making your First Request</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -444,7 +444,7 @@ If "extend" parameter is not used, Then the generated token will expire in 1 hou
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"api_doc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://doc.entitysport.com/"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"api_doc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://doc.entitysport.com/"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"status_codes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Failure"</span><span class="p">,</span><span class="w">
@@ -458,10 +458,10 @@ If "extend" parameter is not used, Then the generated token will expire in 1 hou
 
 </span></code></pre>
 <p>It&#39;s very easy to start using the EntitySport Cricket API. By passing your <strong>token</strong> as <code>token</code> to our api server, you can get access to our API data instantly.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://rest.entitysport.com/v2/?token=[ACCESS_TOKEN]</code></p>
-<h2 id='http-status-code'>HTTP Status Code</h2>
-<p>All API request will resolve with any of the following http header status.</p>
+<h3 id='https-request'>https Request</h3>
+<p><code>GET https://rest.entitysport.com/v2/?token=[ACCESS_TOKEN]</code></p>
+<h2 id='https-status-code'>https Status Code</h2>
+<p>All API request will resolve with any of the following https header status.</p>
 
 <table><thead>
 <tr>
@@ -581,7 +581,7 @@ A generic sports player.</p></li>
 <p>Our API supports <code>Etag</code> based caching. In all response, if a cache is applicable for the request, we will provide you etag. You can also get etag from the response header. When you make request with a etag, we will return 304 status if data is not modified. </p>
 
 <p>It&#39;s very useful, when you are calling same api multiple times ie: <strong>live score update</strong>, you will save lots of bandwidth. And you don&#39;t need to refresh the screen, if nothing is changed.</p>
-<h1 id='cricket-api-v2'>Cricket API V2</h1><h2 id='seasons-api'>Seasons API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/seasons/?token=[ACCESS_TOKEN]"</span>
+<h1 id='cricket-api-v2'>Cricket API V2</h1><h2 id='seasons-api'>Seasons API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/seasons/?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -656,7 +656,7 @@ A generic sports player.</p></li>
 <td>API URL address for competitions played on the season</td>
 </tr>
 </tbody></table>
-<h2 id='season-competitions-api'>Season Competitions API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/seasons/{sid}/competitions?token=[ACCESS_TOKEN]&amp;per_page=10&amp;&amp;paged=1"</span>
+<h2 id='season-competitions-api'>Season Competitions API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/seasons/{sid}/competitions?token=[ACCESS_TOKEN]&amp;per_page=10&amp;&amp;paged=1"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -892,7 +892,7 @@ A generic sports player.</p></li>
 <td>api url for teams data</td>
 </tr>
 </tbody></table>
-<h2 id='competitions-overview-api'>Competitions Overview API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/competitions/91396?token=[ACCESS_TOKEN]"</span>
+<h2 id='competitions-overview-api'>Competitions Overview API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/competitions/91396?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1087,7 +1087,7 @@ A generic sports player.</p></li>
 <td>round last match date</td>
 </tr>
 </tbody></table>
-<h2 id='competition-matches-api'>Competition Matches API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/competitions/{cid}/matches/?token=[ACCESS_TOKEN]&amp;per_page=10&amp;&amp;paged=1"</span>
+<h2 id='competition-matches-api'>Competition Matches API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/competitions/{cid}/matches/?token=[ACCESS_TOKEN]&amp;per_page=10&amp;&amp;paged=1"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1535,7 +1535,7 @@ A generic sports player.</p></li>
 <td>numerical representation of decision made by toss winning team.</td>
 </tr>
 </tbody></table>
-<h2 id='competition-teams-api'>Competition Teams API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/competitions/{cid}/teams/?token=[ACCESS_TOKEN]
+<h2 id='competition-teams-api'>Competition Teams API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/competitions/{cid}/teams/?token=[ACCESS_TOKEN]
 </span></code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1795,7 +1795,7 @@ A generic sports player.</p></li>
 <td>timestamp of last played match</td>
 </tr>
 </tbody></table>
-<h2 id='competition-standings-api'>Competition Standings API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/competitions/4904/standings/?token=[ACCESS_TOKEN]
+<h2 id='competition-standings-api'>Competition Standings API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/competitions/4904/standings/?token=[ACCESS_TOKEN]
 </span></code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2070,7 +2070,7 @@ A generic sports player.</p></li>
 <td>Country ISO Code</td>
 </tr>
 </tbody></table>
-<h2 id='competition-statistic-type-api'>Competition Statistic Type API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/competitions/90738/stats/?token=[ACCESS_TOKEN]"</span>
+<h2 id='competition-statistic-type-api'>Competition Statistic Type API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/competitions/90738/stats/?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2199,7 +2199,7 @@ A generic sports player.</p></li>
 <td>A set of string objects for respective group title</td>
 </tr>
 </tbody></table>
-<h2 id='competition-statistic-api'>Competition Statistic API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/competitions/91402/stats/batting_most_runs?format=odi&amp;token=[ACCESS_TOKEN]"</span>
+<h2 id='competition-statistic-api'>Competition Statistic API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/competitions/91402/stats/batting_most_runs?format=odi&amp;token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2735,8 +2735,8 @@ A generic sports player.</p></li>
 <td>team logo url</td>
 </tr>
 </tbody></table>
-<h2 id='recent-matches-api'>Recent Matches API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/matches/?status=2&amp;format=6&amp;token=[ACCESS_TOKEN]"</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/matches/?status=2&amp;format=6&amp;token=[ACCESS_TOKEN]&amp;per_page=10&amp;&amp;paged=1"</span>
+<h2 id='recent-matches-api'>Recent Matches API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/matches/?status=2&amp;format=6&amp;token=[ACCESS_TOKEN]"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/matches/?status=2&amp;format=6&amp;token=[ACCESS_TOKEN]&amp;per_page=10&amp;&amp;paged=1"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -3189,7 +3189,7 @@ A generic sports player.</p></li>
 <td>numerical representation of decision made by toss winning team.</td>
 </tr>
 </tbody></table>
-<h2 id='match-info-api'>Match Info API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/matches/19887/info?token=[ACCESS_TOKEN]"</span>
+<h2 id='match-info-api'>Match Info API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/matches/19887/info?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -3614,7 +3614,7 @@ A generic sports player.</p></li>
 <td>numerical representation of decision made by toss winning team.</td>
 </tr>
 </tbody></table>
-<h2 id='match-scorecard-api'>Match Scorecard API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/matches/19899/scorecard?token=[ACCESS_TOKEN]"</span>
+<h2 id='match-scorecard-api'>Match Scorecard API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/matches/19899/scorecard?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -3652,7 +3652,7 @@ A generic sports player.</p></li>
             </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"South Africa"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SA"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cricket.entitysport.com/assets/uploads/2016/01/south-africa.png"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"httpss://cricket.entitysport.com/assets/uploads/2016/01/south-africa.png"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"scores_full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"335/10 (113.5 ov) &amp; 258/10 (91.3 ov)"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"335/10 &amp; 258/10"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"113.5 &amp; 91.3"</span><span class="w">
@@ -3661,7 +3661,7 @@ A generic sports player.</p></li>
             </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIA"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cricket.entitysport.com/assets/uploads/2016/01/india.png"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"httpss://cricket.entitysport.com/assets/uploads/2016/01/india.png"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"scores_full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"307/10 &amp; *151/10 (50.2 ov)"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"151/10"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50.2"</span><span class="w">
@@ -7017,7 +7017,7 @@ A generic sports player.</p></li>
 <td>playing role</td>
 </tr>
 </tbody></table>
-<h2 id='match-innings-scorecard-api'>Match Innings Scorecard API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/matches/19899/innings/1/scorecard?token=[ACCESS_TOKEN]"</span>
+<h2 id='match-innings-scorecard-api'>Match Innings Scorecard API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/matches/19899/innings/1/scorecard?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -7055,7 +7055,7 @@ A generic sports player.</p></li>
             </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"South Africa"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SA"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cricket.entitysport.com/assets/uploads/2016/01/south-africa.png"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"httpss://cricket.entitysport.com/assets/uploads/2016/01/south-africa.png"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"scores_full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"335/10 (113.5 ov) &amp; 258/10 (91.3 ov)"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"335/10 &amp; 258/10"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"113.5 &amp; 91.3"</span><span class="w">
@@ -7064,7 +7064,7 @@ A generic sports player.</p></li>
             </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIA"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cricket.entitysport.com/assets/uploads/2016/01/india.png"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"httpss://cricket.entitysport.com/assets/uploads/2016/01/india.png"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"scores_full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"307/10 &amp; *151/10 (50.2 ov)"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"151/10"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50.2"</span><span class="w">
@@ -8211,8 +8211,8 @@ A generic sports player.</p></li>
                 </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"South Africa"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"players"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
                 </span><span class="s2">"abbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SA"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"thumb_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cricket.entitysport.com/assets/uploads/2016/01/south-africa.png"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cricket.entitysport.com/assets/uploads/2016/01/south-africa-32x32.png"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"thumb_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"httpss://cricket.entitysport.com/assets/uploads/2016/01/south-africa.png"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"httpss://cricket.entitysport.com/assets/uploads/2016/01/south-africa-32x32.png"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"country"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"za"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"alt_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"South Africa"</span><span class="w">
@@ -8222,8 +8222,8 @@ A generic sports player.</p></li>
                 </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"players"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
                 </span><span class="s2">"abbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIA"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"thumb_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cricket.entitysport.com/assets/uploads/2016/01/india.png"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cricket.entitysport.com/assets/uploads/2016/01/india-32x32.png"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"thumb_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"httpss://cricket.entitysport.com/assets/uploads/2016/01/india.png"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"httpss://cricket.entitysport.com/assets/uploads/2016/01/india-32x32.png"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"country"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"alt_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India"</span><span class="w">
@@ -9238,7 +9238,7 @@ A generic sports player.</p></li>
 <td>playing role</td>
 </tr>
 </tbody></table>
-<h2 id='match-innings-commentary-api'>Match Innings Commentary API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/matches/19899/innings/1/commentary?token=[ACCESS_TOKEN]"</span>
+<h2 id='match-innings-commentary-api'>Match Innings Commentary API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/matches/19899/innings/1/commentary?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -15419,7 +15419,7 @@ A generic sports player.</p></li>
 <td>playing role</td>
 </tr>
 </tbody></table>
-<h2 id='match-live-api'>Match Live API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/matches/19899/live?token=[ACCESS_TOKEN]"</span>
+<h2 id='match-live-api'>Match Live API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/matches/19899/live?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -16326,6 +16326,10 @@ A generic sports player.</p></li>
 <td>API access token</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+If commentary object status is not available, Then Match Live API response will be empty. So Please integrate Match Live API according to commentary object status. <a href="#wagon-and-commentary-codes-on-match-objects">see commentary object properties.</a>
+</aside>
 <h3 id='response-15'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
@@ -17099,7 +17103,7 @@ A generic sports player.</p></li>
 <td>playing role</td>
 </tr>
 </tbody></table>
-<h2 id='match-squads-api'>Match Squads API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/matches/19899/squads?token=[ACCESS_TOKEN]"</span>
+<h2 id='match-squads-api'>Match Squads API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/matches/19899/squads?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -18196,7 +18200,7 @@ A generic sports player.</p></li>
 <td>timestamp of last played match</td>
 </tr>
 </tbody></table>
-<h2 id='match-statistics-api'>Match Statistics API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/matches/19899/statistics?token=[ACCESS_TOKEN]"</span>
+<h2 id='match-statistics-api'>Match Statistics API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/matches/19899/statistics?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -18992,7 +18996,7 @@ A generic sports player.</p></li>
 <td>player logo url</td>
 </tr>
 </tbody></table>
-<h2 id='match-wagon-wheel-api'>Match Wagon Wheel API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/matches/19899/wagons?token=[ACCESS_TOKEN]"</span>
+<h2 id='match-wagon-wheel-api'>Match Wagon Wheel API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/matches/19899/wagons?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -19763,7 +19767,7 @@ A generic sports player.</p></li>
 <td>over number</td>
 </tr>
 </tbody></table>
-<h2 id='player-search-api'>Player Search API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/players?token=[ACCESS_TOKEN]"</span>
+<h2 id='player-search-api'>Player Search API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/players?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -19931,7 +19935,7 @@ A generic sports player.</p></li>
 <td>timestamp of last played match</td>
 </tr>
 </tbody></table>
-<h2 id='player-profile-api'>Player Profile API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/players/119?token=[ACCESS_TOKEN]"</span>
+<h2 id='player-profile-api'>Player Profile API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/players/119?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -20085,7 +20089,7 @@ A generic sports player.</p></li>
 <td>timestamp of last played match</td>
 </tr>
 </tbody></table>
-<h2 id='player-statstic-api'>Player Statstic API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/players/119/stats?token=[ACCESS_TOKEN]"</span>
+<h2 id='player-statstic-api'>Player Statstic API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/players/119/stats?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -20643,7 +20647,7 @@ A generic sports player.</p></li>
 <td>number of times bowler took 10 or more wickets in single match in career for respective format</td>
 </tr>
 </tbody></table>
-<h2 id='team-api'>Team API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/teams/25?token=[ACCESS_TOKEN]"</span>
+<h2 id='team-api'>Team API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/teams/25?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -20740,7 +20744,7 @@ A generic sports player.</p></li>
 <td>team alternative name</td>
 </tr>
 </tbody></table>
-<h2 id='team-matches-api'>Team Matches API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/teams/25/matches?status=2&amp;token=[ACCESS_TOKEN]"</span>
+<h2 id='team-matches-api'>Team Matches API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/teams/25/matches?status=2&amp;token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -21224,7 +21228,7 @@ A generic sports player.</p></li>
 <td>numerical representation of decision made by toss winning team.</td>
 </tr>
 </tbody></table>
-<h2 id='icc-ranking-api'>ICC Ranking API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"http://rest.entitysport.com/v2/iccranks?token=[ACCESS_TOKEN]"</span>
+<h2 id='icc-ranking-api'>ICC Ranking API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/iccranks?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
