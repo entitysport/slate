@@ -1,11 +1,11 @@
 ---
 title: Entity Sports API
 
-language_tabs: # must be one of https://git.io/vQNgJ
+language_tabs: # must be one of httpss://git.io/vQNgJ
   - cURL
 
 toc_footers:
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='httpss://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
   
@@ -17,7 +17,7 @@ search: true
 
 Entity Sports application programming interfaces (API) give you access to our sports data. You can use our Entity Sports API to build web and mobile sports application. Either it's fantasy sports or live score our data full fills requirements for all type of applications. 
 
-Entity Sports API deliver season, competition, teams, matches, player, statistical data for Cricket and Soccer.Since the API is true to RESTful principles, it’s easy to interact with using any tool capable of performing HTTP requests, such as Postman or cURL. 
+Entity Sports API deliver season, competition, teams, matches, player, statistical data for Cricket and Soccer.Since the API is true to RESTful principles, it’s easy to interact with using any tool capable of performing https requests, such as Postman or cURL. 
 
 To allow you to interact securely with our API from a client-side web application (though you should remember that you should never expose your API keys in any public website's client-side code). JSON will be returned in all responses from the API, including errors. 
 
@@ -37,7 +37,7 @@ curl -X POST \
    -d "access_key=YOURACCESSKEY" \
    -d "secret_key=YOURSECRETKEY" \
    -d "extend=1" \
-   http://rest.entitysport.com/v2/auth
+   https://rest.entitysport.com/v2/auth
 ```
 
 > Authentication request without extend parameter
@@ -46,7 +46,7 @@ curl -X POST \
 curl -X POST \
    -d "access_key=YOURACCESSKEY" \
    -d "secret_key=YOURSECRETKEY" \
-   http://rest.entitysport.com/v2/auth
+   https://rest.entitysport.com/v2/auth
 ```
 
 > The above command returns JSON structured like this:
@@ -89,7 +89,7 @@ If "extend" parameter is not used, Then the generated token will expire in 1 hou
 ## Making your First Request
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/?token=[ACCESS_TOKEN]"
 ```
 
 > The above command returns JSON structured like this:
@@ -98,7 +98,7 @@ curl -X GET "http://rest.entitysport.com/v2/?token=[ACCESS_TOKEN]"
 {
     "status": "ok",
     "response": {
-        "api_doc": "http://doc.entitysport.com/",
+        "api_doc": "https://doc.entitysport.com/",
         "status_codes": {
             "ok": "Success",
             "error": "Failure",
@@ -114,13 +114,13 @@ curl -X GET "http://rest.entitysport.com/v2/?token=[ACCESS_TOKEN]"
 
 It's very easy to start using the EntitySport Cricket API. By passing your **token** as `token` to our api server, you can get access to our API data instantly.
 
-### HTTP Request
+### https Request
 
-`GET http://rest.entitysport.com/v2/?token=[ACCESS_TOKEN]`
+`GET https://rest.entitysport.com/v2/?token=[ACCESS_TOKEN]`
 
-## HTTP Status Code
+## https Status Code
 
-All API request will resolve with any of the following http header status.
+All API request will resolve with any of the following https header status.
 
 Response Code | Description
 --------- | -----------
@@ -212,7 +212,7 @@ It's very useful, when you are calling same api multiple times ie: **live score 
 ## Seasons API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/seasons/?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/seasons/?token=[ACCESS_TOKEN]"
 ```
 > The above command returns JSON structured like this:
 
@@ -267,7 +267,7 @@ competitions_url | string | API URL address for competitions played on the seaso
 ## Season Competitions API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/seasons/{sid}/competitions?token=[ACCESS_TOKEN]&per_page=10&&paged=1"
+curl -X GET "https://rest.entitysport.com/v2/seasons/{sid}/competitions?token=[ACCESS_TOKEN]&per_page=10&&paged=1"
 ```
 > The above command returns JSON structured like this:
 
@@ -379,7 +379,7 @@ teams_url | string | api url for teams data
 ## Competitions Overview API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/competitions/91396?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/competitions/91396?token=[ACCESS_TOKEN]"
 ```
 > The above command returns JSON structured like this:
 
@@ -471,7 +471,7 @@ dateend | date | round last match date
 ## Competition Matches API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/competitions/{cid}/matches/?token=[ACCESS_TOKEN]&per_page=10&&paged=1"
+curl -X GET "https://rest.entitysport.com/v2/competitions/{cid}/matches/?token=[ACCESS_TOKEN]&per_page=10&&paged=1"
 ```
 > The above command returns JSON structured like this:
 
@@ -670,7 +670,7 @@ decision | integer | numerical representation of decision made by toss winning t
 ## Competition Teams API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/competitions/{cid}/teams/?token=[ACCESS_TOKEN]
+curl -X GET "https://rest.entitysport.com/v2/competitions/{cid}/teams/?token=[ACCESS_TOKEN]
 ```
 > The above command returns JSON structured like this:
 
@@ -815,7 +815,7 @@ recent_appearance | integer | timestamp of last played match
 ## Competition Standings API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/competitions/4904/standings/?token=[ACCESS_TOKEN]
+curl -X GET "https://rest.entitysport.com/v2/competitions/4904/standings/?token=[ACCESS_TOKEN]
 ```
 > The above command returns JSON structured like this:
 
@@ -944,7 +944,7 @@ country | string | Country ISO Code
 ## Competition Statistic Type API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/competitions/90738/stats/?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/competitions/90738/stats/?token=[ACCESS_TOKEN]"
 ```
 > The above command returns JSON structured like this:
 
@@ -1044,7 +1044,7 @@ types  |  object  | A set of string objects for respective group title
 ## Competition Statistic API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/competitions/91402/stats/batting_most_runs?format=odi&token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/competitions/91402/stats/batting_most_runs?format=odi&token=[ACCESS_TOKEN]"
 ```
 > The above command returns JSON structured like this:
 
@@ -1316,11 +1316,11 @@ logo_url | string | team logo url
 ## Recent Matches API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/matches/?status=2&format=6&token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/matches/?status=2&format=6&token=[ACCESS_TOKEN]"
 ```
 
 ``` shell
-curl -X GET "http://rest.entitysport.com/v2/matches/?status=2&format=6&token=[ACCESS_TOKEN]&per_page=10&&paged=1"
+curl -X GET "https://rest.entitysport.com/v2/matches/?status=2&format=6&token=[ACCESS_TOKEN]&per_page=10&&paged=1"
 ```
 > The above command returns JSON structured like this:
 
@@ -1513,7 +1513,7 @@ decision | integer | numerical representation of decision made by toss winning t
 ## Match Info API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/matches/19887/info?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/matches/19887/info?token=[ACCESS_TOKEN]"
 ```
 
 > The above command returns JSON structured like this:
@@ -1697,7 +1697,7 @@ decision | integer | numerical representation of decision made by toss winning t
 ## Match Scorecard API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/matches/19899/scorecard?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/matches/19899/scorecard?token=[ACCESS_TOKEN]"
 ```
 
 > The above command returns JSON structured like this:
@@ -1736,7 +1736,7 @@ curl -X GET "http://rest.entitysport.com/v2/matches/19899/scorecard?token=[ACCES
             "team_id": 19,
             "name": "South Africa",
             "short_name": "SA",
-            "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/south-africa.png",
+            "logo_url": "httpss://cricket.entitysport.com/assets/uploads/2016/01/south-africa.png",
             "scores_full": "335/10 (113.5 ov) & 258/10 (91.3 ov)",
             "scores": "335/10 & 258/10",
             "overs": "113.5 & 91.3"
@@ -1745,7 +1745,7 @@ curl -X GET "http://rest.entitysport.com/v2/matches/19899/scorecard?token=[ACCES
             "team_id": 25,
             "name": "India",
             "short_name": "INDIA",
-            "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india.png",
+            "logo_url": "httpss://cricket.entitysport.com/assets/uploads/2016/01/india.png",
             "scores_full": "307/10 & *151/10 (50.2 ov)",
             "scores": "151/10",
             "overs": "50.2"
@@ -4378,7 +4378,7 @@ role | string | playing role
 ## Match Innings Scorecard API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/matches/19899/innings/1/scorecard?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/matches/19899/innings/1/scorecard?token=[ACCESS_TOKEN]"
 ```
 
 > The above command returns JSON structured like this:
@@ -4417,7 +4417,7 @@ curl -X GET "http://rest.entitysport.com/v2/matches/19899/innings/1/scorecard?to
             "team_id": 19,
             "name": "South Africa",
             "short_name": "SA",
-            "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/south-africa.png",
+            "logo_url": "httpss://cricket.entitysport.com/assets/uploads/2016/01/south-africa.png",
             "scores_full": "335/10 (113.5 ov) & 258/10 (91.3 ov)",
             "scores": "335/10 & 258/10",
             "overs": "113.5 & 91.3"
@@ -4426,7 +4426,7 @@ curl -X GET "http://rest.entitysport.com/v2/matches/19899/innings/1/scorecard?to
             "team_id": 25,
             "name": "India",
             "short_name": "INDIA",
-            "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india.png",
+            "logo_url": "httpss://cricket.entitysport.com/assets/uploads/2016/01/india.png",
             "scores_full": "307/10 & *151/10 (50.2 ov)",
             "scores": "151/10",
             "overs": "50.2"
@@ -5573,8 +5573,8 @@ curl -X GET "http://rest.entitysport.com/v2/matches/19899/innings/1/scorecard?to
                 "title": "South Africa",
                 "players": [],
                 "abbr": "SA",
-                "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/south-africa.png",
-                "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/south-africa-32x32.png",
+                "thumb_url": "httpss://cricket.entitysport.com/assets/uploads/2016/01/south-africa.png",
+                "logo_url": "httpss://cricket.entitysport.com/assets/uploads/2016/01/south-africa-32x32.png",
                 "type": "country",
                 "country": "za",
                 "alt_name": "South Africa"
@@ -5584,8 +5584,8 @@ curl -X GET "http://rest.entitysport.com/v2/matches/19899/innings/1/scorecard?to
                 "title": "India",
                 "players": [],
                 "abbr": "INDIA",
-                "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india.png",
-                "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india-32x32.png",
+                "thumb_url": "httpss://cricket.entitysport.com/assets/uploads/2016/01/india.png",
+                "logo_url": "httpss://cricket.entitysport.com/assets/uploads/2016/01/india-32x32.png",
                 "type": "country",
                 "country": "in",
                 "alt_name": "India"
@@ -5876,7 +5876,7 @@ role | string | playing role
 ## Match Innings Commentary API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/matches/19899/innings/1/commentary?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/matches/19899/innings/1/commentary?token=[ACCESS_TOKEN]"
 ```
 
 > The above command returns JSON structured like this:
@@ -11650,7 +11650,7 @@ role | string | playing role
 ## Match Live API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/matches/19899/live?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/matches/19899/live?token=[ACCESS_TOKEN]"
 ```
 
 > The above command returns JSON structured like this:
@@ -12548,6 +12548,9 @@ Parameter | Value | Description
 --------- | ------- | -----------
 token | string | API access token
 
+<aside class="notice">
+If commentary object status is not available, Then Match Live API response will be empty. So Please integrate Match Live API according to commentary object status. <a href="#wagon-and-commentary-codes-on-match-objects">see commentary object properties.</a>
+</aside>
 
 ###Response
 
@@ -12763,7 +12766,7 @@ role | string | playing role
 ## Match Squads API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/matches/19899/squads?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/matches/19899/squads?token=[ACCESS_TOKEN]"
 ```
 > The above command returns JSON structured like this:
 
@@ -13693,7 +13696,7 @@ recent_appearance | integer | timestamp of last played match
 ## Match Statistics API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/matches/19899/statistics?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/matches/19899/statistics?token=[ACCESS_TOKEN]"
 ```
 > The above command returns JSON structured like this:
 
@@ -14146,7 +14149,7 @@ logo_url | string | player logo url
 ## Match Wagon Wheel API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/matches/19899/wagons?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/matches/19899/wagons?token=[ACCESS_TOKEN]"
 ```
 > The above command returns JSON structured like this:
 
@@ -14542,7 +14545,7 @@ string | over number
 ## Player Search API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/players?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/players?token=[ACCESS_TOKEN]"
 ```
 > The above command returns JSON structured like this:
 
@@ -14625,7 +14628,7 @@ recent_appearance | integer | timestamp of last played match
 ## Player Profile API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/players/119?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/players/119?token=[ACCESS_TOKEN]"
 ```
 > The above command returns JSON structured like this:
 
@@ -14703,7 +14706,7 @@ recent_appearance | integer | timestamp of last played match
 ## Player Statstic API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/players/119/stats?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/players/119/stats?token=[ACCESS_TOKEN]"
 ```
 > The above command returns JSON structured like this:
 
@@ -15047,7 +15050,7 @@ wicket10m | integer | number of times bowler took 10 or more wickets in single m
 ## Team API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/teams/25?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/teams/25?token=[ACCESS_TOKEN]"
 ```
 > The above command returns JSON structured like this:
 
@@ -15104,7 +15107,7 @@ alt_name | string | team alternative name
 ## Team Matches API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/teams/25/matches?status=2&token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/teams/25/matches?status=2&token=[ACCESS_TOKEN]"
 ```
 > The above command returns JSON structured like this:
 
@@ -15307,7 +15310,7 @@ decision | integer | numerical representation of decision made by toss winning t
 ## ICC Ranking API
 
 ```shell
-curl -X GET "http://rest.entitysport.com/v2/iccranks?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/v2/iccranks?token=[ACCESS_TOKEN]"
 ```
 > The above command returns JSON structured like this:
 
