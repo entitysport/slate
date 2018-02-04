@@ -15541,9 +15541,8 @@ Code | Description
 
 Code | Description
 --------- | ------- 
-0  |  Default
-1  |  Available
-2  |  Not Available
+0,2  |  Not Available
+1  |  Available 
 
 ## Match Game State Codes
 
