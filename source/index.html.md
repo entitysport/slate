@@ -381,6 +381,10 @@ teams_url | string | api url for teams data
 ```shell
 curl -X GET "https://rest.entitysport.com/v2/competitions/91396?token=[ACCESS_TOKEN]"
 ```
+
+```shell
+curl -X GET "https://rest.entitysport.com/v2/competitions?yearmonth=2018-02(yyyy-mm)&paged=1&per_page=50&token=[ACCESS_TOKEN]"
+```
 > The above command returns JSON structured like this:
 
 ```json
@@ -429,6 +433,10 @@ Competition Object Overview API.
 Parameter | Value | Description
 --------- | ------- | -----------
 token | {ACCESS_TOKEN} | API Access token
+yearmonth | string | parameter to list competitions from specific month. example - 2018-02(yyyy-mm)
+per_page | Number | Number of matches to list in each API request
+paged | Number | Page Number for request
+
 
 
 ### Response
@@ -1316,7 +1324,15 @@ logo_url | string | team logo url
 ## Recent Matches API
 
 ```shell
+curl -X GET "https://rest.entitysport.com/v2/matches/?status=2&token=[ACCESS_TOKEN]"
+```
+
+```shell
 curl -X GET "https://rest.entitysport.com/v2/matches/?status=2&format=6&token=[ACCESS_TOKEN]"
+```
+
+```shell
+curl -X GET "https://rest.entitysport.com/v2/matches?date=2018-02-12_18:30:00(Date start - yyyy-mm-dd_hh:mm:ss)_2018-02-13_18:29:59(Date end - yyyy-mm-dd_hh:mm:ss)&paged=1&per_page=50&token=[ACCESS_TOKEN]"
 ```
 
 ``` shell
@@ -1409,6 +1425,7 @@ curl -X GET "https://rest.entitysport.com/v2/matches/?status=2&format=6&token=[A
     "api_version": "2.0"
 }
 ```
+
 Recent Match API provide access to all of our matches. 
 
 ###Request
@@ -1420,6 +1437,7 @@ Parameter | Value | Description
 --------- | ------- | -----------
 status | integer	| filter matches by status (ie: live, completed, upcoming). see properties reference for match status codes
 format | integer	| filter matches by format (ie: odi, test). see properties reference for match format codes
+date | string | List matches of specific date. Need both date start and date end values. date value example - 2018-02-12_18:30:00 (yyyy-mm-dd_hh:mm:ss)
 token | string | API access token
 per_page  |	integer	| Number of competition to list in each api request
 paged  |  integer |  Page number for request
@@ -14547,6 +14565,9 @@ string | over number
 ```shell
 curl -X GET "https://rest.entitysport.com/v2/players?token=[ACCESS_TOKEN]"
 ```
+```shell
+curl -X GET "https://rest.entitysport.com/v2/players?country=in&token=[ACCESS_TOKEN]"
+```
 > The above command returns JSON structured like this:
 
 ```json
@@ -14596,6 +14617,7 @@ Parameter | Value | Description
 token | {ACCESS_TOKEN} | API Access token
 per_page  | integer | Number of items to list in each API request
 paged | integer | Page Number for request
+country | string | 2 letter Country ISO Code (example - country=in)
 
 
 ###Response
