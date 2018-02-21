@@ -834,14 +834,9 @@ curl -X GET "https://rest.entitysport.com/v2/competitions/{cid}/squads/?token=[A
     "response": {
         "teams": [
             {
-                "tid": 9,
+                "team_id": 9,
                 "title": "Scotland",
-                "abbr": "SCOT",
-                "thumb_url": "../assets/uploads/2016/01/scotland-120x80.png",
-                "logo_url": "../assets/uploads/2016/01/scotland-32x32.png",
-                "type": "country",
-                "country": "sct",
-                "alt_name": "Scotland",
+                "gmdate": "2018-02-22",
                 "players": [
                     {
                         "pid": 287,
@@ -866,14 +861,9 @@ curl -X GET "https://rest.entitysport.com/v2/competitions/{cid}/squads/?token=[A
                 ]
             },
             {
-                "tid": 1544,
+                "team_id": 1544,
                 "title": "Hong Kong",
-                "abbr": "HKG",
-                "thumb_url": "",
-                "logo_url": "../assets/uploads/2016/02/hong-kong-32x32.png",
-                "type": "country",
-                "country": "hk",
-                "alt_name": "Hong Kong",
+                "gmdate": "2018-02-22",
                 "players": [
                     {
                         "pid": 1682,
