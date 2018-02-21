@@ -269,6 +269,9 @@
                     <a href="#competition-teams-api" class="toc-h2 toc-link" data-title="Cricket API V2">Competition Teams API</a>
                   </li>
                   <li>
+                    <a href="#competition-squads-api" class="toc-h2 toc-link" data-title="Cricket API V2">Competition Squads API</a>
+                  </li>
+                  <li>
                     <a href="#competition-standings-api" class="toc-h2 toc-link" data-title="Cricket API V2">Competition Standings API</a>
                   </li>
                   <li>
@@ -1811,6 +1814,266 @@ A generic sports player.</p></li>
 <td>timestamp of last played match</td>
 </tr>
 </tbody></table>
+<h2 id='competition-squads-api'>Competition Squads API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/competitions/{cid}/squads/?token=[ACCESS_TOKEN]
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"teams"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"tid"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Scotland"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"abbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCOT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"thumb_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"../assets/uploads/2016/01/scotland-120x80.png"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"../assets/uploads/2016/01/scotland-32x32.png"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"country"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sct"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"alt_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Scotland"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"players"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">287</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kyle Coetzer"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KJ Coetzer"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kyle"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Coetzer"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1984-04-14"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"birthplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sct"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primary_team"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                        </span><span class="s2">"thumb_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"../assets/uploads/2016/01/coetzer-120x120.jpg"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"../assets/uploads/2016/01/coetzer-32x32.jpg"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"playing_role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"batting_style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Right-hand bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"bowling_style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Right-arm medium-fast"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fielding_position"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"recent_match"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"recent_appearance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"tid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1544</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hong Kong"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"abbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"thumb_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"../assets/uploads/2016/02/hong-kong-32x32.png"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"country"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hk"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"alt_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hong Kong"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"players"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1682</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Waqas Khan"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Waqas Khan"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Waqas"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Khan"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1999-03-10"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"birthplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hk"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primary_team"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                        </span><span class="s2">"thumb_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"../assets/uploads/2016/02/waqas-khan-1-120x120.jpg"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"../assets/uploads/2016/02/waqas-khan-1-32x32.jpg"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"playing_role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"batting_style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Right-hand bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"bowling_style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Right-arm medium-fast"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fielding_position"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"recent_match"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"recent_appearance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"total_teams"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"etag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6520d4b995db86e711a7d299cfaf94c4"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-29 01:40:48"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-29 01:40:48"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"api_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Competition Squads API provides information of player roaster of participating teams in competition. </p>
+<h3 id='request-7'>Request</h3>
+<ul>
+<li>Path: /v2/competitions/[cid(competition id)]/squads/</li>
+<li>Method: GET</li>
+<li>Parameters </li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>{ACCESS_TOKEN}</td>
+<td>API Access token</td>
+</tr>
+</tbody></table>
+<h3 id='response-7'>Response</h3>
+<ul>
+<li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
+<li><code style="color:#c7254e";>response.teams:</code> an array of all available team objects.</li>
+<li><code style="color:#c7254e";>response.teams.players:</code> an array of all available player objects who played on the game for the team.</li>
+</ul>
+<h3 id='reference-6'>Reference</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tid</td>
+<td>integer</td>
+<td>team id</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>team name</td>
+</tr>
+<tr>
+<td>abbr</td>
+<td>string</td>
+<td>team short name</td>
+</tr>
+<tr>
+<td>thumb_url</td>
+<td>string</td>
+<td>team logo thumbnail url</td>
+</tr>
+<tr>
+<td>logo_url</td>
+<td>string</td>
+<td>team logo url</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>team type Country(International Team) or Club</td>
+</tr>
+<tr>
+<td>country</td>
+<td>string</td>
+<td>Country ISO Code</td>
+</tr>
+<tr>
+<td>alt_name</td>
+<td>string</td>
+<td>team alternative name</td>
+</tr>
+<tr>
+<td>players</td>
+<td>array</td>
+<td>an array of player details of the team, <a href="#player-properties">see player object properties.</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="player-properties">Player Properties</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>pid</td>
+<td>integer</td>
+<td>player id</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>player name</td>
+</tr>
+<tr>
+<td>short_name</td>
+<td>string</td>
+<td>player short name</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>player first name</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>player last name</td>
+</tr>
+<tr>
+<td>middle_name</td>
+<td>string</td>
+<td>player middle name</td>
+</tr>
+<tr>
+<td>birthdate</td>
+<td>date</td>
+<td>player date of birth</td>
+</tr>
+<tr>
+<td>birthplace</td>
+<td>string</td>
+<td>player birth place</td>
+</tr>
+<tr>
+<td>country</td>
+<td>string</td>
+<td>Country ISO Code</td>
+</tr>
+<tr>
+<td>thumb_url</td>
+<td>string</td>
+<td>player logo thumbnail url</td>
+</tr>
+<tr>
+<td>logo_url</td>
+<td>string</td>
+<td>player logo url</td>
+</tr>
+<tr>
+<td>playing_role</td>
+<td>string</td>
+<td>player playing role</td>
+</tr>
+<tr>
+<td>batting_style</td>
+<td>string</td>
+<td>player batting style</td>
+</tr>
+<tr>
+<td>bowling_style</td>
+<td>string</td>
+<td>player bowling style</td>
+</tr>
+<tr>
+<td>fielding_position</td>
+<td>string</td>
+<td>player fielding position</td>
+</tr>
+<tr>
+<td>recent_match</td>
+<td>integer</td>
+<td>match id of last played match</td>
+</tr>
+<tr>
+<td>recent_appearance</td>
+<td>integer</td>
+<td>timestamp of last played match</td>
+</tr>
+</tbody></table>
 <h2 id='competition-standings-api'>Competition Standings API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/competitions/4904/standings/?token=[ACCESS_TOKEN]
 </span></code></pre>
 <blockquote>
@@ -1863,7 +2126,7 @@ A generic sports player.</p></li>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Competition standings node provides standing table for all of the round or groups for the specified competition.</p>
-<h3 id='request-7'>Request</h3>
+<h3 id='request-8'>Request</h3>
 <ul>
 <li>Path: /v2/competitions/[cid(competition id)]/standings/</li>
 <li>Method: GET</li>
@@ -1883,7 +2146,7 @@ A generic sports player.</p></li>
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-7'>Response</h3>
+<h3 id='response-8'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response.</li>
 <li><code style="color:#c7254e";>response.standing_type:</code> would return either &quot;completed&quot;, &quot;per_round&quot;.
@@ -1894,7 +2157,7 @@ A generic sports player.</p></li>
 </ul></li>
 <li><code style="color:#c7254e";>response.standings: </code> an array of standings data. each standing array item contain a team object. if tournament was played in round, standings will be come inside rounds array.</li>
 </ul>
-<h3 id='reference-6'>Reference</h3>
+<h3 id='reference-7'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2149,7 +2412,7 @@ A generic sports player.</p></li>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Competition stats provides information of players statistics and performance. As well as team wise player statistics. The root stats path provide a list of all available statistics available for the competition. </p>
-<h3 id='request-8'>Request</h3>
+<h3 id='request-9'>Request</h3>
 <ul>
 <li>Path: /v2/competitions/[cid(competition id)]/stats/</li>
 <li>Method: GET</li>
@@ -2169,13 +2432,13 @@ A generic sports player.</p></li>
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-8'>Response</h3>
+<h3 id='response-9'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.formats:</code> an array of match formats played. stat can be filtered with this information</li>
 <li><code style="color:#c7254e";>response.stat_types:</code> an array of stat types, supplied in group (batting, bowling, team)</li>
 </ul>
-<h3 id='reference-7'>Reference</h3>
+<h3 id='reference-8'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2379,7 +2642,7 @@ A generic sports player.</p></li>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Provides information of a specific type of stats, ie batting_most_runs, bowling_best_averages, team_total_runs. It&#39;s root stats path provide a list of all available statistics available for the competition. </p>
-<h3 id='request-9'>Request</h3>
+<h3 id='request-10'>Request</h3>
 <ul>
 <li>Path: /v2/competitions/[cid(competition id)]/stats/[STAT_TYPE]</li>
 <li>Method: GET</li>
@@ -2414,11 +2677,11 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-9'>Response</h3>
+<h3 id='response-10'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-8'>Reference</h3>
+<h3 id='reference-9'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2844,7 +3107,7 @@ A generic sports player.</p></li>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Recent Match API provide access to all of our matches. </p>
-<h3 id='request-10'>Request</h3>
+<h3 id='request-11'>Request</h3>
 <ul>
 <li>Path: /v2/matches/</li>
 <li>Method: GET</li>
@@ -2889,12 +3152,12 @@ A generic sports player.</p></li>
 <td>Page number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-10'>Response</h3>
+<h3 id='response-11'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.matches:</code> an array of all available matches objects.</li>
 </ul>
-<h3 id='reference-9'>Reference</h3>
+<h3 id='reference-10'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3295,7 +3558,7 @@ A generic sports player.</p></li>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Match Info API provide general match information. </p>
-<h3 id='request-11'>Request</h3>
+<h3 id='request-12'>Request</h3>
 <ul>
 <li>Path: /v2/matches/[MATCH_ID]/info</li>
 <li>Method: GET</li>
@@ -3315,11 +3578,11 @@ A generic sports player.</p></li>
 <td>API access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-11'>Response</h3>
+<h3 id='response-12'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-10'>Reference</h3>
+<h3 id='reference-11'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6039,7 +6302,7 @@ A generic sports player.</p></li>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Match Scorecard API provide full match scorecard details. This API point includes batting, bowling, fall of wickets, venue, umpires, time, toss information. </p>
-<h3 id='request-12'>Request</h3>
+<h3 id='request-13'>Request</h3>
 <ul>
 <li>Path: /v2/matches/[MATCH_ID]/scorecard</li>
 <li>Method: GET</li>
@@ -6059,7 +6322,7 @@ A generic sports player.</p></li>
 <td>API access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-12'>Response</h3>
+<h3 id='response-13'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.competition:</code> competition object.</li>
@@ -6071,7 +6334,7 @@ A generic sports player.</p></li>
 <li><code style="color:#c7254e";>response.innings:</code> All innings.</li>
 <li><code style="color:#c7254e";>response.players:</code> Player details.</li>
 </ul>
-<h3 id='reference-11'>Reference</h3>
+<h3 id='reference-12'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8260,7 +8523,7 @@ A generic sports player.</p></li>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Match Innings Scorecard API provide single inning scorecard details. This API point includes batting, bowling, fall of wickets, venue, umpires, time, toss information. </p>
-<h3 id='request-13'>Request</h3>
+<h3 id='request-14'>Request</h3>
 <ul>
 <li>Path: /v2/matches/[MATCH_ID]/innings/[inning_number]/scorecard</li>
 <li>Method: GET</li>
@@ -8280,7 +8543,7 @@ A generic sports player.</p></li>
 <td>API access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-13'>Response</h3>
+<h3 id='response-14'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.competition:</code> competition object.</li>
@@ -8292,7 +8555,7 @@ A generic sports player.</p></li>
 <li><code style="color:#c7254e";>response.innings:</code> All innings.</li>
 <li><code style="color:#c7254e";>response.players:</code> Player details.</li>
 </ul>
-<h3 id='reference-12'>Reference</h3>
+<h3 id='reference-13'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -14868,7 +15131,7 @@ A generic sports player.</p></li>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Match Innings Commentary API provide single inning ball by ball details. </p>
-<h3 id='request-14'>Request</h3>
+<h3 id='request-15'>Request</h3>
 <ul>
 <li>Path: /v2/matches/[MATCH_ID]/innings/[inning_number]/commentary</li>
 <li>Method: GET</li>
@@ -14888,11 +15151,11 @@ A generic sports player.</p></li>
 <td>API access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-14'>Response</h3>
+<h3 id='response-15'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-13'>Reference</h3>
+<h3 id='reference-14'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -16329,7 +16592,7 @@ A generic sports player.</p></li>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Match Live API provide access to live match updates of active inning. This API point provide fastest update of live inning of the match.  </p>
-<h3 id='request-15'>Request</h3>
+<h3 id='request-16'>Request</h3>
 <ul>
 <li>Path: /v2/matches/[MATCH_ID]/live</li>
 <li>Method: GET</li>
@@ -16353,11 +16616,11 @@ A generic sports player.</p></li>
 <aside class="notice">
 If commentary object status is not available, Then Match Live API response will be empty. So Please integrate Match Live API according to commentary object status. <a href="#wagon-and-commentary-codes-on-match-objects">see commentary object properties.</a>
 </aside>
-<h3 id='response-15'>Response</h3>
+<h3 id='response-16'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-14'>Reference</h3>
+<h3 id='reference-15'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -17976,7 +18239,7 @@ If commentary object status is not available, Then Match Live API response will 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Provides information of a Match Squads. </p>
-<h3 id='request-16'>Request</h3>
+<h3 id='request-17'>Request</h3>
 <ul>
 <li>Path: /v2/matches/[MATCH_ID]/squads</li>
 <li>Method: GET</li>
@@ -17996,11 +18259,11 @@ If commentary object status is not available, Then Match Live API response will 
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-16'>Response</h3>
+<h3 id='response-17'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-15'>Reference</h3>
+<h3 id='reference-16'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -18508,7 +18771,7 @@ If commentary object status is not available, Then Match Live API response will 
 <li>Wickets - Type of dismissals happened in innings. </li>
 <li>Runrate - Run rate of team after every over</li>
 </ul>
-<h3 id='request-17'>Request</h3>
+<h3 id='request-18'>Request</h3>
 <ul>
 <li>Path: /v2/matches/[MATCH_ID]/statistics/</li>
 <li>Method: GET</li>
@@ -18528,11 +18791,11 @@ If commentary object status is not available, Then Match Live API response will 
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-17'>Response</h3>
+<h3 id='response-18'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-16'>Reference</h3>
+<h3 id='reference-17'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -19266,7 +19529,7 @@ If commentary object status is not available, Then Match Live API response will 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Match Wagon Wheel API provide batting shots field presentation with x,y,z positional data. </p>
-<h3 id='request-18'>Request</h3>
+<h3 id='request-19'>Request</h3>
 <ul>
 <li>Path: /v2/matches/[MATCH_ID]/wagons/</li>
 <li>Method: GET</li>
@@ -19286,11 +19549,11 @@ If commentary object status is not available, Then Match Live API response will 
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-18'>Response</h3>
+<h3 id='response-19'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-17'>Reference</h3>
+<h3 id='reference-18'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -19831,7 +20094,7 @@ If commentary object status is not available, Then Match Live API response will 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Player Search API provides access to all cricket players profile data on our database. </p>
-<h3 id='request-19'>Request</h3>
+<h3 id='request-20'>Request</h3>
 <ul>
 <li>Path: /v2/players/</li>
 <li>Method: GET</li>
@@ -19866,11 +20129,11 @@ If commentary object status is not available, Then Match Live API response will 
 <td>2 letter Country ISO Code (example - country=in)</td>
 </tr>
 </tbody></table>
-<h3 id='response-19'>Response</h3>
+<h3 id='response-20'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-18'>Reference</h3>
+<h3 id='reference-19'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -20000,7 +20263,7 @@ If commentary object status is not available, Then Match Live API response will 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Player Profile API provides details of player info. </p>
-<h3 id='request-20'>Request</h3>
+<h3 id='request-21'>Request</h3>
 <ul>
 <li>Path: /v2/players/[PLAYER_ID]/</li>
 <li>Method: GET</li>
@@ -20020,11 +20283,11 @@ If commentary object status is not available, Then Match Live API response will 
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-20'>Response</h3>
+<h3 id='response-21'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-19'>Reference</h3>
+<h3 id='reference-20'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -20374,7 +20637,7 @@ If commentary object status is not available, Then Match Live API response will 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Player Profile API provides details of player info. </p>
-<h3 id='request-21'>Request</h3>
+<h3 id='request-22'>Request</h3>
 <ul>
 <li>Path: /v2/players/[PLAYER_ID]/stats</li>
 <li>Method: GET</li>
@@ -20394,11 +20657,11 @@ If commentary object status is not available, Then Match Live API response will 
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-21'>Response</h3>
+<h3 id='response-22'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-20'>Reference</h3>
+<h3 id='reference-21'>Reference</h3>
 <h3>Player Profile Object Properties</h3>
 
 <table><thead>
@@ -20700,7 +20963,7 @@ If commentary object status is not available, Then Match Live API response will 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Provides information of a team. </p>
-<h3 id='request-22'>Request</h3>
+<h3 id='request-23'>Request</h3>
 <ul>
 <li>Path: /v2/teams/[TEAM_ID]/</li>
 <li>Method: GET</li>
@@ -20720,11 +20983,11 @@ If commentary object status is not available, Then Match Live API response will 
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-22'>Response</h3>
+<h3 id='response-23'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-21'>Reference</h3>
+<h3 id='reference-22'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -20863,7 +21126,7 @@ If commentary object status is not available, Then Match Live API response will 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Provides information of a team. </p>
-<h3 id='request-23'>Request</h3>
+<h3 id='request-24'>Request</h3>
 <ul>
 <li>Path: /v2/teams/[TEAM_ID]/matches</li>
 <li>Method: GET</li>
@@ -20898,12 +21161,12 @@ If commentary object status is not available, Then Match Live API response will 
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-23'>Response</h3>
+<h3 id='response-24'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.matches:</code> array of matches objects.</li>
 </ul>
-<h3 id='reference-22'>Reference</h3>
+<h3 id='reference-23'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -21390,7 +21653,7 @@ If commentary object status is not available, Then Match Live API response will 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Provides information of a team. </p>
-<h3 id='request-24'>Request</h3>
+<h3 id='request-25'>Request</h3>
 <ul>
 <li>Path: /v2/iccranks/</li>
 <li>Method: GET</li>
@@ -21410,7 +21673,7 @@ If commentary object status is not available, Then Match Live API response will 
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-24'>Response</h3>
+<h3 id='response-25'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.ranks:</code> ranking details.</li>
@@ -21421,7 +21684,7 @@ If commentary object status is not available, Then Match Live API response will 
 <li><code style="color:#c7254e";>response.groups:</code> ranking groups.</li>
 <li><code style="color:#c7254e";>response.formats:</code> ranking formats.</li>
 </ul>
-<h3 id='reference-23'>Reference</h3>
+<h3 id='reference-24'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
