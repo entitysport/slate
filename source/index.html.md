@@ -696,29 +696,7 @@ curl -X GET "https://rest.entitysport.com/v2/competitions/{cid}/teams/?token=[AC
                 "logo_url": "../assets/uploads/2016/01/scotland-32x32.png",
                 "type": "country",
                 "country": "sct",
-                "alt_name": "Scotland",
-                "players": [
-                    {
-                        "pid": 287,
-                        "title": "Kyle Coetzer",
-                        "short_name": "KJ Coetzer",
-                        "first_name": "Kyle",
-                        "last_name": "Coetzer",
-                        "middle_name": "James",
-                        "birthdate": "1984-04-14",
-                        "birthplace": "",
-                        "country": "sct",
-                        "primary_team": [],
-                        "thumb_url": "../assets/uploads/2016/01/coetzer-120x120.jpg",
-                        "logo_url": "../assets/uploads/2016/01/coetzer-32x32.jpg",
-                        "playing_role": "bat",
-                        "batting_style": "Right-hand bat",
-                        "bowling_style": "Right-arm medium-fast",
-                        "fielding_position": "",
-                        "recent_match": 0,
-                        "recent_appearance": 0
-                    }
-                ]
+                "alt_name": "Scotland"
             },
             {
                 "tid": 1544,
@@ -728,29 +706,7 @@ curl -X GET "https://rest.entitysport.com/v2/competitions/{cid}/teams/?token=[AC
                 "logo_url": "../assets/uploads/2016/02/hong-kong-32x32.png",
                 "type": "country",
                 "country": "hk",
-                "alt_name": "Hong Kong",
-                "players": [
-                    {
-                        "pid": 1682,
-                        "title": "Waqas Khan",
-                        "short_name": "Waqas Khan",
-                        "first_name": "Waqas",
-                        "last_name": "Khan",
-                        "middle_name": "",
-                        "birthdate": "1999-03-10",
-                        "birthplace": "",
-                        "country": "hk",
-                        "primary_team": [],
-                        "thumb_url": "../assets/uploads/2016/02/waqas-khan-1-120x120.jpg",
-                        "logo_url": "../assets/uploads/2016/02/waqas-khan-1-32x32.jpg",
-                        "playing_role": "bat",
-                        "batting_style": "Right-hand bat",
-                        "bowling_style": "Right-arm medium-fast",
-                        "fielding_position": "",
-                        "recent_match": 0,
-                        "recent_appearance": 0
-                    }
-                ]
+                "alt_name": "Hong Kong"
             }
         ],
         "total_teams": 2
