@@ -820,6 +820,151 @@ recent_appearance | integer | timestamp of last played match
 
 
 
+## Competition Squads API
+
+```shell
+curl -X GET "https://rest.entitysport.com/v2/competitions/{cid}/squads/?token=[ACCESS_TOKEN]
+```
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "teams": [
+            {
+                "tid": 9,
+                "title": "Scotland",
+                "abbr": "SCOT",
+                "thumb_url": "../assets/uploads/2016/01/scotland-120x80.png",
+                "logo_url": "../assets/uploads/2016/01/scotland-32x32.png",
+                "type": "country",
+                "country": "sct",
+                "alt_name": "Scotland",
+                "players": [
+                    {
+                        "pid": 287,
+                        "title": "Kyle Coetzer",
+                        "short_name": "KJ Coetzer",
+                        "first_name": "Kyle",
+                        "last_name": "Coetzer",
+                        "middle_name": "James",
+                        "birthdate": "1984-04-14",
+                        "birthplace": "",
+                        "country": "sct",
+                        "primary_team": [],
+                        "thumb_url": "../assets/uploads/2016/01/coetzer-120x120.jpg",
+                        "logo_url": "../assets/uploads/2016/01/coetzer-32x32.jpg",
+                        "playing_role": "bat",
+                        "batting_style": "Right-hand bat",
+                        "bowling_style": "Right-arm medium-fast",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0
+                    }
+                ]
+            },
+            {
+                "tid": 1544,
+                "title": "Hong Kong",
+                "abbr": "HKG",
+                "thumb_url": "",
+                "logo_url": "../assets/uploads/2016/02/hong-kong-32x32.png",
+                "type": "country",
+                "country": "hk",
+                "alt_name": "Hong Kong",
+                "players": [
+                    {
+                        "pid": 1682,
+                        "title": "Waqas Khan",
+                        "short_name": "Waqas Khan",
+                        "first_name": "Waqas",
+                        "last_name": "Khan",
+                        "middle_name": "",
+                        "birthdate": "1999-03-10",
+                        "birthplace": "",
+                        "country": "hk",
+                        "primary_team": [],
+                        "thumb_url": "../assets/uploads/2016/02/waqas-khan-1-120x120.jpg",
+                        "logo_url": "../assets/uploads/2016/02/waqas-khan-1-32x32.jpg",
+                        "playing_role": "bat",
+                        "batting_style": "Right-hand bat",
+                        "bowling_style": "Right-arm medium-fast",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0
+                    }
+                ]
+            }
+        ],
+        "total_teams": 2
+    },
+    "etag": "6520d4b995db86e711a7d299cfaf94c4",
+    "modified": "2017-08-29 01:40:48",
+    "datetime": "2017-08-29 01:40:48",
+    "api_version": "2.0"
+}
+```
+
+Competition Squads API provides information of player roaster of participating teams in competition. 
+
+### Request
+
+* Path: /v2/competitions/[cid(competition id)]/squads/
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.teams:</code> an array of all available team objects.
+* <code style="color:#c7254e";>response.teams.players:</code> an array of all available player objects who played on the game for the team.
+
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+title | string | team name
+abbr | string | team short name
+thumb_url | string | team logo thumbnail url
+logo_url | string | team logo url
+type | string | team type Country(International Team) or Club
+country | string | Country ISO Code
+alt_name | string | team alternative name
+players | array | an array of player details of the team, <a href="#player-properties">see player object properties.</a>
+
+
+<h3 id="player-properties">Player Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+title | string | player name
+short_name | string | player short name
+first_name | string | player first name
+last_name | string | player last name
+middle_name | string | player middle name
+birthdate | date | player date of birth
+birthplace | string | player birth place
+country | string | Country ISO Code
+thumb_url | string | player logo thumbnail url
+logo_url | string | player logo url
+playing_role | string | player playing role
+batting_style | string | player batting style
+bowling_style | string | player bowling style
+fielding_position | string | player fielding position
+recent_match | integer | match id of last played match
+recent_appearance | integer | timestamp of last played match
+
+
+
 ## Competition Standings API
 
 ```shell
