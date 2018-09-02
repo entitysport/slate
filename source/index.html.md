@@ -15883,3 +15883,7294 @@ Sussex	| 5721
 Warwickshire	| 7002
 Worcestershire	| 7000
 Yorkshire	| 7050
+
+
+# Soccer API
+
+## Getting your Keys 
+
+You will need an active access key and secret key with a valid subsciption to start using our API. Please visit entitysport.com to request your keys and subscription.
+
+## Obtaining Token
+
+> To authorize, use this code:
+
+```shell
+curl -X POST \
+   -d "access_key=YOURACCESSKEY" \
+   -d "secret_key=YOURSECRETKEY" \
+   https://rest.entitysport.com/soccer/auth
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "token": "1|X#aFhlzAsd",
+        "expires": "12312312312",
+    },
+    "api_version": "2.0"
+}
+
+```
+
+To access any API, you need a token. A token can be generated using your keys. Token is a piece of information that would allow you to access our API data until your subscription expires. Auth API provides you the token, by validating your keys. Request to our Auth API whenever the access token is expired or unavailable.
+
+### Request
+
+* Path: /soccer/auth/
+* Method: Post
+* POST Parameters
+ * access_key - Access Key of your Application.
+ * secret_key - Secret key of your Application.
+
+
+###Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.token:</code> access token.
+* <code style="color:#c7254e";>response.expires:</code> access token expire timestamp.
+
+## Making your First Request
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "api_doc": "https://doc.entitysport.com/soccer/",
+        "status_codes": {
+            "ok": "Success",
+            "error": "Failure",
+            "invalid": "Invalid Request",
+            "unauthorized": "Un authorized",
+            "noaccess": "No access to requested resource"
+        }
+    },
+    "api_version": "2.0"
+}
+
+```
+
+It's very easy to start using the EntitySport Soccer API. By passing your **token** as `token` to our api server, you can get access to our API data instantly.
+
+### https Request
+
+`GET https://rest.entitysport.com/soccer/?token=[ACCESS_TOKEN]`
+
+## https Status Code
+
+All API request will resolve with any of the following https header status.
+
+Response Code | Description
+--------- | -----------
+200  | API request valid, informations ready to access
+304  | API request valid, but data was not modified since last accessed (compared using Etag)
+400  | Client side error. occurs for invalid request
+401  | occurs for unauthorized request
+501  | Server side error. Internal server error, unable to process your request
+
+## API Response
+
+```json
+
+{
+    "status": "ok",
+    "response": {},
+    "etag": "8fc93de066d8d802a36e0882ecc77fdb",
+    "modified": "2017-01-31 16:29:11",
+    "datetime": "2017-01-31 16:29:11",
+    "api_version": "1.0"
+}
+
+```
+All successfull API request will return json output. The basic structure of data is available on all of the calls.
+
+### Status - Possible Values are as follows :
+
+Status | Description
+--------- | -----------
+ok  | A successfull response
+error  | if the request contains error
+unauthorized  | if the request is not authorized, usually for invalid/expired access token
+accessdenied  | if your app try to access non permitted data
+
+* <code style="color:#c7254e";>response:</code> contains the main data of the response. value can be string, number, array or object.
+* <code style="color:#c7254e";>etag:</code> etag generate for the current content. can be used to check if a document was modified since the last etag provided by the client.
+* <code style="color:#c7254e";>datetime:</code> document serving datetime (UTC+0).
+* <code style="color:#c7254e";>modified:</code> document last modified datetime (UTC+0).
+
+## Pagination 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+per_page | Number | Number of items to list in each API request
+paged | Number | Page Number for request
+
+<aside class="success">/?token=[ACCESS_TOKEN]&per_page=5&&paged=3</aside>
+
+## API Objects
+
+There are some informations that we call as OBJECT. A response can contain a single object, or multiple objects or no objects at all. It is important get famililar with our objects.
+
+We have 5 Obejcts in total. A object is a set of data, which contains a unique identifier, and directly relates to other objects. ie: match object connects inning object, team object. 
+
+Each object has a unique identifier which start with the first character of object name, and **id** as suffix. ie: competition unique identified named as **cid**, for match it's **mid**, for player it's **pid**, for team, it's **tid** and for season - **sid**.
+
+
+* **Season:**
+  A seaon is a year timeframe. ie: 2016, 2014-15 etc. It is marked with cross year, four digit from current year, and 2 digit from next year, separated by a hyphen, ie: 2015-16.
+
+* **Competition:**
+  Competition is a tour, or tournament, or trophy cup. A competition contains information matches, teams, player performance, table standings, season, dates, type, category etc
+
+* **Match:**
+  Match is the core part of our api. A match makes connection between teams, competition, players.
+    
+* **Team:**
+  A generic sports team, having a name, logo, country and type of team.
+
+* **Player:**
+  A generic sports player.
+
+## Seasons API
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/seasons/?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "sid": "18-19",
+                "name": "18-19",
+                "competitions_url": "season/18-19/competitions"
+            },
+            {
+                "sid": "2018",
+                "name": "2018",
+                "competitions_url": "season/2018/competitions"
+            }
+        ],
+        "total_items": 2,
+        "total_pages": 1
+    },
+    "etag": "d29504573deab71b8f89d61c9ee8bac1",
+    "modified": "2018-08-30 05:50:04",
+    "datetime": "2018-08-30 05:50:04",
+    "api_version": "1.0"
+}
+
+```
+Provides information of all avaialable soccer seasons you have access. A season is named as complete year ie: 2018. for all tournaments that happens in the correspoding year, or name cross year ie: 18-19 for matches happens in multiple years or vice versa.
+
+###Request
+* Path: /soccer/seasons/
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+
+
+###Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> an array of all available season objects user have access.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+sid | string | season id
+name | string | season representational name
+competitions_url | string | API URL address for list of competitions played on the season
+
+## Season Competitions API
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/season/{sid}/competitions?token=[ACCESS_TOKEN]&per_page=10&&paged=1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "cid": 3,
+                "cname": "Premier League",
+                "startdate": "2018-08-10 00:00:00",
+                "enddate": "2019-05-13 23:55:00",
+                "startdatetimestamp": 1533859200,
+                "endtdatetimestamp": 1557791700,
+                "year": "18/19",
+                "category": "England",
+                "ioc_id": "240",
+                "ioc": "en",
+                "status": 3,
+                "status_str": "live",
+                "logo": "",
+                "competition_url": "competition/3",
+                "team_url": "competition/3/squad",
+                "match_url": "competition/3/matches",
+                "stats_url": "competition/3/stats"
+            }
+        ],
+        "total_items": 2,
+        "total_pages": 2
+    },
+    "etag": "7b2ab0e6bed3978db9b3e21664652821",
+    "modified": "2018-08-31 17:35:28",
+    "datetime": "2018-08-31 17:35:28",
+    "api_version": "1.0"
+}
+
+```
+This will list all available competitions those you are subscribed and can access for specified season. Season is named using 4 digit year, ex: **2018**, or Year combo, ex: **18-19**. 
+
+It will list 10 competitions data per request. If there is more than 10 competitions, you will get extra value under response node. You can use the page parameter to jump to a specific page if exists.
+
+### Request
+* Path: /soccer/season/[sid(season id)]/competitons
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+sid | string | season id
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of competition cards.
+* <code style="color:#c7254e";>response.total_items:</code> total number of competitions listed under the season.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of the competitions list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | integer | timestamp of competition start date
+enddatetimestamp | integer | timestamp of competition end date
+year | string | Season Year
+category | string | Competition Category
+ioc_id | integer | IOC id of competition native country
+ioc | string | IOC 2 letter code of competition native country
+status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+competition_url | string | Competition information API end point url
+team_url | string | Competition team squad information API end point url
+match_url | string | Competition matches information API end point url
+stats_url | string | Competition player statistic information API end point url
+
+
+## Competitions List API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/competitions?token=[ACCESS_TOKEN]"
+```
+> Using Token and Pagination parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/competitions?token=[ACCESS_TOKEN]&per_page=10&paged=1"
+```
+> Using Token, Pagination and status parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/competitions?token=[ACCESS_TOKEN]&status=3&per_page=10&paged=1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "cid": 2,
+                "name": "World Cup",
+                "startdate": "2018-06-14 05:30:00",
+                "enddate": "2018-07-17 05:25:00",
+                "year": "2018",
+                "startdatetimestamp": 1528954200,
+                "endtdatetimestamp": 1531805100,
+                "category": "International",
+                "status": 2,
+                "status_str": "completed",
+                "logo": "",
+                "team_url": "competition/2/squad",
+                "match_url": "competition/2/matches",
+                "stats_url": "competition/2/stats"
+            },
+            {
+                "cid": 3,
+                "name": "Premier League",
+                "startdate": "2018-08-10 00:00:00",
+                "enddate": "2019-05-13 23:55:00",
+                "year": "18/19",
+                "startdatetimestamp": 1533859200,
+                "endtdatetimestamp": 1557791700,
+                "category": "England",
+                "ioc_id": "240",
+                "ioc": "en",
+                "status": 3,
+                "status_str": "live",
+                "logo": "",
+                "team_url": "competition/3/squad",
+                "match_url": "competition/3/matches",
+                "stats_url": "competition/3/stats"
+            }
+        ],
+        "total_items": 5,
+        "total_pages": 3
+    },
+    "etag": "2017ecb236c5c116aae4f179f50d2abd",
+    "modified": "2018-08-31 17:36:37",
+    "datetime": "2018-08-31 17:36:37",
+    "api_version": "1.0"
+}
+
+```
+This API lists all available competitions those user are subscribed and can access. This API is a directory of all competitions user have access.
+
+It will list 10 competitions data per request. If there is more than 10 competitions, you will get extra value under response node. You can use the page parameter to jump to a specific page if exists.
+
+### Request
+* Path: /soccer/competitons
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+status | integer | status code for the competition, available status code 1 = upcoming, 2 = completed, 3 = live
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of competition cards.
+* <code style="color:#c7254e";>response.total_items:</code> total number of competitions available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of competition list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | integer | timestamp of competition start date
+enddatetimestamp | integer | timestamp of competition end date
+year | string | Season Year
+category | string | Competition Category
+ioc_id | integer | IOC id of competition native country
+ioc | string | IOC 2 letter code of competition native country
+status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+competition_url | string | Competition information API end point url
+team_url | string | Competition team squad information API end point url
+match_url | string | Competition matches information API end point url
+stats_url | string | Competition player statistic information API end point url
+
+## Competitions Information API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/competition/3/?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "cid": 3,
+                "name": "Premier League",
+                "startdate": "2018-08-10 00:00:00",
+                "enddate": "2019-05-13 23:55:00",
+                "startdatetimestamp": 1533859200,
+                "endtdatetimestamp": 1557791700,
+                "year": "18/19",
+                "category": "England",
+                "ioc_id": "240",
+                "ioc": "en",
+                "status": 3,
+                "status_str": "live",
+                "logo": "",
+                "teams": [
+                    {
+                        "tid": 41,
+                        "tname": "Wolves",
+                        "fullname": "Wolverhampton Wanderers",
+                        "abbr": "WOL",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "",
+                        "founded": "",
+                        "website": "http://www.wolves.premiumtv.co.uk/page/Home/",
+                        "twitter": "Wolves",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/3.png"
+                    },
+                    {
+                        "tid": 42,
+                        "tname": "Burnley",
+                        "fullname": "Burnley FC",
+                        "abbr": "BUR",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#BFC",
+                        "founded": "1882",
+                        "website": "http://www.burnleyfootballclub.com",
+                        "twitter": "BurnleyOfficial",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/6.png"
+                    },
+                    {
+                        "tid": 43,
+                        "tname": "Crystal Palace",
+                        "fullname": "Crystal Palace",
+                        "abbr": "CRY",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#CPFC",
+                        "founded": "1905",
+                        "website": "http://www.cpfc.premiumtv.co.uk/page/Home/",
+                        "twitter": "CPFC",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/7.png"
+                    },
+                    {
+                        "tid": 44,
+                        "tname": "Man City",
+                        "fullname": "Manchester City",
+                        "abbr": "MCI",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#MCFC",
+                        "founded": "1894",
+                        "website": "http://www.mcfc.co.uk",
+                        "twitter": "ManCity",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/17.png"
+                    },
+                    {
+                        "tid": 45,
+                        "tname": "Watford",
+                        "fullname": "Watford FC",
+                        "abbr": "WAT",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#WATFORDFC",
+                        "founded": "1881",
+                        "website": "http://www.watfordfc.premiumtv.co.uk/page/Home/0,,10400,00.html",
+                        "twitter": "WatfordFC",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/24.png"
+                    },
+                    {
+                        "tid": 46,
+                        "tname": "Brighton",
+                        "fullname": "Brighton & Hove Albion FC",
+                        "abbr": "BHA",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#BHAFC",
+                        "founded": "1901",
+                        "website": "http://www.seagulls.co.uk",
+                        "twitter": "OfficialBHAFC",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/30.png"
+                    },
+                    {
+                        "tid": 47,
+                        "tname": "Leicester",
+                        "fullname": "Leicester City",
+                        "abbr": "LEI",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#LCFC",
+                        "founded": "1884",
+                        "website": "http://www.lcfc.premiumtv.co.uk/page/World",
+                        "twitter": "LCFC",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/31.png"
+                    },
+                    {
+                        "tid": 48,
+                        "tname": "Tottenham",
+                        "fullname": "Tottenham Hotspur",
+                        "abbr": "TOT",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#COYS",
+                        "founded": "1882",
+                        "website": "http://www.spurs.co.uk",
+                        "twitter": "SpursOfficial",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/33.png"
+                    },
+                    {
+                        "tid": 49,
+                        "tname": "Man Utd",
+                        "fullname": "Manchester United",
+                        "abbr": "MUN",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#MUFC",
+                        "founded": "1878",
+                        "website": "http://www.manutd.com",
+                        "twitter": "ManUtd",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/35.png"
+                    },
+                    {
+                        "tid": 50,
+                        "tname": "West Ham",
+                        "fullname": "West Ham United",
+                        "abbr": "WHU",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#WHUFC",
+                        "founded": "1895",
+                        "website": "http://www.westhamunited.co.uk",
+                        "twitter": "WestHamUtd",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/37.png"
+                    },
+                    {
+                        "tid": 51,
+                        "tname": "Chelsea",
+                        "fullname": "Chelsea FC",
+                        "abbr": "CHE",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#CFC",
+                        "founded": "1905",
+                        "website": "http://www.chelseafc.co.uk",
+                        "twitter": "ChelseaFC",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/38.png"
+                    },
+                    {
+                        "tid": 52,
+                        "tname": "Newcastle",
+                        "fullname": "Newcastle United",
+                        "abbr": "NEW",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#NUFC",
+                        "founded": "1892",
+                        "website": "http://www.nufc.co.uk",
+                        "twitter": "NUFC",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/39.png"
+                    },
+                    {
+                        "tid": 53,
+                        "tname": "Arsenal",
+                        "fullname": "Arsenal FC",
+                        "abbr": "ARS",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#Arsenal",
+                        "founded": "1886",
+                        "website": "http://www.arsenal.com",
+                        "twitter": "Arsenal",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/42.png"
+                    },
+                    {
+                        "tid": 54,
+                        "tname": "Fulham",
+                        "fullname": "Fulham FC",
+                        "abbr": "FUL",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#FFC",
+                        "founded": "",
+                        "website": "http://www.fulhamfc.co.uk",
+                        "twitter": "Fulham Football Club",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/43.png"
+                    },
+                    {
+                        "tid": 55,
+                        "tname": "Liverpool",
+                        "fullname": "Liverpool FC",
+                        "abbr": "LIV",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#LFC",
+                        "founded": "1892",
+                        "website": "http://www.liverpoolfc.tv",
+                        "twitter": "LFC",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/44.png"
+                    },
+                    {
+                        "tid": 56,
+                        "tname": "Southampton",
+                        "fullname": "Southampton FC",
+                        "abbr": "SOU",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#SaintsFC",
+                        "founded": "1885",
+                        "website": "http://www.saintsfc.co.uk/index.php",
+                        "twitter": "SouthamptonFC",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/45.png"
+                    },
+                    {
+                        "tid": 57,
+                        "tname": "Everton",
+                        "fullname": "Everton FC",
+                        "abbr": "EVE",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#EFC",
+                        "founded": "1878",
+                        "website": "http://www.evertonfc.com",
+                        "twitter": "Everton",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/48.png"
+                    },
+                    {
+                        "tid": 58,
+                        "tname": "Huddersfield",
+                        "fullname": "Huddersfield Town",
+                        "abbr": "HUD",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#HTAFC",
+                        "founded": "1908",
+                        "website": "http://www.htafc.com/page/Home",
+                        "twitter": "htafcdotcom",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/59.png"
+                    },
+                    {
+                        "tid": 59,
+                        "tname": "Bournemouth",
+                        "fullname": "AFC Bournemouth",
+                        "abbr": "BOU",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#AFCB",
+                        "founded": "1899",
+                        "website": "http://www.afcb.co.uk",
+                        "twitter": "afcbournemouth",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/60.png"
+                    },
+                    {
+                        "tid": 60,
+                        "tname": "Cardiff",
+                        "fullname": "Cardiff City",
+                        "abbr": "CAR",
+                        "iscountry": false,
+                        "isclub": true,
+                        "hashtag": "#CardiffCity",
+                        "founded": "",
+                        "website": "http://www.cardiffcityfc.co.uk",
+                        "twitter": "Cardiff City FC",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/61.png"
+                    }
+                ],
+                "point_table": [
+                    {
+                        "name": "Premier League",
+                        "groupname": null,
+                        "tables": {
+                            "total": [
+                                {
+                                    "promotion": {
+                                        "type": "promotion",
+                                        "name": "Champions League"
+                                    },
+                                    "position": 1,
+                                    "tid": 55,
+                                    "tname": "Liverpool",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/44.png",
+                                    "positionchange": 1,
+                                    "playedtotal": 3,
+                                    "wintotal": 3,
+                                    "drawtotal": 0,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 7,
+                                    "goalsagainsttotal": 0,
+                                    "goaldifftotal": 7,
+                                    "pointstotal": 9
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "promotion",
+                                        "name": "Champions League"
+                                    },
+                                    "position": 2,
+                                    "tid": 48,
+                                    "tname": "Tottenham",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/33.png",
+                                    "positionchange": 3,
+                                    "playedtotal": 3,
+                                    "wintotal": 3,
+                                    "drawtotal": 0,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 8,
+                                    "goalsagainsttotal": 2,
+                                    "goaldifftotal": 6,
+                                    "pointstotal": 9
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "promotion",
+                                        "name": "Champions League"
+                                    },
+                                    "position": 3,
+                                    "tid": 51,
+                                    "tname": "Chelsea",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/38.png",
+                                    "positionchange": 0,
+                                    "playedtotal": 3,
+                                    "wintotal": 3,
+                                    "drawtotal": 0,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 8,
+                                    "goalsagainsttotal": 3,
+                                    "goaldifftotal": 5,
+                                    "pointstotal": 9
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "promotion",
+                                        "name": "Champions League"
+                                    },
+                                    "position": 4,
+                                    "tid": 45,
+                                    "tname": "Watford",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/24.png",
+                                    "positionchange": 0,
+                                    "playedtotal": 3,
+                                    "wintotal": 3,
+                                    "drawtotal": 0,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 7,
+                                    "goalsagainsttotal": 2,
+                                    "goaldifftotal": 5,
+                                    "pointstotal": 9
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "promotion",
+                                        "name": "Europa League"
+                                    },
+                                    "position": 5,
+                                    "tid": 44,
+                                    "tname": "Man City",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/17.png",
+                                    "positionchange": -4,
+                                    "playedtotal": 3,
+                                    "wintotal": 2,
+                                    "drawtotal": 1,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 9,
+                                    "goalsagainsttotal": 2,
+                                    "goaldifftotal": 7,
+                                    "pointstotal": 7
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 6,
+                                    "tid": 59,
+                                    "tname": "Bournemouth",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/60.png",
+                                    "positionchange": 0,
+                                    "playedtotal": 3,
+                                    "wintotal": 2,
+                                    "drawtotal": 1,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 6,
+                                    "goalsagainsttotal": 3,
+                                    "goaldifftotal": 3,
+                                    "pointstotal": 7
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 7,
+                                    "tid": 47,
+                                    "tname": "Leicester",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/31.png",
+                                    "positionchange": 1,
+                                    "playedtotal": 3,
+                                    "wintotal": 2,
+                                    "drawtotal": 0,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 5,
+                                    "goalsagainsttotal": 3,
+                                    "goaldifftotal": 2,
+                                    "pointstotal": 6
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 8,
+                                    "tid": 57,
+                                    "tname": "Everton",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/48.png",
+                                    "positionchange": -1,
+                                    "playedtotal": 3,
+                                    "wintotal": 1,
+                                    "drawtotal": 2,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 6,
+                                    "goalsagainsttotal": 5,
+                                    "goaldifftotal": 1,
+                                    "pointstotal": 5
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 9,
+                                    "tid": 53,
+                                    "tname": "Arsenal",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/42.png",
+                                    "positionchange": 8,
+                                    "playedtotal": 3,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 2,
+                                    "goalsfortotal": 5,
+                                    "goalsagainsttotal": 6,
+                                    "goaldifftotal": -1,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 10,
+                                    "tid": 43,
+                                    "tname": "Crystal Palace",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/7.png",
+                                    "positionchange": 0,
+                                    "playedtotal": 3,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 2,
+                                    "goalsfortotal": 3,
+                                    "goalsagainsttotal": 4,
+                                    "goaldifftotal": -1,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 11,
+                                    "tid": 54,
+                                    "tname": "Fulham",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/43.png",
+                                    "positionchange": 7,
+                                    "playedtotal": 3,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 2,
+                                    "goalsfortotal": 5,
+                                    "goalsagainsttotal": 7,
+                                    "goaldifftotal": -2,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 12,
+                                    "tid": 46,
+                                    "tname": "Brighton",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/30.png",
+                                    "positionchange": -1,
+                                    "playedtotal": 3,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 2,
+                                    "goalsfortotal": 3,
+                                    "goalsagainsttotal": 5,
+                                    "goaldifftotal": -2,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 13,
+                                    "tid": 49,
+                                    "tname": "Man Utd",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/35.png",
+                                    "positionchange": -4,
+                                    "playedtotal": 3,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 2,
+                                    "goalsfortotal": 4,
+                                    "goalsagainsttotal": 7,
+                                    "goaldifftotal": -3,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 14,
+                                    "tid": 41,
+                                    "tname": "Wolves",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/3.png",
+                                    "positionchange": 0,
+                                    "playedtotal": 3,
+                                    "wintotal": 0,
+                                    "drawtotal": 2,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 3,
+                                    "goalsagainsttotal": 5,
+                                    "goaldifftotal": -2,
+                                    "pointstotal": 2
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 15,
+                                    "tid": 60,
+                                    "tname": "Cardiff",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/61.png",
+                                    "positionchange": 1,
+                                    "playedtotal": 3,
+                                    "wintotal": 0,
+                                    "drawtotal": 2,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 0,
+                                    "goalsagainsttotal": 2,
+                                    "goaldifftotal": -2,
+                                    "pointstotal": 2
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 16,
+                                    "tid": 52,
+                                    "tname": "Newcastle",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/39.png",
+                                    "positionchange": -4,
+                                    "playedtotal": 3,
+                                    "wintotal": 0,
+                                    "drawtotal": 1,
+                                    "losstotal": 2,
+                                    "goalsfortotal": 2,
+                                    "goalsagainsttotal": 4,
+                                    "goaldifftotal": -2,
+                                    "pointstotal": 1
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 16,
+                                    "tid": 56,
+                                    "tname": "Southampton",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/45.png",
+                                    "positionchange": -4,
+                                    "playedtotal": 3,
+                                    "wintotal": 0,
+                                    "drawtotal": 1,
+                                    "losstotal": 2,
+                                    "goalsfortotal": 2,
+                                    "goalsagainsttotal": 4,
+                                    "goaldifftotal": -2,
+                                    "pointstotal": 1
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "Relegation",
+                                        "name": "Relegation"
+                                    },
+                                    "position": 18,
+                                    "tid": 42,
+                                    "tname": "Burnley",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/6.png",
+                                    "positionchange": -3,
+                                    "playedtotal": 3,
+                                    "wintotal": 0,
+                                    "drawtotal": 1,
+                                    "losstotal": 2,
+                                    "goalsfortotal": 3,
+                                    "goalsagainsttotal": 7,
+                                    "goaldifftotal": -4,
+                                    "pointstotal": 1
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "Relegation",
+                                        "name": "Relegation"
+                                    },
+                                    "position": 19,
+                                    "tid": 58,
+                                    "tname": "Huddersfield",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/59.png",
+                                    "positionchange": 1,
+                                    "playedtotal": 3,
+                                    "wintotal": 0,
+                                    "drawtotal": 1,
+                                    "losstotal": 2,
+                                    "goalsfortotal": 1,
+                                    "goalsagainsttotal": 9,
+                                    "goaldifftotal": -8,
+                                    "pointstotal": 1
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "Relegation",
+                                        "name": "Relegation"
+                                    },
+                                    "position": 20,
+                                    "tid": 50,
+                                    "tname": "West Ham",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/37.png",
+                                    "positionchange": -1,
+                                    "playedtotal": 3,
+                                    "wintotal": 0,
+                                    "drawtotal": 0,
+                                    "losstotal": 3,
+                                    "goalsfortotal": 2,
+                                    "goalsagainsttotal": 9,
+                                    "goaldifftotal": -7,
+                                    "pointstotal": 0
+                                }
+                            ],
+                            "home": [
+                                {
+                                    "promotion": {
+                                        "type": "promotion",
+                                        "name": "Champions League"
+                                    },
+                                    "position": 1,
+                                    "tid": 55,
+                                    "tname": "Liverpool",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/44.png",
+                                    "positionchange": 1,
+                                    "playedtotal": 2,
+                                    "wintotal": 2,
+                                    "drawtotal": 0,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 5,
+                                    "goalsagainsttotal": 0,
+                                    "goaldifftotal": 5,
+                                    "pointstotal": 6
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "promotion",
+                                        "name": "Champions League"
+                                    },
+                                    "position": 5,
+                                    "tid": 48,
+                                    "tname": "Tottenham",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/33.png",
+                                    "positionchange": -2,
+                                    "playedtotal": 1,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 3,
+                                    "goalsagainsttotal": 1,
+                                    "goaldifftotal": 2,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "promotion",
+                                        "name": "Champions League"
+                                    },
+                                    "position": 7,
+                                    "tid": 51,
+                                    "tname": "Chelsea",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/38.png",
+                                    "positionchange": 0,
+                                    "playedtotal": 1,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 3,
+                                    "goalsagainsttotal": 2,
+                                    "goaldifftotal": 1,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "promotion",
+                                        "name": "Champions League"
+                                    },
+                                    "position": 2,
+                                    "tid": 45,
+                                    "tname": "Watford",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/24.png",
+                                    "positionchange": 2,
+                                    "playedtotal": 2,
+                                    "wintotal": 2,
+                                    "drawtotal": 0,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 4,
+                                    "goalsagainsttotal": 1,
+                                    "goaldifftotal": 3,
+                                    "pointstotal": 6
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "promotion",
+                                        "name": "Europa League"
+                                    },
+                                    "position": 4,
+                                    "tid": 44,
+                                    "tname": "Man City",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/17.png",
+                                    "positionchange": -3,
+                                    "playedtotal": 1,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 6,
+                                    "goalsagainsttotal": 1,
+                                    "goaldifftotal": 5,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 3,
+                                    "tid": 59,
+                                    "tname": "Bournemouth",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/60.png",
+                                    "positionchange": 1,
+                                    "playedtotal": 2,
+                                    "wintotal": 1,
+                                    "drawtotal": 1,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 4,
+                                    "goalsagainsttotal": 2,
+                                    "goaldifftotal": 2,
+                                    "pointstotal": 4
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 6,
+                                    "tid": 47,
+                                    "tname": "Leicester",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/31.png",
+                                    "positionchange": -2,
+                                    "playedtotal": 1,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 2,
+                                    "goalsagainsttotal": 0,
+                                    "goaldifftotal": 2,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 9,
+                                    "tid": 57,
+                                    "tname": "Everton",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/48.png",
+                                    "positionchange": 0,
+                                    "playedtotal": 1,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 2,
+                                    "goalsagainsttotal": 1,
+                                    "goaldifftotal": 1,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 11,
+                                    "tid": 53,
+                                    "tname": "Arsenal",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/42.png",
+                                    "positionchange": 6,
+                                    "playedtotal": 2,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 3,
+                                    "goalsagainsttotal": 3,
+                                    "goaldifftotal": 0,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 20,
+                                    "tid": 43,
+                                    "tname": "Crystal Palace",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/7.png",
+                                    "positionchange": -3,
+                                    "playedtotal": 1,
+                                    "wintotal": 0,
+                                    "drawtotal": 0,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 0,
+                                    "goalsagainsttotal": 2,
+                                    "goaldifftotal": -2,
+                                    "pointstotal": 0
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 10,
+                                    "tid": 54,
+                                    "tname": "Fulham",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/43.png",
+                                    "positionchange": 7,
+                                    "playedtotal": 2,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 4,
+                                    "goalsagainsttotal": 4,
+                                    "goaldifftotal": 0,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 7,
+                                    "tid": 46,
+                                    "tname": "Brighton",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/30.png",
+                                    "positionchange": 0,
+                                    "playedtotal": 1,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 3,
+                                    "goalsagainsttotal": 2,
+                                    "goaldifftotal": 1,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 12,
+                                    "tid": 49,
+                                    "tname": "Man Utd",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/35.png",
+                                    "positionchange": -2,
+                                    "playedtotal": 2,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 2,
+                                    "goalsagainsttotal": 4,
+                                    "goaldifftotal": -2,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 13,
+                                    "tid": 41,
+                                    "tname": "Wolves",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/3.png",
+                                    "positionchange": -2,
+                                    "playedtotal": 2,
+                                    "wintotal": 0,
+                                    "drawtotal": 2,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 3,
+                                    "goalsagainsttotal": 3,
+                                    "goaldifftotal": 0,
+                                    "pointstotal": 2
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 14,
+                                    "tid": 60,
+                                    "tname": "Cardiff",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/61.png",
+                                    "positionchange": -2,
+                                    "playedtotal": 1,
+                                    "wintotal": 0,
+                                    "drawtotal": 1,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 0,
+                                    "goalsagainsttotal": 0,
+                                    "goaldifftotal": 0,
+                                    "pointstotal": 1
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 18,
+                                    "tid": 52,
+                                    "tname": "Newcastle",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/39.png",
+                                    "positionchange": -4,
+                                    "playedtotal": 2,
+                                    "wintotal": 0,
+                                    "drawtotal": 0,
+                                    "losstotal": 2,
+                                    "goalsfortotal": 2,
+                                    "goalsagainsttotal": 4,
+                                    "goaldifftotal": -2,
+                                    "pointstotal": 0
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 15,
+                                    "tid": 56,
+                                    "tname": "Southampton",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/45.png",
+                                    "positionchange": -3,
+                                    "playedtotal": 2,
+                                    "wintotal": 0,
+                                    "drawtotal": 1,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 1,
+                                    "goalsagainsttotal": 2,
+                                    "goaldifftotal": -1,
+                                    "pointstotal": 1
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "Relegation",
+                                        "name": "Relegation"
+                                    },
+                                    "position": 19,
+                                    "tid": 42,
+                                    "tname": "Burnley",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/6.png",
+                                    "positionchange": -3,
+                                    "playedtotal": 1,
+                                    "wintotal": 0,
+                                    "drawtotal": 0,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 1,
+                                    "goalsagainsttotal": 3,
+                                    "goaldifftotal": -2,
+                                    "pointstotal": 0
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "Relegation",
+                                        "name": "Relegation"
+                                    },
+                                    "position": 16,
+                                    "tid": 58,
+                                    "tname": "Huddersfield",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/59.png",
+                                    "positionchange": 4,
+                                    "playedtotal": 2,
+                                    "wintotal": 0,
+                                    "drawtotal": 1,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 0,
+                                    "goalsagainsttotal": 3,
+                                    "goaldifftotal": -3,
+                                    "pointstotal": 1
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "Relegation",
+                                        "name": "Relegation"
+                                    },
+                                    "position": 17,
+                                    "tid": 50,
+                                    "tname": "West Ham",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/37.png",
+                                    "positionchange": -3,
+                                    "playedtotal": 1,
+                                    "wintotal": 0,
+                                    "drawtotal": 0,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 1,
+                                    "goalsagainsttotal": 2,
+                                    "goaldifftotal": -1,
+                                    "pointstotal": 0
+                                }
+                            ],
+                            "away": [
+                                {
+                                    "promotion": {
+                                        "type": "promotion",
+                                        "name": "Champions League"
+                                    },
+                                    "position": 1,
+                                    "tid": 55,
+                                    "tname": "Liverpool",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/44.png",
+                                    "positionchange": -1,
+                                    "playedtotal": 1,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 2,
+                                    "goalsagainsttotal": 0,
+                                    "goaldifftotal": 2,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "promotion",
+                                        "name": "Champions League"
+                                    },
+                                    "position": 2,
+                                    "tid": 48,
+                                    "tname": "Tottenham",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/33.png",
+                                    "positionchange": 0,
+                                    "playedtotal": 2,
+                                    "wintotal": 2,
+                                    "drawtotal": 0,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 5,
+                                    "goalsagainsttotal": 1,
+                                    "goaldifftotal": 4,
+                                    "pointstotal": 6
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "promotion",
+                                        "name": "Champions League"
+                                    },
+                                    "position": 3,
+                                    "tid": 51,
+                                    "tname": "Chelsea",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/38.png",
+                                    "positionchange": 1,
+                                    "playedtotal": 2,
+                                    "wintotal": 2,
+                                    "drawtotal": 0,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 5,
+                                    "goalsagainsttotal": 1,
+                                    "goaldifftotal": 4,
+                                    "pointstotal": 6
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "promotion",
+                                        "name": "Champions League"
+                                    },
+                                    "position": 4,
+                                    "tid": 45,
+                                    "tname": "Watford",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/24.png",
+                                    "positionchange": -1,
+                                    "playedtotal": 1,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 3,
+                                    "goalsagainsttotal": 1,
+                                    "goaldifftotal": 2,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "promotion",
+                                        "name": "Europa League"
+                                    },
+                                    "position": 5,
+                                    "tid": 44,
+                                    "tname": "Man City",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/17.png",
+                                    "positionchange": 1,
+                                    "playedtotal": 2,
+                                    "wintotal": 1,
+                                    "drawtotal": 1,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 3,
+                                    "goalsagainsttotal": 1,
+                                    "goaldifftotal": 2,
+                                    "pointstotal": 4
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 6,
+                                    "tid": 59,
+                                    "tname": "Bournemouth",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/60.png",
+                                    "positionchange": 0,
+                                    "playedtotal": 1,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 2,
+                                    "goalsagainsttotal": 1,
+                                    "goaldifftotal": 1,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 7,
+                                    "tid": 47,
+                                    "tname": "Leicester",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/31.png",
+                                    "positionchange": 5,
+                                    "playedtotal": 2,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 3,
+                                    "goalsagainsttotal": 3,
+                                    "goaldifftotal": 0,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 8,
+                                    "tid": 57,
+                                    "tname": "Everton",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/48.png",
+                                    "positionchange": -1,
+                                    "playedtotal": 2,
+                                    "wintotal": 0,
+                                    "drawtotal": 2,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 4,
+                                    "goalsagainsttotal": 4,
+                                    "goaldifftotal": 0,
+                                    "pointstotal": 2
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 9,
+                                    "tid": 53,
+                                    "tname": "Arsenal",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/42.png",
+                                    "positionchange": -2,
+                                    "playedtotal": 1,
+                                    "wintotal": 0,
+                                    "drawtotal": 0,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 2,
+                                    "goalsagainsttotal": 3,
+                                    "goaldifftotal": -1,
+                                    "pointstotal": 0
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 10,
+                                    "tid": 43,
+                                    "tname": "Crystal Palace",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/7.png",
+                                    "positionchange": -2,
+                                    "playedtotal": 2,
+                                    "wintotal": 1,
+                                    "drawtotal": 0,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 3,
+                                    "goalsagainsttotal": 2,
+                                    "goaldifftotal": 1,
+                                    "pointstotal": 3
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 11,
+                                    "tid": 54,
+                                    "tname": "Fulham",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/43.png",
+                                    "positionchange": -1,
+                                    "playedtotal": 1,
+                                    "wintotal": 0,
+                                    "drawtotal": 0,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 1,
+                                    "goalsagainsttotal": 3,
+                                    "goaldifftotal": -2,
+                                    "pointstotal": 0
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 12,
+                                    "tid": 46,
+                                    "tname": "Brighton",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/30.png",
+                                    "positionchange": -2,
+                                    "playedtotal": 2,
+                                    "wintotal": 0,
+                                    "drawtotal": 0,
+                                    "losstotal": 2,
+                                    "goalsfortotal": 0,
+                                    "goalsagainsttotal": 3,
+                                    "goaldifftotal": -3,
+                                    "pointstotal": 0
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 13,
+                                    "tid": 49,
+                                    "tname": "Man Utd",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/35.png",
+                                    "positionchange": -2,
+                                    "playedtotal": 1,
+                                    "wintotal": 0,
+                                    "drawtotal": 0,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 2,
+                                    "goalsagainsttotal": 3,
+                                    "goaldifftotal": -1,
+                                    "pointstotal": 0
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 14,
+                                    "tid": 41,
+                                    "tname": "Wolves",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/3.png",
+                                    "positionchange": -1,
+                                    "playedtotal": 1,
+                                    "wintotal": 0,
+                                    "drawtotal": 0,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 0,
+                                    "goalsagainsttotal": 2,
+                                    "goaldifftotal": -2,
+                                    "pointstotal": 0
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 15,
+                                    "tid": 60,
+                                    "tname": "Cardiff",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/61.png",
+                                    "positionchange": 4,
+                                    "playedtotal": 2,
+                                    "wintotal": 0,
+                                    "drawtotal": 1,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 0,
+                                    "goalsagainsttotal": 2,
+                                    "goaldifftotal": -2,
+                                    "pointstotal": 1
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 16,
+                                    "tid": 52,
+                                    "tname": "Newcastle",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/39.png",
+                                    "positionchange": -1,
+                                    "playedtotal": 1,
+                                    "wintotal": 0,
+                                    "drawtotal": 1,
+                                    "losstotal": 0,
+                                    "goalsfortotal": 0,
+                                    "goalsagainsttotal": 0,
+                                    "goaldifftotal": 0,
+                                    "pointstotal": 1
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": 16,
+                                    "tid": 56,
+                                    "tname": "Southampton",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/45.png",
+                                    "positionchange": -2,
+                                    "playedtotal": 1,
+                                    "wintotal": 0,
+                                    "drawtotal": 0,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 1,
+                                    "goalsagainsttotal": 2,
+                                    "goaldifftotal": -1,
+                                    "pointstotal": 0
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "Relegation",
+                                        "name": "Relegation"
+                                    },
+                                    "position": 18,
+                                    "tid": 42,
+                                    "tname": "Burnley",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/6.png",
+                                    "positionchange": -2,
+                                    "playedtotal": 2,
+                                    "wintotal": 0,
+                                    "drawtotal": 1,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 2,
+                                    "goalsagainsttotal": 4,
+                                    "goaldifftotal": -2,
+                                    "pointstotal": 1
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "Relegation",
+                                        "name": "Relegation"
+                                    },
+                                    "position": 19,
+                                    "tid": 58,
+                                    "tname": "Huddersfield",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/59.png",
+                                    "positionchange": 1,
+                                    "playedtotal": 1,
+                                    "wintotal": 0,
+                                    "drawtotal": 0,
+                                    "losstotal": 1,
+                                    "goalsfortotal": 1,
+                                    "goalsagainsttotal": 6,
+                                    "goaldifftotal": -5,
+                                    "pointstotal": 0
+                                },
+                                {
+                                    "promotion": {
+                                        "type": "Relegation",
+                                        "name": "Relegation"
+                                    },
+                                    "position": 20,
+                                    "tid": 50,
+                                    "tname": "West Ham",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/37.png",
+                                    "positionchange": -1,
+                                    "playedtotal": 2,
+                                    "wintotal": 0,
+                                    "drawtotal": 0,
+                                    "losstotal": 2,
+                                    "goalsfortotal": 1,
+                                    "goalsagainsttotal": 7,
+                                    "goaldifftotal": -6,
+                                    "pointstotal": 0
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        ],
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "58cbdddf60452cfec71b9633c6d20692",
+    "modified": "2018-08-31 17:42:48",
+    "datetime": "2018-08-31 17:42:48",
+    "api_version": "1.0"
+}
+
+```
+This API has competition's teams and points table information. Points table with total, home and away league standings.
+
+### Request
+* Path: /soccer/competition/cid
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of competition cards.
+* <code style="color:#c7254e";>response.items.teams</code> array of all the teams of the competition.
+* <code style="color:#c7254e";>response.items.point_table</code> array of points table of the competition.
+* <code style="color:#c7254e";>response.total_items:</code> total number of competitions available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of competition list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | integer | timestamp of competition start date
+enddatetimestamp | integer | timestamp of competition end date
+year | string | Season Year
+category | string | Competition Category
+ioc_id | integer | IOC id of competition native country
+ioc | string | IOC 2 letter code of competition native country
+status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+teams | array | An array of all teams related to the competition. <a href="#competition-info-team">see teams object reference</a>
+point_table | array | An array of points table of the competition. <a href="#competition-info-points">see table object reference</a>
+
+
+<h3 id="competition-info-team">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+tname | string | team name
+fullname | string | team full name
+abbr | string | team abbrivation name
+iscountry| string | true if team is a national team and false if team is a club
+isclub| string | false if team is a national team and true if team is a club
+hastag| string | social hastag
+founded | integer | year of team founded
+website | string | website url of team website
+twitter | string | twitter account name
+logo | string | team logo url
+
+
+<h3 id="competition-info-points">Table Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+name | string | Points table name
+groupname | string | group points table name
+tables | array | An array of total, home and away performance points table. <a href="#competition-info-points-table">see points table object reference</a>
+
+
+<h3 id="competition-info-points-table">Points Table Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+promotion | array | an array of promotion/relegation information. <a href="#competition-info-promotion">see promotion object reference</a> 
+position | integer | Team position in the table
+tid | integer | team id
+tname | string | team name
+logo | string | team logo url
+positionchange | integer | position change indicater positive value for upward movement, negative value for downward movement
+playedtotal | integer | total matches played by the team
+wintotal | integer | total won matches by the team
+drawtotal | integer | total drawn matches by the team
+losstotal | integer | total lost matches by the team
+goalsfortotal | integer | total goals scored by the team
+goalsagainsttotal | integer | total goals scored against the team by opposition teams
+goaldifftotal | integer | total goal difference
+pointstotal | integer | total points won by the team
+
+
+<h3 id="competition-info-promotion">Promotion Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+type | string | Promotion type
+name | string | Promotion name
+
+
+## Competitions Squad API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/competition/3/squad?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "competition": {
+            "cid": 3,
+            "cname": "Premier League",
+            "startdate": "2018-08-10 00:00:00",
+            "enddate": "2019-05-13 23:55:00",
+            "startdatetimestamp": 1533859200,
+            "endtdatetimestamp": 1557791700,
+            "year": "18/19",
+            "category": "England",
+            "ioc_id": "240",
+            "ioc": "en",
+            "status": 3,
+            "status_str": "live",
+            "logo": ""
+        },
+        "teams": [
+            {
+                "tid": 41,
+                "tname": "Wolves",
+                "fullname": "Wolverhampton Wanderers",
+                "abbr": "WOL",
+                "iscountry": false,
+                "isclub": true,
+                "hashtag": "",
+                "founded": "",
+                "website": "http://www.wolves.premiumtv.co.uk/page/Home/",
+                "twitter": "Wolves",
+                "logo": "https://rest.entitysport.com/soccer/assets/team/3.png",
+                "squads": [
+                    {
+                        "pid": 773,
+                        "fullname": "John Ruddy",
+                        "firstname": "John",
+                        "lastname": "Ruddy",
+                        "birthdatetimestamp": "530496000",
+                        "birthdate": "24/10/86",
+                        "nationality": {
+                            "iocid": 240,
+                            "name": "England",
+                            "ioc": "en"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "height": 192,
+                        "foot": "Left",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 160,
+                        "fullname": "Joao Moutinho",
+                        "firstname": "Joao",
+                        "lastname": "Moutinho",
+                        "birthdatetimestamp": "526521600",
+                        "birthdate": "08/09/86",
+                        "nationality": {
+                            "iocid": 172,
+                            "name": "Portugal",
+                            "ioc": "pt"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": 170,
+                        "foot": "Right",
+                        "twitter": "https://twitter.com/joaomoutinho?lang=en",
+                        "facebook": "https://www.facebook.com/JoaoMoutinhoOficial/"
+                    },
+                    {
+                        "pid": 163,
+                        "fullname": "Rui Patricio",
+                        "firstname": "Rui",
+                        "lastname": "Patricio",
+                        "birthdatetimestamp": "571881600",
+                        "birthdate": "15/02/88",
+                        "nationality": {
+                            "iocid": 172,
+                            "name": "Portugal",
+                            "ioc": "pt"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "height": 189,
+                        "foot": "Left",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 774,
+                        "fullname": "Ryan Bennett",
+                        "firstname": "Ryan",
+                        "lastname": "Bennett",
+                        "birthdatetimestamp": "636681600",
+                        "birthdate": "06/03/90",
+                        "nationality": {
+                            "iocid": 240,
+                            "name": "England",
+                            "ioc": "en"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 188,
+                        "foot": "Right",
+                        "twitter": "https://twitter.com/ryanbennett_22",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 775,
+                        "fullname": "Danny Batth",
+                        "firstname": "Danny",
+                        "lastname": "Batth",
+                        "birthdatetimestamp": "653875200",
+                        "birthdate": "21/09/90",
+                        "nationality": {
+                            "iocid": 240,
+                            "name": "England",
+                            "ioc": "en"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 191,
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 776,
+                        "fullname": "Conor Coady",
+                        "firstname": "Conor",
+                        "lastname": "Coady",
+                        "birthdatetimestamp": "730598400",
+                        "birthdate": "25/02/93",
+                        "nationality": {
+                            "iocid": 240,
+                            "name": "England",
+                            "ioc": "en"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 184,
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 777,
+                        "fullname": "Ivan Cavaleiro",
+                        "firstname": "Ivan",
+                        "lastname": "Cavaleiro",
+                        "birthdatetimestamp": "750902400",
+                        "birthdate": "18/10/93",
+                        "nationality": {
+                            "iocid": 172,
+                            "name": "Portugal",
+                            "ioc": "pt"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "height": 175,
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 778,
+                        "fullname": "Helder Costa",
+                        "firstname": "Helder",
+                        "lastname": "Costa",
+                        "birthdatetimestamp": "758332800",
+                        "birthdate": "12/01/94",
+                        "nationality": {
+                            "iocid": 172,
+                            "name": "Portugal",
+                            "ioc": "pt"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "height": 178,
+                        "foot": "Left",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 779,
+                        "fullname": "Willy Boly",
+                        "firstname": "Willy",
+                        "lastname": "Boly",
+                        "birthdatetimestamp": "665539200",
+                        "birthdate": "03/02/91",
+                        "nationality": {
+                            "iocid": 73,
+                            "name": "France",
+                            "ioc": "fr"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 195,
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 780,
+                        "fullname": "Matt Doherty",
+                        "firstname": "Matt",
+                        "lastname": "Doherty",
+                        "birthdatetimestamp": "695520000",
+                        "birthdate": "16/01/92",
+                        "nationality": {
+                            "iocid": 103,
+                            "name": "Ireland",
+                            "ioc": "ie"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 182,
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 781,
+                        "fullname": "Leo Bonatini",
+                        "firstname": "Leo",
+                        "lastname": "Bonatini",
+                        "birthdatetimestamp": "764812800",
+                        "birthdate": "28/03/94",
+                        "nationality": {
+                            "iocid": 30,
+                            "name": "Brazil",
+                            "ioc": "br"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "height": 185,
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 531,
+                        "fullname": "Romain Saiss",
+                        "firstname": "Romain",
+                        "lastname": "Saiss",
+                        "birthdatetimestamp": "638409600",
+                        "birthdate": "26/03/90",
+                        "nationality": {
+                            "iocid": 144,
+                            "name": "Morocco",
+                            "ioc": "ma"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 190,
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 290,
+                        "fullname": "Leander Dendoncker",
+                        "firstname": "Leander",
+                        "lastname": "Dendoncker",
+                        "birthdatetimestamp": "797904000",
+                        "birthdate": "15/04/95",
+                        "nationality": {
+                            "iocid": 21,
+                            "name": "Belgium",
+                            "ioc": "be"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 188,
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 556,
+                        "fullname": "Raul Jimenez",
+                        "firstname": "Raul",
+                        "lastname": "Jimenez",
+                        "birthdatetimestamp": "673401600",
+                        "birthdate": "05/05/91",
+                        "nationality": {
+                            "iocid": 138,
+                            "name": "Mexico",
+                            "ioc": "mx"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "height": 188,
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 782,
+                        "fullname": "Jonny Castro",
+                        "firstname": "Jonny",
+                        "lastname": "Castro",
+                        "birthdatetimestamp": "762652800",
+                        "birthdate": "03/03/94",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 175,
+                        "foot": "Both",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 783,
+                        "fullname": "Kortney Hause",
+                        "firstname": "Kortney",
+                        "lastname": "Hause",
+                        "birthdatetimestamp": "805852800",
+                        "birthdate": "16/07/95",
+                        "nationality": {
+                            "iocid": 240,
+                            "name": "England",
+                            "ioc": "en"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 189,
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 784,
+                        "fullname": "Ruben Neves",
+                        "firstname": "Ruben",
+                        "lastname": "Neves",
+                        "birthdatetimestamp": "858211200",
+                        "birthdate": "13/03/97",
+                        "nationality": {
+                            "iocid": 172,
+                            "name": "Portugal",
+                            "ioc": "pt"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": 180,
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 785,
+                        "fullname": "Adama Traore",
+                        "firstname": "Adama",
+                        "lastname": "Traore",
+                        "birthdatetimestamp": "822528000",
+                        "birthdate": "25/01/96",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": 178,
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 786,
+                        "fullname": "Will Norris",
+                        "firstname": "Will",
+                        "lastname": "Norris",
+                        "birthdatetimestamp": "745113600",
+                        "birthdate": "12/08/93",
+                        "nationality": {
+                            "iocid": 240,
+                            "name": "England",
+                            "ioc": "en"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "height": 195,
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 787,
+                        "fullname": "Diogo Jota",
+                        "firstname": "Diogo",
+                        "lastname": "Jota",
+                        "birthdatetimestamp": "849657600",
+                        "birthdate": "04/12/96",
+                        "nationality": {
+                            "iocid": 172,
+                            "name": "Portugal",
+                            "ioc": "pt"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "height": 178,
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 788,
+                        "fullname": "Bright Enobakhare",
+                        "firstname": "Bright",
+                        "lastname": "Enobakhare",
+                        "birthdatetimestamp": "886896000",
+                        "birthdate": "08/02/98",
+                        "nationality": {
+                            "iocid": 156,
+                            "name": "Nigeria",
+                            "ioc": "ng"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "height": 183,
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 789,
+                        "fullname": "Ruben Vinagre",
+                        "firstname": "Ruben",
+                        "lastname": "Vinagre",
+                        "birthdatetimestamp": "923616000",
+                        "birthdate": "09/04/99",
+                        "nationality": {
+                            "iocid": 172,
+                            "name": "Portugal",
+                            "ioc": "pt"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 170,
+                        "foot": "Left",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 790,
+                        "fullname": "Morgan Gibbs White",
+                        "firstname": "Morgan Gibbs",
+                        "lastname": "White",
+                        "birthdatetimestamp": "948931200",
+                        "birthdate": "27/01/00",
+                        "nationality": {
+                            "iocid": 240,
+                            "name": "England",
+                            "ioc": "en"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": 171,
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 791,
+                        "fullname": "Bernard Patrick Ashley-Seal",
+                        "firstname": "Bernard Patrick",
+                        "lastname": "Ashley-Seal",
+                        "birthdatetimestamp": "911606400",
+                        "birthdate": "21/11/98",
+                        "nationality": {
+                            "iocid": 240,
+                            "name": "England",
+                            "ioc": "en"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "height": 0,
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": ""
+                    }
+                ]
+            }
+        ],
+        "total_items": 20,
+        "total_pages": 20
+    },
+    "etag": "90943e4df41e53fb7aebaa1642c44402",
+    "modified": "2018-08-31 18:49:27",
+    "datetime": "2018-08-31 18:49:27",
+    "api_version": "1.0"
+}
+
+```
+This API has competition's all teams squad/roaster player details.
+
+### Request
+* Path: /soccer/competition/cid/squad
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.competition:</code> array of competition object.
+* <code style="color:#c7254e";>response.teams</code> array of all the teams of the competition.
+* <code style="color:#c7254e";>response.total_items:</code> total number of teams available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+competition | array | An array of competition details. <a href="#competition-squad">see competition object reference</a>
+teams | array | An array of all teams related to the competition containing an array of players. <a href="#competition-squad-team">see teams object reference</a>
+
+<h3 id="competition-squad">Competition Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | integer | timestamp of competition start date
+enddatetimestamp | integer | timestamp of competition end date
+year | string | Season Year
+category | string | Competition Category
+ioc_id | integer | IOC id of competition native country
+ioc | string | IOC 2 letter code of competition native country
+status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+
+
+<h3 id="competition-squad-team">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+tname | string | team name
+fullname | string | team full name
+abbr | string | team abbrivation name
+iscountry| string | true if team is a national team and false if team is a club
+isclub| string | false if team is a national team and true if team is a club
+hastag| string | social hastag
+founded | integer | year of team founded
+website | string | website url of team website
+twitter | string | twitter account name
+logo | string | team logo url
+squads | array | An array of player details. <a href="#competition-squad-player">see player object reference</a>
+
+<h3 id="competition-squad-player">Player Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+fullname | string | Player full name
+firstname | string | Player first name
+lastname | string | Player last name
+birthdatetimestamp | integer | Player Birthdate timestamp
+birthdate | string | Player Birthdate format - dd/mm/yy
+nationality | array | An array of player nationality detail. <a href="#competition-squad-nationality">see nationality object reference</a>
+positiontype | string | player playing position type
+positionname | string | player playing position name
+height | integer | player height in centimeters
+foot | string | player preferred foot
+twitter | string | twitter account url
+facebook | string | facebook account url
+
+
+<h3 id="competition-squad-nationality">Nationality Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+iocid | integer | country ioc code
+name | string | country name
+ioc | string | 2 letter ioc code
+
+## Competitions Matches API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/competition/3/matches?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "mid": 65,
+                "round": {
+                    "type": "table",
+                    "round": "1",
+                    "name": 1
+                },
+                "result": {
+                    "home": "2",
+                    "away": "1",
+                    "winner": "home"
+                },
+                "teams": {
+                    "home": {
+                        "tid": 49,
+                        "tname": "Man Utd",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/35.png"
+                    },
+                    "away": {
+                        "tid": 47,
+                        "tname": "Leicester",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/31.png"
+                    }
+                },
+                "periods": {
+                    "p1": {
+                        "home": 1,
+                        "away": 0
+                    },
+                    "p2": {
+                        "home": 1,
+                        "away": 1
+                    },
+                    "ft": {
+                        "home": 2,
+                        "away": 1
+                    }
+                },
+                "datestart": "2018-08-10 19:00:00",
+                "dateend": "2018-08-10 20:51:28",
+                "timestampstart": 1533927600,
+                "timestampend": 1533934288,
+                "injurytime": null,
+                "time": 90,
+                "status_str": "result",
+                "status": 2,
+                "gamestate_str": "Ended",
+                "gamestate": 8,
+                "periodlength": "45",
+                "numberofperiods": "2",
+                "attendance": "74439",
+                "overtimelength": "15",
+                "competition": {
+                    "cid": 3,
+                    "cname": "Premier League",
+                    "startdate": "2018-08-10 00:00:00",
+                    "enddate": "2019-05-13 23:55:00",
+                    "startdatetimestamp": 1533859200,
+                    "endtdatetimestamp": 1557791700,
+                    "year": "18/19",
+                    "category": "England",
+                    "iocid": "240",
+                    "ioc": "en",
+                    "status": 3,
+                    "status_str": "live",
+                    "logo": ""
+                },
+                "venue": {
+                    "venueid": 21,
+                    "name": "Old Trafford",
+                    "location": "Manchester, England"
+                }
+            }
+        ],
+        "total_items": 380,
+        "total_pages": 380
+    },
+    "etag": "95a57caf4a1c929fec2c493c4df734d5",
+    "modified": "2018-08-31 19:29:18",
+    "datetime": "2018-08-31 19:29:18",
+    "api_version": "1.0"
+}
+
+```
+This API has competition's all matches details.
+
+### Request
+* Path: /soccer/competition/cid/matches
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+mid | integer | match id
+round | array | An array of match round details. <a href="#competition-matches-round">see round object reference</a>
+result | array | An array of match result details. <a href="#competition-matches-result">see result object reference</a>
+teams | array | An array of match teams details. <a href="#competition-matches-teams">see teams object reference</a>
+period | array | An array of match period wise details. <a href="#competition-matches-period">see period object reference</a>
+datestart | string | time string in GMT of match start time
+dateend | string | time string in GMT of match end time
+timestampstart | integer | timestamp of match start time
+timestampend | integer | timestamp of match end time
+injurytime | integer | added injury time after the end of regular period time
+time | integer | match running time in minutes
+status_str | string | Match status string live, completed, upcoming
+status | integer | Match status code 3 = live, 2 = completed, 1 = upcoming
+gamestate_str | string | Match state string
+gamestate | integer | Match state code
+periodlength | integer | match period length in minutes
+numberofperiods | integer | number of periods in the match
+attendance | integer | total spectator attendance of the match
+overtimelength | integer | overtime length in minutes
+competition | array | An array of competition details. <a href="#competition-matches-competition">see competition object reference</a>
+venue | array | An array of match venue details. <a href="#competition-matches-venue">see venue object reference</a>
+
+
+<h3 id="competition-matches-round">Round Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+type | string | round type. There are 2 type of rounds table and cup.
+name | string | round
+type | string | round name
+
+
+<h3 id="competition-matches-result">Result Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | integer | home team score
+away | integer | away team score
+winner | string | winning team name, draw in case of equal scores
+
+
+<h3 id="competition-matches-teams">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | An array of home team details. <a href="#competition-matches-teams-details">see home team object reference</a>
+away | array | An array of away team details. <a href="#competition-matches-teams-details">see away team object reference</a>
+
+
+<h3 id="competition-matches-teams-details">Home/Away Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+tname | string | team name
+logo | string | team logo url
+
+
+<h3 id="competition-matches-period">Period Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+p1 | array | An array of team score details in period 1. <a href="#competition-matches-period-details">see p1 object reference</a>
+p2 | array | An array of team score details in period 2. <a href="#competition-matches-period-details">see p2 object reference</a>
+ft | array | An array of team score details after full time. <a href="#competition-matches-period-details">see ft object reference</a>
+
+<h3 id="competition-matches-period-details">P1/P2/FT Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | integer | home team score
+away | integer | away team score
+
+
+<h3 id="competition-matches-competition">Competition Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | integer | timestamp of competition start date
+enddatetimestamp | integer | timestamp of competition end date
+year | string | Season Year
+category | string | Competition Category
+ioc_id | integer | IOC id of competition native country
+ioc | string | IOC 2 letter code of competition native country
+status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+
+
+<h3 id="competition-matches-venue">Competition Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+venueid | integer | venue id
+name | string | venue name
+location | string | venue location
+
+
+## Competitions Statistic API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/competition/3/stats?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "pid": 872,
+                "pname": "Roberto Pereyra",
+                "tid": 45,
+                "tname": "Watford",
+                "summary": {
+                    "minutesplayed": {
+                        "name": "Minutes Played",
+                        "value": "267"
+                    },
+                    "assist": {
+                        "name": "Assist",
+                        "value": "0"
+                    },
+                    "goals": {
+                        "name": "Goals",
+                        "value": "3"
+                    },
+                    "totaltackle": {
+                        "name": "Total Tackle",
+                        "value": "1"
+                    },
+                    "wonduels": {
+                        "name": "Won Duels",
+                        "value": "11"
+                    },
+                    "totalduels": {
+                        "name": "Total Duels",
+                        "value": "25"
+                    },
+                    "accuratepasses": {
+                        "name": "Accurate Passes",
+                        "value": "83"
+                    },
+                    "totalpass": {
+                        "name": "Total Pass",
+                        "value": "107"
+                    }
+                },
+                "attack": {
+                    "shotsontarget": {
+                        "name": "Shots On Target",
+                        "value": "4"
+                    },
+                    "shotsofftarget": {
+                        "name": "Shots Off Target",
+                        "value": "2"
+                    },
+                    "shotsblocked": {
+                        "name": "Shots Blocked",
+                        "value": "2"
+                    },
+                    "dribbleattempts": {
+                        "name": "Dribble Attempts",
+                        "value": "5"
+                    },
+                    "dribblesuccess": {
+                        "name": "Dribble Success",
+                        "value": "9"
+                    },
+                    "bigchancemissed": {
+                        "name": "Big Chance Missed",
+                        "value": "0"
+                    },
+                    "penaltywon": {
+                        "name": "Penalty Won",
+                        "value": "0"
+                    },
+                    "hitwoodwork": {
+                        "name": "Hit Wood Work",
+                        "value": "0"
+                    },
+                    "penaltymiss": {
+                        "name": "Penalty Miss",
+                        "value": "0"
+                    }
+                },
+                "defence": {
+                    "totalclearance": {
+                        "name": "Total Clearance",
+                        "value": "0"
+                    },
+                    "outfielderblock": {
+                        "name": "Outfielder Block",
+                        "value": "0"
+                    },
+                    "interceptionwon": {
+                        "name": "Interception Won",
+                        "value": "4"
+                    },
+                    "totaltackle": {
+                        "name": "Total Tackle",
+                        "value": "1"
+                    },
+                    "challengelost": {
+                        "name": "Challenge Lost",
+                        "value": "0"
+                    },
+                    "owngoals": {
+                        "name": "Own Goals",
+                        "value": "0"
+                    },
+                    "penaltycommitted": {
+                        "name": "Penalty Committed",
+                        "value": "0"
+                    },
+                    "errorledtoshot": {
+                        "name": "Error Led To Shot",
+                        "value": "0"
+                    },
+                    "lastmantackle": {
+                        "name": "Last man tackle",
+                        "value": "0"
+                    }
+                },
+                "passing": {
+                    "passingaccuracy": {
+                        "name": "Passing Accuracy (%)",
+                        "value": 78
+                    },
+                    "accuratepass": {
+                        "name": "Accurate Pass",
+                        "value": "83"
+                    },
+                    "totalpass": {
+                        "name": "Total Pass",
+                        "value": "107"
+                    },
+                    "longballsacc": {
+                        "name": "Long balls Accuracy",
+                        "value": "5"
+                    },
+                    "totalLongballs": {
+                        "name": "total Long balls",
+                        "value": "6"
+                    },
+                    "totalcross": {
+                        "name": "Total Cross",
+                        "value": "5"
+                    },
+                    "crossesacc": {
+                        "name": "Crosses Accuracy",
+                        "value": "1"
+                    },
+                    "bigchancecreated": {
+                        "name": "Big Chance Created",
+                        "value": "2"
+                    },
+                    "errorledtogoal": {
+                        "name": "Error Led To Goal",
+                        "value": "0"
+                    }
+                },
+                "duels": {
+                    "dispossessed": {
+                        "name": "Dispossessed",
+                        "value": "6"
+                    },
+                    "duelstotal": {
+                        "name": "Total Duels ",
+                        "value": "25"
+                    },
+                    "duelsown": {
+                        "name": "Duels Won",
+                        "value": "11"
+                    },
+                    "wasfouled": {
+                        "name": "Was Fouled",
+                        "value": "5"
+                    },
+                    "fouls": {
+                        "name": "Fouls",
+                        "value": "3"
+                    }
+                },
+                "goalkeeper": {
+                    "runsoutsucess": {
+                        "name": "Runs out Sucess",
+                        "value": "0"
+                    },
+                    "totalrunsOut": {
+                        "name": "Total Runs Out",
+                        "value": "0"
+                    },
+                    "goodhighclaim": {
+                        "name": "Good High Claim",
+                        "value": "0"
+                    },
+                    "punches": {
+                        "name": "Punches",
+                        "value": "0"
+                    },
+                    "saves": {
+                        "name": "Saves",
+                        "value": "0"
+                    },
+                    "savesfrominsidebox": {
+                        "name": "Saves from inside box",
+                        "value": "0"
+                    }
+                }
+            }
+        ],
+        "total_items": 342,
+        "total_pages": 342
+    },
+    "etag": "dbdda735ed7b8c7ac272dcae703b55e1",
+    "modified": "2018-09-01 09:35:18",
+    "datetime": "2018-09-01 09:35:18",
+    "api_version": "1.0"
+}
+
+```
+This API has competition's total player statistic details.
+
+### Request
+* Path: /soccer/competition/cid/stats
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of player stats object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of player available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+pname | string | player name
+tid | integer | team id
+tname | string | team name
+summary | array | An array of player stats summary details. <a href="#competition-stats-summary">see summary player statistic object reference</a>
+attack | array | An array of player attack stats details. <a href="#competition-stats-attack">see player attack statistic object reference</a>
+defence | array | An array of player defence stats details. <a href="#competition-stats-defence">see player defence statistic object reference</a>
+passing | array | An array of player passing stats details. <a href="#competition-stats-passing">see player passing statistic object reference</a>
+duels | array | An array of player duels stats details. <a href="#competition-stats-duels">see player duels statistic object reference</a>
+goalkeeper | array | An array of goalkeeper stats details. <a href="#competition-stats-goalkeeper">see goalkeeper statistic object reference</a>
+
+
+<h3 id="competition-stats-summary">Summary Player Statistic Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+minutesplayed | array | An array of details of total minutes played by the player . <a href="#competition-stats">see minutesplayed statistic object reference</a>
+assist | array | An array of details of total assist made by the player. <a href="#competition-stats">see assist statistic object reference</a>
+goals | array | An array of details of total goals scored by the player. <a href="#competition-stats">see goals statistic object reference</a>
+totaltackle | array | An array of details of total tackles made by the player. <a href="#competition-stats">see totaltackle statistic object reference</a>
+wonduels | array | An array of details of total duels won by the player. <a href="#competition-stats">see wonduels statistic object reference</a>
+totalduels | array | An array of details of total duels attempted by the player. <a href="#competition-stats">see totalduels statistic object reference</a>
+accuratepasses | array | An array of details of total accurate passes by the player. <a href="#competition-stats-goalkeeper">see accuratepasses statistic object reference</a>
+totalpass | array | An array of details of total passes attempeted by the player. <a href="#competition-stats">see totalpass statistic object reference</a>
+
+
+<h3 id="competition-stats-attack">Player Attack Statistic Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+shotsontarget | array | An array of details of shots on target by the player . <a href="#competition-stats">see shotsontarget statistic object reference</a>
+shotsofftarget | array | An array of details of shots off target by the player. <a href="#competition-stats">see shotsofftarget statistic object reference</a>
+shotsblocked | array | An array of details of shots blocked. <a href="#competition-stats">see shotsblocked statistic object reference</a>
+dribbleattempts | array | An array of details of dribble attempted by the player. <a href="#competition-stats">see dribbleattempts statistic object reference</a>
+dribblesuccess | array | An array of details of dribble success by the player. <a href="#competition-stats">see dribblesuccess statistic object reference</a>
+bigchancemissed | array | An array of details of big chance missed by the player. <a href="#competition-stats">see bigchancemissed statistic object reference</a>
+penaltywon | array | An array of details of penalty won by the player. <a href="#competition-stats-goalkeeper">see penaltywon statistic object reference</a>
+hitwoodwork | array | An array of details of crossbar hit by the player. <a href="#competition-stats">see hitwoodwork statistic object reference</a>
+penaltymiss | array | An array of details of penalty missed by the player. <a href="#competition-stats">see penaltymiss statistic object reference</a>
+
+
+<h3 id="competition-stats-defence">Player Defence Statistic Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+totalclearance | array | An array of details of total clearance by the player . <a href="#competition-stats">see totalclearance statistic object reference</a>
+outfielderblock | array | An array of details of out field block by the player. <a href="#competition-stats">see outfielderblock statistic object reference</a>
+interceptionwon | array | An array of details of interception won. <a href="#competition-stats">see interceptionwon statistic object reference</a>
+totaltackle | array | An array of details of total tackle by the player. <a href="#competition-stats">see totaltackle statistic object reference</a>
+challengelost | array | An array of details of challenge lost by the player. <a href="#competition-stats">see challengelost statistic object reference</a>
+owngoals | array | An array of details of own goals by the player. <a href="#competition-stats">see owngoals statistic object reference</a>
+penaltycommitted | array | An array of details of penalty committed by the player. <a href="#competition-stats-goalkeeper">see penaltycommitted statistic object reference</a>
+errorledtoshot | array | An array of details of defence error let to the shot by the player. <a href="#competition-stats">see errorledtoshot statistic object reference</a>
+lastmantackle | array | An array of details of last man tackle by the player. <a href="#competition-stats">see lastmantackle statistic object reference</a>
+
+
+<h3 id="competition-stats-passing">Player Passing Statistic Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+passingaccuracy | array | An array of details of passing accuracy by the player . <a href="#competition-stats">see passingaccuracy statistic object reference</a>
+accuratepass | array | An array of details of accurate passes by the player. <a href="#competition-stats">see accuratepass statistic object reference</a>
+totalpass | array | An array of details of total passes. <a href="#competition-stats">see totalpass statistic object reference</a>
+longballsacc | array | An array of details of long balls accuracy by the player. <a href="#competition-stats">see longballsacc statistic object reference</a>
+totalLongballs | array | An array of details of total Long balls by the player. <a href="#competition-stats">see totalLongballs statistic object reference</a>
+totalcross | array | An array of details of total crosses by the player. <a href="#competition-stats">see totalcross statistic object reference</a>
+crossesacc | array | An array of details of crosses accuracy by the player. <a href="#competition-stats-goalkeeper">see crossesacc statistic object reference</a>
+bigchancecreated | array | An array of details of big chance created by the player. <a href="#competition-stats">see bigchancecreated statistic object reference</a>
+errorledtogoal | array | An array of details of error led to goal by the player. <a href="#competition-stats">see errorledtogoal statistic object reference</a>
+
+
+<h3 id="competition-stats-duels">Player Duels Statistic Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+dispossessed | array | An array of details of player dispossessed. <a href="#competition-stats">see dispossessed statistic object reference</a>
+duelstotal | array | An array of details of total duels by the player. <a href="#competition-stats">see duelstotal statistic object reference</a>
+duelswon | array | An array of details of duels won by the player. <a href="#competition-stats">see duelswon statistic object reference</a>
+wasfouled | array | An array of details of the player was fouled. <a href="#competition-stats">see wasfouled statistic object reference</a>
+fouls | array | An array of details of fouls by the player. <a href="#competition-stats">see fouls statistic object reference</a>
+
+
+<h3 id="competition-stats-goalkeeper">Goalkeeper Statistic Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+runsoutsucess | array | An array of details of runs out success. <a href="#competition-stats">see runsoutsucess statistic object reference</a>
+totalrunsOut | array | An array of details of total runs outside the box. <a href="#competition-stats">see totalrunsOut statistic object reference</a>
+goodhighclaim | array | An array of details of good high ball saves. <a href="#competition-stats">see goodhighclaim statistic object reference</a>
+punches | array | An array of details of punches to the ball inside box from cross. <a href="#competition-stats">see punches statistic object reference</a>
+saves | array | An array of details of saves the player. <a href="#competition-stats">see saves statistic object reference</a>
+savesfrominsidebox | array | An array of details of saves fromi insidebox. <a href="#competition-stats">see savesfrominsidebox statistic object reference</a>
+
+
+<h3 id="competition-stats">Statistic Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+name | string | name of the statistic type
+value | integer | integer value of the statistic
+
+
+## Matches List API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/matches?token=[ACCESS_TOKEN]"
+```
+
+> Using Token and Status parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/matches?token=[ACCESS_TOKEN]&status=1"
+```
+
+> Using Token, Status and Pagination parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/matches?token=[ACCESS_TOKEN]&status=1&per_page=10&paged=1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "mid": 470,
+                "round": {
+                    "type": "table",
+                    "round": "3",
+                    "name": 3
+                },
+                "result": {
+                    "home": "4",
+                    "away": "1",
+                    "winner": "home"
+                },
+                "teams": {
+                    "home": {
+                        "tid": 70,
+                        "tname": "Real Madrid",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/2829.png",
+                        "fullname": "Real Madrid",
+                        "abbr": "MAD"
+                    },
+                    "away": {
+                        "tid": 75,
+                        "tname": "Leganes",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/2845.png",
+                        "fullname": "CD Leganes",
+                        "abbr": "LEG"
+                    }
+                },
+                "periods": {
+                    "p1": {
+                        "home": 1,
+                        "away": 1
+                    },
+                    "p2": {
+                        "home": 3,
+                        "away": 0
+                    },
+                    "ft": {
+                        "home": 4,
+                        "away": 1
+                    }
+                },
+                "datestart": "2018-09-01 18:45:00",
+                "dateend": "2018-09-01 20:37:23",
+                "timestampstart": 1535827500,
+                "timestampend": 1535834243,
+                "injurytime": null,
+                "time": 90,
+                "status_str": "result",
+                "status": 2,
+                "gamestate_str": "Ended",
+                "gamestate": 8,
+                "periodlength": "45",
+                "numberofperiods": "2",
+                "attendance": "59255",
+                "overtimelength": "15",
+                "competition": {
+                    "cid": 4,
+                    "cname": "LaLiga",
+                    "startdate": "2018-08-17 00:00:00",
+                    "enddate": "2019-05-20 23:55:00",
+                    "startdatetimestamp": 1534464000,
+                    "endtdatetimestamp": 1558396500,
+                    "year": "18/19",
+                    "category": "Spain",
+                    "iocid": "199",
+                    "ioc": "es",
+                    "status": 3,
+                    "status_str": "live",
+                    "logo": ""
+                },
+                "venue": {
+                    "venueid": 43,
+                    "name": "Santiago Bernabeu",
+                    "location": "Madrid, Spain",
+                    "founded": "1944",
+                    "capacity": "80000"
+                }
+            }
+        ],
+        "total_items": 164,
+        "total_pages": 164
+    },
+    "etag": "6fae2df0dec90b6c57ee37f5601d47b6",
+    "modified": "2018-09-02 11:06:27",
+    "datetime": "2018-09-02 11:06:27",
+    "api_version": "1.0"
+}
+
+```
+This API has list of all matches user have access.
+
+### Request
+* Path: /soccer/competition/matches
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+status | integer | status code 1 = upcoming, 2 = result, 3 = live.
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+mid | integer | match id
+round | array | An array of match round details. <a href="#matches-list-round">see round object reference</a>
+result | array | An array of match result details. <a href="#matches-list-result">see result object reference</a>
+teams | array | An array of match teams details. <a href="#matches-list-teams">see teams object reference</a>
+period | array | An array of match period wise details. <a href="#matches-list-period">see period object reference</a>
+datestart | string | time string in GMT of match start time
+dateend | string | time string in GMT of match end time
+timestampstart | integer | timestamp of match start time
+timestampend | integer | timestamp of match end time
+injurytime | integer | added injury time after the end of regular period time
+time | integer | match running time in minutes
+status_str | string | Match status string live, result, upcoming
+status | integer | Match status code 3 = live, 2 = result, 1 = upcoming
+gamestate_str | string | Match state string
+gamestate | integer | Match state code
+periodlength | integer | match period length in minutes
+numberofperiods | integer | number of periods in the match
+attendance | integer | total spectator attendance of the match
+overtimelength | integer | overtime length in minutes
+competition | array | An array of competition details. <a href="#matches-list-competition">see competition object reference</a>
+venue | array | An array of match venue details. <a href="#matches-list-venue">see venue object reference</a>
+
+
+<h3 id="matches-list-round">Round Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+type | string | round type. There are 2 type of rounds table and cup.
+name | string | round
+type | string | round name
+
+
+<h3 id="matches-list-result">Result Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | integer | home team score
+away | integer | away team score
+winner | string | winning team name, draw in case of equal scores
+
+
+<h3 id="matches-list-teams">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | An array of home team details. <a href="#matches-list-teams-details">see home team object reference</a>
+away | array | An array of away team details. <a href="#matches-list-teams-details">see away team object reference</a>
+
+
+<h3 id="matches-list-teams-details">Home/Away Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+tname | string | team name
+logo | string | team logo url
+fullname | string | team full name
+abbr | string | shortname team name
+
+
+
+<h3 id="matches-list-period">Period Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+p1 | array | An array of team score details in period 1. <a href="#matches-list-period-details">see p1 object reference</a>
+p2 | array | An array of team score details in period 2. <a href="#matches-list-period-details">see p2 object reference</a>
+ft | array | An array of team score details after full time. <a href="#matches-list-period-details">see ft object reference</a>
+
+<h3 id="matches-list-period-details">P1/P2/FT Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | integer | home team score
+away | integer | away team score
+
+
+<h3 id="matches-list-competition">Competition Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | integer | timestamp of competition start date
+enddatetimestamp | integer | timestamp of competition end date
+year | string | Season Year
+category | string | Competition Category
+ioc_id | integer | IOC id of competition native country
+ioc | string | IOC 2 letter code of competition native country
+status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+
+
+<h3 id="matches-list-venue">Competition Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+venueid | integer | venue id
+name | string | venue name
+location | string | venue location
+founded | integer | year venue founded
+capacity | integer | capacity of stadium
+
+
+## Match Info API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/matches/470/info?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": {
+            "match_info": [
+                {
+                    "mid": 470,
+                    "round": {
+                        "type": "table",
+                        "round": "3",
+                        "name": 3
+                    },
+                    "result": {
+                        "home": "4",
+                        "away": "1",
+                        "winner": "home"
+                    },
+                    "teams": {
+                        "home": {
+                            "tid": 70,
+                            "tname": "Real Madrid",
+                            "logo": "https://rest.entitysport.com/soccer/assets/team/2829.png",
+                            "fullname": "Real Madrid",
+                            "abbr": "MAD"
+                        },
+                        "away": {
+                            "tid": 75,
+                            "tname": "Leganes",
+                            "logo": "https://rest.entitysport.com/soccer/assets/team/2845.png",
+                            "fullname": "Real Madrid",
+                            "abbr": "MAD"
+                        }
+                    },
+                    "periods": {
+                        "p1": {
+                            "home": 1,
+                            "away": 1
+                        },
+                        "p2": {
+                            "home": 3,
+                            "away": 0
+                        },
+                        "ft": {
+                            "home": 4,
+                            "away": 1
+                        }
+                    },
+                    "datestart": "2018-09-01 18:45:00",
+                    "dateend": "2018-09-01 20:37:23",
+                    "timestampstart": 1535827500,
+                    "timestampend": 1535834243,
+                    "injurytime": null,
+                    "time": 90,
+                    "status_str": "result",
+                    "status": 2,
+                    "gamestate_str": "Ended",
+                    "gamestate": 8,
+                    "periodlength": "45",
+                    "numberofperiods": "2",
+                    "attendance": "59255",
+                    "overtimelength": "15",
+                    "competition": {
+                        "cid": 4,
+                        "cname": "LaLiga",
+                        "startdate": "2018-08-17 00:00:00",
+                        "enddate": "2019-05-20 23:55:00",
+                        "startdatetimestamp": 1534464000,
+                        "endtdatetimestamp": 1558396500,
+                        "year": "18/19",
+                        "category": "Spain",
+                        "iocid": "199",
+                        "ioc": "es",
+                        "status": 3,
+                        "status_str": "live",
+                        "logo": ""
+                    },
+                    "venue": {
+                        "venueid": 43,
+                        "name": "Santiago Bernabeu",
+                        "location": "Madrid, Spain",
+                        "founded": "1944",
+                        "capacity": "80000"
+                    }
+                }
+            ],
+            "referee": [
+                {
+                    "pid": 1699,
+                    "fullname": "Santiago Jaime Latre",
+                    "birthdatetimestamp": "298425600",
+                    "birthdate": "17/06/79",
+                    "nationality": {
+                        "iocid": 199,
+                        "name": "Spain",
+                        "ioc": "es"
+                    }
+                }
+            ],
+            "match_projection": [
+                {
+                    "time": 1,
+                    "injurytime": 0,
+                    "value": "7"
+                },
+                {
+                    "time": 2,
+                    "injurytime": 0,
+                    "value": "3"
+                },
+                {
+                    "time": 3,
+                    "injurytime": 0,
+                    "value": "17"
+                },
+                {
+                    "time": 4,
+                    "injurytime": 0,
+                    "value": "-2"
+                },
+                {
+                    "time": 5,
+                    "injurytime": 0,
+                    "value": "10"
+                },
+                {
+                    "time": 6,
+                    "injurytime": 0,
+                    "value": "-7"
+                },
+                {
+                    "time": 7,
+                    "injurytime": 0,
+                    "value": "6"
+                },
+                {
+                    "time": 8,
+                    "injurytime": 0,
+                    "value": "21"
+                },
+                {
+                    "time": 9,
+                    "injurytime": 0,
+                    "value": "22"
+                },
+                {
+                    "time": 10,
+                    "injurytime": 0,
+                    "value": "21"
+                },
+                {
+                    "time": 11,
+                    "injurytime": 0,
+                    "value": "9"
+                },
+                {
+                    "time": 12,
+                    "injurytime": 0,
+                    "value": "18"
+                },
+                {
+                    "time": 13,
+                    "injurytime": 0,
+                    "value": "23"
+                },
+                {
+                    "time": 14,
+                    "injurytime": 0,
+                    "value": "2"
+                },
+                {
+                    "time": 15,
+                    "injurytime": 0,
+                    "value": "5"
+                },
+                {
+                    "time": 16,
+                    "injurytime": 0,
+                    "value": "21"
+                },
+                {
+                    "time": 17,
+                    "injurytime": 0,
+                    "value": "30"
+                },
+                {
+                    "time": 18,
+                    "injurytime": 0,
+                    "value": "12"
+                },
+                {
+                    "time": 19,
+                    "injurytime": 0,
+                    "value": "29"
+                },
+                {
+                    "time": 20,
+                    "injurytime": 0,
+                    "value": "7"
+                },
+                {
+                    "time": 21,
+                    "injurytime": 0,
+                    "value": "28"
+                },
+                {
+                    "time": 22,
+                    "injurytime": 0,
+                    "value": "15"
+                },
+                {
+                    "time": 23,
+                    "injurytime": 0,
+                    "value": "-23"
+                },
+                {
+                    "time": 24,
+                    "injurytime": 0,
+                    "value": "-30"
+                },
+                {
+                    "time": 25,
+                    "injurytime": 0,
+                    "value": "-17"
+                },
+                {
+                    "time": 26,
+                    "injurytime": 0,
+                    "value": "9"
+                },
+                {
+                    "time": 27,
+                    "injurytime": 0,
+                    "value": "17"
+                },
+                {
+                    "time": 28,
+                    "injurytime": 0,
+                    "value": "14"
+                },
+                {
+                    "time": 29,
+                    "injurytime": 0,
+                    "value": "-23"
+                },
+                {
+                    "time": 30,
+                    "injurytime": 0,
+                    "value": "-14"
+                },
+                {
+                    "time": 31,
+                    "injurytime": 0,
+                    "value": "6"
+                },
+                {
+                    "time": 32,
+                    "injurytime": 0,
+                    "value": "16"
+                },
+                {
+                    "time": 33,
+                    "injurytime": 0,
+                    "value": "14"
+                },
+                {
+                    "time": 34,
+                    "injurytime": 0,
+                    "value": "19"
+                },
+                {
+                    "time": 35,
+                    "injurytime": 0,
+                    "value": "30"
+                },
+                {
+                    "time": 36,
+                    "injurytime": 0,
+                    "value": "9"
+                },
+                {
+                    "time": 37,
+                    "injurytime": 0,
+                    "value": "12"
+                },
+                {
+                    "time": 38,
+                    "injurytime": 0,
+                    "value": "12"
+                },
+                {
+                    "time": 39,
+                    "injurytime": 0,
+                    "value": "11"
+                },
+                {
+                    "time": 40,
+                    "injurytime": 0,
+                    "value": "15"
+                },
+                {
+                    "time": 41,
+                    "injurytime": 0,
+                    "value": "21"
+                },
+                {
+                    "time": 42,
+                    "injurytime": 0,
+                    "value": "14"
+                },
+                {
+                    "time": 43,
+                    "injurytime": 0,
+                    "value": "11"
+                },
+                {
+                    "time": 44,
+                    "injurytime": 0,
+                    "value": "9"
+                },
+                {
+                    "time": 45,
+                    "injurytime": 0,
+                    "value": "-7"
+                },
+                {
+                    "time": 45,
+                    "injurytime": 1,
+                    "value": "17"
+                },
+                {
+                    "time": 45,
+                    "injurytime": 2,
+                    "value": "9"
+                },
+                {
+                    "time": 46,
+                    "injurytime": 0,
+                    "value": "-1"
+                },
+                {
+                    "time": 47,
+                    "injurytime": 0,
+                    "value": "21"
+                },
+                {
+                    "time": 48,
+                    "injurytime": 0,
+                    "value": "29"
+                },
+                {
+                    "time": 49,
+                    "injurytime": 0,
+                    "value": "30"
+                },
+                {
+                    "time": 50,
+                    "injurytime": 0,
+                    "value": "30"
+                },
+                {
+                    "time": 51,
+                    "injurytime": 0,
+                    "value": "17"
+                },
+                {
+                    "time": 52,
+                    "injurytime": 0,
+                    "value": "3"
+                },
+                {
+                    "time": 53,
+                    "injurytime": 0,
+                    "value": "-9"
+                },
+                {
+                    "time": 54,
+                    "injurytime": 0,
+                    "value": "-16"
+                },
+                {
+                    "time": 55,
+                    "injurytime": 0,
+                    "value": "3"
+                },
+                {
+                    "time": 56,
+                    "injurytime": 0,
+                    "value": "14"
+                },
+                {
+                    "time": 57,
+                    "injurytime": 0,
+                    "value": "10"
+                },
+                {
+                    "time": 58,
+                    "injurytime": 0,
+                    "value": "14"
+                },
+                {
+                    "time": 59,
+                    "injurytime": 0,
+                    "value": "-9"
+                },
+                {
+                    "time": 60,
+                    "injurytime": 0,
+                    "value": "3"
+                },
+                {
+                    "time": 61,
+                    "injurytime": 0,
+                    "value": "23"
+                },
+                {
+                    "time": 62,
+                    "injurytime": 0,
+                    "value": "30"
+                },
+                {
+                    "time": 63,
+                    "injurytime": 0,
+                    "value": "-12"
+                },
+                {
+                    "time": 64,
+                    "injurytime": 0,
+                    "value": "-16"
+                },
+                {
+                    "time": 65,
+                    "injurytime": 0,
+                    "value": "12"
+                },
+                {
+                    "time": 66,
+                    "injurytime": 0,
+                    "value": "30"
+                },
+                {
+                    "time": 67,
+                    "injurytime": 0,
+                    "value": "30"
+                },
+                {
+                    "time": 68,
+                    "injurytime": 0,
+                    "value": "-8"
+                },
+                {
+                    "time": 69,
+                    "injurytime": 0,
+                    "value": "5"
+                },
+                {
+                    "time": 70,
+                    "injurytime": 0,
+                    "value": "-9"
+                },
+                {
+                    "time": 71,
+                    "injurytime": 0,
+                    "value": "15"
+                },
+                {
+                    "time": 72,
+                    "injurytime": 0,
+                    "value": "19"
+                },
+                {
+                    "time": 73,
+                    "injurytime": 0,
+                    "value": "6"
+                },
+                {
+                    "time": 74,
+                    "injurytime": 0,
+                    "value": "27"
+                },
+                {
+                    "time": 75,
+                    "injurytime": 0,
+                    "value": "-8"
+                },
+                {
+                    "time": 76,
+                    "injurytime": 0,
+                    "value": "-13"
+                },
+                {
+                    "time": 77,
+                    "injurytime": 0,
+                    "value": "8"
+                },
+                {
+                    "time": 78,
+                    "injurytime": 0,
+                    "value": "2"
+                },
+                {
+                    "time": 79,
+                    "injurytime": 0,
+                    "value": "28"
+                },
+                {
+                    "time": 80,
+                    "injurytime": 0,
+                    "value": "25"
+                },
+                {
+                    "time": 81,
+                    "injurytime": 0,
+                    "value": "1"
+                },
+                {
+                    "time": 82,
+                    "injurytime": 0,
+                    "value": "13"
+                },
+                {
+                    "time": 83,
+                    "injurytime": 0,
+                    "value": "15"
+                },
+                {
+                    "time": 84,
+                    "injurytime": 0,
+                    "value": "-4"
+                },
+                {
+                    "time": 85,
+                    "injurytime": 0,
+                    "value": "-9"
+                },
+                {
+                    "time": 86,
+                    "injurytime": 0,
+                    "value": "-4"
+                },
+                {
+                    "time": 87,
+                    "injurytime": 0,
+                    "value": "1"
+                },
+                {
+                    "time": 88,
+                    "injurytime": 0,
+                    "value": "18"
+                },
+                {
+                    "time": 89,
+                    "injurytime": 0,
+                    "value": "6"
+                },
+                {
+                    "time": 90,
+                    "injurytime": 0,
+                    "value": "6"
+                },
+                {
+                    "time": 90,
+                    "injurytime": 1,
+                    "value": "7"
+                },
+                {
+                    "time": 90,
+                    "injurytime": 2,
+                    "value": "12"
+                },
+                {
+                    "time": 90,
+                    "injurytime": 3,
+                    "value": "-17"
+                },
+                {
+                    "time": 90,
+                    "injurytime": 4,
+                    "value": "14"
+                },
+                {
+                    "time": 90,
+                    "injurytime": 5,
+                    "value": "11"
+                }
+            ],
+            "event": [
+                {
+                    "pid": 248,
+                    "pname": "Luka Modric",
+                    "type": "card",
+                    "time": 3,
+                    "seconds": 179,
+                    "name": "Yellow card",
+                    "injurytime": 0,
+                    "team": "home",
+                    "assists": "",
+                    "goaltypeid": "",
+                    "goaltype": ""
+                },
+                {
+                    "pid": 248,
+                    "pname": "Luka Modric",
+                    "type": "card",
+                    "time": 3,
+                    "seconds": 179,
+                    "name": "Yellow card",
+                    "injurytime": 0,
+                    "team": "home",
+                    "card": "yellow"
+                },
+                {
+                    "pid": 1448,
+                    "pname": "Gareth Bale",
+                    "type": "goal",
+                    "time": 17,
+                    "seconds": "",
+                    "name": "Goal",
+                    "injurytime": 0,
+                    "team": "home",
+                    "assists": {
+                        "pid": 107,
+                        "pname": "Dani Carvajal"
+                    },
+                    "goaltypeid": "",
+                    "goaltype": ""
+                },
+                {
+                    "pid": 1561,
+                    "pname": "Guido Carrillo",
+                    "type": "goal",
+                    "time": 24,
+                    "seconds": 1417,
+                    "name": "Goal",
+                    "injurytime": 0,
+                    "team": "away",
+                    "assists": "",
+                    "goaltypeid": "1",
+                    "goaltype": "penalty"
+                },
+                {
+                    "pid": 1566,
+                    "pname": "Michael Santos",
+                    "type": "card",
+                    "time": 27,
+                    "seconds": 1594,
+                    "name": "Yellow card",
+                    "injurytime": 0,
+                    "team": "away",
+                    "assists": "",
+                    "goaltypeid": "",
+                    "goaltype": ""
+                },
+                {
+                    "pid": 1566,
+                    "pname": "Michael Santos",
+                    "type": "card",
+                    "time": 27,
+                    "seconds": 1594,
+                    "name": "Yellow card",
+                    "injurytime": 0,
+                    "team": "away",
+                    "card": "yellow"
+                },
+                {
+                    "pid": 1447,
+                    "pname": "Karim Benzema",
+                    "type": "goal",
+                    "time": 48,
+                    "seconds": "",
+                    "name": "Goal",
+                    "injurytime": 0,
+                    "team": "home",
+                    "assists": {
+                        "pid": 111,
+                        "pname": "Marco Asensio"
+                    },
+                    "goaltypeid": "3",
+                    "goaltype": "header"
+                },
+                {
+                    "pid": 1447,
+                    "pname": "Karim Benzema",
+                    "type": "goal",
+                    "time": 61,
+                    "seconds": "",
+                    "name": "Goal",
+                    "injurytime": 0,
+                    "team": "home",
+                    "assists": {
+                        "pid": 248,
+                        "pname": "Luka Modric"
+                    },
+                    "goaltypeid": "",
+                    "goaltype": ""
+                },
+                {
+                    "pid": 91,
+                    "pname": "Sergio Ramos",
+                    "type": "goal",
+                    "time": 66,
+                    "seconds": "",
+                    "name": "Goal",
+                    "injurytime": 0,
+                    "team": "home",
+                    "assists": "",
+                    "goaltypeid": "1",
+                    "goaltype": "penalty"
+                }
+            ],
+            "commentary": [
+                {
+                    "id": 1,
+                    "injurytime": 0,
+                    "time": 0,
+                    "sentence": "The big names in today's match at Santiago Bernabeu have now been confirmed."
+                },
+                {
+                    "id": 2,
+                    "injurytime": 0,
+                    "time": 1,
+                    "sentence": "The whistle has gone to start the match."
+                },
+                {
+                    "id": 3,
+                    "injurytime": 0,
+                    "time": 3,
+                    "sentence": "Luka Modric (Real Madrid) has received a first yellow card."
+                },
+                {
+                    "id": 4,
+                    "injurytime": 0,
+                    "time": 6,
+                    "sentence": "Real Madrid's Marco Asensio breaks free at Santiago Bernabeu. But the strike goes wide of the post."
+                },
+                {
+                    "id": 5,
+                    "injurytime": 0,
+                    "time": 10,
+                    "sentence": "Real Madrid have been awarded a corner by Santiago Jaime Latre."
+                },
+                {
+                    "id": 6,
+                    "injurytime": 0,
+                    "time": 13,
+                    "sentence": "Corner awarded to Real Madrid."
+                },
+                {
+                    "id": 7,
+                    "injurytime": 0,
+                    "time": 17,
+                    "sentence": "Real Madrid take a 1-0 lead thanks to Gareth Bale."
+                },
+                {
+                    "id": 8,
+                    "injurytime": 0,
+                    "time": 17,
+                    "sentence": "Great play from Dani Carvajal to set up the goal."
+                },
+                {
+                    "id": 9,
+                    "injurytime": 0,
+                    "time": 19,
+                    "sentence": "Real Madrid have been awarded a corner by Santiago Jaime Latre."
+                },
+                {
+                    "id": 10,
+                    "injurytime": 0,
+                    "time": 20,
+                    "sentence": "Corner awarded to Real Madrid."
+                },
+                {
+                    "id": 11,
+                    "injurytime": 0,
+                    "time": 22,
+                    "sentence": "Toni Kroos (Real Madrid) is given an opening but the shot is blocked by a defender."
+                },
+                {
+                    "id": 12,
+                    "injurytime": 0,
+                    "time": 22,
+                    "sentence": "In Madrid, Marco Asensio of Real Madrid is presented with a shooting opportunity. But the strike is blocked by the covering defence."
+                },
+                {
+                    "id": 13,
+                    "injurytime": 0,
+                    "time": 23,
+                    "sentence": "An attacking Leganes player has been brought down in the area - penalty!"
+                },
+                {
+                    "id": 14,
+                    "injurytime": 0,
+                    "time": 24,
+                    "sentence": "Goal! Guido Carrillo makes it 1-1. The equalizer came in the form of a penalty."
+                },
+                {
+                    "id": 15,
+                    "injurytime": 0,
+                    "time": 27,
+                    "sentence": "Michael Santos for Leganes has been booked by Santiago Jaime Latre and receives a first yellow card."
+                },
+                {
+                    "id": 16,
+                    "injurytime": 0,
+                    "time": 28,
+                    "sentence": "Michael Santos of Leganes smashes in a shot on target. The keeper saves, though."
+                },
+                {
+                    "id": 17,
+                    "injurytime": 0,
+                    "time": 32,
+                    "sentence": "Gareth Bale (Real Madrid) goes close with a header but the ball is scrambled away by Leganes defenders."
+                },
+                {
+                    "id": 18,
+                    "injurytime": 0,
+                    "time": 38,
+                    "sentence": "Nabil El Zhar (Leganes) gets in a strike but the shot is blocked by a defender."
+                },
+                {
+                    "id": 19,
+                    "injurytime": 0,
+                    "time": 40,
+                    "sentence": "Toni Kroos's header is off-target for Real Madrid."
+                },
+                {
+                    "id": 20,
+                    "injurytime": 0,
+                    "time": 41,
+                    "sentence": "In Madrid Real Madrid attack through Gareth Bale. The finish is off target, however."
+                },
+                {
+                    "id": 21,
+                    "injurytime": 0,
+                    "time": 42,
+                    "sentence": "Karim Benzema for Real Madrid drives towards goal at Santiago Bernabeu. But the finish is unsuccessful."
+                },
+                {
+                    "id": 22,
+                    "injurytime": 0,
+                    "time": 43,
+                    "sentence": "Real Madrid have been awarded a corner by Santiago Jaime Latre."
+                },
+                {
+                    "id": 23,
+                    "injurytime": 0,
+                    "time": 43,
+                    "sentence": "Raphael Varane (Real Madrid) is first to the ball but his header is off-target."
+                },
+                {
+                    "id": 24,
+                    "injurytime": 0,
+                    "time": 44,
+                    "sentence": "Play has been temporarily suspended for attention to Guido Carrillo for Leganes who is writhing in pain on the pitch."
+                },
+                {
+                    "id": 25,
+                    "injurytime": 0,
+                    "time": 44,
+                    "sentence": "The match is underway again."
+                },
+                {
+                    "id": 26,
+                    "injurytime": 0,
+                    "time": 44,
+                    "sentence": "Leganes's Guido Carrillo is back in action after a slight knock."
+                },
+                {
+                    "id": 27,
+                    "injurytime": 0,
+                    "time": 45,
+                    "sentence": "Real Madrid push upfield but Santiago Jaime Latre quickly pulls them for offside."
+                },
+                {
+                    "id": 28,
+                    "injurytime": 1,
+                    "time": 45,
+                    "sentence": "Santiago Jaime Latre will wait an extra 1 minutes before blowing the whistle to end the 1st half."
+                },
+                {
+                    "id": 29,
+                    "injurytime": 2,
+                    "time": 45,
+                    "sentence": "Corner awarded to Real Madrid."
+                },
+                {
+                    "id": 30,
+                    "injurytime": 2,
+                    "time": 45,
+                    "sentence": "Real Madrid's Marco Asensio gets in a shot on goal at Santiago Bernabeu. But the effort is unsuccessful."
+                },
+                {
+                    "id": 31,
+                    "injurytime": null,
+                    "time": 45,
+                    "sentence": "The first-half has come to a close in Madrid."
+                },
+                {
+                    "id": 32,
+                    "injurytime": 0,
+                    "time": 46,
+                    "sentence": "The second-half is now underway."
+                },
+                {
+                    "id": 33,
+                    "injurytime": 0,
+                    "time": 48,
+                    "sentence": "Real Madrid's Karim Benzema scores with his head to give his side a 2-1 lead."
+                },
+                {
+                    "id": 34,
+                    "injurytime": 0,
+                    "time": 48,
+                    "sentence": "That's a fine assist from Marco Asensio."
+                },
+                {
+                    "id": 35,
+                    "injurytime": 0,
+                    "time": 53,
+                    "sentence": "Important block from the Real Madrid defence as Guido Carrillo fires in a strike for Leganes."
+                },
+                {
+                    "id": 36,
+                    "injurytime": 0,
+                    "time": 53,
+                    "sentence": "Leganes drive forward at breakneck speed but are pulled up for offside."
+                },
+                {
+                    "id": 37,
+                    "injurytime": 0,
+                    "time": 54,
+                    "sentence": "Leganes have been awarded a corner by Santiago Jaime Latre."
+                },
+                {
+                    "id": 38,
+                    "injurytime": 0,
+                    "time": 58,
+                    "sentence": "Real Madrid drive upfield and Karim Benzema gets in a shot. The strike is blocked by a Leganes defender."
+                },
+                {
+                    "id": 39,
+                    "injurytime": 0,
+                    "time": 58,
+                    "sentence": "Toni Kroos for Real Madrid gets in a strike but fails to hit the target."
+                },
+                {
+                    "id": 40,
+                    "injurytime": 0,
+                    "time": 61,
+                    "sentence": "Goal! Karim Benzema extends Real Madrid's lead to 3-1."
+                },
+                {
+                    "id": 41,
+                    "injurytime": 0,
+                    "time": 61,
+                    "sentence": "Luka Modric instrumental with a fine assist."
+                },
+                {
+                    "id": 42,
+                    "injurytime": 0,
+                    "time": 62,
+                    "sentence": "Isco is replacing Luka Modric for Real Madrid at Santiago Bernabeu."
+                },
+                {
+                    "id": 43,
+                    "injurytime": 0,
+                    "time": 64,
+                    "sentence": "Michael Santos (Leganes) wins the ball in the air but heads wide."
+                },
+                {
+                    "id": 44,
+                    "injurytime": 0,
+                    "time": 65,
+                    "sentence": "Real Madrid have been awarded a penalty..."
+                },
+                {
+                    "id": 45,
+                    "injurytime": 0,
+                    "time": 66,
+                    "sentence": "Sergio Ramos nets and Real Madrid extend their lead to 4-1. The goal came from the penalty spot."
+                },
+                {
+                    "id": 46,
+                    "injurytime": 0,
+                    "time": 68,
+                    "sentence": "In Madrid Leganes drive forward through Guido Carrillo. His shot is on target but it's saved."
+                },
+                {
+                    "id": 47,
+                    "injurytime": 0,
+                    "time": 69,
+                    "sentence": "The away team have replaced Javi Eraso with Mikel Vesga. This is the first substitution made today by Mauricio Pellegrino."
+                },
+                {
+                    "id": 48,
+                    "injurytime": 0,
+                    "time": 70,
+                    "sentence": "Mauricio Pellegrino (Leganes) is making a second substitution, with Youssef En-Nesyri replacing Nabil El Zhar."
+                },
+                {
+                    "id": 49,
+                    "injurytime": 0,
+                    "time": 72,
+                    "sentence": "Real Madrid's Gareth Bale gets his shot away but it misses the target."
+                },
+                {
+                    "id": 50,
+                    "injurytime": 0,
+                    "time": 74,
+                    "sentence": "Corner awarded to Real Madrid."
+                },
+                {
+                    "id": 51,
+                    "injurytime": 0,
+                    "time": 75,
+                    "sentence": "Youssef En-Nesyri (Leganes) goes for goal but the shot is blocked by an alert defence."
+                },
+                {
+                    "id": 52,
+                    "injurytime": 0,
+                    "time": 77,
+                    "sentence": "Real Madrid's Gareth Bale misses with an attempt on goal."
+                },
+                {
+                    "id": 53,
+                    "injurytime": 0,
+                    "time": 78,
+                    "sentence": "The home team replace Marco Asensio with Dani Ceballos."
+                },
+                {
+                    "id": 54,
+                    "injurytime": 0,
+                    "time": 81,
+                    "sentence": "Diego Rolan is replacing Michael Santos for the away team."
+                },
+                {
+                    "id": 55,
+                    "injurytime": 0,
+                    "time": 85,
+                    "sentence": "Real Madrid make their third substitution with Lucas Vazquez replacing Gareth Bale."
+                },
+                {
+                    "id": 56,
+                    "injurytime": 0,
+                    "time": 88,
+                    "sentence": "Ruben Perez is down and play has been interrupted for a few moments."
+                },
+                {
+                    "id": 57,
+                    "injurytime": 0,
+                    "time": 88,
+                    "sentence": "Play has been resumed."
+                },
+                {
+                    "id": 58,
+                    "injurytime": 0,
+                    "time": 88,
+                    "sentence": "Corner awarded to Real Madrid."
+                },
+                {
+                    "id": 59,
+                    "injurytime": 0,
+                    "time": 89,
+                    "sentence": "Ruben Perez has recovered and rejoins the match in Madrid."
+                },
+                {
+                    "id": 60,
+                    "injurytime": 1,
+                    "time": 90,
+                    "sentence": "The 2nd half is prolonged by 4 minutes of added time."
+                },
+                {
+                    "id": 61,
+                    "injurytime": 3,
+                    "time": 90,
+                    "sentence": "Real Madrid push forward through Isco, whose finish on goal is saved."
+                },
+                {
+                    "id": 62,
+                    "injurytime": 3,
+                    "time": 90,
+                    "sentence": "Leganes's Youssef En-Nesyri attacks the ball with his head but his effort fails to hit the target."
+                },
+                {
+                    "id": 63,
+                    "injurytime": 0,
+                    "time": -1,
+                    "sentence": "It is reported that 59255 spectators are in attendance today."
+                },
+                {
+                    "id": 64,
+                    "injurytime": null,
+                    "time": 90,
+                    "sentence": "The match is over. Final score 4-1."
+                }
+            ],
+            "lineup": {
+                "home": {
+                    "lineup": {
+                        "formation": "4-3-3",
+                        "player": [
+                            {
+                                "pid": 282,
+                                "pname": "Thibaut Courtois",
+                                "name": "Goalkeeper",
+                                "order": 1,
+                                "matchposition": "G",
+                                "position": "G",
+                                "shirtnumber": "25"
+                            },
+                            {
+                                "pid": 107,
+                                "pname": "Dani Carvajal",
+                                "name": "Right back",
+                                "order": 2,
+                                "matchposition": "D",
+                                "position": "D",
+                                "shirtnumber": "2"
+                            },
+                            {
+                                "pid": 91,
+                                "pname": "Sergio Ramos",
+                                "name": "Central defender",
+                                "order": 3,
+                                "matchposition": "D",
+                                "position": "D",
+                                "shirtnumber": "4"
+                            },
+                            {
+                                "pid": 35,
+                                "pname": "Raphael Varane",
+                                "name": "Central defender",
+                                "order": 4,
+                                "matchposition": "D",
+                                "position": "D",
+                                "shirtnumber": "5"
+                            },
+                            {
+                                "pid": 410,
+                                "pname": "Marcelo",
+                                "name": "Left back",
+                                "order": 5,
+                                "matchposition": "D",
+                                "position": "D",
+                                "shirtnumber": "12"
+                            },
+                            {
+                                "pid": 207,
+                                "pname": "Toni Kroos",
+                                "name": "Central midfielder",
+                                "order": 6,
+                                "matchposition": "M",
+                                "position": "M",
+                                "shirtnumber": "8"
+                            },
+                            {
+                                "pid": 421,
+                                "pname": "Casemiro",
+                                "name": "Central midfielder",
+                                "order": 7,
+                                "matchposition": "M",
+                                "position": "M",
+                                "shirtnumber": "14"
+                            },
+                            {
+                                "pid": 248,
+                                "pname": "Luka Modric",
+                                "name": "Central midfielder",
+                                "order": 8,
+                                "matchposition": "M",
+                                "position": "M",
+                                "shirtnumber": "10"
+                            },
+                            {
+                                "pid": 1448,
+                                "pname": "Gareth Bale",
+                                "name": "Forward",
+                                "order": 9,
+                                "matchposition": "F",
+                                "position": "F",
+                                "shirtnumber": "11"
+                            },
+                            {
+                                "pid": 1447,
+                                "pname": "Karim Benzema",
+                                "name": "Forward",
+                                "order": 10,
+                                "matchposition": "F",
+                                "position": "F",
+                                "shirtnumber": "9"
+                            },
+                            {
+                                "pid": 111,
+                                "pname": "Marco Asensio",
+                                "name": "Forward",
+                                "order": 11,
+                                "matchposition": "F",
+                                "position": "M",
+                                "shirtnumber": "20"
+                            }
+                        ]
+                    },
+                    "substitutes": [
+                        {
+                            "pid": 435,
+                            "pname": "Keylor Navas",
+                            "name": "Goalkeeper",
+                            "order": 1,
+                            "matchposition": "G",
+                            "position": "G",
+                            "shirtnumber": "1"
+                        },
+                        {
+                            "pid": 102,
+                            "pname": "Nacho",
+                            "name": "Goalkeeper",
+                            "order": 1,
+                            "matchposition": "G",
+                            "position": "D",
+                            "shirtnumber": "6"
+                        },
+                        {
+                            "pid": 109,
+                            "pname": "Lucas Vazquez",
+                            "name": "Goalkeeper",
+                            "order": 1,
+                            "matchposition": "G",
+                            "position": "F",
+                            "shirtnumber": "17"
+                        },
+                        {
+                            "pid": 1451,
+                            "pname": "Marcos Llorente",
+                            "name": "Goalkeeper",
+                            "order": 1,
+                            "matchposition": "G",
+                            "position": "M",
+                            "shirtnumber": "18"
+                        },
+                        {
+                            "pid": 105,
+                            "pname": "Isco",
+                            "name": "Goalkeeper",
+                            "order": 1,
+                            "matchposition": "G",
+                            "position": "M",
+                            "shirtnumber": "22"
+                        },
+                        {
+                            "pid": 1453,
+                            "pname": "Dani Ceballos",
+                            "name": "Goalkeeper",
+                            "order": 1,
+                            "matchposition": "G",
+                            "position": "M",
+                            "shirtnumber": "24"
+                        }
+                    ],
+                    "substitutions": [
+                        {
+                            "playerin": 105,
+                            "playerout": 248,
+                            "time": 62
+                        },
+                        {
+                            "playerin": 1453,
+                            "playerout": 111,
+                            "time": 78
+                        },
+                        {
+                            "playerin": 109,
+                            "playerout": 1448,
+                            "time": 85
+                        }
+                    ],
+                    "manager": [
+                        {
+                            "name": " Julen Lopetegui",
+                            "birthdatetimestamp": -102902400,
+                            "birthdate": "28/09/66",
+                            "nationality": {
+                                "iocid": 199,
+                                "name": "Spain",
+                                "ioc": "es"
+                            }
+                        }
+                    ]
+                },
+                "away": {
+                    "lineup": {
+                        "formation": "4-4-1-1",
+                        "player": [
+                            {
+                                "pid": 1549,
+                                "pname": "Ivan Cuellar",
+                                "name": "Goalkeeper",
+                                "order": 1,
+                                "matchposition": "G",
+                                "position": "G",
+                                "shirtnumber": "1"
+                            },
+                            {
+                                "pid": 1551,
+                                "pname": "Juanfran",
+                                "name": "Right back",
+                                "order": 2,
+                                "matchposition": "D",
+                                "position": "M",
+                                "shirtnumber": "2"
+                            },
+                            {
+                                "pid": 1570,
+                                "pname": "Unai Bustinza",
+                                "name": "Central defender",
+                                "order": 3,
+                                "matchposition": "D",
+                                "position": "D",
+                                "shirtnumber": "3"
+                            },
+                            {
+                                "pid": 1553,
+                                "pname": "Dimitrios Siovas",
+                                "name": "Central defender",
+                                "order": 4,
+                                "matchposition": "D",
+                                "position": "D",
+                                "shirtnumber": "22"
+                            },
+                            {
+                                "pid": 1559,
+                                "pname": "Jonathan Silva",
+                                "name": "Left back",
+                                "order": 5,
+                                "matchposition": "D",
+                                "position": "D",
+                                "shirtnumber": "5"
+                            },
+                            {
+                                "pid": 1550,
+                                "pname": "Nabil El Zhar",
+                                "name": "Right winger",
+                                "order": 6,
+                                "matchposition": "M",
+                                "position": "M",
+                                "shirtnumber": "10"
+                            },
+                            {
+                                "pid": 1552,
+                                "pname": "Ruben Perez",
+                                "name": "Central midfielder",
+                                "order": 7,
+                                "matchposition": "M",
+                                "position": "M",
+                                "shirtnumber": "21"
+                            },
+                            {
+                                "pid": 1565,
+                                "pname": "Gerard Gumbau",
+                                "name": "Central midfielder",
+                                "order": 8,
+                                "matchposition": "M",
+                                "position": "M",
+                                "shirtnumber": "6"
+                            },
+                            {
+                                "pid": 1568,
+                                "pname": "Javi Eraso",
+                                "name": "Left winger",
+                                "order": 9,
+                                "matchposition": "M",
+                                "position": "M",
+                                "shirtnumber": "17"
+                            },
+                            {
+                                "pid": 1566,
+                                "pname": "Michael Santos",
+                                "name": "Forward",
+                                "order": 10,
+                                "matchposition": "F",
+                                "position": "F",
+                                "shirtnumber": "20"
+                            },
+                            {
+                                "pid": 1561,
+                                "pname": "Guido Carrillo",
+                                "name": "Forward",
+                                "order": 11,
+                                "matchposition": "F",
+                                "position": "F",
+                                "shirtnumber": "9"
+                            }
+                        ]
+                    },
+                    "substitutes": [
+                        {
+                            "pid": 1560,
+                            "pname": "Diego Rolan",
+                            "name": "Central defender",
+                            "order": 4,
+                            "matchposition": "D",
+                            "position": "F",
+                            "shirtnumber": "4"
+                        },
+                        {
+                            "pid": 1573,
+                            "pname": "Daniel Ojeda",
+                            "name": "Central defender",
+                            "order": 4,
+                            "matchposition": "D",
+                            "position": "F",
+                            "shirtnumber": "7"
+                        },
+                        {
+                            "pid": 1557,
+                            "pname": "Allan Nyom",
+                            "name": "Central defender",
+                            "order": 4,
+                            "matchposition": "D",
+                            "position": "D",
+                            "shirtnumber": "12"
+                        },
+                        {
+                            "pid": 1558,
+                            "pname": "Jon Ander Serantes",
+                            "name": "Central defender",
+                            "order": 4,
+                            "matchposition": "D",
+                            "position": "G",
+                            "shirtnumber": "13"
+                        },
+                        {
+                            "pid": 1569,
+                            "pname": "Mikel Vesga",
+                            "name": "Central defender",
+                            "order": 4,
+                            "matchposition": "D",
+                            "position": "M",
+                            "shirtnumber": "23"
+                        },
+                        {
+                            "pid": 574,
+                            "pname": "Kenneth Omeruo",
+                            "name": "Central defender",
+                            "order": 4,
+                            "matchposition": "D",
+                            "position": "D",
+                            "shirtnumber": "24"
+                        },
+                        {
+                            "pid": 539,
+                            "pname": "Youssef En-Nesyri",
+                            "name": "Central defender",
+                            "order": 4,
+                            "matchposition": "D",
+                            "position": "F",
+                            "shirtnumber": "26"
+                        }
+                    ],
+                    "substitutions": [
+                        {
+                            "playerin": 1569,
+                            "playerout": 1568,
+                            "time": 69
+                        },
+                        {
+                            "playerin": 539,
+                            "playerout": 1550,
+                            "time": 70
+                        },
+                        {
+                            "playerin": 1560,
+                            "playerout": 1566,
+                            "time": 81
+                        }
+                    ],
+                    "manager": [
+                        {
+                            "name": " Mauricio Pellegrino",
+                            "birthdatetimestamp": 55468800,
+                            "birthdate": "05/10/71",
+                            "nationality": {
+                                "iocid": 10,
+                                "name": "Argentina",
+                                "ioc": "ar"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "5996f1a41fbfff17c359a3ffa5f65a55",
+    "modified": "2018-09-02 11:18:58",
+    "datetime": "2018-09-02 11:18:58",
+    "api_version": "1.0"
+}
+
+```
+This API contains a single match info, match projection, events, commentary, lineup details.
+
+### Request
+* Path: /soccer/matches/mid/info
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match details object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+match_info | array | An array of match details. <a href="#matches-info">see match_info object reference</a>
+referee | array | An array of match referee details. <a href="#matches-referee">see referee object reference</a>
+match_projection | array | An array of match projection details. <a href="#matches-projection">see match_projection object reference</a>
+event | array | An array of match event details. <a href="#matches-event">see event object reference</a>
+commentary | array | An array of match commentary details. <a href="#matches-commentary">see commentary object reference</a>
+lineup | array | An array of match lineup details. <a href="#matches-lineup">see lineup object reference</a>
+
+
+<h3 id="matches-info">Match Info Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+mid | integer | match id
+round | array | An array of match round details. <a href="#matches-info-round">see round object reference</a>
+result | array | An array of match result details. <a href="#matches-info-result">see result object reference</a>
+teams | array | An array of match teams details. <a href="#matches-info-teams">see teams object reference</a>
+period | array | An array of match period wise details. <a href="#matches-info-period">see period object reference</a>
+datestart | string | time string in GMT of match start time
+dateend | string | time string in GMT of match end time
+timestampstart | integer | timestamp of match start time
+timestampend | integer | timestamp of match end time
+injurytime | integer | added injury time after the end of regular period time
+time | integer | match running time in minutes
+status_str | string | Match status string live, result, upcoming
+status | integer | Match status code 3 = live, 2 = result, 1 = upcoming
+gamestate_str | string | Match state string
+gamestate | integer | Match state code
+periodlength | integer | match period length in minutes
+numberofperiods | integer | number of periods in the match
+attendance | integer | total spectator attendance of the match
+overtimelength | integer | overtime length in minutes
+competition | array | An array of competition details. <a href="#matches-info-competition">see competition object reference</a>
+venue | array | An array of match venue details. <a href="#matches-info-venue">see venue object reference</a>
+
+
+<h3 id="matches-info-round">Round Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+type | string | round type. There are 2 type of rounds table and cup.
+name | string | round
+type | string | round name
+
+
+<h3 id="matches-info-result">Result Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | integer | home team score
+away | integer | away team score
+winner | string | winning team name, draw in case of equal scores
+
+
+<h3 id="matches-info-teams">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | An array of home team details. <a href="#matches-info-teams-details">see home team object reference</a>
+away | array | An array of away team details. <a href="#matches-info-teams-details">see away team object reference</a>
+
+
+<h3 id="matches-info-teams-details">Home/Away Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+tname | string | team name
+logo | string | team logo url
+fullname | string | team full name
+abbr | string | shortname team name
+
+
+
+<h3 id="matches-info-period">Period Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+p1 | array | An array of team score details in period 1. <a href="#matches-info-period-details">see p1 object reference</a>
+p2 | array | An array of team score details in period 2. <a href="#matches-info-period-details">see p2 object reference</a>
+ft | array | An array of team score details after full time. <a href="#matches-info-period-details">see ft object reference</a>
+
+<h3 id="matches-info-period-details">P1/P2/FT Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | integer | home team score
+away | integer | away team score
+
+
+<h3 id="matches-info-competition">Competition Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | integer | timestamp of competition start date
+enddatetimestamp | integer | timestamp of competition end date
+year | string | Season Year
+category | string | Competition Category
+ioc_id | integer | IOC id of competition native country
+ioc | string | IOC 2 letter code of competition native country
+status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+
+
+<h3 id="matches-info-venue">Competition Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+venueid | integer | venue id
+name | string | venue name
+location | string | venue location
+founded | integer | year venue founded
+capacity | integer | capacity of stadium
+
+
+<h3 id="matches-referee">Match Referee Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | referee id
+fullname | string | referee full name
+birthdatetimestamp | integer | timestamp of birthdate of referee
+birthdate | string | birth date of referee in dd/mm/yy format
+nationality | array | array of referee nationality details. <a href="#referee-nationality">see nationality object reference</a>
+
+
+<h3 id="referee-nationality">Nationality Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+iocid | integer | ioc country id
+name | string | country  name
+ioc | string | ioc 2 letter country code
+
+
+<h3 id="matches-projection">Match Projection Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+time | integer | time in minutes of match play
+injurytime | integer | injurytime in minutes
+value | integer | positive value indicates home team has ball possession, negative value indicates away team has ball possession.
+
+
+<h3 id="matches-event">Match Event Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+pname | string | player name
+type | string | event type name
+time | integer | time of event during game play in minute
+seconds | integer | time of event during game play in seconds
+name | string | event name
+injurytime | integer | injurytime in minutes
+team | string | team name
+assist | array | array of player details which assisted the goal
+goaltypeid | integer | goal type id
+goaltype | string | goal type name
+
+
+<h3 id="matches-commentary">Match Commentary Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+id | integer | text id
+injurytime | integer | injurytime in minutes
+time | integer | time of textt during game play in minute
+sentence | string | text of play by play details
+
+
+<h3 id="matches-lineup">Match Lineup Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | array of home team lineup details. <a href="#team-lineup">see home team lineup object reference</a>
+away | array | array of away team lineup details. <a href="#team-lineup">see away team lineup object reference</a>
+
+
+<h3 id="team-lineup">Home/Away Lineup Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+lineup | array | array of lineup details. <a href="#lineup">see lineup object reference</a>
+substitutes | array | array of substitutes available details. <a href="#substitutes">see substitutes object reference</a>
+substitutions | array | array of substitutions details. <a href="#substitutions">see substitutions object reference</a>
+manager | array | array of manager details. <a href="#manager">see manager object reference</a>
+
+
+<h3 id="lineup">Lineup Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+formation | string | team lineup formation details.
+player | array | array of starting players details. <a href="#player-lineup">see lineup player object reference</a>
+
+
+<h3 id="player-lineup">Lineup Player Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+pname | string | player name
+name | string | player position name
+order | integer | order of player in team formation
+matchposition | string | player match playing position
+position | string | player career playing position
+shirtnumber | integer | player shirt number
+
+<h3 id="substitutes">Substitutes Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+pname | string | player name
+name | string | player position name
+matchposition | string | player match playing position
+position | string | player career playing position
+shirtnumber | integer | player shirt number
+
+
+<h3 id="substitutions">Substitutions Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+playerin | integer | player id of player going in the team
+playerout | integer | player id of player going out of the team
+time | integer | time of substitution in minutes
+
+
+<h3 id="manager">Manager Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+name | string | referee full name
+birthdate | string | birth date of manager in dd/mm/yy format
+nationality | array | array of manager nationality details. <a href="#referee-nationality">see nationality object reference</a>
+
+
+## Match Stats API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/matches/470/stats?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": {
+            "match_info": [
+                {
+                    "mid": 470,
+                    "round": {
+                        "type": "table",
+                        "round": "3",
+                        "name": 3
+                    },
+                    "result": {
+                        "home": "4",
+                        "away": "1",
+                        "winner": "home"
+                    },
+                    "teams": {
+                        "home": {
+                            "tid": 70,
+                            "tname": "Real Madrid",
+                            "logo": "https://rest.entitysport.com/soccer/assets/team/2829.png",
+                            "fullname": "Real Madrid",
+                            "abbr": "MAD"
+                        },
+                        "away": {
+                            "tid": 75,
+                            "tname": "Leganes",
+                            "logo": "https://rest.entitysport.com/soccer/assets/team/2845.png",
+                            "fullname": "Real Madrid",
+                            "abbr": "MAD"
+                        }
+                    },
+                    "periods": {
+                        "p1": {
+                            "home": 1,
+                            "away": 1
+                        },
+                        "p2": {
+                            "home": 3,
+                            "away": 0
+                        },
+                        "ft": {
+                            "home": 4,
+                            "away": 1
+                        }
+                    },
+                    "datestart": "2018-09-01 18:45:00",
+                    "dateend": "2018-09-01 20:37:23",
+                    "timestampstart": 1535827500,
+                    "timestampend": 1535834243,
+                    "injurytime": null,
+                    "time": 90,
+                    "status_str": "result",
+                    "status": 2,
+                    "gamestate_str": "Ended",
+                    "gamestate": 8,
+                    "periodlength": "45",
+                    "numberofperiods": "2",
+                    "attendance": "59255",
+                    "overtimelength": "15",
+                    "competition": {
+                        "cid": 4,
+                        "cname": "LaLiga",
+                        "startdate": "2018-08-17 00:00:00",
+                        "enddate": "2019-05-20 23:55:00",
+                        "startdatetimestamp": 1534464000,
+                        "endtdatetimestamp": 1558396500,
+                        "year": "18/19",
+                        "category": "Spain",
+                        "iocid": "199",
+                        "ioc": "es",
+                        "status": 3,
+                        "status_str": "live",
+                        "logo": ""
+                    },
+                    "venue": {
+                        "venueid": 43,
+                        "name": "Santiago Bernabeu",
+                        "location": "Madrid, Spain",
+                        "founded": "1944",
+                        "capacity": "80000"
+                    }
+                }
+            ],
+            "statistics": {
+                "0": {
+                    "name": "Yellow cards",
+                    "home": 1,
+                    "away": 1
+                },
+                "1": {
+                    "name": "Substitutions",
+                    "home": 3,
+                    "away": 3
+                },
+                "2": {
+                    "name": "Ball possession",
+                    "home": 74,
+                    "away": 26
+                },
+                "3": {
+                    "name": "Free kicks",
+                    "home": 10,
+                    "away": 11
+                },
+                "4": {
+                    "name": "Offsides",
+                    "home": 1,
+                    "away": 1
+                },
+                "5": {
+                    "name": "Corner kicks",
+                    "home": 8,
+                    "away": 1
+                },
+                "6": {
+                    "name": "Goal attempts",
+                    "home": 15,
+                    "away": 5
+                },
+                "7": {
+                    "name": "Injuries",
+                    "home": 0,
+                    "away": 2
+                },
+                "assist": {
+                    "id": 9,
+                    "name": "Assist",
+                    "home": 3,
+                    "away": 0
+                },
+                "goals": {
+                    "id": 10,
+                    "name": "Goals",
+                    "home": 4,
+                    "away": 1
+                },
+                "totaltackle": {
+                    "id": 25,
+                    "name": "Total Tackle",
+                    "home": 16,
+                    "away": 12
+                },
+                "passingaccuracy": {
+                    "id": 12,
+                    "name": "Passing Accuracy (%)",
+                    "home": "92",
+                    "away": "74"
+                },
+                "shotsontarget": {
+                    "id": 13,
+                    "name": "Shots On Target",
+                    "home": 8,
+                    "away": 3
+                },
+                "shotsofftarget": {
+                    "id": 14,
+                    "name": "Shots Off Target",
+                    "home": 6,
+                    "away": 2
+                },
+                "shotsblocked": {
+                    "id": 15,
+                    "name": "Shots Blocked",
+                    "home": 3,
+                    "away": 3
+                },
+                "dribbleattempts": {
+                    "id": 16,
+                    "name": "Dribble Attempts",
+                    "home": 13,
+                    "away": 2
+                },
+                "dribblesuccess": {
+                    "id": 17,
+                    "name": "Dribble Success",
+                    "home": 18,
+                    "away": 8
+                },
+                "bigchancemissed": {
+                    "id": 18,
+                    "name": "Big Chance Missed",
+                    "home": 1,
+                    "away": 0
+                },
+                "penaltywon": {
+                    "id": 19,
+                    "name": "Penalty Won",
+                    "home": 1,
+                    "away": 1
+                },
+                "hitwoodwork": {
+                    "id": 20,
+                    "name": "Hit Wood Work",
+                    "home": 0,
+                    "away": 0
+                },
+                "penaltymiss": {
+                    "id": 21,
+                    "name": "Penalty Miss",
+                    "home": 0,
+                    "away": 0
+                },
+                "totalclearance": {
+                    "id": 22,
+                    "name": "Total Clearance",
+                    "home": 6,
+                    "away": 21
+                },
+                "outfielderblock": {
+                    "id": 23,
+                    "name": "Outfielder Block",
+                    "home": 2,
+                    "away": 3
+                },
+                "interceptionwon": {
+                    "id": 24,
+                    "name": "Interception Won",
+                    "home": 7,
+                    "away": 12
+                },
+                "challengelost": {
+                    "id": 26,
+                    "name": "Challenge Lost",
+                    "home": 2,
+                    "away": 13
+                },
+                "owngoals": {
+                    "id": 27,
+                    "name": "Own Goals",
+                    "home": 0,
+                    "away": 0
+                },
+                "penaltycommitted": {
+                    "id": 28,
+                    "name": "Penalty Committed",
+                    "home": 1,
+                    "away": 1
+                },
+                "errorledtoshot": {
+                    "id": 29,
+                    "name": "Error Led To Shot",
+                    "home": 0,
+                    "away": 0
+                },
+                "lastmantackle": {
+                    "id": 30,
+                    "name": "Last man tackle",
+                    "home": 0,
+                    "away": 0
+                },
+                "clearanceoffline": {
+                    "id": 31,
+                    "name": "Clearance off line",
+                    "home": 0,
+                    "away": 0
+                },
+                "accuratepass": {
+                    "id": 32,
+                    "name": "Accurate Pass",
+                    "home": 798,
+                    "away": 186
+                },
+                "totalpass": {
+                    "id": 33,
+                    "name": "Total Pass",
+                    "home": 872,
+                    "away": 251
+                },
+                "longballsacc": {
+                    "id": 34,
+                    "name": "Long balls Accuracy",
+                    "home": 73,
+                    "away": 30
+                },
+                "totalLongballs": {
+                    "id": 35,
+                    "name": "total Long balls",
+                    "home": 89,
+                    "away": 67
+                },
+                "totalcross": {
+                    "id": 36,
+                    "name": "Total Cross",
+                    "home": 27,
+                    "away": 11
+                },
+                "crossesacc": {
+                    "id": 37,
+                    "name": "Crosses Accuracy",
+                    "home": 8,
+                    "away": 4
+                },
+                "bigchancecreated": {
+                    "id": 38,
+                    "name": "Big Chance Created",
+                    "home": 2,
+                    "away": 0
+                },
+                "errorledtogoal": {
+                    "id": 39,
+                    "name": "Error Led To Goal ",
+                    "home": 0,
+                    "away": 0
+                },
+                "dispossessed": {
+                    "id": 40,
+                    "name": "Dispossessed",
+                    "home": 7,
+                    "away": 10
+                },
+                "duelstotal": {
+                    "id": 41,
+                    "name": "Total Duels ",
+                    "home": 101,
+                    "away": 101
+                },
+                "duelsown": {
+                    "id": 42,
+                    "name": "Duels Won",
+                    "home": 59,
+                    "away": 42
+                },
+                "wasfouled": {
+                    "id": 43,
+                    "name": "Was Fouled",
+                    "home": 11,
+                    "away": 11
+                },
+                "fouls": {
+                    "id": 44,
+                    "name": "Fouls",
+                    "home": 11,
+                    "away": 11
+                },
+                "runsoutsucess": {
+                    "id": 45,
+                    "name": "Runs out Sucess",
+                    "home": 0,
+                    "away": 0
+                },
+                "totalrunsOut": {
+                    "id": 46,
+                    "name": "Total Runs Out",
+                    "home": 0,
+                    "away": 0
+                },
+                "goodhighclaim": {
+                    "id": 47,
+                    "name": "Good High Claim",
+                    "home": 1,
+                    "away": 1
+                },
+                "punches": {
+                    "id": 48,
+                    "name": "Punches",
+                    "home": 0,
+                    "away": 0
+                },
+                "saves": {
+                    "id": 49,
+                    "name": "Saves",
+                    "home": 2,
+                    "away": 4
+                },
+                "savesfrominsidebox": {
+                    "id": 50,
+                    "name": "Saves from inside box",
+                    "home": 0,
+                    "away": 4
+                }
+            },
+            "player_statistics": [
+                {
+                    "pid": 1447,
+                    "pname": "Karim Benzema",
+                    "team": {
+                        "tid": 70,
+                        "name": "Real Madrid",
+                        "type": "home"
+                    },
+                    "summary": {
+                        "minutesplayed": {
+                            "name": "Minutes Played",
+                            "value": "90"
+                        },
+                        "assist": {
+                            "name": "Assist",
+                            "value": "0"
+                        },
+                        "goals": {
+                            "name": "Goals",
+                            "value": "2"
+                        },
+                        "totaltackle": {
+                            "name": "Total Tackle",
+                            "value": "0"
+                        },
+                        "wonduels": {
+                            "name": "Won Duels",
+                            "value": "2"
+                        },
+                        "totalduels": {
+                            "name": "Total Duels",
+                            "value": "5"
+                        },
+                        "accuratepasses": {
+                            "name": "Accurate Passes",
+                            "value": "32"
+                        },
+                        "totalpass": {
+                            "name": "Total Pass",
+                            "value": "37"
+                        }
+                    },
+                    "attack": {
+                        "shotsontarget": {
+                            "name": "Shots On Target",
+                            "value": "3"
+                        },
+                        "shotsofftarget": {
+                            "name": "Shots Off Target",
+                            "value": "0"
+                        },
+                        "shotsblocked": {
+                            "name": "Shots Blocked",
+                            "value": "1"
+                        },
+                        "dribbleattempts": {
+                            "name": "Dribble Attempts",
+                            "value": "0"
+                        },
+                        "dribblesuccess": {
+                            "name": "Dribble Success",
+                            "value": "1"
+                        },
+                        "bigchancemissed": {
+                            "name": "Big Chance Missed",
+                            "value": "0"
+                        },
+                        "penaltywon": {
+                            "name": "Penalty Won",
+                            "value": "0"
+                        },
+                        "hitwoodwork": {
+                            "name": "Hit Wood Work",
+                            "value": "0"
+                        },
+                        "penaltymiss": {
+                            "name": "Penalty Miss",
+                            "value": "0"
+                        }
+                    },
+                    "defence": {
+                        "totalclearance": {
+                            "name": "Total Clearance",
+                            "value": "0"
+                        },
+                        "outfielderblock": {
+                            "name": "Outfielder Block",
+                            "value": "0"
+                        },
+                        "interceptionwon": {
+                            "name": "Interception Won",
+                            "value": "0"
+                        },
+                        "totaltackle": {
+                            "name": "Total Tackle",
+                            "value": "0"
+                        },
+                        "challengelost": {
+                            "name": "Challenge Lost",
+                            "value": "0"
+                        },
+                        "owngoals": {
+                            "name": "Own Goals",
+                            "value": "0"
+                        },
+                        "penaltycommitted": {
+                            "name": "Penalty Committed",
+                            "value": "0"
+                        },
+                        "errorledtoshot": {
+                            "name": "Error Led To Shot",
+                            "value": "0"
+                        },
+                        "lastmantackle": {
+                            "name": "Last man tackle",
+                            "value": "0"
+                        },
+                        "clearanceoffline": {
+                            "name": "Clearance off line",
+                            "value": "0"
+                        }
+                    },
+                    "passing": {
+                        "passingaccuracy": {
+                            "name": "Passing Accuracy (%)",
+                            "value": "86"
+                        },
+                        "accuratepass": {
+                            "name": "Accurate Pass",
+                            "value": "32"
+                        },
+                        "totalpass": {
+                            "name": "Total Pass",
+                            "value": "37"
+                        },
+                        "longballsacc": {
+                            "name": "Long balls Accuracy",
+                            "value": "2"
+                        },
+                        "totalLongballs": {
+                            "name": "total Long balls",
+                            "value": "2"
+                        },
+                        "totalcross": {
+                            "name": "Total Cross",
+                            "value": "0"
+                        },
+                        "crossesacc": {
+                            "name": "Crosses Accuracy",
+                            "value": "0"
+                        },
+                        "bigchancecreated": {
+                            "name": "Big Chance Created",
+                            "value": "0"
+                        },
+                        "errorledtogoal": {
+                            "name": "Error Led To Goal ",
+                            "value": "0"
+                        }
+                    },
+                    "duels": {
+                        "dispossessed": {
+                            "name": "Dispossessed",
+                            "value": "1"
+                        },
+                        "duelstotal": {
+                            "name": "Total Duels ",
+                            "value": "5"
+                        },
+                        "duelsown": {
+                            "name": "Duels Won",
+                            "value": "2"
+                        },
+                        "wasfouled": {
+                            "name": "Was Fouled",
+                            "value": "0"
+                        },
+                        "fouls": {
+                            "name": "Fouls",
+                            "value": "0"
+                        }
+                    },
+                    "goalkeeper": {
+                        "runsoutsucess": {
+                            "name": "Runs out Sucess",
+                            "value": "0"
+                        },
+                        "totalrunsOut": {
+                            "name": "Total Runs Out",
+                            "value": "0"
+                        },
+                        "goodhighclaim": {
+                            "name": "Good High Claim",
+                            "value": "0"
+                        },
+                        "punches": {
+                            "name": "Punches",
+                            "value": "0"
+                        },
+                        "saves": {
+                            "savesfrominsidebox": "Saves from inside box",
+                            "value": "0"
+                        }
+                    }
+                }
+            ]
+        },
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "15937fa956b7fda6f4bcf5f8b8f9c3f4",
+    "modified": "2018-09-02 14:29:16",
+    "datetime": "2018-09-02 14:29:16",
+    "api_version": "1.0"
+}
+
+```
+This API contains a single match info, match team and player stats details.
+
+### Request
+* Path: /soccer/matches/mid/stats
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match details object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+match_info | array | An array of match details. <a href="#matches-info">see match_info object reference</a>
+statistics | array | An array of match team statistic details. <a href="#statistics">see statistics object reference</a>
+player_statistics | array | An array of match player statistic details. <a href="#player_statistics">see player statistic object reference</a>
+
+
+<h3 id="statistics">Match Team Statistic Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+name | integer | name of statistic type
+home | integer | statistic value of home team
+away | integer | statistic value of away team
+
+
+<h3 id="player_statistics">Player Statistics Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+pname | string | player name
+team | array | array of player team details. <a href="#match-player-stats-team">see team object reference</a>
+summary | array | array of player statistic summary details. <a href="#match-stats-summary">see summary player statistic object reference</a>
+attack | array | array of player attack statistic details. <a href="#match-stats-attack">see player attack statistic object reference</a>
+defence | array | array of player defence statistic details. <a href="#match-stats-defence">see player defence statistic object reference</a>
+passing | array | array of player passing statistic details. <a href="#match-stats-passing">see player passing statistic object reference</a>
+duels | array | array of player duels statistic details. <a href="#match-stats-duels">see player duels statistic object reference</a>
+goalkeeper | array | array of player goalkeeping statistic details. <a href="#match-stats-goalkeeper">see goalkeeper statistic object reference</a>
+
+
+<h3 id="match-player-stats-team">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+name | string | team name
+type | string | team type(home or away)
+
+
+<h3 id="match-stats-summary">Summary Player Statistic Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+minutesplayed | array | An array of details of total minutes played by the player . <a href="#match-stats">see minutesplayed statistic object reference</a>
+assist | array | An array of details of total assist made by the player. <a href="#match-stats">see assist statistic object reference</a>
+goals | array | An array of details of total goals scored by the player. <a href="#match-stats">see goals statistic object reference</a>
+totaltackle | array | An array of details of total tackles made by the player. <a href="#match-stats">see totaltackle statistic object reference</a>
+wonduels | array | An array of details of total duels won by the player. <a href="#match-stats">see wonduels statistic object reference</a>
+totalduels | array | An array of details of total duels attempted by the player. <a href="#match-stats">see totalduels statistic object reference</a>
+accuratepasses | array | An array of details of total accurate passes by the player. <a href="#match-stats-goalkeeper">see accuratepasses statistic object reference</a>
+totalpass | array | An array of details of total passes attempeted by the player. <a href="#match-stats">see totalpass statistic object reference</a>
+
+
+<h3 id="match-stats-attack">Player Attack Statistic Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+shotsontarget | array | An array of details of shots on target by the player . <a href="#match-stats">see shotsontarget statistic object reference</a>
+shotsofftarget | array | An array of details of shots off target by the player. <a href="#match-stats">see shotsofftarget statistic object reference</a>
+shotsblocked | array | An array of details of shots blocked. <a href="#match-stats">see shotsblocked statistic object reference</a>
+dribbleattempts | array | An array of details of dribble attempted by the player. <a href="#match-stats">see dribbleattempts statistic object reference</a>
+dribblesuccess | array | An array of details of dribble success by the player. <a href="#match-stats">see dribblesuccess statistic object reference</a>
+bigchancemissed | array | An array of details of big chance missed by the player. <a href="#match-stats">see bigchancemissed statistic object reference</a>
+penaltywon | array | An array of details of penalty won by the player. <a href="#match-stats-goalkeeper">see penaltywon statistic object reference</a>
+hitwoodwork | array | An array of details of crossbar hit by the player. <a href="#match-stats">see hitwoodwork statistic object reference</a>
+penaltymiss | array | An array of details of penalty missed by the player. <a href="#match-stats">see penaltymiss statistic object reference</a>
+
+
+<h3 id="match-stats-defence">Player Defence Statistic Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+totalclearance | array | An array of details of total clearance by the player . <a href="#match-stats">see totalclearance statistic object reference</a>
+outfielderblock | array | An array of details of out field block by the player. <a href="#match-stats">see outfielderblock statistic object reference</a>
+interceptionwon | array | An array of details of interception won. <a href="#match-stats">see interceptionwon statistic object reference</a>
+totaltackle | array | An array of details of total tackle by the player. <a href="#match-stats">see totaltackle statistic object reference</a>
+challengelost | array | An array of details of challenge lost by the player. <a href="#match-stats">see challengelost statistic object reference</a>
+owngoals | array | An array of details of own goals by the player. <a href="#match-stats">see owngoals statistic object reference</a>
+penaltycommitted | array | An array of details of penalty committed by the player. <a href="#match-stats-goalkeeper">see penaltycommitted statistic object reference</a>
+errorledtoshot | array | An array of details of defence error let to the shot by the player. <a href="#match-stats">see errorledtoshot statistic object reference</a>
+lastmantackle | array | An array of details of last man tackle by the player. <a href="#match-stats">see lastmantackle statistic object reference</a>
+
+
+<h3 id="match-stats-passing">Player Passing Statistic Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+passingaccuracy | array | An array of details of passing accuracy by the player . <a href="#match-stats">see passingaccuracy statistic object reference</a>
+accuratepass | array | An array of details of accurate passes by the player. <a href="#match-stats">see accuratepass statistic object reference</a>
+totalpass | array | An array of details of total passes. <a href="#match-stats">see totalpass statistic object reference</a>
+longballsacc | array | An array of details of long balls accuracy by the player. <a href="#match-stats">see longballsacc statistic object reference</a>
+totalLongballs | array | An array of details of total Long balls by the player. <a href="#match-stats">see totalLongballs statistic object reference</a>
+totalcross | array | An array of details of total crosses by the player. <a href="#match-stats">see totalcross statistic object reference</a>
+crossesacc | array | An array of details of crosses accuracy by the player. <a href="#match-stats-goalkeeper">see crossesacc statistic object reference</a>
+bigchancecreated | array | An array of details of big chance created by the player. <a href="#match-stats">see bigchancecreated statistic object reference</a>
+errorledtogoal | array | An array of details of error led to goal by the player. <a href="#match-stats">see errorledtogoal statistic object reference</a>
+
+
+<h3 id="match-stats-duels">Player Duels Statistic Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+dispossessed | array | An array of details of player dispossessed. <a href="#match-stats">see dispossessed statistic object reference</a>
+duelstotal | array | An array of details of total duels by the player. <a href="#match-stats">see duelstotal statistic object reference</a>
+duelswon | array | An array of details of duels won by the player. <a href="#match-stats">see duelswon statistic object reference</a>
+wasfouled | array | An array of details of the player was fouled. <a href="#match-stats">see wasfouled statistic object reference</a>
+fouls | array | An array of details of fouls by the player. <a href="#match-stats">see fouls statistic object reference</a>
+
+
+<h3 id="match-stats-goalkeeper">Goalkeeper Statistic Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+runsoutsucess | array | An array of details of runs out success. <a href="#match-stats">see runsoutsucess statistic object reference</a>
+totalrunsOut | array | An array of details of total runs outside the box. <a href="#match-stats">see totalrunsOut statistic object reference</a>
+goodhighclaim | array | An array of details of good high ball saves. <a href="#match-stats">see goodhighclaim statistic object reference</a>
+punches | array | An array of details of punches to the ball inside box from cross. <a href="#match-stats">see punches statistic object reference</a>
+saves | array | An array of details of saves the player. <a href="#match-stats">see saves statistic object reference</a>
+savesfrominsidebox | array | An array of details of saves fromi insidebox. <a href="#match-stats">see savesfrominsidebox statistic object reference</a>
+
+
+<h3 id="match-stats">Statistic Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+name | string | name of the statistic type
+value | integer | integer value of the statistic
+
+
+## Teams List API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/teams?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "tid": 89,
+                "name": "1. FSV Mainz 05",
+                "fullname": "1. FSV Mainz 05",
+                "abbr": "MAI",
+                "iscountry": false,
+                "isclub": true,
+                "haslogo": "true",
+                "founded": "1905",
+                "website": "http://www.mainz05.de",
+                "twitter": "1FSVMainz05",
+                "hashtag": "#MAINZ05",
+                "teamlogo": "https://rest.entitysport.com/soccer/assets/team/2556.png",
+                "team_url": "team/89/info",
+                "team_matches_url": "team/89/matches"
+            }
+        ],
+        "total_items": "140",
+        "total_pages": 140
+    },
+    "etag": "a495e3645ca64df20b411ca8fde41629",
+    "modified": "2018-09-02 15:35:51",
+    "datetime": "2018-09-02 15:35:51",
+    "api_version": "1.0"
+}
+
+```
+This API lists all the teams available to access.
+
+### Request
+* Path: /soccer/teams
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of teams object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of teams available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+tname | string | team name
+fullname | string | team full name
+abbr | string | team abbrivation name
+iscountry| string | true if team is a national team and false if team is a club
+isclub| string | false if team is a national team and true if team is a club
+founded | integer | year of team founded
+website | string | website url of team website
+twitter | string | twitter account name
+hastag| string | social hastag
+teamlogo | string | team logo url
+team_url | string | team info url
+team_matches_url | string | team matches list url
+
+
+## Team Info API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/team/70/info?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "tid": 70,
+                "tname": "Real Madrid",
+                "fullname": "Real Madrid",
+                "abbr": "MAD",
+                "iscountry": false,
+                "isclub": true,
+                "founded": "1902",
+                "website": "http://www.realmadrid.com",
+                "twitter": "realmadrid",
+                "hashtag": "#HalaMadrid",
+                "teamlogo": "https://rest.entitysport.com/soccer/assets/team/2829.png",
+                "venue": {
+                    "venueid": 43,
+                    "name": "Santiago Bernabeu",
+                    "location": "Madrid, Spain",
+                    "founded": "1944",
+                    "capacity": "80000"
+                },
+                "player": [
+                    {
+                        "pid": 1447,
+                        "fullname": "Karim Benzema",
+                        "birthdatetimestamp": 566870400,
+                        "birthdate": "19/12/87",
+                        "nationality": {
+                            "iocid": 73,
+                            "name": "France",
+                            "ioc": "fr"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "height": 187,
+                        "foot": "Right",
+                        "twitter": "https://twitter.com/benzema",
+                        "facebook": "https://www.facebook.com/KarimBenzema/?ref=ts&fref=ts"
+                    },
+                    {
+                        "pid": 91,
+                        "fullname": "Sergio Ramos",
+                        "birthdatetimestamp": 512524800,
+                        "birthdate": "30/03/86",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 183,
+                        "foot": "Right",
+                        "twitter": "https://twitter.com/SergioRamos",
+                        "facebook": "https://www.facebook.com/SergioRamosOficial/"
+                    },
+                    {
+                        "pid": 1448,
+                        "fullname": "Gareth Bale",
+                        "birthdatetimestamp": 616550400,
+                        "birthdate": "16/07/89",
+                        "nationality": {
+                            "iocid": 243,
+                            "name": "Wales",
+                            "ioc": "w"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "height": 183,
+                        "foot": "Left",
+                        "twitter": "https://twitter.com/GarethBale11",
+                        "facebook": "https://www.facebook.com/Bale"
+                    },
+                    {
+                        "pid": 248,
+                        "fullname": "Luka Modric",
+                        "birthdatetimestamp": 495072000,
+                        "birthdate": "09/09/85",
+                        "nationality": {
+                            "iocid": 54,
+                            "name": "Croatia",
+                            "ioc": "hr"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": 172,
+                        "foot": "Both",
+                        "twitter": "https://twitter.com/lm19official",
+                        "facebook": "https://www.facebook.com/ModricLuka10"
+                    },
+                    {
+                        "pid": 410,
+                        "fullname": "Marcelo",
+                        "birthdatetimestamp": 579398400,
+                        "birthdate": "12/05/88",
+                        "nationality": {
+                            "iocid": 30,
+                            "name": "Brazil",
+                            "ioc": "br"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 174,
+                        "foot": "Left",
+                        "twitter": "https://twitter.com/12MarceloV",
+                        "facebook": "https://www.facebook.com/marcelom12"
+                    },
+                    {
+                        "pid": 1449,
+                        "fullname": "Kiko Casilla",
+                        "birthdatetimestamp": 528595200,
+                        "birthdate": "02/10/86",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "height": 191,
+                        "foot": "Right",
+                        "twitter": "https://twitter.com/kikocasilla13",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 1450,
+                        "fullname": "Fabio Coentrao",
+                        "birthdatetimestamp": 574041600,
+                        "birthdate": "11/03/88",
+                        "nationality": {
+                            "iocid": 172,
+                            "name": "Portugal",
+                            "ioc": "pt"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 179,
+                        "foot": "Left",
+                        "twitter": "https://twitter.com/Fabio_Coentrao",
+                        "facebook": "https://www.facebook.com/OfficialFabioCoentrao/"
+                    },
+                    {
+                        "pid": 207,
+                        "fullname": "Toni Kroos",
+                        "birthdatetimestamp": 631411200,
+                        "birthdate": "04/01/90",
+                        "nationality": {
+                            "iocid": 80,
+                            "name": "Germany",
+                            "ioc": "de"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": 182,
+                        "foot": "Right",
+                        "twitter": "https://twitter.com/ToniKroos",
+                        "facebook": "https://www.facebook.com/tonikroos/"
+                    },
+                    {
+                        "pid": 435,
+                        "fullname": "Keylor Navas",
+                        "birthdatetimestamp": 534988800,
+                        "birthdate": "15/12/86",
+                        "nationality": {
+                            "iocid": 52,
+                            "name": "Costa Rica",
+                            "ioc": "cr"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "height": 185,
+                        "foot": "Right",
+                        "twitter": "https://twitter.com/NavasKeylor",
+                        "facebook": "https://www.facebook.com/keylornavascr/"
+                    },
+                    {
+                        "pid": 102,
+                        "fullname": "Nacho",
+                        "birthdatetimestamp": 632620800,
+                        "birthdate": "18/01/90",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 179,
+                        "foot": "Right",
+                        "twitter": "https://twitter.com/nachofi1990",
+                        "facebook": "https://www.facebook.com/Nachofernandeziglesiasoficial"
+                    },
+                    {
+                        "pid": 282,
+                        "fullname": "Thibaut Courtois",
+                        "birthdatetimestamp": 705542400,
+                        "birthdate": "11/05/92",
+                        "nationality": {
+                            "iocid": 21,
+                            "name": "Belgium",
+                            "ioc": "be"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "height": 199,
+                        "foot": "Left",
+                        "twitter": "https://twitter.com/thibautcourtois",
+                        "facebook": "https://www.facebook.com/CourtoisOfficial"
+                    },
+                    {
+                        "pid": 105,
+                        "fullname": "Isco",
+                        "birthdatetimestamp": 703814400,
+                        "birthdate": "21/04/92",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": 176,
+                        "foot": "Right",
+                        "twitter": "https://twitter.com/isco_alarcon",
+                        "facebook": "https://www.facebook.com/iscoalarcon/?fref=ts"
+                    },
+                    {
+                        "pid": 421,
+                        "fullname": "Casemiro",
+                        "birthdatetimestamp": 698803200,
+                        "birthdate": "23/02/92",
+                        "nationality": {
+                            "iocid": 30,
+                            "name": "Brazil",
+                            "ioc": "br"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": 185,
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": "https://www.facebook.com/Casemiro92"
+                    },
+                    {
+                        "pid": 35,
+                        "fullname": "Raphael Varane",
+                        "birthdatetimestamp": 735696000,
+                        "birthdate": "25/04/93",
+                        "nationality": {
+                            "iocid": 73,
+                            "name": "France",
+                            "ioc": "fr"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 191,
+                        "foot": "Right",
+                        "twitter": "https://twitter.com/raphaelvarane?lang=en",
+                        "facebook": "https://www.facebook.com/raphaelvarane/"
+                    },
+                    {
+                        "pid": 107,
+                        "fullname": "Dani Carvajal",
+                        "birthdatetimestamp": 695088000,
+                        "birthdate": "11/01/92",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 173,
+                        "foot": "Right",
+                        "twitter": "https://twitter.com/DaniCarvajal92",
+                        "facebook": "https://www.facebook.com/danicarvajaloficial"
+                    },
+                    {
+                        "pid": 109,
+                        "fullname": "Lucas Vazquez",
+                        "birthdatetimestamp": 678326400,
+                        "birthdate": "01/07/91",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "height": 173,
+                        "foot": "Right",
+                        "twitter": "https://twitter.com/Lucasvazquez91",
+                        "facebook": "https://www.facebook.com/lucasvazquez1991"
+                    },
+                    {
+                        "pid": 1451,
+                        "fullname": "Marcos Llorente",
+                        "birthdatetimestamp": 791424000,
+                        "birthdate": "30/01/95",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": 182,
+                        "foot": "Right",
+                        "twitter": "https://twitter.com/Marcos_Llorente",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 110,
+                        "fullname": "Alvaro Odriozola",
+                        "birthdatetimestamp": 818899200,
+                        "birthdate": "14/12/95",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 175,
+                        "foot": "Right",
+                        "twitter": "https://twitter.com/alvaroodriozola",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 1452,
+                        "fullname": "Jesus Vallejo",
+                        "birthdatetimestamp": 852422400,
+                        "birthdate": "05/01/97",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 183,
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 111,
+                        "fullname": "Marco Asensio",
+                        "birthdatetimestamp": 822182400,
+                        "birthdate": "21/01/96",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": 182,
+                        "foot": "Left",
+                        "twitter": "https://twitter.com/marcoasensio10",
+                        "facebook": "https://www.facebook.com/marcoasensio10/"
+                    },
+                    {
+                        "pid": 1453,
+                        "fullname": "Dani Ceballos",
+                        "birthdatetimestamp": 839376000,
+                        "birthdate": "07/08/96",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": 176,
+                        "foot": "Right",
+                        "twitter": "https://twitter.com/daniceballos46?lang=en",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 1454,
+                        "fullname": "Borja Mayoral",
+                        "birthdatetimestamp": 860198400,
+                        "birthdate": "05/04/97",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "height": 181,
+                        "foot": "Right",
+                        "twitter": "https://twitter.com/Mayoral_Borja",
+                        "facebook": "https://www.facebook.com/BMayoralOficial/"
+                    },
+                    {
+                        "pid": 1455,
+                        "fullname": "Luca Zidane",
+                        "birthdatetimestamp": 895017600,
+                        "birthdate": "13/05/98",
+                        "nationality": {
+                            "iocid": 73,
+                            "name": "France",
+                            "ioc": "fr"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "height": 181,
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 1456,
+                        "fullname": "Javi Sanchez",
+                        "birthdatetimestamp": 858297600,
+                        "birthdate": "14/03/97",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 189,
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 1457,
+                        "fullname": "Sergio Reguilon",
+                        "birthdatetimestamp": 850694400,
+                        "birthdate": "16/12/96",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": 180,
+                        "foot": "Left",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 1458,
+                        "fullname": "Andriy Lunin",
+                        "birthdatetimestamp": 918691200,
+                        "birthdate": "11/02/99",
+                        "nationality": {
+                            "iocid": 223,
+                            "name": "Ukraine",
+                            "ioc": "ua"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "height": 191,
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 1459,
+                        "fullname": "Federico Valverde",
+                        "birthdatetimestamp": 901065600,
+                        "birthdate": "22/07/98",
+                        "nationality": {
+                            "iocid": 228,
+                            "name": "Uruguay",
+                            "ioc": "uy"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": 181,
+                        "foot": "Right",
+                        "twitter": "https://twitter.com/fedeevalverde",
+                        "facebook": ""
+                    },
+                    {
+                        "pid": 1460,
+                        "fullname": "Vinicius Junior",
+                        "birthdatetimestamp": 963360000,
+                        "birthdate": "12/07/00",
+                        "nationality": {
+                            "iocid": 30,
+                            "name": "Brazil",
+                            "ioc": "br"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "height": 176,
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": ""
+                    }
+                ]
+            }
+        ],
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "c85c28847c72cf512503cfe15d203221",
+    "modified": "2018-09-02 15:48:07",
+    "datetime": "2018-09-02 15:48:07",
+    "api_version": "1.0"
+}
+```
+This API contains team info and squad/roaster player details.
+
+### Request
+* Path: /soccer/team/tid/info
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | string | team id
+token | {ACCESS_TOKEN} | API Access token
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of team object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of teams available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+tname | string | team name
+fullname | string | team full name
+abbr | string | team abbrivation name
+iscountry| string | true if team is a national team and false if team is a club
+isclub| string | false if team is a national team and true if team is a club
+founded | integer | year of team founded
+website | string | website url of team website
+twitter | string | twitter account name
+hastag| string | social hastag
+teamlogo | string | team logo url
+venue | array | An array of team venue details. <a href="#team-venue">see venue object reference</a>
+player | array | An array of team player details. <a href="#team-player">see payer object reference</a>
+
+
+<h3 id="team-venue">Venue Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+venueid | integer | venue id
+name | string | venue name
+location | string | location of the venue
+founded | integer | year venue founded
+capacity | integer | capacity of venue stadium
+
+
+<h3 id="team-player">Player Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+fullname | string | Player full name
+birthdatetimestamp | integer | Player Birthdate timestamp
+birthdate | string | Player Birthdate format - dd/mm/yy
+nationality | array | An array of player nationality detail. <a href="#team-nationality">see nationality object reference</a>
+positiontype | string | player playing position type
+positionname | string | player playing position name
+height | integer | player height in centimeters
+foot | string | player preferred foot
+twitter | string | twitter account url
+facebook | string | facebook account url
+
+
+<h3 id="team-nationality">Nationality Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+iocid | integer | country ioc code
+name | string | country name
+ioc | string | 2 letter ioc code
+
+
+## Team Matches API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/team/70/matches?token=[ACCESS_TOKEN]"
+```
+
+> Using Token and Status parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/team/70/matches?token=[ACCESS_TOKEN]&status=2"
+```
+
+> Using Token, Status and Pagination parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/team/70/matches?token=[ACCESS_TOKEN]&status=2&per_page=10&paged=1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "mid": 470,
+                "round": {
+                    "type": "table",
+                    "round": "3",
+                    "name": 3
+                },
+                "result": {
+                    "home": "4",
+                    "away": "1",
+                    "winner": "home"
+                },
+                "teams": {
+                    "home": {
+                        "tid": 70,
+                        "tname": "Real Madrid",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/2829.png",
+                        "fullname": "Real Madrid",
+                        "abbr": "MAD"
+                    },
+                    "away": {
+                        "tid": 75,
+                        "tname": "Leganes",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/2845.png",
+                        "fullname": "Real Madrid",
+                        "abbr": "MAD"
+                    }
+                },
+                "periods": {
+                    "p1": {
+                        "home": 1,
+                        "away": 1
+                    },
+                    "p2": {
+                        "home": 3,
+                        "away": 0
+                    },
+                    "ft": {
+                        "home": 4,
+                        "away": 1
+                    }
+                },
+                "datestart": "2018-09-01 18:45:00",
+                "dateend": "2018-09-01 20:37:23",
+                "timestampstart": 1535827500,
+                "timestampend": 1535834243,
+                "injurytime": null,
+                "time": 90,
+                "status_str": "result",
+                "status": 2,
+                "gamestate_str": "Ended",
+                "gamestate": 8,
+                "periodlength": "45",
+                "numberofperiods": "2",
+                "attendance": "59255",
+                "overtimelength": "15",
+                "competition": {
+                    "cid": 4,
+                    "cname": "LaLiga",
+                    "startdate": "2018-08-17 00:00:00",
+                    "enddate": "2019-05-20 23:55:00",
+                    "startdatetimestamp": 1534464000,
+                    "endtdatetimestamp": 1558396500,
+                    "year": "18/19",
+                    "category": "Spain",
+                    "iocid": "199",
+                    "ioc": "es",
+                    "status": 3,
+                    "status_str": "live",
+                    "logo": ""
+                },
+                "venue": {
+                    "venueid": 43,
+                    "name": "Santiago Bernabeu",
+                    "location": "Madrid, Spain",
+                    "founded": "1944",
+                    "capacity": "80000"
+                }
+            }
+        ],
+        "total_items": 3,
+        "total_pages": 3
+    },
+    "etag": "bdd9b00472606a81d58e4daa0834b748",
+    "modified": "2018-09-02 16:17:50",
+    "datetime": "2018-09-02 16:17:50",
+    "api_version": "1.0"
+}
+
+```
+This API contains the list of team's all matches details.
+
+### Request
+* Path: /soccer/team/tid/matches
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | string | competition id
+token | {ACCESS_TOKEN} | API Access token
+status | integer | 1 = upcoming, 2 = result, 3 = live, 4 = postponed, 5 = cancelled
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+mid | integer | match id
+round | array | An array of match round details. <a href="#team-matches-round">see round object reference</a>
+result | array | An array of match result details. <a href="#team-matches-result">see result object reference</a>
+teams | array | An array of match teams details. <a href="#team-matches-teams">see teams object reference</a>
+period | array | An array of match period wise details. <a href="#team-matches-period">see period object reference</a>
+datestart | string | time string in GMT of match start time
+dateend | string | time string in GMT of match end time
+timestampstart | integer | timestamp of match start time
+timestampend | integer | timestamp of match end time
+injurytime | integer | added injury time after the end of regular period time
+time | integer | match running time in minutes
+status_str | string | Match status string live, completed, upcoming
+status | integer | Match status code 3 = live, 2 = completed, 1 = upcoming
+gamestate_str | string | Match state string
+gamestate | integer | Match state code
+periodlength | integer | match period length in minutes
+numberofperiods | integer | number of periods in the match
+attendance | integer | total spectator attendance of the match
+overtimelength | integer | overtime length in minutes
+competition | array | An array of competition details. <a href="#team-matches-competition">see competition object reference</a>
+venue | array | An array of match venue details. <a href="#team-matches-venue">see venue object reference</a>
+
+
+<h3 id="team-matches-round">Round Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+type | string | round type. There are 2 type of rounds table and cup.
+name | string | round
+type | string | round name
+
+
+<h3 id="team-matches-result">Result Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | integer | home team score
+away | integer | away team score
+winner | string | winning team name, draw in case of equal scores
+
+
+<h3 id="team-matches-teams">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | An array of home team details. <a href="#team-matches-teams-details">see home team object reference</a>
+away | array | An array of away team details. <a href="#team-matches-teams-details">see away team object reference</a>
+
+
+<h3 id="team-matches-teams-details">Home/Away Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+tname | string | team name
+logo | string | team logo url
+
+
+<h3 id="team-matches-period">Period Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+p1 | array | An array of team score details in period 1. <a href="#team-matches-period-details">see p1 object reference</a>
+p2 | array | An array of team score details in period 2. <a href="#team-matches-period-details">see p2 object reference</a>
+ft | array | An array of team score details after full time. <a href="#team-matches-period-details">see ft object reference</a>
+
+<h3 id="team-matches-period-details">P1/P2/FT Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | integer | home team score
+away | integer | away team score
+
+
+<h3 id="team-matches-competition">Competition Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | integer | timestamp of competition start date
+enddatetimestamp | integer | timestamp of competition end date
+year | string | Season Year
+category | string | Competition Category
+ioc_id | integer | IOC id of competition native country
+ioc | string | IOC 2 letter code of competition native country
+status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+
+
+<h3 id="team-matches-venue">Competition Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+venueid | integer | venue id
+name | string | venue name
+location | string | location of the venue
+founded | integer | year venue founded
+capacity | integer | capacity of venue stadium
+
+
+## Player List API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/players?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "pid": 1,
+                "fullname": "Kasper Schmeichel",
+                "birthdatetimestamp": 531532800,
+                "birthdate": "05/11/86",
+                "nationality": {
+                    "iocid": 58,
+                    "name": "Denmark",
+                    "ioc": "dk"
+                },
+                "positiontype": "G",
+                "positionname": "Goalkeeper",
+                "height": 190,
+                "foot": "Right",
+                "twitter": "https://twitter.com/kschmeichel1",
+                "facebook": "https://www.facebook.com/kasperschmeichelofficial/",
+                "player_url": "player/1/profile"
+            }
+        ],
+        "total_items": 3488,
+        "total_pages": 3488
+    },
+    "etag": "e9b26310a8e5aa7871e8bc2b00193e8a",
+    "modified": "2018-09-02 17:51:58",
+    "datetime": "2018-09-02 17:51:58",
+    "api_version": "1.0"
+}
+
+```
+This API contains list of player details.
+
+### Request
+* Path: /soccer/players
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of player object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of players available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+fullname | string | Player full name
+birthdatetimestamp | integer | Player Birthdate timestamp
+birthdate | string | Player Birthdate format - dd/mm/yy
+nationality | array | An array of player nationality detail. <a href="#player-nationality">see nationality object reference</a>
+positiontype | string | player playing position type
+positionname | string | player playing position name
+height | integer | player height in centimeters
+foot | string | player preferred foot
+twitter | string | twitter account url
+facebook | string | facebook account url
+player_url | string | player profile api url
+
+<h3 id="player-nationality">Nationality Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+iocid | integer | country ioc code
+name | string | country name
+ioc | string | 2 letter ioc code
+
+
+## Player Profile API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/player/157/profile?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": {
+            "player_info": {
+                "pid": 157,
+                "fullname": "Cristiano Ronaldo",
+                "birthdatetimestamp": 476409600,
+                "birthdate": "05/02/85",
+                "nationality": {
+                    "iocid": 172,
+                    "name": "Portugal",
+                    "ioc": "pt"
+                },
+                "positiontype": "F",
+                "positionname": "Forward",
+                "height": 185,
+                "foot": "Both",
+                "twitter": "https://twitter.com/Cristiano",
+                "facebook": "https://www.facebook.com/Cristiano"
+            },
+            "team_played": [
+                {
+                    "startdatetimestamp": 1060646400,
+                    "startdate": "2003-08-12 00:00:00",
+                    "enddatetimestamp": 1246320000,
+                    "enddate": "2009-06-30 00:00:00",
+                    "active": false,
+                    "shirt": "7",
+                    "team": {
+                        "name": "Man Utd",
+                        "fullname": "Manchester United",
+                        "abbr": "MUN",
+                        "iscountry": false,
+                        "country": {
+                            "iocid": 240,
+                            "name": "England",
+                            "ioc": "en"
+                        }
+                    }
+                },
+                {
+                    "startdatetimestamp": 1531180800,
+                    "startdate": "2018-07-10 00:00:00",
+                    "enddatetimestamp": "",
+                    "enddate": "",
+                    "active": true,
+                    "shirt": "7",
+                    "team": {
+                        "name": "Juventus",
+                        "fullname": "Juventus Turin",
+                        "abbr": "JUV",
+                        "iscountry": false,
+                        "country": {
+                            "iocid": 105,
+                            "name": "Italy",
+                            "ioc": "it"
+                        }
+                    }
+                },
+                {
+                    "startdatetimestamp": 1246406400,
+                    "startdate": "2009-07-01 00:00:00",
+                    "enddatetimestamp": 1531094400,
+                    "enddate": "2018-07-09 00:00:00",
+                    "active": false,
+                    "shirt": "7",
+                    "team": {
+                        "name": "Real Madrid",
+                        "fullname": "Real Madrid",
+                        "abbr": "MAD",
+                        "iscountry": false,
+                        "country": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        }
+                    }
+                },
+                {
+                    "startdatetimestamp": 1025481600,
+                    "startdate": "2002-07-01 00:00:00",
+                    "enddatetimestamp": 1060560000,
+                    "enddate": "2003-08-11 00:00:00",
+                    "active": false,
+                    "shirt": "",
+                    "team": {
+                        "name": "Sporting",
+                        "fullname": "Sporting CP",
+                        "abbr": "SPO",
+                        "iscountry": false,
+                        "country": {
+                            "iocid": 172,
+                            "name": "Portugal",
+                            "ioc": "pt"
+                        }
+                    }
+                },
+                {
+                    "startdatetimestamp": "",
+                    "startdate": "",
+                    "enddatetimestamp": "",
+                    "enddate": "",
+                    "active": true,
+                    "shirt": "7",
+                    "team": {
+                        "name": "Portugal",
+                        "fullname": "Portugal",
+                        "abbr": "POR",
+                        "iscountry": true,
+                        "country": {
+                            "iocid": "",
+                            "name": "International",
+                            "ioc": ""
+                        }
+                    }
+                },
+                {
+                    "startdatetimestamp": 962409600,
+                    "startdate": "2000-07-01 00:00:00",
+                    "enddatetimestamp": 1025395200,
+                    "enddate": "2002-06-30 00:00:00",
+                    "active": false,
+                    "shirt": "",
+                    "team": {
+                        "name": "Sporting",
+                        "fullname": "Sporting Lissabon",
+                        "abbr": "SPO",
+                        "iscountry": false,
+                        "country": {
+                            "iocid": 172,
+                            "name": "Portugal",
+                            "ioc": "pt"
+                        }
+                    }
+                }
+            ],
+            "stats": {
+                "seasons": [
+                    {
+                        "tname": "Man Utd",
+                        "cname": "Premier League 04/05",
+                        "year": "04/05",
+                        "data": {
+                            "active": false,
+                            "lastevent": "2005-04-09 16:50:46",
+                            "started": 0,
+                            "goals": 1,
+                            "matches": 1,
+                            "substitutedin": 1
+                        }
+                    },
+                    {
+                        "tname": "Portugal",
+                        "cname": "Int. Friendly Games 2018",
+                        "year": "2018",
+                        "data": {
+                            "active": true,
+                            "lastevent": "2018-06-07 20:51:43",
+                            "started": 3,
+                            "goals": 2,
+                            "matches": 3,
+                            "shotsongoal": 5,
+                            "shotsoffgoal": 5,
+                            "shotsblocked": 6,
+                            "assists": 0,
+                            "minutesplayed": 232,
+                            "substitutedout": 2,
+                            "totalshots": 16,
+                            "matcheswon": 2,
+                            "matcheslost": 1,
+                            "offside": 5
+                        }
+                    },
+                    {
+                        "tname": "Real Madrid",
+                        "cname": "UEFA Champions League 16/17",
+                        "year": "16/17",
+                        "data": {
+                            "active": false,
+                            "lastevent": "2017-06-22 10:49:12",
+                            "started": 13,
+                            "goals": 12,
+                            "yellowcards": 1,
+                            "matches": 13,
+                            "corners": 1,
+                            "shotsongoal": 28,
+                            "shotsoffgoal": 23,
+                            "shotsblocked": 22,
+                            "assists": 5,
+                            "minutesplayed": 1200,
+                            "totalshots": 73,
+                            "matcheswon": 8,
+                            "matcheslost": 2,
+                            "matchesdrawn": 3,
+                            "cards2ndhalf": 1,
+                            "offside": 14
+                        }
+                    },
+                    {
+                        "tname": "Real Madrid",
+                        "cname": "LaLiga 16/17",
+                        "year": "16/17",
+                        "data": {
+                            "active": false,
+                            "lastevent": "2017-05-21 19:42:42",
+                            "started": 29,
+                            "goals": 25,
+                            "yellowcards": 4,
+                            "matches": 29,
+                            "shotsongoal": 65,
+                            "shotsoffgoal": 62,
+                            "shotsblocked": 28,
+                            "assists": 5,
+                            "minutesplayed": 2544,
+                            "substitutedout": 5,
+                            "totalshots": 155,
+                            "matcheswon": 20,
+                            "matcheslost": 3,
+                            "matchesdrawn": 6,
+                            "cards1sthalf": 1,
+                            "cards2ndhalf": 3,
+                            "penalties": 6,
+                            "offside": 26
+                        }
+                    },
+                    {
+                        "tname": "Juventus",
+                        "cname": "Serie A 18/19",
+                        "year": "18/19",
+                        "data": {
+                            "active": true,
+                            "lastevent": "2018-09-01 20:00:17",
+                            "started": 3,
+                            "matches": 3,
+                            "shotsongoal": 7,
+                            "shotsoffgoal": 9,
+                            "shotsblocked": 5,
+                            "minutesplayed": 270,
+                            "totalshots": 21,
+                            "matcheswon": 3
+                        }
+                    }
+                ],
+                "total": {
+                    "goals": 624,
+                    "yellowcards": 102,
+                    "matches": 720,
+                    "corners": 13,
+                    "shotsongoal": 535,
+                    "shotsoffgoal": 481,
+                    "shotsblocked": 293,
+                    "assists": 125,
+                    "minutesplayed": 54001,
+                    "substitutedin": 33,
+                    "substitutedout": 108,
+                    "totalshots": 1309,
+                    "matcheswon": 111,
+                    "matcheslost": 21,
+                    "matchesdrawn": 34,
+                    "totalcards1sthalf": 2,
+                    "totalcards2ndhalf": 16,
+                    "penalties": 99,
+                    "redcards": 6,
+                    "yellowredcards": 3,
+                    "offside": 245
+                }
+            }
+        },
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "f452974d288ce94418ea8057fbda9abb",
+    "modified": "2018-09-02 20:12:06",
+    "datetime": "2018-09-02 20:12:06",
+    "api_version": "1.0"
+}
+
+```
+This API contains player profile and career statistic details.
+
+### Request
+* Path: /soccer/player/pid/profile
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+token | {ACCESS_TOKEN} | API Access token
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of player object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of players available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+player_info | array | array of player profile details. <a href="#player-profile">see player_info object reference</a>
+team_played | array | array of teams info player played for during playing career. <a href="#team_played">see team_played object reference</a>
+stats | array | array of player career statistic. <a href="#stats">see stats object reference</a>
+
+
+<h3 id="player-profile">Player Profile Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+fullname | string | Player full name
+birthdatetimestamp | integer | Player Birthdate timestamp
+birthdate | string | Player Birthdate format - dd/mm/yy
+nationality | array | An array of player nationality detail. <a href="#player-profile-nationality">see nationality object reference</a>
+positiontype | string | player playing position type
+positionname | string | player playing position name
+height | integer | player height in centimeters
+foot | string | player preferred foot
+twitter | string | twitter account url
+facebook | string | facebook account url
+
+
+<h3 id="player-profile-nationality">Nationality Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+iocid | integer | country ioc code
+name | string | country name
+ioc | string | 2 letter ioc code
+
+
+<h3 id="team_played">Team Played Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+startdatetimestamp | integer | Starting timestamp with team
+startdate | string | Starting date with team
+enddatetimestamp | integer | End timestamp with team
+enddate | string | End timestamp with team
+active | string | true if player is still playing for the team, false if player is not with the team
+shirt | integer | Player shirt number with the team
+team | array | An array of team detail. <a href="#player-profile-team">see team object reference</a>
+
+
+<h3 id="player-profile-team">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+name | string | Team name
+fullname | string | Team full name
+abbr | string | Team short name
+iscountry | string | true if team is a national team, false if team is a domestic club
+country | array | An array of team country detail. <a href="#player-profile-nationality">see nationality object reference</a>
+
+
+<h3 id="stats">Stats Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+season | array | An array of player season wise career statistic detail. <a href="#player-season-stats">see season object reference</a>
+total | array | An array of player total career statistic detail.
+
+
+<h3 id="player-season-stats">Season Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tname | string | Team name
+cname | string | Competition name
+year | integer | Competition playing year
+data | array | An array of player statistic detail. <a href="#player-season-data">see data object reference</a>
+
+
+<h3 id="player-season-data">Data Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+active | string | true if player is still playing for the team, false if player is not with the team
+lastevent | string | date of last event played by the player during the competition
+started | integer | Number of games player included in starting 11
+goals | integer | Number of scored by the player
+yellowcards | integer | Number of yellow cards received by the player
+matches | integer | Number of matches played by the player
+corners | integer | Number of corners taken by the player
+shotsongoal | integer | Number of shots on target by the player
+shotsoffgoal | integer | Number of shots off target by the player
+shotsblocked | integer | Number of shots blocked got blocked of the the player
+assists | integer | Number of assists made by the player
+minutesplayed | integer | Number of minutes played by the player
+substitutedout | integer | Number of times played subbed off
+totalshots | integer | Number of shots hit by the player
+matcheswon | integer | Number of matches won by the player's team when player participated in the match
+matcheslost | integer | Number of matches lost by the player's team when player participated in the match
+matchesdrawn | integer | Number of matches drawn by the player's team when player participated in the match
+cards1sthalf | integer | Number of cards received by the player during 1st half's play
+cards2ndhalf | integer | Number of cards received by the player during 2nd half's play
+penalties | integer | Number of penalties taken by the player
+redcards | integer | Number of red cards received by the player
+yellowredcards | integer | Number of times 2 yellow cards/red card received by the player in a match
+offside | integer | Number of times player fouled offside
+cleansheet | integer | Number of cleansheets kept by player as goalkeeper
+
