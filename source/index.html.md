@@ -403,6 +403,7 @@ curl -X GET "https://rest.entitysport.com/v2/competitions?yearmonth=2018-02(yyyy
         "total_matches": "34",
         "total_rounds": "1",
         "total_teams": "6",
+        "squad_type": "per_match",
         "country": "wi",
         "table": "1",
         "rounds": [
@@ -459,9 +460,14 @@ dateend | date | competition last match date
 total_matches | integer | number of total matches
 total_rounds | integer | number of total rounds
 total_teams | integer | number of total teams
+squad_type  | string | per_match - used for international tours where squad of teams are changes for formats and matches, per_team - used for tournaments where squads of teams remains same and don't change with matches.
 country  | string | Country ISO Code
 table  | integer | total number of standing tables
 rounds | array | an array of rounds played in the competition, <a href="#competition-round-properties">see round object reference.</a>
+
+<aside class="notice">
+squad_type is useful when you are developing an fantasy application and needs to map competition squad with respective team and match.
+</aside>
 
 <h3 id="competition-round-properties">Round Properties</h3>
 
@@ -788,67 +794,532 @@ curl -X GET "https://rest.entitysport.com/v2/competitions/{cid}/squads/?token=[A
 {
     "status": "ok",
     "response": {
-        "teams": [
+        "squad_type": "per_match",
+        "squads": [
             {
-                "team_id": 9,
-                "title": "Scotland",
-                "gmdate": "2018-02-22",
+                "team_id": "25",
+                "title": "India 1st Test, 2nd Test",
+                "mid": "39158,39159",
+                "gmdate": "2018-10-04",
                 "players": [
                     {
-                        "pid": 287,
-                        "title": "Kyle Coetzer",
-                        "short_name": "KJ Coetzer",
-                        "first_name": "Kyle",
-                        "last_name": "Coetzer",
-                        "middle_name": "James",
-                        "birthdate": "1984-04-14",
+                        "pid": 119,
+                        "title": "Virat Kohli",
+                        "short_name": "V Kohli",
+                        "first_name": "Virat",
+                        "last_name": "Kohli",
+                        "middle_name": "",
+                        "birthdate": "1988-11-05",
                         "birthplace": "",
-                        "country": "sct",
+                        "country": "in",
                         "primary_team": [],
-                        "thumb_url": "../assets/uploads/2016/01/coetzer-120x120.jpg",
-                        "logo_url": "../assets/uploads/2016/01/coetzer-32x32.jpg",
+                        "thumb_url": "",
+                        "logo_url": "",
                         "playing_role": "bat",
                         "batting_style": "Right-hand bat",
-                        "bowling_style": "Right-arm medium-fast",
+                        "bowling_style": "Right-arm medium",
                         "fielding_position": "",
                         "recent_match": 0,
-                        "recent_appearance": 0
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 11
+                    },
+                    {
+                        "pid": 125,
+                        "title": "Ravindra Jadeja",
+                        "short_name": "RA Jadeja",
+                        "first_name": "Ravindrasinh",
+                        "last_name": "Jadeja",
+                        "middle_name": "Anirudhsinh",
+                        "birthdate": "1988-12-06",
+                        "birthplace": "",
+                        "country": "in",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "all",
+                        "batting_style": "LHB",
+                        "bowling_style": "Slow left-arm orthodox",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 8.5
                     }
-                ]
+                ],
+                "team": {
+                    "tid": 25,
+                    "title": "India",
+                    "abbr": "INDIA",
+                    "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india.png",
+                    "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india-32x32.png",
+                    "type": "country",
+                    "country": "in",
+                    "alt_name": "India"
+                }
             },
             {
-                "team_id": 1544,
-                "title": "Hong Kong",
-                "gmdate": "2018-02-22",
+                "team_id": "25",
+                "title": "India 1st ODI, 2nd ODI",
+                "mid": "39160,39161",
+                "gmdate": "2018-10-21",
                 "players": [
                     {
-                        "pid": 1682,
-                        "title": "Waqas Khan",
-                        "short_name": "Waqas Khan",
-                        "first_name": "Waqas",
-                        "last_name": "Khan",
-                        "middle_name": "",
-                        "birthdate": "1999-03-10",
+                        "pid": 115,
+                        "title": "Rohit Sharma",
+                        "short_name": "RG Sharma",
+                        "first_name": "Rohit",
+                        "last_name": "Sharma",
+                        "middle_name": "Gurunath",
+                        "birthdate": "1987-04-30",
                         "birthplace": "",
-                        "country": "hk",
+                        "country": "in",
                         "primary_team": [],
-                        "thumb_url": "../assets/uploads/2016/02/waqas-khan-1-120x120.jpg",
-                        "logo_url": "../assets/uploads/2016/02/waqas-khan-1-32x32.jpg",
+                        "thumb_url": "",
+                        "logo_url": "",
                         "playing_role": "bat",
+                        "batting_style": "Right-hand bat",
+                        "bowling_style": "Right-arm offbreak",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 10
+                    },
+                    {
+                        "pid": 117,
+                        "title": "Shikhar Dhawan",
+                        "short_name": "S Dhawan",
+                        "first_name": "Shikhar",
+                        "last_name": "Dhawan",
+                        "middle_name": "",
+                        "birthdate": "1985-12-05",
+                        "birthplace": "",
+                        "country": "in",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "bat",
+                        "batting_style": "LHB",
+                        "bowling_style": "Right-arm offbreak",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 9.5
+                    }
+                ],
+                "team": {
+                    "tid": 25,
+                    "title": "India",
+                    "abbr": "INDIA",
+                    "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india.png",
+                    "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india-32x32.png",
+                    "type": "country",
+                    "country": "in",
+                    "alt_name": "India"
+                }
+            },
+            {
+                "team_id": "25",
+                "title": "India 3rd ODI, 4th ODI, 5th ODI",
+                "mid": "39162,39163,39164",
+                "gmdate": "2018-10-27",
+                "players": [
+                    {
+                        "pid": 115,
+                        "title": "Rohit Sharma",
+                        "short_name": "RG Sharma",
+                        "first_name": "Rohit",
+                        "last_name": "Sharma",
+                        "middle_name": "Gurunath",
+                        "birthdate": "1987-04-30",
+                        "birthplace": "",
+                        "country": "in",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "bat",
+                        "batting_style": "Right-hand bat",
+                        "bowling_style": "Right-arm offbreak",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 10
+                    },
+                    {
+                        "pid": 117,
+                        "title": "Shikhar Dhawan",
+                        "short_name": "S Dhawan",
+                        "first_name": "Shikhar",
+                        "last_name": "Dhawan",
+                        "middle_name": "",
+                        "birthdate": "1985-12-05",
+                        "birthplace": "",
+                        "country": "in",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "bat",
+                        "batting_style": "LHB",
+                        "bowling_style": "Right-arm offbreak",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 9.5
+                    }
+                ],
+                "team": {
+                    "tid": 25,
+                    "title": "India",
+                    "abbr": "INDIA",
+                    "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india.png",
+                    "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india-32x32.png",
+                    "type": "country",
+                    "country": "in",
+                    "alt_name": "India"
+                }
+            },
+            {
+                "team_id": "25",
+                "title": "India 1st T20I, 2nd T20I, 3rd T20I",
+                "mid": "39165,39166,39167",
+                "gmdate": "2018-11-04",
+                "players": [
+                    {
+                        "pid": 115,
+                        "title": "Rohit Sharma",
+                        "short_name": "RG Sharma",
+                        "first_name": "Rohit",
+                        "last_name": "Sharma",
+                        "middle_name": "Gurunath",
+                        "birthdate": "1987-04-30",
+                        "birthplace": "",
+                        "country": "in",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "bat",
+                        "batting_style": "Right-hand bat",
+                        "bowling_style": "Right-arm offbreak",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 10
+                    },
+                    {
+                        "pid": 117,
+                        "title": "Shikhar Dhawan",
+                        "short_name": "S Dhawan",
+                        "first_name": "Shikhar",
+                        "last_name": "Dhawan",
+                        "middle_name": "",
+                        "birthdate": "1985-12-05",
+                        "birthplace": "",
+                        "country": "in",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "bat",
+                        "batting_style": "LHB",
+                        "bowling_style": "Right-arm offbreak",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 9.5
+                    }
+                ],
+                "team": {
+                    "tid": 25,
+                    "title": "India",
+                    "abbr": "INDIA",
+                    "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india.png",
+                    "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india-32x32.png",
+                    "type": "country",
+                    "country": "in",
+                    "alt_name": "India"
+                }
+            },
+            {
+                "team_id": "17",
+                "title": "West Indies 1st Test, 2nd Test",
+                "mid": "39158,39159",
+                "gmdate": "2018-10-04",
+                "players": [
+                    {
+                        "pid": 271,
+                        "title": "Jason Holder",
+                        "short_name": "JO Holder",
+                        "first_name": "Jason",
+                        "last_name": "Holder",
+                        "middle_name": "Omar",
+                        "birthdate": "1991-11-05",
+                        "birthplace": "",
+                        "country": "wi",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "all",
                         "batting_style": "Right-hand bat",
                         "bowling_style": "Right-arm medium-fast",
                         "fielding_position": "",
                         "recent_match": 0,
-                        "recent_appearance": 0
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 9
+                    },
+                    {
+                        "pid": 273,
+                        "title": "Kemar Roach",
+                        "short_name": "KAJ Roach",
+                        "first_name": "Kemar",
+                        "last_name": "Roach",
+                        "middle_name": "Andre Jamal",
+                        "birthdate": "1988-06-30",
+                        "birthplace": "",
+                        "country": "wi",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "bowl",
+                        "batting_style": "Right-hand bat",
+                        "bowling_style": "Right-arm fast",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 8.5
                     }
-                ]
+                ],
+                "team": {
+                    "tid": 17,
+                    "title": "West Indies",
+                    "abbr": "WI",
+                    "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/west-indies.png",
+                    "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/west-indies-32x32.png",
+                    "type": "country",
+                    "country": "wi",
+                    "alt_name": "West Indies"
+                }
+            },
+            {
+                "team_id": "17",
+                "title": "West Indies 1st ODI",
+                "mid": "39160",
+                "gmdate": "2018-10-21",
+                "players": [
+                    {
+                        "pid": 251,
+                        "title": "Marlon Samuels",
+                        "short_name": "MN Samuels",
+                        "first_name": "Marlon",
+                        "last_name": "Samuels",
+                        "middle_name": "Nathaniel",
+                        "birthdate": "1981-02-05",
+                        "birthplace": "",
+                        "country": "wi",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "bat",
+                        "batting_style": "Right-hand bat",
+                        "bowling_style": "Right-arm offbreak",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 9
+                    },
+                    {
+                        "pid": 271,
+                        "title": "Jason Holder",
+                        "short_name": "JO Holder",
+                        "first_name": "Jason",
+                        "last_name": "Holder",
+                        "middle_name": "Omar",
+                        "birthdate": "1991-11-05",
+                        "birthplace": "",
+                        "country": "wi",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "all",
+                        "batting_style": "Right-hand bat",
+                        "bowling_style": "Right-arm medium-fast",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 9
+                    }
+                ],
+                "team": {
+                    "tid": 17,
+                    "title": "West Indies",
+                    "abbr": "WI",
+                    "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/west-indies.png",
+                    "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/west-indies-32x32.png",
+                    "type": "country",
+                    "country": "wi",
+                    "alt_name": "West Indies"
+                }
+            },
+            {
+                "team_id": "17",
+                "title": "West Indies 2nd ODI",
+                "mid": "39161",
+                "gmdate": "2018-10-24",
+                "players": [
+                    {
+                        "pid": 251,
+                        "title": "Marlon Samuels",
+                        "short_name": "MN Samuels",
+                        "first_name": "Marlon",
+                        "last_name": "Samuels",
+                        "middle_name": "Nathaniel",
+                        "birthdate": "1981-02-05",
+                        "birthplace": "",
+                        "country": "wi",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "bat",
+                        "batting_style": "Right-hand bat",
+                        "bowling_style": "Right-arm offbreak",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 9
+                    },
+                    {
+                        "pid": 271,
+                        "title": "Jason Holder",
+                        "short_name": "JO Holder",
+                        "first_name": "Jason",
+                        "last_name": "Holder",
+                        "middle_name": "Omar",
+                        "birthdate": "1991-11-05",
+                        "birthplace": "",
+                        "country": "wi",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "all",
+                        "batting_style": "Right-hand bat",
+                        "bowling_style": "Right-arm medium-fast",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 9
+                    }
+                ],
+                "team": {
+                    "tid": 17,
+                    "title": "West Indies",
+                    "abbr": "WI",
+                    "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/west-indies.png",
+                    "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/west-indies-32x32.png",
+                    "type": "country",
+                    "country": "wi",
+                    "alt_name": "West Indies"
+                }
+            },
+            {
+                "team_id": "17",
+                "title": "West Indies 3rd ODI, 4th ODI, 5th ODI",
+                "mid": "39162,39163,39164",
+                "gmdate": "2018-10-27",
+                "players": [
+                    {
+                        "pid": 251,
+                        "title": "Marlon Samuels",
+                        "short_name": "MN Samuels",
+                        "first_name": "Marlon",
+                        "last_name": "Samuels",
+                        "middle_name": "Nathaniel",
+                        "birthdate": "1981-02-05",
+                        "birthplace": "",
+                        "country": "wi",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "bat",
+                        "batting_style": "Right-hand bat",
+                        "bowling_style": "Right-arm offbreak",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 9
+                    }
+                ],
+                "team": {
+                    "tid": 17,
+                    "title": "West Indies",
+                    "abbr": "WI",
+                    "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/west-indies.png",
+                    "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/west-indies-32x32.png",
+                    "type": "country",
+                    "country": "wi",
+                    "alt_name": "West Indies"
+                }
+            },
+            {
+                "team_id": "17",
+                "title": "West Indies 1st T20I, 2nd T20I, 3rd T20I",
+                "mid": "39165,39166,39167",
+                "gmdate": "2018-11-04",
+                "players": [
+                    {
+                        "pid": 249,
+                        "title": "Darren Bravo",
+                        "short_name": "DM Bravo",
+                        "first_name": "Darren",
+                        "last_name": "Bravo",
+                        "middle_name": "Michael",
+                        "birthdate": "1989-02-06",
+                        "birthplace": "",
+                        "country": "wi",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "bat",
+                        "batting_style": "LHB",
+                        "bowling_style": "Right-arm medium-fast",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 9
+                    },
+                    {
+                        "pid": 253,
+                        "title": "Denesh Ramdin",
+                        "short_name": "D Ramdin",
+                        "first_name": "Denesh",
+                        "last_name": "Ramdin",
+                        "middle_name": "",
+                        "birthdate": "1985-03-13",
+                        "birthplace": "",
+                        "country": "wi",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "wkbat",
+                        "batting_style": "Right-hand bat",
+                        "bowling_style": "",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 8.5
+                    }
+                ],
+                "team": {
+                    "tid": 17,
+                    "title": "West Indies",
+                    "abbr": "WI",
+                    "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/west-indies.png",
+                    "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/west-indies-32x32.png",
+                    "type": "country",
+                    "country": "wi",
+                    "alt_name": "West Indies"
+                }
             }
-        ],
-        "total_teams": 2
+        ]
     },
-    "etag": "6520d4b995db86e711a7d299cfaf94c4",
-    "modified": "2017-08-29 01:40:48",
-    "datetime": "2017-08-29 01:40:48",
+    "etag": "835bdb4a941b75761fe47231ac5109f1",
+    "modified": "2018-10-30 15:03:12",
+    "datetime": "2018-10-30 15:03:12",
     "api_version": "2.0"
 }
 ```
@@ -868,11 +1339,25 @@ token | {ACCESS_TOKEN} | API Access token
 ### Response
 
 * <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
-* <code style="color:#c7254e";>response.teams:</code> an array of all available team objects.
-* <code style="color:#c7254e";>response.teams.players:</code> an array of all available player objects who played on the game for the team.
+* <code style="color:#c7254e";>response.squad_type:</code> per_match - used for international tours where squad of teams are changes for formats and matches, per_team - used for tournaments where squads of teams remains same and don't change with matches.
+* <code style="color:#c7254e";>response.squads:</code> an array of all available player objects included in team roaster
 
+<aside class="notice">
+squad_type is useful when you are developing an fantasy application and needs to map competition squad with respective team and match.
+</aside>
 
 ### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+team_id | integer | team id of respective team squad
+title | string | Team matches title
+mid | string | match id for respective team squad, mid will be empty for squad_type: per_team.
+alt_name | string | team alternative name
+players | array | an array of player details of the team, <a href="#player-properties">see player object properties.</a>
+team | array | an array of team details, <a href="#team-properties-cricket-squad">see team object properties.</a>
+
+<h3 id="team-properties-cricket-squad">Team Properties</h3>
 
 Parameter | Value | Description
 --------- | ------- | -----------
@@ -884,8 +1369,6 @@ logo_url | string | team logo url
 type | string | team type Country(International Team) or Club
 country | string | Country ISO Code
 alt_name | string | team alternative name
-players | array | an array of player details of the team, <a href="#player-properties">see player object properties.</a>
-
 
 <h3 id="player-properties">Player Properties</h3>
 
@@ -908,6 +1391,7 @@ bowling_style | string | player bowling style
 fielding_position | string | player fielding position
 recent_match | integer | match id of last played match
 recent_appearance | integer | timestamp of last played match
+fantasy_player_rating | string | player fantasy salary or credit rating
 
 
 
@@ -3793,7 +4277,8 @@ bowling_style | string | player bowling style
 fielding_position | string | player fielding position
 recent_match | integer | match id of last played match
 recent_appearance | integer | timestamp of last played match
-role | string | playing role
+fantasy_player_rating | string | player fantasy salary or credit rating
+role | string | match playing role
 
 
 ## Match Innings Scorecard API
@@ -5291,7 +5776,8 @@ bowling_style | string | player bowling style
 fielding_position | string | player fielding position
 recent_match | integer | match id of last played match
 recent_appearance | integer | timestamp of last played match
-role | string | playing role
+fantasy_player_rating | string | player fantasy salary or credit rating
+role | string | match playing role
 
 
 ## Match Innings Commentary API
@@ -12003,8 +12489,6 @@ live_inning | object | a set of live inning details objects <a href="#innings-ma
 players | array | an array of player details objects <a href="#player-matchlive-properties">see player object properties.</a>
 
 
-
-
 <h3 id="live_score-properties">live_score object Properties</h3>
 
 Parameter | Value | Description
@@ -12181,7 +12665,8 @@ bowling_style | string | player bowling style
 fielding_position | string | player fielding position
 recent_match | integer | match id of last played match
 recent_appearance | integer | timestamp of last played match
-role | string | playing role
+fantasy_player_rating | string | player fantasy salary or credit rating
+role | string | match playing role
 
 
 ## Match Squads API
@@ -13146,6 +13631,8 @@ bowling_style | string | player bowling style
 fielding_position | string | player fielding position
 recent_match | integer | match id of last played match
 recent_appearance | integer | timestamp of last played match
+fantasy_player_rating | string | player fantasy salary or credit rating
+
 
 ## Match Statistics API
 
@@ -14011,33 +14498,34 @@ curl -X GET "https://rest.entitysport.com/v2/players?country=in&token=[ACCESS_TO
     "status": "ok",
     "response": {
         "items": [
-        {
-            "pid": 119,
-            "title": "Virat Kohli",
-            "short_name": "V Kohli",
-            "first_name": "Virat",
-            "last_name": "Kohli",
-            "middle_name": "",
-            "birthdate": "1988-11-05",
-            "birthplace": "",
-            "country": "in",
-            "primary_team": [],
-            "thumb_url": "../assets/uploads/2016/01/kohli-120x120.jpg",
-            "logo_url": "../assets/uploads/2016/01/kohli-32x32.jpg",
-            "playing_role": "bat",
-            "batting_style": "Right-hand bat",
-            "bowling_style": "Right-arm medium",
-            "fielding_position": "",
-            "recent_match": 18687,
-            "recent_appearance": 1488600000
-        }
-      ],
-      "total_items": "10000",
-      "total_pages": 10000
-    }, 
-    "etag": "ab9cfa02833139f6ade39a8458c1e0b9",
-    "modified": "2017-09-03 05:32:16",
-    "datetime": "2017-09-03 05:32:16",
+            {
+                "pid": 44977,
+                "title": "Rahmat Shah",
+                "short_name": "Rahmat Shah",
+                "first_name": "Rahmat",
+                "last_name": "Zurmatai",
+                "middle_name": "Shah",
+                "birthdate": "1993-07-06",
+                "birthplace": "",
+                "country": "af",
+                "primary_team": [],
+                "thumb_url": "",
+                "logo_url": "",
+                "playing_role": "bat",
+                "batting_style": "Right-hand bat",
+                "bowling_style": "Legbreak googly",
+                "fielding_position": "",
+                "recent_match": 37796,
+                "recent_appearance": 1518172200,
+                "fantasy_player_rating": 9
+            }
+        ],
+        "total_items": "22415",
+        "total_pages": 22415
+    },
+    "etag": "5832339678cbd950fd704e3681d3d973",
+    "modified": "2018-10-30 15:33:03",
+    "datetime": "2018-10-30 15:33:03",
     "api_version": "2.0"
 }
 ```
@@ -14082,6 +14570,7 @@ bowling_style | string | player bowling style
 fielding_position | string | player fielding position
 recent_match | integer | match id of last played match
 recent_appearance | integer | timestamp of last played match
+fantasy_player_rating | string | player fantasy salary or credit rating
 
 ## Player Profile API
 
@@ -14105,19 +14594,20 @@ curl -X GET "https://rest.entitysport.com/v2/players/119?token=[ACCESS_TOKEN]"
             "birthplace": "",
             "country": "in",
             "primary_team": [],
-            "thumb_url": "../assets/uploads/2016/01/kohli-120x120.jpg",
-            "logo_url": "../assets/uploads/2016/01/kohli-32x32.jpg",
+            "thumb_url": "",
+            "logo_url": "",
             "playing_role": "bat",
             "batting_style": "Right-hand bat",
             "bowling_style": "Right-arm medium",
             "fielding_position": "",
-            "recent_match": 18687,
-            "recent_appearance": 1488600000
+            "recent_match": 0,
+            "recent_appearance": 0,
+            "fantasy_player_rating": 11
         }
     },
-    "etag": "ab9cfa02833139f6ade39a8458c1e0b9",
-    "modified": "2017-09-03 05:32:16",
-    "datetime": "2017-09-03 05:32:16",
+    "etag": "54c2424f65570954c0045100b86cb8c5",
+    "modified": "2018-10-30 15:33:45",
+    "datetime": "2018-10-30 15:33:45",
     "api_version": "2.0"
 }
 ```
@@ -14159,6 +14649,7 @@ bowling_style | string | player bowling style
 fielding_position | string | player fielding position
 recent_match | integer | match id of last played match
 recent_appearance | integer | timestamp of last played match
+fantasy_player_rating | string | player fantasy salary or credit rating
 
 
 ## Player Statstic API
@@ -14183,122 +14674,123 @@ curl -X GET "https://rest.entitysport.com/v2/players/119/stats?token=[ACCESS_TOK
             "birthplace": "",
             "country": "in",
             "primary_team": [],
-            "thumb_url": "../assets/uploads/2016/01/kohli-120x120.jpg",
-            "logo_url": "../assets/uploads/2016/01/kohli-32x32.jpg",
+            "thumb_url": "",
+            "logo_url": "",
             "playing_role": "bat",
             "batting_style": "Right-hand bat",
             "bowling_style": "Right-arm medium",
             "fielding_position": "",
-            "recent_match": 18687,
-            "recent_appearance": 1488600000
+            "recent_match": 0,
+            "recent_appearance": 0,
+            "fantasy_player_rating": 11
         },
         "batting": {
             "test": {
                 "match_id": 0,
                 "inning_id": 0,
-                "matches": 60,
-                "innings": 101,
-                "notout": 7,
-                "runs": 4658,
-                "balls": 8315,
-                "highest": "235",
-                "run100": 17,
-                "run50": 14,
-                "run4": 526,
-                "run6": 13,
-                "average": "49.55",
-                "strike": "56.01",
-                "catches": 57,
+                "matches": 73,
+                "innings": 124,
+                "notout": 8,
+                "runs": 6331,
+                "balls": 10865,
+                "highest": "243",
+                "run100": 24,
+                "run50": 19,
+                "run4": 700,
+                "run6": 18,
+                "average": "54.57",
+                "strike": "58.26",
+                "catches": 67,
                 "stumpings": 0
             },
             "odi": {
                 "match_id": 0,
                 "inning_id": 0,
-                "matches": 193,
-                "innings": 185,
-                "notout": 31,
-                "runs": 8477,
-                "balls": 9246,
+                "matches": 215,
+                "innings": 207,
+                "notout": 36,
+                "runs": 10199,
+                "balls": 10987,
                 "highest": "183",
-                "run100": 29,
-                "run50": 44,
-                "run4": 794,
-                "run6": 94,
-                "average": "55.04",
-                "strike": "91.68",
-                "catches": 91,
+                "run100": 38,
+                "run50": 48,
+                "run4": 956,
+                "run6": 111,
+                "average": "59.64",
+                "strike": "92.82",
+                "catches": 102,
                 "stumpings": 0
             },
             "t20i": {
                 "match_id": 0,
                 "inning_id": 0,
-                "matches": 49,
-                "innings": 45,
-                "notout": 12,
-                "runs": 1748,
-                "balls": 1290,
+                "matches": 62,
+                "innings": 58,
+                "notout": 15,
+                "runs": 2102,
+                "balls": 1543,
                 "highest": "90*",
                 "run100": 0,
-                "run50": 16,
-                "run4": 189,
-                "run6": 34,
-                "average": "52.96",
-                "strike": "135.50",
-                "catches": 24,
+                "run50": 18,
+                "run4": 214,
+                "run6": 46,
+                "average": "48.88",
+                "strike": "136.22",
+                "catches": 32,
                 "stumpings": 0
             },
             "t20": {
                 "match_id": 0,
                 "inning_id": 0,
-                "matches": 219,
-                "innings": 206,
-                "notout": 38,
-                "runs": 6821,
-                "balls": 5152,
+                "matches": 247,
+                "innings": 234,
+                "notout": 44,
+                "runs": 7744,
+                "balls": 5808,
                 "highest": "113",
                 "run100": 4,
-                "run50": 50,
-                "run4": 634,
-                "run6": 212,
-                "average": "40.60",
-                "strike": "132.39",
-                "catches": 98,
+                "run50": 56,
+                "run4": 718,
+                "run6": 243,
+                "average": "40.75",
+                "strike": "133.33",
+                "catches": 114,
                 "stumpings": 0
             },
             "lista": {
                 "match_id": 0,
                 "inning_id": 0,
-                "matches": 227,
-                "innings": 218,
-                "notout": 34,
-                "runs": 9919,
-                "balls": 10782,
+                "matches": 249,
+                "innings": 240,
+                "notout": 39,
+                "runs": 11641,
+                "balls": 12523,
                 "highest": "183",
-                "run100": 33,
-                "run50": 52,
-                "run4": 958,
-                "run6": 118,
-                "average": "53.90",
-                "strike": "91.99",
-                "catches": 109,
+                "run100": 42,
+                "run50": 56,
+                "run4": 1120,
+                "run6": 135,
+                "average": "57.91",
+                "strike": "92.95",
+                "catches": 120,
                 "stumpings": 0
             },
             "firstclass": {
                 "match_id": 0,
                 "inning_id": 0,
-                "matches": 92,
-                "innings": 149,
-                "notout": 14,
-                "runs": 6907,
-                "balls": 12218,
-                "highest": "235",
-                "run100": 24,
-                "run50": 22,
-                "run4": 839,
-                "run6": 28,
-                "average": "51.16",
-                "strike": "56.53",
-                "catches": 88,
+                "matches": 105,
+                "innings": 172,
+                "notout": 15,
+                "runs": 8580,
+                "balls": 14768,
+                "highest": "243",
+                "run100": 31,
+                "run50": 27,
+                "run4": 1013,
+                "run6": 33,
+                "average": "54.64",
+                "strike": "58.09",
+                "catches": 98,
                 "stumpings": 0
             }
         },
@@ -14306,15 +14798,15 @@ curl -X GET "https://rest.entitysport.com/v2/players/119/stats?token=[ACCESS_TOK
             "test": {
                 "match_id": 0,
                 "inning_id": 0,
-                "matches": 60,
-                "innings": 7,
-                "balls": 150,
-                "overs": 25,
-                "runs": 70,
+                "matches": 73,
+                "innings": 9,
+                "balls": 163,
+                "overs": 27.1,
+                "runs": 76,
                 "wickets": 0,
                 "bestinning": "",
                 "bestmatch": "",
-                "econ": "2.80",
+                "econ": "2.79",
                 "average": "",
                 "strike": "",
                 "wicket4i": 0,
@@ -14324,7 +14816,7 @@ curl -X GET "https://rest.entitysport.com/v2/players/119/stats?token=[ACCESS_TOK
             "odi": {
                 "match_id": 0,
                 "inning_id": 0,
-                "matches": 193,
+                "matches": 215,
                 "innings": 48,
                 "balls": 641,
                 "overs": 106.5,
@@ -14342,7 +14834,7 @@ curl -X GET "https://rest.entitysport.com/v2/players/119/stats?token=[ACCESS_TOK
             "t20i": {
                 "match_id": 0,
                 "inning_id": 0,
-                "matches": 49,
+                "matches": 62,
                 "innings": 12,
                 "balls": 146,
                 "overs": 24.2,
@@ -14360,7 +14852,7 @@ curl -X GET "https://rest.entitysport.com/v2/players/119/stats?token=[ACCESS_TOK
             "t20": {
                 "match_id": 0,
                 "inning_id": 0,
-                "matches": 219,
+                "matches": 247,
                 "innings": 44,
                 "balls": 454,
                 "overs": 75.4,
@@ -14378,7 +14870,7 @@ curl -X GET "https://rest.entitysport.com/v2/players/119/stats?token=[ACCESS_TOK
             "lista": {
                 "match_id": 0,
                 "inning_id": 0,
-                "matches": 227,
+                "matches": 249,
                 "innings": 55,
                 "balls": 705,
                 "overs": 117.3,
@@ -14396,26 +14888,26 @@ curl -X GET "https://rest.entitysport.com/v2/players/119/stats?token=[ACCESS_TOK
             "firstclass": {
                 "match_id": 0,
                 "inning_id": 0,
-                "matches": 92,
-                "innings": 21,
-                "balls": 618,
-                "overs": 103,
-                "runs": 324,
+                "matches": 105,
+                "innings": 23,
+                "balls": 631,
+                "overs": 105.1,
+                "runs": 330,
                 "wickets": 3,
                 "bestinning": "1/19",
                 "bestmatch": "2/42",
-                "econ": "3.14",
-                "average": "108.00",
-                "strike": "206.0",
+                "econ": "3.13",
+                "average": "110.00",
+                "strike": "210.3",
                 "wicket4i": 0,
                 "wicket5i": 0,
                 "wicket10m": 0
             }
         }
     },
-    "etag": "fb11be481becce33eaa8af5a39c1821c",
-    "modified": "2017-09-03 05:41:48",
-    "datetime": "2017-09-03 05:41:48",
+    "etag": "fceb7d7136abd0bcf09eba58ad4cb202",
+    "modified": "2018-10-30 15:34:42",
+    "datetime": "2018-10-30 15:34:42",
     "api_version": "2.0"
 }
 ```
@@ -14459,6 +14951,7 @@ bowling_style | string | player bowling style
 fielding_position | string | player fielding position
 recent_match | integer | match id of last played match
 recent_appearance | integer | timestamp of last played match
+fantasy_player_rating | string | player fantasy salary or credit rating
 
 
 <h3>Player Batting Statistic Object Properties</h3>
@@ -14978,6 +15471,7 @@ Code | Description
 1  |  Scheduled
 2  |  Completed
 3  |  Live
+4  |  Abandoned, canceled, no result
 
 ## Innings status Codes
 
@@ -15061,7 +15555,8 @@ Code | Description
 bat |  Batsman
 bowl  |  Bowler
 all   |  All Rounder
-WK    |  Wicketkeeper
+wk    |  Wicketkeeper
+wkbat |  Wicketkeeper
 
 ## Match Squad Role Parameter
 
