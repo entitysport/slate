@@ -503,6 +503,7 @@ curl -X GET "https://rest.entitysport.com/v2/competitions/{cid}/matches/?token=[
                 "status": 2,
                 "status_str": "Completed",
                 "status_note": "No result",
+                "verified":	"true",
                 "game_state": 0,
                 "game_state_str": "Default",
                 "domestic": "0",
@@ -611,6 +612,7 @@ format_str | string | match format name
 status | string | numerical representation of match status. see match_statuss reference.<a href="#cricket-reference">See Cricket Reference</a>
 status_str | string | match status name.
 status_note | string | a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.
+verified | string | "true" - Match Data is verified, "false" - Match Data is not verified. For fantasy solutions we suggest keep updating API until you receive verfied: true.
 game_state | string | numerical representation of match game_state. game state is available for live match only. <a href="#cricket-reference">See Cricket Reference</a>
 game_state_str | string | match game_state name.
 competition | array  |  an array of parent competition details of the match, <a href="#competition-properties">see competition object properties.</a>
@@ -1929,6 +1931,7 @@ curl -X GET "https://rest.entitysport.com/v2/matches/?status=2&format=6&token=[A
                 "status": 2,
                 "status_str": "Completed",
                 "status_note": "Tridents won by 29 runs",
+                "verified":	"true",
                 "game_state": 0,
                 "game_state_str": "Default",
                 "domestic": "1",
@@ -2034,6 +2037,7 @@ format_str | string | match format name
 status | string | numerical representation of match status. see match_statuss reference.
 status_str | string | match status name.
 status_note | string | a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.
+verified | string | "true" - Match Data is verified, "false" - Match Data is not verified. For fantasy solutions we suggest keep updating API until you receive verfied: true.
 game_state | string | numerical representation of match game_state. game state is available for live match only.
 game_state_str | string | match game_state name.
 competition | array  |  an array of parent competition details of the match, <a href="#competition-match-properties">see competition object properties.</a>
@@ -2123,6 +2127,7 @@ curl -X GET "https://rest.entitysport.com/v2/matches/19887/info?token=[ACCESS_TO
         "status": 2,
         "status_str": "Completed",
         "status_note": "Patriots won by 10 wickets (with 78 balls remaining)",
+        "verified":	"true",
         "game_state": 0,
         "game_state_str": "Default",
         "competition": {
@@ -2217,6 +2222,7 @@ format_str | string | match format name
 status | string | numerical representation of match status. see match_statuss reference.
 status_str | string | match status name.
 status_note | string | a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.
+verified | string | "true" - Match Data is verified, "false" - Match Data is not verified. For fantasy solutions we suggest keep updating API until you receive verfied: true.
 game_state | string | numerical representation of match game_state. game state is available for live match only.
 game_state_str | string | match game_state name.
 competition | array  |  an array of parent competition details of the match, <a href="#competition-info-properties">see competition object properties.</a>
@@ -2307,6 +2313,7 @@ curl -X GET "https://rest.entitysport.com/v2/matches/19899/scorecard?token=[ACCE
         "status": 2,
         "status_str": "Completed",
         "status_note": "Bangladesh won by 137 runs",
+        "verified":	"true",
         "game_state": 0,
         "game_state_str": "Default",
         "competition": {
@@ -4029,6 +4036,7 @@ format_str | string | match format name
 status | string | numerical representation of match status. see match_statuss reference.
 status_str | string | match status name.
 status_note | string | a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.
+verified | string | "true" - Match Data is verified, "false" - Match Data is not verified. For fantasy solutions we suggest keep updating API until you receive verfied: true.
 game_state | string | numerical representation of match game_state. game state is available for live match only.
 game_state_str | string | match game_state name.
 competition | array  |  an array of parent competition details of the match, <a href="#competition-matchsummary-properties">see competition object properties.</a>
@@ -4301,6 +4309,7 @@ curl -X GET "https://rest.entitysport.com/v2/matches/19899/innings/1/scorecard?t
         "status": 2,
         "status_str": "Completed",
         "status_note": "South Africa won by 135 runs",
+        "verified":	"true",
         "game_state": 0,
         "game_state_str": "Default",
         "competition": {
@@ -5542,6 +5551,7 @@ format_str | string | match format name
 status | string | numerical representation of match status. see match_statuss reference.
 status_str | string | match status name.
 status_note | string | a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.
+verified | string | "true" - Match Data is verified, "false" - Match Data is not verified. For fantasy solutions we suggest keep updating API until you receive verfied: true.
 game_state | string | numerical representation of match game_state. game state is available for live match only.
 game_state_str | string | match game_state name.
 competition | array  |  an array of parent competition details of the match, <a href="#competition-inning-properties">see competition object properties.</a>
@@ -15076,6 +15086,7 @@ curl -X GET "https://rest.entitysport.com/v2/teams/25/matches?status=2&token=[AC
                 "status": 2,
                 "status_str": "Completed",
                 "status_note": "India won by 6 wickets (with 21 balls remaining)",
+                "verified":	"true",
                 "game_state": 0,
                 "game_state_str": "Default",
                 "domestic": "0",
@@ -15188,6 +15199,7 @@ format_str | string | match format name
 status | string | numerical representation of match status. see match_statuss reference.
 status_str | string | match status name.
 status_note | string | a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.
+verified | string | "true" - Match Data is verified, "false" - Match Data is not verified. For fantasy solutions we suggest keep updating API until you receive verfied: true.
 game_state | string | numerical representation of match game_state. game state is available for live match only.
 game_state_str | string | match game_state name.
 domestic | integer | numerical representation of match category type
