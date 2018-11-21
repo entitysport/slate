@@ -2388,12 +2388,12 @@ curl -X GET "https://rest.entitysport.com/v2/matches/19899/scorecard?token=[ACCE
         "subtitle": "1st T20I",
         "format": 3,
         "format_str": "T20I",
-        "status": 3,
-        "status_str": "Live",
-        "status_note": "Match delayed by rain - India won the toss and elected to field",
-        "verified": "false",
-        "game_state": 4,
-        "game_state_str": "Delayed",
+        "status": 2,
+        "status_str": "Completed",
+        "status_note": "Australia won by 4 runs (D/L method)",
+        "verified": "true",
+        "game_state": 0,
+        "game_state_str": "Default",
         "competition": {
             "cid": 111301,
             "title": "India tour of Australia",
@@ -2415,16 +2415,18 @@ curl -X GET "https://rest.entitysport.com/v2/matches/19899/scorecard?token=[ACCE
             "name": "Australia",
             "short_name": "AUS",
             "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/australia.png",
-            "scores_full": "*153/3 (16.1 ov)",
-            "scores": "153/3",
-            "overs": "16.1"
+            "scores_full": "158/4 (17 ov)",
+            "scores": "158/4",
+            "overs": "17"
         },
         "teamb": {
             "team_id": 25,
             "name": "India",
             "short_name": "INDIA",
             "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india.png",
-            "scores_full": ""
+            "scores_full": "*169/7 (17 ov)",
+            "scores": "169/7",
+            "overs": "17"
         },
         "date_start": "2018-11-21 07:50:00",
         "date_end": "2018-11-21 19:50:00",
@@ -2433,261 +2435,297 @@ curl -X GET "https://rest.entitysport.com/v2/matches/19899/scorecard?token=[ACCE
         "venue": {
             "name": "Brisbane Cricket Ground, Woolloongabba",
             "location": "Brisbane",
-            "timezone": ""
+            "timezone": "-12"
         },
         "umpires": "Paul Wilson (Australia), Gerard Abood (Australia, TV), Simon Fry (Australia)",
         "referee": "Jeff Crowe (New Zealand)",
         "equation": "",
-        "live": "Match delayed by rain - India won the toss and elected to field",
-        "result": "",
-        "win_margin": "",
-        "winning_team_id": 0,
+        "live": "",
+        "result": "AUS won by 4 runs (D/L method)",
+        "win_margin": "4 runs (D/L method)",
+        "winning_team_id": 5,
         "commentary": 1,
         "wagon": 1,
-        "latest_inning_number": 1,
+        "latest_inning_number": 2,
         "toss": {
             "text": "India won the toss & elected to field",
             "winner": 25,
             "decision": 2
         },
-        "current_over": "",
-        "previous_over": "",
-        "man_of_the_match": "",
-        "man_of_the_series": "",
-        "is_followon": 0,
-        "team_batting_first": "",
-        "team_batting_second": "",
-        "last_five_overs": "",
-        "live_inning_number": "",
-        "innings": [
-            {
-                "iid": 90359,
-                "number": 1,
-                "name": "Australia inning",
-                "short_name": "AUS inn.",
-                "status": 3,
-                "result": 0,
-                "batting_team_id": 5,
-                "fielding_team_id": 25,
-                "scores": "153/3",
-                "scores_full": "153/3 (16.1 ov)",
-                "batsmen": [
-                    {
-                        "batsman_id": "84301",
-                        "batting": "false",
-                        "position": "",
-                        "role": "bat",
-                        "role_str": "",
-                        "runs": "7",
-                        "balls_faced": "12",
-                        "fours": "1",
-                        "sixes": "0",
-                        "how_out": "c Kuldeep Yadav b KK Ahmed",
-                        "dismissal": "caught",
-                        "strike_rate": "58.33",
-                        "bowler_id": "1106",
-                        "first_fielder_id": "775",
-                        "second_fielder_id": "",
-                        "third_fielder_id": ""
-                    },
-                    {
-                        "batsman_id": "73",
-                        "batting": "false",
-                        "position": "",
-                        "role": "cap",
-                        "role_str": " (C)",
-                        "runs": "27",
-                        "balls_faced": "24",
-                        "fours": "3",
-                        "sixes": "0",
-                        "how_out": "c KK Ahmed b Kuldeep Yadav",
-                        "dismissal": "caught",
-                        "strike_rate": "112.50",
-                        "bowler_id": "775",
-                        "first_fielder_id": "1106",
-                        "second_fielder_id": "",
-                        "third_fielder_id": ""
-                    },
-                    {
-                        "batsman_id": "43508",
-                        "batting": "false",
-                        "position": "",
-                        "role": "bat",
-                        "role_str": "",
-                        "runs": "37",
-                        "balls_faced": "20",
-                        "fours": "1",
-                        "sixes": "4",
-                        "how_out": "c & b Kuldeep Yadav",
-                        "dismissal": "caught",
-                        "strike_rate": "185.00",
-                        "bowler_id": "775",
-                        "first_fielder_id": "775",
-                        "second_fielder_id": "",
-                        "third_fielder_id": ""
-                    },
-                    {
-                        "batsman_id": "81",
-                        "batting": "true",
-                        "position": "striker",
-                        "role": "all",
-                        "role_str": "",
-                        "runs": "46",
-                        "balls_faced": "23",
-                        "fours": "0",
-                        "sixes": "4",
-                        "how_out": "Not out",
-                        "dismissal": "",
-                        "strike_rate": "200.00",
-                        "bowler_id": "",
-                        "first_fielder_id": "",
-                        "second_fielder_id": "",
-                        "third_fielder_id": ""
-                    },
-                    {
-                        "batsman_id": "43482",
-                        "batting": "true",
-                        "position": "non-striker",
-                        "role": "all",
-                        "role_str": "",
-                        "runs": "31",
-                        "balls_faced": "18",
-                        "fours": "3",
-                        "sixes": "1",
-                        "how_out": "Not out",
-                        "dismissal": "",
-                        "strike_rate": "172.22",
-                        "bowler_id": "",
-                        "first_fielder_id": "",
-                        "second_fielder_id": "",
-                        "third_fielder_id": ""
-                    }
-                ],
-                "bowlers": [
-                    {
-                        "bowler_id": "434",
-                        "bowling": "false",
-                        "position": "",
-                        "overs": "3",
-                        "maidens": "0",
-                        "runs_conceded": "15",
-                        "wickets": "0",
-                        "noballs": "0",
-                        "wides": "0",
-                        "econ": "5.00",
-                        "run0": "10"
-                    },
-                    {
-                        "bowler_id": "607",
-                        "bowling": "true",
-                        "position": "active bowler",
-                        "overs": "2.1",
-                        "maidens": "0",
-                        "runs_conceded": "17",
-                        "wickets": "0",
-                        "noballs": "0",
-                        "wides": "0",
-                        "econ": "7.84",
-                        "run0": "4"
-                    },
-                    {
-                        "bowler_id": "1106",
-                        "bowling": "false",
-                        "position": "",
-                        "overs": "3",
-                        "maidens": "0",
-                        "runs_conceded": "42",
-                        "wickets": "1",
-                        "noballs": "0",
-                        "wides": "2",
-                        "econ": "14.00",
-                        "run0": "5"
-                    },
-                    {
-                        "bowler_id": "775",
-                        "bowling": "false",
-                        "position": "",
-                        "overs": "4",
-                        "maidens": "0",
-                        "runs_conceded": "24",
-                        "wickets": "2",
-                        "noballs": "0",
-                        "wides": "2",
-                        "econ": "6.00",
-                        "run0": "9"
-                    },
-                    {
-                        "bowler_id": "55237",
-                        "bowling": "true",
-                        "position": "last bowler",
-                        "overs": "4",
-                        "maidens": "0",
-                        "runs_conceded": "55",
-                        "wickets": "0",
-                        "noballs": "0",
-                        "wides": "1",
-                        "econ": "13.75",
-                        "run0": "5"
-                    }
-                ],
-                "fielder": [
-                    {
-                        "fielder_id": "775",
-                        "fielder_name": "Kuldeep Yadav",
-                        "catches": 2,
-                        "runout_thrower": 0,
-                        "runout_catcher": 0,
-                        "runout_direct_hit": 0,
-                        "stumping": 0,
-                        "is_substitute": "false"
-                    },
-                    {
-                        "fielder_id": "1106",
-                        "fielder_name": "Khaleel Ahmed",
-                        "catches": 1,
-                        "runout_thrower": 0,
-                        "runout_catcher": 0,
-                        "runout_direct_hit": 0,
-                        "stumping": 0,
-                        "is_substitute": "false"
-                    }
-                ],
-                "fows": [
-                    {
-                        "batsman_id": "84301",
-                        "runs": "7",
-                        "balls": "12",
-                        "how_out": "c Kuldeep Yadav b KK Ahmed",
-                        "score_at_dismissal": 24,
-                        "overs_at_dismissal": "4.1",
-                        "bowler_id": "1106",
-                        "dismissal": "caught",
-                        "number": 1
-                    },
-                    {
-                        "batsman_id": "73",
-                        "runs": "27",
-                        "balls": "24",
-                        "how_out": "c KK Ahmed b Kuldeep Yadav",
-                        "score_at_dismissal": 64,
-                        "overs_at_dismissal": "8.3",
-                        "bowler_id": "775",
-                        "dismissal": "caught",
-                        "number": 2
-                    },
-                    {
-                        "batsman_id": "43508",
-                        "runs": "37",
-                        "balls": "20",
-                        "how_out": "c & b Kuldeep Yadav",
-                        "score_at_dismissal": 75,
-                        "overs_at_dismissal": "10.1",
-                        "bowler_id": "775",
-                        "dismissal": "caught",
-                        "number": 3
-                    }
-                ],
-                "last_wicket": {
+        "inning": {
+            "iid": 90359,
+            "number": 1,
+            "name": "Australia inning",
+            "short_name": "AUS inn.",
+            "status": 2,
+            "result": 4,
+            "batting_team_id": 5,
+            "fielding_team_id": 25,
+            "scores": "158/4",
+            "scores_full": "158/4 (17 ov)",
+            "batsmen": [
+                {
+                    "batsman_id": "84301",
+                    "batting": "false",
+                    "position": "",
+                    "role": "bat",
+                    "role_str": "",
+                    "runs": "7",
+                    "balls_faced": "12",
+                    "fours": "1",
+                    "sixes": "0",
+                    "run0": "8",
+                    "run1": "3",
+                    "run2": "0",
+                    "run3": "0",
+                    "run5": "0",
+                    "how_out": "c Kuldeep Yadav b KK Ahmed",
+                    "dismissal": "caught",
+                    "strike_rate": "58.33",
+                    "bowler_id": "1106",
+                    "first_fielder_id": "775",
+                    "second_fielder_id": "",
+                    "third_fielder_id": ""
+                },
+                {
+                    "batsman_id": "73",
+                    "batting": "false",
+                    "position": "",
+                    "role": "cap",
+                    "role_str": " (C)",
+                    "runs": "27",
+                    "balls_faced": "24",
+                    "fours": "3",
+                    "sixes": "0",
+                    "run0": "9",
+                    "run1": "9",
+                    "run2": "3",
+                    "run3": "0",
+                    "run5": "0",
+                    "how_out": "c KK Ahmed b Kuldeep Yadav",
+                    "dismissal": "caught",
+                    "strike_rate": "112.50",
+                    "bowler_id": "775",
+                    "first_fielder_id": "1106",
+                    "second_fielder_id": "",
+                    "third_fielder_id": ""
+                },
+                {
+                    "batsman_id": "43508",
+                    "batting": "false",
+                    "position": "",
+                    "role": "bat",
+                    "role_str": "",
+                    "runs": "37",
+                    "balls_faced": "20",
+                    "fours": "1",
+                    "sixes": "4",
+                    "run0": "7",
+                    "run1": "7",
+                    "run2": "1",
+                    "run3": "0",
+                    "run5": "0",
+                    "how_out": "c & b Kuldeep Yadav",
+                    "dismissal": "caught",
+                    "strike_rate": "185.00",
+                    "bowler_id": "775",
+                    "first_fielder_id": "775",
+                    "second_fielder_id": "",
+                    "third_fielder_id": ""
+                },
+                {
+                    "batsman_id": "81",
+                    "batting": "false",
+                    "position": "",
+                    "role": "all",
+                    "role_str": "",
+                    "runs": "46",
+                    "balls_faced": "24",
+                    "fours": "0",
+                    "sixes": "4",
+                    "run0": "5",
+                    "run1": "8",
+                    "run2": "7",
+                    "run3": "0",
+                    "run5": "0",
+                    "how_out": "c B Kumar b JJ Bumrah",
+                    "dismissal": "caught",
+                    "strike_rate": "191.66",
+                    "bowler_id": "607",
+                    "first_fielder_id": "434",
+                    "second_fielder_id": "",
+                    "third_fielder_id": ""
+                },
+                {
+                    "batsman_id": "43482",
+                    "batting": "false",
+                    "position": "",
+                    "role": "all",
+                    "role_str": "",
+                    "runs": "33",
+                    "balls_faced": "19",
+                    "fours": "3",
+                    "sixes": "1",
+                    "run0": "5",
+                    "run1": "6",
+                    "run2": "3",
+                    "run3": "1",
+                    "run5": "0",
+                    "how_out": "Not out",
+                    "dismissal": "",
+                    "strike_rate": "173.68",
+                    "bowler_id": "",
+                    "first_fielder_id": "",
+                    "second_fielder_id": "",
+                    "third_fielder_id": ""
+                },
+                {
+                    "batsman_id": "43625",
+                    "batting": "false",
+                    "position": "",
+                    "role": "bat",
+                    "role_str": "",
+                    "runs": "2",
+                    "balls_faced": "3",
+                    "fours": "0",
+                    "sixes": "0",
+                    "run0": "2",
+                    "run1": "0",
+                    "run2": "1",
+                    "run3": "0",
+                    "run5": "0",
+                    "how_out": "Not out",
+                    "dismissal": "",
+                    "strike_rate": "66.66",
+                    "bowler_id": "",
+                    "first_fielder_id": "",
+                    "second_fielder_id": "",
+                    "third_fielder_id": ""
+                }
+            ],
+            "bowlers": [
+                {
+                    "bowler_id": "434",
+                    "bowling": "false",
+                    "position": "",
+                    "overs": "3",
+                    "maidens": "0",
+                    "runs_conceded": "15",
+                    "wickets": "0",
+                    "noballs": "0",
+                    "wides": "0",
+                    "econ": "5.00",
+                    "run0": "10"
+                },
+                {
+                    "bowler_id": "607",
+                    "bowling": "false",
+                    "position": "",
+                    "overs": "3",
+                    "maidens": "0",
+                    "runs_conceded": "21",
+                    "wickets": "1",
+                    "noballs": "0",
+                    "wides": "0",
+                    "econ": "7.00",
+                    "run0": "7"
+                },
+                {
+                    "bowler_id": "1106",
+                    "bowling": "false",
+                    "position": "",
+                    "overs": "3",
+                    "maidens": "0",
+                    "runs_conceded": "42",
+                    "wickets": "1",
+                    "noballs": "0",
+                    "wides": "2",
+                    "econ": "14.00",
+                    "run0": "5"
+                },
+                {
+                    "bowler_id": "775",
+                    "bowling": "false",
+                    "position": "",
+                    "overs": "4",
+                    "maidens": "0",
+                    "runs_conceded": "24",
+                    "wickets": "2",
+                    "noballs": "0",
+                    "wides": "2",
+                    "econ": "6.00",
+                    "run0": "9"
+                },
+                {
+                    "bowler_id": "55237",
+                    "bowling": "false",
+                    "position": "",
+                    "overs": "4",
+                    "maidens": "0",
+                    "runs_conceded": "55",
+                    "wickets": "0",
+                    "noballs": "0",
+                    "wides": "1",
+                    "econ": "13.75",
+                    "run0": "5"
+                }
+            ],
+            "fielder": [
+                {
+                    "fielder_id": "775",
+                    "fielder_name": "Kuldeep Yadav",
+                    "catches": 2,
+                    "runout_thrower": 0,
+                    "runout_catcher": 0,
+                    "runout_direct_hit": 0,
+                    "stumping": 0,
+                    "is_substitute": "false"
+                },
+                {
+                    "fielder_id": "1106",
+                    "fielder_name": "Khaleel Ahmed",
+                    "catches": 1,
+                    "runout_thrower": 0,
+                    "runout_catcher": 0,
+                    "runout_direct_hit": 0,
+                    "stumping": 0,
+                    "is_substitute": "false"
+                },
+                {
+                    "fielder_id": "434",
+                    "fielder_name": "Bhuvneshwar Kumar",
+                    "catches": 1,
+                    "runout_thrower": 0,
+                    "runout_catcher": 0,
+                    "runout_direct_hit": 0,
+                    "stumping": 0,
+                    "is_substitute": "false"
+                }
+            ],
+            "fows": [
+                {
+                    "batsman_id": "84301",
+                    "runs": "7",
+                    "balls": "12",
+                    "how_out": "c Kuldeep Yadav b KK Ahmed",
+                    "score_at_dismissal": 24,
+                    "overs_at_dismissal": "4.1",
+                    "bowler_id": "1106",
+                    "dismissal": "caught",
+                    "number": 1
+                },
+                {
+                    "batsman_id": "73",
+                    "runs": "27",
+                    "balls": "24",
+                    "how_out": "c KK Ahmed b Kuldeep Yadav",
+                    "score_at_dismissal": 64,
+                    "overs_at_dismissal": "8.3",
+                    "bowler_id": "775",
+                    "dismissal": "caught",
+                    "number": 2
+                },
+                {
                     "batsman_id": "43508",
                     "runs": "37",
                     "balls": "20",
@@ -2698,40 +2736,62 @@ curl -X GET "https://rest.entitysport.com/v2/matches/19899/scorecard?token=[ACCE
                     "dismissal": "caught",
                     "number": 3
                 },
-                "extra_runs": {
-                    "byes": 0,
-                    "legbyes": 0,
-                    "wides": 5,
-                    "noballs": 0,
-                    "penalty": "",
-                    "total": 5
-                },
-                "equations": {
-                    "runs": 153,
-                    "wickets": 3,
-                    "overs": "16.1",
-                    "bowlers_used": 5,
-                    "runrate": "9.46"
-                },
-                "current_partnership": {
-                    "runs": 78,
-                    "balls": 35,
-                    "overs": 5.5,
-                    "batsmen": [
-                        {
-                            "batsman_id": 81,
-                            "runs": 42,
-                            "balls": 18
-                        },
-                        {
-                            "batsman_id": 43482,
-                            "runs": 31,
-                            "balls": 17
-                        }
-                    ]
+                {
+                    "batsman_id": "81",
+                    "runs": "46",
+                    "balls": "24",
+                    "how_out": "c B Kumar b JJ Bumrah",
+                    "score_at_dismissal": 153,
+                    "overs_at_dismissal": "16.2",
+                    "bowler_id": "607",
+                    "dismissal": "caught",
+                    "number": 4
                 }
+            ],
+            "last_wicket": {
+                "batsman_id": "81",
+                "runs": "46",
+                "balls": "24",
+                "how_out": "c B Kumar b JJ Bumrah",
+                "score_at_dismissal": 153,
+                "overs_at_dismissal": "16.2",
+                "bowler_id": "607",
+                "dismissal": "caught",
+                "number": 4
+            },
+            "extra_runs": {
+                "byes": 1,
+                "legbyes": 0,
+                "wides": 5,
+                "noballs": 0,
+                "penalty": "",
+                "total": 6
+            },
+            "equations": {
+                "runs": 158,
+                "wickets": 4,
+                "overs": "17",
+                "bowlers_used": 5,
+                "runrate": "9.29"
+            },
+            "current_partnership": {
+                "runs": 5,
+                "balls": 4,
+                "overs": 0.4,
+                "batsmen": [
+                    {
+                        "batsman_id": 43482,
+                        "runs": 2,
+                        "balls": 1
+                    },
+                    {
+                        "batsman_id": 43625,
+                        "runs": 2,
+                        "balls": 3
+                    }
+                ]
             }
-        ],
+        },
         "players": [
             {
                 "pid": 73,
@@ -3400,11 +3460,35 @@ curl -X GET "https://rest.entitysport.com/v2/matches/19899/scorecard?token=[ACCE
                 "nationality": "Australia",
                 "role": "bat"
             }
+        ],
+        "teams": [
+            {
+                "tid": 5,
+                "title": "Australia",
+                "players": [],
+                "abbr": "AUS",
+                "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/australia.png",
+                "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/australia-32x32.png",
+                "type": "country",
+                "country": "au",
+                "alt_name": "Australia"
+            },
+            {
+                "tid": 25,
+                "title": "India",
+                "players": [],
+                "abbr": "INDIA",
+                "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india.png",
+                "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india-32x32.png",
+                "type": "country",
+                "country": "in",
+                "alt_name": "India"
+            }
         ]
     },
-    "etag": "35e46bef3ac00028d75fdaf41f17af51",
-    "modified": "2018-11-21 09:14:17",
-    "datetime": "2018-11-21 09:14:17",
+    "etag": "d384c11b618f2e48176eb80c9072ca04",
+    "modified": "2018-11-21 16:29:58",
+    "datetime": "2018-11-21 16:29:58",
     "api_version": "2.0"
 }
 
@@ -3575,6 +3659,11 @@ runs | integer | runs scored by batsman
 balls_faced | integer | balls faced by batsman
 fours | integer | number of fours runs scored by batsman
 sixes | integer | numbers of sixes runs scored by batsman
+run0 | integer | number of dot balls played by batsman
+run1 | integer | number of times 1 run taken by batsman
+run2 | integer | number of times 2 run taken by batsman
+run3 | integer | number of times 3 run taken by batsman
+run5 | integer | number of times 5 run taken by batsman
 how_out | string | batsman dismissal details
 dismissal | string | dismissal type
 strike_rate | string | strike rate of batsman
@@ -3722,12 +3811,12 @@ curl -X GET "https://rest.entitysport.com/v2/matches/19899/innings/1/scorecard?t
         "subtitle": "1st T20I",
         "format": 3,
         "format_str": "T20I",
-        "status": 3,
-        "status_str": "Live",
-        "status_note": "Match delayed by rain - India won the toss and elected to field",
-        "verified": "false",
-        "game_state": 4,
-        "game_state_str": "Delayed",
+        "status": 2,
+        "status_str": "Completed",
+        "status_note": "Australia won by 4 runs (D/L method)",
+        "verified": "true",
+        "game_state": 0,
+        "game_state_str": "Default",
         "competition": {
             "cid": 111301,
             "title": "India tour of Australia",
@@ -3749,16 +3838,18 @@ curl -X GET "https://rest.entitysport.com/v2/matches/19899/innings/1/scorecard?t
             "name": "Australia",
             "short_name": "AUS",
             "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/australia.png",
-            "scores_full": "*153/3 (16.1 ov)",
-            "scores": "153/3",
-            "overs": "16.1"
+            "scores_full": "158/4 (17 ov)",
+            "scores": "158/4",
+            "overs": "17"
         },
         "teamb": {
             "team_id": 25,
             "name": "India",
             "short_name": "INDIA",
             "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india.png",
-            "scores_full": ""
+            "scores_full": "*169/7 (17 ov)",
+            "scores": "169/7",
+            "overs": "17"
         },
         "date_start": "2018-11-21 07:50:00",
         "date_end": "2018-11-21 19:50:00",
@@ -3767,261 +3858,297 @@ curl -X GET "https://rest.entitysport.com/v2/matches/19899/innings/1/scorecard?t
         "venue": {
             "name": "Brisbane Cricket Ground, Woolloongabba",
             "location": "Brisbane",
-            "timezone": ""
+            "timezone": "-12"
         },
         "umpires": "Paul Wilson (Australia), Gerard Abood (Australia, TV), Simon Fry (Australia)",
         "referee": "Jeff Crowe (New Zealand)",
         "equation": "",
-        "live": "Match delayed by rain - India won the toss and elected to field",
-        "result": "",
-        "win_margin": "",
-        "winning_team_id": 0,
+        "live": "",
+        "result": "AUS won by 4 runs (D/L method)",
+        "win_margin": "4 runs (D/L method)",
+        "winning_team_id": 5,
         "commentary": 1,
         "wagon": 1,
-        "latest_inning_number": 1,
+        "latest_inning_number": 2,
         "toss": {
             "text": "India won the toss & elected to field",
             "winner": 25,
             "decision": 2
         },
-        "current_over": "",
-        "previous_over": "",
-        "man_of_the_match": "",
-        "man_of_the_series": "",
-        "is_followon": 0,
-        "team_batting_first": "",
-        "team_batting_second": "",
-        "last_five_overs": "",
-        "live_inning_number": "",
-        "innings": [
-            {
-                "iid": 90359,
-                "number": 1,
-                "name": "Australia inning",
-                "short_name": "AUS inn.",
-                "status": 3,
-                "result": 0,
-                "batting_team_id": 5,
-                "fielding_team_id": 25,
-                "scores": "153/3",
-                "scores_full": "153/3 (16.1 ov)",
-                "batsmen": [
-                    {
-                        "batsman_id": "84301",
-                        "batting": "false",
-                        "position": "",
-                        "role": "bat",
-                        "role_str": "",
-                        "runs": "7",
-                        "balls_faced": "12",
-                        "fours": "1",
-                        "sixes": "0",
-                        "how_out": "c Kuldeep Yadav b KK Ahmed",
-                        "dismissal": "caught",
-                        "strike_rate": "58.33",
-                        "bowler_id": "1106",
-                        "first_fielder_id": "775",
-                        "second_fielder_id": "",
-                        "third_fielder_id": ""
-                    },
-                    {
-                        "batsman_id": "73",
-                        "batting": "false",
-                        "position": "",
-                        "role": "cap",
-                        "role_str": " (C)",
-                        "runs": "27",
-                        "balls_faced": "24",
-                        "fours": "3",
-                        "sixes": "0",
-                        "how_out": "c KK Ahmed b Kuldeep Yadav",
-                        "dismissal": "caught",
-                        "strike_rate": "112.50",
-                        "bowler_id": "775",
-                        "first_fielder_id": "1106",
-                        "second_fielder_id": "",
-                        "third_fielder_id": ""
-                    },
-                    {
-                        "batsman_id": "43508",
-                        "batting": "false",
-                        "position": "",
-                        "role": "bat",
-                        "role_str": "",
-                        "runs": "37",
-                        "balls_faced": "20",
-                        "fours": "1",
-                        "sixes": "4",
-                        "how_out": "c & b Kuldeep Yadav",
-                        "dismissal": "caught",
-                        "strike_rate": "185.00",
-                        "bowler_id": "775",
-                        "first_fielder_id": "775",
-                        "second_fielder_id": "",
-                        "third_fielder_id": ""
-                    },
-                    {
-                        "batsman_id": "81",
-                        "batting": "true",
-                        "position": "striker",
-                        "role": "all",
-                        "role_str": "",
-                        "runs": "46",
-                        "balls_faced": "23",
-                        "fours": "0",
-                        "sixes": "4",
-                        "how_out": "Not out",
-                        "dismissal": "",
-                        "strike_rate": "200.00",
-                        "bowler_id": "",
-                        "first_fielder_id": "",
-                        "second_fielder_id": "",
-                        "third_fielder_id": ""
-                    },
-                    {
-                        "batsman_id": "43482",
-                        "batting": "true",
-                        "position": "non-striker",
-                        "role": "all",
-                        "role_str": "",
-                        "runs": "31",
-                        "balls_faced": "18",
-                        "fours": "3",
-                        "sixes": "1",
-                        "how_out": "Not out",
-                        "dismissal": "",
-                        "strike_rate": "172.22",
-                        "bowler_id": "",
-                        "first_fielder_id": "",
-                        "second_fielder_id": "",
-                        "third_fielder_id": ""
-                    }
-                ],
-                "bowlers": [
-                    {
-                        "bowler_id": "434",
-                        "bowling": "false",
-                        "position": "",
-                        "overs": "3",
-                        "maidens": "0",
-                        "runs_conceded": "15",
-                        "wickets": "0",
-                        "noballs": "0",
-                        "wides": "0",
-                        "econ": "5.00",
-                        "run0": "10"
-                    },
-                    {
-                        "bowler_id": "607",
-                        "bowling": "true",
-                        "position": "active bowler",
-                        "overs": "2.1",
-                        "maidens": "0",
-                        "runs_conceded": "17",
-                        "wickets": "0",
-                        "noballs": "0",
-                        "wides": "0",
-                        "econ": "7.84",
-                        "run0": "4"
-                    },
-                    {
-                        "bowler_id": "1106",
-                        "bowling": "false",
-                        "position": "",
-                        "overs": "3",
-                        "maidens": "0",
-                        "runs_conceded": "42",
-                        "wickets": "1",
-                        "noballs": "0",
-                        "wides": "2",
-                        "econ": "14.00",
-                        "run0": "5"
-                    },
-                    {
-                        "bowler_id": "775",
-                        "bowling": "false",
-                        "position": "",
-                        "overs": "4",
-                        "maidens": "0",
-                        "runs_conceded": "24",
-                        "wickets": "2",
-                        "noballs": "0",
-                        "wides": "2",
-                        "econ": "6.00",
-                        "run0": "9"
-                    },
-                    {
-                        "bowler_id": "55237",
-                        "bowling": "true",
-                        "position": "last bowler",
-                        "overs": "4",
-                        "maidens": "0",
-                        "runs_conceded": "55",
-                        "wickets": "0",
-                        "noballs": "0",
-                        "wides": "1",
-                        "econ": "13.75",
-                        "run0": "5"
-                    }
-                ],
-                "fielder": [
-                    {
-                        "fielder_id": "775",
-                        "fielder_name": "Kuldeep Yadav",
-                        "catches": 2,
-                        "runout_thrower": 0,
-                        "runout_catcher": 0,
-                        "runout_direct_hit": 0,
-                        "stumping": 0,
-                        "is_substitute": "false"
-                    },
-                    {
-                        "fielder_id": "1106",
-                        "fielder_name": "Khaleel Ahmed",
-                        "catches": 1,
-                        "runout_thrower": 0,
-                        "runout_catcher": 0,
-                        "runout_direct_hit": 0,
-                        "stumping": 0,
-                        "is_substitute": "false"
-                    }
-                ],
-                "fows": [
-                    {
-                        "batsman_id": "84301",
-                        "runs": "7",
-                        "balls": "12",
-                        "how_out": "c Kuldeep Yadav b KK Ahmed",
-                        "score_at_dismissal": 24,
-                        "overs_at_dismissal": "4.1",
-                        "bowler_id": "1106",
-                        "dismissal": "caught",
-                        "number": 1
-                    },
-                    {
-                        "batsman_id": "73",
-                        "runs": "27",
-                        "balls": "24",
-                        "how_out": "c KK Ahmed b Kuldeep Yadav",
-                        "score_at_dismissal": 64,
-                        "overs_at_dismissal": "8.3",
-                        "bowler_id": "775",
-                        "dismissal": "caught",
-                        "number": 2
-                    },
-                    {
-                        "batsman_id": "43508",
-                        "runs": "37",
-                        "balls": "20",
-                        "how_out": "c & b Kuldeep Yadav",
-                        "score_at_dismissal": 75,
-                        "overs_at_dismissal": "10.1",
-                        "bowler_id": "775",
-                        "dismissal": "caught",
-                        "number": 3
-                    }
-                ],
-                "last_wicket": {
+        "inning": {
+            "iid": 90359,
+            "number": 1,
+            "name": "Australia inning",
+            "short_name": "AUS inn.",
+            "status": 2,
+            "result": 4,
+            "batting_team_id": 5,
+            "fielding_team_id": 25,
+            "scores": "158/4",
+            "scores_full": "158/4 (17 ov)",
+            "batsmen": [
+                {
+                    "batsman_id": "84301",
+                    "batting": "false",
+                    "position": "",
+                    "role": "bat",
+                    "role_str": "",
+                    "runs": "7",
+                    "balls_faced": "12",
+                    "fours": "1",
+                    "sixes": "0",
+                    "run0": "8",
+                    "run1": "3",
+                    "run2": "0",
+                    "run3": "0",
+                    "run5": "0",
+                    "how_out": "c Kuldeep Yadav b KK Ahmed",
+                    "dismissal": "caught",
+                    "strike_rate": "58.33",
+                    "bowler_id": "1106",
+                    "first_fielder_id": "775",
+                    "second_fielder_id": "",
+                    "third_fielder_id": ""
+                },
+                {
+                    "batsman_id": "73",
+                    "batting": "false",
+                    "position": "",
+                    "role": "cap",
+                    "role_str": " (C)",
+                    "runs": "27",
+                    "balls_faced": "24",
+                    "fours": "3",
+                    "sixes": "0",
+                    "run0": "9",
+                    "run1": "9",
+                    "run2": "3",
+                    "run3": "0",
+                    "run5": "0",
+                    "how_out": "c KK Ahmed b Kuldeep Yadav",
+                    "dismissal": "caught",
+                    "strike_rate": "112.50",
+                    "bowler_id": "775",
+                    "first_fielder_id": "1106",
+                    "second_fielder_id": "",
+                    "third_fielder_id": ""
+                },
+                {
+                    "batsman_id": "43508",
+                    "batting": "false",
+                    "position": "",
+                    "role": "bat",
+                    "role_str": "",
+                    "runs": "37",
+                    "balls_faced": "20",
+                    "fours": "1",
+                    "sixes": "4",
+                    "run0": "7",
+                    "run1": "7",
+                    "run2": "1",
+                    "run3": "0",
+                    "run5": "0",
+                    "how_out": "c & b Kuldeep Yadav",
+                    "dismissal": "caught",
+                    "strike_rate": "185.00",
+                    "bowler_id": "775",
+                    "first_fielder_id": "775",
+                    "second_fielder_id": "",
+                    "third_fielder_id": ""
+                },
+                {
+                    "batsman_id": "81",
+                    "batting": "false",
+                    "position": "",
+                    "role": "all",
+                    "role_str": "",
+                    "runs": "46",
+                    "balls_faced": "24",
+                    "fours": "0",
+                    "sixes": "4",
+                    "run0": "5",
+                    "run1": "8",
+                    "run2": "7",
+                    "run3": "0",
+                    "run5": "0",
+                    "how_out": "c B Kumar b JJ Bumrah",
+                    "dismissal": "caught",
+                    "strike_rate": "191.66",
+                    "bowler_id": "607",
+                    "first_fielder_id": "434",
+                    "second_fielder_id": "",
+                    "third_fielder_id": ""
+                },
+                {
+                    "batsman_id": "43482",
+                    "batting": "false",
+                    "position": "",
+                    "role": "all",
+                    "role_str": "",
+                    "runs": "33",
+                    "balls_faced": "19",
+                    "fours": "3",
+                    "sixes": "1",
+                    "run0": "5",
+                    "run1": "6",
+                    "run2": "3",
+                    "run3": "1",
+                    "run5": "0",
+                    "how_out": "Not out",
+                    "dismissal": "",
+                    "strike_rate": "173.68",
+                    "bowler_id": "",
+                    "first_fielder_id": "",
+                    "second_fielder_id": "",
+                    "third_fielder_id": ""
+                },
+                {
+                    "batsman_id": "43625",
+                    "batting": "false",
+                    "position": "",
+                    "role": "bat",
+                    "role_str": "",
+                    "runs": "2",
+                    "balls_faced": "3",
+                    "fours": "0",
+                    "sixes": "0",
+                    "run0": "2",
+                    "run1": "0",
+                    "run2": "1",
+                    "run3": "0",
+                    "run5": "0",
+                    "how_out": "Not out",
+                    "dismissal": "",
+                    "strike_rate": "66.66",
+                    "bowler_id": "",
+                    "first_fielder_id": "",
+                    "second_fielder_id": "",
+                    "third_fielder_id": ""
+                }
+            ],
+            "bowlers": [
+                {
+                    "bowler_id": "434",
+                    "bowling": "false",
+                    "position": "",
+                    "overs": "3",
+                    "maidens": "0",
+                    "runs_conceded": "15",
+                    "wickets": "0",
+                    "noballs": "0",
+                    "wides": "0",
+                    "econ": "5.00",
+                    "run0": "10"
+                },
+                {
+                    "bowler_id": "607",
+                    "bowling": "false",
+                    "position": "",
+                    "overs": "3",
+                    "maidens": "0",
+                    "runs_conceded": "21",
+                    "wickets": "1",
+                    "noballs": "0",
+                    "wides": "0",
+                    "econ": "7.00",
+                    "run0": "7"
+                },
+                {
+                    "bowler_id": "1106",
+                    "bowling": "false",
+                    "position": "",
+                    "overs": "3",
+                    "maidens": "0",
+                    "runs_conceded": "42",
+                    "wickets": "1",
+                    "noballs": "0",
+                    "wides": "2",
+                    "econ": "14.00",
+                    "run0": "5"
+                },
+                {
+                    "bowler_id": "775",
+                    "bowling": "false",
+                    "position": "",
+                    "overs": "4",
+                    "maidens": "0",
+                    "runs_conceded": "24",
+                    "wickets": "2",
+                    "noballs": "0",
+                    "wides": "2",
+                    "econ": "6.00",
+                    "run0": "9"
+                },
+                {
+                    "bowler_id": "55237",
+                    "bowling": "false",
+                    "position": "",
+                    "overs": "4",
+                    "maidens": "0",
+                    "runs_conceded": "55",
+                    "wickets": "0",
+                    "noballs": "0",
+                    "wides": "1",
+                    "econ": "13.75",
+                    "run0": "5"
+                }
+            ],
+            "fielder": [
+                {
+                    "fielder_id": "775",
+                    "fielder_name": "Kuldeep Yadav",
+                    "catches": 2,
+                    "runout_thrower": 0,
+                    "runout_catcher": 0,
+                    "runout_direct_hit": 0,
+                    "stumping": 0,
+                    "is_substitute": "false"
+                },
+                {
+                    "fielder_id": "1106",
+                    "fielder_name": "Khaleel Ahmed",
+                    "catches": 1,
+                    "runout_thrower": 0,
+                    "runout_catcher": 0,
+                    "runout_direct_hit": 0,
+                    "stumping": 0,
+                    "is_substitute": "false"
+                },
+                {
+                    "fielder_id": "434",
+                    "fielder_name": "Bhuvneshwar Kumar",
+                    "catches": 1,
+                    "runout_thrower": 0,
+                    "runout_catcher": 0,
+                    "runout_direct_hit": 0,
+                    "stumping": 0,
+                    "is_substitute": "false"
+                }
+            ],
+            "fows": [
+                {
+                    "batsman_id": "84301",
+                    "runs": "7",
+                    "balls": "12",
+                    "how_out": "c Kuldeep Yadav b KK Ahmed",
+                    "score_at_dismissal": 24,
+                    "overs_at_dismissal": "4.1",
+                    "bowler_id": "1106",
+                    "dismissal": "caught",
+                    "number": 1
+                },
+                {
+                    "batsman_id": "73",
+                    "runs": "27",
+                    "balls": "24",
+                    "how_out": "c KK Ahmed b Kuldeep Yadav",
+                    "score_at_dismissal": 64,
+                    "overs_at_dismissal": "8.3",
+                    "bowler_id": "775",
+                    "dismissal": "caught",
+                    "number": 2
+                },
+                {
                     "batsman_id": "43508",
                     "runs": "37",
                     "balls": "20",
@@ -4032,40 +4159,62 @@ curl -X GET "https://rest.entitysport.com/v2/matches/19899/innings/1/scorecard?t
                     "dismissal": "caught",
                     "number": 3
                 },
-                "extra_runs": {
-                    "byes": 0,
-                    "legbyes": 0,
-                    "wides": 5,
-                    "noballs": 0,
-                    "penalty": "",
-                    "total": 5
-                },
-                "equations": {
-                    "runs": 153,
-                    "wickets": 3,
-                    "overs": "16.1",
-                    "bowlers_used": 5,
-                    "runrate": "9.46"
-                },
-                "current_partnership": {
-                    "runs": 78,
-                    "balls": 35,
-                    "overs": 5.5,
-                    "batsmen": [
-                        {
-                            "batsman_id": 81,
-                            "runs": 42,
-                            "balls": 18
-                        },
-                        {
-                            "batsman_id": 43482,
-                            "runs": 31,
-                            "balls": 17
-                        }
-                    ]
+                {
+                    "batsman_id": "81",
+                    "runs": "46",
+                    "balls": "24",
+                    "how_out": "c B Kumar b JJ Bumrah",
+                    "score_at_dismissal": 153,
+                    "overs_at_dismissal": "16.2",
+                    "bowler_id": "607",
+                    "dismissal": "caught",
+                    "number": 4
                 }
+            ],
+            "last_wicket": {
+                "batsman_id": "81",
+                "runs": "46",
+                "balls": "24",
+                "how_out": "c B Kumar b JJ Bumrah",
+                "score_at_dismissal": 153,
+                "overs_at_dismissal": "16.2",
+                "bowler_id": "607",
+                "dismissal": "caught",
+                "number": 4
+            },
+            "extra_runs": {
+                "byes": 1,
+                "legbyes": 0,
+                "wides": 5,
+                "noballs": 0,
+                "penalty": "",
+                "total": 6
+            },
+            "equations": {
+                "runs": 158,
+                "wickets": 4,
+                "overs": "17",
+                "bowlers_used": 5,
+                "runrate": "9.29"
+            },
+            "current_partnership": {
+                "runs": 5,
+                "balls": 4,
+                "overs": 0.4,
+                "batsmen": [
+                    {
+                        "batsman_id": 43482,
+                        "runs": 2,
+                        "balls": 1
+                    },
+                    {
+                        "batsman_id": 43625,
+                        "runs": 2,
+                        "balls": 3
+                    }
+                ]
             }
-        ],
+        },
         "players": [
             {
                 "pid": 73,
@@ -4734,11 +4883,35 @@ curl -X GET "https://rest.entitysport.com/v2/matches/19899/innings/1/scorecard?t
                 "nationality": "Australia",
                 "role": "bat"
             }
+        ],
+        "teams": [
+            {
+                "tid": 5,
+                "title": "Australia",
+                "players": [],
+                "abbr": "AUS",
+                "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/australia.png",
+                "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/australia-32x32.png",
+                "type": "country",
+                "country": "au",
+                "alt_name": "Australia"
+            },
+            {
+                "tid": 25,
+                "title": "India",
+                "players": [],
+                "abbr": "INDIA",
+                "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india.png",
+                "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india-32x32.png",
+                "type": "country",
+                "country": "in",
+                "alt_name": "India"
+            }
         ]
     },
-    "etag": "35e46bef3ac00028d75fdaf41f17af51",
-    "modified": "2018-11-21 09:14:17",
-    "datetime": "2018-11-21 09:14:17",
+    "etag": "d384c11b618f2e48176eb80c9072ca04",
+    "modified": "2018-11-21 16:29:58",
+    "datetime": "2018-11-21 16:29:58",
     "api_version": "2.0"
 }
 ```
@@ -4908,6 +5081,11 @@ runs | integer | runs scored by batsman
 balls_faced | integer | balls faced by batsman
 fours | integer | number of fours runs scored by batsman
 sixes | integer | numbers of sixes runs scored by batsman
+run0 | integer | number of dot balls played by batsman
+run1 | integer | number of times 1 run taken by batsman
+run2 | integer | number of times 2 run taken by batsman
+run3 | integer | number of times 3 run taken by batsman
+run5 | integer | number of times 5 run taken by batsman
 how_out | string | batsman dismissal details
 dismissal | string | dismissal type
 strike_rate | string | strike rate of batsman
