@@ -3598,7 +3598,7 @@ wickets | integer | number of wickets taken by bowler
 noballs | integer | number of no balls bowled by bowler
 wides | integer | number of wides bowled by bowler
 econ | string | economy rate of bowler
-run0 | integer | number dot balls bowled by bowler
+run0 | integer | number of dot balls bowled by bowler
 
 <h3 id="fielder-matchsummary">Fielder Properties</h3>
 
@@ -4930,7 +4930,7 @@ wickets | integer | number of wickets taken by bowler
 noballs | integer | number of no balls bowled by bowler
 wides | integer | number of wides bowled by bowler
 econ | string | economy rate of bowler
-run0 | integer | number dot balls bowled by bowler
+run0 | integer | number of dot balls bowled by bowler
 
 
 <h3 id="fielder-inning">Fielder Properties</h3>
