@@ -11392,7 +11392,7 @@ location | string | venue location
 > Using Token parameter:
 
 ```shell
-curl -X GET "https://rest.entitysport.com/soccer/competition/3/stats?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/soccer/competition/3/statsv2?token=[ACCESS_TOKEN]&per_page=2"
 ```
 
 > The above command returns JSON structured like this:
@@ -11404,214 +11404,114 @@ curl -X GET "https://rest.entitysport.com/soccer/competition/3/stats?token=[ACCE
     "response": {
         "items": [
             {
-                "pid": 872,
-                "pname": "Roberto Pereyra",
-                "tid": 45,
-                "tname": "Watford",
-                "summary": {
-                    "minutesplayed": {
-                        "name": "Minutes Played",
-                        "value": "267"
-                    },
-                    "assist": {
-                        "name": "Assist",
-                        "value": "0"
-                    },
-                    "goals": {
-                        "name": "Goals",
-                        "value": "3"
-                    },
-                    "totaltackle": {
-                        "name": "Total Tackle",
-                        "value": "1"
-                    },
-                    "wonduels": {
-                        "name": "Won Duels",
-                        "value": "11"
-                    },
-                    "totalduels": {
-                        "name": "Total Duels",
-                        "value": "25"
-                    },
-                    "accuratepasses": {
-                        "name": "Accurate Passes",
-                        "value": "83"
-                    },
-                    "totalpass": {
-                        "name": "Total Pass",
-                        "value": "107"
-                    }
+                "pid": 742,
+                "name": "Luka Jovic",
+                "team": {
+                    "tid": 95,
+                    "name": "Frankfurt"
                 },
-                "attack": {
-                    "shotsontarget": {
-                        "name": "Shots On Target",
-                        "value": "4"
-                    },
-                    "shotsofftarget": {
-                        "name": "Shots Off Target",
-                        "value": "2"
-                    },
-                    "shotsblocked": {
-                        "name": "Shots Blocked",
-                        "value": "2"
-                    },
-                    "dribbleattempts": {
-                        "name": "Dribble Attempts",
-                        "value": "5"
-                    },
-                    "dribblesuccess": {
-                        "name": "Dribble Success",
-                        "value": "9"
-                    },
-                    "bigchancemissed": {
-                        "name": "Big Chance Missed",
-                        "value": "0"
-                    },
-                    "penaltywon": {
-                        "name": "Penalty Won",
-                        "value": "0"
-                    },
-                    "hitwoodwork": {
-                        "name": "Hit Wood Work",
-                        "value": "0"
-                    },
-                    "penaltymiss": {
-                        "name": "Penalty Miss",
-                        "value": "0"
-                    }
+                "assist": 3,
+                "goals": 14,
+                "shotsontarget": 23,
+                "shotsofftarget": 20,
+                "shotsblocked": 9,
+                "dribbleattempts": 14,
+                "dribblesuccess": 21,
+                "bigchancemissed": 10,
+                "penaltywon": 0,
+                "hitwoodwork": 0,
+                "penaltymiss": 0,
+                "totalclearance": 16,
+                "outfielderblock": 0,
+                "interceptionwon": 3,
+                "totaltackle": 7,
+                "challengelost": 5,
+                "owngoals": 0,
+                "penaltycommitted": 0,
+                "errorledtoshot": 0,
+                "lastmantackle": 0,
+                "clearanceoffline": 0,
+                "passingaccuracy": 71,
+                "accuratepass": 223,
+                "totalpass": 313,
+                "longballsacc": 14,
+                "totalLongballs": 23,
+                "totalcross": 10,
+                "crossesacc": 3,
+                "bigchancecreated": 5,
+                "errorledtogoal": 0,
+                "dispossessed": 20,
+                "duelstotal": 163,
+                "duelsown": 75,
+                "wasfouled": 22,
+                "fouls": 17,
+                "runsoutsucess": 0,
+                "totalrunsout": 0,
+                "goodhighclaim": 0,
+                "punches": 0,
+                "saves": 0,
+                "savesfrominsidebox": 0,
+                "yellowcard": 0,
+                "redcard": 0
+            },
+            {
+                "pid": 210,
+                "name": "Marco Reus",
+                "team": {
+                    "tid": 94,
+                    "name": "Dortmund"
                 },
-                "defence": {
-                    "totalclearance": {
-                        "name": "Total Clearance",
-                        "value": "0"
-                    },
-                    "outfielderblock": {
-                        "name": "Outfielder Block",
-                        "value": "0"
-                    },
-                    "interceptionwon": {
-                        "name": "Interception Won",
-                        "value": "4"
-                    },
-                    "totaltackle": {
-                        "name": "Total Tackle",
-                        "value": "1"
-                    },
-                    "challengelost": {
-                        "name": "Challenge Lost",
-                        "value": "0"
-                    },
-                    "owngoals": {
-                        "name": "Own Goals",
-                        "value": "0"
-                    },
-                    "penaltycommitted": {
-                        "name": "Penalty Committed",
-                        "value": "0"
-                    },
-                    "errorledtoshot": {
-                        "name": "Error Led To Shot",
-                        "value": "0"
-                    },
-                    "lastmantackle": {
-                        "name": "Last man tackle",
-                        "value": "0"
-                    }
-                },
-                "passing": {
-                    "passingaccuracy": {
-                        "name": "Passing Accuracy (%)",
-                        "value": 78
-                    },
-                    "accuratepass": {
-                        "name": "Accurate Pass",
-                        "value": "83"
-                    },
-                    "totalpass": {
-                        "name": "Total Pass",
-                        "value": "107"
-                    },
-                    "longballsacc": {
-                        "name": "Long balls Accuracy",
-                        "value": "5"
-                    },
-                    "totalLongballs": {
-                        "name": "total Long balls",
-                        "value": "6"
-                    },
-                    "totalcross": {
-                        "name": "Total Cross",
-                        "value": "5"
-                    },
-                    "crossesacc": {
-                        "name": "Crosses Accuracy",
-                        "value": "1"
-                    },
-                    "bigchancecreated": {
-                        "name": "Big Chance Created",
-                        "value": "2"
-                    },
-                    "errorledtogoal": {
-                        "name": "Error Led To Goal",
-                        "value": "0"
-                    }
-                },
-                "duels": {
-                    "dispossessed": {
-                        "name": "Dispossessed",
-                        "value": "6"
-                    },
-                    "duelstotal": {
-                        "name": "Total Duels ",
-                        "value": "25"
-                    },
-                    "duelsown": {
-                        "name": "Duels Won",
-                        "value": "11"
-                    },
-                    "wasfouled": {
-                        "name": "Was Fouled",
-                        "value": "5"
-                    },
-                    "fouls": {
-                        "name": "Fouls",
-                        "value": "3"
-                    }
-                },
-                "goalkeeper": {
-                    "runsoutsucess": {
-                        "name": "Runs out Sucess",
-                        "value": "0"
-                    },
-                    "totalrunsOut": {
-                        "name": "Total Runs Out",
-                        "value": "0"
-                    },
-                    "goodhighclaim": {
-                        "name": "Good High Claim",
-                        "value": "0"
-                    },
-                    "punches": {
-                        "name": "Punches",
-                        "value": "0"
-                    },
-                    "saves": {
-                        "name": "Saves",
-                        "value": "0"
-                    },
-                    "savesfrominsidebox": {
-                        "name": "Saves from inside box",
-                        "value": "0"
-                    }
-                }
+                "assist": 6,
+                "goals": 13,
+                "shotsontarget": 26,
+                "shotsofftarget": 19,
+                "shotsblocked": 8,
+                "dribbleattempts": 16,
+                "dribblesuccess": 43,
+                "bigchancemissed": 13,
+                "penaltywon": 1,
+                "hitwoodwork": 4,
+                "penaltymiss": 0,
+                "totalclearance": 25,
+                "outfielderblock": 1,
+                "interceptionwon": 6,
+                "totaltackle": 27,
+                "challengelost": 12,
+                "owngoals": 0,
+                "penaltycommitted": 1,
+                "errorledtoshot": 0,
+                "lastmantackle": 0,
+                "clearanceoffline": 0,
+                "passingaccuracy": 82,
+                "accuratepass": 604,
+                "totalpass": 738,
+                "longballsacc": 33,
+                "totalLongballs": 46,
+                "totalcross": 28,
+                "crossesacc": 7,
+                "bigchancecreated": 8,
+                "errorledtogoal": 0,
+                "dispossessed": 30,
+                "duelstotal": 192,
+                "duelsown": 80,
+                "wasfouled": 22,
+                "fouls": 23,
+                "runsoutsucess": 0,
+                "totalrunsout": 0,
+                "goodhighclaim": 0,
+                "punches": 0,
+                "saves": 0,
+                "savesfrominsidebox": 0,
+                "yellowcard": 2,
+                "redcard": 0
             }
         ],
-        "total_items": 342,
-        "total_pages": 342
+        "total_items": 409,
+        "total_pages": 205
     },
-    "etag": "dbdda735ed7b8c7ac272dcae703b55e1",
-    "modified": "2018-09-01 09:35:18",
-    "datetime": "2018-09-01 09:35:18",
+    "etag": "95ae8dc4d31fbf72ec76b6ff44ae1fa5",
+    "modified": "2019-02-02 16:29:32",
+    "datetime": "2019-02-02 16:29:32",
     "api_version": "1.0"
 }
 
@@ -11619,7 +11519,7 @@ curl -X GET "https://rest.entitysport.com/soccer/competition/3/stats?token=[ACCE
 This API has competition's total player statistic details.
 
 ### Request
-* Path: /soccer/competition/cid/stats
+* Path: /soccer/competition/cid/statsv2
 * Method: GET
 * Parameters 
 
@@ -11643,105 +11543,61 @@ paged | Number | Page Number for request
 Parameter | Value | Description
 --------- | ------- | -----------
 pid | integer | player id
-pname | string | player name
+name | string | player name
+team | array | array of team details. <a href="#competition-stats-team-details">see team object reference</a>
+assist | integer | details of total assist made by the player.
+goals | integer | details of total goals scored by the player.
+shotsontarget | integer | details of shots on target by the player. 
+shotsofftarget | integer | details of shots off target by the player.
+shotsblocked | integer | details of shots blocked.
+dribbleattempts | integer | details of dribble attempted by the player.
+dribblesuccess | integer | details of dribble success by the player.
+bigchancemissed | integer | details of big chance missed by the player.
+penaltywon | integer | details of penalty won by the player.
+hitwoodwork | integer | details of crossbar hit by the player.
+penaltymiss | integer | details of penalty missed by the player.
+totalclearance | integer | details of total clearance by the player.
+outfielderblock | integer | details of out field block by the player.
+interceptionwon | integer | details of interception won.
+totaltackle | integer | details of total tackle by the player.
+challengelost | integer | details of challenge lost by the player.
+owngoals | integer | details of own goals by the player.
+penaltycommitted | integer | details of penalty committed by the player.
+errorledtoshot | integer | details of defence error let to the shot by the player.
+lastmantackle | integer | details of last man tackle by the player.
+clearanceoffline | integer | details of call clearance by the player. 
+passingaccuracy | integer | details of passing accuracy by the player. 
+accuratepass | integer | details of accurate passes by the player.
+totalpass | integer | details of total passes.
+longballsacc | integer | details of long balls accuracy by the player.
+totalLongballs | integer | details of total Long balls by the player.
+totalcross | integer | details of total crosses by the player.
+crossesacc | integer | details of crosses accuracy by the player.
+bigchancecreated | integer | details of big chance created by the player.
+errorledtogoal | integer | details of error led to goal by the player.
+dispossessed | integer | details of player dispossessed.
+duelstotal | integer | details of total duels by the player.
+duelswon | integer | details of duels won by the player.
+wasfouled | integer | details of the player was fouled.
+fouls | integer | details of fouls by the player.
+runsoutsucess | integer | details of runs out success.
+totalrunsOut | integer | details of total runs outside the box.
+goodhighclaim | integer | details of good high ball saves.
+punches | integer | details of punches to the ball inside box from cross.
+saves | integer | details of saves the player.
+savesfrominsidebox | integer | details of saves from insidebox.
+yellowcard | integer | details of number of yellow card received by the player.
+redcard | integer | details of number of red card received by the player.
+
+
+<h3 id="competition-stats-team-details">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
 tid | integer | team id
-tname | string | team name
-summary | array | An array of player stats summary details. <a href="#competition-stats-summary">see summary player statistic object reference</a>
-attack | array | An array of player attack stats details. <a href="#competition-stats-attack">see player attack statistic object reference</a>
-defence | array | An array of player defence stats details. <a href="#competition-stats-defence">see player defence statistic object reference</a>
-passing | array | An array of player passing stats details. <a href="#competition-stats-passing">see player passing statistic object reference</a>
-duels | array | An array of player duels stats details. <a href="#competition-stats-duels">see player duels statistic object reference</a>
-goalkeeper | array | An array of goalkeeper stats details. <a href="#competition-stats-goalkeeper">see goalkeeper statistic object reference</a>
+name | string | team name
 
 
-<h3 id="competition-stats-summary">Summary Player Statistic Object Reference</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-minutesplayed | array | An array of details of total minutes played by the player . <a href="#competition-stats">see minutesplayed statistic object reference</a>
-assist | array | An array of details of total assist made by the player. <a href="#competition-stats">see assist statistic object reference</a>
-goals | array | An array of details of total goals scored by the player. <a href="#competition-stats">see goals statistic object reference</a>
-totaltackle | array | An array of details of total tackles made by the player. <a href="#competition-stats">see totaltackle statistic object reference</a>
-wonduels | array | An array of details of total duels won by the player. <a href="#competition-stats">see wonduels statistic object reference</a>
-totalduels | array | An array of details of total duels attempted by the player. <a href="#competition-stats">see totalduels statistic object reference</a>
-accuratepasses | array | An array of details of total accurate passes by the player. <a href="#competition-stats-goalkeeper">see accuratepasses statistic object reference</a>
-totalpass | array | An array of details of total passes attempeted by the player. <a href="#competition-stats">see totalpass statistic object reference</a>
-
-
-<h3 id="competition-stats-attack">Player Attack Statistic Object Reference</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-shotsontarget | array | An array of details of shots on target by the player . <a href="#competition-stats">see shotsontarget statistic object reference</a>
-shotsofftarget | array | An array of details of shots off target by the player. <a href="#competition-stats">see shotsofftarget statistic object reference</a>
-shotsblocked | array | An array of details of shots blocked. <a href="#competition-stats">see shotsblocked statistic object reference</a>
-dribbleattempts | array | An array of details of dribble attempted by the player. <a href="#competition-stats">see dribbleattempts statistic object reference</a>
-dribblesuccess | array | An array of details of dribble success by the player. <a href="#competition-stats">see dribblesuccess statistic object reference</a>
-bigchancemissed | array | An array of details of big chance missed by the player. <a href="#competition-stats">see bigchancemissed statistic object reference</a>
-penaltywon | array | An array of details of penalty won by the player. <a href="#competition-stats-goalkeeper">see penaltywon statistic object reference</a>
-hitwoodwork | array | An array of details of crossbar hit by the player. <a href="#competition-stats">see hitwoodwork statistic object reference</a>
-penaltymiss | array | An array of details of penalty missed by the player. <a href="#competition-stats">see penaltymiss statistic object reference</a>
-
-
-<h3 id="competition-stats-defence">Player Defence Statistic Object Reference</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-totalclearance | array | An array of details of total clearance by the player . <a href="#competition-stats">see totalclearance statistic object reference</a>
-outfielderblock | array | An array of details of out field block by the player. <a href="#competition-stats">see outfielderblock statistic object reference</a>
-interceptionwon | array | An array of details of interception won. <a href="#competition-stats">see interceptionwon statistic object reference</a>
-totaltackle | array | An array of details of total tackle by the player. <a href="#competition-stats">see totaltackle statistic object reference</a>
-challengelost | array | An array of details of challenge lost by the player. <a href="#competition-stats">see challengelost statistic object reference</a>
-owngoals | array | An array of details of own goals by the player. <a href="#competition-stats">see owngoals statistic object reference</a>
-penaltycommitted | array | An array of details of penalty committed by the player. <a href="#competition-stats-goalkeeper">see penaltycommitted statistic object reference</a>
-errorledtoshot | array | An array of details of defence error let to the shot by the player. <a href="#competition-stats">see errorledtoshot statistic object reference</a>
-lastmantackle | array | An array of details of last man tackle by the player. <a href="#competition-stats">see lastmantackle statistic object reference</a>
-
-
-<h3 id="competition-stats-passing">Player Passing Statistic Object Reference</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-passingaccuracy | array | An array of details of passing accuracy by the player . <a href="#competition-stats">see passingaccuracy statistic object reference</a>
-accuratepass | array | An array of details of accurate passes by the player. <a href="#competition-stats">see accuratepass statistic object reference</a>
-totalpass | array | An array of details of total passes. <a href="#competition-stats">see totalpass statistic object reference</a>
-longballsacc | array | An array of details of long balls accuracy by the player. <a href="#competition-stats">see longballsacc statistic object reference</a>
-totalLongballs | array | An array of details of total Long balls by the player. <a href="#competition-stats">see totalLongballs statistic object reference</a>
-totalcross | array | An array of details of total crosses by the player. <a href="#competition-stats">see totalcross statistic object reference</a>
-crossesacc | array | An array of details of crosses accuracy by the player. <a href="#competition-stats-goalkeeper">see crossesacc statistic object reference</a>
-bigchancecreated | array | An array of details of big chance created by the player. <a href="#competition-stats">see bigchancecreated statistic object reference</a>
-errorledtogoal | array | An array of details of error led to goal by the player. <a href="#competition-stats">see errorledtogoal statistic object reference</a>
-
-
-<h3 id="competition-stats-duels">Player Duels Statistic Object Reference</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-dispossessed | array | An array of details of player dispossessed. <a href="#competition-stats">see dispossessed statistic object reference</a>
-duelstotal | array | An array of details of total duels by the player. <a href="#competition-stats">see duelstotal statistic object reference</a>
-duelswon | array | An array of details of duels won by the player. <a href="#competition-stats">see duelswon statistic object reference</a>
-wasfouled | array | An array of details of the player was fouled. <a href="#competition-stats">see wasfouled statistic object reference</a>
-fouls | array | An array of details of fouls by the player. <a href="#competition-stats">see fouls statistic object reference</a>
-
-
-<h3 id="competition-stats-goalkeeper">Goalkeeper Statistic Object Reference</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-runsoutsucess | array | An array of details of runs out success. <a href="#competition-stats">see runsoutsucess statistic object reference</a>
-totalrunsOut | array | An array of details of total runs outside the box. <a href="#competition-stats">see totalrunsOut statistic object reference</a>
-goodhighclaim | array | An array of details of good high ball saves. <a href="#competition-stats">see goodhighclaim statistic object reference</a>
-punches | array | An array of details of punches to the ball inside box from cross. <a href="#competition-stats">see punches statistic object reference</a>
-saves | array | An array of details of saves the player. <a href="#competition-stats">see saves statistic object reference</a>
-savesfrominsidebox | array | An array of details of saves fromi insidebox. <a href="#competition-stats">see savesfrominsidebox statistic object reference</a>
-
-
-<h3 id="competition-stats">Statistic Object Reference</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-name | string | name of the statistic type
-value | integer | integer value of the statistic
 
 
 ## Matches List API
@@ -12096,13 +11952,13 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/info?token=[ACCESS_
                 "home": {
                     "player": {
                         "shirt": "ce0000",
-                        "sleeve": "000000",
+                        "sleeve": "",
                         "number": "ffffff",
                         "stripes": ""
                     },
                     "gk": {
                         "shirt": "006600",
-                        "sleeve": "006600",
+                        "sleeve": "",
                         "number": "ffffff",
                         "stripes": ""
                     }
@@ -12110,13 +11966,13 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/info?token=[ACCESS_
                 "away": {
                     "player": {
                         "shirt": "66cccc",
-                        "sleeve": "66cccc",
+                        "sleeve": "",
                         "number": "669999",
                         "stripes": ""
                     },
                     "gk": {
                         "shirt": "9933cc",
-                        "sleeve": "9933cc",
+                        "sleeve": "",
                         "number": "ffffff",
                         "stripes": ""
                     }
@@ -12392,36 +12248,6 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/info?token=[ACCESS_
                     "value": "-17"
                 },
                 {
-                    "time": 49,
-                    "injurytime": 0,
-                    "value": "-10"
-                },
-                {
-                    "time": 50,
-                    "injurytime": 0,
-                    "value": "0"
-                },
-                {
-                    "time": 51,
-                    "injurytime": 0,
-                    "value": "11"
-                },
-                {
-                    "time": 52,
-                    "injurytime": 0,
-                    "value": "17"
-                },
-                {
-                    "time": 53,
-                    "injurytime": 0,
-                    "value": "7"
-                },
-                {
-                    "time": 54,
-                    "injurytime": 0,
-                    "value": "3"
-                },
-                {
                     "time": 55,
                     "injurytime": 0,
                     "value": "-3"
@@ -12457,76 +12283,6 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/info?token=[ACCESS_
                     "value": "-21"
                 },
                 {
-                    "time": 62,
-                    "injurytime": 0,
-                    "value": "-7"
-                },
-                {
-                    "time": 63,
-                    "injurytime": 0,
-                    "value": "-0"
-                },
-                {
-                    "time": 64,
-                    "injurytime": 0,
-                    "value": "-1"
-                },
-                {
-                    "time": 65,
-                    "injurytime": 0,
-                    "value": "6"
-                },
-                {
-                    "time": 66,
-                    "injurytime": 0,
-                    "value": "2"
-                },
-                {
-                    "time": 67,
-                    "injurytime": 0,
-                    "value": "-9"
-                },
-                {
-                    "time": 68,
-                    "injurytime": 0,
-                    "value": "-25"
-                },
-                {
-                    "time": 69,
-                    "injurytime": 0,
-                    "value": "-17"
-                },
-                {
-                    "time": 70,
-                    "injurytime": 0,
-                    "value": "15"
-                },
-                {
-                    "time": 71,
-                    "injurytime": 0,
-                    "value": "-14"
-                },
-                {
-                    "time": 72,
-                    "injurytime": 0,
-                    "value": "-11"
-                },
-                {
-                    "time": 73,
-                    "injurytime": 0,
-                    "value": "-11"
-                },
-                {
-                    "time": 74,
-                    "injurytime": 0,
-                    "value": "13"
-                },
-                {
-                    "time": 75,
-                    "injurytime": 0,
-                    "value": "-27"
-                },
-                {
                     "time": 76,
                     "injurytime": 0,
                     "value": "-21"
@@ -12545,86 +12301,6 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/info?token=[ACCESS_
                     "time": 79,
                     "injurytime": 0,
                     "value": "25"
-                },
-                {
-                    "time": 80,
-                    "injurytime": 0,
-                    "value": "21"
-                },
-                {
-                    "time": 81,
-                    "injurytime": 0,
-                    "value": "9"
-                },
-                {
-                    "time": 82,
-                    "injurytime": 0,
-                    "value": "-6"
-                },
-                {
-                    "time": 83,
-                    "injurytime": 0,
-                    "value": "11"
-                },
-                {
-                    "time": 84,
-                    "injurytime": 0,
-                    "value": "-14"
-                },
-                {
-                    "time": 85,
-                    "injurytime": 0,
-                    "value": "9"
-                },
-                {
-                    "time": 86,
-                    "injurytime": 0,
-                    "value": "23"
-                },
-                {
-                    "time": 87,
-                    "injurytime": 0,
-                    "value": "-30"
-                },
-                {
-                    "time": 88,
-                    "injurytime": 0,
-                    "value": "-5"
-                },
-                {
-                    "time": 89,
-                    "injurytime": 0,
-                    "value": "-16"
-                },
-                {
-                    "time": 90,
-                    "injurytime": 0,
-                    "value": "-17"
-                },
-                {
-                    "time": 90,
-                    "injurytime": 1,
-                    "value": "-9"
-                },
-                {
-                    "time": 90,
-                    "injurytime": 2,
-                    "value": "-13"
-                },
-                {
-                    "time": 90,
-                    "injurytime": 3,
-                    "value": "-21"
-                },
-                {
-                    "time": 90,
-                    "injurytime": 4,
-                    "value": "6"
-                },
-                {
-                    "time": 90,
-                    "injurytime": 5,
-                    "value": "5"
                 },
                 {
                     "time": 90,
@@ -12864,24 +12540,6 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/info?token=[ACCESS_
                     "sentence": "In Manchester Man Utd's Matteo Darmian is caught offside."
                 },
                 {
-                    "id": 4,
-                    "injurytime": 0,
-                    "time": 5,
-                    "sentence": "Marcus Rashford gets his shot on target but fails to score for Man Utd."
-                },
-                {
-                    "id": 5,
-                    "injurytime": 0,
-                    "time": 6,
-                    "sentence": "Matteo Guendouzi (Arsenal) is given an opening but the shot is blocked by a defender."
-                },
-                {
-                    "id": 6,
-                    "injurytime": 0,
-                    "time": 9,
-                    "sentence": "Corner awarded to Man Utd."
-                },
-                {
                     "id": 7,
                     "injurytime": 0,
                     "time": 13,
@@ -12906,24 +12564,6 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/info?token=[ACCESS_
                     "sentence": "At Old Trafford, Arsenal are penalized for being offside."
                 },
                 {
-                    "id": 11,
-                    "injurytime": 0,
-                    "time": 26,
-                    "sentence": "Arsenal have been awarded a corner by Andre Marriner."
-                },
-                {
-                    "id": 12,
-                    "injurytime": 0,
-                    "time": 26,
-                    "sentence": "Goal! A Shkodran Mustafi header gives Arsenal a 0-1 lead in Manchester."
-                },
-                {
-                    "id": 13,
-                    "injurytime": 0,
-                    "time": 26,
-                    "sentence": "Great play from Lucas Torreira to set up the goal."
-                },
-                {
                     "id": 14,
                     "injurytime": 0,
                     "time": 30,
@@ -12946,54 +12586,6 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/info?token=[ACCESS_
                     "injurytime": 0,
                     "time": 32,
                     "sentence": "Rob Holding is writhing in pain and play has been suspended for a few moments."
-                },
-                {
-                    "id": 18,
-                    "injurytime": 0,
-                    "time": 33,
-                    "sentence": "Andre Marriner has blown to resume play in Manchester."
-                },
-                {
-                    "id": 19,
-                    "injurytime": 0,
-                    "time": 34,
-                    "sentence": "Rob Holding for Arsenal is back on the field again."
-                },
-                {
-                    "id": 20,
-                    "injurytime": 0,
-                    "time": 35,
-                    "sentence": "Important block from the Man Utd defence as Aaron Ramsey fires in a strike for Arsenal."
-                },
-                {
-                    "id": 21,
-                    "injurytime": 0,
-                    "time": 35,
-                    "sentence": "Corner awarded to Arsenal."
-                },
-                {
-                    "id": 22,
-                    "injurytime": 0,
-                    "time": 36,
-                    "sentence": "Rob Holding (Arsenal) does not seem to be able to continue. He is replaced by Stephan Lichtsteiner."
-                },
-                {
-                    "id": 23,
-                    "injurytime": 0,
-                    "time": 37,
-                    "sentence": "At Old Trafford, Shkodran Mustafi has been yellow-carded for the away team."
-                },
-                {
-                    "id": 24,
-                    "injurytime": 0,
-                    "time": 38,
-                    "sentence": "Man Utd's Marcos Rojo gets in a shot but it is blocked by a Arsenal defender."
-                },
-                {
-                    "id": 25,
-                    "injurytime": 0,
-                    "time": 38,
-                    "sentence": "Marcos Rojo (Man Utd) has received a yellow card from Andre Marriner."
                 },
                 {
                     "id": 26,
@@ -13050,66 +12642,6 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/info?token=[ACCESS_
                     "sentence": "The second half has started at Old Trafford."
                 },
                 {
-                    "id": 35,
-                    "injurytime": 0,
-                    "time": 46,
-                    "sentence": "Henrikh Mkhitaryan is on a sub for Aaron Ramsey for Arsenal."
-                },
-                {
-                    "id": 36,
-                    "injurytime": 0,
-                    "time": 52,
-                    "sentence": "Corner awarded to Man Utd."
-                },
-                {
-                    "id": 37,
-                    "injurytime": 0,
-                    "time": 54,
-                    "sentence": "Lucas Torreira is down and play has been interrupted for a few moments."
-                },
-                {
-                    "id": 38,
-                    "injurytime": 0,
-                    "time": 55,
-                    "sentence": "The match in Manchester is underway once more."
-                },
-                {
-                    "id": 39,
-                    "injurytime": 0,
-                    "time": 55,
-                    "sentence": "Arsenal's Lucas Torreira is back in action after a slight knock."
-                },
-                {
-                    "id": 40,
-                    "injurytime": 0,
-                    "time": 57,
-                    "sentence": "Man Utd have been awarded a corner by Andre Marriner."
-                },
-                {
-                    "id": 41,
-                    "injurytime": 0,
-                    "time": 59,
-                    "sentence": "Marcos Rojo of Man Utd smashes in a shot on target. The keeper saves, though."
-                },
-                {
-                    "id": 42,
-                    "injurytime": 0,
-                    "time": 59,
-                    "sentence": "Man Utd have been awarded a corner by Andre Marriner."
-                },
-                {
-                    "id": 43,
-                    "injurytime": 0,
-                    "time": 62,
-                    "sentence": "Play has been temporarily suspended for attention to Anthony Martial for Man Utd who is writhing in pain on the pitch."
-                },
-                {
-                    "id": 44,
-                    "injurytime": 0,
-                    "time": 63,
-                    "sentence": "Anthony Martial, who was grimacing earlier, has been substituted. Romelu Lukaku is the substitute for Man Utd."
-                },
-                {
                     "id": 45,
                     "injurytime": 0,
                     "time": 63,
@@ -13138,36 +12670,6 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/info?token=[ACCESS_
                     "injurytime": 0,
                     "time": 69,
                     "sentence": "Jesse Lingard is on target to level the scores at 2-2."
-                },
-                {
-                    "id": 50,
-                    "injurytime": 0,
-                    "time": 71,
-                    "sentence": "Arsenal's Pierre-Emerick Aubameyang gets in a shot on goal at Old Trafford. But the effort is unsuccessful."
-                },
-                {
-                    "id": 51,
-                    "injurytime": 0,
-                    "time": 72,
-                    "sentence": "In Manchester, Hector Bellerin of Arsenal is presented with a shooting opportunity. But the strike is blocked by the covering defence."
-                },
-                {
-                    "id": 52,
-                    "injurytime": 0,
-                    "time": 72,
-                    "sentence": "In Manchester Arsenal attack through Henrikh Mkhitaryan. The finish is off target, however."
-                },
-                {
-                    "id": 53,
-                    "injurytime": 0,
-                    "time": 73,
-                    "sentence": "Jose Mourinho is making the team's second substitution at Old Trafford with Marouane Fellaini replacing Marcos Rojo."
-                },
-                {
-                    "id": 54,
-                    "injurytime": 0,
-                    "time": 75,
-                    "sentence": "Pierre-Emerick Aubameyang for Arsenal drives towards goal at Old Trafford. But the finish is unsuccessful."
                 },
                 {
                     "id": 55,
@@ -13210,24 +12712,6 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/info?token=[ACCESS_
                     "injurytime": 1,
                     "time": 90,
                     "sentence": "In Manchester Arsenal drive forward through Lucas Torreira. His shot is on target but it's saved."
-                },
-                {
-                    "id": 62,
-                    "injurytime": 1,
-                    "time": 90,
-                    "sentence": "Arsenal's Henrikh Mkhitaryan is whistled for offside at Old Trafford."
-                },
-                {
-                    "id": 63,
-                    "injurytime": 1,
-                    "time": 90,
-                    "sentence": "Alexandre Lacazette for Arsenal is whistled offside."
-                },
-                {
-                    "id": 64,
-                    "injurytime": 5,
-                    "time": 90,
-                    "sentence": "The match at Old Trafford has been interrupted briefly for a check on Stephan Lichtsteiner, who is down injured."
                 },
                 {
                     "id": 65,
@@ -14095,7 +13579,7 @@ nationality | array | array of manager nationality details. <a href="#referee-na
 > Using Token parameter:
 
 ```shell
-curl -X GET "https://rest.entitysport.com/soccer/matches/470/stats?token=[ACCESS_TOKEN]"
+curl -X GET "https://rest.entitysport.com/soccer/matches/304/statsv2?token=[ACCESS_TOKEN]"
 ```
 
 > The above command returns JSON structured like this:
@@ -14108,31 +13592,31 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/stats?token=[ACCESS
         "items": {
             "match_info": [
                 {
-                    "mid": 470,
+                    "mid": 304,
                     "round": {
                         "type": "table",
-                        "round": "3",
-                        "name": 3
+                        "round": "24",
+                        "name": 24
                     },
                     "result": {
-                        "home": "4",
+                        "home": "1",
                         "away": "1",
-                        "winner": "home"
+                        "winner": "draw"
                     },
                     "teams": {
                         "home": {
-                            "tid": 70,
-                            "tname": "Real Madrid",
-                            "logo": "https://rest.entitysport.com/soccer/assets/team/2829.png",
-                            "fullname": "Real Madrid",
-                            "abbr": "MAD"
+                            "tid": 55,
+                            "tname": "Liverpool",
+                            "logo": "https://rest.entitysport.com/soccer/assets/team/liverpool.png",
+                            "fullname": "Liverpool FC",
+                            "abbr": "LIV"
                         },
                         "away": {
-                            "tid": 75,
-                            "tname": "Leganes",
-                            "logo": "https://rest.entitysport.com/soccer/assets/team/2845.png",
-                            "fullname": "Real Madrid",
-                            "abbr": "MAD"
+                            "tid": 47,
+                            "tname": "Leicester",
+                            "logo": "https://rest.entitysport.com/soccer/assets/team/leicester.png",
+                            "fullname": "Leicester City",
+                            "abbr": "LEI"
                         }
                     },
                     "periods": {
@@ -14141,49 +13625,49 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/stats?token=[ACCESS
                             "away": 1
                         },
                         "p2": {
-                            "home": 3,
+                            "home": 0,
                             "away": 0
                         },
                         "ft": {
-                            "home": 4,
+                            "home": 1,
                             "away": 1
                         }
                     },
-                    "datestart": "2018-09-01 18:45:00",
-                    "dateend": "2018-09-01 20:37:23",
-                    "timestampstart": 1535827500,
-                    "timestampend": 1535834243,
+                    "datestart": "2019-01-30 20:00:00",
+                    "dateend": "2019-01-30 21:53:27",
+                    "timestampstart": 1548878400,
+                    "timestampend": 1548885207,
                     "injurytime": null,
                     "time": 90,
                     "status_str": "result",
                     "status": 2,
                     "gamestate_str": "Ended",
-                    "gamestate": 8,
+                    "gamestate": 9,
                     "periodlength": "45",
                     "numberofperiods": "2",
-                    "attendance": "59255",
+                    "attendance": "53092",
                     "overtimelength": "15",
                     "competition": {
-                        "cid": 4,
-                        "cname": "LaLiga",
-                        "startdate": "2018-08-17 00:00:00",
-                        "enddate": "2019-05-20 23:55:00",
-                        "startdatetimestamp": 1534464000,
-                        "endtdatetimestamp": 1558396500,
+                        "cid": 3,
+                        "cname": "Premier League",
+                        "startdate": "2018-08-10 00:00:00",
+                        "enddate": "2019-05-13 23:55:00",
+                        "startdatetimestamp": 1533859200,
+                        "endtdatetimestamp": 1557791700,
                         "year": "18/19",
-                        "category": "Spain",
-                        "iocid": "199",
-                        "ioc": "es",
+                        "category": "England",
+                        "iocid": "240",
+                        "ioc": "en",
                         "status": 3,
                         "status_str": "live",
-                        "logo": ""
+                        "logo": "https://rest.entitysport.com/soccer/assets/competition/logo_5c4ab3a4f2025.png"
                     },
                     "venue": {
-                        "venueid": 43,
-                        "name": "Santiago Bernabeu",
-                        "location": "Madrid, Spain",
-                        "founded": "1944",
-                        "capacity": "80000"
+                        "venueid": 27,
+                        "name": "Anfield",
+                        "location": "Liverpool, England",
+                        "founded": "1884",
+                        "capacity": "54074"
                     }
                 }
             ],
@@ -14191,7 +13675,7 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/stats?token=[ACCESS
                 "0": {
                     "name": "Yellow cards",
                     "home": 1,
-                    "away": 1
+                    "away": 3
                 },
                 "1": {
                     "name": "Substitutions",
@@ -14200,495 +13684,444 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/stats?token=[ACCESS
                 },
                 "2": {
                     "name": "Ball possession",
-                    "home": 74,
-                    "away": 26
+                    "home": 69,
+                    "away": 31
                 },
                 "3": {
                     "name": "Free kicks",
-                    "home": 10,
-                    "away": 11
+                    "home": 9,
+                    "away": 18
                 },
                 "4": {
                     "name": "Offsides",
-                    "home": 1,
-                    "away": 1
+                    "home": 4,
+                    "away": 3
                 },
                 "5": {
                     "name": "Corner kicks",
-                    "home": 8,
+                    "home": 7,
                     "away": 1
                 },
                 "6": {
                     "name": "Goal attempts",
-                    "home": 15,
-                    "away": 5
-                },
-                "7": {
-                    "name": "Injuries",
-                    "home": 0,
-                    "away": 2
+                    "home": 8,
+                    "away": 4
                 },
                 "assist": {
-                    "id": 9,
                     "name": "Assist",
-                    "home": 3,
-                    "away": 0
+                    "home": 0,
+                    "away": 1
                 },
                 "goals": {
-                    "id": 10,
                     "name": "Goals",
-                    "home": 4,
+                    "home": 1,
                     "away": 1
                 },
                 "totaltackle": {
-                    "id": 25,
                     "name": "Total Tackle",
-                    "home": 16,
-                    "away": 12
+                    "home": 15,
+                    "away": 14
                 },
                 "passingaccuracy": {
-                    "id": 12,
                     "name": "Passing Accuracy (%)",
-                    "home": "92",
-                    "away": "74"
+                    "home": "87",
+                    "away": "70"
                 },
                 "shotsontarget": {
-                    "id": 13,
                     "name": "Shots On Target",
-                    "home": 8,
-                    "away": 3
+                    "home": 3,
+                    "away": 2
                 },
                 "shotsofftarget": {
-                    "id": 14,
                     "name": "Shots Off Target",
-                    "home": 6,
+                    "home": 5,
                     "away": 2
                 },
                 "shotsblocked": {
-                    "id": 15,
                     "name": "Shots Blocked",
-                    "home": 3,
-                    "away": 3
-                },
-                "dribbleattempts": {
-                    "id": 16,
-                    "name": "Dribble Attempts",
-                    "home": 13,
-                    "away": 2
-                },
-                "dribblesuccess": {
-                    "id": 17,
-                    "name": "Dribble Success",
-                    "home": 18,
-                    "away": 8
-                },
-                "bigchancemissed": {
-                    "id": 18,
-                    "name": "Big Chance Missed",
-                    "home": 1,
-                    "away": 0
-                },
-                "penaltywon": {
-                    "id": 19,
-                    "name": "Penalty Won",
-                    "home": 1,
+                    "home": 2,
                     "away": 1
                 },
+                "dribbleattempts": {
+                    "name": "Dribble Attempts",
+                    "home": 11,
+                    "away": 10
+                },
+                "dribblesuccess": {
+                    "name": "Dribble Success",
+                    "home": 20,
+                    "away": 13
+                },
+                "bigchancemissed": {
+                    "name": "Big Chance Missed",
+                    "home": 0,
+                    "away": 1
+                },
+                "penaltywon": {
+                    "name": "Penalty Won",
+                    "home": 0,
+                    "away": 0
+                },
                 "hitwoodwork": {
-                    "id": 20,
                     "name": "Hit Wood Work",
                     "home": 0,
                     "away": 0
                 },
                 "penaltymiss": {
-                    "id": 21,
                     "name": "Penalty Miss",
                     "home": 0,
                     "away": 0
                 },
                 "totalclearance": {
-                    "id": 22,
                     "name": "Total Clearance",
-                    "home": 6,
-                    "away": 21
+                    "home": 15,
+                    "away": 45
                 },
                 "outfielderblock": {
-                    "id": 23,
                     "name": "Outfielder Block",
-                    "home": 2,
-                    "away": 3
+                    "home": 1,
+                    "away": 2
                 },
                 "interceptionwon": {
-                    "id": 24,
                     "name": "Interception Won",
-                    "home": 7,
-                    "away": 12
+                    "home": 13,
+                    "away": 9
                 },
                 "challengelost": {
-                    "id": 26,
                     "name": "Challenge Lost",
-                    "home": 2,
-                    "away": 13
+                    "home": 15,
+                    "away": 9
                 },
                 "owngoals": {
-                    "id": 27,
                     "name": "Own Goals",
                     "home": 0,
                     "away": 0
                 },
                 "penaltycommitted": {
-                    "id": 28,
                     "name": "Penalty Committed",
-                    "home": 1,
-                    "away": 1
+                    "home": 0,
+                    "away": 0
                 },
                 "errorledtoshot": {
-                    "id": 29,
                     "name": "Error Led To Shot",
                     "home": 0,
                     "away": 0
                 },
                 "lastmantackle": {
-                    "id": 30,
                     "name": "Last man tackle",
                     "home": 0,
                     "away": 0
                 },
                 "clearanceoffline": {
-                    "id": 31,
                     "name": "Clearance off line",
                     "home": 0,
                     "away": 0
                 },
                 "accuratepass": {
-                    "id": 32,
                     "name": "Accurate Pass",
-                    "home": 798,
-                    "away": 186
+                    "home": 662,
+                    "away": 144
                 },
                 "totalpass": {
-                    "id": 33,
                     "name": "Total Pass",
-                    "home": 872,
-                    "away": 251
+                    "home": 761,
+                    "away": 205
                 },
                 "longballsacc": {
-                    "id": 34,
                     "name": "Long balls Accuracy",
-                    "home": 73,
-                    "away": 30
+                    "home": 25,
+                    "away": 10
                 },
                 "totalLongballs": {
-                    "id": 35,
                     "name": "total Long balls",
-                    "home": 89,
-                    "away": 67
+                    "home": 48,
+                    "away": 25
                 },
                 "totalcross": {
-                    "id": 36,
                     "name": "Total Cross",
-                    "home": 27,
+                    "home": 23,
                     "away": 11
                 },
                 "crossesacc": {
-                    "id": 37,
                     "name": "Crosses Accuracy",
-                    "home": 8,
-                    "away": 4
+                    "home": 5,
+                    "away": 2
                 },
                 "bigchancecreated": {
-                    "id": 38,
                     "name": "Big Chance Created",
-                    "home": 2,
-                    "away": 0
+                    "home": 0,
+                    "away": 1
                 },
                 "errorledtogoal": {
-                    "id": 39,
                     "name": "Error Led To Goal ",
                     "home": 0,
                     "away": 0
                 },
                 "dispossessed": {
-                    "id": 40,
                     "name": "Dispossessed",
-                    "home": 7,
-                    "away": 10
+                    "home": 10,
+                    "away": 7
                 },
                 "duelstotal": {
-                    "id": 41,
                     "name": "Total Duels ",
-                    "home": 101,
-                    "away": 101
+                    "home": 111,
+                    "away": 93
                 },
                 "duelsown": {
-                    "id": 42,
                     "name": "Duels Won",
-                    "home": 59,
-                    "away": 42
+                    "home": 47,
+                    "away": 53
                 },
                 "wasfouled": {
-                    "id": 43,
                     "name": "Was Fouled",
-                    "home": 11,
-                    "away": 11
+                    "home": 6,
+                    "away": 10
                 },
                 "fouls": {
-                    "id": 44,
                     "name": "Fouls",
-                    "home": 11,
-                    "away": 11
+                    "home": 13,
+                    "away": 6
                 },
                 "runsoutsucess": {
-                    "id": 45,
                     "name": "Runs out Sucess",
                     "home": 0,
                     "away": 0
                 },
                 "totalrunsOut": {
-                    "id": 46,
                     "name": "Total Runs Out",
                     "home": 0,
                     "away": 0
                 },
                 "goodhighclaim": {
-                    "id": 47,
                     "name": "Good High Claim",
-                    "home": 1,
-                    "away": 1
+                    "home": 0,
+                    "away": 0
                 },
                 "punches": {
-                    "id": 48,
                     "name": "Punches",
                     "home": 0,
                     "away": 0
                 },
                 "saves": {
-                    "id": 49,
                     "name": "Saves",
-                    "home": 2,
-                    "away": 4
+                    "home": 0,
+                    "away": 0
                 },
                 "savesfrominsidebox": {
-                    "id": 50,
                     "name": "Saves from inside box",
                     "home": 0,
-                    "away": 4
+                    "away": 0
                 }
             },
-            "player_statistics": [
-                {
-                    "pid": 1447,
-                    "pname": "Karim Benzema",
-                    "team": {
-                        "tid": 70,
-                        "name": "Real Madrid",
-                        "type": "home"
+            "player_statistics": {
+                "home": [
+                    {
+                        "pid": 1081,
+                        "pname": "Adam Lallana",
+                        "teamtype": "home",
+                        "minutesplayed": 24,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 0,
+                        "dribblesuccess": 1,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 0,
+                        "outfielderblock": 0,
+                        "interceptionwon": 1,
+                        "totaltackle": 1,
+                        "challengelost": 1,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 85,
+                        "accuratepass": 12,
+                        "totalpass": 14,
+                        "longballsacc": 0,
+                        "totalLongballs": 0,
+                        "totalcross": 3,
+                        "crossesacc": 2,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 1,
+                        "duelstotal": 4,
+                        "duelsown": 1,
+                        "wasfouled": 0,
+                        "fouls": 0,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "yellowcard": 0,
+                        "redcard": 0
                     },
-                    "summary": {
-                        "minutesplayed": {
-                            "name": "Minutes Played",
-                            "value": "90"
-                        },
-                        "assist": {
-                            "name": "Assist",
-                            "value": "0"
-                        },
-                        "goals": {
-                            "name": "Goals",
-                            "value": "2"
-                        },
-                        "totaltackle": {
-                            "name": "Total Tackle",
-                            "value": "0"
-                        },
-                        "wonduels": {
-                            "name": "Won Duels",
-                            "value": "2"
-                        },
-                        "totalduels": {
-                            "name": "Total Duels",
-                            "value": "5"
-                        },
-                        "accuratepasses": {
-                            "name": "Accurate Passes",
-                            "value": "32"
-                        },
-                        "totalpass": {
-                            "name": "Total Pass",
-                            "value": "37"
-                        }
-                    },
-                    "attack": {
-                        "shotsontarget": {
-                            "name": "Shots On Target",
-                            "value": "3"
-                        },
-                        "shotsofftarget": {
-                            "name": "Shots Off Target",
-                            "value": "0"
-                        },
-                        "shotsblocked": {
-                            "name": "Shots Blocked",
-                            "value": "1"
-                        },
-                        "dribbleattempts": {
-                            "name": "Dribble Attempts",
-                            "value": "0"
-                        },
-                        "dribblesuccess": {
-                            "name": "Dribble Success",
-                            "value": "1"
-                        },
-                        "bigchancemissed": {
-                            "name": "Big Chance Missed",
-                            "value": "0"
-                        },
-                        "penaltywon": {
-                            "name": "Penalty Won",
-                            "value": "0"
-                        },
-                        "hitwoodwork": {
-                            "name": "Hit Wood Work",
-                            "value": "0"
-                        },
-                        "penaltymiss": {
-                            "name": "Penalty Miss",
-                            "value": "0"
-                        }
-                    },
-                    "defence": {
-                        "totalclearance": {
-                            "name": "Total Clearance",
-                            "value": "0"
-                        },
-                        "outfielderblock": {
-                            "name": "Outfielder Block",
-                            "value": "0"
-                        },
-                        "interceptionwon": {
-                            "name": "Interception Won",
-                            "value": "0"
-                        },
-                        "totaltackle": {
-                            "name": "Total Tackle",
-                            "value": "0"
-                        },
-                        "challengelost": {
-                            "name": "Challenge Lost",
-                            "value": "0"
-                        },
-                        "owngoals": {
-                            "name": "Own Goals",
-                            "value": "0"
-                        },
-                        "penaltycommitted": {
-                            "name": "Penalty Committed",
-                            "value": "0"
-                        },
-                        "errorledtoshot": {
-                            "name": "Error Led To Shot",
-                            "value": "0"
-                        },
-                        "lastmantackle": {
-                            "name": "Last man tackle",
-                            "value": "0"
-                        },
-                        "clearanceoffline": {
-                            "name": "Clearance off line",
-                            "value": "0"
-                        }
-                    },
-                    "passing": {
-                        "passingaccuracy": {
-                            "name": "Passing Accuracy (%)",
-                            "value": "86"
-                        },
-                        "accuratepass": {
-                            "name": "Accurate Pass",
-                            "value": "32"
-                        },
-                        "totalpass": {
-                            "name": "Total Pass",
-                            "value": "37"
-                        },
-                        "longballsacc": {
-                            "name": "Long balls Accuracy",
-                            "value": "2"
-                        },
-                        "totalLongballs": {
-                            "name": "total Long balls",
-                            "value": "2"
-                        },
-                        "totalcross": {
-                            "name": "Total Cross",
-                            "value": "0"
-                        },
-                        "crossesacc": {
-                            "name": "Crosses Accuracy",
-                            "value": "0"
-                        },
-                        "bigchancecreated": {
-                            "name": "Big Chance Created",
-                            "value": "0"
-                        },
-                        "errorledtogoal": {
-                            "name": "Error Led To Goal ",
-                            "value": "0"
-                        }
-                    },
-                    "duels": {
-                        "dispossessed": {
-                            "name": "Dispossessed",
-                            "value": "1"
-                        },
-                        "duelstotal": {
-                            "name": "Total Duels ",
-                            "value": "5"
-                        },
-                        "duelsown": {
-                            "name": "Duels Won",
-                            "value": "2"
-                        },
-                        "wasfouled": {
-                            "name": "Was Fouled",
-                            "value": "0"
-                        },
-                        "fouls": {
-                            "name": "Fouls",
-                            "value": "0"
-                        }
-                    },
-                    "goalkeeper": {
-                        "runsoutsucess": {
-                            "name": "Runs out Sucess",
-                            "value": "0"
-                        },
-                        "totalrunsOut": {
-                            "name": "Total Runs Out",
-                            "value": "0"
-                        },
-                        "goodhighclaim": {
-                            "name": "Good High Claim",
-                            "value": "0"
-                        },
-                        "punches": {
-                            "name": "Punches",
-                            "value": "0"
-                        },
-                        "saves": {
-                            "savesfrominsidebox": "Saves from inside box",
-                            "value": "0"
-                        }
+                    {
+                        "pid": 1082,
+                        "pname": "Daniel Sturridge",
+                        "teamtype": "home",
+                        "minutesplayed": 8,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 1,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 0,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 0,
+                        "outfielderblock": 0,
+                        "interceptionwon": 0,
+                        "totaltackle": 0,
+                        "challengelost": 0,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 75,
+                        "accuratepass": 3,
+                        "totalpass": 4,
+                        "longballsacc": 0,
+                        "totalLongballs": 0,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 1,
+                        "duelsown": 0,
+                        "wasfouled": 0,
+                        "fouls": 1,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "yellowcard": 0,
+                        "redcard": 0
                     }
-                }
-            ]
+                ],
+                "away": [
+                    {
+                        "pid": 497,
+                        "pname": "Shinji Okazaki",
+                        "teamtype": "away",
+                        "minutesplayed": 11,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 0,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 0,
+                        "outfielderblock": 0,
+                        "interceptionwon": 0,
+                        "totaltackle": 0,
+                        "challengelost": 0,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 0,
+                        "accuratepass": 0,
+                        "totalpass": 0,
+                        "longballsacc": 0,
+                        "totalLongballs": 0,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 1,
+                        "duelsown": 0,
+                        "wasfouled": 0,
+                        "fouls": 0,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "yellowcard": 0,
+                        "redcard": 0
+                    },
+                    {
+                        "pid": 906,
+                        "pname": "Jonny Evans",
+                        "teamtype": "away",
+                        "minutesplayed": 90,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 0,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 6,
+                        "outfielderblock": 0,
+                        "interceptionwon": 1,
+                        "totaltackle": 2,
+                        "challengelost": 0,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 78,
+                        "accuratepass": 25,
+                        "totalpass": 32,
+                        "longballsacc": 2,
+                        "totalLongballs": 8,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 4,
+                        "duelsown": 4,
+                        "wasfouled": 0,
+                        "fouls": 0,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "yellowcard": 0,
+                        "redcard": 0
+                    }
+                ]
+            }
         },
         "total_items": 1,
         "total_pages": 1
     },
-    "etag": "15937fa956b7fda6f4bcf5f8b8f9c3f4",
-    "modified": "2018-09-02 14:29:16",
-    "datetime": "2018-09-02 14:29:16",
+    "etag": "30ee041879fd7a122a10491aad1ca3ad",
+    "modified": "2019-02-02 16:01:49",
+    "datetime": "2019-02-02 16:01:49",
     "api_version": "1.0"
 }
 
@@ -14696,7 +14129,7 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/stats?token=[ACCESS
 This API contains a single match info, match team and player stats details.
 
 ### Request
-* Path: /soccer/matches/mid/stats
+* Path: /soccer/matches/mid/statsv2
 * Method: GET
 * Parameters 
 
@@ -14735,114 +14168,61 @@ away | integer | statistic value of away team
 
 Parameter | Value | Description
 --------- | ------- | -----------
+home | array | an array of home team player statistic value.<a href="#match-player-stats-team">see player stats object reference</a>
+away| array | an array of away team player statistic value.<a href="#match-player-stats-team">see player stats object reference</a>
+
+
+<h3 id="match-player-stats-team">Player Stats Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
 pid | integer | player id
 pname | string | player name
-team | array | array of player team details. <a href="#match-player-stats-team">see team object reference</a>
-summary | array | array of player statistic summary details. <a href="#match-stats-summary">see summary player statistic object reference</a>
-attack | array | array of player attack statistic details. <a href="#match-stats-attack">see player attack statistic object reference</a>
-defence | array | array of player defence statistic details. <a href="#match-stats-defence">see player defence statistic object reference</a>
-passing | array | array of player passing statistic details. <a href="#match-stats-passing">see player passing statistic object reference</a>
-duels | array | array of player duels statistic details. <a href="#match-stats-duels">see player duels statistic object reference</a>
-goalkeeper | array | array of player goalkeeping statistic details. <a href="#match-stats-goalkeeper">see goalkeeper statistic object reference</a>
-
-
-<h3 id="match-player-stats-team">Team Object Reference</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-tid | integer | team id
-name | string | team name
-type | string | team type(home or away)
-
-
-<h3 id="match-stats-summary">Summary Player Statistic Object Reference</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-minutesplayed | array | An array of details of total minutes played by the player . <a href="#match-stats">see minutesplayed statistic object reference</a>
-assist | array | An array of details of total assist made by the player. <a href="#match-stats">see assist statistic object reference</a>
-goals | array | An array of details of total goals scored by the player. <a href="#match-stats">see goals statistic object reference</a>
-totaltackle | array | An array of details of total tackles made by the player. <a href="#match-stats">see totaltackle statistic object reference</a>
-wonduels | array | An array of details of total duels won by the player. <a href="#match-stats">see wonduels statistic object reference</a>
-totalduels | array | An array of details of total duels attempted by the player. <a href="#match-stats">see totalduels statistic object reference</a>
-accuratepasses | array | An array of details of total accurate passes by the player. <a href="#match-stats-goalkeeper">see accuratepasses statistic object reference</a>
-totalpass | array | An array of details of total passes attempeted by the player. <a href="#match-stats">see totalpass statistic object reference</a>
-
-
-<h3 id="match-stats-attack">Player Attack Statistic Object Reference</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-shotsontarget | array | An array of details of shots on target by the player . <a href="#match-stats">see shotsontarget statistic object reference</a>
-shotsofftarget | array | An array of details of shots off target by the player. <a href="#match-stats">see shotsofftarget statistic object reference</a>
-shotsblocked | array | An array of details of shots blocked. <a href="#match-stats">see shotsblocked statistic object reference</a>
-dribbleattempts | array | An array of details of dribble attempted by the player. <a href="#match-stats">see dribbleattempts statistic object reference</a>
-dribblesuccess | array | An array of details of dribble success by the player. <a href="#match-stats">see dribblesuccess statistic object reference</a>
-bigchancemissed | array | An array of details of big chance missed by the player. <a href="#match-stats">see bigchancemissed statistic object reference</a>
-penaltywon | array | An array of details of penalty won by the player. <a href="#match-stats-goalkeeper">see penaltywon statistic object reference</a>
-hitwoodwork | array | An array of details of crossbar hit by the player. <a href="#match-stats">see hitwoodwork statistic object reference</a>
-penaltymiss | array | An array of details of penalty missed by the player. <a href="#match-stats">see penaltymiss statistic object reference</a>
-
-
-<h3 id="match-stats-defence">Player Defence Statistic Object Reference</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-totalclearance | array | An array of details of total clearance by the player . <a href="#match-stats">see totalclearance statistic object reference</a>
-outfielderblock | array | An array of details of out field block by the player. <a href="#match-stats">see outfielderblock statistic object reference</a>
-interceptionwon | array | An array of details of interception won. <a href="#match-stats">see interceptionwon statistic object reference</a>
-totaltackle | array | An array of details of total tackle by the player. <a href="#match-stats">see totaltackle statistic object reference</a>
-challengelost | array | An array of details of challenge lost by the player. <a href="#match-stats">see challengelost statistic object reference</a>
-owngoals | array | An array of details of own goals by the player. <a href="#match-stats">see owngoals statistic object reference</a>
-penaltycommitted | array | An array of details of penalty committed by the player. <a href="#match-stats-goalkeeper">see penaltycommitted statistic object reference</a>
-errorledtoshot | array | An array of details of defence error let to the shot by the player. <a href="#match-stats">see errorledtoshot statistic object reference</a>
-lastmantackle | array | An array of details of last man tackle by the player. <a href="#match-stats">see lastmantackle statistic object reference</a>
-
-
-<h3 id="match-stats-passing">Player Passing Statistic Object Reference</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-passingaccuracy | array | An array of details of passing accuracy by the player . <a href="#match-stats">see passingaccuracy statistic object reference</a>
-accuratepass | array | An array of details of accurate passes by the player. <a href="#match-stats">see accuratepass statistic object reference</a>
-totalpass | array | An array of details of total passes. <a href="#match-stats">see totalpass statistic object reference</a>
-longballsacc | array | An array of details of long balls accuracy by the player. <a href="#match-stats">see longballsacc statistic object reference</a>
-totalLongballs | array | An array of details of total Long balls by the player. <a href="#match-stats">see totalLongballs statistic object reference</a>
-totalcross | array | An array of details of total crosses by the player. <a href="#match-stats">see totalcross statistic object reference</a>
-crossesacc | array | An array of details of crosses accuracy by the player. <a href="#match-stats-goalkeeper">see crossesacc statistic object reference</a>
-bigchancecreated | array | An array of details of big chance created by the player. <a href="#match-stats">see bigchancecreated statistic object reference</a>
-errorledtogoal | array | An array of details of error led to goal by the player. <a href="#match-stats">see errorledtogoal statistic object reference</a>
-
-
-<h3 id="match-stats-duels">Player Duels Statistic Object Reference</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-dispossessed | array | An array of details of player dispossessed. <a href="#match-stats">see dispossessed statistic object reference</a>
-duelstotal | array | An array of details of total duels by the player. <a href="#match-stats">see duelstotal statistic object reference</a>
-duelswon | array | An array of details of duels won by the player. <a href="#match-stats">see duelswon statistic object reference</a>
-wasfouled | array | An array of details of the player was fouled. <a href="#match-stats">see wasfouled statistic object reference</a>
-fouls | array | An array of details of fouls by the player. <a href="#match-stats">see fouls statistic object reference</a>
-
-
-<h3 id="match-stats-goalkeeper">Goalkeeper Statistic Object Reference</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-runsoutsucess | array | An array of details of runs out success. <a href="#match-stats">see runsoutsucess statistic object reference</a>
-totalrunsOut | array | An array of details of total runs outside the box. <a href="#match-stats">see totalrunsOut statistic object reference</a>
-goodhighclaim | array | An array of details of good high ball saves. <a href="#match-stats">see goodhighclaim statistic object reference</a>
-punches | array | An array of details of punches to the ball inside box from cross. <a href="#match-stats">see punches statistic object reference</a>
-saves | array | An array of details of saves the player. <a href="#match-stats">see saves statistic object reference</a>
-savesfrominsidebox | array | An array of details of saves fromi insidebox. <a href="#match-stats">see savesfrominsidebox statistic object reference</a>
-
-
-<h3 id="match-stats">Statistic Object Reference</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-name | string | name of the statistic type
-value | integer | integer value of the statistic
+teamtype | string | team type(home or away)
+minutesplayed | integer | details of total minutes played by the player.
+assist | integer | details of total assist made by the player.
+goals | integer | details of total goals scored by the player.
+shotsontarget | integer | details of shots on target by the player. 
+shotsofftarget | integer | details of shots off target by the player.
+shotsblocked | integer | details of shots blocked.
+dribbleattempts | integer | details of dribble attempted by the player.
+dribblesuccess | integer | details of dribble success by the player.
+bigchancemissed | integer | details of big chance missed by the player.
+penaltywon | integer | details of penalty won by the player.
+hitwoodwork | integer | details of crossbar hit by the player.
+penaltymiss | integer | details of penalty missed by the player.
+totalclearance | integer | details of total clearance by the player.
+outfielderblock | integer | details of out field block by the player.
+interceptionwon | integer | details of interception won.
+totaltackle | integer | details of total tackle by the player.
+challengelost | integer | details of challenge lost by the player.
+owngoals | integer | details of own goals by the player.
+penaltycommitted | integer | details of penalty committed by the player.
+errorledtoshot | integer | details of defence error let to the shot by the player.
+lastmantackle | integer | details of last man tackle by the player.
+clearanceoffline | integer | details of call clearance by the player. 
+passingaccuracy | integer | details of passing accuracy by the player. 
+accuratepass | integer | details of accurate passes by the player.
+totalpass | integer | details of total passes.
+longballsacc | integer | details of long balls accuracy by the player.
+totalLongballs | integer | details of total Long balls by the player.
+totalcross | integer | details of total crosses by the player.
+crossesacc | integer | details of crosses accuracy by the player.
+bigchancecreated | integer | details of big chance created by the player.
+errorledtogoal | integer | details of error led to goal by the player.
+dispossessed | integer | details of player dispossessed.
+duelstotal | integer | details of total duels by the player.
+duelswon | integer | details of duels won by the player.
+wasfouled | integer | details of the player was fouled.
+fouls | integer | details of fouls by the player.
+runsoutsucess | integer | details of runs out success.
+totalrunsOut | integer | details of total runs outside the box.
+goodhighclaim | integer | details of good high ball saves.
+punches | integer | details of punches to the ball inside box from cross.
+saves | integer | details of saves the player.
+savesfrominsidebox | integer | details of saves from insidebox.
+yellowcard | integer | details of number of yellow card received by the player.
+redcard | integer | details of number of red card received by the player.
 
 
 ## Teams List API
