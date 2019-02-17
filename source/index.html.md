@@ -2578,6 +2578,560 @@ decision | integer | numerical representation of decision made by toss winning t
 
 
 
+## Match Fantasy Points API
+
+```shell
+curl -X GET "https://rest.entitysport.com/v2/matches/39327/point?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "match_id": 39327,
+        "title": "Melbourne Stars vs Melbourne Renegades",
+        "subtitle": "Final",
+        "format": 6,
+        "format_str": "T20",
+        "status": 2,
+        "status_str": "Completed",
+        "status_note": "Melb Reneg won by 13 runs",
+        "verified": "true",
+        "pre_squad": "true",
+        "odds_available": "false",
+        "game_state": 0,
+        "game_state_str": "Default",
+        "competition": {
+            "cid": 111481,
+            "title": "Big Bash League",
+            "abbr": "bbl-1819",
+            "type": "tournament",
+            "category": "domestic",
+            "match_format": "t20",
+            "status": "result",
+            "season": "2018/19",
+            "datestart": "2018-12-19",
+            "dateend": "2019-02-17",
+            "total_matches": "59",
+            "total_rounds": "3",
+            "total_teams": "9",
+            "country": "au"
+        },
+        "teama": {
+            "team_id": 14206,
+            "name": "Melbourne Stars",
+            "short_name": "MS",
+            "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/12/Melbourne-Stars.png",
+            "scores_full": "*132/7 (20 ov)",
+            "scores": "132/7",
+            "overs": "20"
+        },
+        "teamb": {
+            "team_id": 14209,
+            "name": "Melbourne Renegades",
+            "short_name": "MR",
+            "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/12/Melbourne-Renegades.png",
+            "scores_full": "145/5 (20 ov)",
+            "scores": "145/5",
+            "overs": "20"
+        },
+        "date_start": "2019-02-17 03:45:00",
+        "date_end": "2019-02-17 15:45:00",
+        "timestamp_start": 1550375100,
+        "timestamp_end": 1550418300,
+        "venue": {
+            "name": "Docklands Stadium",
+            "location": "Melbourne",
+            "timezone": "-12"
+        },
+        "umpires": "Gerard Abood (Australia), Simon Fry (Australia, TV), Sam Nogajski (Australia)",
+        "referee": "Bob Stratford (Australia)",
+        "equation": "",
+        "live": "",
+        "result": "",
+        "result_type": 2,
+        "win_margin": "",
+        "winning_team_id": 14209,
+        "commentary": 1,
+        "wagon": 1,
+        "latest_inning_number": 2,
+        "toss": {
+            "text": "Melbourne Stars won the toss & elected to field",
+            "winner": 14206,
+            "decision": 2
+        },
+        "points": {
+            "teama": {
+                "playing11": [
+                    {
+                        "pid": "81",
+                        "name": "Glenn Maxwell",
+                        "role": "bat",
+                        "rating": "9.5",
+                        "point": "2.5"
+                    },
+                    {
+                        "pid": "614",
+                        "name": "Dwayne Bravo",
+                        "role": "all",
+                        "rating": "9",
+                        "point": "3.5"
+                    },
+                    {
+                        "pid": "830",
+                        "name": "Nic Maddinson",
+                        "role": "bat",
+                        "rating": "8",
+                        "point": "5"
+                    },
+                    {
+                        "pid": "1080",
+                        "name": "Sandeep Lamichhane",
+                        "role": "bowl",
+                        "rating": "9",
+                        "point": "4"
+                    },
+                    {
+                        "pid": "1965",
+                        "name": "Adam Zampa",
+                        "role": "bowl",
+                        "rating": "9",
+                        "point": "33"
+                    },
+                    {
+                        "pid": "43461",
+                        "name": "Jackson Bird",
+                        "role": "bowl",
+                        "rating": "8.5",
+                        "point": "34"
+                    },
+                    {
+                        "pid": "43482",
+                        "name": "Marcus Stoinis",
+                        "role": "all",
+                        "rating": "11",
+                        "point": "22.5"
+                    },
+                    {
+                        "pid": "43491",
+                        "name": "Peter Handscomb",
+                        "role": "wk",
+                        "rating": "9",
+                        "point": "4"
+                    },
+                    {
+                        "pid": "43542",
+                        "name": "Ben Dunk",
+                        "role": "bat",
+                        "rating": "8.5",
+                        "point": "37.5"
+                    },
+                    {
+                        "pid": "43630",
+                        "name": "Daniel Worrall",
+                        "role": "bowl",
+                        "rating": "8.5",
+                        "point": "1"
+                    },
+                    {
+                        "pid": "55851",
+                        "name": "Seb Gotch",
+                        "role": "bat",
+                        "rating": "8",
+                        "point": "3"
+                    }
+                ],
+                "substitute": [
+                    {
+                        "pid": "1947",
+                        "name": "Liam Plunkett",
+                        "role": "bowl",
+                        "rating": "8.5",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "43494",
+                        "name": "Michael Beer",
+                        "role": "bowl",
+                        "rating": "8",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "43497",
+                        "name": "Scott Boland",
+                        "role": "bowl",
+                        "rating": "8.5",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "43618",
+                        "name": "Evan Gulbis",
+                        "role": "bat",
+                        "rating": "8",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "43619",
+                        "name": "Nick Larkin",
+                        "role": "bat",
+                        "rating": "8",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "50847",
+                        "name": "Matt Parkinson",
+                        "role": "bat",
+                        "rating": "8",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "55108",
+                        "name": "Travis Dean",
+                        "role": "bat",
+                        "rating": "8",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "58304",
+                        "name": "Lance Morris",
+                        "role": "bowl",
+                        "rating": "8",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "90618",
+                        "name": "Jackson Coleman",
+                        "role": "bowl",
+                        "rating": "8",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "90639",
+                        "name": "Liam Bowe",
+                        "role": "bowl",
+                        "rating": "8",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "93154",
+                        "name": "Jonathan Merlo",
+                        "role": "all",
+                        "rating": "8",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "93955",
+                        "name": "Tom O'Connell",
+                        "role": "bowl",
+                        "rating": "7.5",
+                        "point": "0"
+                    }
+                ]
+            },
+            "teamb": {
+                "playing11": [
+                    {
+                        "pid": "73",
+                        "name": "Aaron Finch",
+                        "role": "bat",
+                        "rating": "10",
+                        "point": "13.5"
+                    },
+                    {
+                        "pid": "1897",
+                        "name": "Tom Cooper",
+                        "role": "bat",
+                        "rating": "8.5",
+                        "point": "26.5"
+                    },
+                    {
+                        "pid": "43478",
+                        "name": "Kane Richardson",
+                        "role": "bowl",
+                        "rating": "9.5",
+                        "point": "2"
+                    },
+                    {
+                        "pid": "43520",
+                        "name": "Cameron White",
+                        "role": "bat",
+                        "rating": "9",
+                        "point": "13.5"
+                    },
+                    {
+                        "pid": "43530",
+                        "name": "Chris Tremain",
+                        "role": "bowl",
+                        "rating": "8",
+                        "point": "23"
+                    },
+                    {
+                        "pid": "43544",
+                        "name": "Daniel Christian",
+                        "role": "all",
+                        "rating": "9.5",
+                        "point": "51"
+                    },
+                    {
+                        "pid": "43551",
+                        "name": "Cameron Boyce",
+                        "role": "bowl",
+                        "rating": "9",
+                        "point": "22"
+                    },
+                    {
+                        "pid": "43580",
+                        "name": "Marcus Harris",
+                        "role": "bat",
+                        "rating": "9",
+                        "point": "9"
+                    },
+                    {
+                        "pid": "48502",
+                        "name": "Sam Harper",
+                        "role": "wk",
+                        "rating": "8.5",
+                        "point": "5.5"
+                    },
+                    {
+                        "pid": "49513",
+                        "name": "Harry Gurney",
+                        "role": "bowl",
+                        "rating": "8.5",
+                        "point": "13"
+                    },
+                    {
+                        "pid": "93954",
+                        "name": "Mackenzie Harvey",
+                        "role": "bat",
+                        "rating": "8",
+                        "point": "18"
+                    }
+                ],
+                "substitute": [
+                    {
+                        "pid": "319",
+                        "name": "Mohammad Nabi",
+                        "role": "all",
+                        "rating": "9.5",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "43469",
+                        "name": "Tim Ludeman",
+                        "role": "wk",
+                        "rating": "8",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "43480",
+                        "name": "Jon Holland",
+                        "role": "bowl",
+                        "rating": "8",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "43518",
+                        "name": "Andrew Fekete",
+                        "role": "bowl",
+                        "rating": "8",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "43548",
+                        "name": "Joe Mennie",
+                        "role": "bowl",
+                        "rating": "8",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "53619",
+                        "name": "Kelvin Smith",
+                        "role": "bat",
+                        "rating": "8",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "53626",
+                        "name": "Beau Webster",
+                        "role": "all",
+                        "rating": "8",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "53628",
+                        "name": "Jack Wildermuth",
+                        "role": "bowl",
+                        "rating": "8.5",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "76636",
+                        "name": "Jake Fraser-McGurk",
+                        "role": "all",
+                        "rating": "8",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "90735",
+                        "name": "Usman Khan",
+                        "role": "bowl",
+                        "rating": "8.5",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "93358",
+                        "name": "Will Sutherland",
+                        "role": "bowl",
+                        "rating": "8",
+                        "point": "0"
+                    },
+                    {
+                        "pid": "93454",
+                        "name": "Zak Evans",
+                        "role": "bowl",
+                        "rating": "8",
+                        "point": "0"
+                    }
+                ]
+            }
+        }
+    },
+    "etag": "c054a03917981bee9eaa46946871098c",
+    "modified": "2019-02-17 08:37:00",
+    "datetime": "2019-02-17 18:27:10",
+    "api_version": "2.0"
+}
+
+```
+Match Info API provide general match information. 
+
+###Request
+* Path: /v2/matches/[MATCH_ID]/point
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | string | API access token
+
+###Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+match_id | interger  |  match id
+title | string | match name/title
+subtitle  |  string | contains either the match format + number or important event name, ie: Final, 2nd ODI, 1st Quarterfinal.
+format | interger  |  numerical representation of match format. see match_formats reference.
+format_str | string | match format name
+status | string | numerical representation of match status. see match_statuss reference.
+status_str | string | match status name.
+status_note | string | a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.
+verified | string | "true" - Match Data is verified, "false" - Match Data is not verified. For fantasy solutions we suggest keep updating API until you receive verfied: true.
+game_state | string | numerical representation of match game_state. game state is available for live match only.
+game_state_str | string | match game_state name.
+competition | array  |  an array of parent competition details of the match, <a href="#competition-info-properties-fantasy">see competition object properties.</a>
+team | array  |  an array of teams participating in the match, <a href="#team-info-card-fantasy">see team match properties.</a>
+date_start  |  date  |  match start date in GMT(UTC +0)
+date_end | date  |  match end date in GMT(UTC +0)
+timestamp_start  |  integer  |  match start timestamp in GMT(UTC +0)
+timestamp_end | integer  |  match end timestamp in GMT(UTC +0)
+venue | array  |  an array of venue details of the match, <a href="#venue-info-properties-fantasy">see venue object properties.</a>
+umpires | string | umpires of the match.
+referee | string | referee of the match.
+equation | string | match result condition.
+live | string | live match status note.
+win_margin | string | match win margin.
+commentary | interger  |  numerical representation of commentary available or not for match.
+wagon | interger  |  numerical representation of wagon available or not for match.
+latest_inning_number | interger  |  latest or active innings number.
+toss | array  |  an array of toss details of the match, <a href="#toss-info-properties-fantasy">see toss object properties.</a>
+points | array  |  an array of details player fantasy points team wise based on match performance <a href="#fantasy-points-properties">see points properties.</a>
+
+<h3 id="competition-info-properties-fantasy">Competition Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+title | string | competition name/title
+abbr | string | competition name abbreviation
+season | string | competition season name
+datestart | date | competition first match date
+dateend | date | competition last match date
+total_matches | integer | number of total matches
+total_rounds | integer | number of total rounds
+total_teams | integer | number of total teams
+category | string | competition category, possible values are international, domestic, youth, women
+match_format | string | played match format. a competition can hold multiple match types, ie odi, test etc. possible values are mixed, odi, test, t20i, firstclass, lista, t20, youthodi, youtht20, womenodi, woment20
+status | string | competition status. possible values are live (currently ongoing), fixture (upcoming), result (completed)
+country  | string | Country ISO Code
+type  | string | competition type, possible values are tour, tournament, series
+
+
+<h3 id="team-info-card-fantasy">Team Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+team_id | integer | team id
+name | string | team name
+short_name | string | team short name
+logo_url | string | team logo url
+scores_full | string | team full score
+scores | string | team score
+overs | string | overs played by team
+
+
+<h3 id="venue-info-properties-fantasy">Venue Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+name | string | Venue name/title
+location | string | City Name
+timezone | string | number of hours ahead of GMT if value is positive or number of hours behind GMT if value if negative
+
+<h3 id="toss-info-properties-fantasy">Toss Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+text | string | Toss result text with team name
+winner | integer | team id of toss winning team
+decision | integer | numerical representation of decision made by toss winning team.
+
+
+<h3 id="fantasy-points-properties">Points Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+teama | array | Team A player list details. <a href="#fantasy-points-properties-team">see teama properties.</a>
+teamb | array | Team B player list details. <a href="#fantasy-points-properties-team">see teamb properties.</a>
+
+<h3 id="fantasy-points-properties-team">Team A/Team B Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+playing11 | array | player list details of which are included in playing 11. <a href="#fantasy-points-properties-team-player">see playing11 properties.</a>
+substitute | array | player list details of which are not included in playing 11. <a href="#fantasy-points-properties-team-player">see substitute properties.</a>
+
+<h3 id="fantasy-points-properties-team-player">playing11/substitute Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | string | player id
+name | string | player name
+role | string | player match playing role
+rating | string | player salary credits
+point | string | player fantasy points based on match performance
+
+
+
 ## Match Scorecard API
 
 ```shell
