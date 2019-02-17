@@ -3007,7 +3007,7 @@ curl -X GET "https://rest.entitysport.com/v2/matches/39327/point?token=[ACCESS_T
 }
 
 ```
-Match Info API provide general match information. 
+Match Fantasy Points API provide player fantasy points value based on match performance. 
 
 ###Request
 * Path: /v2/matches/[MATCH_ID]/point
