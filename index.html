@@ -290,6 +290,9 @@
                     <a href="#match-info-api" class="toc-h2 toc-link" data-title="Cricket API V2">Match Info API</a>
                   </li>
                   <li>
+                    <a href="#match-fantasy-points-api" class="toc-h2 toc-link" data-title="Cricket API V2">Match Fantasy Points API</a>
+                  </li>
+                  <li>
                     <a href="#match-scorecard-api" class="toc-h2 toc-link" data-title="Cricket API V2">Match Scorecard API</a>
                   </li>
                   <li>
@@ -5053,6 +5056,862 @@ squad_type is useful when you are developing an fantasy application and needs to
 <td>numerical representation of decision made by toss winning team.</td>
 </tr>
 </tbody></table>
+<h2 id='match-fantasy-points-api'>Match Fantasy Points API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/matches/39327/point?token=[ACCESS_TOKEN]"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"match_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39327</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Melbourne Stars vs Melbourne Renegades"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Final"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"format"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"format_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T20"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Completed"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Melb Reneg won by 13 runs"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"verified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pre_squad"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"odds_available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"game_state"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"game_state_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"competition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"cid"</span><span class="p">:</span><span class="w"> </span><span class="mi">111481</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Big Bash League"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"abbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bbl-1819"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tournament"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"domestic"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"match_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t20"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"result"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"season"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018/19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"datestart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dateend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-17"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_matches"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_rounds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_teams"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"au"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"teama"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14206</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Melbourne Stars"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MS"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cricket.entitysport.com/assets/uploads/2016/12/Melbourne-Stars.png"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"scores_full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*132/7 (20 ov)"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"132/7"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"teamb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14209</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Melbourne Renegades"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cricket.entitysport.com/assets/uploads/2016/12/Melbourne-Renegades.png"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"scores_full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"145/5 (20 ov)"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"145/5"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"date_start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-17 03:45:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-17 15:45:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestamp_start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1550375100</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestamp_end"</span><span class="p">:</span><span class="w"> </span><span class="mi">1550418300</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Docklands Stadium"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Melbourne"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-12"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"umpires"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gerard Abood (Australia), Simon Fry (Australia, TV), Sam Nogajski (Australia)"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"referee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob Stratford (Australia)"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"equation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"live"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"result_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"win_margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"winning_team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14209</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"commentary"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"wagon"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"latest_inning_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"toss"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Melbourne Stars won the toss &amp; elected to field"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"winner"</span><span class="p">:</span><span class="w"> </span><span class="mi">14206</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"decision"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"points"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"teama"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"playing11"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"81"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Glenn Maxwell"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.5"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"614"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dwayne Bravo"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"830"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nic Maddinson"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1080"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sandeep Lamichhane"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1965"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adam Zampa"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43461"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jackson Bird"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43482"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marcus Stoinis"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.5"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43491"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter Handscomb"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wk"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43542"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ben Dunk"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37.5"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43630"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Daniel Worrall"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55851"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seb Gotch"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"substitute"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1947"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Liam Plunkett"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43494"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michael Beer"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43497"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Scott Boland"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43618"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Evan Gulbis"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43619"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nick Larkin"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50847"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt Parkinson"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55108"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Travis Dean"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58304"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lance Morris"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90618"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jackson Coleman"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90639"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Liam Bowe"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93154"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jonathan Merlo"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93955"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tom O'Connell"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"teamb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"playing11"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"73"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aaron Finch"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.5"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1897"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tom Cooper"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26.5"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43478"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kane Richardson"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43520"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cameron White"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.5"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43530"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chris Tremain"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43544"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Daniel Christian"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43551"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cameron Boyce"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43580"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marcus Harris"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48502"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sam Harper"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wk"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.5"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49513"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Harry Gurney"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93954"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mackenzie Harvey"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"substitute"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"319"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mohammad Nabi"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43469"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tim Ludeman"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wk"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43480"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jon Holland"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43518"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andrew Fekete"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43548"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joe Mennie"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53619"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kelvin Smith"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53626"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beau Webster"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53628"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jack Wildermuth"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"76636"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jake Fraser-McGurk"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90735"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Usman Khan"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93358"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Will Sutherland"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93454"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zak Evans"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"etag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c054a03917981bee9eaa46946871098c"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-17 08:37:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-17 18:27:10"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"api_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Match Info API provide general match information. </p>
+<h3 id='request-15'>Request</h3>
+<ul>
+<li>Path: /v2/matches/[MATCH_ID]/point</li>
+<li>Method: GET</li>
+<li>Parameters </li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>API access token</td>
+</tr>
+</tbody></table>
+<h3 id='response-15'>Response</h3>
+<ul>
+<li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
+</ul>
+<h3 id='reference-14'>Reference</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>match_id</td>
+<td>interger</td>
+<td>match id</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>match name/title</td>
+</tr>
+<tr>
+<td>subtitle</td>
+<td>string</td>
+<td>contains either the match format + number or important event name, ie: Final, 2nd ODI, 1st Quarterfinal.</td>
+</tr>
+<tr>
+<td>format</td>
+<td>interger</td>
+<td>numerical representation of match format. see match_formats reference.</td>
+</tr>
+<tr>
+<td>format_str</td>
+<td>string</td>
+<td>match format name</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>numerical representation of match status. see match_statuss reference.</td>
+</tr>
+<tr>
+<td>status_str</td>
+<td>string</td>
+<td>match status name.</td>
+</tr>
+<tr>
+<td>status_note</td>
+<td>string</td>
+<td>a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.</td>
+</tr>
+<tr>
+<td>verified</td>
+<td>string</td>
+<td>&quot;true&quot; - Match Data is verified, &quot;false&quot; - Match Data is not verified. For fantasy solutions we suggest keep updating API until you receive verfied: true.</td>
+</tr>
+<tr>
+<td>game_state</td>
+<td>string</td>
+<td>numerical representation of match game_state. game state is available for live match only.</td>
+</tr>
+<tr>
+<td>game_state_str</td>
+<td>string</td>
+<td>match game_state name.</td>
+</tr>
+<tr>
+<td>competition</td>
+<td>array</td>
+<td>an array of parent competition details of the match, <a href="#competition-info-properties-fantasy">see competition object properties.</a></td>
+</tr>
+<tr>
+<td>team</td>
+<td>array</td>
+<td>an array of teams participating in the match, <a href="#team-info-card-fantasy">see team match properties.</a></td>
+</tr>
+<tr>
+<td>date_start</td>
+<td>date</td>
+<td>match start date in GMT(UTC +0)</td>
+</tr>
+<tr>
+<td>date_end</td>
+<td>date</td>
+<td>match end date in GMT(UTC +0)</td>
+</tr>
+<tr>
+<td>timestamp_start</td>
+<td>integer</td>
+<td>match start timestamp in GMT(UTC +0)</td>
+</tr>
+<tr>
+<td>timestamp_end</td>
+<td>integer</td>
+<td>match end timestamp in GMT(UTC +0)</td>
+</tr>
+<tr>
+<td>venue</td>
+<td>array</td>
+<td>an array of venue details of the match, <a href="#venue-info-properties-fantasy">see venue object properties.</a></td>
+</tr>
+<tr>
+<td>umpires</td>
+<td>string</td>
+<td>umpires of the match.</td>
+</tr>
+<tr>
+<td>referee</td>
+<td>string</td>
+<td>referee of the match.</td>
+</tr>
+<tr>
+<td>equation</td>
+<td>string</td>
+<td>match result condition.</td>
+</tr>
+<tr>
+<td>live</td>
+<td>string</td>
+<td>live match status note.</td>
+</tr>
+<tr>
+<td>win_margin</td>
+<td>string</td>
+<td>match win margin.</td>
+</tr>
+<tr>
+<td>commentary</td>
+<td>interger</td>
+<td>numerical representation of commentary available or not for match.</td>
+</tr>
+<tr>
+<td>wagon</td>
+<td>interger</td>
+<td>numerical representation of wagon available or not for match.</td>
+</tr>
+<tr>
+<td>latest_inning_number</td>
+<td>interger</td>
+<td>latest or active innings number.</td>
+</tr>
+<tr>
+<td>toss</td>
+<td>array</td>
+<td>an array of toss details of the match, <a href="#toss-info-properties-fantasy">see toss object properties.</a></td>
+</tr>
+<tr>
+<td>points</td>
+<td>array</td>
+<td>an array of details player fantasy points team wise based on match performance <a href="#fantasy-points-properties">see points properties.</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="competition-info-properties-fantasy">Competition Properties</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cid</td>
+<td>integer</td>
+<td>competition id</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>competition name/title</td>
+</tr>
+<tr>
+<td>abbr</td>
+<td>string</td>
+<td>competition name abbreviation</td>
+</tr>
+<tr>
+<td>season</td>
+<td>string</td>
+<td>competition season name</td>
+</tr>
+<tr>
+<td>datestart</td>
+<td>date</td>
+<td>competition first match date</td>
+</tr>
+<tr>
+<td>dateend</td>
+<td>date</td>
+<td>competition last match date</td>
+</tr>
+<tr>
+<td>total_matches</td>
+<td>integer</td>
+<td>number of total matches</td>
+</tr>
+<tr>
+<td>total_rounds</td>
+<td>integer</td>
+<td>number of total rounds</td>
+</tr>
+<tr>
+<td>total_teams</td>
+<td>integer</td>
+<td>number of total teams</td>
+</tr>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>competition category, possible values are international, domestic, youth, women</td>
+</tr>
+<tr>
+<td>match_format</td>
+<td>string</td>
+<td>played match format. a competition can hold multiple match types, ie odi, test etc. possible values are mixed, odi, test, t20i, firstclass, lista, t20, youthodi, youtht20, womenodi, woment20</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>competition status. possible values are live (currently ongoing), fixture (upcoming), result (completed)</td>
+</tr>
+<tr>
+<td>country</td>
+<td>string</td>
+<td>Country ISO Code</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>competition type, possible values are tour, tournament, series</td>
+</tr>
+</tbody></table>
+
+<h3 id="team-info-card-fantasy">Team Properties</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>team_id</td>
+<td>integer</td>
+<td>team id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>team name</td>
+</tr>
+<tr>
+<td>short_name</td>
+<td>string</td>
+<td>team short name</td>
+</tr>
+<tr>
+<td>logo_url</td>
+<td>string</td>
+<td>team logo url</td>
+</tr>
+<tr>
+<td>scores_full</td>
+<td>string</td>
+<td>team full score</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>string</td>
+<td>team score</td>
+</tr>
+<tr>
+<td>overs</td>
+<td>string</td>
+<td>overs played by team</td>
+</tr>
+</tbody></table>
+
+<h3 id="venue-info-properties-fantasy">Venue Properties</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Venue name/title</td>
+</tr>
+<tr>
+<td>location</td>
+<td>string</td>
+<td>City Name</td>
+</tr>
+<tr>
+<td>timezone</td>
+<td>string</td>
+<td>number of hours ahead of GMT if value is positive or number of hours behind GMT if value if negative</td>
+</tr>
+</tbody></table>
+
+<h3 id="toss-info-properties-fantasy">Toss Properties</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>Toss result text with team name</td>
+</tr>
+<tr>
+<td>winner</td>
+<td>integer</td>
+<td>team id of toss winning team</td>
+</tr>
+<tr>
+<td>decision</td>
+<td>integer</td>
+<td>numerical representation of decision made by toss winning team.</td>
+</tr>
+</tbody></table>
+
+<h3 id="fantasy-points-properties">Points Properties</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>teama</td>
+<td>array</td>
+<td>Team A player list details. <a href="#fantasy-points-properties-team">see teama properties.</a></td>
+</tr>
+<tr>
+<td>teamb</td>
+<td>array</td>
+<td>Team B player list details. <a href="#fantasy-points-properties-team">see teamb properties.</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="fantasy-points-properties-team">Team A/Team B Properties</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>playing11</td>
+<td>array</td>
+<td>player list details of which are included in playing 11. <a href="#fantasy-points-properties-team-player">see playing11 properties.</a></td>
+</tr>
+<tr>
+<td>substitute</td>
+<td>array</td>
+<td>player list details of which are not included in playing 11. <a href="#fantasy-points-properties-team-player">see substitute properties.</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="fantasy-points-properties-team-player">playing11/substitute Properties</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>pid</td>
+<td>string</td>
+<td>player id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>player name</td>
+</tr>
+<tr>
+<td>role</td>
+<td>string</td>
+<td>player match playing role</td>
+</tr>
+<tr>
+<td>rating</td>
+<td>string</td>
+<td>player salary credits</td>
+</tr>
+<tr>
+<td>point</td>
+<td>string</td>
+<td>player fantasy points based on match performance</td>
+</tr>
+</tbody></table>
 <h2 id='match-scorecard-api'>Match Scorecard API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/matches/19899/scorecard?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
@@ -6699,7 +7558,7 @@ squad_type is useful when you are developing an fantasy application and needs to
 
 </span></code></pre>
 <p>Match Scorecard API provide full match scorecard details. This API point includes batting, bowling, fall of wickets, venue, umpires, time, toss information. </p>
-<h3 id='request-15'>Request</h3>
+<h3 id='request-16'>Request</h3>
 <ul>
 <li>Path: /v2/matches/[MATCH_ID]/scorecard</li>
 <li>Method: GET</li>
@@ -6719,7 +7578,7 @@ squad_type is useful when you are developing an fantasy application and needs to
 <td>API access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-15'>Response</h3>
+<h3 id='response-16'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.competition:</code> competition object.</li>
@@ -6731,7 +7590,7 @@ squad_type is useful when you are developing an fantasy application and needs to
 <li><code style="color:#c7254e";>response.innings:</code> All innings.</li>
 <li><code style="color:#c7254e";>response.players:</code> Player details.</li>
 </ul>
-<h3 id='reference-14'>Reference</h3>
+<h3 id='reference-15'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8264,7 +9123,7 @@ squad_type is useful when you are developing an fantasy application and needs to
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Match Innings Commentary API provide single inning ball by ball details. </p>
-<h3 id='request-16'>Request</h3>
+<h3 id='request-17'>Request</h3>
 <ul>
 <li>Path: /v2/matches/[MATCH_ID]/innings/[inning_number]/commentary</li>
 <li>Method: GET</li>
@@ -8284,11 +9143,11 @@ squad_type is useful when you are developing an fantasy application and needs to
 <td>API access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-16'>Response</h3>
+<h3 id='response-17'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-15'>Reference</h3>
+<h3 id='reference-16'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -9095,7 +9954,7 @@ squad_type is useful when you are developing an fantasy application and needs to
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Match Live API provide access to live match updates of active inning. This API point provide fastest update of live inning of the match.  </p>
-<h3 id='request-17'>Request</h3>
+<h3 id='request-18'>Request</h3>
 <ul>
 <li>Path: /v2/matches/[MATCH_ID]/live</li>
 <li>Method: GET</li>
@@ -9119,11 +9978,11 @@ squad_type is useful when you are developing an fantasy application and needs to
 <aside class="notice">
 If commentary object status is not available, Then Match Live API response will be empty. So Please integrate Match Live API according to commentary object status. <a href="#wagon-and-commentary-codes-on-match-objects">see commentary object properties.</a>
 </aside>
-<h3 id='response-17'>Response</h3>
+<h3 id='response-18'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-16'>Reference</h3>
+<h3 id='reference-17'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -10779,7 +11638,7 @@ If commentary object status is not available, Then Match Live API response will 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Provides information of a Match Squads. </p>
-<h3 id='request-18'>Request</h3>
+<h3 id='request-19'>Request</h3>
 <ul>
 <li>Path: /v2/matches/[MATCH_ID]/squads</li>
 <li>Method: GET</li>
@@ -10799,11 +11658,11 @@ If commentary object status is not available, Then Match Live API response will 
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-18'>Response</h3>
+<h3 id='response-19'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-17'>Reference</h3>
+<h3 id='reference-18'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -11321,7 +12180,7 @@ If commentary object status is not available, Then Match Live API response will 
 <li>Wickets - Type of dismissals happened in innings. </li>
 <li>Runrate - Run rate of team after every over</li>
 </ul>
-<h3 id='request-19'>Request</h3>
+<h3 id='request-20'>Request</h3>
 <ul>
 <li>Path: /v2/matches/[MATCH_ID]/statistics/</li>
 <li>Method: GET</li>
@@ -11341,11 +12200,11 @@ If commentary object status is not available, Then Match Live API response will 
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-19'>Response</h3>
+<h3 id='response-20'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-18'>Reference</h3>
+<h3 id='reference-19'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -12079,7 +12938,7 @@ If commentary object status is not available, Then Match Live API response will 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Match Wagon Wheel API provide batting shots field presentation with x,y,z positional data. </p>
-<h3 id='request-20'>Request</h3>
+<h3 id='request-21'>Request</h3>
 <ul>
 <li>Path: /v2/matches/[MATCH_ID]/wagons/</li>
 <li>Method: GET</li>
@@ -12099,11 +12958,11 @@ If commentary object status is not available, Then Match Live API response will 
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-20'>Response</h3>
+<h3 id='response-21'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-19'>Reference</h3>
+<h3 id='reference-20'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -12645,7 +13504,7 @@ If commentary object status is not available, Then Match Live API response will 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Player Search API provides access to all cricket players profile data on our database. </p>
-<h3 id='request-21'>Request</h3>
+<h3 id='request-22'>Request</h3>
 <ul>
 <li>Path: /v2/players/</li>
 <li>Method: GET</li>
@@ -12680,11 +13539,11 @@ If commentary object status is not available, Then Match Live API response will 
 <td>2 letter Country ISO Code (example - country=in)</td>
 </tr>
 </tbody></table>
-<h3 id='response-21'>Response</h3>
+<h3 id='response-22'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-20'>Reference</h3>
+<h3 id='reference-21'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -12820,7 +13679,7 @@ If commentary object status is not available, Then Match Live API response will 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Player Profile API provides details of player info. </p>
-<h3 id='request-22'>Request</h3>
+<h3 id='request-23'>Request</h3>
 <ul>
 <li>Path: /v2/players/[PLAYER_ID]/</li>
 <li>Method: GET</li>
@@ -12840,11 +13699,11 @@ If commentary object status is not available, Then Match Live API response will 
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-22'>Response</h3>
+<h3 id='response-23'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-21'>Reference</h3>
+<h3 id='reference-22'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -13200,7 +14059,7 @@ If commentary object status is not available, Then Match Live API response will 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Player Profile API provides details of player info. </p>
-<h3 id='request-23'>Request</h3>
+<h3 id='request-24'>Request</h3>
 <ul>
 <li>Path: /v2/players/[PLAYER_ID]/stats</li>
 <li>Method: GET</li>
@@ -13220,11 +14079,11 @@ If commentary object status is not available, Then Match Live API response will 
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-23'>Response</h3>
+<h3 id='response-24'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-22'>Reference</h3>
+<h3 id='reference-23'>Reference</h3>
 <h3>Player Profile Object Properties</h3>
 
 <table><thead>
@@ -13531,7 +14390,7 @@ If commentary object status is not available, Then Match Live API response will 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Provides information of a team. </p>
-<h3 id='request-24'>Request</h3>
+<h3 id='request-25'>Request</h3>
 <ul>
 <li>Path: /v2/teams/[TEAM_ID]/</li>
 <li>Method: GET</li>
@@ -13551,11 +14410,11 @@ If commentary object status is not available, Then Match Live API response will 
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-24'>Response</h3>
+<h3 id='response-25'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 </ul>
-<h3 id='reference-23'>Reference</h3>
+<h3 id='reference-24'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -13695,7 +14554,7 @@ If commentary object status is not available, Then Match Live API response will 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Provides information of a team. </p>
-<h3 id='request-25'>Request</h3>
+<h3 id='request-26'>Request</h3>
 <ul>
 <li>Path: /v2/teams/[TEAM_ID]/matches</li>
 <li>Method: GET</li>
@@ -13730,12 +14589,12 @@ If commentary object status is not available, Then Match Live API response will 
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-25'>Response</h3>
+<h3 id='response-26'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.matches:</code> array of matches objects.</li>
 </ul>
-<h3 id='reference-24'>Reference</h3>
+<h3 id='reference-25'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -14227,7 +15086,7 @@ If commentary object status is not available, Then Match Live API response will 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Provides information of a team. </p>
-<h3 id='request-26'>Request</h3>
+<h3 id='request-27'>Request</h3>
 <ul>
 <li>Path: /v2/iccranks/</li>
 <li>Method: GET</li>
@@ -14247,7 +15106,7 @@ If commentary object status is not available, Then Match Live API response will 
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-26'>Response</h3>
+<h3 id='response-27'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.ranks:</code> ranking details.</li>
@@ -14258,7 +15117,7 @@ If commentary object status is not available, Then Match Live API response will 
 <li><code style="color:#c7254e";>response.groups:</code> ranking groups.</li>
 <li><code style="color:#c7254e";>response.formats:</code> ranking formats.</li>
 </ul>
-<h3 id='reference-25'>Reference</h3>
+<h3 id='reference-26'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -15203,7 +16062,7 @@ If commentary object status is not available, Then Match Live API response will 
 
 </span></code></pre>
 <p>To access any API, you need a token. A token can be generated using your keys. Token is a piece of information that would allow you to access our API data until your subscription expires. Auth API provides you the token, by validating your keys. Request to our Auth API whenever the access token is expired or unavailable.</p>
-<h3 id='request-27'>Request</h3>
+<h3 id='request-28'>Request</h3>
 <ul>
 <li>Path: /soccer/auth/</li>
 <li>Method: Post</li>
@@ -15214,7 +16073,7 @@ If commentary object status is not available, Then Match Live API response will 
 <li>secret_key - Secret key of your Application.</li>
 </ul></li>
 </ul>
-<h3 id='response-27'>Response</h3>
+<h3 id='response-28'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.token:</code> access token.</li>
@@ -15387,7 +16246,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>Provides information of all avaialable soccer seasons you have access. A season is named as complete year ie: 2018. for all tournaments that happens in the correspoding year, or name cross year ie: 18-19 for matches happens in multiple years or vice versa.</p>
-<h3 id='request-28'>Request</h3>
+<h3 id='request-29'>Request</h3>
 <ul>
 <li>Path: /soccer/seasons/</li>
 <li>Method: GET</li>
@@ -15407,12 +16266,12 @@ A generic sports player.</p></li>
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-28'>Response</h3>
+<h3 id='response-29'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> an array of all available season objects user have access.</li>
 </ul>
-<h3 id='reference-26'>Reference</h3>
+<h3 id='reference-27'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -15479,7 +16338,7 @@ A generic sports player.</p></li>
 <p>This will list all available competitions those you are subscribed and can access for specified season. Season is named using 4 digit year, ex: <strong>2018</strong>, or Year combo, ex: <strong>18-19</strong>. </p>
 
 <p>It will list 10 competitions data per request. If there is more than 10 competitions, you will get extra value under response node. You can use the page parameter to jump to a specific page if exists.</p>
-<h3 id='request-29'>Request</h3>
+<h3 id='request-30'>Request</h3>
 <ul>
 <li>Path: /soccer/season/[sid(season id)]/competitons</li>
 <li>Method: GET</li>
@@ -15514,14 +16373,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-29'>Response</h3>
+<h3 id='response-30'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of competition cards.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of competitions listed under the season.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of the competitions list.</li>
 </ul>
-<h3 id='reference-27'>Reference</h3>
+<h3 id='reference-28'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -15687,7 +16546,7 @@ A generic sports player.</p></li>
 <p>This API lists all available competitions those user are subscribed and can access. This API is a directory of all competitions user have access.</p>
 
 <p>It will list 10 competitions data per request. If there is more than 10 competitions, you will get extra value under response node. You can use the page parameter to jump to a specific page if exists.</p>
-<h3 id='request-30'>Request</h3>
+<h3 id='request-31'>Request</h3>
 <ul>
 <li>Path: /soccer/competitons</li>
 <li>Method: GET</li>
@@ -15722,14 +16581,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-30'>Response</h3>
+<h3 id='response-31'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of competition cards.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of competitions available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of competition list.</li>
 </ul>
-<h3 id='reference-28'>Reference</h3>
+<h3 id='reference-29'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -17172,7 +18031,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API has competition&#39;s teams and points table information. Points table with total, home and away league standings.</p>
-<h3 id='request-31'>Request</h3>
+<h3 id='request-32'>Request</h3>
 <ul>
 <li>Path: /soccer/competition/cid</li>
 <li>Method: GET</li>
@@ -17207,7 +18066,7 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-31'>Response</h3>
+<h3 id='response-32'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of competition cards.</li>
@@ -17216,7 +18075,7 @@ A generic sports player.</p></li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of competitions available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of competition list.</li>
 </ul>
-<h3 id='reference-29'>Reference</h3>
+<h3 id='reference-30'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -18011,7 +18870,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API has competition&#39;s all teams squad/roaster player details.</p>
-<h3 id='request-32'>Request</h3>
+<h3 id='request-33'>Request</h3>
 <ul>
 <li>Path: /soccer/competition/cid/squad</li>
 <li>Method: GET</li>
@@ -18046,7 +18905,7 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-32'>Response</h3>
+<h3 id='response-33'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.competition:</code> array of competition object.</li>
@@ -18054,7 +18913,7 @@ A generic sports player.</p></li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of teams available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.</li>
 </ul>
-<h3 id='reference-30'>Reference</h3>
+<h3 id='reference-31'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -18421,7 +19280,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API has competition&#39;s all matches details.</p>
-<h3 id='request-33'>Request</h3>
+<h3 id='request-34'>Request</h3>
 <ul>
 <li>Path: /soccer/competition/cid/matches</li>
 <li>Method: GET</li>
@@ -18456,14 +19315,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-33'>Response</h3>
+<h3 id='response-34'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of match object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of matches available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.</li>
 </ul>
-<h3 id='reference-31'>Reference</h3>
+<h3 id='reference-32'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -18953,7 +19812,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API has competition&#39;s total player statistic details.</p>
-<h3 id='request-34'>Request</h3>
+<h3 id='request-35'>Request</h3>
 <ul>
 <li>Path: /soccer/competition/cid/statsv2</li>
 <li>Method: GET</li>
@@ -18988,14 +19847,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-34'>Response</h3>
+<h3 id='response-35'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of player stats object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of player available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.</li>
 </ul>
-<h3 id='reference-32'>Reference</h3>
+<h3 id='reference-33'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -19370,7 +20229,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API has list of all matches user have access.</p>
-<h3 id='request-35'>Request</h3>
+<h3 id='request-36'>Request</h3>
 <ul>
 <li>Path: /soccer/competition/matches</li>
 <li>Method: GET</li>
@@ -19405,14 +20264,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-35'>Response</h3>
+<h3 id='response-36'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of match object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of matches available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.</li>
 </ul>
-<h3 id='reference-33'>Reference</h3>
+<h3 id='reference-34'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -21248,7 +22107,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains a single match info, match projection, events, commentary, lineup details.</p>
-<h3 id='request-36'>Request</h3>
+<h3 id='request-37'>Request</h3>
 <ul>
 <li>Path: /soccer/matches/mid/info</li>
 <li>Method: GET</li>
@@ -21268,14 +22127,14 @@ A generic sports player.</p></li>
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-36'>Response</h3>
+<h3 id='response-37'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of match details object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of matches available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.</li>
 </ul>
-<h3 id='reference-34'>Reference</h3>
+<h3 id='reference-35'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -22651,7 +23510,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains a single match info, match team and player stats details.</p>
-<h3 id='request-37'>Request</h3>
+<h3 id='request-38'>Request</h3>
 <ul>
 <li>Path: /soccer/matches/mid/statsv2</li>
 <li>Method: GET</li>
@@ -22671,14 +23530,14 @@ A generic sports player.</p></li>
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-37'>Response</h3>
+<h3 id='response-38'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of match details object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of matches available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.</li>
 </ul>
-<h3 id='reference-35'>Reference</h3>
+<h3 id='reference-36'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -23037,7 +23896,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API lists all the teams available to access.</p>
-<h3 id='request-38'>Request</h3>
+<h3 id='request-39'>Request</h3>
 <ul>
 <li>Path: /soccer/teams</li>
 <li>Method: GET</li>
@@ -23067,14 +23926,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-38'>Response</h3>
+<h3 id='response-39'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of teams object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of teams available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.</li>
 </ul>
-<h3 id='reference-36'>Reference</h3>
+<h3 id='reference-37'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -23671,7 +24530,7 @@ A generic sports player.</p></li>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This API contains team info and squad/roaster player details.</p>
-<h3 id='request-39'>Request</h3>
+<h3 id='request-40'>Request</h3>
 <ul>
 <li>Path: /soccer/team/tid/info</li>
 <li>Method: GET</li>
@@ -23696,14 +24555,14 @@ A generic sports player.</p></li>
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-39'>Response</h3>
+<h3 id='response-40'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of team object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of teams available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.</li>
 </ul>
-<h3 id='reference-37'>Reference</h3>
+<h3 id='reference-38'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -24020,7 +24879,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains the list of team&#39;s all matches details.</p>
-<h3 id='request-40'>Request</h3>
+<h3 id='request-41'>Request</h3>
 <ul>
 <li>Path: /soccer/team/tid/matches</li>
 <li>Method: GET</li>
@@ -24060,14 +24919,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-40'>Response</h3>
+<h3 id='response-41'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of match object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of matches available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.</li>
 </ul>
-<h3 id='reference-38'>Reference</h3>
+<h3 id='reference-39'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -24483,7 +25342,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains list of player details.</p>
-<h3 id='request-41'>Request</h3>
+<h3 id='request-42'>Request</h3>
 <ul>
 <li>Path: /soccer/players</li>
 <li>Method: GET</li>
@@ -24513,14 +25372,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-41'>Response</h3>
+<h3 id='response-42'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of player object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of players available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.</li>
 </ul>
-<h3 id='reference-39'>Reference</h3>
+<h3 id='reference-40'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -24905,7 +25764,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains player profile and career statistic details.</p>
-<h3 id='request-42'>Request</h3>
+<h3 id='request-43'>Request</h3>
 <ul>
 <li>Path: /soccer/player/pid/profile</li>
 <li>Method: GET</li>
@@ -24930,14 +25789,14 @@ A generic sports player.</p></li>
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-42'>Response</h3>
+<h3 id='response-43'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of player object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of players available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.</li>
 </ul>
-<h3 id='reference-40'>Reference</h3>
+<h3 id='reference-41'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -25476,7 +26335,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>To access any API, you need a token. A token can be generated using your keys. Token is a piece of information that would allow you to access our API data until your subscription expires. Auth API provides you the token, by validating your keys. Request to our Auth API whenever the access token is expired or unavailable.</p>
-<h3 id='request-43'>Request</h3>
+<h3 id='request-44'>Request</h3>
 <ul>
 <li>Path: /basketball/auth/</li>
 <li>Method: Post</li>
@@ -25487,7 +26346,7 @@ A generic sports player.</p></li>
 <li>secret_key - Secret key of your Application.</li>
 </ul></li>
 </ul>
-<h3 id='response-43'>Response</h3>
+<h3 id='response-44'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.token:</code> access token.</li>
@@ -25654,7 +26513,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>Provides information of all avaialable soccer seasons you have access. A season is named as complete year ie: 2018. for all tournaments that happens in the correspoding year, or name cross year ie: 18-19 for matches happens in multiple years or vice versa.</p>
-<h3 id='request-44'>Request</h3>
+<h3 id='request-45'>Request</h3>
 <ul>
 <li>Path: /basketball/seasons/</li>
 <li>Method: GET</li>
@@ -25674,12 +26533,12 @@ A generic sports player.</p></li>
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-44'>Response</h3>
+<h3 id='response-45'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> an array of all available season objects user have access.</li>
 </ul>
-<h3 id='reference-41'>Reference</h3>
+<h3 id='reference-42'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -25784,7 +26643,7 @@ A generic sports player.</p></li>
 <p>This will list all available competitions those you are subscribed and can access for specified season. Season is named using 4 digit year, ex: <strong>2018</strong>, or Year combo, ex: <strong>18-19</strong>. </p>
 
 <p>It will list 10 competitions data per request. If there is more than 10 competitions, you will get extra value under response node. You can use the page parameter to jump to a specific page if exists.</p>
-<h3 id='request-45'>Request</h3>
+<h3 id='request-46'>Request</h3>
 <ul>
 <li>Path: /basketball/season/[sid(season id)]/competitons</li>
 <li>Method: GET</li>
@@ -25819,14 +26678,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-45'>Response</h3>
+<h3 id='response-46'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of competition cards.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of competitions listed under the season.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of the competitions list.</li>
 </ul>
-<h3 id='reference-42'>Reference</h3>
+<h3 id='reference-43'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -26033,7 +26892,7 @@ A generic sports player.</p></li>
 <p>This API lists all available competitions those user are subscribed and can access. This API is a directory of all competitions user have access.</p>
 
 <p>It will list 10 competitions data per request. If there is more than 10 competitions, you will get extra value under response node. You can use the page parameter to jump to a specific page if exists.</p>
-<h3 id='request-46'>Request</h3>
+<h3 id='request-47'>Request</h3>
 <ul>
 <li>Path: /basketball/competitons</li>
 <li>Method: GET</li>
@@ -26068,14 +26927,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-46'>Response</h3>
+<h3 id='response-47'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of competition cards.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of competitions available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of competition list.</li>
 </ul>
-<h3 id='reference-43'>Reference</h3>
+<h3 id='reference-44'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -26241,7 +27100,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API has competition and it&#39;s teams information.</p>
-<h3 id='request-47'>Request</h3>
+<h3 id='request-48'>Request</h3>
 <ul>
 <li>Path: /basketball/competition/cid</li>
 <li>Method: GET</li>
@@ -26276,7 +27135,7 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-47'>Response</h3>
+<h3 id='response-48'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of competition cards.</li>
@@ -26285,7 +27144,7 @@ A generic sports player.</p></li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of competitions available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of competition list.</li>
 </ul>
-<h3 id='reference-44'>Reference</h3>
+<h3 id='reference-45'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -26552,7 +27411,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API has competition&#39;s all teams squad/roaster player details.</p>
-<h3 id='request-48'>Request</h3>
+<h3 id='request-49'>Request</h3>
 <ul>
 <li>Path: /basketball/competition/cid/squad</li>
 <li>Method: GET</li>
@@ -26587,7 +27446,7 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-48'>Response</h3>
+<h3 id='response-49'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.competition:</code> array of competition object.</li>
@@ -26595,7 +27454,7 @@ A generic sports player.</p></li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of teams available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.</li>
 </ul>
-<h3 id='reference-45'>Reference</h3>
+<h3 id='reference-46'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -26958,7 +27817,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API has competition&#39;s all matches details.</p>
-<h3 id='request-49'>Request</h3>
+<h3 id='request-50'>Request</h3>
 <ul>
 <li>Path: /basketball/competition/cid/matches</li>
 <li>Method: GET</li>
@@ -26993,14 +27852,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-49'>Response</h3>
+<h3 id='response-50'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of match object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of matches available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.</li>
 </ul>
-<h3 id='reference-46'>Reference</h3>
+<h3 id='reference-47'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -27679,7 +28538,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API has competition&#39;s all matches details.</p>
-<h3 id='request-50'>Request</h3>
+<h3 id='request-51'>Request</h3>
 <ul>
 <li>Path: /basketball/competition/cid/standings</li>
 <li>Method: GET</li>
@@ -27714,7 +28573,7 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-50'>Response</h3>
+<h3 id='response-51'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.competition:</code> array of competition object..</li>
@@ -27722,7 +28581,7 @@ A generic sports player.</p></li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of matches available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.</li>
 </ul>
-<h3 id='reference-47'>Reference</h3>
+<h3 id='reference-48'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -27998,7 +28857,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API has competition&#39;s total player statistic details.</p>
-<h3 id='request-51'>Request</h3>
+<h3 id='request-52'>Request</h3>
 <ul>
 <li>Path: /basketball/competition/cid/stats</li>
 <li>Method: GET</li>
@@ -28033,7 +28892,7 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-51'>Response</h3>
+<h3 id='response-52'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.competition:</code> array of competition object details. <a href="#competition-stats-object-basketball">see competition object reference</a></li>
@@ -28041,7 +28900,7 @@ A generic sports player.</p></li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of player available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.</li>
 </ul>
-<h3 id='reference-48'>Reference</h3>
+<h3 id='reference-49'>Reference</h3>
 <h3 id="competition-stats-object-basketball">Competition object reference</h3>
 
 <table><thead>
@@ -28385,7 +29244,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API has list of all matches user have access.</p>
-<h3 id='request-52'>Request</h3>
+<h3 id='request-53'>Request</h3>
 <ul>
 <li>Path: /basketball/matches</li>
 <li>Method: GET</li>
@@ -28420,14 +29279,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-52'>Response</h3>
+<h3 id='response-53'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of match object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of matches available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.</li>
 </ul>
-<h3 id='reference-49'>Reference</h3>
+<h3 id='reference-50'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -34836,7 +35695,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains a single match info, match projection, events, commentary, lineup details.</p>
-<h3 id='request-53'>Request</h3>
+<h3 id='request-54'>Request</h3>
 <ul>
 <li>Path: /basketball/matches/mid/info</li>
 <li>Method: GET</li>
@@ -34856,14 +35715,14 @@ A generic sports player.</p></li>
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-53'>Response</h3>
+<h3 id='response-54'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of match details object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of matches available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.</li>
 </ul>
-<h3 id='reference-50'>Reference</h3>
+<h3 id='reference-51'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -36110,7 +36969,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains a single match info, match team and player stats details.</p>
-<h3 id='request-54'>Request</h3>
+<h3 id='request-55'>Request</h3>
 <ul>
 <li>Path: /basketball/matches/mid/stats</li>
 <li>Method: GET</li>
@@ -36130,14 +36989,14 @@ A generic sports player.</p></li>
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-54'>Response</h3>
+<h3 id='response-55'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of match details object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of matches available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.</li>
 </ul>
-<h3 id='reference-51'>Reference</h3>
+<h3 id='reference-52'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -36483,7 +37342,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API lists all the teams available to access.</p>
-<h3 id='request-55'>Request</h3>
+<h3 id='request-56'>Request</h3>
 <ul>
 <li>Path: /basketball/teams</li>
 <li>Method: GET</li>
@@ -36513,14 +37372,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-55'>Response</h3>
+<h3 id='response-56'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of teams object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of teams available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.</li>
 </ul>
-<h3 id='reference-52'>Reference</h3>
+<h3 id='reference-53'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -36676,7 +37535,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains team info and squad/roaster player details.</p>
-<h3 id='request-56'>Request</h3>
+<h3 id='request-57'>Request</h3>
 <ul>
 <li>Path: /basketball/team/tid/info</li>
 <li>Method: GET</li>
@@ -36701,14 +37560,14 @@ A generic sports player.</p></li>
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-56'>Response</h3>
+<h3 id='response-57'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of team object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of teams available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.</li>
 </ul>
-<h3 id='reference-53'>Reference</h3>
+<h3 id='reference-54'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -37028,7 +37887,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains the list of team&#39;s all matches details.</p>
-<h3 id='request-57'>Request</h3>
+<h3 id='request-58'>Request</h3>
 <ul>
 <li>Path: /basketball/team/tid/matches</li>
 <li>Method: GET</li>
@@ -37068,14 +37927,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-57'>Response</h3>
+<h3 id='response-58'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of match object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of matches available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.</li>
 </ul>
-<h3 id='reference-54'>Reference</h3>
+<h3 id='reference-55'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -37490,7 +38349,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains list of player details.</p>
-<h3 id='request-58'>Request</h3>
+<h3 id='request-59'>Request</h3>
 <ul>
 <li>Path: /basketball/players</li>
 <li>Method: GET</li>
@@ -37520,14 +38379,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-58'>Response</h3>
+<h3 id='response-59'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of player object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of players available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.</li>
 </ul>
-<h3 id='reference-55'>Reference</h3>
+<h3 id='reference-56'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -37809,7 +38668,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains player profile and career statistic details.</p>
-<h3 id='request-59'>Request</h3>
+<h3 id='request-60'>Request</h3>
 <ul>
 <li>Path: /basketball/player/pid/profile</li>
 <li>Method: GET</li>
@@ -37834,14 +38693,14 @@ A generic sports player.</p></li>
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-59'>Response</h3>
+<h3 id='response-60'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of player object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of players available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.</li>
 </ul>
-<h3 id='reference-56'>Reference</h3>
+<h3 id='reference-57'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
