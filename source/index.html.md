@@ -573,6 +573,7 @@ curl -X GET "https://rest.entitysport.com/v2/competitions/{cid}/matches/?token=[
                 "status_str": "Completed",
                 "status_note": "No result",
                 "verified":	"true",
+                "pre_squad": "true",
                 "game_state": 0,
                 "game_state_str": "Default",
                 "domestic": "0",
@@ -682,6 +683,7 @@ status | string | numerical representation of match status. see match_statuss re
 status_str | string | match status name.
 status_note | string | a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.
 verified | string | "true" - Match Data is verified, "false" - Match Data is not verified. For fantasy solutions we suggest keep updating API until you receive verfied: true.
+pre_squad | string | "true" - Fantasy Match Roaster API has managed fantasy credit and player role, "false" - Fantasy Match Roaster API don't have managed fantasy credit and player role.
 game_state | string | numerical representation of match game_state. game state is available for live match only. <a href="#cricket-reference">See Cricket Reference</a>
 game_state_str | string | match game_state name.
 competition | array  |  an array of parent competition details of the match, <a href="#competition-properties">see competition object properties.</a>
@@ -1465,222 +1467,6 @@ recent_appearance | integer | timestamp of last played match
 fantasy_player_rating | string | player fantasy salary or credit rating
 
 
-## Competition Match Squad API
-
-```shell
-curl -X GET "https://rest.entitysport.com/v2/competitions/111301/squads/38481?token=[ACCESS_TOKEN]
-```
-> The above command returns JSON structured like this:
-
-```json
-
-{
-    "status": "ok",
-    "response": {
-        "squad_type": "per_match",
-        "squads": [
-            {
-                "team_id": "5",
-                "title": "Australia 4th Test",
-                "players": [
-                    {
-                        "pid": 73,
-                        "title": "Aaron Finch",
-                        "short_name": "AJ Finch",
-                        "first_name": "Aaron",
-                        "last_name": "Finch",
-                        "middle_name": "James",
-                        "birthdate": "1986-11-17",
-                        "birthplace": "",
-                        "country": "au",
-                        "primary_team": [],
-                        "thumb_url": "",
-                        "logo_url": "",
-                        "playing_role": "bat",
-                        "batting_style": "Right-hand bat",
-                        "bowling_style": "Slow left-arm orthodox",
-                        "fielding_position": "",
-                        "recent_match": 18970,
-                        "recent_appearance": 1515900000,
-                        "fantasy_player_rating": 8.5,
-                        "nationality": "Australia"
-                    },
-                    {
-                        "pid": 83,
-                        "title": "Mitchell Marsh",
-                        "short_name": "MR Marsh",
-                        "first_name": "Mitchell",
-                        "last_name": "Marsh",
-                        "middle_name": "Ross",
-                        "birthdate": "1991-10-20",
-                        "birthplace": "",
-                        "country": "au",
-                        "primary_team": [],
-                        "thumb_url": "",
-                        "logo_url": "",
-                        "playing_role": "all",
-                        "batting_style": "Right-hand bat",
-                        "bowling_style": "Right-arm medium",
-                        "fielding_position": "",
-                        "recent_match": 18968,
-                        "recent_appearance": 1514244600,
-                        "fantasy_player_rating": 8.5,
-                        "nationality": "Australia"
-                    }
-                ],
-                "team": {
-                    "tid": 5,
-                    "title": "Australia",
-                    "abbr": "AUS",
-                    "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/australia.png",
-                    "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/australia-32x32.png",
-                    "type": "country",
-                    "country": "au",
-                    "alt_name": "Australia",
-                    "sex": "male"
-                }
-            },
-            {
-                "team_id": "25",
-                "title": "India 3rd Test, 4th Test",
-                "players": [
-                    {
-                        "pid": 115,
-                        "title": "Rohit Sharma",
-                        "short_name": "RG Sharma",
-                        "first_name": "Rohit",
-                        "last_name": "Sharma",
-                        "middle_name": "Gurunath",
-                        "birthdate": "1987-04-30",
-                        "birthplace": "",
-                        "country": "in",
-                        "primary_team": [],
-                        "thumb_url": "",
-                        "logo_url": "",
-                        "playing_role": "bat",
-                        "batting_style": "Right-hand bat",
-                        "bowling_style": "Right-arm offbreak",
-                        "fielding_position": "",
-                        "recent_match": 0,
-                        "recent_appearance": 0,
-                        "fantasy_player_rating": 10,
-                        "nationality": "India"
-                    },
-                    {
-                        "pid": 119,
-                        "title": "Virat Kohli",
-                        "short_name": "V Kohli",
-                        "first_name": "Virat",
-                        "last_name": "Kohli",
-                        "middle_name": "",
-                        "birthdate": "1988-11-05",
-                        "birthplace": "",
-                        "country": "in",
-                        "primary_team": [],
-                        "thumb_url": "",
-                        "logo_url": "",
-                        "playing_role": "bat",
-                        "batting_style": "Right-hand bat",
-                        "bowling_style": "Right-arm medium",
-                        "fielding_position": "",
-                        "recent_match": 0,
-                        "recent_appearance": 0,
-                        "fantasy_player_rating": 11,
-                        "nationality": "India"
-                    }
-                ],
-                "team": {
-                    "tid": 25,
-                    "title": "India",
-                    "abbr": "IND",
-                    "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india.png",
-                    "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india-32x32.png",
-                    "type": "country",
-                    "country": "in",
-                    "alt_name": "India",
-                    "sex": "male"
-                }
-            }
-        ]
-    },
-    "etag": "12acd05fffc4a299aeeb3e7ab4db65c2",
-    "modified": "2019-01-15 18:47:55",
-    "datetime": "2019-01-15 18:47:55",
-    "api_version": "2.0"
-}
-
-```
-
-Competition Match Squad API provides information of player roaster for 2 teams of a match i.e. part of respective competition. When using this API match id(mid) needs to be passed for desired competition match squad.
-
-### Request
-
-* Path: /v2/competitions/cid/squads/mid
-* Method: GET
-* Parameters 
-
-Parameter | Value | Description
---------- | ------- | -----------
-cid | integer | competition id
-mid | integer | match id
-token | {ACCESS_TOKEN} | API Access token
-
-### Response
-
-* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
-* <code style="color:#c7254e";>response.squad_type:</code> per_match - used for international tours where squad of teams are changes for formats and matches, per_team - used for tournaments where squads of teams remains same and don't change with matches.
-* <code style="color:#c7254e";>response.squads:</code> an array of all available player objects included in team roaster
-
-<aside class="notice">
-squad_type is useful when you are developing an fantasy application and needs to map competition squad with respective team and match.
-</aside>
-
-### Reference
-
-Parameter | Value | Description
---------- | ------- | -----------
-team_id | integer | team id of respective team squad
-title | string | Team matches title
-players | array | an array of player details of the team, <a href="#player-properties-competition">see player object properties.</a>
-team | array | an array of team details, <a href="#team-properties-cricket-squad-competition">see team object properties.</a>
-
-<h3 id="team-properties-cricket-squad-competition">Team Properties</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-tid | integer | team id
-title | string | team name
-abbr | string | team short name
-thumb_url | string | team logo thumbnail url
-logo_url | string | team logo url
-type | string | team type Country(International Team) or Club
-country | string | Country ISO Code
-alt_name | string | team alternative name
-
-<h3 id="player-properties-competition">Player Properties</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-pid | integer | player id
-title | string | player name
-short_name | string | player short name
-first_name | string | player first name
-last_name | string | player last name
-middle_name | string | player middle name
-birthdate | date | player date of birth
-birthplace | string | player birth place
-country | string | Country ISO Code
-thumb_url | string | player logo thumbnail url
-logo_url | string | player logo url
-playing_role | string | player playing role
-batting_style | string | player batting style
-bowling_style | string | player bowling style
-fielding_position | string | player fielding position
-recent_match | integer | match id of last played match
-recent_appearance | integer | timestamp of last played match
-fantasy_player_rating | string | player fantasy salary or credit rating
-
-
 
 ## Competition Standings API
 
@@ -2217,6 +2003,7 @@ curl -X GET "https://rest.entitysport.com/v2/matches/?status=2&format=6&token=[A
                 "status_str": "Completed",
                 "status_note": "Tridents won by 29 runs",
                 "verified":	"true",
+                "pre_squad": "true",
                 "game_state": 0,
                 "game_state_str": "Default",
                 "domestic": "1",
@@ -2323,6 +2110,7 @@ status | string | numerical representation of match status. see match_statuss re
 status_str | string | match status name.
 status_note | string | a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.
 verified | string | "true" - Match Data is verified, "false" - Match Data is not verified. For fantasy solutions we suggest keep updating API until you receive verfied: true.
+pre_squad | string | "true" - Fantasy Match Roaster API has managed fantasy credit and player role, "false" - Fantasy Match Roaster API don't have managed fantasy credit and player role.
 game_state | string | numerical representation of match game_state. game state is available for live match only.
 game_state_str | string | match game_state name.
 competition | array  |  an array of parent competition details of the match, <a href="#competition-match-properties">see competition object properties.</a>
@@ -2413,6 +2201,7 @@ curl -X GET "https://rest.entitysport.com/v2/matches/19887/info?token=[ACCESS_TO
         "status_str": "Completed",
         "status_note": "Patriots won by 10 wickets (with 78 balls remaining)",
         "verified":	"true",
+        "pre_squad": "true",
         "game_state": 0,
         "game_state_str": "Default",
         "competition": {
@@ -2508,6 +2297,7 @@ status | string | numerical representation of match status. see match_statuss re
 status_str | string | match status name.
 status_note | string | a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.
 verified | string | "true" - Match Data is verified, "false" - Match Data is not verified. For fantasy solutions we suggest keep updating API until you receive verfied: true.
+pre_squad | string | "true" - Fantasy Match Roaster API has managed fantasy credit and player role, "false" - Fantasy Match Roaster API don't have managed fantasy credit and player role.
 game_state | string | numerical representation of match game_state. game state is available for live match only.
 game_state_str | string | match game_state name.
 competition | array  |  an array of parent competition details of the match, <a href="#competition-info-properties">see competition object properties.</a>
@@ -3036,6 +2826,7 @@ status | string | numerical representation of match status. see match_statuss re
 status_str | string | match status name.
 status_note | string | a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.
 verified | string | "true" - Match Data is verified, "false" - Match Data is not verified. For fantasy solutions we suggest keep updating API until you receive verfied: true.
+pre_squad | string | "true" - Fantasy Match Roaster API has managed fantasy credit and player role, "false" - Fantasy Match Roaster API don't have managed fantasy credit and player role.
 game_state | string | numerical representation of match game_state. game state is available for live match only.
 game_state_str | string | match game_state name.
 competition | array  |  an array of parent competition details of the match, <a href="#competition-info-properties-fantasy">see competition object properties.</a>
@@ -3153,6 +2944,7 @@ curl -X GET "https://rest.entitysport.com/v2/matches/19899/scorecard?token=[ACCE
         "status_str": "Live",
         "status_note": "Stumps - Day 4 - New Zealand lead by 198 runs with 6 wickets remaining",
         "verified": "false",
+        "pre_squad": "true",
         "game_state": 7,
         "game_state_str": "Day Break",
         "competition": {
@@ -4820,6 +4612,7 @@ status | string | numerical representation of match status. see match_statuss re
 status_str | string | match status name.
 status_note | string | a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.
 verified | string | "true" - Match Data is verified, "false" - Match Data is not verified. For fantasy solutions we suggest keep updating API until you receive verfied: true.
+pre_squad | string | "true" - Fantasy Match Roaster API has managed fantasy credit and player role, "false" - Fantasy Match Roaster API don't have managed fantasy credit and player role.
 game_state | string | numerical representation of match game_state. game state is available for live match only.
 game_state_str | string | match game_state name.
 competition | array  |  an array of parent competition details of the match, <a href="#competition-matchsummary-properties">see competition object properties.</a>
@@ -5706,251 +5499,458 @@ curl -X GET "https://rest.entitysport.com/v2/matches/19899/live?token=[ACCESS_TO
 {
     "status": "ok",
     "response": {
-        "mid": 19899,
-        "status": 2,
-        "status_str": "Completed",
-        "game_state": 0,
-        "game_state_str": "Default",
-        "status_note": "India won by 168 runs",
-        "team_batting": "Sri Lanka",
-        "team_bowling": "India",
-        "live_inning_number": 2,
+        "mid": 40152,
+        "status": 3,
+        "status_str": "Live",
+        "game_state": 3,
+        "game_state_str": "Play Ongoing",
+        "status_note": "  India won the toss and elected to bat",
+        "team_batting": "India",
+        "team_bowling": "Australia",
+        "live_inning_number": 1,
         "live_score": {
-            "runs": 207,
-            "overs": 42.4,
-            "wickets": 10,
-            "target": 376,
-            "runrate": 4.85
+            "runs": 12,
+            "overs": 2.5,
+            "wickets": 0,
+            "target": 0,
+            "runrate": 4.23,
+            "required_runrate": ""
         },
         "batsmen": [
             {
-                "batsman_id": 67,
-                "runs": 0,
-                "balls_faced": 1,
+                "name": "RG Sharma",
+                "batsman_id": 115,
+                "runs": 2,
+                "balls_faced": 7,
                 "fours": 0,
                 "sixes": 0,
-                "strike_rate": 0
+                "strike_rate": "28.57"
             },
             {
-                "batsman_id": 43682,
-                "runs": 11,
-                "balls_faced": 19,
-                "fours": 1,
+                "name": "S Dhawan",
+                "batsman_id": 117,
+                "runs": 10,
+                "balls_faced": 10,
+                "fours": 2,
                 "sixes": 0,
-                "strike_rate": "57.89"
+                "strike_rate": "100.00"
             }
         ],
         "bowlers": [
             {
-                "bowler_id": 775,
-                "overs": 8.4,
-                "runs_conceded": 31,
-                "wickets": 2,
-                "maidens": 1,
-                "econ": "3.58"
+                "name": "PJ Cummins",
+                "bowler_id": 388,
+                "overs": 1.5,
+                "runs_conceded": 12,
+                "wickets": 0,
+                "maidens": 0,
+                "econ": "6.55"
             },
             {
-                "bowler_id": 607,
-                "overs": 7,
-                "runs_conceded": 32,
-                "wickets": 2,
-                "maidens": 0,
-                "econ": "4.57"
+                "name": "JP Behrendorff",
+                "bowler_id": 43582,
+                "overs": 1,
+                "runs_conceded": 0,
+                "wickets": 0,
+                "maidens": 1,
+                "econ": 0
             }
         ],
         "commentary": 1,
         "wagon": 1,
         "commentaries": [
             {
+                "event": "ball",
+                "batsman_id": 115,
+                "bowler_id": 388,
+                "over": "0",
+                "ball": "1",
+                "score": 0,
+                "commentary": "PJ Cummins to RG Sharma, no run, length ball angles into the body, play defensive shot",
+                "noball_dismissal": false
+            },
+            {
+                "event": "ball",
+                "batsman_id": 115,
+                "bowler_id": 388,
+                "over": "0",
+                "ball": "2",
+                "score": 1,
+                "commentary": "PJ Cummins to RG Sharma, 1 run, drives it comes down the ground to mid on",
+                "noball_dismissal": false
+            },
+            {
+                "event": "ball",
+                "batsman_id": 117,
+                "bowler_id": 388,
+                "over": "0",
+                "ball": "3",
+                "score": 4,
+                "commentary": "PJ Cummins to S Dhawan, Four, full, flicks it to leg side",
+                "noball_dismissal": false
+            },
+            {
+                "event": "ball",
+                "batsman_id": 117,
+                "bowler_id": 388,
+                "over": "0",
+                "ball": "4",
+                "score": 1,
+                "commentary": "PJ Cummins to S Dhawan, 1 run, taps it to cover",
+                "noball_dismissal": false
+            },
+            {
+                "event": "ball",
+                "batsman_id": 115,
+                "bowler_id": 388,
+                "over": "0",
+                "ball": "5",
+                "score": 0,
+                "commentary": "PJ Cummins to RG Sharma, no run, play defensive shot drops short from the fielder",
+                "noball_dismissal": false
+            },
+            {
+                "event": "ball",
+                "batsman_id": 115,
+                "bowler_id": 388,
+                "over": "0",
+                "ball": "6",
+                "score": 0,
+                "commentary": "PJ Cummins to RG Sharma, no run, drives it to cover",
+                "noball_dismissal": false
+            },
+            {
                 "event": "overend",
-                "over": 42,
-                "runs": 8,
-                "score": "203/8",
+                "over": 1,
+                "runs": 6,
+                "score": "6/0",
                 "bats": [
                     {
                         "runs": 1,
-                        "balls_faced": 1,
+                        "balls_faced": 4,
                         "fours": 0,
                         "sixes": 0,
-                        "batsman_id": 43985
+                        "batsman_id": 115
                     },
                     {
-                        "runs": 11,
-                        "balls_faced": 19,
+                        "runs": 5,
+                        "balls_faced": 2,
                         "fours": 1,
                         "sixes": 0,
-                        "batsman_id": 43682
+                        "batsman_id": 117
                     }
                 ],
                 "bowls": [
                     {
-                        "runs_conceded": 32,
-                        "overs": 7,
-                        "wickets": 2,
-                        "maidens": 0,
-                        "bowler_id": 607
-                    },
-                    {
-                        "runs_conceded": 27,
-                        "overs": 8,
+                        "runs_conceded": 6,
+                        "overs": 1,
                         "wickets": 0,
-                        "maidens": 1,
-                        "bowler_id": 775
+                        "maidens": 0,
+                        "bowler_id": 388
                     }
                 ],
-                "commentary": "End of over 42 (8 runs), Sri Lanka 203/8"
+                "commentary": "End of over 1 (6 runs), India 6/0"
             },
             {
                 "event": "ball",
-                "batsman_id": 43985,
-                "bowler_id": 775,
-                "over": "42",
+                "batsman_id": 117,
+                "bowler_id": 43582,
+                "over": "1",
                 "ball": "1",
-                "score": 4,
-                "commentary": "Kuldeep Yadav to MVT Fernando, Four"
+                "score": 0,
+                "commentary": "JP Behrendorff to S Dhawan, no run, length ball outside off",
+                "noball_dismissal": false
             },
             {
                 "event": "ball",
-                "batsman_id": 43985,
-                "bowler_id": 775,
-                "over": "42",
+                "batsman_id": 117,
+                "bowler_id": 43582,
+                "over": "1",
                 "ball": "2",
                 "score": 0,
-                "commentary": "Kuldeep Yadav to MVT Fernando, no run"
+                "commentary": "JP Behrendorff to S Dhawan, no run, outside off",
+                "noball_dismissal": false
             },
             {
-                "event": "wicket",
-                "batsman_id": 43985,
-                "bowler_id": 775,
-                "over": "42",
+                "event": "ball",
+                "batsman_id": 117,
+                "bowler_id": 43582,
+                "over": "1",
                 "ball": "3",
-                "score": "w",
-                "commentary": "Kuldeep Yadav to MVT Fernando, no run",
-                "how_out": "c & b Kuldeep Yadav",
-                "wicket_batsman_id": "43985",
-                "batsman_runs": "5",
-                "batsman_balls": "4"
+                "score": 0,
+                "commentary": "JP Behrendorff to S Dhawan, no run, taps it to mid wicket",
+                "noball_dismissal": false
             },
             {
-                "event": "wicket",
-                "batsman_id": 67,
-                "bowler_id": 775,
-                "over": "42",
+                "event": "ball",
+                "batsman_id": 117,
+                "bowler_id": 43582,
+                "over": "1",
                 "ball": "4",
-                "score": "w",
-                "commentary": "Kuldeep Yadav to SL Malinga, no run",
-                "how_out": "b Kuldeep Yadav",
-                "wicket_batsman_id": "67",
-                "batsman_runs": "0",
-                "batsman_balls": "1"
+                "score": 0,
+                "commentary": "JP Behrendorff to S Dhawan, no run, drives it to long on to mid on",
+                "noball_dismissal": false
+            },
+            {
+                "event": "ball",
+                "batsman_id": 117,
+                "bowler_id": 43582,
+                "over": "1",
+                "ball": "5",
+                "score": 0,
+                "commentary": "JP Behrendorff to S Dhawan, no run, inside edge",
+                "noball_dismissal": false
+            },
+            {
+                "event": "ball",
+                "batsman_id": 117,
+                "bowler_id": 43582,
+                "over": "1",
+                "ball": "6",
+                "score": 0,
+                "commentary": "JP Behrendorff to S Dhawan, no run, outside off",
+                "noball_dismissal": false
+            },
+            {
+                "event": "overend",
+                "over": 2,
+                "runs": 0,
+                "score": "6/0",
+                "bats": [
+                    {
+                        "runs": 1,
+                        "balls_faced": 4,
+                        "fours": 0,
+                        "sixes": 0,
+                        "batsman_id": 115
+                    },
+                    {
+                        "runs": 5,
+                        "balls_faced": 8,
+                        "fours": 1,
+                        "sixes": 0,
+                        "batsman_id": 117
+                    }
+                ],
+                "bowls": [
+                    {
+                        "runs_conceded": 0,
+                        "overs": 1,
+                        "wickets": 0,
+                        "maidens": 1,
+                        "bowler_id": 43582
+                    },
+                    {
+                        "runs_conceded": 6,
+                        "overs": 1,
+                        "wickets": 0,
+                        "maidens": 0,
+                        "bowler_id": 388
+                    }
+                ],
+                "commentary": "End of over 2 (Maiden), India 6/0"
+            },
+            {
+                "event": "ball",
+                "batsman_id": 115,
+                "bowler_id": 388,
+                "over": "2",
+                "ball": "1",
+                "score": 1,
+                "commentary": "PJ Cummins to RG Sharma, 1 run, outside off, to point to third man",
+                "noball_dismissal": false
+            },
+            {
+                "event": "ball",
+                "batsman_id": 117,
+                "bowler_id": 388,
+                "over": "2",
+                "ball": "2",
+                "score": 4,
+                "commentary": "PJ Cummins to S Dhawan, Four, full, on leg stump, drives it to mid wicket",
+                "noball_dismissal": false
+            },
+            {
+                "event": "ball",
+                "batsman_id": 117,
+                "bowler_id": 388,
+                "over": "2",
+                "ball": "3",
+                "score": 1,
+                "commentary": "PJ Cummins to S Dhawan, 1 run, taps it",
+                "noball_dismissal": false
+            },
+            {
+                "event": "ball",
+                "batsman_id": 115,
+                "bowler_id": 388,
+                "over": "2",
+                "ball": "4",
+                "score": 0,
+                "commentary": "PJ Cummins to RG Sharma, no run, going down leg, beaten",
+                "noball_dismissal": false
+            },
+            {
+                "event": "ball",
+                "batsman_id": 115,
+                "bowler_id": 388,
+                "over": "2",
+                "ball": "5",
+                "score": 0,
+                "commentary": "PJ Cummins to RG Sharma, no run, drives it to cover",
+                "noball_dismissal": false
             }
         ],
         "live_inning": {
-            "iid": 43695,
-            "number": 2,
-            "name": "Sri Lanka inning",
-            "short_name": "SL inn.",
-            "status": 2,
-            "result": 1,
-            "batting_team_id": 21,
-            "fielding_team_id": 25,
-            "scores": "207/10",
-            "scores_full": "207/10 (42.4 ov)",
-            "last_wicket": {
-                "batsman_id": "67",
-                "runs": "0",
-                "balls": "1",
-                "how_out": "b Kuldeep Yadav",
-                "score_at_dismissal": 207,
-                "overs_at_dismissal": "42.4",
-                "bowler_id": "775",
-                "dismissal": "bowled",
-                "number": 10
-            },
+            "iid": 92654,
+            "number": 1,
+            "name": "India inning",
+            "short_name": "IND inn.",
+            "status": 3,
+            "result": 0,
+            "batting_team_id": 25,
+            "fielding_team_id": 5,
+            "scores": "12/0",
+            "scores_full": "12/0 (2.4 ov)",
+            "fielder": [],
+            "last_wicket": false,
             "extra_runs": {
                 "byes": 0,
-                "legbyes": 1,
-                "wides": 12,
+                "legbyes": 0,
+                "wides": 0,
                 "noballs": 0,
                 "penalty": "",
-                "total": 13
+                "total": 0
             },
             "equations": {
-                "runs": 207,
-                "wickets": 10,
-                "overs": "42.4",
-                "bowlers_used": 6,
-                "runrate": "4.85"
+                "runs": 12,
+                "wickets": 0,
+                "overs": "2.4",
+                "bowlers_used": 2,
+                "runrate": "4.50"
             },
             "current_partnership": {
-                "runs": 0,
-                "balls": 1,
-                "overs": 0.1,
+                "runs": 12,
+                "balls": 17,
+                "overs": 2.5,
                 "batsmen": [
                     {
-                        "batsman_id": 67,
-                        "runs": 0,
-                        "balls": 1
+                        "name": "Rohit Sharma",
+                        "batsman_id": 115,
+                        "runs": 2,
+                        "balls": 7
                     },
                     {
-                        "batsman_id": 0,
-                        "runs": 0,
-                        "balls": 0
+                        "name": "Shikhar Dhawan",
+                        "batsman_id": 117,
+                        "runs": 10,
+                        "balls": 10
                     }
                 ]
             },
-            "recent_scores": "w,w,0,4,2,4,0,1,w,1,2,0,0,1,0,0,0,0",
-            "last_five_overs": "17/3 3.40",
-            "last_ten_overs": "47/5 4.62"
+            "did_not_bat": [],
+            "recent_scores": "0,0,1,4,1,0,0,0,0,0,0,0,0,1,4,1,0",
+            "last_five_overs": "12/0 4.24",
+            "last_ten_overs": "12/0 4.24"
         },
         "players": [
             {
-                "pid": 49,
-                "title": "Lahiru Thirimanne",
-                "short_name": "HDRL Thirimanne",
-                "first_name": "Hettige",
-                "last_name": "Thirimanne",
-                "middle_name": "Don Rumesh Lahiru",
-                "birthdate": "1989-08-09",
+                "pid": 73,
+                "title": "Aaron Finch",
+                "short_name": "AJ Finch",
+                "first_name": "Aaron",
+                "last_name": "Finch",
+                "middle_name": "James",
+                "birthdate": "1986-11-17",
                 "birthplace": "",
-                "country": "lk",
+                "country": "au",
                 "primary_team": [],
-                "thumb_url": "../assets/uploads/2016/01/thirimanne-120x120.jpg",
-                "logo_url": "../assets/uploads/2016/01/thirimanne-32x32.jpg",
+                "thumb_url": "",
+                "logo_url": "",
                 "playing_role": "bat",
-                "batting_style": "LHB",
-                "bowling_style": "Right-arm medium-fast",
+                "batting_style": "Right-hand bat",
+                "bowling_style": "Slow left-arm orthodox",
                 "fielding_position": "",
-                "recent_match": 19898,
-                "recent_appearance": 1503824400,
+                "recent_match": 18970,
+                "recent_appearance": 1515900000,
+                "fantasy_player_rating": 10.5,
+                "nationality": "Australia",
+                "role": "cap"
+            },
+            {
+                "pid": 81,
+                "title": "Glenn Maxwell",
+                "short_name": "GJ Maxwell",
+                "first_name": "Glenn",
+                "last_name": "Maxwell",
+                "middle_name": "James",
+                "birthdate": "1988-10-14",
+                "birthplace": "",
+                "country": "au",
+                "primary_team": [],
+                "thumb_url": "",
+                "logo_url": "",
+                "playing_role": "bat",
+                "batting_style": "Right-hand bat",
+                "bowling_style": "Right-arm offbreak",
+                "fielding_position": "",
+                "recent_match": 18974,
+                "recent_appearance": 1517109600,
+                "fantasy_player_rating": 9,
+                "nationality": "Australia",
+                "role": "all"
+            },
+            {
+                "pid": 115,
+                "title": "Rohit Sharma",
+                "short_name": "RG Sharma",
+                "first_name": "Rohit",
+                "last_name": "Sharma",
+                "middle_name": "Gurunath",
+                "birthdate": "1987-04-30",
+                "birthplace": "",
+                "country": "in",
+                "primary_team": [],
+                "thumb_url": "",
+                "logo_url": "",
+                "playing_role": "bat",
+                "batting_style": "Right-hand bat",
+                "bowling_style": "Right-arm offbreak",
+                "fielding_position": "",
+                "recent_match": 0,
+                "recent_appearance": 0,
+                "fantasy_player_rating": 10.5,
+                "nationality": "India",
                 "role": "bat"
             },
             {
-                "pid": 59,
-                "title": "Angelo Mathews",
-                "short_name": "AD Mathews",
-                "first_name": "Angelo",
-                "last_name": "Mathews",
-                "middle_name": "Davis",
-                "birthdate": "1987-06-02",
+                "pid": 117,
+                "title": "Shikhar Dhawan",
+                "short_name": "S Dhawan",
+                "first_name": "Shikhar",
+                "last_name": "Dhawan",
+                "middle_name": "",
+                "birthdate": "1985-12-05",
                 "birthplace": "",
-                "country": "lk",
+                "country": "in",
                 "primary_team": [],
-                "thumb_url": "../assets/uploads/2017/07/angelo-mathews-120x120.png",
-                "logo_url": "../assets/uploads/2017/07/angelo-mathews-32x32.png",
-                "playing_role": "all",
-                "batting_style": "Right-hand bat",
-                "bowling_style": "Right-arm medium",
+                "thumb_url": "",
+                "logo_url": "",
+                "playing_role": "bat",
+                "batting_style": "LHB",
+                "bowling_style": "Right-arm offbreak",
                 "fielding_position": "",
-                "recent_match": 17773,
-                "recent_appearance": 1496914200,
-                "role": "all"
+                "recent_match": 0,
+                "recent_appearance": 0,
+                "fantasy_player_rating": 10,
+                "nationality": "India",
+                "role": "bat"
             }
         ]
     },
-    "etag": "19cb3959f185327fccb98dff8b9daf58",
-    "modified": "2017-08-31 16:51:44",
-    "datetime": "2017-09-01 22:43:50",
+    "etag": "b59a8d1c1538c10e12999be6958650e9",
+    "modified": "2019-03-10 08:12:09",
+    "datetime": "2019-03-10 08:12:09",
     "api_version": "2.0"
 }
 ```
@@ -6014,6 +6014,7 @@ runrate | string | run rate of the inning
 
 Parameter | Value | Description
 --------- | ------- | -----------
+name | string | player name
 batsman_id | integer | player id 
 runs | integer | runs scored by batsman
 balls_faced | integer | balls faced by batsman
@@ -6150,6 +6151,7 @@ batsmen | array | an array of batsmen details participating in partnership <a hr
 
 Parameter | Value | Description
 --------- | ------- | -----------
+name | string | player name
 batsman_id | integer | player id 
 runs | integer | runs scored by batsman
 balls | integer | balls faced by batsman
@@ -6177,6 +6179,227 @@ recent_match | integer | match id of last played match
 recent_appearance | integer | timestamp of last played match
 fantasy_player_rating | string | player fantasy salary or credit rating
 role | string | match playing role
+
+
+
+## Fantasy Match Roaster API
+
+```shell
+curl -X GET "https://rest.entitysport.com/v2/competitions/111301/squads/38481?token=[ACCESS_TOKEN]
+```
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "squad_type": "per_match",
+        "squads": [
+            {
+                "team_id": "5",
+                "title": "Australia 4th Test",
+                "players": [
+                    {
+                        "pid": 73,
+                        "title": "Aaron Finch",
+                        "short_name": "AJ Finch",
+                        "first_name": "Aaron",
+                        "last_name": "Finch",
+                        "middle_name": "James",
+                        "birthdate": "1986-11-17",
+                        "birthplace": "",
+                        "country": "au",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "bat",
+                        "batting_style": "Right-hand bat",
+                        "bowling_style": "Slow left-arm orthodox",
+                        "fielding_position": "",
+                        "recent_match": 18970,
+                        "recent_appearance": 1515900000,
+                        "fantasy_player_rating": 8.5,
+                        "nationality": "Australia"
+                    },
+                    {
+                        "pid": 83,
+                        "title": "Mitchell Marsh",
+                        "short_name": "MR Marsh",
+                        "first_name": "Mitchell",
+                        "last_name": "Marsh",
+                        "middle_name": "Ross",
+                        "birthdate": "1991-10-20",
+                        "birthplace": "",
+                        "country": "au",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "all",
+                        "batting_style": "Right-hand bat",
+                        "bowling_style": "Right-arm medium",
+                        "fielding_position": "",
+                        "recent_match": 18968,
+                        "recent_appearance": 1514244600,
+                        "fantasy_player_rating": 8.5,
+                        "nationality": "Australia"
+                    }
+                ],
+                "team": {
+                    "tid": 5,
+                    "title": "Australia",
+                    "abbr": "AUS",
+                    "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/australia.png",
+                    "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/australia-32x32.png",
+                    "type": "country",
+                    "country": "au",
+                    "alt_name": "Australia",
+                    "sex": "male"
+                }
+            },
+            {
+                "team_id": "25",
+                "title": "India 3rd Test, 4th Test",
+                "players": [
+                    {
+                        "pid": 115,
+                        "title": "Rohit Sharma",
+                        "short_name": "RG Sharma",
+                        "first_name": "Rohit",
+                        "last_name": "Sharma",
+                        "middle_name": "Gurunath",
+                        "birthdate": "1987-04-30",
+                        "birthplace": "",
+                        "country": "in",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "bat",
+                        "batting_style": "Right-hand bat",
+                        "bowling_style": "Right-arm offbreak",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 10,
+                        "nationality": "India"
+                    },
+                    {
+                        "pid": 119,
+                        "title": "Virat Kohli",
+                        "short_name": "V Kohli",
+                        "first_name": "Virat",
+                        "last_name": "Kohli",
+                        "middle_name": "",
+                        "birthdate": "1988-11-05",
+                        "birthplace": "",
+                        "country": "in",
+                        "primary_team": [],
+                        "thumb_url": "",
+                        "logo_url": "",
+                        "playing_role": "bat",
+                        "batting_style": "Right-hand bat",
+                        "bowling_style": "Right-arm medium",
+                        "fielding_position": "",
+                        "recent_match": 0,
+                        "recent_appearance": 0,
+                        "fantasy_player_rating": 11,
+                        "nationality": "India"
+                    }
+                ],
+                "team": {
+                    "tid": 25,
+                    "title": "India",
+                    "abbr": "IND",
+                    "thumb_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india.png",
+                    "logo_url": "https://cricket.entitysport.com/assets/uploads/2016/01/india-32x32.png",
+                    "type": "country",
+                    "country": "in",
+                    "alt_name": "India",
+                    "sex": "male"
+                }
+            }
+        ]
+    },
+    "etag": "12acd05fffc4a299aeeb3e7ab4db65c2",
+    "modified": "2019-01-15 18:47:55",
+    "datetime": "2019-01-15 18:47:55",
+    "api_version": "2.0"
+}
+
+```
+
+Fantasy Match Roaster API provides information of player roaster for 2 teams of a match i.e. part of respective competition. When using this API match id(mid) needs to be passed for desired competition match squad.
+
+Purpose of this API is to provide managed Cricket fantasy credit and player role. Cricket Fantasy application must use this API for roaster of the both teams.
+
+Player credit and playing role won't change once pre_squad: "true".
+
+### Request
+
+* Path: /v2/competitions/cid/squads/mid
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+mid | integer | match id
+token | {ACCESS_TOKEN} | API Access token
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.squad_type:</code> per_match - used for international tours where squad of teams are changes for formats and matches, per_team - used for tournaments where squads of teams remains same and don't change with matches.
+* <code style="color:#c7254e";>response.squads:</code> an array of all available player objects included in team roaster
+
+<aside class="notice">
+squad_type is useful when you are developing an fantasy application and needs to map competition squad with respective team and match.
+</aside>
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+team_id | integer | team id of respective team squad
+title | string | Team matches title
+players | array | an array of player details of the team, <a href="#player-properties-competition">see player object properties.</a>
+team | array | an array of team details, <a href="#team-properties-cricket-squad-competition">see team object properties.</a>
+
+<h3 id="team-properties-cricket-squad-competition">Team Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+title | string | team name
+abbr | string | team short name
+thumb_url | string | team logo thumbnail url
+logo_url | string | team logo url
+type | string | team type Country(International Team) or Club
+country | string | Country ISO Code
+alt_name | string | team alternative name
+
+<h3 id="player-properties-competition">Player Properties</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+title | string | player name
+short_name | string | player short name
+first_name | string | player first name
+last_name | string | player last name
+middle_name | string | player middle name
+birthdate | date | player date of birth
+birthplace | string | player birth place
+country | string | Country ISO Code
+thumb_url | string | player logo thumbnail url
+logo_url | string | player logo url
+playing_role | string | player playing role
+batting_style | string | player batting style
+bowling_style | string | player bowling style
+fielding_position | string | player fielding position
+recent_match | integer | match id of last played match
+recent_appearance | integer | timestamp of last played match
+fantasy_player_rating | string | player fantasy salary or credit rating
 
 
 ## Match Squads API
@@ -6491,566 +6714,6 @@ curl -X GET "https://rest.entitysport.com/v2/matches/19899/squads?token=[ACCESS_
                 "playing_role": "bat",
                 "batting_style": "LHB",
                 "bowling_style": "",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 346,
-                "title": "Mahmudullah",
-                "short_name": "Mahmudullah",
-                "first_name": "Mohammad",
-                "last_name": "Mahmudullah",
-                "middle_name": "",
-                "birthdate": "1986-02-04",
-                "birthplace": "",
-                "country": "bd",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "all",
-                "batting_style": "Right-hand bat",
-                "bowling_style": "Right-arm offbreak",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 348,
-                "title": "Shakib Al Hasan",
-                "short_name": "Shakib Al Hasan",
-                "first_name": "Shakib",
-                "last_name": "Hasan",
-                "middle_name": "Al",
-                "birthdate": "1987-03-24",
-                "birthplace": "",
-                "country": "bd",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "all",
-                "batting_style": "LHB",
-                "bowling_style": "Slow left-arm orthodox",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 350,
-                "title": "Mushfiqur Rahim",
-                "short_name": "Mushfiqur Rahim",
-                "first_name": "Mohammad",
-                "last_name": "Rahim",
-                "middle_name": "Mushfiqur",
-                "birthdate": "1987-06-09",
-                "birthplace": "",
-                "country": "bd",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "wkbat",
-                "batting_style": "Right-hand bat",
-                "bowling_style": "",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 354,
-                "title": "Mashrafe Mortaza",
-                "short_name": "Mashrafe Mortaza",
-                "first_name": "Mashrafe",
-                "last_name": "Mortaza",
-                "middle_name": "Bin",
-                "birthdate": "1983-10-05",
-                "birthplace": "",
-                "country": "bd",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "bowl",
-                "batting_style": "Right-hand bat",
-                "bowling_style": "Right-arm fast-medium",
-                "fielding_position": "",
-                "recent_match": 37636,
-                "recent_appearance": 1515996000
-            },
-            {
-                "pid": 356,
-                "title": "Mominul Haque",
-                "short_name": "Mominul Haque",
-                "first_name": "Mominul",
-                "last_name": "Haque",
-                "middle_name": "",
-                "birthdate": "1991-09-29",
-                "birthplace": "",
-                "country": "bd",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "bat",
-                "batting_style": "LHB",
-                "bowling_style": "Slow left-arm orthodox",
-                "fielding_position": "",
-                "recent_match": 37642,
-                "recent_appearance": 1517369400
-            },
-            {
-                "pid": 358,
-                "title": "Rubel Hossain",
-                "short_name": "Rubel Hossain",
-                "first_name": "Mohammad",
-                "last_name": "Hossain",
-                "middle_name": "Rubel",
-                "birthdate": "1990-01-01",
-                "birthplace": "",
-                "country": "bd",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "bowl",
-                "batting_style": "Right-hand bat",
-                "bowling_style": "Right-arm fast",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 410,
-                "title": "Thisara Perera",
-                "short_name": "NLTC Perera",
-                "first_name": "Narangoda",
-                "last_name": "Perera",
-                "middle_name": "Liyanaarachchilage Thisara Chirantha",
-                "birthdate": "1989-04-03",
-                "birthplace": "",
-                "country": "lk",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "all",
-                "batting_style": "LHB",
-                "bowling_style": "Right-arm medium-fast",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 444,
-                "title": "Upul Tharanga",
-                "short_name": "WU Tharanga",
-                "first_name": "Warushavithana",
-                "last_name": "Tharanga",
-                "middle_name": "Upul",
-                "birthdate": "1985-02-02",
-                "birthplace": "",
-                "country": "lk",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "bat",
-                "batting_style": "LHB",
-                "bowling_style": "",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 460,
-                "title": "Kusal Perera",
-                "short_name": "MDKJ Perera",
-                "first_name": "Mathurage",
-                "last_name": "Perera",
-                "middle_name": "Don Kusal Janith",
-                "birthdate": "1990-08-17",
-                "birthplace": "",
-                "country": "lk",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "wkbat",
-                "batting_style": "LHB",
-                "bowling_style": "",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 462,
-                "title": "Dushmantha Chameera",
-                "short_name": "PVD Chameera",
-                "first_name": "Pathira",
-                "last_name": "Chameera",
-                "middle_name": "Vasan Dushmantha",
-                "birthdate": "1992-01-11",
-                "birthplace": "",
-                "country": "lk",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "bowl",
-                "batting_style": "Right-hand bat",
-                "bowling_style": "Right-arm fast",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 1017,
-                "title": "Nazmul Hossain Shanto",
-                "short_name": "Nazmul Hossain Shanto",
-                "first_name": "Nazmul",
-                "last_name": "Shanto",
-                "middle_name": "Hossain",
-                "birthdate": "1998-05-25",
-                "birthplace": "",
-                "country": "bd",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "bat",
-                "batting_style": "LHB",
-                "bowling_style": "Right-arm offbreak",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 1018,
-                "title": "Mehidy Hasan",
-                "short_name": "Mehidy Hasan Miraz",
-                "first_name": "Mehidy",
-                "last_name": "Miraz",
-                "middle_name": "Hasan",
-                "birthdate": "1997-10-25",
-                "birthplace": "",
-                "country": "bd",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "all",
-                "batting_style": "Right-hand bat",
-                "bowling_style": "Right-arm offbreak",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 1734,
-                "title": "Dasun Shanaka",
-                "short_name": "MD Shanaka",
-                "first_name": "Madagamagamage",
-                "last_name": "Shanaka",
-                "middle_name": "Dasun",
-                "birthdate": "1991-09-09",
-                "birthplace": "",
-                "country": "lk",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "all",
-                "batting_style": "Right-hand bat",
-                "bowling_style": "Right-arm medium",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 1741,
-                "title": "Mohammad Mithun",
-                "short_name": "Mohammad Mithun",
-                "first_name": "Mohammad",
-                "last_name": "Ali",
-                "middle_name": "Mithun",
-                "birthdate": "1990-02-13",
-                "birthplace": "",
-                "country": "bd",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "wkbat",
-                "batting_style": "Right-hand bat",
-                "bowling_style": "",
-                "fielding_position": "",
-                "recent_match": 37646,
-                "recent_appearance": 1517032800
-            },
-            {
-                "pid": 1745,
-                "title": "Mustafizur Rahman",
-                "short_name": "Mustafizur Rahman",
-                "first_name": "Mustafizur",
-                "last_name": "Rahman",
-                "middle_name": "",
-                "birthdate": "1995-09-06",
-                "birthplace": "",
-                "country": "bd",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "bowl",
-                "batting_style": "LHB",
-                "bowling_style": "Left-arm fast-medium",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 1763,
-                "title": "Niroshan Dickwella",
-                "short_name": "N Dickwella",
-                "first_name": "Dickwella",
-                "last_name": "Dickwella",
-                "middle_name": "Patabendige Dilantha Niroshan",
-                "birthdate": "1993-06-23",
-                "birthplace": "",
-                "country": "lk",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "wkbat",
-                "batting_style": "LHB",
-                "bowling_style": "",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 1767,
-                "title": "Abu Hider",
-                "short_name": "Abu Hider",
-                "first_name": "Abu",
-                "last_name": "Rony",
-                "middle_name": "Hider",
-                "birthdate": "1996-02-14",
-                "birthplace": "",
-                "country": "bd",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "bowl",
-                "batting_style": "Right-hand bat",
-                "bowling_style": "Left-arm fast-medium",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 37352,
-                "title": "Mosaddek Hossain",
-                "short_name": "Mosaddek Hossain",
-                "first_name": "Mosaddek",
-                "last_name": "Saikat",
-                "middle_name": "Hossain",
-                "birthdate": "1995-12-10",
-                "birthplace": "",
-                "country": "bd",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "bat",
-                "batting_style": "Right-hand bat",
-                "bowling_style": "Right-arm offbreak",
-                "fielding_position": "",
-                "recent_match": 37642,
-                "recent_appearance": 1517369400
-            },
-            {
-                "pid": 37360,
-                "title": "Liton Das",
-                "short_name": "Liton Das",
-                "first_name": "Liton",
-                "last_name": "Das",
-                "middle_name": "Kumar",
-                "birthdate": "1994-10-13",
-                "birthplace": "",
-                "country": "bd",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "wkbat",
-                "batting_style": "Right-hand bat",
-                "bowling_style": "",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 37374,
-                "title": "Ariful Haque",
-                "short_name": "Ariful Haque",
-                "first_name": "Ariful",
-                "last_name": "Haque",
-                "middle_name": "",
-                "birthdate": "1992-11-18",
-                "birthplace": "",
-                "country": "bd",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "all",
-                "batting_style": "Right-hand bat",
-                "bowling_style": "Right-arm medium-fast",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 37442,
-                "title": "Nazmul Islam",
-                "short_name": "Nazmul Islam",
-                "first_name": "Mohammad",
-                "last_name": "Islam",
-                "middle_name": "Nazmul",
-                "birthdate": "1991-03-21",
-                "birthplace": "",
-                "country": "bd",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "bowl",
-                "batting_style": "LHB",
-                "bowling_style": "Slow left-arm orthodox",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 43682,
-                "title": "Akila Dananjaya",
-                "short_name": "A Dananjaya",
-                "first_name": "Mahamarakkala",
-                "last_name": "Perera",
-                "middle_name": "Kurukulasooriya Patabendige Akila Dananjaya",
-                "birthdate": "1993-10-04",
-                "birthplace": "",
-                "country": "lk",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "all",
-                "batting_style": "LHB",
-                "bowling_style": "Right-arm offbreak",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 43745,
-                "title": "Dhananjaya de Silva",
-                "short_name": "DM de Silva",
-                "first_name": "Dhananjaya",
-                "last_name": "Silva",
-                "middle_name": "Maduranga de",
-                "birthdate": "1991-09-06",
-                "birthplace": "",
-                "country": "lk",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "all",
-                "batting_style": "Right-hand bat",
-                "bowling_style": "Right-arm offbreak",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 43788,
-                "title": "Dilruwan Perera",
-                "short_name": "MDK Perera",
-                "first_name": "Mahawaduge",
-                "last_name": "Perera",
-                "middle_name": "Dilruwan Kamalaneth",
-                "birthdate": "1982-07-22",
-                "birthplace": "",
-                "country": "lk",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "all",
-                "batting_style": "Right-hand bat",
-                "bowling_style": "Right-arm offbreak",
-                "fielding_position": "",
-                "recent_match": 37642,
-                "recent_appearance": 1517369400
-            },
-            {
-                "pid": 43853,
-                "title": "Amila Aponso",
-                "short_name": "MA Aponso",
-                "first_name": "Malmeege",
-                "last_name": "Aponso",
-                "middle_name": "Amila",
-                "birthdate": "1993-06-23",
-                "birthplace": "",
-                "country": "lk",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "bowl",
-                "batting_style": "Right-hand bat",
-                "bowling_style": "Slow left-arm orthodox",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 43953,
-                "title": "Kusal Mendis",
-                "short_name": "BKG Mendis",
-                "first_name": "Balapuwaduge",
-                "last_name": "Mendis",
-                "middle_name": "Kusal Gimhan",
-                "birthdate": "1995-02-02",
-                "birthplace": "",
-                "country": "lk",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "wkbat",
-                "batting_style": "Right-hand bat",
-                "bowling_style": "",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 43961,
-                "title": "Danushka Gunathilaka",
-                "short_name": "MD Gunathilaka",
-                "first_name": "Mashtayage",
-                "last_name": "Gunathilaka",
-                "middle_name": "Danushka",
-                "birthdate": "1991-03-17",
-                "birthplace": "",
-                "country": "lk",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "all",
-                "batting_style": "LHB",
-                "bowling_style": "Right-arm offbreak",
-                "fielding_position": "",
-                "recent_match": 0,
-                "recent_appearance": 0
-            },
-            {
-                "pid": 44001,
-                "title": "Kasun Rajitha",
-                "short_name": "CAK Rajitha",
-                "first_name": "Chandrasekara",
-                "last_name": "Rajitha",
-                "middle_name": "Arachchilage Kasun",
-                "birthdate": "1993-06-01",
-                "birthplace": "",
-                "country": "lk",
-                "primary_team": [],
-                "thumb_url": "",
-                "logo_url": "",
-                "playing_role": "bowl",
-                "batting_style": "Right-hand bat",
-                "bowling_style": "Right-arm medium-fast",
                 "fielding_position": "",
                 "recent_match": 0,
                 "recent_appearance": 0
@@ -8586,6 +8249,7 @@ curl -X GET "https://rest.entitysport.com/v2/teams/25/matches?status=2&token=[AC
                 "status_str": "Completed",
                 "status_note": "India won by 6 wickets (with 21 balls remaining)",
                 "verified":	"true",
+                "pre_squad": "true",
                 "game_state": 0,
                 "game_state_str": "Default",
                 "domestic": "0",
@@ -8699,6 +8363,7 @@ status | string | numerical representation of match status. see match_statuss re
 status_str | string | match status name.
 status_note | string | a small note of current match state. It would be the winning margin if match completed, could be current required rate if match is on live, and would containg date if match is scheduled.
 verified | string | "true" - Match Data is verified, "false" - Match Data is not verified. For fantasy solutions we suggest keep updating API until you receive verfied: true.
+pre_squad | string | "true" - Fantasy Match Roaster API has managed fantasy credit and player role, "false" - Fantasy Match Roaster API don't have managed fantasy credit and player role.
 game_state | string | numerical representation of match game_state. game state is available for live match only.
 game_state_str | string | match game_state name.
 domestic | integer | numerical representation of match category type
@@ -12174,6 +11839,10 @@ curl -X GET "https://rest.entitysport.com/soccer/matches?token=[ACCESS_TOKEN]&st
 curl -X GET "https://rest.entitysport.com/soccer/matches?token=[ACCESS_TOKEN]&status=1&per_page=10&paged=1"
 ```
 
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/matches?date=2018-02-12(Date start - yyyy-mm-dd)_2018-02-13(Date end - yyyy-mm-dd)&token=[ACCESS_TOKEN]&per_page=10&paged=1"
+```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -12282,6 +11951,7 @@ This API has list of all matches user have access.
 Parameter | Value | Description
 --------- | ------- | -----------
 status | integer | status code 1 = upcoming, 2 = result, 3 = live.
+date | string | List matches of specific date. Need both date start and date end values. date value example - 2018-02-12 (yyyy-mm-dd)
 token | {ACCESS_TOKEN} | API Access token
 per_page | Number | Number of competition to list in each API request
 paged | Number | Page Number for request
