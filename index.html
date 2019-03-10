@@ -4710,7 +4710,7 @@ squad_type is useful when you are developing an fantasy application and needs to
 <td>numerical representation of decision made by toss winning team.</td>
 </tr>
 </tbody></table>
-<h2 id='match-fantasy-points-api'>Match Fantasy Points API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/matches/39327/point?token=[ACCESS_TOKEN]"</span>
+<h2 id='match-fantasy-points-api'>Match Fantasy Points API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/matches/40152/point?token=[ACCESS_TOKEN]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -4719,243 +4719,367 @@ squad_type is useful when you are developing an fantasy application and needs to
 </span><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"match_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39327</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Melbourne Stars vs Melbourne Renegades"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Final"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"format"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"format_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T20"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"match_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">40152</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India vs Australia"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4th ODI"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"format"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"format_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ODI"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
         </span><span class="s2">"status_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Completed"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"status_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Melb Reneg won by 13 runs"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia won by 4 wickets (with 13 balls remaining)"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"verified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"pre_squad"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"odds_available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"game_state"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"game_state_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"competition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"cid"</span><span class="p">:</span><span class="w"> </span><span class="mi">111481</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Big Bash League"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"abbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bbl-1819"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tournament"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"domestic"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"match_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t20"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"result"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cid"</span><span class="p">:</span><span class="w"> </span><span class="mi">112302</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia tour of India"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"abbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"atoi-1819"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tour"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"international"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"match_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mixed"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"live"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"season"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018/19"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"datestart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-19"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"dateend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-17"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"total_matches"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"total_rounds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"total_teams"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"au"</span><span class="w">
+            </span><span class="s2">"datestart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-24"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dateend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-13"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_matches"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_rounds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_teams"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"teama"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14206</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Melbourne Stars"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MS"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cricket.entitysport.com/assets/uploads/2016/12/Melbourne-Stars.png"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"scores_full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*132/7 (20 ov)"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"132/7"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="w">
+            </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cricket.entitysport.com/assets/uploads/2016/01/india.png"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"scores_full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"358/9 (50 ov)"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"358/9"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"teamb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14209</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Melbourne Renegades"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MR"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cricket.entitysport.com/assets/uploads/2016/12/Melbourne-Renegades.png"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"scores_full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"145/5 (20 ov)"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"145/5"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="w">
+            </span><span class="s2">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cricket.entitysport.com/assets/uploads/2016/01/australia.png"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"scores_full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*359/6 (47.5 ov)"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"scores"</span><span class="p">:</span><span class="w"> </span><span class="s2">"359/6"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"overs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47.5"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"date_start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-17 03:45:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"date_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-17 15:45:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"timestamp_start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1550375100</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"timestamp_end"</span><span class="p">:</span><span class="w"> </span><span class="mi">1550418300</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-10 08:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-10 20:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestamp_start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1552204800</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestamp_end"</span><span class="p">:</span><span class="w"> </span><span class="mi">1552248000</span><span class="p">,</span><span class="w">
         </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Docklands Stadium"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Melbourne"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Punjab Cricket Association IS Bindra Stadium, Mohali"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chandigarh"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-12"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"umpires"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gerard Abood (Australia), Simon Fry (Australia, TV), Sam Nogajski (Australia)"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"referee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob Stratford (Australia)"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"umpires"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joel Wilson (West Indies, TV), Kumar Dharmasena (Sri Lanka), Anil Chaudhary (India)"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"referee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ranjan Madugalle (Sri Lanka)"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"equation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"live"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS won by 4 wickets"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"result_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"win_margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"winning_team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14209</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"win_margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4 wickets"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"winning_team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
         </span><span class="s2">"commentary"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"wagon"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"latest_inning_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
         </span><span class="s2">"toss"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Melbourne Stars won the toss &amp; elected to field"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"winner"</span><span class="p">:</span><span class="w"> </span><span class="mi">14206</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"decision"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India won the toss &amp; elected to bat"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"winner"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"decision"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"points"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"teama"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"playing11"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"81"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Glenn Maxwell"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"115"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rohit Sharma"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"117"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shikhar Dhawan"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.5"</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
                     </span><span class="p">},</span><span class="w">
                     </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"614"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dwayne Bravo"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"830"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nic Maddinson"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"119"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Virat Kohli"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
                     </span><span class="p">},</span><span class="w">
                     </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1080"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sandeep Lamichhane"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1965"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adam Zampa"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43461"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jackson Bird"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"434"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bhuvneshwar Kumar"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34"</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
                     </span><span class="p">},</span><span class="w">
                     </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43482"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marcus Stoinis"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"607"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jasprit Bumrah"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"621"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kedar Jadhav"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.5"</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
                     </span><span class="p">},</span><span class="w">
                     </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43491"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter Handscomb"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"654"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yuzvendra Chahal"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"661"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lokesh Rahul"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"775"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kuldeep Yadav"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1098"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rishabh Pant"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wk"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43542"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ben Dunk"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37.5"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43630"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Daniel Worrall"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55851"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seb Gotch"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49682"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vijay Shankar"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
                     </span><span class="p">}</span><span class="w">
                 </span><span class="p">],</span><span class="w">
                 </span><span class="s2">"substitute"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1947"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Liam Plunkett"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43494"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michael Beer"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43497"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Scott Boland"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43618"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Evan Gulbis"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43619"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nick Larkin"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50847"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt Parkinson"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55108"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Travis Dean"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58304"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lance Morris"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90618"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jackson Coleman"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90639"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Liam Bowe"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93154"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jonathan Merlo"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"125"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ravindra Jadeja"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
                     </span><span class="p">},</span><span class="w">
                     </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93955"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tom O'Connell"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mohammed Shami"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.5"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ambati Rayudu"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"727"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hardik Pandya"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
                     </span><span class="p">}</span><span class="w">
                 </span><span class="p">]</span><span class="w">
             </span><span class="p">},</span><span class="w">
@@ -4965,172 +5089,296 @@ squad_type is useful when you are developing an fantasy application and needs to
                         </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"73"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aaron Finch"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.5"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1897"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tom Cooper"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26.5"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43478"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kane Richardson"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43520"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cameron White"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.5"</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-3"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
                     </span><span class="p">},</span><span class="w">
                     </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43530"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chris Tremain"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43544"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Daniel Christian"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"81"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Glenn Maxwell"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51"</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
                     </span><span class="p">},</span><span class="w">
                     </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43551"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cameron Boyce"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"388"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pat Cummins"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22"</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
                     </span><span class="p">},</span><span class="w">
                     </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43580"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marcus Harris"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"739"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shaun Marsh"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
                     </span><span class="p">},</span><span class="w">
                     </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48502"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sam Harper"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wk"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1959"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Usman Khawaja"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.5"</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
                     </span><span class="p">},</span><span class="w">
                     </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49513"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Harry Gurney"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1965"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adam Zampa"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13"</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
                     </span><span class="p">},</span><span class="w">
                     </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93954"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mackenzie Harvey"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43491"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter Handscomb"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43582"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jason Behrendorff"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43584"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ashton Turner"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18"</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43631"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jhye Richardson"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-3"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55106"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alex Carey"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wk"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.5"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
                     </span><span class="p">}</span><span class="w">
                 </span><span class="p">],</span><span class="w">
                 </span><span class="s2">"substitute"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"319"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mohammad Nabi"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43469"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tim Ludeman"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wk"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43480"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jon Holland"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43518"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andrew Fekete"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43548"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joe Mennie"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53619"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kelvin Smith"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bat"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53626"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beau Webster"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53628"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jack Wildermuth"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"623"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nathan Coulter-Nile"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
                     </span><span class="p">},</span><span class="w">
                     </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"76636"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jake Fraser-McGurk"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90735"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Usman Khan"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1963"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andrew Tye"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.5"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
                     </span><span class="p">},</span><span class="w">
                     </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93358"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Will Sutherland"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43459"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nathan Lyon"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
                     </span><span class="p">},</span><span class="w">
                     </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93454"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zak Evans"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowl"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43482"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marcus Stoinis"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"starting11"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"run"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"six"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"sr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fifty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"duck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"wkts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"maidenover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"er"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"catch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"runoutstumping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
                     </span><span class="p">}</span><span class="w">
                 </span><span class="p">]</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"etag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c054a03917981bee9eaa46946871098c"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-17 08:37:00"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-17 18:27:10"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"etag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1d868bce98f027b9b6eb377ab997cf05"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-10 16:29:29"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-10 19:07:47"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"api_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -5569,6 +5817,66 @@ squad_type is useful when you are developing an fantasy application and needs to
 <td>point</td>
 <td>string</td>
 <td>player fantasy points based on match performance</td>
+</tr>
+<tr>
+<td>starting11</td>
+<td>string</td>
+<td>player fantasy points for part of starting11</td>
+</tr>
+<tr>
+<td>run</td>
+<td>string</td>
+<td>player fantasy points for runs scorecard</td>
+</tr>
+<tr>
+<td>four</td>
+<td>string</td>
+<td>player fantasy points for number of 4s</td>
+</tr>
+<tr>
+<td>six</td>
+<td>string</td>
+<td>player fantasy points for number of 6s</td>
+</tr>
+<tr>
+<td>sr</td>
+<td>string</td>
+<td>player fantasy points for strike rate</td>
+</tr>
+<tr>
+<td>fifty</td>
+<td>string</td>
+<td>player fantasy points for 50 runs scored</td>
+</tr>
+<tr>
+<td>duck</td>
+<td>string</td>
+<td>player fantasy points for 0 run scored</td>
+</tr>
+<tr>
+<td>wkts</td>
+<td>string</td>
+<td>player fantasy points for wickets taken</td>
+</tr>
+<tr>
+<td>maidenover</td>
+<td>string</td>
+<td>player fantasy for maiden over</td>
+</tr>
+<tr>
+<td>er</td>
+<td>string</td>
+<td>player fantasy points for economy rate</td>
+</tr>
+<tr>
+<td>catch</td>
+<td>string</td>
+<td>player fantasy points for catches taken</td>
+</tr>
+<tr>
+<td>runoutstumping</td>
+<td>string</td>
+<td>player fantasy points runouts and stumping</td>
 </tr>
 </tbody></table>
 <h2 id='match-scorecard-api'>Match Scorecard API</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/v2/matches/19899/scorecard?token=[ACCESS_TOKEN]"</span>
