@@ -26056,3 +26056,2777 @@ PF | Power forward
 PG | Point guard
 SF | Small forward
 SG | Shooting guard
+
+
+
+# Kabaddi API
+
+## Getting your Keys 
+
+You will need an active access key and secret key with a valid subsciption to start using our API. Please visit entitysport.com to request your keys and subscription.
+
+## Obtaining Token
+
+> To authorize, use this code:
+
+```shell
+curl -X POST "https://rest.entitysport.com/kabaddi/auth?access_key=YOURACCESSKEY&secret_key=YOURSECRETKEY"
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "token": "1|X#aFhlzAsd",
+        "expires": "12312312312",
+    },
+    "api_version": "2.0"
+}
+
+```
+
+To access any API, you need a token. A token can be generated using your keys. Token is a piece of information that would allow you to access our API data until your subscription expires. Auth API provides you the token, by validating your keys. Request to our Auth API whenever the access token is expired or unavailable.
+
+### Request
+
+* Path: /kabaddi/auth/
+* Method: Post
+* POST Parameters
+ * access_key - Access Key of your Application.
+ * secret_key - Secret key of your Application.
+
+
+###Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.token:</code> access token.
+* <code style="color:#c7254e";>response.expires:</code> access token expire timestamp.
+
+## Making your First Request
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "api_doc": "https://doc.entitysport.com/#kabaddi-api/",
+        "status_codes": {
+            "ok": "Success",
+            "error": "Failure",
+            "invalid": "Invalid Request",
+            "unauthorized": "Un authorized",
+            "noaccess": "No access to requested resource"
+        }
+    },
+    "api_version": "2.0"
+}
+
+```
+
+It's very easy to start using the EntitySport Soccer API. By passing your **token** as `token` to our api server, you can get access to our API data instantly.
+
+### https Request
+
+`GET https://rest.entitysport.com/kabaddi/?token=[ACCESS_TOKEN]`
+
+## https Status Code
+
+All API request will resolve with any of the following https header status.
+
+Response Code | Description
+--------- | -----------
+200  | API request valid, informations ready to access
+304  | API request valid, but data was not modified since last accessed (compared using Etag)
+400  | Client side error. occurs for invalid request
+401  | occurs for unauthorized request
+501  | Server side error. Internal server error, unable to process your request
+
+## API Response
+
+```json
+
+{
+    "status": "ok",
+    "response": {},
+    "etag": "8fc93de066d8d802a36e0882ecc77fdb",
+    "modified": "2017-01-31 16:29:11",
+    "datetime": "2017-01-31 16:29:11",
+    "api_version": "1.0"
+}
+
+```
+All successfull API request will return json output. The basic structure of data is available on all of the calls.
+
+### Status - Possible Values are as follows :
+
+Status | Description
+--------- | -----------
+ok  | A successfull response
+error  | if the request contains error
+unauthorized  | if the request is not authorized, usually for invalid/expired access token
+accessdenied  | if your app try to access non permitted data
+
+* <code style="color:#c7254e";>response:</code> contains the main data of the response. value can be string, number, array or object.
+
+
+## Pagination 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+per_page | Number | Number of items to list in each API request
+paged | Number | Page Number for request
+
+<aside class="success">/?token=[ACCESS_TOKEN]&per_page=5&&paged=3</aside>
+
+## API Objects
+
+There are some informations that we call as OBJECT. A response can contain a single object, or multiple objects or no objects at all. It is important get famililar with our objects.
+
+We have 5 Obejcts in total. A object is a set of data, which contains a unique identifier, and directly relates to other objects. ie: match object connects inning object, team object. 
+
+Each object has a unique identifier which start with the first character of object name, and **id** as suffix. ie: competition unique identified named as **cid**, for match it's **mid**, for player it's **pid**, for team, it's **tid**.
+
+
+* **Competition:**
+  Competition is a tour, or tournament, or trophy cup. A competition contains information matches, teams, player performance, table standings, season, dates, type, category etc
+
+* **Match:**
+  Match is the core part of our api. A match makes connection between teams, competition, players.
+    
+* **Team:**
+  A generic sports team, having a name, logo, country and type of team.
+
+* **Player:**
+  A generic sports player.
+
+
+
+## Competitions List API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/competitions?token=[ACCESS_TOKEN]"
+```
+> Using Token and Pagination parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/competitions?token=[ACCESS_TOKEN]&per_page=10&paged=1"
+```
+> Using Token, Pagination and status parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/competitions?token=[ACCESS_TOKEN]&status=3&per_page=10&paged=1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "cid": 1,
+                "cname": "Pro Kabaddi Season 6",
+                "startdate": "2018-10-07 00:00:00",
+                "enddate": "2019-01-05 00:00:00",
+                "startdatetimestamp": "1538870400",
+                "enddatetimestamp": "1546646400",
+                "year": "2018",
+                "status": 2,
+                "status_str": "completed",
+                "logo": "https://rest.entitysport.com/kabaddi/assets/competition/logo_5cb831fcce9a1.png",
+                "competition_url": "competition/1/info",
+                "match_url": "competition/1/matches",
+                "stats_url": "competition/1/stats"
+            }
+        ],
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "b752351296ef7672653d329d178f6f5a",
+    "modified": "2019-04-21 09:39:41",
+    "datetime": "2019-04-21 09:39:41",
+    "api_version": "1.0"
+}
+
+```
+This API lists all available competitions those user are subscribed and can access. This API is a directory of all competitions user have access.
+
+It will list 10 competitions data per request. If there is more than 10 competitions, you will get extra value under response node. You can use the page parameter to jump to a specific page if exists.
+
+### Request
+* Path: /kabaddi/competitons
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+status | integer | status code for the competition, available status code 1 = upcoming, 2 = completed, 3 = live
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of competition cards.
+* <code style="color:#c7254e";>response.total_items:</code> total number of competitions available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of competition list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | integer | timestamp of competition start date
+enddatetimestamp | integer | timestamp of competition end date
+year | string | Season Year
+status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+competition_url | string | Competition information API end point url
+match_url | string | Competition matches information API end point url
+stats_url | string | Competition player statistic information API end point url
+
+
+## Competitions Information API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/competition/1/info?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": {
+            "info": {
+                "cid": 1,
+                "cname": "Pro Kabaddi Season 6",
+                "startdate": "2018-10-07 00:00:00",
+                "enddate": "2019-01-05 00:00:00",
+                "startdatetimestamp": "1538870400",
+                "enddatetimestamp": "1546646400",
+                "year": "2018",
+                "status": 2,
+                "status_str": "completed",
+                "logo": "https://rest.entitysport.com/kabaddi/assets/competition/logo_5cb831fcce9a1.png",
+                "competition_url": "competition/1/info",
+                "match_url": "competition/1/matches",
+                "stats_url": "competition/1/stats"
+            },
+            "teams": [
+                {
+                    "tid": "1",
+                    "tname": "Bengaluru Bulls",
+                    "sex": "m",
+                    "city": "Bengaluru",
+                    "founded": "2014",
+                    "website": "www.bengalurubulls.com",
+                    "twitter": "www.twitter.com/BengaluruBulls",
+                    "instagram": "www.instagram.com/bengalurubullsofficial",
+                    "teamlogo": "https://rest.entitysport.com/kabaddi/assets/team/logo_5cb8312952da7.png",
+                    "squads": [
+                        {
+                            "pid": "1",
+                            "fullname": "Rohit Kumar",
+                            "birthdate": "1990-01-19",
+                            "nationality": "India",
+                            "positionid": "2",
+                            "positionname": "raider",
+                            "height": "",
+                            "weight": "79 kg"
+                        }
+                    ]
+                }
+            ],
+            "standings": [
+                {
+                    "name": "Zone A",
+                    "tables": [
+                        {
+                            "zone": "Zone A",
+                            "tid": "4",
+                            "tname": "Gujarat Fortunegiants",
+                            "position": "1",
+                            "matchplayed": "22",
+                            "win": "17",
+                            "tied": "2",
+                            "draw": "2",
+                            "noresult": "",
+                            "pointconceded": "117",
+                            "pointscored": "93"
+                        }
+                    ]
+                },
+                {
+                    "name": "Zone B",
+                    "tables": [
+                        {
+                            "zone": "Zone B",
+                            "tid": "1",
+                            "tname": "Bengaluru Bulls",
+                            "position": "1",
+                            "matchplayed": "22",
+                            "win": "13",
+                            "tied": "2",
+                            "draw": "2",
+                            "noresult": "",
+                            "pointconceded": "104",
+                            "pointscored": "78"
+                        }
+                    ]
+                }
+            ]
+        },
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "bfd0b0addd6543ea252707491cb1201c",
+    "modified": "2019-04-23 17:33:43",
+    "datetime": "2019-04-23 17:33:43",
+    "api_version": "1.0"
+}
+
+```
+This API has competition and it's teams information.
+
+### Request
+* Path: /kabaddi/competition/cid/info
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of competition cards.
+* <code style="color:#c7254e";>response.items.teams</code> array of all the teams of the competition.
+* <code style="color:#c7254e";>response.items.point_table</code> array of points table of the competition.
+* <code style="color:#c7254e";>response.total_items:</code> total number of competitions available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of competition list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | integer | timestamp of competition start date
+enddatetimestamp | integer | timestamp of competition end date
+year | string | Season Year
+status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+competition_url | string | Competition information API end point url
+match_url | string | Competition matches information API end point url
+stats_url | string | Competition player statistic information API end point url
+teams | array | An array of all teams related to the competition. <a href="#competition-info-team-kabaddi">see teams object reference</a>
+standings | array | An array of competition standings. <a href="#competition-info-team-kabaddi-standings">see standings object reference</a>
+
+<h3 id="competition-info-team-kabaddi">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | string | team id
+tname | string | team name
+sex | string | team gender type
+city | string | team city name
+founded | integer | year of team founded
+website | string | website url of team website
+twitter | string | twitter account name
+hastag| string | social hastag
+teamlogo | string | team logo url
+squads | array | An array of teams player list. <a href="#competition-info-team-kabaddi-squad">see teams squad object reference</a>
+
+<h3 id="competition-info-team-kabaddi-squad">Team Squad Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+fullname | string | player name
+birthdate | string | player birth date
+nationality | string | country name
+positionid | string | player position id
+positionname | string | player position name
+height | string | player height
+weight | string | player weight
+
+<h3 id="competition-info-team-kabaddi-standings">Standings Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+name | string | player id
+tables | array | An array of standing table list. <a href="#competition-info-team-kabaddi-tables">see teams squad object reference</a>
+
+<h3 id="competition-info-team-kabaddi-tables">Standings Table Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+zone | string | group name
+tid | string | team id
+tname | string | team name
+position | string | table position
+matchesplayed | string | total number of matches played by the team
+win | string | total number of matches won by the team
+tied | string | total number of matches tied by the team
+draw | string | total number of matches drawn by the team
+noresult | string | total number of matches noresult by the team
+scoredifference | string | score difference of the team
+totalpoints | string | total number of points won by the team
+
+
+## Competitions Matches API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/competition/1/matches?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "mid": 138,
+                "zone": "",
+                "round": "Final",
+                "teams": {
+                    "home": {
+                        "tid": 1,
+                        "tname": "Bengaluru Bulls",
+                        "logo": "https://rest.entitysport.com/kabaddi/assets/team/logo_5cb8312952da7.png"
+                    },
+                    "away": {
+                        "tid": 4,
+                        "tname": "Gujarat Fortunegiants",
+                        "logo": "https://rest.entitysport.com/kabaddi/assets/team/logo_5cb8312952da7.png"
+                    }
+                },
+                "datestart": "2019-01-05 02:30:00",
+                "dateend": "2019-01-05 03:10:00",
+                "timestampstart": "1546655400",
+                "timestampend": "1546657800",
+                "result": {
+                    "home": "38",
+                    "away": "33",
+                    "winner": "1",
+                    "text": "Bengaluru Bulls Beat Gujarat Fortunegiants  (38-33 )",
+                    "tie": "false"
+                },
+                "status": 2,
+                "status_str": "result",
+                "gamestate": 3,
+                "gamestate_str": "Full Time",
+                "verified": "true",
+                "presquad": "true",
+                "toss": {
+                    "winner": "1",
+                    "decision": "Court"
+                },
+                "competition": {
+                    "cid": 1,
+                    "cname": "Pro Kabaddi Season 6",
+                    "startdate": "2018-10-07 00:00:00",
+                    "enddate": "2019-01-05 00:00:00",
+                    "startdatetimestamp": "1538870400",
+                    "endtdatetimestamp": "1546646400",
+                    "year": "2018",
+                    "status": 2,
+                    "status_str": "completed",
+                    "logo": "https://rest.entitysport.com/kabaddi/assets/competition/logo_5cb831fcce9a1.png"
+                },
+                "venue": {
+                    "venueid": 10,
+                    "name": "DOME@NSCI SVP Stadium, Mumbai",
+                    "location": "",
+                    "founded": "",
+                    "capacity": ""
+                }
+            }
+        ],
+        "total_items": 24,
+        "total_pages": 24
+    },
+    "etag": "6d253e36800c9554f2afc7b74eb1fe80",
+    "modified": "2019-04-28 09:55:49",
+    "datetime": "2019-04-28 09:55:49",
+    "api_version": "1.0"
+}
+
+```
+This API has competition's all matches details.
+
+### Request
+* Path: /kabaddi/competition/cid/matches
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+mid | integer | match id
+zone | string | match round details.
+teams | array | An array of match teams details. <a href="#competition-matches-teams-kabaddi">see teams object reference</a>
+datestart | string | time string in GMT of match start time
+dateend | string | time string in GMT of match end time
+timestampstart | integer | timestamp of match start time
+timestampend | integer | timestamp of match end time
+result | array | An array of match result details. <a href="#competition-matches-result-kabaddi">see result object reference</a>
+status | integer | Match status code 3 = live, 2 = result, 1 = upcoming, 4 = canceled
+status_str | string | Match status string live, result, upcoming,
+gamestate | integer | Match state code
+gamestate_str | string | Match state string
+verified | string | true = match score is verified, false = match score is yet be verified.
+presquad | string | true = match squad is available with managed fantasy credit, false = match squad is don't have managed fantasy credit yet.
+toss | array | An array of match toss details. <a href="#competition-matches-toss-kabaddi">see toss object reference</a>
+competition | array | An array of competition details. <a href="#competition-matches-competition-kabaddi">see competition object reference</a>
+venue | array | An array of match venue details. <a href="#competition-matches-venue-kabaddi">see venue object reference</a>
+
+
+
+<h3 id="competition-matches-teams-kabaddi">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | An array of home team details. <a href="#competition-matches-teams-details-kabaddi">see home team object reference</a>
+away | array | An array of away team details. <a href="#competition-matches-teams-details-kabaddi">see away team object reference</a>
+
+
+<h3 id="competition-matches-result-kabaddi">Result Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | integer | home team score
+away | integer | away team score
+winner | string | winning team id, draw in case of equal scores
+text | string | text note of match result.
+tie | string | if match is tied true else false.
+
+<h3 id="competition-matches-toss-kabaddi">Toss Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+winner | string | toss wining team id.
+decision | string | decision of toss wining team.
+
+
+<h3 id="competition-matches-teams-details-kabaddi">Home/Away Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+tname | string | team name
+logo | string | team logo url
+
+
+<h3 id="competition-matches-competition-kabaddi">Competition Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | integer | timestamp of competition start date
+enddatetimestamp | integer | timestamp of competition end date
+year | string | Season Year
+status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+
+
+<h3 id="competition-matches-venue-kabaddi">Venue Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+venueid | integer | venue id
+name | string | venue name
+location | string | venue location
+founded | string | venue founded year
+capacity | string | venue capacity
+
+
+
+## Competitions Statistic API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/competition/1/stats?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "competition": {
+            "cid": 1,
+            "cname": "Pro Kabaddi Season 6",
+            "startdate": "2018-10-07 00:00:00",
+            "enddate": "2019-01-05 00:00:00",
+            "startdatetimestamp": "1538870400",
+            "endtdatetimestamp": "1546646400",
+            "year": "2018",
+            "status": 2,
+            "status_str": "completed",
+            "logo": "https://rest.entitysport.com/kabaddi/assets/competition/logo_5cb831fcce9a1.png"
+        },
+        "stats": [
+            {
+                "pid": 6,
+                "name": "Pawan Sehrawat",
+                "tid": 1,
+                "tname": "Bengaluru Bulls",
+                "greencard": 1,
+                "yellowcard": 0,
+                "redcard": 0,
+                "totalpoint": 282,
+                "raidtotalpoint": 271,
+                "raidtouchpoint": 235,
+                "raidbonuspoint": 36,
+                "tackletotalpoint": 11,
+                "tacklecapturepoint": 11,
+                "tacklecapturebonuspoint": 0,
+                "tackletotal": 40,
+                "tacklesuccessful": 11,
+                "tackleunsuccessful": 29,
+                "supertackles": 0,
+                "raidtotal": 375,
+                "raidsuccessful": 214,
+                "raidunsuccessful": 85,
+                "raidempty": 76,
+                "superraid": 11
+            }
+        ],
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "577d0534758a3d33cf310bad93a41678",
+    "modified": "2019-04-24 08:53:06",
+    "datetime": "2019-04-24 08:53:06",
+    "api_version": "1.0"
+}
+
+```
+This API has competition's total player statistic details.
+
+### Request
+* Path: /kabaddi/competition/cid/stats
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.competition:</code> array of competition object details. <a href="#competition-stats-object-kabaddi">see competition object reference</a>
+* <code style="color:#c7254e";>response.stats:</code> array of player stats object. <a href="#competition-player-stats-kabaddi">see competition player stats object reference</a>
+* <code style="color:#c7254e";>response.total_items:</code> total number of player available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.
+
+### Reference
+
+<h3 id="competition-stats-object-kabaddi">Competition object reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | integer | timestamp of competition start date
+enddatetimestamp | integer | timestamp of competition end date
+year | string | Season Year
+status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+
+
+<h3 id="competition-player-stats-kabaddi">Competition Player Statistics Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+name | string | player name
+tid | integer | team id
+tname | string | team name
+greencard | integer | number of green card received by the player. 
+yellowcard | integer | number of yellow card received by the player. 
+redcard | integer | number of red card received by the player. 
+totalpoint | integer | total points scored by the player. 
+raidtotalpoint | integer | total raid points scored by the player. 
+raidtouchpoint | integer | total touch points scored by the player. 
+raidbonuspoint | integer | total bonus points scored by the player. 
+tackletotalpoint | integer | total tackle points scored by the player. 
+tacklecapturepoint | integer | total capture points scored by the player. 
+tacklecapturebonuspoint | integer | total capture bonus points scored by the player. 
+tackletotal | integer | total tackle attempted by the player. 
+tacklesuccessful | integer | total successfull tackle attempted by the player. 
+tackleunsuccessful | integer | total unsuccessfull tackle attempted by the player. 
+supertackles | integer | total super tackle by the player. 
+raidtotal | integer | total raid attempted by the player. 
+raidsuccessful | integer | total successfull raid attempted by the player. 
+raidunsuccessful | integer | total unsuccessfull raid attempted by the player. 
+raidempty | integer | total empty raid attempted by the player. 
+superraid | integer | total super raid attempted by the player.
+
+
+
+## Matches List API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/matches?token=[ACCESS_TOKEN]"
+```
+
+> Using Token and Status parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/matches?token=[ACCESS_TOKEN]&status=1"
+```
+
+> Using Token, Status and Pagination parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/matches?token=[ACCESS_TOKEN]&status=1&per_page=10&paged=1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "mid": 138,
+                "zone": "",
+                "round": "Final",
+                "teams": {
+                    "home": {
+                        "tid": 1,
+                        "tname": "Bengaluru Bulls",
+                        "logo": "https://rest.entitysport.com/kabaddi/assets/team/logo_5cb8312952da7.png"
+                    },
+                    "away": {
+                        "tid": 4,
+                        "tname": "Gujarat Fortunegiants",
+                        "logo": "https://rest.entitysport.com/kabaddi/assets/team/logo_5cb8312952da7.png"
+                    }
+                },
+                "datestart": "2019-01-05 02:30:00",
+                "dateend": "2019-01-05 03:10:00",
+                "timestampstart": "1546655400",
+                "timestampend": "1546657800",
+                "result": {
+                    "home": "38",
+                    "away": "33",
+                    "winner": "1",
+                    "text": "Bengaluru Bulls Beat Gujarat Fortunegiants  (38-33 )",
+                    "tie": "false"
+                },
+                "status": 2,
+                "status_str": "result",
+                "gamestate": 3,
+                "gamestate_str": "Full Time",
+                "verified": "true",
+                "presquad": "true",
+                "toss": {
+                    "winner": "1",
+                    "decision": "Court"
+                },
+                "competition": {
+                    "cid": 1,
+                    "cname": "Pro Kabaddi Season 6",
+                    "startdate": "2018-10-07 00:00:00",
+                    "enddate": "2019-01-05 00:00:00",
+                    "startdatetimestamp": "1538870400",
+                    "endtdatetimestamp": "1546646400",
+                    "year": "2018",
+                    "status": 2,
+                    "status_str": "completed",
+                    "logo": "https://rest.entitysport.com/kabaddi/assets/competition/logo_5cb831fcce9a1.png"
+                },
+                "venue": {
+                    "venueid": 10,
+                    "name": "DOME@NSCI SVP Stadium, Mumbai",
+                    "location": "",
+                    "founded": "",
+                    "capacity": ""
+                }
+            }
+        ],
+        "total_items": 24,
+        "total_pages": 24
+    },
+    "etag": "6d253e36800c9554f2afc7b74eb1fe80",
+    "modified": "2019-04-28 09:55:49",
+    "datetime": "2019-04-28 09:55:49",
+    "api_version": "1.0"
+}
+
+```
+This API has list of all matches user have access.
+
+### Request
+* Path: /kabaddi/matches
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+status | integer | status code 1 = upcoming, 2 = result, 3 = live.
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+mid | integer | match id
+zone | string | match zone details.
+round | string | match round details.
+teams | array | An array of match teams details. <a href="#matches-list-teams-kabaddi">see teams object reference</a>
+datestart | string | time string in GMT of match start time
+dateend | string | time string in GMT of match end time
+timestampstart | integer | timestamp of match start time
+timestampend | integer | timestamp of match end time
+result | array | An array of match result details. <a href="#matches-list-result-kabaddi">see result object reference</a>
+status | integer | Match status code 3 = live, 2 = result, 1 = upcoming, 4 = canceled
+status_str | string | Match status string live, result, upcoming,
+gamestate | integer | Match state code
+gamestate_str | string | Match state string
+verified | string | true = match score is verified, false = match score is yet be verified.
+presquad | string | true = match squad is available with managed fantasy credit, false = match squad is don't have managed fantasy credit yet.
+toss | array | An array of match toss details. <a href="#matches-list-toss-kabaddi">see toss object reference</a>
+competition | array | An array of competition details. <a href="#matches-list-competition-kabaddi">see competition object reference</a>
+venue | array | An array of match venue details. <a href="#matches-list-venue-kabaddi">see venue object reference</a>
+
+
+<h3 id="matches-list-teams-kabaddi">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | An array of home team details. <a href="#matches-list-teams-details-kabaddi">see home team object reference</a>
+away | array | An array of away team details. <a href="#matches-list-teams-details-kabaddi">see away team object reference</a>
+
+
+<h3 id="matches-list-result-kabaddi">Result Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | integer | home team score
+away | integer | away team score
+winner | string | winning team id, draw in case of equal scores
+text | string | text note of match result.
+tie | string | if match is tied true else false.
+
+<h3 id="matches-list-toss-kabaddi">Toss Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+winner | string | toss wining team id.
+decision | string | decision of toss wining team.
+
+
+<h3 id="matches-list-teams-details-kabaddi">Home/Away Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+tname | string | team name
+logo | string | team logo url
+
+
+<h3 id="matches-list-competition-kabaddi">Competition Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | integer | timestamp of competition start date
+enddatetimestamp | integer | timestamp of competition end date
+year | string | Season Year
+status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+
+
+<h3 id="matches-list-venue-kabaddi">Venue Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+venueid | integer | venue id
+name | string | venue name
+location | string | venue location
+founded | string | venue founded year
+capacity | string | venue capacity
+
+
+
+## Match Info API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/matches/1/info?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": {
+            "match_info": {
+                "mid": 1,
+                "zone": "Zone B",
+                "round": "League",
+                "teams": {
+                    "home": {
+                        "tid": 9,
+                        "tname": "Tamil Thalaivas",
+                        "logo": "https://rest.entitysport.com/kabaddi/assets/team/logo_5cb831c45de6a.png"
+                    },
+                    "away": {
+                        "tid": 7,
+                        "tname": "Patna Pirates",
+                        "logo": "https://rest.entitysport.com/kabaddi/assets/team/logo_5cb831c45de6a.png"
+                    }
+                },
+                "datestart": "2018-10-07 02:30:00",
+                "dateend": "2018-10-07 03:10:00",
+                "timestampstart": "1538879400",
+                "timestampend": "1538881800",
+                "result": {
+                    "home": "42",
+                    "away": "26",
+                    "winner": "9",
+                    "text": "Tamil Nadu Beat Patna  (42 - 26 )",
+                    "tie": "false"
+                },
+                "status": 2,
+                "status_str": "result",
+                "gamestate": 3,
+                "gamestate_str": "Full Time",
+                "verified": "true",
+                "presquad": "true",
+                "toss": {
+                    "winner": "7",
+                    "decision": "Court"
+                },
+                "competition": {
+                    "cid": 1,
+                    "cname": "Pro Kabaddi Season 6",
+                    "startdate": "2018-10-07 00:00:00",
+                    "enddate": "2019-01-05 00:00:00",
+                    "startdatetimestamp": "1538870400",
+                    "endtdatetimestamp": "1546646400",
+                    "year": "2018",
+                    "status": 2,
+                    "status_str": "completed",
+                    "logo": "https://rest.entitysport.com/kabaddi/assets/competition/logo_5cb831fcce9a1.png"
+                },
+                "venue": {
+                    "venueid": 8,
+                    "name": "Jawaharlal Nehru Indoor Stadium, Chennai",
+                    "location": "",
+                    "founded": "",
+                    "capacity": ""
+                }
+            },
+            "event": [
+                {
+                    "event_type_id": 1,
+                    "event_type": "normal",
+                    "event_time": "20:00",
+                    "game_state": 1,
+                    "game_state_str": "1st Half",
+                    "raiding_team_id": 9,
+                    "raiding_team_name": "Tamil Thalaivas",
+                    "raid_type": "normal",
+                    "raider_id": 150,
+                    "raider_name": "Ajay Thakur",
+                    "raid_event": "empty",
+                    "tackle_event": "",
+                    "super_event": "",
+                    "defending_team_id": 7,
+                    "defending_team_name": "Patna Pirates",
+                    "defender_id": "",
+                    "defender_name": "",
+                    "point_home": 0,
+                    "point_away": 0,
+                    "bounus": "",
+                    "allout": "false",
+                    "allout_team_id": "",
+                    "allout_team_name": ""
+                },
+                {
+                    "event_type_id": 1,
+                    "event_type": "normal",
+                    "event_time": "19:37",
+                    "game_state": 1,
+                    "game_state_str": "1st Half",
+                    "raiding_team_id": 7,
+                    "raiding_team_name": "Patna Pirates",
+                    "raid_type": "normal",
+                    "raider_id": 122,
+                    "raider_name": "Pardeep Narwal",
+                    "raid_event": "empty",
+                    "tackle_event": "",
+                    "super_event": "",
+                    "defending_team_id": 9,
+                    "defending_team_name": "Tamil Thalaivas",
+                    "defender_id": "",
+                    "defender_name": "",
+                    "point_home": 0,
+                    "point_away": 0,
+                    "bounus": "",
+                    "allout": "false",
+                    "allout_team_id": "",
+                    "allout_team_name": ""
+                },
+                {
+                    "event_type_id": 1,
+                    "event_type": "normal",
+                    "event_time": "19:90",
+                    "game_state": 1,
+                    "game_state_str": "1st Half",
+                    "raiding_team_id": 9,
+                    "raiding_team_name": "Tamil Thalaivas",
+                    "raid_type": "normal",
+                    "raider_id": 161,
+                    "raider_name": "Jasvir Singh",
+                    "raid_event": "empty",
+                    "tackle_event": "",
+                    "super_event": "",
+                    "defending_team_id": 7,
+                    "defending_team_name": "Patna Pirates",
+                    "defender_id": "",
+                    "defender_name": "",
+                    "point_home": 0,
+                    "point_away": 0,
+                    "bounus": "",
+                    "allout": "false",
+                    "allout_team_id": "",
+                    "allout_team_name": ""
+                }
+            ],
+            "squad": {
+                "home": [
+                    {
+                        "pid": 150,
+                        "name": "Ajay Thakur",
+                        "role": "raider",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": 171,
+                        "name": "Surjeet Singh",
+                        "role": "raider",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": 178,
+                        "name": "Amit Hooda",
+                        "role": "defender",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": 161,
+                        "name": "Jasvir Singh",
+                        "role": "defender",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": 198,
+                        "name": "Manjeet Chhillar",
+                        "role": "allrounder",
+                        "fantasy_credit": "8"
+                    }
+                ],
+                "away": [
+                    {
+                        "pid": 122,
+                        "name": "Pardeep Narwal",
+                        "role": "raider",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": 125,
+                        "name": "Manjeet ",
+                        "role": "defender",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": 133,
+                        "name": "Vikas Kale",
+                        "role": "defender",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": 131,
+                        "name": "Vikas Jaglan",
+                        "role": "raider",
+                        "fantasy_credit": "8"
+                    }
+                ]
+            },
+            "lineup": {
+                "home": {
+                    "starting7": [
+                        {
+                            "pid": 150,
+                            "name": "Ajay Thakur",
+                            "role": "raider",
+                            "fantasy_credit": "8",
+                            "starting7": "true",
+                            "substitute": "false",
+                            "played": "false"
+                        },
+                        {
+                            "pid": 171,
+                            "name": "Surjeet Singh",
+                            "role": "raider",
+                            "fantasy_credit": "8",
+                            "starting7": "true",
+                            "substitute": "false",
+                            "played": "false"
+                        },
+                        {
+                            "pid": 178,
+                            "name": "Amit Hooda",
+                            "role": "defender",
+                            "fantasy_credit": "8",
+                            "starting7": "true",
+                            "substitute": "false",
+                            "played": "false"
+                        },
+                        {
+                            "pid": 161,
+                            "name": "Jasvir Singh",
+                            "role": "defender",
+                            "fantasy_credit": "8",
+                            "starting7": "true",
+                            "substitute": "false",
+                            "played": "false"
+                        },
+                        {
+                            "pid": 198,
+                            "name": "Manjeet Chhillar",
+                            "role": "allrounder",
+                            "fantasy_credit": "8",
+                            "starting7": "true",
+                            "substitute": "false",
+                            "played": "false"
+                        },
+                        {
+                            "pid": 174,
+                            "name": "Darshan J.",
+                            "role": "defender",
+                            "fantasy_credit": "8",
+                            "starting7": "true",
+                            "substitute": "false",
+                            "played": "false"
+                        },
+                        {
+                            "pid": 184,
+                            "name": "C. Arun",
+                            "role": "defender",
+                            "fantasy_credit": "8",
+                            "starting7": "true",
+                            "substitute": "false",
+                            "played": "false"
+                        }
+                    ],
+                    "substitute": [
+                        {
+                            "pid": 181,
+                            "name": "D. Gopu",
+                            "role": "defender",
+                            "fantasy_credit": "8",
+                            "starting7": "false",
+                            "substitute": "true",
+                            "played": "true"
+                        },
+                        {
+                            "pid": 158,
+                            "name": "Athul MS",
+                            "role": "raider",
+                            "fantasy_credit": "8",
+                            "starting7": "false",
+                            "substitute": "true",
+                            "played": "false"
+                        },
+                        {
+                            "pid": 202,
+                            "name": "Victor Obiero",
+                            "role": "defender",
+                            "fantasy_credit": "8",
+                            "starting7": "false",
+                            "substitute": "true",
+                            "played": "false"
+                        },
+                        {
+                            "pid": 165,
+                            "name": "K. Jayaseelan",
+                            "role": "allrounder",
+                            "fantasy_credit": "8",
+                            "starting7": "false",
+                            "substitute": "true",
+                            "played": "false"
+                        },
+                        {
+                            "pid": 186,
+                            "name": "Sunil",
+                            "role": "allrounder",
+                            "fantasy_credit": "8",
+                            "starting7": "false",
+                            "substitute": "true",
+                            "played": "true"
+                        }
+                    ]
+                },
+                "away": {
+                    "starting7": [
+                        {
+                            "pid": 122,
+                            "name": "Pardeep Narwal",
+                            "role": "raider",
+                            "fantasy_credit": "8",
+                            "starting7": "true",
+                            "substitute": "false",
+                            "played": "false"
+                        },
+                        {
+                            "pid": 125,
+                            "name": "Manjeet ",
+                            "role": "defender",
+                            "fantasy_credit": "8",
+                            "starting7": "true",
+                            "substitute": "false",
+                            "played": "false"
+                        },
+                        {
+                            "pid": 133,
+                            "name": "Vikas Kale",
+                            "role": "defender",
+                            "fantasy_credit": "8",
+                            "starting7": "true",
+                            "substitute": "false",
+                            "played": "false"
+                        },
+                        {
+                            "pid": 131,
+                            "name": "Vikas Jaglan",
+                            "role": "raider",
+                            "fantasy_credit": "8",
+                            "starting7": "true",
+                            "substitute": "false",
+                            "played": "false"
+                        },
+                        {
+                            "pid": 135,
+                            "name": "Jaideep",
+                            "role": "defender",
+                            "fantasy_credit": "8",
+                            "starting7": "true",
+                            "substitute": "false",
+                            "played": "false"
+                        },
+                        {
+                            "pid": 123,
+                            "name": "Deepak Narwal",
+                            "role": "raider",
+                            "fantasy_credit": "8",
+                            "starting7": "true",
+                            "substitute": "false",
+                            "played": "false"
+                        },
+                        {
+                            "pid": 124,
+                            "name": "Jawahar",
+                            "role": "allrounder",
+                            "fantasy_credit": "8",
+                            "starting7": "true",
+                            "substitute": "false",
+                            "played": "false"
+                        }
+                    ],
+                    "substitute": [
+                        {
+                            "pid": 130,
+                            "name": "Vijay",
+                            "role": "raider",
+                            "fantasy_credit": "8",
+                            "starting7": "false",
+                            "substitute": "true",
+                            "played": "true"
+                        },
+                        {
+                            "pid": 132,
+                            "name": "Manish",
+                            "role": "defender",
+                            "fantasy_credit": "8",
+                            "starting7": "false",
+                            "substitute": "true",
+                            "played": "true"
+                        },
+                        {
+                            "pid": 129,
+                            "name": "Tushar Patil",
+                            "role": "raider",
+                            "fantasy_credit": "8",
+                            "starting7": "false",
+                            "substitute": "true",
+                            "played": "true"
+                        },
+                        {
+                            "pid": 148,
+                            "name": "Tae Deok Eom",
+                            "role": "allrounder",
+                            "fantasy_credit": "8",
+                            "starting7": "false",
+                            "substitute": "true",
+                            "played": "true"
+                        },
+                        {
+                            "pid": 136,
+                            "name": "Vijay Kumar",
+                            "role": "defender",
+                            "fantasy_credit": "8",
+                            "starting7": "false",
+                            "substitute": "true",
+                            "played": "true"
+                        }
+                    ]
+                }
+            }
+        },
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "2c702a172442f0b02cf7bfd8efe33bf5",
+    "modified": "2019-04-28 09:59:07",
+    "datetime": "2019-04-28 09:59:07",
+    "api_version": "1.0"
+}
+
+```
+This API contains a single match info, match projection, events, commentary, lineup details.
+
+### Request
+* Path: /kabaddi/matches/mid/info
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match details object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+match_info | array | An array of match details. <a href="#matches-info-kabaddi">see match_info object reference</a>
+event | array | An array of match event details. <a href="#matches-event-kabaddi">see event object reference</a>
+squad | array | An array of match lineup details. <a href="#matches-squad-kabaddi">see squad object reference</a>
+lineup | array | An array of match lineup details. <a href="#matches-lineup-kabaddi">see lineup object reference</a>
+
+
+<h3 id="matches-info-kabaddi">Match Info Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+mid | integer | match id
+zone | string | match zone details.
+round | string | match round details.
+teams | array | An array of match teams details. <a href="#matches-info-teams-kabaddi">see teams object reference</a>
+datestart | string | time string in GMT of match start time
+dateend | string | time string in GMT of match end time
+timestampstart | integer | timestamp of match start time
+timestampend | integer | timestamp of match end time
+result | array | An array of match result details. <a href="#matches-info-result-kabaddi">see result object reference</a>
+status | integer | Match status code 3 = live, 2 = result, 1 = upcoming, 4 = canceled
+status_str | string | Match status string live, result, upcoming,
+gamestate | integer | Match state code
+gamestate_str | string | Match state string
+verified | string | true = match score is verified, false = match score is yet be verified.
+presquad | string | true = match squad is available with managed fantasy credit, false = match squad is don't have managed fantasy credit yet.
+toss | array | An array of match toss details. <a href="#matches-info-toss-kabaddi">see toss object reference</a>
+competition | array | An array of competition details. <a href="#matches-info-competition-kabaddi">see competition object reference</a>
+venue | array | An array of match venue details. <a href="#matches-info-venue-kabaddi">see venue object reference</a>
+
+
+<h3 id="matches-info-teams-kabaddi">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | An array of home team details. <a href="#matches-info-teams-details-kabaddi">see home team object reference</a>
+away | array | An array of away team details. <a href="#matches-info-teams-details-kabaddi">see away team object reference</a>
+
+
+<h3 id="matches-info-result-kabaddi">Result Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | integer | home team score
+away | integer | away team score
+winner | string | winning team id, draw in case of equal scores
+text | string | text note of match result.
+tie | string | if match is tied true else false.
+
+
+<h3 id="matches-info-toss-kabaddi">Toss Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+winner | string | toss wining team id.
+decision | string | decision of toss wining team.
+
+
+<h3 id="matches-info-teams-details-kabaddi">Home/Away Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+tname | string | team name
+logo | string | team logo url
+
+
+<h3 id="matches-info-competition-kabaddi">Competition Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | integer | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | integer | timestamp of competition start date
+enddatetimestamp | integer | timestamp of competition end date
+year | string | Season Year
+status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+
+
+<h3 id="matches-info-venue-kabaddi">Venue Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+venueid | integer | venue id
+name | string | venue name
+location | string | venue location
+founded | string | venue founded year
+capacity | string | venue capacity
+
+
+<h3 id="matches-event-kabaddi">Match Event Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+event_type_id | integer | event id
+event_type | string | event type
+event_time | string | time when event happened
+game_state | integer | game state id
+game_state_str | string | game state name
+raiding_team_id | integer | raiding team id
+raiding_team_name | string | raiding team name
+raid_type | string | raid type
+raider_id  | integer | raider id
+raider_name | string | raider player name
+raid_event | string | raid event
+tackle_event | string | tackle event
+super_event | string | super event tackle or raid, if none empty
+defending_team_id | integer | defending team id
+defending_team_name | string | defending team name
+defender_id | integer | defender player id
+defender_name | string | defender name
+point_home | string | home team points
+point_away | string | away team points
+bonus  | string | raider or defender, if none empty
+allout | string | true if allout event occured
+allout_team_id | string | team getting allout id
+allout_team_name | string | team getting allout name
+
+
+<h3 id="matches-squad-kabaddi">Squad Player Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | array of home team player list object details. <a href="#squad-player-kabaddi">see home team player object reference</a>
+away | array | array of away team player list object details. <a href="#squad-player-kabaddi">see away team player object reference</a>
+
+
+<h3 id="squad-player-kabaddi">Player Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+name | string | player position name
+role | string | player playing role
+fantasy_credit | string | player fantasy credit/salary
+
+
+<h3 id="matches-lineup-kabaddi">Lineup Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | array of home object details. <a href="#lineup-player-kabaddi">see home object reference</a>
+away | array | array of away object details. <a href="#lineup-player-kabaddi">see away object reference</a>
+
+
+<h3 id="matches-lineup-kabaddi">Home/Away Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+starting7 | array | array of starting7 players list. <a href="#player-lineup-kabaddi">see starting7 player object reference</a>
+substitute | array | array of substitutes players details. <a href="#player-lineup-kabaddi">see substitute player object reference</a>
+
+
+<h3 id="player-lineup-kabaddi">Lineup Starting7/Substitute Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+name | string | player position name
+role | string | player playing role
+fantasy_credit | string | player fantasy credit/salary
+starting7 | integer | player is part of starting7 lineup
+substitute | string | player is a substitute
+played | string | player played or not, true if played else false
+
+
+## Match Stats API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/matches/1/stats?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": {
+            "match_info": {
+                "mid": 1,
+                "zone": "Zone B",
+                "round": "League",
+                "teams": {
+                    "home": {
+                        "tid": 9,
+                        "tname": "Tamil Thalaivas",
+                        "logo": "https://rest.entitysport.com/kabaddi/assets/team/logo_5cb831c45de6a.png"
+                    },
+                    "away": {
+                        "tid": 7,
+                        "tname": "Patna Pirates",
+                        "logo": "https://rest.entitysport.com/kabaddi/assets/team/logo_5cb831c45de6a.png"
+                    }
+                },
+                "datestart": "2018-10-07 02:30:00",
+                "dateend": "2018-10-07 03:10:00",
+                "timestampstart": "1538879400",
+                "timestampend": "1538881800",
+                "result": {
+                    "home": "42",
+                    "away": "26",
+                    "winner": "9",
+                    "text": "Tamil Nadu Beat Patna  (42 - 26 )",
+                    "tie": "false"
+                },
+                "status": 2,
+                "status_str": "result",
+                "gamestate": 3,
+                "gamestate_str": "Full Time",
+                "verified": "true",
+                "presquad": "true",
+                "toss": {
+                    "winner": "7",
+                    "decision": "Court"
+                },
+                "competition": {
+                    "cid": 1,
+                    "cname": "Pro Kabaddi Season 6",
+                    "startdate": "2018-10-07 00:00:00",
+                    "enddate": "2019-01-05 00:00:00",
+                    "startdatetimestamp": "1538870400",
+                    "endtdatetimestamp": "1546646400",
+                    "year": "2018",
+                    "status": 2,
+                    "status_str": "completed",
+                    "logo": "https://rest.entitysport.com/kabaddi/assets/competition/logo_5cb831fcce9a1.png"
+                },
+                "venue": {
+                    "venueid": 8,
+                    "name": "Jawaharlal Nehru Indoor Stadium, Chennai",
+                    "location": "",
+                    "founded": "",
+                    "capacity": ""
+                }
+            },
+            "team_stats": {
+                "home": {
+                    "totalpoint": 42,
+                    "alloutpoint": 6,
+                    "extrapoint": 1,
+                    "declarepoint": 0,
+                    "raidtotalpoint": 24,
+                    "raidtouchpoint": 21,
+                    "raidbonuspoint": 3,
+                    "tackletotalpoint": 11,
+                    "tacklecapturepoint": 10,
+                    "tacklecapturebonuspoint": 1,
+                    "raidtotal": 40,
+                    "raidsuccessful": 19,
+                    "raidunsuccessful": 2,
+                    "raidempty": 19,
+                    "superraid": 1,
+                    "tackletotal": 28,
+                    "tacklesuccessful": 9,
+                    "tackleunsuccessful": 19,
+                    "supertackles": 1,
+                    "allouts": 3,
+                    "declare": 0
+                },
+                "away": {
+                    "totalpoint": 26,
+                    "alloutpoint": 2,
+                    "extrapoint": 1,
+                    "declarepoint": 0,
+                    "raidtotalpoint": 21,
+                    "raidtouchpoint": 19,
+                    "raidbonuspoint": 2,
+                    "tackletotalpoint": 2,
+                    "tacklecapturepoint": 2,
+                    "tacklecapturebonuspoint": 0,
+                    "raidtotal": 40,
+                    "raidsuccessful": 18,
+                    "raidunsuccessful": 10,
+                    "raidempty": 12,
+                    "superraid": 0,
+                    "tackletotal": 23,
+                    "tacklesuccessful": 2,
+                    "tackleunsuccessful": 21,
+                    "supertackles": 0,
+                    "allouts": 1,
+                    "declare": 0
+                }
+            },
+            "match_player_stats": {
+                "home": [
+                    {
+                        "pid": 150,
+                        "name": "Ajay Thakur",
+                        "greencardcount": 2,
+                        "yellowcardcount": 0,
+                        "redcardcount": 0,
+                        "totalpoint": 14,
+                        "raidtotalpoint": 14,
+                        "raidtouchpoint": 14,
+                        "raidbonuspoint": 0,
+                        "tackletotalpoint": 0,
+                        "tacklecapturepoint": 0,
+                        "tacklecapturebonuspoint": 0,
+                        "tackletotal": 2,
+                        "tacklesuccessful": 0,
+                        "tackleunsuccessful": 2,
+                        "supertackles": 0,
+                        "raidtotal": 18,
+                        "raidsuccessful": 12,
+                        "raidunsuccessful": 1,
+                        "raidempty": 5,
+                        "superraid": 0
+                    },
+                    {
+                        "pid": 171,
+                        "name": "Surjeet Singh",
+                        "greencardcount": 0,
+                        "yellowcardcount": 0,
+                        "redcardcount": 0,
+                        "totalpoint": 7,
+                        "raidtotalpoint": 7,
+                        "raidtouchpoint": 4,
+                        "raidbonuspoint": 3,
+                        "tackletotalpoint": 0,
+                        "tacklecapturepoint": 0,
+                        "tacklecapturebonuspoint": 0,
+                        "tackletotal": 0,
+                        "tacklesuccessful": 0,
+                        "tackleunsuccessful": 0,
+                        "supertackles": 0,
+                        "raidtotal": 11,
+                        "raidsuccessful": 4,
+                        "raidunsuccessful": 0,
+                        "raidempty": 7,
+                        "superraid": 1
+                    }
+                ],
+                "away": [
+                    {
+                        "pid": 122,
+                        "name": "Pardeep Narwal",
+                        "greencardcount": 0,
+                        "yellowcardcount": 0,
+                        "redcardcount": 0,
+                        "totalpoint": 11,
+                        "raidtotalpoint": 11,
+                        "raidtouchpoint": 10,
+                        "raidbonuspoint": 1,
+                        "tackletotalpoint": 0,
+                        "tacklecapturepoint": 0,
+                        "tacklecapturebonuspoint": 0,
+                        "tackletotal": 0,
+                        "tacklesuccessful": 0,
+                        "tackleunsuccessful": 0,
+                        "supertackles": 0,
+                        "raidtotal": 18,
+                        "raidsuccessful": 9,
+                        "raidunsuccessful": 5,
+                        "raidempty": 4,
+                        "superraid": 0
+                    },
+                    {
+                        "pid": 125,
+                        "name": "Manjeet ",
+                        "greencardcount": 0,
+                        "yellowcardcount": 0,
+                        "redcardcount": 0,
+                        "totalpoint": 8,
+                        "raidtotalpoint": 8,
+                        "raidtouchpoint": 8,
+                        "raidbonuspoint": 0,
+                        "tackletotalpoint": 0,
+                        "tacklecapturepoint": 0,
+                        "tacklecapturebonuspoint": 0,
+                        "tackletotal": 1,
+                        "tacklesuccessful": 0,
+                        "tackleunsuccessful": 1,
+                        "supertackles": 0,
+                        "raidtotal": 11,
+                        "raidsuccessful": 8,
+                        "raidunsuccessful": 1,
+                        "raidempty": 2,
+                        "superraid": 0
+                    }
+                ]
+            },
+            "points": {
+                "home": [
+                    {
+                        "pid": 150,
+                        "name": "Ajay Thakur",
+                        "role": "raider",
+                        "fantasy_credit": "8",
+                        "point": 62,
+                        "starting7": 4,
+                        "substitute": 0,
+                        "raidtouch": 56,
+                        "raidbonus": 0,
+                        "raidunsucceessful": -1,
+                        "tacklesucceessful": 0,
+                        "supertackle": 0,
+                        "greencard": -4,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "pushingallout": 9,
+                        "gettingallout": -2
+                    },
+                    {
+                        "pid": 171,
+                        "name": "Surjeet Singh",
+                        "role": "raider",
+                        "fantasy_credit": "8",
+                        "point": 33,
+                        "starting7": 4,
+                        "substitute": 0,
+                        "raidtouch": 16,
+                        "raidbonus": 6,
+                        "raidunsucceessful": 0,
+                        "tacklesucceessful": 0,
+                        "supertackle": 0,
+                        "greencard": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "pushingallout": 9,
+                        "gettingallout": -2
+                    }
+                ],
+                "away": [
+                    {
+                        "pid": 122,
+                        "name": "Pardeep Narwal",
+                        "role": "raider",
+                        "fantasy_credit": "8",
+                        "point": 38,
+                        "starting7": 4,
+                        "substitute": 0,
+                        "raidtouch": 40,
+                        "raidbonus": 2,
+                        "raidunsucceessful": -5,
+                        "tacklesucceessful": 0,
+                        "supertackle": 0,
+                        "greencard": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "pushingallout": 3,
+                        "gettingallout": -6
+                    },
+                    {
+                        "pid": 125,
+                        "name": "Manjeet ",
+                        "role": "defender",
+                        "fantasy_credit": "8",
+                        "point": 32,
+                        "starting7": 4,
+                        "substitute": 0,
+                        "raidtouch": 32,
+                        "raidbonus": 0,
+                        "raidunsucceessful": -1,
+                        "tacklesucceessful": 0,
+                        "supertackle": 0,
+                        "greencard": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "pushingallout": 3,
+                        "gettingallout": -6
+                    }
+                ]
+            }
+        },
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "e3f367077aaf9183b730dbc6ca787378",
+    "modified": "2019-04-28 10:01:11",
+    "datetime": "2019-04-28 10:01:11",
+    "api_version": "1.0"
+}
+
+```
+This API contains a single match info, match team and player stats details.
+
+### Request
+* Path: /kabaddi/matches/mid/stats
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match details object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+match_info | array | An array of match details. <a href="#matches-info-kabaddi">see match_info object reference</a>
+team_stats | array | An array of team match statistic details. <a href="#team_statistics-kabaddi">see team match statistic object reference</a>
+match_player_stats | array | An array of player match statistic details. <a href="#match_player_stats-kabaddi">see player match statistic object reference</a>
+points | array | An array of player match fantasy points details. <a href="#fantasy-points-kabaddi">see player fantasy points object reference</a>
+
+
+<h3 id="team_statistics-kabaddi">Match Team Stats Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+totalpoint | integer | total points of the team
+alloutpoint | integer | allout points
+extrapoint | integer | extra points
+declarepoint | integer | declare point
+raidtotalpoint | integer | total raid points
+raidtouchpoint | integer | raid touch points
+raidbonuspoint | integer | raid bonus points
+tackletotalpoint | integer | total tackle point
+tacklecapturepoint  | integer | tackle capture points
+tacklecapturebonuspoint | integer | tackle capture bonus points
+raidtotal | integer | total raid
+raidsuccessful | integer | total successfull raid
+raidunsuccessful | integer | total unsuccessfull raid
+raidempty | integer | total empty raid
+superraid | integer | total superraid
+tackletotal | integer | total tackle
+tacklesuccessful | integer | total successfull tackle
+tackleunsuccessful | integer | total unsuccessfull tackle
+supertackles | integer | otal super tackle
+allouts  | integer | total allouts pushed by the team
+declare | integer | declare count
+
+
+<h3 id="match_player_stats-kabaddi">Player Match Statistics Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | array of home team player stats details. <a href="#match_player_stats_kabaddi">see player statistic object reference</a>
+away | array | array of away team player stats details. <a href="#match_player_stats_kabaddi">see player statistic object reference</a>
+
+
+<h3 id="match_player_stats-kabaddi">Player Match Statistics Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+name | string | player name
+greencardcount | string | total green card received by the player
+yellowcardcount | integer | total yellow card received by the player
+redcardcount | integer | total red card received by the player
+totalpoint | integer | total points awarded to the player
+raidtotalpoint | integer | total raid points
+raidtouchpoint | integer | total raid touch points
+raidbonuspoint | integer | total raid bonus points
+tackletotalpoint | integer | total tackle points
+tacklecapturepoint | integer | total tackle capture points
+tacklecapturebonuspoint | integer | total tackle capture bonus points
+tackletotal | integer | total tackle
+tacklesuccessful | integer | total successfull tackle
+tackleunsuccessful | integer | total unsuccessfull tackle
+supertackles | integer | total super tackles
+raidtotal | integer | total raids
+raidsuccessful | integer | total successfull raids
+raidunsuccessful | integer | total unsuccessfull raids
+raidempty | integer | total empty raids
+superraid | integer | total super raids
+
+
+<h3 id="fantasy-points-kabaddi">Fantasy Points Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+name | string | player name
+role | string | player role
+fantasy_credit | string | player fantasy credit
+point | integer | total fantasy points of player
+starting7 | integer | points for starting7
+substitute | integer | points for substitute
+raidtouch | integer | raid touch points
+raidbonus | integer | raid bonus points
+raidunsuccessful | integer | unsuccessfull raid points
+tacklesuccessful | integer | successfull tackle points
+supertackle | integer | super tackle points
+greencard | integer | green card points
+yellowcard | integer | yellow card points
+redcard | integer | red card points
+pushingallout | integer | points for pushing all out
+gettingallout | integer | points for getting all out
+
+
+
+## Teams List API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/teams?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "tid": "1",
+                "tname": "Bengaluru Bulls",
+                "sex": "m",
+                "city": "Bengaluru",
+                "founded": "2014",
+                "website": "www.bengalurubulls.com",
+                "twitter": "www.twitter.com/BengaluruBulls",
+                "instagram": "www.instagram.com/bengalurubullsofficial",
+                "teamlogo": "https://rest.entitysport.com/kabaddi/assets/team/logo_5cb8312952da7.png",
+                "teamurl": "team/1/info",
+                "teammatches_url": "team/1/matches"
+            }
+        ],
+        "total_items": "1",
+        "total_pages": 1
+    },
+    "etag": "31ee4fffb2a44554723f3476143e7e12",
+    "modified": "2019-04-27 11:03:01",
+    "datetime": "2019-04-27 11:03:01",
+    "api_version": "1.0"
+}
+
+```
+This API lists all the teams available to access.
+
+### Request
+* Path: /kabaddi/teams
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of teams object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of teams available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+tname | string | team name
+sex| string | team gender
+city | string | team city name
+founded | integer | year of team founded
+website | string | website url of team website
+twitter | string | twitter account name
+hastag| string | social hastag
+teamlogo | string | team logo url
+team_url | string | team info url
+team_matches_url | string | team matches list url
+
+
+## Team Info API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/team/1/info?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "tid": "1",
+                "tname": "Bengaluru Bulls",
+                "sex": "m",
+                "city": "Bengaluru",
+                "founded": "2014",
+                "website": "www.bengalurubulls.com",
+                "twitter": "www.twitter.com/BengaluruBulls",
+                "instagram": "www.instagram.com/bengalurubullsofficial",
+                "teamlogo": "https://rest.entitysport.com/kabaddi/assets/team/logo_5cb8312952da7.png",
+                "squads": [
+                    {
+                        "pid": "1",
+                        "fullname": "Rohit Kumar",
+                        "birthdate": "1990-01-19",
+                        "nationality": "India",
+                        "positionid": "2",
+                        "positionname": "raider",
+                        "height": "",
+                        "weight": "79 kg"
+                    },
+                    {
+                        "pid": "2",
+                        "fullname": "Anand V",
+                        "birthdate": "1996-01-24",
+                        "nationality": "India",
+                        "positionid": "2",
+                        "positionname": "raider",
+                        "height": "",
+                        "weight": ""
+                    }
+                ],
+                "coach": "",
+                "venue": {
+                    "venueid": 7,
+                    "name": "Patliputra Sports Complex, Patna",
+                    "location": "",
+                    "founded": "",
+                    "capacity": ""
+                }
+            }
+        ],
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "5bd04d9ff8f3aa5667b37026ba4d0d00",
+    "modified": "2019-04-28 10:04:33",
+    "datetime": "2019-04-28 10:04:33",
+    "api_version": "1.0"
+}
+
+```
+This API contains team info and squad/roaster player details.
+
+### Request
+* Path: /kabaddi/team/tid/info
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | string | team id
+token | {ACCESS_TOKEN} | API Access token
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of team object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of teams available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+tname | string | team name
+sex| string | team gender
+city | string | team city name
+founded | integer | year of team founded
+website | string | website url of team website
+twitter | string | twitter account name
+hastag| string | social hastag
+teamlogo | string | team logo url
+team_url | string | team info url
+team_matches_url | string | team matches list url
+squads | array | An array of team player details. <a href="#team-player-kabaddi">see squads object reference</a>
+coach | string | coach name
+venue | array | An array of team venue details. <a href="#team-venue-kabaddi">see venue object reference</a>
+
+
+<h3 id="team-player-kabaddi">Squads Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+fullname | string | Player full name
+birthdate | string | Player Birthdate format - dd/mm/yy
+nationality | string | country name
+positionid | string | player playing position id
+positionname | string | player playing position name
+height | integer | player height in centimeters
+weight | integer | player weight in kg
+
+
+<h3 id="team-venue-kabaddi">Venue Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+venueid | integer | venue id
+name | string | venue name
+location | string | location of the venue
+founded | integer | year venue founded
+capacity | integer | capacity of venue stadium
+
+
+
+## Team Matches API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/team/1/matches?token=[ACCESS_TOKEN]"
+```
+
+> Using Token and Status parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/team/1/matches?token=[ACCESS_TOKEN]&status=2"
+```
+
+> Using Token, Status and Pagination parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/team/1/matches?token=[ACCESS_TOKEN]&status=2&per_page=10&paged=1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "mid": 138,
+                "zone": "",
+                "round": "Final",
+                "teams": {
+                    "home": {
+                        "tid": 1,
+                        "tname": "Bengaluru Bulls",
+                        "logo": "https://rest.entitysport.com/kabaddi/assets/team/logo_5cb8312952da7.png"
+                    },
+                    "away": {
+                        "tid": 4,
+                        "tname": "Gujarat Fortunegiants",
+                        "logo": "https://rest.entitysport.com/kabaddi/assets/team/logo_5cb8312952da7.png"
+                    }
+                },
+                "datestart": "2019-01-05 02:30:00",
+                "dateend": "2019-01-05 03:10:00",
+                "timestampstart": "1546655400",
+                "timestampend": "1546657800",
+                "result": {
+                    "home": "38",
+                    "away": "33",
+                    "winner": "1",
+                    "text": "Bengaluru Bulls Beat Gujarat Fortunegiants  (38-33 )",
+                    "tie": "false"
+                },
+                "status": 2,
+                "status_str": "result",
+                "gamestate": 3,
+                "gamestate_str": "Full Time",
+                "verified": "true",
+                "presquad": "true",
+                "toss": {
+                    "winner": "1",
+                    "decision": "Court"
+                },
+                "competition": {
+                    "cid": 1,
+                    "cname": "Pro Kabaddi Season 6",
+                    "startdate": "2018-10-07 00:00:00",
+                    "enddate": "2019-01-05 00:00:00",
+                    "startdatetimestamp": "1538870400",
+                    "endtdatetimestamp": "1546646400",
+                    "year": "2018",
+                    "status": 2,
+                    "status_str": "completed",
+                    "logo": "https://rest.entitysport.com/kabaddi/assets/competition/logo_5cb831fcce9a1.png"
+                },
+                "venue": {
+                    "venueid": 10,
+                    "name": "DOME@NSCI SVP Stadium, Mumbai",
+                    "location": "",
+                    "founded": "",
+                    "capacity": ""
+                }
+            }
+        ],
+        "total_items": 24,
+        "total_pages": 24
+    },
+    "etag": "6d253e36800c9554f2afc7b74eb1fe80",
+    "modified": "2019-04-28 09:55:49",
+    "datetime": "2019-04-28 09:55:49",
+    "api_version": "1.0"
+}
+
+```
+
+This API contains the list of team's all matches details.
+
+### Request
+* Path: /kabaddi/team/tid/matches
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | string | competition id
+token | {ACCESS_TOKEN} | API Access token
+status | integer | 1 = upcoming, 2 = result, 3 = live, 4 = postponed, 5 = cancelled
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+match_info | array | An array of match details. <a href="#matches-info-kabaddi">see match_info object reference</a>
+
+
+## Player List API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/players?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "pid": "1",
+                "fullname": "Rohit Kumar",
+                "birthdate": "1990-01-19",
+                "sex": "m",
+                "nationality": "India",
+                "positionid": "2",
+                "positionname": "raider",
+                "height": "",
+                "weight": "79 kg",
+                "jerseyno": "9",
+                "fantasy_credit": "8"
+            }
+        ],
+        "total_items": 239,
+        "total_pages": 239
+    },
+    "etag": "1c9e6774f1c8458ae18b5640fe2ac7c2",
+    "modified": "2019-04-28 09:52:44",
+    "datetime": "2019-04-28 09:52:44",
+    "api_version": "1.0"
+}
+
+```
+This API contains list of player details.
+
+### Request
+* Path: /kabaddi/players
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of player object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of players available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+fullname | string | Player full name
+birthdate | string | Player Birthdate format - dd/mm/yy
+nationality | string | country name
+positionid | string | player playing position id
+positionname | string | player playing position name
+height | integer | player height in centimeters
+weight | integer | player weight in kg
+jerseyno | string | player jersey number
+fantasy_credit | string | player fantasy credit/salary
+
+
+## Player Profile API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/kabaddi/player/1/profile?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": {
+            "player_info": {
+                "pid": "1",
+                "fullname": "Rohit Kumar",
+                "birthdate": "1990-01-19",
+                "sex": "m",
+                "nationality": "India",
+                "positionid": "2",
+                "positionname": "raider",
+                "height": "",
+                "weight": "79 kg",
+                "jerseyno": "9",
+                "fantasy_credit": "8"
+            },
+            "stats": [
+                {
+                    "tournament": "Pro Kabaddi League Season 3, 2016",
+                    "teamid": 7,
+                    "teamname": "Patna Pirates",
+                    "matchplayed": 12,
+                    "totalraid": 178,
+                    "successfulraid": 80,
+                    "unsuccessfulraid": 28,
+                    "emptyraid": 70,
+                    "superraid": 4,
+                    "percentsuccessfulraid": "57.3",
+                    "totaltackle": 14,
+                    "successfultackel": 7,
+                    "unsuccessfultackel": 7,
+                    "supertackle": "",
+                    "tacklesuccessfulrate": "50",
+                    "tacklesuccessfulpermatch": "0.58",
+                    "greencard": "",
+                    "yellowcard": "",
+                    "redcard": "",
+                    "totalpoint": 109,
+                    "totalraidpoint": 102,
+                    "raidtouchpoint": 87,
+                    "raidbonuspoint": 15,
+                    "raidpointpermatch": "8.5",
+                    "totaltacklepoint": 7,
+                    "super10s": "5",
+                    "high5s": "",
+                    "notoutpercentage": "84.26"
+                },
+                {
+                    "tournament": "Pro Kabaddi League Season 4, 2016",
+                    "teamid": 1,
+                    "teamname": "Bengaluru Bulls",
+                    "matchplayed": 14,
+                    "totalraid": 234,
+                    "successfulraid": 75,
+                    "unsuccessfulraid": 52,
+                    "emptyraid": 107,
+                    "superraid": 3,
+                    "percentsuccessfulraid": "39.74",
+                    "totaltackle": 16,
+                    "successfultackel": 6,
+                    "unsuccessfultackel": 10,
+                    "supertackle": 1,
+                    "tacklesuccessfulrate": "43.75",
+                    "tacklesuccessfulpermatch": "0.42",
+                    "greencard": "",
+                    "yellowcard": "",
+                    "redcard": "",
+                    "totalpoint": 100,
+                    "totalraidpoint": 93,
+                    "raidtouchpoint": 75,
+                    "raidbonuspoint": 18,
+                    "raidpointpermatch": "6.64",
+                    "totaltacklepoint": 7,
+                    "super10s": "1",
+                    "high5s": "",
+                    "notoutpercentage": "77.77"
+                },
+                {
+                    "tournament": "Pro Kabaddi League Season 5, 2017",
+                    "teamid": 1,
+                    "teamname": "Bengaluru Bulls",
+                    "matchplayed": 22,
+                    "totalraid": 418,
+                    "successfulraid": 192,
+                    "unsuccessfulraid": 82,
+                    "emptyraid": 144,
+                    "superraid": 1,
+                    "percentsuccessfulraid": "52.39",
+                    "totaltackle": 27,
+                    "successfultackel": 11,
+                    "unsuccessfultackel": 16,
+                    "supertackle": 1,
+                    "tacklesuccessfulrate": "44.44",
+                    "tacklesuccessfulpermatch": "0.5",
+                    "greencard": 1,
+                    "yellowcard": "",
+                    "redcard": "",
+                    "totalpoint": 231,
+                    "totalraidpoint": 219,
+                    "raidtouchpoint": 170,
+                    "raidbonuspoint": 49,
+                    "raidpointpermatch": "9.95",
+                    "totaltacklepoint": 12,
+                    "super10s": "12",
+                    "high5s": "",
+                    "notoutpercentage": "80.38"
+                },
+                {
+                    "tournament": "Pro Kabaddi League Season 6, 2018",
+                    "teamid": 1,
+                    "teamname": "Bengaluru Bulls",
+                    "matchplayed": 24,
+                    "totalraid": 341,
+                    "successfulraid": 129,
+                    "unsuccessfulraid": 64,
+                    "emptyraid": 148,
+                    "superraid": 5,
+                    "percentsuccessfulraid": "47.5",
+                    "totaltackle": 30,
+                    "successfultackel": 9,
+                    "unsuccessfultackel": 21,
+                    "supertackle": "",
+                    "tacklesuccessfulrate": "30",
+                    "tacklesuccessfulpermatch": "0.37",
+                    "greencard": 1,
+                    "yellowcard": 1,
+                    "redcard": "",
+                    "totalpoint": 171,
+                    "totalraidpoint": 162,
+                    "raidtouchpoint": 129,
+                    "raidbonuspoint": 33,
+                    "raidpointpermatch": "6.75",
+                    "totaltacklepoint": 9,
+                    "super10s": "5",
+                    "high5s": "1",
+                    "notoutpercentage": "81.23"
+                },
+                {
+                    "tournament": "total",
+                    "teamid": "",
+                    "teamname": "",
+                    "matchplayed": 72,
+                    "totalraid": 1171,
+                    "successfulraid": 476,
+                    "unsuccessfulraid": 226,
+                    "emptyraid": 469,
+                    "superraid": 13,
+                    "percentsuccessfulraid": "49.18",
+                    "totaltackle": 87,
+                    "successfultackel": 33,
+                    "unsuccessfultackel": 54,
+                    "supertackle": 2,
+                    "tacklesuccessfulrate": "40.22",
+                    "tacklesuccessfulpermatch": "0.45",
+                    "greencard": 2,
+                    "yellowcard": 1,
+                    "redcard": "",
+                    "totalpoint": 611,
+                    "totalraidpoint": 576,
+                    "raidtouchpoint": 461,
+                    "raidbonuspoint": 115,
+                    "raidpointpermatch": "8",
+                    "totaltacklepoint": 35,
+                    "super10s": "23",
+                    "high5s": "1",
+                    "notoutpercentage": "80.7"
+                }
+            ]
+        },
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "98e9e53062f03698baa8940d427d6d00",
+    "modified": "2019-04-28 09:36:03",
+    "datetime": "2019-04-28 09:36:03",
+    "api_version": "1.0"
+}
+
+```
+This API contains player profile and career statistic details.
+
+### Request
+* Path: /kabaddi/player/pid/profile
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+token | {ACCESS_TOKEN} | API Access token
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of player object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of players available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+player_info | array | array of player profile details. <a href="#player-profile-kabaddi">see player_info object reference</a>
+stats | array | array of player stats season wise for during playing career. <a href="#team_played-kabaddi">see stats object reference</a>
+
+
+<h3 id="player-profile-kabaddi">Player Profile Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+fullname | string | Player full name
+birthdate | string | Player Birthdate format - dd/mm/yy
+nationality | string | country name
+positionid | string | player playing position id
+positionname | string | player playing position name
+height | integer | player height in centimeters
+weight | integer | player weight in kg
+jerseyno | string | player jersey number
+fantasy_credit | string | player fantasy credit/salary
+
+
+<h3 id="team_played-kabaddi">Stats Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tournament | string | tournament name
+tid | integer | team id
+teamname | string | team name
+matchplayed | integer | matches played by the player
+totalraid | integer | total raids attempted by the player
+successfulraid | integer | total successfull raids completed by the player
+unsuccessfulraid | integer | total unsuccessfull raids attempted by the player
+emptyraid | integer | total empty raids attempted by the player
+superraid | integer | total super raids attempted by the player
+percentsuccessfulraid | string | raids success percent of the player
+totaltackle | integer | total tackle attempted by the player
+successfultackel | integer | total successfull tackle attempted by the player
+unsuccessfultackel | integer | total unsuccessfull tackle attempted by the player
+supertackle | integer | total super tackle attempted by the player
+tacklesuccessfulrate | string | successfull tackle percent of the player
+tacklesuccessfulpermatch | string | average successfull tackle attempted by the player per match
+greencard | integer | number of green card received by the player
+yellowcard | integer | number of yellow card received by the player
+redcard | integer | number of red card received by the player
+totalpoint | integer | total points by the player
+totalraidpoint | integer | total raid points by the player
+raidtouchpoint | integer | total raid touch point
+raidbonuspoint | integer | total raid bonus point
+raidpointpermatch | string | average raid points by the player per game
+totaltacklepoint | integer | total tackle points by the player
+super10s | string | 10 raid points by the player in a game
+high5s | string | 5 tackle by the player in a game
+notoutpercentage | string | amount of play time percentage player remain notout
+
+
+
+## Match status Reference
+
+Code | Description
+-----| ------- 
+1  |  Upcoming
+2  |  Result
+3  |  Live
+4  |  Postponed
+5  |  Canceled
+6  |  Abandoned
+
+
+## Match Game State Reference
+
+<aside class="success">game_state is only used for live match</aside>
+
+Code | Description
+-----| ------- 
+0 |  Not started
+1 |  1st Half
+2 |  2nd Half
+3 |  Full Time
+4 |  Extra Time
+
+
+
+## Playing Position Reference
+
+Code | Description
+---- | ------- 
+1 | All Rounder
+2 | Raider
+3 | Defender
+
+
