@@ -14709,6 +14709,1548 @@ yellowcard | integer | details of number of yellow card received by the player.
 redcard | integer | details of number of red card received by the player.
 
 
+
+## Match Fantasy API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/soccer/matches/790/fantasy?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": {
+            "match_info": {
+                "mid": 790,
+                "round": {
+                    "type": "table",
+                    "round": "35",
+                    "name": 35
+                },
+                "result": {
+                    "home": "1",
+                    "away": "0",
+                    "winner": "home"
+                },
+                "teams": {
+                    "home": {
+                        "tid": 64,
+                        "tname": "Vallecano",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/vallecano.png",
+                        "fullname": "Rayo Vallecano",
+                        "abbr": "RVC"
+                    },
+                    "away": {
+                        "tid": 70,
+                        "tname": "Real Madrid",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/realmadrid.png",
+                        "fullname": "Real Madrid",
+                        "abbr": "MAD"
+                    }
+                },
+                "periods": {
+                    "p1": {
+                        "home": 1,
+                        "away": 0
+                    },
+                    "p2": {
+                        "home": 0,
+                        "away": 0
+                    },
+                    "ft": {
+                        "home": 1,
+                        "away": 0
+                    }
+                },
+                "datestart": "2019-04-28 18:45:00",
+                "dateend": "2019-04-28 20:40:48",
+                "timestampstart": 1556477100,
+                "timestampend": 1556484048,
+                "injurytime": null,
+                "time": 90,
+                "status_str": "result",
+                "status": 2,
+                "gamestate_str": "Ended",
+                "gamestate": 9,
+                "pre_squad": "true",
+                "periodlength": "45",
+                "numberofperiods": "2",
+                "attendance": "",
+                "overtimelength": "15",
+                "competition": {
+                    "cid": 4,
+                    "cname": "LaLiga",
+                    "startdate": "2018-08-17 00:00:00",
+                    "enddate": "2019-05-20 23:55:00",
+                    "startdatetimestamp": 1534464000,
+                    "endtdatetimestamp": 1558396500,
+                    "year": "18/19",
+                    "category": "Spain",
+                    "iocid": "199",
+                    "ioc": "es",
+                    "status": 3,
+                    "status_str": "live",
+                    "logo": "https://rest.entitysport.com/soccer/assets/competition/logo_5c4ab42ff20b8.png"
+                },
+                "venue": {
+                    "venueid": 37,
+                    "name": "Estadio de Vallecas",
+                    "location": "Madrid, Spain",
+                    "founded": "1976",
+                    "capacity": "14708"
+                }
+            },
+            "teams": {
+                "home": [
+                    {
+                        "pid": 13145,
+                        "name": "Mario Suarez",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 1297,
+                        "name": "Gorka Elustondo",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 1831,
+                        "name": "Franco Di Santo",
+                        "nationality": {
+                            "iocid": 10,
+                            "name": "Argentina",
+                            "ioc": "ar"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 1298,
+                        "name": "Javi Guerra",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": 9
+                    },
+                    {
+                        "pid": 1299,
+                        "name": "Oscar Trejo",
+                        "nationality": {
+                            "iocid": 10,
+                            "name": "Argentina",
+                            "ioc": "ar"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 1300,
+                        "name": "Alberto Garcia",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 1301,
+                        "name": "Gael Kakuta",
+                        "nationality": {
+                            "iocid": 50,
+                            "name": "DR Congo",
+                            "ioc": "cd"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 1303,
+                        "name": "Tito",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 5814,
+                        "name": "Giannelli Imbula",
+                        "nationality": {
+                            "iocid": 73,
+                            "name": "France",
+                            "ioc": "fr"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 1304,
+                        "name": "Abdoulaye Ba",
+                        "nationality": {
+                            "iocid": 188,
+                            "name": "Senegal",
+                            "ioc": "sn"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 5815,
+                        "name": "Stole Dimitrievski",
+                        "nationality": {
+                            "iocid": 126,
+                            "name": "FYR Macedonia",
+                            "ioc": "mk"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 1305,
+                        "name": "Jordi Amat",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 1538,
+                        "name": "Bebe",
+                        "nationality": {
+                            "iocid": 172,
+                            "name": "Portugal",
+                            "ioc": "pt"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 1306,
+                        "name": "Raul De Tomas",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": 9
+                    },
+                    {
+                        "pid": 598,
+                        "name": "Luis Advincula",
+                        "nationality": {
+                            "iocid": 168,
+                            "name": "Peru",
+                            "ioc": "pe"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 1308,
+                        "name": "Emiliano Velazquez",
+                        "nationality": {
+                            "iocid": 228,
+                            "name": "Uruguay",
+                            "ioc": "uy"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 1309,
+                        "name": "Jose Pozo",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 1543,
+                        "name": "Alejandro Galvez",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 1310,
+                        "name": "Alex Moreno",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 4580,
+                        "name": "Uche",
+                        "nationality": {
+                            "iocid": 156,
+                            "name": "Nigeria",
+                            "ioc": "ng"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 1311,
+                        "name": "Alvaro Medran",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 1312,
+                        "name": "Alvaro Garcia",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 1313,
+                        "name": "Adri Embarba",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 1314,
+                        "name": "Jose Leon",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 10.5
+                    },
+                    {
+                        "pid": 1315,
+                        "name": "Joni Montiel",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 1316,
+                        "name": "Sergio Akieme Rodriguez",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 1317,
+                        "name": "Santi Comesana",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 25416,
+                        "name": "Alejandro Catena",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 1318,
+                        "name": "Miguel Angel Morro",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 1319,
+                        "name": "Sergio Moreno",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 31141,
+                        "name": "Luis Meseguer",
+                        "nationality": {
+                            "iocid": 65,
+                            "name": "Equatorial Guinea",
+                            "ioc": "gq"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 31143,
+                        "name": "Manuel Navarro",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 28896,
+                        "name": "Angel Algobia",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 28897,
+                        "name": "Martin Pascual",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 8.5
+                    }
+                ],
+                "away": [
+                    {
+                        "pid": 1447,
+                        "name": "Karim Benzema",
+                        "nationality": {
+                            "iocid": 73,
+                            "name": "France",
+                            "ioc": "fr"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": 9.5
+                    },
+                    {
+                        "pid": 91,
+                        "name": "Sergio Ramos",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 9.5
+                    },
+                    {
+                        "pid": 1448,
+                        "name": "Gareth Bale",
+                        "nationality": {
+                            "iocid": 243,
+                            "name": "Wales",
+                            "ioc": "w"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": 9.5
+                    },
+                    {
+                        "pid": 248,
+                        "name": "Luka Modric",
+                        "nationality": {
+                            "iocid": 54,
+                            "name": "Croatia",
+                            "ioc": "hr"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 410,
+                        "name": "Marcelo",
+                        "nationality": {
+                            "iocid": 30,
+                            "name": "Brazil",
+                            "ioc": "br"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 9
+                    },
+                    {
+                        "pid": 207,
+                        "name": "Toni Kroos",
+                        "nationality": {
+                            "iocid": 80,
+                            "name": "Germany",
+                            "ioc": "de"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 435,
+                        "name": "Keylor Navas",
+                        "nationality": {
+                            "iocid": 52,
+                            "name": "Costa Rica",
+                            "ioc": "cr"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 102,
+                        "name": "Nacho",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 282,
+                        "name": "Thibaut Courtois",
+                        "nationality": {
+                            "iocid": 21,
+                            "name": "Belgium",
+                            "ioc": "be"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 105,
+                        "name": "Isco",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 421,
+                        "name": "Casemiro",
+                        "nationality": {
+                            "iocid": 30,
+                            "name": "Brazil",
+                            "ioc": "br"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 35,
+                        "name": "Raphael Varane",
+                        "nationality": {
+                            "iocid": 73,
+                            "name": "France",
+                            "ioc": "fr"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 107,
+                        "name": "Dani Carvajal",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 4539,
+                        "name": "Mariano Diaz",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": 9
+                    },
+                    {
+                        "pid": 109,
+                        "name": "Lucas Vazquez",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 1451,
+                        "name": "Marcos Llorente",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 110,
+                        "name": "Alvaro Odriozola",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 1452,
+                        "name": "Jesus Vallejo",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 111,
+                        "name": "Marco Asensio",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 1453,
+                        "name": "Dani Ceballos",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 29610,
+                        "name": "Cristo Gonzalez",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 1455,
+                        "name": "Luca Zidane",
+                        "nationality": {
+                            "iocid": 73,
+                            "name": "France",
+                            "ioc": "fr"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 1456,
+                        "name": "Javi Sanchez",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 1457,
+                        "name": "Sergio Reguilon",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 10
+                    },
+                    {
+                        "pid": 29664,
+                        "name": "Jaume Grau",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 848,
+                        "name": "Brahim Diaz",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 1459,
+                        "name": "Federico Valverde",
+                        "nationality": {
+                            "iocid": 228,
+                            "name": "Uruguay",
+                            "ioc": "uy"
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8
+                    },
+                    {
+                        "pid": 31147,
+                        "name": "Adrian De La Fuente",
+                        "nationality": {
+                            "iocid": 199,
+                            "name": "Spain",
+                            "ioc": "es"
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 31148,
+                        "name": "Franchu",
+                        "nationality": {
+                            "iocid": 10,
+                            "name": "Argentina",
+                            "ioc": "ar"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 1460,
+                        "name": "Vinicius Junior",
+                        "nationality": {
+                            "iocid": 30,
+                            "name": "Brazil",
+                            "ioc": "br"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": 8.5
+                    },
+                    {
+                        "pid": 25961,
+                        "name": "Mohamed Mizzian Salmi",
+                        "nationality": {
+                            "iocid": 0,
+                            "name": "",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": 8.5
+                    }
+                ]
+            },
+            "fantasy_points": {
+                "home": [
+                    {
+                        "pid": 1300,
+                        "pname": "Alberto Garcia",
+                        "role": "Goalkeeper",
+                        "points": 10,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1,
+                        "shotsontarget": 0,
+                        "cleansheet": 5,
+                        "shotssaved": 2,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 1303,
+                        "pname": "Tito",
+                        "role": "Defender",
+                        "points": 8,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1,
+                        "shotsontarget": 0,
+                        "cleansheet": 5,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 1543,
+                        "pname": "Alejandro Galvez",
+                        "role": "Defender",
+                        "points": 8,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1,
+                        "shotsontarget": 0,
+                        "cleansheet": 5,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 1304,
+                        "pname": "Abdoulaye Ba",
+                        "role": "Defender",
+                        "points": 8,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1,
+                        "shotsontarget": 0,
+                        "cleansheet": 5,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 1310,
+                        "pname": "Alex Moreno",
+                        "role": "Defender",
+                        "points": 8,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1,
+                        "shotsontarget": 0,
+                        "cleansheet": 5,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 13145,
+                        "pname": "Mario Suarez",
+                        "role": "Midfielder",
+                        "points": 4.5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 1,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 4580,
+                        "pname": "Uche",
+                        "role": "Midfielder",
+                        "points": 4.5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 1,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 1538,
+                        "pname": "Bebe",
+                        "role": "Midfielder",
+                        "points": 3.5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 1,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 1309,
+                        "pname": "Jose Pozo",
+                        "role": "Midfielder",
+                        "points": 5.5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1.5,
+                        "shotsontarget": 1,
+                        "cleansheet": 1,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 1313,
+                        "pname": "Adri Embarba",
+                        "role": "Forward",
+                        "points": 12.5,
+                        "minutesplayed": 2,
+                        "goalscored": 8,
+                        "assist": 0,
+                        "passes": 1.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 1,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 1298,
+                        "pname": "Javi Guerra",
+                        "role": "Forward",
+                        "points": 3,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 1311,
+                        "pname": "Alvaro Medran",
+                        "role": "Midfielder",
+                        "points": 2,
+                        "minutesplayed": 1,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0,
+                        "shotsontarget": 0,
+                        "cleansheet": 1,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 1312,
+                        "pname": "Alvaro Garcia",
+                        "role": "Forward",
+                        "points": 1,
+                        "minutesplayed": 1,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 1299,
+                        "pname": "Oscar Trejo",
+                        "role": "Forward",
+                        "points": 1,
+                        "minutesplayed": 1,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    }
+                ],
+                "away": [
+                    {
+                        "pid": 282,
+                        "pname": "Thibaut Courtois",
+                        "role": "Goalkeeper",
+                        "points": 5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 2,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 107,
+                        "pname": "Dani Carvajal",
+                        "role": "Defender",
+                        "points": 4.5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 1,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 1452,
+                        "pname": "Jesus Vallejo",
+                        "role": "Defender",
+                        "points": 3.5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 1,
+                        "yellowcard": -1,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 35,
+                        "pname": "Raphael Varane",
+                        "role": "Defender",
+                        "points": 3.5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 410,
+                        "pname": "Marcelo",
+                        "role": "Defender",
+                        "points": 3.5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 207,
+                        "pname": "Toni Kroos",
+                        "role": "Midfielder",
+                        "points": 5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 2,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 1,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 1451,
+                        "pname": "Marcos Llorente",
+                        "role": "Midfielder",
+                        "points": 3.5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 248,
+                        "pname": "Luka Modric",
+                        "role": "Midfielder",
+                        "points": 2,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": -1,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 1448,
+                        "pname": "Gareth Bale",
+                        "role": "Forward",
+                        "points": 3.5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0.5,
+                        "shotsontarget": 1,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 4539,
+                        "pname": "Mariano Diaz",
+                        "role": "Forward",
+                        "points": 2,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 1453,
+                        "pname": "Dani Ceballos",
+                        "role": "Midfielder",
+                        "points": 3,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 848,
+                        "pname": "Brahim Diaz",
+                        "role": "Midfielder",
+                        "points": 1,
+                        "minutesplayed": 1,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 105,
+                        "pname": "Isco",
+                        "role": "Midfielder",
+                        "points": 1.5,
+                        "minutesplayed": 1,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 109,
+                        "pname": "Lucas Vazquez",
+                        "role": "Forward",
+                        "points": 1,
+                        "minutesplayed": 1,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    }
+                ]
+            }
+        },
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "dd0a66dd097c969b586903c3fbc892e9",
+    "modified": "2019-04-30 06:34:36",
+    "datetime": "2019-04-30 06:34:36",
+    "api_version": "1.0"
+}
+
+```
+This API contains a single match info, match team and player stats details.
+
+### Request
+* Path: /soccer/matches/mid/fantasy
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match details object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+match_info | array | An array of match details. <a href="#matches-info">see match_info object reference</a>
+teams | array | An array of team players list. <a href="#fantasy-squad-soccer">see teams object reference</a>
+fantasy_points | array | An array of player fantasy points details. <a href="#fantasy-points-soccer">see player fantasy object reference</a>
+
+
+<h3 id="fantasy-squad-soccer">Team Squad Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | an array of home team players list. <a href="#fantasy-squad-soccer-player">see player fantasy object reference</a>
+away | array | an array of away team players list. <a href="#fantasy-squad-soccer-player">see player fantasy object reference</a>
+
+
+<h3 id="fantasy-squad-soccer-player">Home/Away Player Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+name | string | player name
+nationality | array | player nationality details
+positiontype | string | player playing role
+positionname | string | player playing role name
+fantasy_player_rating | integer | player fantasy credit/salary
+
+
+<h3 id="fantasy-points-soccer">Player Fantasy Points Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | an array of home team player fantasy points.<a href="#fantasy-points-soccer-player">see player stats object reference</a>
+away| array | an array of away team pplayer fantasy points.<a href="#fantasy-points-soccer-player">see player stats object reference</a>
+
+
+<h3 id="fantasy-points-soccer-player">Player Fantasy Points Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+pname | string | player name
+role | string | team type(home or away)
+points | float | total fantasy points of a player
+minutesplayed | integer | fantasy points for minutes played 
+goalscored | integer | fantasy points for number of goals scored by the player 
+assist | integer | fantasy points for assist
+passes | float | fantasy points for successful passes
+shotsontarget | integer | fantasy points for shots on target
+cleansheet | integer | fantasy points for clean sheet
+shotssaved | integer | fantasy points for shots saved
+penaltysaved | integer | fantasy points for penalty saved
+tacklesuccessful | integer | fantasy points for successfull tackle
+yellowcard | integer | fantasy points for yellow card
+redcard | integer | fantasy points for redcard
+owngoal | integer | fantasy points for own goal
+goalsconceded | integer | fantasy points for goal conceded by the player
+penaltymissed | integer | fantasy points for penalty missed by the player
+
+
+
 ## Teams List API
 
 > Using Token parameter:
@@ -28565,13 +30107,13 @@ curl -X GET "https://rest.entitysport.com/kabaddi/player/1/profile?token=[ACCESS
                     "unsuccessfulraid": 28,
                     "emptyraid": 70,
                     "superraid": 4,
-                    "percentsuccessfulraid": "57.3",
+                    "percentsuccessfulraid": 57.3,
                     "totaltackle": 14,
                     "successfultackel": 7,
                     "unsuccessfultackel": 7,
                     "supertackle": "",
-                    "tacklesuccessfulrate": "50",
-                    "tacklesuccessfulpermatch": "0.58",
+                    "tacklesuccessfulrate": 50,
+                    "tacklesuccessfulpermatch": 0.58,
                     "greencard": "",
                     "yellowcard": "",
                     "redcard": "",
@@ -28579,11 +30121,11 @@ curl -X GET "https://rest.entitysport.com/kabaddi/player/1/profile?token=[ACCESS
                     "totalraidpoint": 102,
                     "raidtouchpoint": 87,
                     "raidbonuspoint": 15,
-                    "raidpointpermatch": "8.5",
+                    "raidpointpermatch": 8.5,
                     "totaltacklepoint": 7,
                     "super10s": "5",
                     "high5s": "",
-                    "notoutpercentage": "84.26"
+                    "notoutpercentage": 84.26
                 },
                 {
                     "tournament": "Pro Kabaddi League Season 4, 2016",
@@ -28595,13 +30137,13 @@ curl -X GET "https://rest.entitysport.com/kabaddi/player/1/profile?token=[ACCESS
                     "unsuccessfulraid": 52,
                     "emptyraid": 107,
                     "superraid": 3,
-                    "percentsuccessfulraid": "39.74",
+                    "percentsuccessfulraid": 39.74,
                     "totaltackle": 16,
                     "successfultackel": 6,
                     "unsuccessfultackel": 10,
                     "supertackle": 1,
-                    "tacklesuccessfulrate": "43.75",
-                    "tacklesuccessfulpermatch": "0.42",
+                    "tacklesuccessfulrate": 43.75,
+                    "tacklesuccessfulpermatch": 0.42,
                     "greencard": "",
                     "yellowcard": "",
                     "redcard": "",
@@ -28609,11 +30151,11 @@ curl -X GET "https://rest.entitysport.com/kabaddi/player/1/profile?token=[ACCESS
                     "totalraidpoint": 93,
                     "raidtouchpoint": 75,
                     "raidbonuspoint": 18,
-                    "raidpointpermatch": "6.64",
+                    "raidpointpermatch": 6.64,
                     "totaltacklepoint": 7,
                     "super10s": "1",
                     "high5s": "",
-                    "notoutpercentage": "77.77"
+                    "notoutpercentage": 77.77
                 },
                 {
                     "tournament": "Pro Kabaddi League Season 5, 2017",
@@ -28625,13 +30167,13 @@ curl -X GET "https://rest.entitysport.com/kabaddi/player/1/profile?token=[ACCESS
                     "unsuccessfulraid": 82,
                     "emptyraid": 144,
                     "superraid": 1,
-                    "percentsuccessfulraid": "52.39",
+                    "percentsuccessfulraid": 52.39,
                     "totaltackle": 27,
                     "successfultackel": 11,
                     "unsuccessfultackel": 16,
                     "supertackle": 1,
-                    "tacklesuccessfulrate": "44.44",
-                    "tacklesuccessfulpermatch": "0.5",
+                    "tacklesuccessfulrate": 44.44,
+                    "tacklesuccessfulpermatch": 0.5,
                     "greencard": 1,
                     "yellowcard": "",
                     "redcard": "",
@@ -28639,11 +30181,11 @@ curl -X GET "https://rest.entitysport.com/kabaddi/player/1/profile?token=[ACCESS
                     "totalraidpoint": 219,
                     "raidtouchpoint": 170,
                     "raidbonuspoint": 49,
-                    "raidpointpermatch": "9.95",
+                    "raidpointpermatch": 9.95,
                     "totaltacklepoint": 12,
                     "super10s": "12",
                     "high5s": "",
-                    "notoutpercentage": "80.38"
+                    "notoutpercentage": 80.38
                 },
                 {
                     "tournament": "Pro Kabaddi League Season 6, 2018",
@@ -28655,13 +30197,13 @@ curl -X GET "https://rest.entitysport.com/kabaddi/player/1/profile?token=[ACCESS
                     "unsuccessfulraid": 64,
                     "emptyraid": 148,
                     "superraid": 5,
-                    "percentsuccessfulraid": "47.5",
+                    "percentsuccessfulraid": 47.5,
                     "totaltackle": 30,
                     "successfultackel": 9,
                     "unsuccessfultackel": 21,
                     "supertackle": "",
-                    "tacklesuccessfulrate": "30",
-                    "tacklesuccessfulpermatch": "0.37",
+                    "tacklesuccessfulrate": 30,
+                    "tacklesuccessfulpermatch": 0.37,
                     "greencard": 1,
                     "yellowcard": 1,
                     "redcard": "",
@@ -28669,11 +30211,11 @@ curl -X GET "https://rest.entitysport.com/kabaddi/player/1/profile?token=[ACCESS
                     "totalraidpoint": 162,
                     "raidtouchpoint": 129,
                     "raidbonuspoint": 33,
-                    "raidpointpermatch": "6.75",
+                    "raidpointpermatch": 6.75,
                     "totaltacklepoint": 9,
                     "super10s": "5",
                     "high5s": "1",
-                    "notoutpercentage": "81.23"
+                    "notoutpercentage": 81.23
                 },
                 {
                     "tournament": "total",
@@ -28685,13 +30227,13 @@ curl -X GET "https://rest.entitysport.com/kabaddi/player/1/profile?token=[ACCESS
                     "unsuccessfulraid": 226,
                     "emptyraid": 469,
                     "superraid": 13,
-                    "percentsuccessfulraid": "49.18",
+                    "percentsuccessfulraid": 49.18,
                     "totaltackle": 87,
                     "successfultackel": 33,
                     "unsuccessfultackel": 54,
                     "supertackle": 2,
-                    "tacklesuccessfulrate": "40.22",
-                    "tacklesuccessfulpermatch": "0.45",
+                    "tacklesuccessfulrate": 40.22,
+                    "tacklesuccessfulpermatch": 0.45,
                     "greencard": 2,
                     "yellowcard": 1,
                     "redcard": "",
@@ -28699,20 +30241,20 @@ curl -X GET "https://rest.entitysport.com/kabaddi/player/1/profile?token=[ACCESS
                     "totalraidpoint": 576,
                     "raidtouchpoint": 461,
                     "raidbonuspoint": 115,
-                    "raidpointpermatch": "8",
+                    "raidpointpermatch": 8,
                     "totaltacklepoint": 35,
                     "super10s": "23",
                     "high5s": "1",
-                    "notoutpercentage": "80.7"
+                    "notoutpercentage": 80.7
                 }
             ]
         },
         "total_items": 1,
         "total_pages": 1
     },
-    "etag": "98e9e53062f03698baa8940d427d6d00",
-    "modified": "2019-04-28 09:36:03",
-    "datetime": "2019-04-28 09:36:03",
+    "etag": "795319792a3dd959d51fad7ff9b27682",
+    "modified": "2019-04-30 06:44:37",
+    "datetime": "2019-04-30 06:44:37",
     "api_version": "1.0"
 }
 
@@ -28773,13 +30315,13 @@ successfulraid | integer | total successfull raids completed by the player
 unsuccessfulraid | integer | total unsuccessfull raids attempted by the player
 emptyraid | integer | total empty raids attempted by the player
 superraid | integer | total super raids attempted by the player
-percentsuccessfulraid | string | raids success percent of the player
+percentsuccessfulraid | float | raids success percent of the player
 totaltackle | integer | total tackle attempted by the player
 successfultackel | integer | total successfull tackle attempted by the player
 unsuccessfultackel | integer | total unsuccessfull tackle attempted by the player
 supertackle | integer | total super tackle attempted by the player
-tacklesuccessfulrate | string | successfull tackle percent of the player
-tacklesuccessfulpermatch | string | average successfull tackle attempted by the player per match
+tacklesuccessfulrate | float | successfull tackle percent of the player
+tacklesuccessfulpermatch | float | average successfull tackle attempted by the player per match
 greencard | integer | number of green card received by the player
 yellowcard | integer | number of yellow card received by the player
 redcard | integer | number of red card received by the player
@@ -28787,11 +30329,11 @@ totalpoint | integer | total points by the player
 totalraidpoint | integer | total raid points by the player
 raidtouchpoint | integer | total raid touch point
 raidbonuspoint | integer | total raid bonus point
-raidpointpermatch | string | average raid points by the player per game
+raidpointpermatch | float | average raid points by the player per game
 totaltacklepoint | integer | total tackle points by the player
 super10s | string | 10 raid points by the player in a game
 high5s | string | 5 tackle by the player in a game
-notoutpercentage | string | amount of play time percentage player remain notout
+notoutpercentage | float | amount of play time percentage player remain notout
 
 
 
