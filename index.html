@@ -512,6 +512,9 @@
                     <a href="#match-stats-api-2" class="toc-h2 toc-link" data-title="Basketball API">Match Stats API</a>
                   </li>
                   <li>
+                    <a href="#match-fantasy-api-2" class="toc-h2 toc-link" data-title="Basketball API">Match Fantasy API</a>
+                  </li>
+                  <li>
                     <a href="#teams-list-api-2" class="toc-h2 toc-link" data-title="Basketball API">Teams List API</a>
                   </li>
                   <li>
@@ -39078,6 +39081,686 @@ A generic sports player.</p></li>
 <td>player Performance Index Rating.</td>
 </tr>
 </tbody></table>
+<h2 id='match-fantasy-api-2'>Match Fantasy API</h2>
+<blockquote>
+<p>Using Token parameter:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://rest.entitysport.com/basketball/matches/10661/fantasy?token=[ACCESS_TOKEN]"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"match_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"mid"</span><span class="p">:</span><span class="w"> </span><span class="mi">10661</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"round"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"round"</span><span class="p">:</span><span class="w"> </span><span class="s2">"134"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NBA Finals"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"teams"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"home"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"tid"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"tname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Golden State"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://rest.entitysport.com/basketball/assets/team/goldenstate.png"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Golden State Warriors"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"abbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GSW"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"away"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"tid"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"tname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Toronto"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://rest.entitysport.com/basketball/assets/team/goldenstate.png"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Toronto Raptors"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"abbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TOR"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"datestart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-14 01:00:00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"dateend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-14 03:54:51"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timestampstart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1560474000"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timestampend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1560484491"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"home"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"away"</span><span class="p">:</span><span class="w"> </span><span class="mi">114</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"winner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"away"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"quarters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"q1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"home"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"away"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"q2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"home"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"away"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"q3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"home"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"away"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"q4"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"home"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"away"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"ft"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"home"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"away"</span><span class="p">:</span><span class="w"> </span><span class="mi">114</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"status_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"result"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"gamestate_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ended"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"gamestate"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"attendance"</span><span class="p">:</span><span class="w"> </span><span class="mi">19596</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"competition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"cid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"cname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NBA"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"startdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-16 00:00:00"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"enddate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-01 23:59:59"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"startdatetimestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1539648000</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"endtdatetimestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1562025599</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18/19"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"ioc_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"226"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"ioc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"status_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"venueid"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oracle Arena"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oakland, USA"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"founded"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19596"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"teams"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"home"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">179</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Draymond Green"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"iocid"</span><span class="p">:</span><span class="w"> </span><span class="mi">226</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"ioc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"positiontype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"positionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forward"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primaryposition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PF"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primarypositionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Power forward"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_player_rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">6.5</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">38</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Klay Thompson"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"iocid"</span><span class="p">:</span><span class="w"> </span><span class="mi">226</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"ioc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"positiontype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"positionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guard"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primaryposition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SG"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primarypositionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shooting guard"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_player_rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">17.5</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">197</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stephen Curry"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"iocid"</span><span class="p">:</span><span class="w"> </span><span class="mi">226</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"ioc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"positiontype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"positionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guard"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primaryposition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PG"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primarypositionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Point guard"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_player_rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.5</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1359</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jacob Evans"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"iocid"</span><span class="p">:</span><span class="w"> </span><span class="mi">226</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"ioc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"positiontype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"positionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guard"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primaryposition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SG"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primarypositionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shooting guard"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_player_rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1371</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Damion Lee"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"iocid"</span><span class="p">:</span><span class="w"> </span><span class="mi">226</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"ioc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"positiontype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"positionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guard"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primaryposition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SG"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primarypositionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shooting guard"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_player_rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1385</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marcus Derrickson"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"iocid"</span><span class="p">:</span><span class="w"> </span><span class="mi">226</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"ioc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"positiontype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"positionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forward"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primaryposition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PF"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primarypositionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Power forward"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_player_rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.5</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"away"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">304</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norman Powell"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"iocid"</span><span class="p">:</span><span class="w"> </span><span class="mi">226</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"ioc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"positiontype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F-G"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"positionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forward-Guard"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primaryposition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SF"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primarypositionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Small forward"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_player_rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.5</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">185</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Serge Ibaka"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"iocid"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DR Congo"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"ioc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cd"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"positiontype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C-F"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"positionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Center-Forward"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primaryposition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primarypositionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Center"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_player_rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">14.5</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">524</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OG Anunoby"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"iocid"</span><span class="p">:</span><span class="w"> </span><span class="mi">225</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Great Britain"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"ioc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gb"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"positiontype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"positionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forward"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primaryposition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SF"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primarypositionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Small forward"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_player_rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">6.5</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kyle Lowry"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"iocid"</span><span class="p">:</span><span class="w"> </span><span class="mi">226</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"ioc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"positiontype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"positionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guard"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primaryposition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PG"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primarypositionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Point guard"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_player_rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">14.5</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">510</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fred VanVleet"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"iocid"</span><span class="p">:</span><span class="w"> </span><span class="mi">226</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"ioc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"positiontype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"positionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guard"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primaryposition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PG"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"primarypositionname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Point guard"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_player_rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.5</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"fantasy_points"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"home"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kevin Durant"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SF"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mf">21.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">305</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kevon Looney"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PF"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mf">6.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.6</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">179</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Draymond Green"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PF"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mf">6.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mf">60.3</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mf">22.8</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">-8</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">38</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Klay Thompson"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SG"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mf">17.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andre Iguodala"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SG"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mf">6.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mf">29.4</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.4</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">197</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stephen Curry"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PG"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mf">41.1</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.6</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">-3</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1461</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andrew Bogut"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">611</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alfonzo McKinnie"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SF"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.6</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.6</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1392</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DeMarcus Cousins"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mf">16.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">286</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quinn Cook"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PG"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mf">6.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.2</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shaun Livingston"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PG"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"away"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">186</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marc Gasol"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mf">14.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mf">18.8</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.8</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kyle Lowry"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PG"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mf">14.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mf">55.4</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.4</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">-3</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">134</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Danny Green"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SG"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.7</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pascal Siakam"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PF"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mf">16.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mf">46.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">191</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kawhi Leonard"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SF"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mf">21.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.7</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.2</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">510</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fred VanVleet"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PG"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mf">26.4</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.4</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">185</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Serge Ibaka"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mf">14.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.6</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.6</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">304</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norman Powell"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SF"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"fantasy_credit"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.5</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"pointscored"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"rebound"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assist"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"steal"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"etag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8b82981ce42a3a7afd1a53152d430d5e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-18 06:55:40"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-18 06:55:40"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"api_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This API contains a single match info, match team and player stats details.</p>
+<h3 id='request-57'>Request</h3>
+<ul>
+<li>Path: /basketball/matches/mid/fantasy</li>
+<li>Method: GET</li>
+<li>Parameters </li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>{ACCESS_TOKEN}</td>
+<td>API Access token</td>
+</tr>
+</tbody></table>
+<h3 id='response-57'>Response</h3>
+<ul>
+<li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
+<li><code style="color:#c7254e";>response.items:</code> array of match details object.</li>
+<li><code style="color:#c7254e";>response.total_items:</code> total number of matches available.</li>
+<li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.</li>
+</ul>
+<h3 id='reference-54'>Reference</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>match_info</td>
+<td>array</td>
+<td>An array of match details. <a href="#matches-info-basketball">see match_info object reference</a></td>
+</tr>
+<tr>
+<td>teams</td>
+<td>array</td>
+<td>An array of both teamn <a href="#match-basketball-fantasy-team">see team object reference</a></td>
+</tr>
+<tr>
+<td>fantasy_points</td>
+<td>array</td>
+<td>An array of players fantasy points details. <a href="#match-basketball-fantasy-points">see fantasy points object reference</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="match-basketball-fantasy-team">Match Team Squads Object Reference</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>home</td>
+<td>array</td>
+<td>array of home team player details.</td>
+</tr>
+<tr>
+<td>away</td>
+<td>array</td>
+<td>array of away team player details.</td>
+</tr>
+</tbody></table>
+
+<h3 id="match-basketball-fantasy-points">Fantasy Points Object Reference</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>home</td>
+<td>array</td>
+<td>array of home team player fantasy points details. <a href="#match_player_points_basketball">see player fantasy points object reference</a></td>
+</tr>
+<tr>
+<td>away</td>
+<td>array</td>
+<td>array of away team player fantasy points details. <a href="#match_player_points_basketball">see player fantasy points object reference</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="match_player_points_basketball">Player Fantasy Points Reference</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>pid</td>
+<td>integer</td>
+<td>player id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>player name</td>
+</tr>
+<tr>
+<td>role</td>
+<td>string</td>
+<td>team name type details</td>
+</tr>
+<tr>
+<td>fantasy_credit</td>
+<td>float</td>
+<td>player fantasy credit.</td>
+</tr>
+<tr>
+<td>point</td>
+<td>integer</td>
+<td>player total fantasy points of the match.</td>
+</tr>
+<tr>
+<td>pointscored</td>
+<td>integer</td>
+<td>player fantasy points for points scored in the match.</td>
+</tr>
+<tr>
+<td>rebound</td>
+<td>float</td>
+<td>player fantasy points for rebound.</td>
+</tr>
+<tr>
+<td>assist</td>
+<td>float</td>
+<td>player fantasy points for assist.</td>
+</tr>
+<tr>
+<td>steal</td>
+<td>integer</td>
+<td>player fantasy points for steal.</td>
+</tr>
+<tr>
+<td>block</td>
+<td>integer</td>
+<td>player fantasy points for block.</td>
+</tr>
+<tr>
+<td>turnover</td>
+<td>integer</td>
+<td>player fantasy points for turnover.</td>
+</tr>
+</tbody></table>
 <h2 id='teams-list-api-2'>Teams List API</h2>
 <blockquote>
 <p>Using Token parameter:</p>
@@ -39119,7 +39802,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API lists all the teams available to access.</p>
-<h3 id='request-57'>Request</h3>
+<h3 id='request-58'>Request</h3>
 <ul>
 <li>Path: /basketball/teams</li>
 <li>Method: GET</li>
@@ -39149,14 +39832,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-57'>Response</h3>
+<h3 id='response-58'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of teams object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of teams available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.</li>
 </ul>
-<h3 id='reference-54'>Reference</h3>
+<h3 id='reference-55'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -39312,7 +39995,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains team info and squad/roaster player details.</p>
-<h3 id='request-58'>Request</h3>
+<h3 id='request-59'>Request</h3>
 <ul>
 <li>Path: /basketball/team/tid/info</li>
 <li>Method: GET</li>
@@ -39337,14 +40020,14 @@ A generic sports player.</p></li>
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-58'>Response</h3>
+<h3 id='response-59'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of team object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of teams available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.</li>
 </ul>
-<h3 id='reference-55'>Reference</h3>
+<h3 id='reference-56'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -39664,7 +40347,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains the list of team&#39;s all matches details.</p>
-<h3 id='request-59'>Request</h3>
+<h3 id='request-60'>Request</h3>
 <ul>
 <li>Path: /basketball/team/tid/matches</li>
 <li>Method: GET</li>
@@ -39704,14 +40387,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-59'>Response</h3>
+<h3 id='response-60'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of match object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of matches available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.</li>
 </ul>
-<h3 id='reference-56'>Reference</h3>
+<h3 id='reference-57'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -40126,7 +40809,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains list of player details.</p>
-<h3 id='request-60'>Request</h3>
+<h3 id='request-61'>Request</h3>
 <ul>
 <li>Path: /basketball/players</li>
 <li>Method: GET</li>
@@ -40156,14 +40839,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-60'>Response</h3>
+<h3 id='response-61'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of player object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of players available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.</li>
 </ul>
-<h3 id='reference-57'>Reference</h3>
+<h3 id='reference-58'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -40445,7 +41128,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains player profile and career statistic details.</p>
-<h3 id='request-61'>Request</h3>
+<h3 id='request-62'>Request</h3>
 <ul>
 <li>Path: /basketball/player/pid/profile</li>
 <li>Method: GET</li>
@@ -40470,14 +41153,14 @@ A generic sports player.</p></li>
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-61'>Response</h3>
+<h3 id='response-62'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of player object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of players available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.</li>
 </ul>
-<h3 id='reference-58'>Reference</h3>
+<h3 id='reference-59'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -41000,7 +41683,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>To access any API, you need a token. A token can be generated using your keys. Token is a piece of information that would allow you to access our API data until your subscription expires. Auth API provides you the token, by validating your keys. Request to our Auth API whenever the access token is expired or unavailable.</p>
-<h3 id='request-62'>Request</h3>
+<h3 id='request-63'>Request</h3>
 <ul>
 <li>Path: /kabaddi/auth/</li>
 <li>Method: Post</li>
@@ -41011,7 +41694,7 @@ A generic sports player.</p></li>
 <li>secret_key - Secret key of your Application.</li>
 </ul></li>
 </ul>
-<h3 id='response-62'>Response</h3>
+<h3 id='response-63'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.token:</code> access token.</li>
@@ -41202,7 +41885,7 @@ A generic sports player.</p></li>
 <p>This API lists all available competitions those user are subscribed and can access. This API is a directory of all competitions user have access.</p>
 
 <p>It will list 10 competitions data per request. If there is more than 10 competitions, you will get extra value under response node. You can use the page parameter to jump to a specific page if exists.</p>
-<h3 id='request-63'>Request</h3>
+<h3 id='request-64'>Request</h3>
 <ul>
 <li>Path: /kabaddi/competitons</li>
 <li>Method: GET</li>
@@ -41237,14 +41920,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-63'>Response</h3>
+<h3 id='response-64'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of competition cards.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of competitions available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of competition list.</li>
 </ul>
-<h3 id='reference-59'>Reference</h3>
+<h3 id='reference-60'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -41422,7 +42105,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API has competition and it&#39;s teams information.</p>
-<h3 id='request-64'>Request</h3>
+<h3 id='request-65'>Request</h3>
 <ul>
 <li>Path: /kabaddi/competition/cid/info</li>
 <li>Method: GET</li>
@@ -41457,7 +42140,7 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-64'>Response</h3>
+<h3 id='response-65'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of competition cards.</li>
@@ -41466,7 +42149,7 @@ A generic sports player.</p></li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of competitions available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of competition list.</li>
 </ul>
-<h3 id='reference-60'>Reference</h3>
+<h3 id='reference-61'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -41832,7 +42515,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API has competition&#39;s all matches details.</p>
-<h3 id='request-65'>Request</h3>
+<h3 id='request-66'>Request</h3>
 <ul>
 <li>Path: /kabaddi/competition/cid/matches</li>
 <li>Method: GET</li>
@@ -41867,14 +42550,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-65'>Response</h3>
+<h3 id='response-66'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of match object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of matches available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.</li>
 </ul>
-<h3 id='reference-61'>Reference</h3>
+<h3 id='reference-62'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -42232,7 +42915,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API has competition&#39;s total player statistic details.</p>
-<h3 id='request-66'>Request</h3>
+<h3 id='request-67'>Request</h3>
 <ul>
 <li>Path: /kabaddi/competition/cid/stats</li>
 <li>Method: GET</li>
@@ -42267,7 +42950,7 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-66'>Response</h3>
+<h3 id='response-67'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.competition:</code> array of competition object details. <a href="#competition-stats-object-kabaddi">see competition object reference</a></li>
@@ -42275,7 +42958,7 @@ A generic sports player.</p></li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of player available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.</li>
 </ul>
-<h3 id='reference-62'>Reference</h3>
+<h3 id='reference-63'>Reference</h3>
 <h3 id="competition-stats-object-kabaddi">Competition object reference</h3>
 
 <table><thead>
@@ -42555,7 +43238,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API has list of all matches user have access.</p>
-<h3 id='request-67'>Request</h3>
+<h3 id='request-68'>Request</h3>
 <ul>
 <li>Path: /kabaddi/matches</li>
 <li>Method: GET</li>
@@ -42590,14 +43273,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-67'>Response</h3>
+<h3 id='response-68'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of match object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of matches available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.</li>
 </ul>
-<h3 id='reference-63'>Reference</h3>
+<h3 id='reference-64'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -43347,7 +44030,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains a single match info, match projection, events, commentary, lineup details.</p>
-<h3 id='request-68'>Request</h3>
+<h3 id='request-69'>Request</h3>
 <ul>
 <li>Path: /kabaddi/matches/mid/info</li>
 <li>Method: GET</li>
@@ -43367,14 +44050,14 @@ A generic sports player.</p></li>
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-68'>Response</h3>
+<h3 id='response-69'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of match details object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of matches available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.</li>
 </ul>
-<h3 id='reference-64'>Reference</h3>
+<h3 id='reference-65'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -44282,7 +44965,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains a single match info, match team and player stats details.</p>
-<h3 id='request-69'>Request</h3>
+<h3 id='request-70'>Request</h3>
 <ul>
 <li>Path: /kabaddi/matches/mid/stats</li>
 <li>Method: GET</li>
@@ -44302,14 +44985,14 @@ A generic sports player.</p></li>
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-69'>Response</h3>
+<h3 id='response-70'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of match details object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of matches available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.</li>
 </ul>
-<h3 id='reference-65'>Reference</h3>
+<h3 id='reference-66'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -44726,7 +45409,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API lists all the teams available to access.</p>
-<h3 id='request-70'>Request</h3>
+<h3 id='request-71'>Request</h3>
 <ul>
 <li>Path: /kabaddi/teams</li>
 <li>Method: GET</li>
@@ -44756,14 +45439,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-70'>Response</h3>
+<h3 id='response-71'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of teams object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of teams available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.</li>
 </ul>
-<h3 id='reference-66'>Reference</h3>
+<h3 id='reference-67'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -44894,7 +45577,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains team info and squad/roaster player details.</p>
-<h3 id='request-71'>Request</h3>
+<h3 id='request-72'>Request</h3>
 <ul>
 <li>Path: /kabaddi/team/tid/info</li>
 <li>Method: GET</li>
@@ -44919,14 +45602,14 @@ A generic sports player.</p></li>
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-71'>Response</h3>
+<h3 id='response-72'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of team object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of teams available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.</li>
 </ul>
-<h3 id='reference-67'>Reference</h3>
+<h3 id='reference-68'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -45185,7 +45868,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains the list of team&#39;s all matches details.</p>
-<h3 id='request-72'>Request</h3>
+<h3 id='request-73'>Request</h3>
 <ul>
 <li>Path: /kabaddi/team/tid/matches</li>
 <li>Method: GET</li>
@@ -45225,14 +45908,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-72'>Response</h3>
+<h3 id='response-73'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of match object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of matches available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.</li>
 </ul>
-<h3 id='reference-68'>Reference</h3>
+<h3 id='reference-69'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -45285,7 +45968,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains list of player details.</p>
-<h3 id='request-73'>Request</h3>
+<h3 id='request-74'>Request</h3>
 <ul>
 <li>Path: /kabaddi/players</li>
 <li>Method: GET</li>
@@ -45315,14 +45998,14 @@ A generic sports player.</p></li>
 <td>Page Number for request</td>
 </tr>
 </tbody></table>
-<h3 id='response-73'>Response</h3>
+<h3 id='response-74'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of player object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of players available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.</li>
 </ul>
-<h3 id='reference-69'>Reference</h3>
+<h3 id='reference-70'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -45572,7 +46255,7 @@ A generic sports player.</p></li>
 
 </span></code></pre>
 <p>This API contains player profile and career statistic details.</p>
-<h3 id='request-74'>Request</h3>
+<h3 id='request-75'>Request</h3>
 <ul>
 <li>Path: /kabaddi/player/pid/profile</li>
 <li>Method: GET</li>
@@ -45597,14 +46280,14 @@ A generic sports player.</p></li>
 <td>API Access token</td>
 </tr>
 </tbody></table>
-<h3 id='response-74'>Response</h3>
+<h3 id='response-75'>Response</h3>
 <ul>
 <li><code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response</li>
 <li><code style="color:#c7254e";>response.items:</code> array of player object.</li>
 <li><code style="color:#c7254e";>response.total_items:</code> total number of players available.</li>
 <li><code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.</li>
 </ul>
-<h3 id='reference-70'>Reference</h3>
+<h3 id='reference-71'>Reference</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
