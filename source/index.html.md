@@ -26656,6 +26656,589 @@ second | integer | time played by the player in the match in seconds.
 pir | integer | player Performance Index Rating.
 
 
+## Match Fantasy API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/basketball/matches/10661/fantasy?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": {
+            "match_info": {
+                "mid": 10661,
+                "round": {
+                    "round": "134",
+                    "name": "NBA Finals"
+                },
+                "teams": {
+                    "home": {
+                        "tid": 20,
+                        "tname": "Golden State",
+                        "logo": "https://rest.entitysport.com/basketball/assets/team/goldenstate.png",
+                        "fullname": "Golden State Warriors",
+                        "abbr": "GSW"
+                    },
+                    "away": {
+                        "tid": 25,
+                        "tname": "Toronto",
+                        "logo": "https://rest.entitysport.com/basketball/assets/team/goldenstate.png",
+                        "fullname": "Toronto Raptors",
+                        "abbr": "TOR"
+                    }
+                },
+                "datestart": "2019-06-14 01:00:00",
+                "dateend": "2019-06-14 03:54:51",
+                "timestampstart": "1560474000",
+                "timestampend": "1560484491",
+                "time": 48,
+                "result": {
+                    "home": 110,
+                    "away": 114,
+                    "winner": "away"
+                },
+                "quarters": {
+                    "q1": {
+                        "home": 32,
+                        "away": 33
+                    },
+                    "q2": {
+                        "home": 25,
+                        "away": 27
+                    },
+                    "q3": {
+                        "home": 31,
+                        "away": 26
+                    },
+                    "q4": {
+                        "home": 22,
+                        "away": 28
+                    },
+                    "ft": {
+                        "home": 110,
+                        "away": 114
+                    }
+                },
+                "status_str": "result",
+                "status": 2,
+                "gamestate_str": "Ended",
+                "gamestate": 7,
+                "attendance": 19596,
+                "competition": {
+                    "cid": 1,
+                    "cname": "NBA",
+                    "startdate": "2018-10-16 00:00:00",
+                    "enddate": "2019-07-01 23:59:59",
+                    "startdatetimestamp": 1539648000,
+                    "endtdatetimestamp": 1562025599,
+                    "year": "18/19",
+                    "category": "USA",
+                    "ioc_id": "226",
+                    "ioc": "us",
+                    "status": 2,
+                    "status_str": "completed",
+                    "logo": ""
+                },
+                "venue": {
+                    "venueid": 20,
+                    "name": "Oracle Arena",
+                    "location": "Oakland, USA",
+                    "founded": "",
+                    "capacity": "19596"
+                }
+            },
+            "teams": {
+                "home": [
+                    {
+                        "pid": 179,
+                        "name": "Draymond Green",
+                        "nationality": {
+                            "iocid": 226,
+                            "name": "USA",
+                            "ioc": "us"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "primaryposition": "PF",
+                        "primarypositionname": "Power forward",
+                        "fantasy_player_rating": 6.5
+                    },
+                    {
+                        "pid": 38,
+                        "name": "Klay Thompson",
+                        "nationality": {
+                            "iocid": 226,
+                            "name": "USA",
+                            "ioc": "us"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Guard",
+                        "primaryposition": "SG",
+                        "primarypositionname": "Shooting guard",
+                        "fantasy_player_rating": 17.5
+                    },
+                    {
+                        "pid": 197,
+                        "name": "Stephen Curry",
+                        "nationality": {
+                            "iocid": 226,
+                            "name": "USA",
+                            "ioc": "us"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Guard",
+                        "primaryposition": "PG",
+                        "primarypositionname": "Point guard",
+                        "fantasy_player_rating": 23.5
+                    },
+                    {
+                        "pid": 1359,
+                        "name": "Jacob Evans",
+                        "nationality": {
+                            "iocid": 226,
+                            "name": "USA",
+                            "ioc": "us"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Guard",
+                        "primaryposition": "SG",
+                        "primarypositionname": "Shooting guard",
+                        "fantasy_player_rating": 4
+                    },
+                    {
+                        "pid": 1371,
+                        "name": "Damion Lee",
+                        "nationality": {
+                            "iocid": 226,
+                            "name": "USA",
+                            "ioc": "us"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Guard",
+                        "primaryposition": "SG",
+                        "primarypositionname": "Shooting guard",
+                        "fantasy_player_rating": 4
+                    },
+                    {
+                        "pid": 1385,
+                        "name": "Marcus Derrickson",
+                        "nationality": {
+                            "iocid": 226,
+                            "name": "USA",
+                            "ioc": "us"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "primaryposition": "PF",
+                        "primarypositionname": "Power forward",
+                        "fantasy_player_rating": 12.5
+                    }
+                ],
+                "away": [
+                    {
+                        "pid": 304,
+                        "name": "Norman Powell",
+                        "nationality": {
+                            "iocid": 226,
+                            "name": "USA",
+                            "ioc": "us"
+                        },
+                        "positiontype": "F-G",
+                        "positionname": "Forward-Guard",
+                        "primaryposition": "SF",
+                        "primarypositionname": "Small forward",
+                        "fantasy_player_rating": 9.5
+                    },
+                    {
+                        "pid": 185,
+                        "name": "Serge Ibaka",
+                        "nationality": {
+                            "iocid": 50,
+                            "name": "DR Congo",
+                            "ioc": "cd"
+                        },
+                        "positiontype": "C-F",
+                        "positionname": "Center-Forward",
+                        "primaryposition": "C",
+                        "primarypositionname": "Center",
+                        "fantasy_player_rating": 14.5
+                    },
+                    {
+                        "pid": 524,
+                        "name": "OG Anunoby",
+                        "nationality": {
+                            "iocid": 225,
+                            "name": "Great Britain",
+                            "ioc": "gb"
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "primaryposition": "SF",
+                        "primarypositionname": "Small forward",
+                        "fantasy_player_rating": 6.5
+                    },
+                    {
+                        "pid": 210,
+                        "name": "Kyle Lowry",
+                        "nationality": {
+                            "iocid": 226,
+                            "name": "USA",
+                            "ioc": "us"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Guard",
+                        "primaryposition": "PG",
+                        "primarypositionname": "Point guard",
+                        "fantasy_player_rating": 14.5
+                    },
+                    {
+                        "pid": 510,
+                        "name": "Fred VanVleet",
+                        "nationality": {
+                            "iocid": 226,
+                            "name": "USA",
+                            "ioc": "us"
+                        },
+                        "positiontype": "G",
+                        "positionname": "Guard",
+                        "primaryposition": "PG",
+                        "primarypositionname": "Point guard",
+                        "fantasy_player_rating": 11.5
+                    }
+                ]
+            },
+            "fantasy_points": {
+                "home": [
+                    {
+                        "pid": 64,
+                        "name": "Kevin Durant",
+                        "role": "SF",
+                        "fantasy_credit": 21.5,
+                        "point": 0,
+                        "pointscored": 0,
+                        "rebound": 0,
+                        "assist": 0,
+                        "steal": 0,
+                        "block": 0,
+                        "turnover": 0
+                    },
+                    {
+                        "pid": 305,
+                        "name": "Kevon Looney",
+                        "role": "PF",
+                        "fantasy_credit": 6.5,
+                        "point": 19.1,
+                        "pointscored": 6,
+                        "rebound": 3.6,
+                        "assist": 4.5,
+                        "steal": 3,
+                        "block": 3,
+                        "turnover": -1
+                    },
+                    {
+                        "pid": 179,
+                        "name": "Draymond Green",
+                        "role": "PF",
+                        "fantasy_credit": 6.5,
+                        "point": 60.3,
+                        "pointscored": 11,
+                        "rebound": 22.8,
+                        "assist": 19.5,
+                        "steal": 9,
+                        "block": 6,
+                        "turnover": -8
+                    },
+                    {
+                        "pid": 38,
+                        "name": "Klay Thompson",
+                        "role": "SG",
+                        "fantasy_credit": 17.5,
+                        "point": 40,
+                        "pointscored": 30,
+                        "rebound": 6,
+                        "assist": 0,
+                        "steal": 6,
+                        "block": 0,
+                        "turnover": -2
+                    },
+                    {
+                        "pid": 43,
+                        "name": "Andre Iguodala",
+                        "role": "SG",
+                        "fantasy_credit": 6.5,
+                        "point": 29.4,
+                        "pointscored": 22,
+                        "rebound": 2.4,
+                        "assist": 3,
+                        "steal": 0,
+                        "block": 3,
+                        "turnover": -1
+                    },
+                    {
+                        "pid": 197,
+                        "name": "Stephen Curry",
+                        "role": "PG",
+                        "fantasy_credit": 23.5,
+                        "point": 41.1,
+                        "pointscored": 21,
+                        "rebound": 3.6,
+                        "assist": 10.5,
+                        "steal": 6,
+                        "block": 3,
+                        "turnover": -3
+                    },
+                    {
+                        "pid": 1461,
+                        "name": "Andrew Bogut",
+                        "role": "C",
+                        "fantasy_credit": 4,
+                        "point": 1.2,
+                        "pointscored": 0,
+                        "rebound": 1.2,
+                        "assist": 0,
+                        "steal": 0,
+                        "block": 0,
+                        "turnover": 0
+                    },
+                    {
+                        "pid": 611,
+                        "name": "Alfonzo McKinnie",
+                        "role": "SF",
+                        "fantasy_credit": 4,
+                        "point": 3.6,
+                        "pointscored": 0,
+                        "rebound": 3.6,
+                        "assist": 0,
+                        "steal": 0,
+                        "block": 0,
+                        "turnover": 0
+                    },
+                    {
+                        "pid": 1392,
+                        "name": "DeMarcus Cousins",
+                        "role": "C",
+                        "fantasy_credit": 16.5,
+                        "point": 24,
+                        "pointscored": 12,
+                        "rebound": 6,
+                        "assist": 3,
+                        "steal": 0,
+                        "block": 3,
+                        "turnover": 0
+                    },
+                    {
+                        "pid": 286,
+                        "name": "Quinn Cook",
+                        "role": "PG",
+                        "fantasy_credit": 6.5,
+                        "point": 3.2,
+                        "pointscored": 2,
+                        "rebound": 1.2,
+                        "assist": 0,
+                        "steal": 0,
+                        "block": 0,
+                        "turnover": 0
+                    },
+                    {
+                        "pid": 85,
+                        "name": "Shaun Livingston",
+                        "role": "PG",
+                        "fantasy_credit": 4,
+                        "point": 8,
+                        "pointscored": 6,
+                        "rebound": 0,
+                        "assist": 0,
+                        "steal": 3,
+                        "block": 0,
+                        "turnover": -1
+                    }
+                ],
+                "away": [
+                    {
+                        "pid": 186,
+                        "name": "Marc Gasol",
+                        "role": "C",
+                        "fantasy_credit": 14.5,
+                        "point": 18.8,
+                        "pointscored": 3,
+                        "rebound": 10.8,
+                        "assist": 6,
+                        "steal": 0,
+                        "block": 0,
+                        "turnover": -1
+                    },
+                    {
+                        "pid": 210,
+                        "name": "Kyle Lowry",
+                        "role": "PG",
+                        "fantasy_credit": 14.5,
+                        "point": 55.4,
+                        "pointscored": 26,
+                        "rebound": 8.4,
+                        "assist": 15,
+                        "steal": 9,
+                        "block": 0,
+                        "turnover": -3
+                    },
+                    {
+                        "pid": 134,
+                        "name": "Danny Green",
+                        "role": "SG",
+                        "fantasy_credit": 11.5,
+                        "point": 7.7,
+                        "pointscored": 0,
+                        "rebound": 1.2,
+                        "assist": 4.5,
+                        "steal": 3,
+                        "block": 0,
+                        "turnover": -1
+                    },
+                    {
+                        "pid": 512,
+                        "name": "Pascal Siakam",
+                        "role": "PF",
+                        "fantasy_credit": 16.5,
+                        "point": 46.5,
+                        "pointscored": 26,
+                        "rebound": 12,
+                        "assist": 4.5,
+                        "steal": 3,
+                        "block": 3,
+                        "turnover": -2
+                    },
+                    {
+                        "pid": 191,
+                        "name": "Kawhi Leonard",
+                        "role": "SF",
+                        "fantasy_credit": 21.5,
+                        "point": 40.7,
+                        "pointscored": 22,
+                        "rebound": 7.2,
+                        "assist": 4.5,
+                        "steal": 6,
+                        "block": 3,
+                        "turnover": -2
+                    },
+                    {
+                        "pid": 510,
+                        "name": "Fred VanVleet",
+                        "role": "PG",
+                        "fantasy_credit": 11.5,
+                        "point": 26.4,
+                        "pointscored": 22,
+                        "rebound": 2.4,
+                        "assist": 0,
+                        "steal": 3,
+                        "block": 0,
+                        "turnover": -1
+                    },
+                    {
+                        "pid": 185,
+                        "name": "Serge Ibaka",
+                        "role": "C",
+                        "fantasy_credit": 14.5,
+                        "point": 20.6,
+                        "pointscored": 15,
+                        "rebound": 3.6,
+                        "assist": 3,
+                        "steal": 0,
+                        "block": 0,
+                        "turnover": -1
+                    },
+                    {
+                        "pid": 304,
+                        "name": "Norman Powell",
+                        "role": "SF",
+                        "fantasy_credit": 9.5,
+                        "point": 0.2,
+                        "pointscored": 0,
+                        "rebound": 1.2,
+                        "assist": 0,
+                        "steal": 0,
+                        "block": 0,
+                        "turnover": -1
+                    }
+                ]
+            }
+        },
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "8b82981ce42a3a7afd1a53152d430d5e",
+    "modified": "2019-09-18 06:55:40",
+    "datetime": "2019-09-18 06:55:40",
+    "api_version": "1.0"
+}
+
+```
+This API contains a single match info, match team and player stats details.
+
+### Request
+* Path: /basketball/matches/mid/fantasy
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match details object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+match_info | array | An array of match details. <a href="#matches-info-basketball">see match_info object reference</a>
+teams | array | An array of both teamn <a href="#match-basketball-fantasy-team">see team object reference</a>
+fantasy_points | array | An array of players fantasy points details. <a href="#match-basketball-fantasy-points">see fantasy points object reference</a>
+
+
+<h3 id="match-basketball-fantasy-team">Match Team Squads Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | array of home team player details.
+away | array | array of away team player details.
+
+
+<h3 id="match-basketball-fantasy-points">Fantasy Points Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | array of home team player fantasy points details. <a href="#match_player_points_basketball">see player fantasy points object reference</a>
+away | array | array of away team player fantasy points details. <a href="#match_player_points_basketball">see player fantasy points object reference</a>
+
+
+<h3 id="match_player_points_basketball">Player Fantasy Points Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+name | string | player name
+role | string | team name type details
+fantasy_credit | float | player fantasy credit. 
+point | integer | player total fantasy points of the match. 
+pointscored | integer | player fantasy points for points scored in the match. 
+rebound | float | player fantasy points for rebound. 
+assist | float | player fantasy points for assist. 
+steal | integer | player fantasy points for steal. 
+block | integer | player fantasy points for block. 
+turnover | integer | player fantasy points for turnover. 
+
 
 ## Teams List API
 
