@@ -30955,3 +30955,4594 @@ Code | Description
 3 | Defender
 
 
+
+# Hockey API
+
+## Getting your Keys 
+
+You will need an active access key and secret key with a valid subsciption to start using our API. Please visit entitysport.com to request your keys and subscription.
+
+## Obtaining Token
+
+> To authorize, use this code:
+
+```shell
+curl -X POST "https://rest.entitysport.com/hockey/auth?access_key=YOURACCESSKEY&secret_key=YOURSECRETKEY"
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "token": "1|X#aFhlzAsd",
+        "expires": "12312312312",
+    },
+    "api_version": "2.0"
+}
+
+```
+
+To access any API, you need a token. A token can be generated using your keys. Token is a piece of information that would allow you to access our API data until your subscription expires. Auth API provides you the token, by validating your keys. Request to our Auth API whenever the access token is expired or unavailable.
+
+### Request
+
+* Path: /hockey/auth/
+* Method: Post
+* POST Parameters
+ * access_key - Access Key of your Application.
+ * secret_key - Secret key of your Application.
+
+
+###Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.token:</code> access token.
+* <code style="color:#c7254e";>response.expires:</code> access token expire timestamp.
+
+## Making your First Request
+
+```shell
+curl -X GET "https://rest.entitysport.com/hockey/?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "api_doc": "https://doc.entitysport.com/#hockey-api/",
+        "status_codes": {
+            "ok": "Success",
+            "error": "Failure",
+            "invalid": "Invalid Request",
+            "unauthorized": "Un authorized",
+            "noaccess": "No access to requested resource"
+        }
+    },
+    "api_version": "2.0"
+}
+
+```
+
+It's very easy to start using the EntitySport Soccer API. By passing your **token** as `token` to our api server, you can get access to our API data instantly.
+
+### https Request
+
+`GET https://rest.entitysport.com/hockey/?token=[ACCESS_TOKEN]`
+
+## https Status Code
+
+All API request will resolve with any of the following https header status.
+
+Response Code | Description
+--------- | -----------
+200  | API request valid, informations ready to access
+304  | API request valid, but data was not modified since last accessed (compared using Etag)
+400  | Client side error. occurs for invalid request
+401  | occurs for unauthorized request
+501  | Server side error. Internal server error, unable to process your request
+
+## API Response
+
+```json
+
+{
+    "status": "ok",
+    "response": {},
+    "etag": "8fc93de066d8d802a36e0882ecc77fdb",
+    "modified": "2017-01-31 16:29:11",
+    "datetime": "2017-01-31 16:29:11",
+    "api_version": "1.0"
+}
+
+```
+All successfull API request will return json output. The basic structure of data is available on all of the calls.
+
+### Status - Possible Values are as follows :
+
+Status | Description
+--------- | -----------
+ok  | A successfull response
+error  | if the request contains error
+unauthorized  | if the request is not authorized, usually for invalid/expired access token
+accessdenied  | if your app try to access non permitted data
+
+* <code style="color:#c7254e";>response:</code> contains the main data of the response. value can be string, number, array or object.
+
+
+## Pagination 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+per_page | Number | Number of items to list in each API request
+paged | Number | Page Number for request
+
+<aside class="success">/?token=[ACCESS_TOKEN]&per_page=5&&paged=3</aside>
+
+## API Objects
+
+There are some informations that we call as OBJECT. A response can contain a single object, or multiple objects or no objects at all. It is important get famililar with our objects.
+
+We have 5 Obejcts in total. A object is a set of data, which contains a unique identifier, and directly relates to other objects. ie: match object connects inning object, team object. 
+
+Each object has a unique identifier which start with the first character of object name, and **id** as suffix. ie: competition unique identified named as **cid**, for match it's **mid**, for player it's **pid**, for team, it's **tid**.
+
+
+* **Competition:**
+  Competition is a tour, or tournament, or trophy cup. A competition contains information matches, teams, player performance, table standings, season, dates, type, category etc
+
+* **Match:**
+  Match is the core part of our api. A match makes connection between teams, competition, players.
+    
+* **Team:**
+  A generic sports team, having a name, logo, country and type of team.
+
+* **Player:**
+  A generic sports player.
+
+
+
+## Competitions List API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/hockey/competitions?token=[ACCESS_TOKEN]"
+```
+> Using Token and Pagination parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/hockey/competitions?token=[ACCESS_TOKEN]&per_page=10&paged=1"
+```
+> Using Token, Pagination and status parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/hockey/competitions?token=[ACCESS_TOKEN]&status=3&per_page=10&paged=1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "cid": "2",
+                "cname": "FIH Mens 2019",
+                "startdate": "2019-01-19",
+                "enddate": "2019-06-30",
+                "startdatetimestamp": "1547856000",
+                "enddatetimestamp": "1561852800",
+                "year": "2019",
+                "status": "2",
+                "status_str": "completed",
+                "logo": "",
+                "competition_url": "competition/2/info",
+                "match_url": "competition/2/matches"
+            }
+        ],
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "f240f1eeee7bd1de345fb5440f20deba",
+    "modified": "2019-12-31 13:57:27",
+    "datetime": "2019-12-31 13:57:27",
+    "api_version": "1.0"
+}
+
+```
+This API lists all available competitions those user are subscribed and can access. This API is a directory of all competitions user have access.
+
+It will list 10 competitions data per request. If there is more than 10 competitions, you will get extra value under response node. You can use the page parameter to jump to a specific page if exists.
+
+### Request
+* Path: /hockey/competitons
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+status | string | status code for the competition, available status code 1 = upcoming, 2 = completed, 3 = live
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of competition cards.
+* <code style="color:#c7254e";>response.total_items:</code> total number of competitions available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of competition list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | string | timestamp of competition start date
+enddatetimestamp | string | timestamp of competition end date
+year | string | Season Year
+status | string | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+competition_url | string | Competition information API end point url
+match_url | string | Competition matches information API end point url
+
+
+## Competitions Information API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/hockey/competition/1/info?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": {
+            "info": {
+                "cid": "2",
+                "cname": "FIH Mens 2019",
+                "startdate": "2019-01-19",
+                "enddate": "2019-06-30",
+                "startdatetimestamp": "1547856000",
+                "enddatetimestamp": "1561852800",
+                "year": "2019",
+                "status": "2",
+                "status_str": "completed",
+                "logo": "",
+                "competition_url": "competition/2/info",
+                "match_url": "competition/2/matches"
+            },
+            "teams": [
+                {
+                    "tid": "1",
+                    "tname": "Argentina",
+                    "shortname": "ARG",
+                    "sex": "m",
+                    "city": "",
+                    "founded": "",
+                    "website": "",
+                    "twitter": "argfieldhockey",
+                    "instagram": "",
+                    "teamlogo": ""
+                }
+            ],
+            "standings": ""
+        },
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "227d50806c59c1a6b7e7ca50c7a5e7c5",
+    "modified": "2019-12-31 13:58:57",
+    "datetime": "2019-12-31 13:58:57",
+    "api_version": "1.0"
+}
+
+```
+This API has competition and it's teams information.
+
+### Request
+* Path: /hockey/competition/cid/info
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of competition cards.
+* <code style="color:#c7254e";>response.items.teams</code> array of all the teams of the competition.
+* <code style="color:#c7254e";>response.items.point_table</code> array of points table of the competition.
+* <code style="color:#c7254e";>response.total_items:</code> total number of competitions available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of competition list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | string | timestamp of competition start date
+enddatetimestamp | string | timestamp of competition end date
+year | string | Season Year
+status | string | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+competition_url | string | Competition information API end point url
+match_url | string | Competition matches information API end point url
+teams | array | An array of all teams related to the competition. <a href="#competition-info-team-hockey">see teams object reference</a>
+
+
+<h3 id="competition-info-team-hockey">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | string | team id
+tname | string | team name
+shortname | string | team short name
+sex | string | team gender type
+city | string | team city name
+founded | string | year of team founded
+website | string | website url of team website
+twitter | string | twitter account name
+instagram | string | instagram account name
+teamlogo | string | team logo url
+
+
+## Competitions Matches API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/hockey/competition/1/matches?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "mid": "1",
+                "round_id": "",
+                "round_name": "",
+                "title": "Spain vs Belgium",
+                "subtitle": "spain vs belgium",
+                "teams": {
+                    "home": {
+                        "tid": "8",
+                        "tname": "Spain",
+                        "shortname": "ESP",
+                        "logo": ""
+                    },
+                    "away": {
+                        "tid": "3",
+                        "tname": "Belgium",
+                        "shortname": "BEL",
+                        "logo": ""
+                    }
+                },
+                "datestart": "2019-01-19 12:00:00",
+                "dateend": "2019-01-19 14:00:00",
+                "timestampstart": "1547899200",
+                "timestampend": "1547906400",
+                "result": {
+                    "home": "2",
+                    "away": "2",
+                    "winner": "",
+                    "text": "Match Tied (2-2)",
+                    "tie": "true"
+                },
+                "status": "2",
+                "status_str": "result",
+                "gamestate": "7",
+                "gamestate_str": "Unknown",
+                "verified": "true",
+                "presquad": "false",
+                "competition": {
+                    "cid": "2",
+                    "cname": "FIH Mens 2019",
+                    "startdate": "2019-01-19",
+                    "enddate": "2019-06-30",
+                    "startdatetimestamp": "1547856000",
+                    "endtdatetimestamp": "1561852800",
+                    "year": "2019",
+                    "status": "2",
+                    "status_str": "completed",
+                    "logo": ""
+                },
+                "venue": ""
+            }
+        ],
+        "total_items": 60,
+        "total_pages": 60
+    },
+    "etag": "8d9a5b1b64ec7ae01129010a801ccfc9",
+    "modified": "2019-12-31 14:06:35",
+    "datetime": "2019-12-31 14:06:35",
+    "api_version": "1.0"
+}
+
+```
+This API has competition's all matches details.
+
+### Request
+* Path: /hockey/competition/cid/matches
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+mid | string | match id
+round_id | string | match round id details.
+round_name | string | match round name details.
+title | string | match title details.
+subtitle | string | match sub title details.
+teams | array | An array of match teams details. <a href="#competition-matches-teams-hockey">see teams object reference</a>
+datestart | string | time string in GMT of match start time
+dateend | string | time string in GMT of match end time
+timestampstart | string | timestamp of match start time
+timestampend | string | timestamp of match end time
+result | array | An array of match result details. <a href="#competition-matches-result-hockey">see result object reference</a>
+status | string | Match status code 3 = live, 2 = result, 1 = upcoming, 4 = canceled
+status_str | string | Match status string live, result, upcoming,
+gamestate | string | Match state code
+gamestate_str | string | Match state string
+verified | string | true = match score is verified, false = match score is yet be verified.
+presquad | string | true = match squad is available with managed fantasy credit, false = match squad is don't have managed fantasy credit yet.
+competition | array | An array of competition details. <a href="#competition-matches-competition-hockey">see competition object reference</a>
+venue | array | An array of match venue details. <a href="#competition-matches-venue-hockey">see venue object reference</a>
+
+
+
+<h3 id="competition-matches-teams-hockey">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | An array of home team details. <a href="#competition-matches-teams-details-hockey">see home team object reference</a>
+away | array | An array of away team details. <a href="#competition-matches-teams-details-hockey">see away team object reference</a>
+
+
+<h3 id="competition-matches-result-hockey">Result Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | string | home team score
+away | string | away team score
+winner | string | winning team id, draw in case of equal scores
+text | string | text note of match result.
+tie | string | if match is tied true else false.
+
+
+<h3 id="competition-matches-teams-details-hockey">Home/Away Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | string | team id
+tname | string | team name
+shortname | string | team short name
+logo | string | team logo url
+
+
+<h3 id="competition-matches-competition-hockey">Competition Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | string | timestamp of competition start date
+enddatetimestamp | string | timestamp of competition end date
+year | string | Season Year
+status | string | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+
+
+
+## Matches List API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/hockey/matches?token=[ACCESS_TOKEN]"
+```
+
+> Using Token and Status parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/hockey/matches?token=[ACCESS_TOKEN]&status=1"
+```
+
+> Using Token, Status and Pagination parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/hockey/matches?token=[ACCESS_TOKEN]&status=1&per_page=10&paged=1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "mid": "1",
+                "round_id": "",
+                "round_name": "",
+                "title": "Spain vs Belgium",
+                "subtitle": "spain vs belgium",
+                "teams": {
+                    "home": {
+                        "tid": "8",
+                        "tname": "Spain",
+                        "shortname": "ESP",
+                        "logo": ""
+                    },
+                    "away": {
+                        "tid": "3",
+                        "tname": "Belgium",
+                        "shortname": "BEL",
+                        "logo": ""
+                    }
+                },
+                "datestart": "2019-01-19 12:00:00",
+                "dateend": "2019-01-19 14:00:00",
+                "timestampstart": "1547899200",
+                "timestampend": "1547906400",
+                "result": {
+                    "home": "2",
+                    "away": "2",
+                    "winner": "",
+                    "text": "Match Tied (2-2)",
+                    "tie": "true"
+                },
+                "status": "2",
+                "status_str": "result",
+                "gamestate": "7",
+                "gamestate_str": "Unknown",
+                "verified": "true",
+                "presquad": "false",
+                "competition": {
+                    "cid": "2",
+                    "cname": "FIH Mens 2019",
+                    "startdate": "2019-01-19",
+                    "enddate": "2019-06-30",
+                    "startdatetimestamp": "1547856000",
+                    "endtdatetimestamp": "1561852800",
+                    "year": "2019",
+                    "status": "2",
+                    "status_str": "completed",
+                    "logo": ""
+                },
+                "venue": ""
+            }
+        ],
+        "total_items": 60,
+        "total_pages": 60
+    },
+    "etag": "8d9a5b1b64ec7ae01129010a801ccfc9",
+    "modified": "2019-12-31 14:06:35",
+    "datetime": "2019-12-31 14:06:35",
+    "api_version": "1.0"
+}
+
+```
+This API has list of all matches user have access.
+
+### Request
+* Path: /hockey/matches
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+status | string | status code 1 = upcoming, 2 = result, 3 = live, 4 = cancelled.
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+mid | string | match id
+round_id | string | match round id details.
+round_name | string | match round name details.
+title | string | match title details.
+subtitle | string | match sub title details.
+teams | array | An array of match teams details. <a href="#matches-list-teams-hockey">see teams object reference</a>
+datestart | string | time string in GMT of match start time
+dateend | string | time string in GMT of match end time
+timestampstart | string | timestamp of match start time
+timestampend | string | timestamp of match end time
+result | array | An array of match result details. <a href="#matches-list-result-hockey">see result object reference</a>
+status | string | Match status code 3 = live, 2 = result, 1 = upcoming, 4 = canceled
+status_str | string | Match status string live, result, upcoming,
+gamestate | string | Match state code
+gamestate_str | string | Match state string
+verified | string | true = match score is verified, false = match score is yet be verified.
+presquad | string | true = match squad is available with managed fantasy credit, false = match squad is don't have managed fantasy credit yet.
+competition | array | An array of competition details. <a href="#matches-list-competition-hockey">see competition object reference</a>
+venue | array | An array of match venue details. <a href="#matches-list-venue-hockey">see venue object reference</a>
+
+
+<h3 id="matches-list-teams-hockey">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | An array of home team details. <a href="#matches-list-teams-details-hockey">see home team object reference</a>
+away | array | An array of away team details. <a href="#matches-list-teams-details-hockey">see away team object reference</a>
+
+
+<h3 id="matches-list-result-hockey">Result Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | string | home team score
+away | string | away team score
+winner | string | winning team id, draw in case of equal scores
+text | string | text note of match result.
+tie | string | if match is tied true else false.
+
+
+<h3 id="matches-list-teams-details-hockey">Home/Away Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | string | team id
+tname | string | team name
+shortname | string | team short name
+logo | string | team logo url
+
+
+<h3 id="matches-list-competition-hockey">Competition Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | string | timestamp of competition start date
+enddatetimestamp | string | timestamp of competition end date
+year | string | Season Year
+status | string | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+
+
+## Match Info API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/hockey/matches/1/info?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": {
+            "match_info": {
+                "mid": "1",
+                "round_id": "",
+                "round_name": "",
+                "title": "Spain vs Belgium",
+                "subtitle": "spain vs belgium",
+                "teams": {
+                    "home": {
+                        "tid": "8",
+                        "tname": "Spain",
+                        "shortname": "ESP",
+                        "logo": ""
+                    },
+                    "away": {
+                        "tid": "3",
+                        "tname": "Belgium",
+                        "shortname": "BEL",
+                        "logo": ""
+                    }
+                },
+                "datestart": "2019-01-19 12:00:00",
+                "dateend": "2019-01-19 14:00:00",
+                "timestampstart": "1547899200",
+                "timestampend": "1547906400",
+                "result": {
+                    "home": "2",
+                    "away": "2",
+                    "winner": "",
+                    "text": "Match Tied (2-2)",
+                    "tie": "true"
+                },
+                "status": "2",
+                "status_str": "result",
+                "gamestate": "7",
+                "gamestate_str": "Unknown",
+                "verified": "true",
+                "presquad": "false",
+                "competition": {
+                    "cid": "2",
+                    "cname": "FIH Mens 2019",
+                    "startdate": "2019-01-19",
+                    "enddate": "2019-06-30",
+                    "startdatetimestamp": "1547856000",
+                    "endtdatetimestamp": "1561852800",
+                    "year": "2019",
+                    "status": "2",
+                    "status_str": "completed",
+                    "logo": ""
+                },
+                "venue": ""
+            },
+            "lineup": {
+                "home": [
+                    {
+                        "pid": "212",
+                        "name": "Quico Cortes",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "214",
+                        "name": "Sergi Enrique",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "216",
+                        "name": "Marc Serrahima",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "217",
+                        "name": "Ignacio Rodriguez",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "219",
+                        "name": "Enrique Gonzalez",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "220",
+                        "name": "Alvaro Iglesias",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "221",
+                        "name": "Marc Salles",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "true"
+                    },
+                    {
+                        "pid": "226",
+                        "name": "Xavi Lleonart",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "230",
+                        "name": "Vicenc Ruiz",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "232",
+                        "name": "Josep Romeu",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "234",
+                        "name": "Pau Quemada",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "236",
+                        "name": "Marc Miralles",
+                        "starting11": "false",
+                        "substitute": "true",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "231",
+                        "name": "Albert Beltran",
+                        "starting11": "false",
+                        "substitute": "true",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "235",
+                        "name": "Marc Bolto",
+                        "starting11": "false",
+                        "substitute": "true",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "223",
+                        "name": "Ricardo Santana",
+                        "starting11": "false",
+                        "substitute": "true",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "227",
+                        "name": "Alejandro De Frutos",
+                        "starting11": "false",
+                        "substitute": "true",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "229",
+                        "name": "Marc Garcia",
+                        "starting11": "false",
+                        "substitute": "true",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "233",
+                        "name": "Mario Garin",
+                        "starting11": "false",
+                        "substitute": "true",
+                        "played": "false",
+                        "captain": "false"
+                    }
+                ],
+                "away": [
+                    {
+                        "pid": "61",
+                        "name": "Arthur Van Doren",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "65",
+                        "name": "Florent Van Aubel",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "69",
+                        "name": "Gauthier Boccard",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "70",
+                        "name": "Nicolas De Kerpel",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "75",
+                        "name": "Maxime Plennevaux",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "77",
+                        "name": "Vincent Vanasch",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "79",
+                        "name": "Arthur De Sloover",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "80",
+                        "name": "Antoine Kina",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "81",
+                        "name": "Lock Luypaert",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "82",
+                        "name": "Victor Wegnez",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "83",
+                        "name": "Tom Boon",
+                        "starting11": "true",
+                        "substitute": "false",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "66",
+                        "name": "Sbastien Dockier",
+                        "starting11": "false",
+                        "substitute": "true",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "73",
+                        "name": "Alexander Hendrickx",
+                        "starting11": "false",
+                        "substitute": "true",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "62",
+                        "name": "Nicolas Poncelet",
+                        "starting11": "false",
+                        "substitute": "true",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "71",
+                        "name": "Augustin Meurmans",
+                        "starting11": "false",
+                        "substitute": "true",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "74",
+                        "name": "Thomas Briels",
+                        "starting11": "false",
+                        "substitute": "true",
+                        "played": "true",
+                        "captain": "true"
+                    },
+                    {
+                        "pid": "84",
+                        "name": "Tanguy Cosyns",
+                        "starting11": "false",
+                        "substitute": "true",
+                        "played": "true",
+                        "captain": "false"
+                    },
+                    {
+                        "pid": "60",
+                        "name": "Loic Van Doren",
+                        "starting11": "false",
+                        "substitute": "true",
+                        "played": "false",
+                        "captain": "false"
+                    }
+                ]
+            },
+            "goals": [
+                {
+                    "minutes": "37",
+                    "team_id": "3",
+                    "player_id": "75",
+                    "player_name": "Maxime Plennevaux",
+                    "type": "field goal",
+                    "event": "goal"
+                },
+                {
+                    "minutes": "55",
+                    "team_id": "3",
+                    "player_id": "73",
+                    "player_name": "Alexander Hendrickx",
+                    "type": "penalty corner",
+                    "event": "goal"
+                },
+                {
+                    "minutes": "58",
+                    "team_id": "8",
+                    "player_id": "217",
+                    "player_name": "Ignacio Rodriguez",
+                    "type": "penalty corner",
+                    "event": "goal"
+                },
+                {
+                    "minutes": "60",
+                    "team_id": "8",
+                    "player_id": "219",
+                    "player_name": "Enrique Gonzalez",
+                    "type": "field goal",
+                    "event": "goal"
+                }
+            ],
+            "card": [
+                {
+                    "minutes": "46",
+                    "team_id": "8",
+                    "player_id": "214",
+                    "player_name": "Sergi Enrique",
+                    "type": "green",
+                    "event": "card"
+                }
+            ],
+            "shootout": [
+                {
+                    "team_id": "3",
+                    "player_id": "65",
+                    "player_name": "Florent Van Aubel",
+                    "type": "save",
+                    "event": "shootout"
+                },
+                {
+                    "team_id": "8",
+                    "player_id": "220",
+                    "player_name": "Alvaro Iglesias",
+                    "type": "goal",
+                    "event": "shootout"
+                },
+                {
+                    "team_id": "3",
+                    "player_id": "80",
+                    "player_name": "Antoine Kina",
+                    "type": "save",
+                    "event": "shootout"
+                },
+                {
+                    "team_id": "8",
+                    "player_id": "226",
+                    "player_name": "Xavi Lleonart",
+                    "type": "save",
+                    "event": "shootout"
+                },
+                {
+                    "team_id": "3",
+                    "player_id": "79",
+                    "player_name": "Arthur De Sloover",
+                    "type": "save",
+                    "event": "shootout"
+                },
+                {
+                    "team_id": "8",
+                    "player_id": "214",
+                    "player_name": "Sergi Enrique",
+                    "type": "save",
+                    "event": "shootout"
+                },
+                {
+                    "team_id": "8",
+                    "player_id": "232",
+                    "player_name": "Josep Romeu",
+                    "type": "goal",
+                    "event": "shootout"
+                },
+                {
+                    "team_id": "3",
+                    "player_id": "82",
+                    "player_name": "Victor Wegnez",
+                    "type": "save",
+                    "event": "shootout"
+                }
+            ],
+            "team_stats": {
+                "home": {
+                    "all": {
+                        "possession": "56.50",
+                        "shots": "6",
+                        "passingaccuracy": "69.75",
+                        "totalcircleentries": "11",
+                        "totalpenaltycorner": "3",
+                        "totalpenaltystrokes": "0",
+                        "totalyellowcard": "0",
+                        "totalgreencard": "1",
+                        "totalredcard": "0"
+                    },
+                    "firstquarter": {
+                        "possession": "64",
+                        "shots": "0",
+                        "passingaccuracy": "74",
+                        "totalcircleentries": "2",
+                        "totalpenaltycorner": "0",
+                        "totalpenaltystrokes": "0",
+                        "totalyellowcard": "0",
+                        "totalgreencard": "0",
+                        "totalredcard": "0"
+                    },
+                    "secondquarter": {
+                        "possession": "63",
+                        "shots": "1",
+                        "passingaccuracy": "65",
+                        "totalcircleentries": "3",
+                        "totalpenaltycorner": "0",
+                        "totalpenaltystrokes": "0",
+                        "totalyellowcard": "0",
+                        "totalgreencard": "0",
+                        "totalredcard": "0"
+                    },
+                    "thirdquarter": {
+                        "possession": "44",
+                        "shots": "2",
+                        "passingaccuracy": "71",
+                        "totalcircleentries": "2",
+                        "totalpenaltycorner": "2",
+                        "totalpenaltystrokes": "0",
+                        "totalyellowcard": "0",
+                        "totalgreencard": "0",
+                        "totalredcard": "0"
+                    },
+                    "fourthquarter": {
+                        "possession": "55",
+                        "shots": "3",
+                        "passingaccuracy": "69",
+                        "totalcircleentries": "4",
+                        "totalpenaltycorner": "1",
+                        "totalpenaltystrokes": "0",
+                        "totalyellowcard": "0",
+                        "totalgreencard": "1",
+                        "totalredcard": "0"
+                    }
+                },
+                "away": {
+                    "all": {
+                        "possession": "43.50",
+                        "shots": "13",
+                        "passingaccuracy": "71.50",
+                        "totalcircleentries": "16",
+                        "totalpenaltycorner": "1",
+                        "totalpenaltystrokes": "0",
+                        "totalyellowcard": "0",
+                        "totalgreencard": "0",
+                        "totalredcard": "0"
+                    },
+                    "firstquarter": {
+                        "possession": "36",
+                        "shots": "1",
+                        "passingaccuracy": "67",
+                        "totalcircleentries": "3",
+                        "totalpenaltycorner": "0",
+                        "totalpenaltystrokes": "0",
+                        "totalyellowcard": "0",
+                        "totalgreencard": "0",
+                        "totalredcard": "0"
+                    },
+                    "secondquarter": {
+                        "possession": "37",
+                        "shots": "4",
+                        "passingaccuracy": "74",
+                        "totalcircleentries": "3",
+                        "totalpenaltycorner": "0",
+                        "totalpenaltystrokes": "0",
+                        "totalyellowcard": "0",
+                        "totalgreencard": "0",
+                        "totalredcard": "0"
+                    },
+                    "thirdquarter": {
+                        "possession": "56",
+                        "shots": "4",
+                        "passingaccuracy": "77",
+                        "totalcircleentries": "6",
+                        "totalpenaltycorner": "0",
+                        "totalpenaltystrokes": "0",
+                        "totalyellowcard": "0",
+                        "totalgreencard": "0",
+                        "totalredcard": "0"
+                    },
+                    "fourthquarter": {
+                        "possession": "45",
+                        "shots": "4",
+                        "passingaccuracy": "68",
+                        "totalcircleentries": "4",
+                        "totalpenaltycorner": "1",
+                        "totalpenaltystrokes": "0",
+                        "totalyellowcard": "0",
+                        "totalgreencard": "0",
+                        "totalredcard": "0"
+                    }
+                }
+            },
+            "player_stats": {
+                "home": [
+                    {
+                        "pid": "212",
+                        "name": "Quico Cortes",
+                        "minutesplayed": "60",
+                        "goals": "0",
+                        "passes": "0",
+                        "assists": "0",
+                        "saves": "6",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "0",
+                        "shotongoal": "0",
+                        "goalsconceded": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "214",
+                        "name": "Sergi Enrique",
+                        "minutesplayed": "60",
+                        "goals": "0",
+                        "passes": "70",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "2",
+                        "interceptions": "3",
+                        "blocks": "0",
+                        "circlepenetration": "1",
+                        "shotongoal": "0",
+                        "goalsconceded": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "1",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "216",
+                        "name": "Marc Serrahima",
+                        "minutesplayed": "60",
+                        "goals": "0",
+                        "passes": "25",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "2",
+                        "interceptions": "0",
+                        "blocks": "1",
+                        "circlepenetration": "0",
+                        "shotongoal": "1",
+                        "goalsconceded": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "217",
+                        "name": "Ignacio Rodriguez",
+                        "minutesplayed": "52",
+                        "goals": "1",
+                        "passes": "16",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "1",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "0",
+                        "shotongoal": "1",
+                        "goalsconceded": "1",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "219",
+                        "name": "Enrique Gonzalez",
+                        "minutesplayed": "34",
+                        "goals": "1",
+                        "passes": "10",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "2",
+                        "blocks": "0",
+                        "circlepenetration": "2",
+                        "shotongoal": "1",
+                        "goalsconceded": "0",
+                        "penaltycornerearned": "1",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "220",
+                        "name": "Alvaro Iglesias",
+                        "minutesplayed": "34",
+                        "goals": "0",
+                        "passes": "10",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "1",
+                        "circlepenetration": "1",
+                        "shotongoal": "0",
+                        "goalsconceded": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "221",
+                        "name": "Marc Salles",
+                        "minutesplayed": "52",
+                        "goals": "0",
+                        "passes": "30",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "3",
+                        "interceptions": "1",
+                        "blocks": "1",
+                        "circlepenetration": "0",
+                        "shotongoal": "0",
+                        "goalsconceded": "1",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "223",
+                        "name": "Ricardo Santana",
+                        "minutesplayed": "8",
+                        "goals": "0",
+                        "passes": "10",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "1",
+                        "interceptions": "0",
+                        "blocks": "1",
+                        "circlepenetration": "0",
+                        "shotongoal": "0",
+                        "goalsconceded": "1",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "226",
+                        "name": "Xavi Lleonart",
+                        "minutesplayed": "52",
+                        "goals": "0",
+                        "passes": "18",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "3",
+                        "interceptions": "1",
+                        "blocks": "0",
+                        "circlepenetration": "2",
+                        "shotongoal": "0",
+                        "goalsconceded": "1",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "227",
+                        "name": "Alejandro De Frutos",
+                        "minutesplayed": "8",
+                        "goals": "0",
+                        "passes": "7",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "1",
+                        "interceptions": "0",
+                        "blocks": "1",
+                        "circlepenetration": "0",
+                        "shotongoal": "0",
+                        "goalsconceded": "1",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "229",
+                        "name": "Marc Garcia",
+                        "minutesplayed": "8",
+                        "goals": "0",
+                        "passes": "6",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "1",
+                        "interceptions": "1",
+                        "blocks": "1",
+                        "circlepenetration": "0",
+                        "shotongoal": "0",
+                        "goalsconceded": "1",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "230",
+                        "name": "Vicenc Ruiz",
+                        "minutesplayed": "60",
+                        "goals": "0",
+                        "passes": "16",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "1",
+                        "shotongoal": "0",
+                        "goalsconceded": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "231",
+                        "name": "Albert Beltran",
+                        "minutesplayed": "26",
+                        "goals": "0",
+                        "passes": "4",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "0",
+                        "shotongoal": "0",
+                        "goalsconceded": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "232",
+                        "name": "Josep Romeu",
+                        "minutesplayed": "60",
+                        "goals": "0",
+                        "passes": "48",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "2",
+                        "interceptions": "3",
+                        "blocks": "0",
+                        "circlepenetration": "0",
+                        "shotongoal": "0",
+                        "goalsconceded": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "233",
+                        "name": "Mario Garin",
+                        "minutesplayed": "0",
+                        "goals": "0",
+                        "passes": "0",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "0",
+                        "shotongoal": "0",
+                        "goalsconceded": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "234",
+                        "name": "Pau Quemada",
+                        "minutesplayed": "34",
+                        "goals": "0",
+                        "passes": "8",
+                        "assists": "2",
+                        "saves": "0",
+                        "tackles": "1",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "3",
+                        "shotongoal": "1",
+                        "goalsconceded": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "235",
+                        "name": "Marc Bolto",
+                        "minutesplayed": "26",
+                        "goals": "0",
+                        "passes": "4",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "1",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "1",
+                        "shotongoal": "1",
+                        "goalsconceded": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "236",
+                        "name": "Marc Miralles",
+                        "minutesplayed": "26",
+                        "goals": "0",
+                        "passes": "6",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "1",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "0",
+                        "shotongoal": "1",
+                        "goalsconceded": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    }
+                ],
+                "away": [
+                    {
+                        "pid": "60",
+                        "name": "Loic Van Doren",
+                        "minutesplayed": "0",
+                        "goals": "0",
+                        "passes": "0",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "0",
+                        "shotongoal": "0",
+                        "goalsconceded": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "61",
+                        "name": "Arthur Van Doren",
+                        "minutesplayed": "60",
+                        "goals": "0",
+                        "passes": "47",
+                        "assists": "1",
+                        "saves": "0",
+                        "tackles": "4",
+                        "interceptions": "3",
+                        "blocks": "3",
+                        "circlepenetration": "0",
+                        "shotongoal": "0",
+                        "goalsconceded": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "62",
+                        "name": "Nicolas Poncelet",
+                        "minutesplayed": "2",
+                        "goals": "0",
+                        "passes": "5",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "1",
+                        "blocks": "0",
+                        "circlepenetration": "0",
+                        "shotongoal": "0",
+                        "goalsconceded": "1",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "66",
+                        "name": "Sbastien Dockier",
+                        "minutesplayed": "0",
+                        "goals": "0",
+                        "passes": "1",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "2",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "0",
+                        "shotongoal": "0",
+                        "goalsconceded": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "69",
+                        "name": "Gauthier Boccard",
+                        "minutesplayed": "58",
+                        "goals": "0",
+                        "passes": "22",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "1",
+                        "shotongoal": "0",
+                        "goalsconceded": "1",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "70",
+                        "name": "Nicolas De Kerpel",
+                        "minutesplayed": "60",
+                        "goals": "0",
+                        "passes": "17",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "1",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "1",
+                        "shotongoal": "0",
+                        "goalsconceded": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "79",
+                        "name": "Arthur De Sloover",
+                        "minutesplayed": "57",
+                        "goals": "0",
+                        "passes": "24",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "1",
+                        "interceptions": "1",
+                        "blocks": "1",
+                        "circlepenetration": "0",
+                        "shotongoal": "0",
+                        "goalsconceded": "1",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "80",
+                        "name": "Antoine Kina",
+                        "minutesplayed": "60",
+                        "goals": "0",
+                        "passes": "9",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "2",
+                        "shotongoal": "0",
+                        "goalsconceded": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "81",
+                        "name": "Lock Luypaert",
+                        "minutesplayed": "60",
+                        "goals": "0",
+                        "passes": "51",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "2",
+                        "interceptions": "1",
+                        "blocks": "3",
+                        "circlepenetration": "0",
+                        "shotongoal": "0",
+                        "goalsconceded": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "82",
+                        "name": "Victor Wegnez",
+                        "minutesplayed": "60",
+                        "goals": "0",
+                        "passes": "23",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "1",
+                        "blocks": "0",
+                        "circlepenetration": "2",
+                        "shotongoal": "0",
+                        "goalsconceded": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "83",
+                        "name": "Tom Boon",
+                        "minutesplayed": "60",
+                        "goals": "0",
+                        "passes": "5",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "1",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "3",
+                        "shotongoal": "3",
+                        "goalsconceded": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "84",
+                        "name": "Tanguy Cosyns",
+                        "minutesplayed": "4",
+                        "goals": "0",
+                        "passes": "3",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "1",
+                        "shotongoal": "0",
+                        "goalsconceded": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "71",
+                        "name": "Augustin Meurmans",
+                        "minutesplayed": "0",
+                        "goals": "0",
+                        "passes": "11",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "0",
+                        "shotongoal": "0",
+                        "goalsconceded": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "73",
+                        "name": "Alexander Hendrickx",
+                        "minutesplayed": "3",
+                        "goals": "1",
+                        "passes": "11",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "2",
+                        "blocks": "0",
+                        "circlepenetration": "0",
+                        "shotongoal": "1",
+                        "goalsconceded": "1",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "74",
+                        "name": "Thomas Briels",
+                        "minutesplayed": "0",
+                        "goals": "0",
+                        "passes": "7",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "2",
+                        "blocks": "0",
+                        "circlepenetration": "0",
+                        "shotongoal": "1",
+                        "goalsconceded": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "75",
+                        "name": "Maxime Plennevaux",
+                        "minutesplayed": "58",
+                        "goals": "1",
+                        "passes": "2",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "1",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "2",
+                        "shotongoal": "1",
+                        "goalsconceded": "1",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "77",
+                        "name": "Vincent Vanasch",
+                        "minutesplayed": "60",
+                        "goals": "0",
+                        "passes": "0",
+                        "assists": "0",
+                        "saves": "3",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "0",
+                        "shotongoal": "0",
+                        "goalsconceded": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    },
+                    {
+                        "pid": "65",
+                        "name": "Florent Van Aubel",
+                        "minutesplayed": "58",
+                        "goals": "0",
+                        "passes": "10",
+                        "assists": "0",
+                        "saves": "0",
+                        "tackles": "1",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "circlepenetration": "4",
+                        "shotongoal": "3",
+                        "goalsconceded": "1",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "penaltystrokesaved": "0",
+                        "penaltystrokemissed": "0",
+                        "greencard": "0",
+                        "yellowcard": "0",
+                        "redcard": "0"
+                    }
+                ]
+            },
+            "umpire": [
+                {
+                    "pid": "241",
+                    "name": "Jose Vidal Juan",
+                    "role": "sj"
+                },
+                {
+                    "pid": "242",
+                    "name": "Vicente Villanueva",
+                    "role": "tj"
+                },
+                {
+                    "pid": "243",
+                    "name": "Christian Deckenbrock",
+                    "role": "to"
+                },
+                {
+                    "pid": "244",
+                    "name": "Christian Blasch",
+                    "role": "u1"
+                },
+                {
+                    "pid": "245",
+                    "name": "Martin Madden",
+                    "role": "u2"
+                },
+                {
+                    "pid": "246",
+                    "name": "Coen Van Bunge",
+                    "role": "vu"
+                }
+            ]
+        },
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "6490e4b9b304f9d1aa65209994ec6fa8",
+    "modified": "2019-12-31 14:30:19",
+    "datetime": "2019-12-31 14:30:19",
+    "api_version": "1.0"
+}
+
+```
+This API contains a single match info, match projection, events, commentary, lineup details.
+
+### Request
+* Path: /hockey/matches/mid/info
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match details object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+match_info | array | An array of match details. <a href="#matches-info-hockey">see match_info object reference</a>
+lineup | array | An array of match lineup details. <a href="#matches-lineup-hockey">see lineup object reference</a>
+goals | array | An array of goals details. <a href="#matches-goals-hockey">see goals object reference</a>
+card | array | An array of card details. <a href="#matches-card-hockey">see card object reference</a>
+shootout | array | An array of shootout details. <a href="#matches-shootout-hockey">see shootout object reference</a>
+team_stats | array | An array of team stats details. <a href="#matches-teamstats-hockey">see team stats object reference</a>
+player_stats | array | An array of player stats details. <a href="#matches-playerstats-hockey">see player stats object reference</a>
+umpire | array | An array of match umpire details. <a href="#matches-umpire-hockey">see umpire object reference</a>
+
+
+<h3 id="matches-info-hockey">Match Info Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+mid | string | match id
+round_id | string | match round id details.
+round_name | string | match round name details.
+title | string | match title details.
+subtitle | string | match sub title details.
+teams | array | An array of match teams details. <a href="#matches-info-teams-hockey">see teams object reference</a>
+datestart | string | time string in GMT of match start time
+dateend | string | time string in GMT of match end time
+timestampstart | string | timestamp of match start time
+timestampend | string | timestamp of match end time
+result | array | An array of match result details. <a href="#matches-info-result-hockey">see result object reference</a>
+status | string | Match status code 3 = live, 2 = result, 1 = upcoming, 4 = canceled
+status_str | string | Match status string live, result, upcoming,
+gamestate | string | Match state code
+gamestate_str | string | Match state string
+verified | string | true = match score is verified, false = match score is yet be verified.
+presquad | string | true = match squad is available with managed fantasy credit, false = match squad is don't have managed fantasy credit yet.
+competition | array | An array of competition details. <a href="#matches-info-competition-hockey">see competition object reference</a>
+
+
+<h3 id="matches-info-teams-hockey">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | An array of home team details. <a href="#matches-info-teams-details-hockey">see home team object reference</a>
+away | array | An array of away team details. <a href="#matches-info-teams-details-hockey">see away team object reference</a>
+
+
+<h3 id="matches-info-result-hockey">Result Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | string | home team score
+away | string | away team score
+winner | string | winning team id, draw in case of equal scores
+text | string | text note of match result.
+tie | string | if match is tied true else false.
+
+
+<h3 id="matches-info-teams-details-hockey">Home/Away Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | string | team id
+tname | string | team name
+shortname | string | team name
+logo | string | team logo url
+
+
+<h3 id="matches-info-competition-hockey">Competition Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | string | timestamp of competition start date
+enddatetimestamp | string | timestamp of competition end date
+year | string | Season Year
+status | string | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+
+
+<h3 id="matches-lineup-hockey">Lineup Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | array of home players object details. <a href="#player-lineup-hockey">see home players object reference</a>
+away | array | array of away players object details. <a href="#player-lineup-hockey">see away players object reference</a>
+
+
+<h3 id="player-lineup-hockey">Lineup Home/Away Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | string | player id
+name | string | player position name
+starting11 | string | players playing in starting11, true if starting11 else false
+substitute | string | player is a substitute, true if substitute else false
+played | string | player played or not, true if played else false
+captain | string | player is captain or not, true if captain else false
+
+
+<h3 id="matches-goals-hockey">Match Goals Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+minutes | string | minute time when goal scored
+team_id | string | team id of goal scoring player
+player_id | string | player id
+player_name | string | player name
+type | string | goal type
+event | string | event name
+
+<h3 id="matches-card-hockey">Match Card Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+minutes | string | minute time when card awarded
+team_id | string | team id of the player
+player_id | string | player id
+player_name | string | player name
+type | string | card type
+event | string | event name
+
+<h3 id="matches-shootout-hockey">Match Shootout Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+team_id | string | team id of the player
+player_id | string | player id
+player_name | string | player name
+type | string | shootout event type
+event | string | event name
+
+<h3 id="matches-teamstats-hockey">Match Team Stats Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+possession | string | team ball possession percentage
+shots | string | total shots by team
+passingaccuracy | string | team passing accuracy
+totalcircleentries | string | total circle enties by team
+totalpenaltycorner | string | total penalty corner
+totalpenaltystrokes | string | total penalty strokes
+totalyellowcard | string | total yellow card
+totalgreencard | string |total green card
+totalredcard | string | total red card
+
+<h3 id="matches-playerstats-hockey">Match Player Stats Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | string | player id
+name | string | player name
+minutesplayed | string | minutes played by the player
+goals | string | goals scored by the player
+passes | string | number of passes by the player
+assists | string | assists by the player
+tackles | string | tackles won by the player
+interceptions | string | interceptions by the player
+blocks | string | blocks by the player
+circlepenetration | string | circle penetration by the player
+shotongoal | string | shots on target by the player
+goalsconceded | string | goals conceded by the player
+penaltycornerearned | string | penalty corner earned by the player
+penaltystrokeearned | string | penalty stroke earned by the player
+penaltystrokesaved | string | penalty stroke saved by the player
+penaltystrokemissed | string | penalty stroke missed by the player
+greencard | string | number of green card awarded to player
+yellowcard | string | number of yellow card awarded to player
+redcard | string | number of red card awarded to player
+
+<h3 id="matches-umpire-hockey">Match Umpire Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | string | umpire id
+name | string | umpire name
+
+
+## Match Fantasy API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/hockey/matches/1/fantasy?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": {
+            "match_info": {
+                "mid": "1",
+                "round_id": "",
+                "round_name": "",
+                "title": "Spain vs Belgium",
+                "subtitle": "spain vs belgium",
+                "teams": {
+                    "home": {
+                        "tid": "8",
+                        "tname": "Spain",
+                        "shortname": "ESP",
+                        "logo": ""
+                    },
+                    "away": {
+                        "tid": "3",
+                        "tname": "Belgium",
+                        "shortname": "BEL",
+                        "logo": ""
+                    }
+                },
+                "datestart": "2019-01-19 12:00:00",
+                "dateend": "2019-01-19 14:00:00",
+                "timestampstart": "1547899200",
+                "timestampend": "1547906400",
+                "result": {
+                    "home": "2",
+                    "away": "2",
+                    "winner": "",
+                    "text": "Match Tied (2-2)",
+                    "tie": "true"
+                },
+                "status": "2",
+                "status_str": "result",
+                "gamestate": "7",
+                "gamestate_str": "Unknown",
+                "verified": "true",
+                "presquad": "false",
+                "competition": {
+                    "cid": "2",
+                    "cname": "FIH Mens 2019",
+                    "startdate": "2019-01-19",
+                    "enddate": "2019-06-30",
+                    "startdatetimestamp": "1547856000",
+                    "endtdatetimestamp": "1561852800",
+                    "year": "2019",
+                    "status": "2",
+                    "status_str": "completed",
+                    "logo": ""
+                },
+                "venue": ""
+            },
+            "fantasy_squad": {
+                "home": [
+                    {
+                        "pid": "212",
+                        "name": "Quico Cortes",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "213",
+                        "name": "Marc Perellon",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "214",
+                        "name": "Sergi Enrique",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "215",
+                        "name": "Ricardo Sanchez",
+                        "role": "defender",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "216",
+                        "name": "Marc Serrahima",
+                        "role": "defender",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "217",
+                        "name": "Ignacio Rodriguez",
+                        "role": "defender",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "218",
+                        "name": "Miguel Delas",
+                        "role": "defender",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "219",
+                        "name": "Enrique Gonzalez",
+                        "role": "striker",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "220",
+                        "name": "Alvaro Iglesias",
+                        "role": "striker",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "221",
+                        "name": "Marc Salles",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "222",
+                        "name": "Joan Tarres",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "223",
+                        "name": "Ricardo Santana",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "224",
+                        "name": "Diego Arana",
+                        "role": "striker",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "225",
+                        "name": "Llorenc Piera",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "226",
+                        "name": "Xavi Lleonart",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "227",
+                        "name": "Alejandro De Frutos",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "228",
+                        "name": "Ignasi Torras",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "229",
+                        "name": "Marc Garcia",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "230",
+                        "name": "Vicenc Ruiz",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "231",
+                        "name": "Albert Beltran",
+                        "role": "striker",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "232",
+                        "name": "Josep Romeu",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "233",
+                        "name": "Mario Garin",
+                        "role": "goalkeeper",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "234",
+                        "name": "Pau Quemada",
+                        "role": "striker",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "235",
+                        "name": "Marc Bolto",
+                        "role": "striker",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "236",
+                        "name": "Marc Miralles",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "237",
+                        "name": "Xavier Gispert",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "238",
+                        "name": "Marc Recasens",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "239",
+                        "name": "Albert Perez",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "240",
+                        "name": "Alvaro Negrete",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    }
+                ],
+                "away": [
+                    {
+                        "pid": "59",
+                        "name": "Amaury Timmermans",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "60",
+                        "name": "Loic Van Doren",
+                        "role": "goalkeeper",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "61",
+                        "name": "Arthur Van Doren",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "62",
+                        "name": "Nicolas Poncelet",
+                        "role": "striker",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "63",
+                        "name": "Dorian Thiery",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "64",
+                        "name": "John-john Dohmen",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "65",
+                        "name": "Florent Van Aubel",
+                        "role": "striker",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "66",
+                        "name": "Sbastien Dockier",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "67",
+                        "name": "Cdric Charlier",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "68",
+                        "name": "Amaury Keusters",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "69",
+                        "name": "Gauthier Boccard",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "70",
+                        "name": "Nicolas De Kerpel",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "71",
+                        "name": "Augustin Meurmans",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "72",
+                        "name": "Emmanuel Stockbroekx",
+                        "role": "defender",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "73",
+                        "name": "Alexander Hendrickx",
+                        "role": "defender",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "74",
+                        "name": "Thomas Briels",
+                        "role": "striker",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "75",
+                        "name": "Maxime Plennevaux",
+                        "role": "striker",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "76",
+                        "name": "Felix Denayer",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "77",
+                        "name": "Vincent Vanasch",
+                        "role": "goalkeeper",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "78",
+                        "name": "Simon Gougnard",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "79",
+                        "name": "Arthur De Sloover",
+                        "role": "defender",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "80",
+                        "name": "Antoine Kina",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "81",
+                        "name": "Lock Luypaert",
+                        "role": "defender",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "82",
+                        "name": "Victor Wegnez",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "83",
+                        "name": "Tom Boon",
+                        "role": "midfielder",
+                        "fantasy_credit": "8"
+                    },
+                    {
+                        "pid": "84",
+                        "name": "Tanguy Cosyns",
+                        "role": "striker",
+                        "fantasy_credit": "8"
+                    }
+                ]
+            },
+            "points": {
+                "home": [
+                    {
+                        "pid": "212",
+                        "name": "Quico Cortes",
+                        "role": "midfielder",
+                        "fantasy_credit": "8",
+                        "point": "-9",
+                        "minutesplayed": "3",
+                        "goals": "0",
+                        "passes": "0",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-12",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "214",
+                        "name": "Sergi Enrique",
+                        "role": "midfielder",
+                        "fantasy_credit": "8",
+                        "point": "71",
+                        "minutesplayed": "3",
+                        "goals": "0",
+                        "passes": "70",
+                        "assists": "0",
+                        "circlepenetration": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "-2",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-12",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "4",
+                        "interceptions": "6",
+                        "blocks": "0",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "216",
+                        "name": "Marc Serrahima",
+                        "role": "defender",
+                        "fantasy_credit": "8",
+                        "point": "18",
+                        "minutesplayed": "3",
+                        "goals": "0",
+                        "passes": "25",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-20",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "4",
+                        "interceptions": "0",
+                        "blocks": "2",
+                        "shotongoal": "4",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "217",
+                        "name": "Ignacio Rodriguez",
+                        "role": "defender",
+                        "fantasy_credit": "8",
+                        "point": "75",
+                        "minutesplayed": "3",
+                        "goals": "60",
+                        "passes": "16",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-10",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "2",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "4",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "219",
+                        "name": "Enrique Gonzalez",
+                        "role": "striker",
+                        "fantasy_credit": "8",
+                        "point": "72",
+                        "minutesplayed": "6",
+                        "goals": "40",
+                        "passes": "10",
+                        "assists": "0",
+                        "circlepenetration": "4",
+                        "penaltycornerearned": "4",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "0",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "4",
+                        "blocks": "0",
+                        "shotongoal": "4",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "220",
+                        "name": "Alvaro Iglesias",
+                        "role": "striker",
+                        "fantasy_credit": "8",
+                        "point": "20",
+                        "minutesplayed": "6",
+                        "goals": "0",
+                        "passes": "10",
+                        "assists": "0",
+                        "circlepenetration": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "0",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "2",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "221",
+                        "name": "Marc Salles",
+                        "role": "midfielder",
+                        "fantasy_credit": "8",
+                        "point": "37",
+                        "minutesplayed": "3",
+                        "goals": "0",
+                        "passes": "30",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-6",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "6",
+                        "interceptions": "2",
+                        "blocks": "2",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "223",
+                        "name": "Ricardo Santana",
+                        "role": "midfielder",
+                        "fantasy_credit": "8",
+                        "point": "14",
+                        "minutesplayed": "6",
+                        "goals": "0",
+                        "passes": "10",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-6",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "2",
+                        "interceptions": "0",
+                        "blocks": "2",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "226",
+                        "name": "Xavi Lleonart",
+                        "role": "midfielder",
+                        "fantasy_credit": "8",
+                        "point": "27",
+                        "minutesplayed": "3",
+                        "goals": "0",
+                        "passes": "18",
+                        "assists": "0",
+                        "circlepenetration": "4",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-6",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "6",
+                        "interceptions": "2",
+                        "blocks": "0",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "227",
+                        "name": "Alejandro De Frutos",
+                        "role": "midfielder",
+                        "fantasy_credit": "8",
+                        "point": "11",
+                        "minutesplayed": "6",
+                        "goals": "0",
+                        "passes": "7",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-6",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "2",
+                        "interceptions": "0",
+                        "blocks": "2",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "229",
+                        "name": "Marc Garcia",
+                        "role": "midfielder",
+                        "fantasy_credit": "8",
+                        "point": "12",
+                        "minutesplayed": "6",
+                        "goals": "0",
+                        "passes": "6",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-6",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "2",
+                        "interceptions": "2",
+                        "blocks": "2",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "230",
+                        "name": "Vicenc Ruiz",
+                        "role": "midfielder",
+                        "fantasy_credit": "8",
+                        "point": "9",
+                        "minutesplayed": "3",
+                        "goals": "0",
+                        "passes": "16",
+                        "assists": "0",
+                        "circlepenetration": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-12",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "231",
+                        "name": "Albert Beltran",
+                        "role": "striker",
+                        "fantasy_credit": "8",
+                        "point": "10",
+                        "minutesplayed": "6",
+                        "goals": "0",
+                        "passes": "4",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "0",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "232",
+                        "name": "Josep Romeu",
+                        "role": "midfielder",
+                        "fantasy_credit": "8",
+                        "point": "49",
+                        "minutesplayed": "3",
+                        "goals": "0",
+                        "passes": "48",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-12",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "4",
+                        "interceptions": "6",
+                        "blocks": "0",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "233",
+                        "name": "Mario Garin",
+                        "role": "goalkeeper",
+                        "fantasy_credit": "8",
+                        "point": "0",
+                        "minutesplayed": "0",
+                        "goals": "0",
+                        "passes": "0",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "0",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "234",
+                        "name": "Pau Quemada",
+                        "role": "striker",
+                        "fantasy_credit": "8",
+                        "point": "74",
+                        "minutesplayed": "6",
+                        "goals": "0",
+                        "passes": "8",
+                        "assists": "48",
+                        "circlepenetration": "6",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "0",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "2",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "4",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "235",
+                        "name": "Marc Bolto",
+                        "role": "striker",
+                        "fantasy_credit": "8",
+                        "point": "18",
+                        "minutesplayed": "6",
+                        "goals": "0",
+                        "passes": "4",
+                        "assists": "0",
+                        "circlepenetration": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "0",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "2",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "4",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "236",
+                        "name": "Marc Miralles",
+                        "role": "midfielder",
+                        "fantasy_credit": "8",
+                        "point": "6",
+                        "minutesplayed": "6",
+                        "goals": "0",
+                        "passes": "6",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-12",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "2",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "4",
+                        "cleansheet": "0"
+                    }
+                ],
+                "away": [
+                    {
+                        "pid": "60",
+                        "name": "Loic Van Doren",
+                        "role": "goalkeeper",
+                        "fantasy_credit": "8",
+                        "point": "0",
+                        "minutesplayed": "0",
+                        "goals": "0",
+                        "passes": "0",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "0",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "61",
+                        "name": "Arthur Van Doren",
+                        "role": "midfielder",
+                        "fantasy_credit": "8",
+                        "point": "82",
+                        "minutesplayed": "3",
+                        "goals": "0",
+                        "passes": "47",
+                        "assists": "24",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-12",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "8",
+                        "interceptions": "6",
+                        "blocks": "6",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "62",
+                        "name": "Nicolas Poncelet",
+                        "role": "striker",
+                        "fantasy_credit": "8",
+                        "point": "13",
+                        "minutesplayed": "6",
+                        "goals": "0",
+                        "passes": "5",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "0",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "2",
+                        "blocks": "0",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "66",
+                        "name": "Sbastien Dockier",
+                        "role": "midfielder",
+                        "fantasy_credit": "8",
+                        "point": "5",
+                        "minutesplayed": "0",
+                        "goals": "0",
+                        "passes": "1",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "0",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "4",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "69",
+                        "name": "Gauthier Boccard",
+                        "role": "midfielder",
+                        "fantasy_credit": "8",
+                        "point": "21",
+                        "minutesplayed": "3",
+                        "goals": "0",
+                        "passes": "22",
+                        "assists": "0",
+                        "circlepenetration": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-6",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "70",
+                        "name": "Nicolas De Kerpel",
+                        "role": "midfielder",
+                        "fantasy_credit": "8",
+                        "point": "12",
+                        "minutesplayed": "3",
+                        "goals": "0",
+                        "passes": "17",
+                        "assists": "0",
+                        "circlepenetration": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-12",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "2",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "79",
+                        "name": "Arthur De Sloover",
+                        "role": "defender",
+                        "fantasy_credit": "8",
+                        "point": "23",
+                        "minutesplayed": "3",
+                        "goals": "0",
+                        "passes": "24",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-10",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "2",
+                        "interceptions": "2",
+                        "blocks": "2",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "80",
+                        "name": "Antoine Kina",
+                        "role": "midfielder",
+                        "fantasy_credit": "8",
+                        "point": "4",
+                        "minutesplayed": "3",
+                        "goals": "0",
+                        "passes": "9",
+                        "assists": "0",
+                        "circlepenetration": "4",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-12",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "81",
+                        "name": "Lock Luypaert",
+                        "role": "defender",
+                        "fantasy_credit": "8",
+                        "point": "46",
+                        "minutesplayed": "3",
+                        "goals": "0",
+                        "passes": "51",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-20",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "4",
+                        "interceptions": "2",
+                        "blocks": "6",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "82",
+                        "name": "Victor Wegnez",
+                        "role": "midfielder",
+                        "fantasy_credit": "8",
+                        "point": "20",
+                        "minutesplayed": "3",
+                        "goals": "0",
+                        "passes": "23",
+                        "assists": "0",
+                        "circlepenetration": "4",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-12",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "2",
+                        "blocks": "0",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "83",
+                        "name": "Tom Boon",
+                        "role": "midfielder",
+                        "fantasy_credit": "8",
+                        "point": "16",
+                        "minutesplayed": "3",
+                        "goals": "0",
+                        "passes": "5",
+                        "assists": "0",
+                        "circlepenetration": "6",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-12",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "2",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "12",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "84",
+                        "name": "Tanguy Cosyns",
+                        "role": "striker",
+                        "fantasy_credit": "8",
+                        "point": "11",
+                        "minutesplayed": "6",
+                        "goals": "0",
+                        "passes": "3",
+                        "assists": "0",
+                        "circlepenetration": "2",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "0",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "71",
+                        "name": "Augustin Meurmans",
+                        "role": "midfielder",
+                        "fantasy_credit": "8",
+                        "point": "11",
+                        "minutesplayed": "0",
+                        "goals": "0",
+                        "passes": "11",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "0",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "73",
+                        "name": "Alexander Hendrickx",
+                        "role": "defender",
+                        "fantasy_credit": "8",
+                        "point": "75",
+                        "minutesplayed": "6",
+                        "goals": "60",
+                        "passes": "11",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-10",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "4",
+                        "blocks": "0",
+                        "shotongoal": "4",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "74",
+                        "name": "Thomas Briels",
+                        "role": "striker",
+                        "fantasy_credit": "8",
+                        "point": "15",
+                        "minutesplayed": "0",
+                        "goals": "0",
+                        "passes": "7",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "0",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "0",
+                        "interceptions": "4",
+                        "blocks": "0",
+                        "shotongoal": "4",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "75",
+                        "name": "Maxime Plennevaux",
+                        "role": "striker",
+                        "fantasy_credit": "8",
+                        "point": "55",
+                        "minutesplayed": "3",
+                        "goals": "40",
+                        "passes": "2",
+                        "assists": "0",
+                        "circlepenetration": "4",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "0",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "2",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "4",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "77",
+                        "name": "Vincent Vanasch",
+                        "role": "goalkeeper",
+                        "fantasy_credit": "8",
+                        "point": "-1",
+                        "minutesplayed": "3",
+                        "goals": "0",
+                        "passes": "0",
+                        "assists": "0",
+                        "circlepenetration": "0",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "-40",
+                        "penaltystrokesaved": "0",
+                        "saves": "36",
+                        "tackles": "0",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "0",
+                        "cleansheet": "0"
+                    },
+                    {
+                        "pid": "65",
+                        "name": "Florent Van Aubel",
+                        "role": "striker",
+                        "fantasy_credit": "8",
+                        "point": "35",
+                        "minutesplayed": "3",
+                        "goals": "0",
+                        "passes": "10",
+                        "assists": "0",
+                        "circlepenetration": "8",
+                        "penaltycornerearned": "0",
+                        "penaltystrokeearned": "0",
+                        "greencard": "0",
+                        "redcard": "0",
+                        "yellowcard": "0",
+                        "penaltystrokemissed": "0",
+                        "goalsconceded": "0",
+                        "penaltystrokesaved": "0",
+                        "saves": "0",
+                        "tackles": "2",
+                        "interceptions": "0",
+                        "blocks": "0",
+                        "shotongoal": "12",
+                        "cleansheet": "0"
+                    }
+                ]
+            }
+        },
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "2d708d9e6fa2d83bcff4aac329c77ec0",
+    "modified": "2019-12-31 17:16:58",
+    "datetime": "2019-12-31 17:16:58",
+    "api_version": "1.0"
+}
+
+```
+This API contains a single match info, match team and player stats details.
+
+### Request
+* Path: /hockey/matches/mid/fantasy
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match details object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+match_info | array | An array of match details. <a href="#matches-info-hockey">see match_info object reference</a>
+fantasy_squad | array | An array of home/away team players role and credit details. <a href="#fanasysquad-hockey">see fantasy squad object reference</a>
+points | array | An array of player match fantasy points details. <a href="#fantasy-points-hockey">see player fantasy points object reference</a>
+
+
+<h3 id="fanasysquad-hockey">Match Fantasy Squad Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | string | player id
+name | string | player name
+role | string | player fantasy playing role
+fantasy_credit | string | player fantasy credit
+
+
+<h3 id="fantasy-points-hockey">Fantasy Points Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | string | player id
+name | string | player name
+role | string | player fantasy playing role
+fantasy_credit | string | player fantasy credit
+point | string | total fantasy points of player
+minutesplayed | string | points for minutes played
+goals | string | points for goals scored
+passes | string | passes points
+assists | string | assists points
+circlepenetration | string | circle penetration points
+penaltycornerearned | string | penalty corner earned points
+penaltystrokeearned | string | penalty stroke earned points
+greencard | string | green card points
+redcard | string | red card points
+yellowcard | string | yellow card points
+penaltystrokemissed | string | penalty stroke missed points
+goalsconceded | string | goals conceded points
+penaltystrokesaved | string | penalty stroke saved
+saves | string | saves points
+tackles | string | tackles points
+interceptions | string | interceptions points
+blocks | string | blocks points
+shotongoal | string | shot on target points
+cleansheet | string | cleansheet points
+
+
+
+## Teams List API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/hockey/teams?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "tid": "1",
+                "tname": "Argentina",
+                "shortname": "ARG",
+                "sex": "",
+                "city": "",
+                "founded": "",
+                "website": "",
+                "twitter": "argfieldhockey",
+                "instagram": "",
+                "teamlogo": "",
+                "teamurl": "team/1/info",
+                "teammatches_url": "team/1/matches"
+            }
+        ],
+        "total_items": "8",
+        "total_pages": 8
+    },
+    "etag": "e73845dad73f8064873ecb7b3a775d7a",
+    "modified": "2019-12-31 17:33:20",
+    "datetime": "2019-12-31 17:33:20",
+    "api_version": "1.0"
+}
+
+```
+This API lists all the teams available to access.
+
+### Request
+* Path: /hockey/teams
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of teams object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of teams available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | string | team id
+tname | string | team name
+shortname | string | team short name
+sex| string | team gender
+city | string | team city name
+founded | string | year of team founded
+website | string | website url of team website
+twitter | string | twitter account name
+instagram | string | instagram hastag
+teamlogo | string | team logo url
+team_url | string | team info url
+team_matches_url | string | team matches list url
+
+
+## Team Info API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/hockey/team/1/info?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "tid": "1",
+                "tname": "Argentina",
+                "shortname": "ARG",
+                "sex": "",
+                "city": "",
+                "founded": "",
+                "website": "",
+                "twitter": "argfieldhockey",
+                "instagram": "",
+                "coach": "Colin Batch",
+                "teamlogo": "",
+                "squads": [
+                    {
+                        "pid": "1",
+                        "fullname": "Juan Vivaldi",
+                        "birthdate": "1979-07-17",
+                        "nationality": "argentina",
+                        "positiontype": "GK",
+                        "positionname": "goalkeeper",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "1"
+                    },
+                    {
+                        "pid": "2",
+                        "fullname": "Gonzalo Peillat",
+                        "birthdate": "1992-08-12",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "2"
+                    },
+                    {
+                        "pid": "3",
+                        "fullname": "Emiliano Bosso",
+                        "birthdate": "1995-12-03",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "3"
+                    },
+                    {
+                        "pid": "4",
+                        "fullname": "Juan Catan",
+                        "birthdate": "1995-10-05",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "4"
+                    },
+                    {
+                        "pid": "5",
+                        "fullname": "Pedro Ibarra",
+                        "birthdate": "1985-09-11",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "5"
+                    },
+                    {
+                        "pid": "6",
+                        "fullname": "Santiago Tarazona",
+                        "birthdate": "1996-05-31",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "6"
+                    },
+                    {
+                        "pid": "7",
+                        "fullname": "Nicolas Keenan",
+                        "birthdate": "1997-05-06",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "7"
+                    },
+                    {
+                        "pid": "8",
+                        "fullname": "Federico Moreschi",
+                        "birthdate": "1999-02-13",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "8"
+                    },
+                    {
+                        "pid": "9",
+                        "fullname": "Maico Casella",
+                        "birthdate": "1997-06-05",
+                        "nationality": "argentina",
+                        "positiontype": "ST",
+                        "positionname": "striker",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "9"
+                    },
+                    {
+                        "pid": "10",
+                        "fullname": "Matias Paredes",
+                        "birthdate": "1982-02-01",
+                        "nationality": "argentina",
+                        "positiontype": "ST",
+                        "positionname": "striker",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "10"
+                    },
+                    {
+                        "pid": "11",
+                        "fullname": "Joaquin Menini",
+                        "birthdate": "1991-08-18",
+                        "nationality": "argentina",
+                        "positiontype": "ST",
+                        "positionname": "striker",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "11"
+                    },
+                    {
+                        "pid": "12",
+                        "fullname": "Lucas Vila",
+                        "birthdate": "1986-08-23",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "12"
+                    },
+                    {
+                        "pid": "13",
+                        "fullname": "Jose Tolini",
+                        "birthdate": "1990-03-14",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "13"
+                    },
+                    {
+                        "pid": "14",
+                        "fullname": "Nicolas Della Torre",
+                        "birthdate": "1990-03-01",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "14"
+                    },
+                    {
+                        "pid": "15",
+                        "fullname": "Ignacio Ortiz",
+                        "birthdate": "1987-07-26",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "16"
+                    },
+                    {
+                        "pid": "16",
+                        "fullname": "Juan Lopez",
+                        "birthdate": "1985-05-27",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "17"
+                    },
+                    {
+                        "pid": "17",
+                        "fullname": "Federico Monja",
+                        "birthdate": "1993-09-12",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "18"
+                    },
+                    {
+                        "pid": "18",
+                        "fullname": "Tomas Bettaglio",
+                        "birthdate": "1991-09-23",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "19"
+                    },
+                    {
+                        "pid": "19",
+                        "fullname": "Isidoro Ibarra",
+                        "birthdate": "1992-10-02",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "20"
+                    },
+                    {
+                        "pid": "20",
+                        "fullname": "Tomas Santiago",
+                        "birthdate": "1992-06-15",
+                        "nationality": "argentina",
+                        "positiontype": "GK",
+                        "positionname": "goalkeeper",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "21"
+                    },
+                    {
+                        "pid": "21",
+                        "fullname": "Matias Rey",
+                        "birthdate": "1984-12-01",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "22"
+                    },
+                    {
+                        "pid": "22",
+                        "fullname": "Lucas Martinez",
+                        "birthdate": "1993-11-17",
+                        "nationality": "argentina",
+                        "positiontype": "ST",
+                        "positionname": "striker",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "23"
+                    },
+                    {
+                        "pid": "23",
+                        "fullname": "Nicolas Cicileo",
+                        "birthdate": "1993-10-01",
+                        "nationality": "argentina",
+                        "positiontype": "DEF",
+                        "positionname": "defender",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "24"
+                    },
+                    {
+                        "pid": "24",
+                        "fullname": "Nicolas Acosta",
+                        "birthdate": "1996-07-07",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "25"
+                    },
+                    {
+                        "pid": "25",
+                        "fullname": "Agustin Mazzilli",
+                        "birthdate": "1989-06-20",
+                        "nationality": "argentina",
+                        "positiontype": "ST",
+                        "positionname": "striker",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "26"
+                    },
+                    {
+                        "pid": "26",
+                        "fullname": "Lucas Rossi",
+                        "birthdate": "1985-06-02",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "27"
+                    },
+                    {
+                        "pid": "27",
+                        "fullname": "Federico Fernandez",
+                        "birthdate": "1992-02-28",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "28"
+                    },
+                    {
+                        "pid": "28",
+                        "fullname": "Thomas Habif",
+                        "birthdate": "1996-05-27",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "29"
+                    },
+                    {
+                        "pid": "29",
+                        "fullname": "Agustin Bugallo",
+                        "birthdate": "1995-04-23",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "30"
+                    },
+                    {
+                        "pid": "30",
+                        "fullname": "Lucas Toscani",
+                        "birthdate": "1999-09-22",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "31"
+                    },
+                    {
+                        "pid": "31",
+                        "fullname": "Martin Ferreiro",
+                        "birthdate": "1997-10-21",
+                        "nationality": "argentina",
+                        "positiontype": "MID",
+                        "positionname": "midfielder",
+                        "height": "",
+                        "weight": "",
+                        "shirtnumber": "32"
+                    }
+                ]
+            }
+        ],
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "5d3887673e116118e5127a1edb01950e",
+    "modified": "2019-12-31 17:36:22",
+    "datetime": "2019-12-31 17:36:22",
+    "api_version": "1.0"
+}
+
+```
+This API contains team info and squad/roaster player details.
+
+### Request
+* Path: /hockey/team/tid/info
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | string | team id
+token | {ACCESS_TOKEN} | API Access token
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of team object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of teams available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | string | team id
+tname | string | team name
+shortname | string | team short name
+sex| string | team gender
+city | string | team city name
+founded | string | year of team founded
+website | string | website url of team website
+twitter | string | twitter account name
+instagram | string | instagram hastag
+teamlogo | string | team logo url
+team_url | string | team info url
+team_matches_url | string | team matches list url
+squads | array | An array of team player details. <a href="#team-player-hockey">see squads object reference</a>
+
+
+<h3 id="team-player-hockey">Squads Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | string | player id
+fullname | string | Player full name
+birthdate | string | Player Birthdate format - dd/mm/yy
+nationality | string | country name
+positionid | string | player playing position type
+positionname | string | player playing position name
+height | string | player height in centimeters
+weight | string | player weight in kg
+shirtnumber | string | player shirt number
+
+
+
+## Team Matches API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/hockey/team/1/matches?token=[ACCESS_TOKEN]"
+```
+
+> Using Token and Status parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/hockey/team/1/matches?token=[ACCESS_TOKEN]&status=2"
+```
+
+> Using Token, Status and Pagination parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/hockey/team/1/matches?token=[ACCESS_TOKEN]&status=2&per_page=10&paged=1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+ {
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "mid": "55",
+                "round_id": "",
+                "round_name": "",
+                "title": "Belgium vs Argentina",
+                "subtitle": "belgium vs argentina",
+                "teams": {
+                    "home": {
+                        "tid": "3",
+                        "tname": "Belgium",
+                        "shortname": "BEL",
+                        "logo": ""
+                    },
+                    "away": {
+                        "tid": "1",
+                        "tname": "Argentina",
+                        "shortname": "ARG",
+                        "logo": ""
+                    }
+                },
+                "datestart": "2019-06-23 11:30:00",
+                "dateend": "2019-06-23 13:30:00",
+                "timestampstart": "1561289400",
+                "timestampend": "1561296600",
+                "result": {
+                    "home": "4",
+                    "away": "1",
+                    "winner": "3",
+                    "text": "Belgium Beat Argentina (4-1)",
+                    "tie": "false"
+                },
+                "status": "2",
+                "status_str": "result",
+                "gamestate": "1",
+                "gamestate_str": "1st Quarter",
+                "verified": "true",
+                "presquad": "false",
+                "competition": {
+                    "cid": "2",
+                    "cname": "FIH Mens 2019",
+                    "startdate": "2019-01-19",
+                    "enddate": "2019-06-30",
+                    "startdatetimestamp": "1547856000",
+                    "endtdatetimestamp": "1561852800",
+                    "year": "2019",
+                    "status": "2",
+                    "status_str": "completed",
+                    "logo": ""
+                },
+                "venue": ""
+            }
+        ],
+        "total_items": 14,
+        "total_pages": 14
+    },
+    "etag": "7755ccb4c1850b6822fb62ac8993200d",
+    "modified": "2019-12-31 17:39:06",
+    "datetime": "2019-12-31 17:39:06",
+    "api_version": "1.0"
+}
+
+```
+
+This API contains the list of team's all matches details.
+
+### Request
+* Path: /hockey/team/tid/matches
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | string | competition id
+token | {ACCESS_TOKEN} | API Access token
+status | string | 1 = upcoming, 2 = result, 3 = live, 4 = postponed, 5 = cancelled
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+match_info | array | An array of match details. <a href="#matches-info-hockey">see match_info object reference</a>
+
+
+## Player List API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/hockey/players?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "pid": "1",
+                "fullname": "Juan Vivaldi",
+                "birthdate": "1979-07-17",
+                "sex": "m",
+                "nationality": "argentina",
+                "positiontype": "GK",
+                "positionname": "goalkeeper",
+                "height": "",
+                "weight": "",
+                "jerseyno": "1"
+            }
+        ],
+        "total_items": 606,
+        "total_pages": 606
+    },
+    "etag": "f67de66e149d308df4031fd35f3f9c4d",
+    "modified": "2019-12-31 17:41:08",
+    "datetime": "2019-12-31 17:41:08",
+    "api_version": "1.0"
+}
+
+```
+This API contains list of player details.
+
+### Request
+* Path: /hockey/players
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of player object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of players available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | string | player id
+fullname | string | Player full name
+birthdate | string | Player Birthdate format - yyyy-mm-dd
+nationality | string | country name
+positiontype | string | player playing position type
+positionname | string | player playing position name
+height | string | player height in centimeters
+weight | string | player weight in kg
+jerseyno | string | player jersey number
+fantasy_credit | string | player fantasy credit/salary
+
+
+## Player Profile API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/hockey/player/1/profile?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "pid": "1",
+                "fullname": "Juan Vivaldi",
+                "birthdate": "1979-07-17",
+                "sex": "m",
+                "nationality": "argentina",
+                "positiontype": "GK",
+                "positionname": "goalkeeper",
+                "height": "",
+                "weight": "",
+                "jerseyno": "1"
+            }
+        ],
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "f67de66e149d308df4031fd35f3f9c4d",
+    "modified": "2019-12-31 17:41:08",
+    "datetime": "2019-12-31 17:41:08",
+    "api_version": "1.0"
+}
+
+```
+This API contains player profile and career statistic details.
+
+### Request
+* Path: /hockey/player/pid/profile
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | string | player id
+token | {ACCESS_TOKEN} | API Access token
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of player object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of players available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+player_info | array | array of player profile details. <a href="#player-profile-hockey">see player_info object reference</a>
+
+<h3 id="player-profile-hockey">Player Profile Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | string | player id
+fullname | string | Player full name
+birthdate | string | Player Birthdate format - - yyyy-mm-dd
+nationality | string | country name
+positiontype | string | player playing position type
+positionname | string | player playing position name
+height | string | player height in centimeters
+weight | string | player weight in kg
+jerseyno | string | player jersey number
+fantasy_credit | string | player fantasy credit/salary
+
+
+
+## Match status Reference
+
+Code | Description
+-----| ------- 
+1  |  Upcoming
+2  |  Result
+3  |  Live
+4  |  Canceled
+
+
+## Match Game State Reference
+
+<aside class="success">game_state is only used for live match</aside>
+
+Code | Description
+-----| ------- 
+0 |  Not started
+1 |  1st Quarter
+2 |  2nd Quarter
+3 |  3rd Quarter
+4 |  4th Quarter
+5 |  Half Time
+6 |  Shootout
+7 |  Unknown
+
+
+## Playing Position Reference
+
+Code | Description
+---- | ------- 
+GK | Goalkeeper
+MID | Midfielder
+DEF | Defender
+ST | Striker
+
