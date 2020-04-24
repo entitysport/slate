@@ -8967,8 +8967,9 @@ Code | Description
 7  |  Women ODI
 8  |  Women T20
 9  |  Youth ODI
-10  |  Youth T20
-11  |  Others
+10 |  Youth T20
+11 |  Others
+17 |  T10
 
 ## Match Domestic Codes
 
@@ -35545,4 +35546,3610 @@ GK | Goalkeeper
 MID | Midfielder
 DEF | Defender
 ST | Striker
+
+
+
+
+# Baseball API
+
+## Getting your Keys 
+
+You will need an active access key and secret key with a valid subsciption to start using our API. Please visit entitysport.com to request your keys and subscription.
+
+## Obtaining Token
+
+> To authorize, use this code:
+
+```shell
+curl -X POST "https://rest.entitysport.com/baseball/auth?access_key=YOURACCESSKEY&secret_key=YOURSECRETKEY"
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "token": "1|X#aFhlzAsd",
+        "expires": "12312312312",
+    },
+    "api_version": "2.0"
+}
+
+```
+
+To access any API, you need a token. A token can be generated using your keys. Token is a piece of information that would allow you to access our API data until your subscription expires. Auth API provides you the token, by validating your keys. Request to our Auth API whenever the access token is expired or unavailable.
+
+### Request
+
+* Path: /baseball/auth/
+* Method: Post
+* POST Parameters
+ * access_key - Access Key of your Application.
+ * secret_key - Secret key of your Application.
+
+
+###Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.token:</code> access token.
+* <code style="color:#c7254e";>response.expires:</code> access token expire timestamp.
+
+## Making your First Request
+
+```shell
+curl -X GET "https://rest.entitysport.com/baseball/?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "api_doc": "https://doc.entitysport.com/#baseball-api/",
+        "status_codes": {
+            "ok": "Success",
+            "error": "Failure",
+            "invalid": "Invalid Request",
+            "unauthorized": "Un authorized",
+            "noaccess": "No access to requested resource"
+        }
+    },
+    "api_version": "2.0"
+}
+
+```
+
+It's very easy to start using the EntitySport Soccer API. By passing your **token** as `token` to our api server, you can get access to our API data instantly.
+
+### https Request
+
+`GET https://rest.entitysport.com/baseball/?token=[ACCESS_TOKEN]`
+
+## https Status Code
+
+All API request will resolve with any of the following https header status.
+
+Response Code | Description
+--------- | -----------
+200  | API request valid, informations ready to access
+304  | API request valid, but data was not modified since last accessed (compared using Etag)
+400  | Client side error. occurs for invalid request
+401  | occurs for unauthorized request
+501  | Server side error. Internal server error, unable to process your request
+
+## API Response
+
+```json
+
+{
+    "status": "ok",
+    "response": {},
+    "etag": "8fc93de066d8d802a36e0882ecc77fdb",
+    "modified": "2017-01-31 16:29:11",
+    "datetime": "2017-01-31 16:29:11",
+    "api_version": "1.0"
+}
+
+```
+All successfull API request will return json output. The basic structure of data is available on all of the calls.
+
+### Status - Possible Values are as follows :
+
+Status | Description
+--------- | -----------
+ok  | A successfull response
+error  | if the request contains error
+unauthorized  | if the request is not authorized, usually for invalid/expired access token
+accessdenied  | if your app try to access non permitted data
+
+* <code style="color:#c7254e";>response:</code> contains the main data of the response. value can be string, number, array or object.
+
+
+## Pagination 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+per_page | Number | Number of items to list in each API request
+paged | Number | Page Number for request
+
+<aside class="success">/?token=[ACCESS_TOKEN]&per_page=5&&paged=3</aside>
+
+## API Objects
+
+There are some informations that we call as OBJECT. A response can contain a single object, or multiple objects or no objects at all. It is important get famililar with our objects.
+
+We have 5 Obejcts in total. A object is a set of data, which contains a unique identifier, and directly relates to other objects. ie: match object connects inning object, team object. 
+
+Each object has a unique identifier which start with the first character of object name, and **id** as suffix. ie: competition unique identified named as **cid**, for match it's **mid**, for player it's **pid**, for team, it's **tid**.
+
+
+* **Competition:**
+  Competition is a tour, or tournament, or trophy cup. A competition contains information matches, teams, player performance, table standings, season, dates, type, category etc
+
+* **Match:**
+  Match is the core part of our api. A match makes connection between teams, competition, players.
+    
+* **Team:**
+  A generic sports team, having a name, logo, country and type of team.
+
+* **Player:**
+  A generic sports player.
+
+
+
+## Competitions List API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/baseball/competitions?token=[ACCESS_TOKEN]"
+```
+> Using Token and Pagination parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/baseball/competitions?token=[ACCESS_TOKEN]&per_page=10&paged=1"
+```
+> Using Token, Pagination and status parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/baseball/competitions?token=[ACCESS_TOKEN]&status=3&per_page=10&paged=1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "cid": "1",
+                "cname": "CPBL",
+                "startdate": "2020-04-11 00:00:00",
+                "enddate": "2020-10-15 00:00:00",
+                "startdatetimestamp": 1586563200,
+                "endtdatetimestamp": 1602720000,
+                "year": "2020",
+                "category": "Chinese Taipei",
+                "ioc_id": "273",
+                "ioc": "tw",
+                "status": "3",
+                "status_str": "live",
+                "logo": "https://rest.entitysport.com/basketball/assets/competition/1.png",
+                "teams": [],
+                "match_url": "competition/1/matches"
+            }
+        ],
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "45e775f783fe64e10064df26c25c2b9d",
+    "modified": "2020-04-24 08:11:17",
+    "datetime": "2020-04-24 08:11:17",
+    "api_version": "1.0"
+}
+
+```
+This API lists all available competitions those user are subscribed and can access. This API is a directory of all competitions user have access.
+
+It will list 10 competitions data per request. If there is more than 10 competitions, you will get extra value under response node. You can use the page parameter to jump to a specific page if exists.
+
+### Request
+* Path: /baseball/competitons
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+status | string | status code for the competition, available status code 1 = upcoming, 2 = completed, 3 = live
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of competition cards.
+* <code style="color:#c7254e";>response.total_items:</code> total number of competitions available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of competition list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | string | timestamp of competition start date
+enddatetimestamp | string | timestamp of competition end date
+year | string | Season Year
+category | string | Competition Category
+ioc_id | integer | IOC id of competition native country
+ioc | string | IOC 2 letter code of competition native country
+status | string | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+match_url | string | Competition matches information API end point url
+
+
+## Competitions Information API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/baseball/competition/1/info?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "cid": "1",
+                "cname": "CPBL",
+                "startdate": "2020-04-11 00:00:00",
+                "enddate": "2020-10-15 00:00:00",
+                "startdatetimestamp": 1586563200,
+                "endtdatetimestamp": 1602720000,
+                "year": "2020",
+                "category": "Chinese Taipei",
+                "ioc_id": "273",
+                "ioc": "tw",
+                "status": "3",
+                "status_str": "live",
+                "logo": "https://rest.entitysport.com/basketball/assets/competition/1.png",
+                "teams": [],
+                "match_url": "competition/1/matches"
+            }
+        ],
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "45e775f783fe64e10064df26c25c2b9d",
+    "modified": "2020-04-24 08:11:17",
+    "datetime": "2020-04-24 08:11:17",
+    "api_version": "1.0"
+}
+
+```
+This API has competition and it's teams information.
+
+### Request
+* Path: /baseball/competition/cid/info
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of competition cards.
+* <code style="color:#c7254e";>response.items.teams</code> array of all the teams of the competition.
+* <code style="color:#c7254e";>response.items.point_table</code> array of points table of the competition.
+* <code style="color:#c7254e";>response.total_items:</code> total number of competitions available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of competition list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | string | timestamp of competition start date
+enddatetimestamp | string | timestamp of competition end date
+year | string | Season Year
+category | string | Competition Category
+ioc_id | integer | IOC id of competition native country
+ioc | string | IOC 2 letter code of competition native country
+status | string | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+teams | array | An array of all teams related to the competition. <a href="#competition-info-team-baseball">see teams object reference</a>
+match_url | string | Competition matches information API end point url
+
+
+<h3 id="competition-info-team-baseball">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | string | team id
+tname | string | team name
+shortname | string | team short name
+sex | string | team gender type
+city | string | team city name
+founded | string | year of team founded
+website | string | website url of team website
+twitter | string | twitter account name
+instagram | string | instagram account name
+teamlogo | string | team logo url
+
+
+## Competitions Matches API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/baseball/competition/1/matches?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "mid": 1,
+                "round": {
+                    "round": "",
+                    "name": ""
+                },
+                "teams": {
+                    "home": {
+                        "tid": 1,
+                        "tname": "Chinatrust Brothers",
+                        "logo": "https://rest.entitysport.com/baseball/assets/team/1.png",
+                        "fullname": "Chinatrust Brothers",
+                        "abbr": "CTB"
+                    },
+                    "away": {
+                        "tid": 2,
+                        "tname": "Rakuten Monkeys",
+                        "logo": "https://rest.entitysport.com/baseball/assets/team/5e9f7111a990b.png",
+                        "fullname": "Rakuten Monkeys",
+                        "abbr": "RM"
+                    }
+                },
+                "datestart": "2020-04-22 10:35:00",
+                "dateend": "2020-04-22 14:35:00",
+                "timestampstart": "1587551700",
+                "timestampend": "1587566100",
+                "time": "",
+                "result": {
+                    "home": "2",
+                    "away": "3",
+                    "winner": "away"
+                },
+                "inning": "",
+                "status_str": "result",
+                "status": 2,
+                "gamestate_str": "Ended",
+                "gamestate": 3,
+                "verified": "true",
+                "presquad": "true",
+                "attendance": 0,
+                "competition": {
+                    "cid": 1,
+                    "cname": "CPBL",
+                    "startdate": "2020-04-11 00:00:00",
+                    "enddate": "2020-10-15 00:00:00",
+                    "startdatetimestamp": 1586563200,
+                    "endtdatetimestamp": 1602720000,
+                    "year": "2020",
+                    "category": "Chinese Taipei",
+                    "ioc_id": "273",
+                    "ioc": "tw",
+                    "status": 3,
+                    "status_str": "live",
+                    "logo": "https://rest.entitysport.com/baseball/assets/competition/1.png"
+                },
+                "venue": ""
+            }
+        ],
+        "total_items": 5,
+        "total_pages": 1
+    },
+    "etag": "2ceb85051326580040c0c98850a8f6cd",
+    "modified": "2020-04-24 08:10:26",
+    "datetime": "2020-04-24 08:10:26",
+    "api_version": "1.0"
+}
+
+```
+This API has competition's all matches details.
+
+### Request
+* Path: /baseball/competition/cid/matches
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+mid | string | match id
+round | string | match round id details.
+name | string | match round name details.
+teams | array | An array of match teams details. <a href="#competition-matches-teams-baseball">see teams object reference</a>
+datestart | string | time string in GMT of match start time
+dateend | string | time string in GMT of match end time
+timestampstart | string | timestamp of match start time
+timestampend | string | timestamp of match end time
+result | array | An array of match result details. <a href="#competition-matches-result-baseball">see result object reference</a>
+status | string | Match status code 3 = live, 2 = result, 1 = upcoming, 4 = canceled
+status_str | string | Match status string live, result, upcoming,
+gamestate | string | Match state code
+gamestate_str | string | Match state string
+verified | string | true = match score is verified, false = match score is yet be verified.
+presquad | string | true = match squad is available with managed fantasy credit, false = match squad is don't have managed fantasy credit yet.
+competition | array | An array of competition details. <a href="#competition-matches-competition-baseball">see competition object reference</a>
+venue | array | An array of match venue details. <a href="#competition-matches-venue-baseball">see venue object reference</a>
+
+
+
+<h3 id="competition-matches-teams-baseball">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | An array of home team details. <a href="#competition-matches-teams-details-baseball">see home team object reference</a>
+away | array | An array of away team details. <a href="#competition-matches-teams-details-baseball">see away team object reference</a>
+
+
+<h3 id="competition-matches-result-baseball">Result Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | string | home team score
+away | string | away team score
+winner | string | winning team string
+
+<h3 id="competition-matches-teams-details-baseball">Home/Away Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+tname | string | team name
+logo | string | team logo url
+fullname | string | team name
+abbr | string | team short name
+
+
+<h3 id="competition-matches-competition-baseball">Competition Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | string | timestamp of competition start date
+enddatetimestamp | string | timestamp of competition end date
+year | string | Season Year
+category | string | Competition Category
+ioc_id | integer | IOC id of competition native country
+ioc | string | IOC 2 letter code of competition native country
+status | string | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+
+
+
+## Matches List API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/baseball/matches?token=[ACCESS_TOKEN]"
+```
+
+> Using Token and Status parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/baseball/matches?token=[ACCESS_TOKEN]&status=1"
+```
+
+> Using Token, Status and Pagination parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/baseball/matches?token=[ACCESS_TOKEN]&status=1&per_page=10&paged=1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "mid": 1,
+                "round": {
+                    "round": "",
+                    "name": ""
+                },
+                "teams": {
+                    "home": {
+                        "tid": 1,
+                        "tname": "Chinatrust Brothers",
+                        "logo": "https://rest.entitysport.com/baseball/assets/team/1.png",
+                        "fullname": "Chinatrust Brothers",
+                        "abbr": "CTB"
+                    },
+                    "away": {
+                        "tid": 2,
+                        "tname": "Rakuten Monkeys",
+                        "logo": "https://rest.entitysport.com/baseball/assets/team/5e9f7111a990b.png",
+                        "fullname": "Rakuten Monkeys",
+                        "abbr": "RM"
+                    }
+                },
+                "datestart": "2020-04-22 10:35:00",
+                "dateend": "2020-04-22 14:35:00",
+                "timestampstart": "1587551700",
+                "timestampend": "1587566100",
+                "time": "",
+                "result": {
+                    "home": "2",
+                    "away": "3",
+                    "winner": "away"
+                },
+                "inning": "",
+                "status_str": "result",
+                "status": 2,
+                "gamestate_str": "Ended",
+                "gamestate": 3,
+                "verified": "true",
+                "presquad": "true",
+                "attendance": 0,
+                "competition": {
+                    "cid": 1,
+                    "cname": "CPBL",
+                    "startdate": "2020-04-11 00:00:00",
+                    "enddate": "2020-10-15 00:00:00",
+                    "startdatetimestamp": 1586563200,
+                    "endtdatetimestamp": 1602720000,
+                    "year": "2020",
+                    "category": "Chinese Taipei",
+                    "ioc_id": "273",
+                    "ioc": "tw",
+                    "status": 3,
+                    "status_str": "live",
+                    "logo": "https://rest.entitysport.com/baseball/assets/competition/1.png"
+                },
+                "venue": ""
+            }
+        ],
+        "total_items": 5,
+        "total_pages": 1
+    },
+    "etag": "2ceb85051326580040c0c98850a8f6cd",
+    "modified": "2020-04-24 08:10:26",
+    "datetime": "2020-04-24 08:10:26",
+    "api_version": "1.0"
+}
+
+```
+This API has list of all matches user have access.
+
+### Request
+* Path: /baseball/matches
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+status | string | status code 1 = upcoming, 2 = result, 3 = live, 4 = cancelled.
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+mid | string | match id
+round | string | match round id details.
+name | string | match round name details.
+teams | array | An array of match teams details. <a href="#matches-list-teams-baseball">see teams object reference</a>
+datestart | string | time string in GMT of match start time
+dateend | string | time string in GMT of match end time
+timestampstart | string | timestamp of match start time
+timestampend | string | timestamp of match end time
+result | array | An array of match result details. <a href="#matches-list-result-baseball">see result object reference</a>
+status | string | Match status code 3 = live, 2 = result, 1 = upcoming, 4 = canceled
+status_str | string | Match status string live, result, upcoming,
+gamestate | string | Match state code
+gamestate_str | string | Match state string
+verified | string | true = match score is verified, false = match score is yet be verified.
+presquad | string | true = match squad is available with managed fantasy credit, false = match squad is don't have managed fantasy credit yet.
+competition | array | An array of competition details. <a href="#matches-list-competition-baseball">see competition object reference</a>
+venue | array | An array of match venue details. <a href="#matches-list-venue-baseball">see venue object reference</a>
+
+
+<h3 id="matches-list-teams-baseball">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | An array of home team details. <a href="#matches-list-teams-details-baseball">see home team object reference</a>
+away | array | An array of away team details. <a href="#matches-list-teams-details-baseball">see away team object reference</a>
+
+
+<h3 id="matches-list-result-baseball">Result Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | string | home team score
+away | string | away team score
+winner | string | winning team string
+
+
+<h3 id="matches-list-teams-details-baseball">Home/Away Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+tname | string | team name
+logo | string | team logo url
+fullname | string | team name
+abbr | string | team short name
+
+
+<h3 id="matches-list-competition-baseball">Competition Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | string | timestamp of competition start date
+enddatetimestamp | string | timestamp of competition end date
+year | string | Season Year
+category | string | Competition Category
+ioc_id | integer | IOC id of competition native country
+ioc | string | IOC 2 letter code of competition native country
+status | string | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+
+
+## Match Info API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/baseball/matches/1/info?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": {
+            "match_info": {
+                "mid": 1,
+                "round": {
+                    "round": "",
+                    "name": ""
+                },
+                "teams": {
+                    "home": {
+                        "tid": 1,
+                        "tname": "Chinatrust Brothers",
+                        "logo": "https://rest.entitysport.com/baseball/assets/team/1.png",
+                        "fullname": "Chinatrust Brothers",
+                        "abbr": "CTB"
+                    },
+                    "away": {
+                        "tid": 2,
+                        "tname": "Rakuten Monkeys",
+                        "logo": "https://rest.entitysport.com/baseball/assets/team/5e9f7111a990b.png",
+                        "fullname": "Rakuten Monkeys",
+                        "abbr": "RM"
+                    }
+                },
+                "datestart": "2020-04-22 10:35:00",
+                "dateend": "2020-04-22 14:35:00",
+                "timestampstart": "1587551700",
+                "timestampend": "1587566100",
+                "time": "",
+                "result": {
+                    "home": "2",
+                    "away": "3",
+                    "winner": "away"
+                },
+                "inning": "",
+                "status_str": "result",
+                "status": 2,
+                "gamestate_str": "Ended",
+                "gamestate": 3,
+                "verified": "true",
+                "presquad": "true",
+                "attendance": 0,
+                "competition": {
+                    "cid": 1,
+                    "cname": "CPBL",
+                    "startdate": "2020-04-11 00:00:00",
+                    "enddate": "2020-10-15 00:00:00",
+                    "startdatetimestamp": 1586563200,
+                    "endtdatetimestamp": 1602720000,
+                    "year": "2020",
+                    "category": "Chinese Taipei",
+                    "ioc_id": "273",
+                    "ioc": "tw",
+                    "status": 3,
+                    "status_str": "live",
+                    "logo": "https://rest.entitysport.com/baseball/assets/competition/1.png"
+                },
+                "venue": ""
+            },
+            "lineup": {
+                "players": {
+                    "home": [
+                        {
+                            "pid": 55,
+                            "name": "Chan Tzu Hasien",
+                            "shirt": "0",
+                            "position": "outfielder"
+                        },
+                        {
+                            "pid": 56,
+                            "name": "Chen Tzu Hao",
+                            "shirt": "0",
+                            "position": "outfielder"
+                        },
+                        {
+                            "pid": 58,
+                            "name": "Chang Chih Hao",
+                            "shirt": "0",
+                            "position": "outfielder"
+                        },
+                        {
+                            "pid": 60,
+                            "name": "Chou Szu Chi",
+                            "shirt": "0",
+                            "position": "outfielder"
+                        },
+                        {
+                            "pid": 61,
+                            "name": "Wang Wei Chen",
+                            "shirt": "0",
+                            "position": "infielder"
+                        },
+                        {
+                            "pid": 62,
+                            "name": "lin Chih Sheng",
+                            "shirt": "0",
+                            "position": "infielder"
+                        },
+                        {
+                            "pid": 63,
+                            "name": "Wu Tung Jung",
+                            "shirt": "0",
+                            "position": "infielder"
+                        },
+                        {
+                            "pid": 64,
+                            "name": "Chiang Kun yu ",
+                            "shirt": "0",
+                            "position": "infielder"
+                        },
+                        {
+                            "pid": 72,
+                            "name": "Liao Yi Chung",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 82,
+                            "name": "Kao Yu chieh ",
+                            "shirt": "0",
+                            "position": "catcher"
+                        }
+                    ],
+                    "away": [
+                        {
+                            "pid": 1,
+                            "name": "Chen Chen Wei",
+                            "shirt": "0",
+                            "position": "outfielder"
+                        },
+                        {
+                            "pid": 3,
+                            "name": "cheng chin",
+                            "shirt": "0",
+                            "position": "outfielder"
+                        },
+                        {
+                            "pid": 6,
+                            "name": "Chu YU Hsien",
+                            "shirt": "0",
+                            "position": "infielder"
+                        },
+                        {
+                            "pid": 7,
+                            "name": "Lin Li",
+                            "shirt": "0",
+                            "position": "infielder"
+                        },
+                        {
+                            "pid": 8,
+                            "name": "Chen Chun Hsiu",
+                            "shirt": "0",
+                            "position": "infielder"
+                        },
+                        {
+                            "pid": 9,
+                            "name": "Kuo Yen Wen",
+                            "shirt": "0",
+                            "position": "infielder"
+                        },
+                        {
+                            "pid": 10,
+                            "name": "Lin Cheng fei",
+                            "shirt": "0",
+                            "position": "infielder"
+                        },
+                        {
+                            "pid": 16,
+                            "name": "Ryan Carpenter",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 25,
+                            "name": "Lin Huang Yu",
+                            "shirt": "0",
+                            "position": "catcher"
+                        },
+                        {
+                            "pid": 27,
+                            "name": "Liu Shih Hao",
+                            "shirt": "0",
+                            "position": "catcher"
+                        }
+                    ]
+                },
+                "substitutes": {
+                    "home": [
+                        {
+                            "pid": 57,
+                            "name": "Chen Wen Chieh",
+                            "shirt": "0",
+                            "position": "outfielder"
+                        },
+                        {
+                            "pid": 59,
+                            "name": "Lin Shu Yi",
+                            "shirt": "0",
+                            "position": "outfielder"
+                        },
+                        {
+                            "pid": 65,
+                            "name": "Yueh Tung Hua",
+                            "shirt": "0",
+                            "position": "infielder"
+                        },
+                        {
+                            "pid": 66,
+                            "name": "Su Wei Ta",
+                            "shirt": "0",
+                            "position": "infielder"
+                        },
+                        {
+                            "pid": 67,
+                            "name": "Pan Chih fang",
+                            "shirt": "0",
+                            "position": "infielder"
+                        },
+                        {
+                            "pid": 68,
+                            "name": "Hsu Chi Hung",
+                            "shirt": "0",
+                            "position": "infielder"
+                        },
+                        {
+                            "pid": 69,
+                            "name": "Esmil Rogers",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 70,
+                            "name": "Ariel Miranda",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 71,
+                            "name": "Jose De Paula",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 73,
+                            "name": "Huang En Shia",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 74,
+                            "name": "Lee Chen Chang",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 75,
+                            "name": "Tsai Chi Che",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 76,
+                            "name": "Wu chun Wei",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 77,
+                            "name": "Cheng Kai wen SR",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 78,
+                            "name": "Peng Shih Ying ",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 79,
+                            "name": "Hsieh Jung Hao",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 80,
+                            "name": "Chou Lei ",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 81,
+                            "name": "Huang Chun Sheng ",
+                            "shirt": "0",
+                            "position": "catcher"
+                        }
+                    ],
+                    "away": [
+                        {
+                            "pid": 4,
+                            "name": "Chan Chih Yaho",
+                            "shirt": "0",
+                            "position": "outfielder"
+                        },
+                        {
+                            "pid": 5,
+                            "name": "Yu Te Lung",
+                            "shirt": "0",
+                            "position": "outfielder"
+                        },
+                        {
+                            "pid": 11,
+                            "name": "Lin Chih Ping",
+                            "shirt": "0",
+                            "position": "infielder"
+                        },
+                        {
+                            "pid": 12,
+                            "name": "Kuo Yung Wei",
+                            "shirt": "0",
+                            "position": "infielder"
+                        },
+                        {
+                            "pid": 13,
+                            "name": "Wang Yi Cheng",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 14,
+                            "name": "Weng Wei Chun",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 15,
+                            "name": "Lisalverto Bonnila",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 17,
+                            "name": "Elih Villanueva",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 18,
+                            "name": "Chen Yu-Hsun",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 19,
+                            "name": "Huang Tzu Peng",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 20,
+                            "name": "Chiang Kuo Chien",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 21,
+                            "name": "Su chun chang",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 22,
+                            "name": "Wang Yao Lin",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 23,
+                            "name": "Lin Po Yu",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 24,
+                            "name": "Lin Yi Hsiang",
+                            "shirt": "0",
+                            "position": "pitcher"
+                        },
+                        {
+                            "pid": 26,
+                            "name": "Liao Chien Fu",
+                            "shirt": "0",
+                            "position": "catcher"
+                        }
+                    ]
+                }
+            }
+        },
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "e97b384c2acbf50c6ef536ae4f0d22ee",
+    "modified": "2020-04-24 08:25:42",
+    "datetime": "2020-04-24 08:25:42",
+    "api_version": "1.0"
+}
+
+```
+This API contains a single match info, match projection, events, commentary, lineup details.
+
+### Request
+* Path: /baseball/matches/mid/info
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match details object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+match_info | array | An array of match details. <a href="#matches-info-baseball">see match_info object reference</a>
+lineup | array | An array of match lineup details. <a href="#matches-lineup-baseball">see lineup object reference</a>
+
+
+<h3 id="matches-info-baseball">Match Info Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+mid | string | match id
+round | string | match round id details.
+name | string | match round name details.
+teams | array | An array of match teams details. <a href="#matches-info-teams-baseball">see teams object reference</a>
+datestart | string | time string in GMT of match start time
+dateend | string | time string in GMT of match end time
+timestampstart | string | timestamp of match start time
+timestampend | string | timestamp of match end time
+result | array | An array of match result details. <a href="#matches-info-result-baseball">see result object reference</a>
+status | string | Match status code 3 = live, 2 = result, 1 = upcoming, 4 = canceled
+status_str | string | Match status string live, result, upcoming,
+gamestate | string | Match state code
+gamestate_str | string | Match state string
+verified | string | true = match score is verified, false = match score is yet be verified.
+presquad | string | true = match squad is available with managed fantasy credit, false = match squad is don't have managed fantasy credit yet.
+competition | array | An array of competition details. <a href="#matches-info-competition-baseball">see competition object reference</a>
+
+
+<h3 id="matches-info-teams-baseball">Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | An array of home team details. <a href="#matches-info-teams-details-baseball">see home team object reference</a>
+away | array | An array of away team details. <a href="#matches-info-teams-details-baseball">see away team object reference</a>
+
+
+<h3 id="matches-info-result-baseball">Result Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | string | home team score
+away | string | away team score
+winner | string | winning team string
+
+<h3 id="matches-info-teams-details-baseball">Home/Away Team Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+tname | string | team name
+logo | string | team logo url
+fullname | string | team name
+abbr | string | team short name
+
+
+<h3 id="matches-info-competition-baseball">Competition Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+cid | string | competition id
+cname | string | competition name/title
+startdate | string | time string in GMT of competition start date
+enddate | string | time string in GMT of competition end date
+startdatetimestamp | string | timestamp of competition start date
+enddatetimestamp | string | timestamp of competition end date
+year | string | Season Year
+category | string | Competition Category
+ioc_id | integer | IOC id of competition native country
+ioc | string | IOC 2 letter code of competition native country
+status | string | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status_str | string | Competition status string live, completed, upcoming
+logo | string | Competition Logo URL
+
+
+<h3 id="matches-lineup-baseball">Lineup Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+players | array | array of starting players object details. <a href="#player-lineup-baseball">see home players object reference</a>
+substitutes | array | array of substitute players object details. <a href="#player-lineup-baseball">see away players object reference</a>
+
+
+<h3 id="player-lineup-baseball">Lineup Home/Away Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+home | array | array of home players object details. <a href="#player-details-lineup-baseball">see home players object reference</a>
+away | array | array of away players object details. <a href="#player-details-lineup-baseball">see away players object reference</a>
+
+
+<h3 id="player-details-lineup-baseball">Player Home/Away Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | string | player id
+name | string | player position name
+position | string | player playing positions outfielder, infielder, pitcher, catcher
+
+
+
+## Match Fantasy API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/baseball/matches/1/fantasy?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": {
+            "match_info": {
+                "mid": 1,
+                "round": {
+                    "round": "",
+                    "name": ""
+                },
+                "teams": {
+                    "home": {
+                        "tid": 1,
+                        "tname": "Chinatrust Brothers",
+                        "logo": "https://rest.entitysport.com/baseball/assets/team/1.png",
+                        "fullname": "Chinatrust Brothers",
+                        "abbr": "CTB"
+                    },
+                    "away": {
+                        "tid": 2,
+                        "tname": "Rakuten Monkeys",
+                        "logo": "https://rest.entitysport.com/baseball/assets/team/5e9f7111a990b.png",
+                        "fullname": "Rakuten Monkeys",
+                        "abbr": "RM"
+                    }
+                },
+                "datestart": "2020-04-22 10:35:00",
+                "dateend": "2020-04-22 14:35:00",
+                "timestampstart": "1587551700",
+                "timestampend": "1587566100",
+                "time": "",
+                "result": {
+                    "home": "2",
+                    "away": "3",
+                    "winner": "away"
+                },
+                "inning": "",
+                "status_str": "result",
+                "status": 2,
+                "gamestate_str": "Ended",
+                "gamestate": 3,
+                "verified": "true",
+                "presquad": "true",
+                "attendance": 0,
+                "competition": {
+                    "cid": 1,
+                    "cname": "CPBL",
+                    "startdate": "2020-04-11 00:00:00",
+                    "enddate": "2020-10-15 00:00:00",
+                    "startdatetimestamp": 1586563200,
+                    "endtdatetimestamp": 1602720000,
+                    "year": "2020",
+                    "category": "Chinese Taipei",
+                    "ioc_id": "273",
+                    "ioc": "tw",
+                    "status": 3,
+                    "status_str": "live",
+                    "logo": "https://rest.entitysport.com/baseball/assets/competition/1.png"
+                },
+                "venue": ""
+            },
+            "fantasy_squad": {
+                "home": [
+                    {
+                        "pid": 55,
+                        "name": "Chan Tzu Hasien",
+                        "role": "outfielder",
+                        "rating": "15"
+                    },
+                    {
+                        "pid": 56,
+                        "name": "Chen Tzu Hao",
+                        "role": "outfielder",
+                        "rating": "8.5"
+                    },
+                    {
+                        "pid": 57,
+                        "name": "Chen Wen Chieh",
+                        "role": "outfielder",
+                        "rating": "9"
+                    },
+                    {
+                        "pid": 58,
+                        "name": "Chang Chih Hao",
+                        "role": "outfielder",
+                        "rating": "7.5"
+                    },
+                    {
+                        "pid": 59,
+                        "name": "Lin Shu Yi",
+                        "role": "outfielder",
+                        "rating": "6.5"
+                    },
+                    {
+                        "pid": 60,
+                        "name": "Chou Szu Chi",
+                        "role": "outfielder",
+                        "rating": "5.5"
+                    },
+                    {
+                        "pid": 61,
+                        "name": "Wang Wei Chen",
+                        "role": "infielder",
+                        "rating": "12.5"
+                    },
+                    {
+                        "pid": 62,
+                        "name": "lin Chih Sheng",
+                        "role": "infielder",
+                        "rating": "11.5"
+                    },
+                    {
+                        "pid": 63,
+                        "name": "Wu Tung Jung",
+                        "role": "infielder",
+                        "rating": "9.5"
+                    },
+                    {
+                        "pid": 64,
+                        "name": "Chiang Kun yu",
+                        "role": "infielder",
+                        "rating": "9"
+                    },
+                    {
+                        "pid": 65,
+                        "name": "Yueh Tung Hua",
+                        "role": "infielder",
+                        "rating": "8.5"
+                    },
+                    {
+                        "pid": 66,
+                        "name": "Su Wei Ta",
+                        "role": "infielder",
+                        "rating": "8"
+                    },
+                    {
+                        "pid": 67,
+                        "name": "Pan Chih fang",
+                        "role": "infielder",
+                        "rating": "6"
+                    },
+                    {
+                        "pid": 68,
+                        "name": "Hsu Chi Hung",
+                        "role": "infielder",
+                        "rating": "5"
+                    },
+                    {
+                        "pid": 69,
+                        "name": "Esmil Rogers",
+                        "role": "pitcher",
+                        "rating": "18.5"
+                    },
+                    {
+                        "pid": 70,
+                        "name": "Ariel Miranda",
+                        "role": "pitcher",
+                        "rating": "17.5"
+                    },
+                    {
+                        "pid": 71,
+                        "name": "Jose De Paula",
+                        "role": "pitcher",
+                        "rating": "15"
+                    },
+                    {
+                        "pid": 72,
+                        "name": "Liao Yi Chung",
+                        "role": "pitcher",
+                        "rating": "13"
+                    },
+                    {
+                        "pid": 73,
+                        "name": "Huang En Shia",
+                        "role": "pitcher",
+                        "rating": "10"
+                    },
+                    {
+                        "pid": 74,
+                        "name": "Lee Chen Chang",
+                        "role": "pitcher",
+                        "rating": "7.5"
+                    },
+                    {
+                        "pid": 75,
+                        "name": "Tsai Chi Che",
+                        "role": "pitcher",
+                        "rating": "7"
+                    },
+                    {
+                        "pid": 76,
+                        "name": "Wu chun Wei",
+                        "role": "pitcher",
+                        "rating": "7"
+                    },
+                    {
+                        "pid": 77,
+                        "name": "Cheng Kai wen SR",
+                        "role": "pitcher",
+                        "rating": "5.5"
+                    },
+                    {
+                        "pid": 78,
+                        "name": "Peng Shih Ying",
+                        "role": "pitcher",
+                        "rating": "5"
+                    },
+                    {
+                        "pid": 79,
+                        "name": "Hsieh Jung Hao",
+                        "role": "pitcher",
+                        "rating": "5"
+                    },
+                    {
+                        "pid": 80,
+                        "name": "Chou Lei",
+                        "role": "pitcher",
+                        "rating": "5"
+                    },
+                    {
+                        "pid": 81,
+                        "name": "Huang Chun Sheng",
+                        "role": "catcher",
+                        "rating": "6.5"
+                    },
+                    {
+                        "pid": 82,
+                        "name": "Kao Yu chieh",
+                        "role": "catcher",
+                        "rating": "5.5"
+                    }
+                ],
+                "away": [
+                    {
+                        "pid": 1,
+                        "name": "Chen Chen Wei",
+                        "role": "outfielder",
+                        "rating": "16"
+                    },
+                    {
+                        "pid": 2,
+                        "name": "Lan Yin Lun",
+                        "role": "outfielder",
+                        "rating": "9.5"
+                    },
+                    {
+                        "pid": 3,
+                        "name": "cheng chin",
+                        "role": "outfielder",
+                        "rating": "9"
+                    },
+                    {
+                        "pid": 4,
+                        "name": "Chan Chih Yaho",
+                        "role": "outfielder",
+                        "rating": "6"
+                    },
+                    {
+                        "pid": 5,
+                        "name": "Yu Te Lung",
+                        "role": "outfielder",
+                        "rating": "5.5"
+                    },
+                    {
+                        "pid": 6,
+                        "name": "Chu YU Hsien",
+                        "role": "infielder",
+                        "rating": "17.5"
+                    },
+                    {
+                        "pid": 7,
+                        "name": "Lin Li",
+                        "role": "infielder",
+                        "rating": "15.5"
+                    },
+                    {
+                        "pid": 8,
+                        "name": "Chen Chun Hsiu",
+                        "role": "infielder",
+                        "rating": "10.5"
+                    },
+                    {
+                        "pid": 9,
+                        "name": "Kuo Yen Wen",
+                        "role": "infielder",
+                        "rating": "10"
+                    },
+                    {
+                        "pid": 10,
+                        "name": "Lin Cheng fei",
+                        "role": "infielder",
+                        "rating": "9"
+                    },
+                    {
+                        "pid": 11,
+                        "name": "Lin Chih Ping",
+                        "role": "infielder",
+                        "rating": "5.5"
+                    },
+                    {
+                        "pid": 12,
+                        "name": "Kuo Yung Wei",
+                        "role": "infielder",
+                        "rating": "5"
+                    },
+                    {
+                        "pid": 13,
+                        "name": "Wang Yi Cheng",
+                        "role": "pitcher",
+                        "rating": "15"
+                    },
+                    {
+                        "pid": 14,
+                        "name": "Weng Wei Chun",
+                        "role": "pitcher",
+                        "rating": "12.5"
+                    },
+                    {
+                        "pid": 15,
+                        "name": "Lisalverto Bonnila",
+                        "role": "pitcher",
+                        "rating": "11.5"
+                    },
+                    {
+                        "pid": 16,
+                        "name": "Ryan Carpenter",
+                        "role": "pitcher",
+                        "rating": "9"
+                    },
+                    {
+                        "pid": 17,
+                        "name": "Elih Villanueva",
+                        "role": "pitcher",
+                        "rating": "8"
+                    },
+                    {
+                        "pid": 18,
+                        "name": "Chen Yu-Hsun",
+                        "role": "pitcher",
+                        "rating": "6.5"
+                    },
+                    {
+                        "pid": 19,
+                        "name": "Huang Tzu Peng",
+                        "role": "pitcher",
+                        "rating": "6.5"
+                    },
+                    {
+                        "pid": 20,
+                        "name": "Chiang Kuo Chien",
+                        "role": "pitcher",
+                        "rating": "6"
+                    },
+                    {
+                        "pid": 21,
+                        "name": "Su chun chang",
+                        "role": "pitcher",
+                        "rating": "5.5"
+                    },
+                    {
+                        "pid": 22,
+                        "name": "Wang Yao Lin",
+                        "role": "pitcher",
+                        "rating": "5.5"
+                    },
+                    {
+                        "pid": 23,
+                        "name": "Lin Po Yu",
+                        "role": "pitcher",
+                        "rating": "5.5"
+                    },
+                    {
+                        "pid": 24,
+                        "name": "Lin Yi Hsiang",
+                        "role": "pitcher",
+                        "rating": "5"
+                    },
+                    {
+                        "pid": 25,
+                        "name": "Lin Huang Yu",
+                        "role": "catcher",
+                        "rating": "10"
+                    },
+                    {
+                        "pid": 26,
+                        "name": "Liao Chien Fu",
+                        "role": "catcher",
+                        "rating": "8.5"
+                    },
+                    {
+                        "pid": 27,
+                        "name": "Liu Shih Hao",
+                        "role": "catcher",
+                        "rating": "5"
+                    }
+                ]
+            },
+            "fantasy_points": {
+                "home": [
+                    {
+                        "pid": "72",
+                        "name": "Liao Yi Chung",
+                        "role": "pitcher",
+                        "fantasy_credit": "13",
+                        "point": "20",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "21",
+                        "strikeout": "14",
+                        "earnedrun": "-6",
+                        "hitallowed": "-9",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "82",
+                        "name": "Kao Yu chieh ",
+                        "role": "catcher",
+                        "fantasy_credit": "5.5",
+                        "point": "0",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "55",
+                        "name": "Chan Tzu Hasien",
+                        "role": "outfielder",
+                        "fantasy_credit": "15",
+                        "point": "0",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "56",
+                        "name": "Chen Tzu Hao",
+                        "role": "outfielder",
+                        "fantasy_credit": "8.5",
+                        "point": "4",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "4",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "58",
+                        "name": "Chang Chih Hao",
+                        "role": "outfielder",
+                        "fantasy_credit": "7.5",
+                        "point": "4",
+                        "single": "4",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "60",
+                        "name": "Chou Szu Chi",
+                        "role": "outfielder",
+                        "fantasy_credit": "5.5",
+                        "point": "7",
+                        "single": "4",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "3",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "61",
+                        "name": "Wang Wei Chen",
+                        "role": "infielder",
+                        "fantasy_credit": "12.5",
+                        "point": "10",
+                        "single": "4",
+                        "double": "6",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "62",
+                        "name": "lin Chih Sheng",
+                        "role": "infielder",
+                        "fantasy_credit": "11.5",
+                        "point": "20",
+                        "single": "8",
+                        "double": "6",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "3",
+                        "runscored": "3",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "63",
+                        "name": "Wu Tung Jung",
+                        "role": "infielder",
+                        "fantasy_credit": "9.5",
+                        "point": "0",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "64",
+                        "name": "Chiang Kun yu ",
+                        "role": "infielder",
+                        "fantasy_credit": "9",
+                        "point": "8",
+                        "single": "8",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "77",
+                        "name": "Cheng Kai wen SR",
+                        "role": "pitcher",
+                        "fantasy_credit": "5.5",
+                        "point": "5",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "3",
+                        "strikeout": "4",
+                        "earnedrun": "0",
+                        "hitallowed": "-1",
+                        "baseonballpicther": "-1"
+                    },
+                    {
+                        "pid": "65",
+                        "name": "Yueh Tung Hua",
+                        "role": "infielder",
+                        "fantasy_credit": "8.5",
+                        "point": "11",
+                        "single": "4",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "3",
+                        "baseonballshitter": "4",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "74",
+                        "name": "Lee Chen Chang",
+                        "role": "pitcher",
+                        "fantasy_credit": "7.5",
+                        "point": "4",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "3",
+                        "strikeout": "2",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "-1"
+                    },
+                    {
+                        "pid": "76",
+                        "name": "Wu chun Wei",
+                        "role": "pitcher",
+                        "fantasy_credit": "7",
+                        "point": "4",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "3",
+                        "strikeout": "4",
+                        "earnedrun": "0",
+                        "hitallowed": "-3",
+                        "baseonballpicther": "0"
+                    }
+                ],
+                "away": [
+                    {
+                        "pid": "1",
+                        "name": "Chen Chen Wei",
+                        "role": "outfielder",
+                        "fantasy_credit": "16",
+                        "point": "4",
+                        "single": "4",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "3",
+                        "name": "cheng chin",
+                        "role": "outfielder",
+                        "fantasy_credit": "9",
+                        "point": "4",
+                        "single": "4",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "7",
+                        "name": "Lin Li",
+                        "role": "infielder",
+                        "fantasy_credit": "15.5",
+                        "point": "19",
+                        "single": "4",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "3",
+                        "baseonballshitter": "4",
+                        "stolenbase": "8",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "25",
+                        "name": "Lin Huang Yu",
+                        "role": "catcher",
+                        "fantasy_credit": "10",
+                        "point": "11",
+                        "single": "8",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "3",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "10",
+                        "name": "Lin Cheng fei",
+                        "role": "infielder",
+                        "fantasy_credit": "9",
+                        "point": "4",
+                        "single": "4",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "27",
+                        "name": "Liu Shih Hao",
+                        "role": "catcher",
+                        "fantasy_credit": "5",
+                        "point": "11",
+                        "single": "4",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "3",
+                        "runscored": "0",
+                        "baseonballshitter": "4",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "6",
+                        "name": "Chu YU Hsien",
+                        "role": "infielder",
+                        "fantasy_credit": "17.5",
+                        "point": "4",
+                        "single": "4",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "8",
+                        "name": "Chen Chun Hsiu",
+                        "role": "infielder",
+                        "fantasy_credit": "10.5",
+                        "point": "25",
+                        "single": "16",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "6",
+                        "runscored": "3",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "9",
+                        "name": "Kuo Yen Wen",
+                        "role": "infielder",
+                        "fantasy_credit": "10",
+                        "point": "4",
+                        "single": "4",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "16",
+                        "name": "Ryan Carpenter",
+                        "role": "pitcher",
+                        "fantasy_credit": "9",
+                        "point": "28",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "20",
+                        "strikeout": "14",
+                        "earnedrun": "0",
+                        "hitallowed": "-5",
+                        "baseonballpicther": "-1"
+                    },
+                    {
+                        "pid": "19",
+                        "name": "Huang Tzu Peng",
+                        "role": "pitcher",
+                        "fantasy_credit": "6.5",
+                        "point": "-3",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "3",
+                        "strikeout": "2",
+                        "earnedrun": "-6",
+                        "hitallowed": "-1",
+                        "baseonballpicther": "-1"
+                    },
+                    {
+                        "pid": "18",
+                        "name": "Chen Yu-Hsun",
+                        "role": "pitcher",
+                        "fantasy_credit": "6.5",
+                        "point": "2",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "3",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "-1",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "22",
+                        "name": "Wang Yao Lin",
+                        "role": "pitcher",
+                        "fantasy_credit": "5.5",
+                        "point": "1",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "4",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "-3",
+                        "baseonballpicther": "0"
+                    }
+                ]
+            },
+            "playerstats": {
+                "home": [
+                    {
+                        "pid": "72",
+                        "name": "Liao Yi Chung",
+                        "teamtype": "home",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "7",
+                        "strikeout": "7",
+                        "earnedrun": "2",
+                        "hitallowed": "9",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "82",
+                        "name": "Kao Yu chieh ",
+                        "teamtype": "home",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "55",
+                        "name": "Chan Tzu Hasien",
+                        "teamtype": "home",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "56",
+                        "name": "Chen Tzu Hao",
+                        "teamtype": "home",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "1",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "58",
+                        "name": "Chang Chih Hao",
+                        "teamtype": "home",
+                        "single": "1",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "60",
+                        "name": "Chou Szu Chi",
+                        "teamtype": "home",
+                        "single": "1",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "1",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "61",
+                        "name": "Wang Wei Chen",
+                        "teamtype": "home",
+                        "single": "1",
+                        "double": "1",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "62",
+                        "name": "lin Chih Sheng",
+                        "teamtype": "home",
+                        "single": "2",
+                        "double": "1",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "1",
+                        "runscored": "1",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "63",
+                        "name": "Wu Tung Jung",
+                        "teamtype": "home",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "64",
+                        "name": "Chiang Kun yu ",
+                        "teamtype": "home",
+                        "single": "2",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "77",
+                        "name": "Cheng Kai wen SR",
+                        "teamtype": "home",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "1",
+                        "strikeout": "2",
+                        "earnedrun": "0",
+                        "hitallowed": "1",
+                        "baseonballpicther": "1"
+                    },
+                    {
+                        "pid": "65",
+                        "name": "Yueh Tung Hua",
+                        "teamtype": "home",
+                        "single": "1",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "1",
+                        "baseonballshitter": "1",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "74",
+                        "name": "Lee Chen Chang",
+                        "teamtype": "home",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "1",
+                        "strikeout": "1",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "1"
+                    },
+                    {
+                        "pid": "76",
+                        "name": "Wu chun Wei",
+                        "teamtype": "home",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "1",
+                        "strikeout": "2",
+                        "earnedrun": "0",
+                        "hitallowed": "3",
+                        "baseonballpicther": "0"
+                    }
+                ],
+                "away": [
+                    {
+                        "pid": "1",
+                        "name": "Chen Chen Wei",
+                        "teamtype": "away",
+                        "single": "1",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "3",
+                        "name": "cheng chin",
+                        "teamtype": "away",
+                        "single": "1",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "7",
+                        "name": "Lin Li",
+                        "teamtype": "away",
+                        "single": "1",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "1",
+                        "baseonballshitter": "1",
+                        "stolenbase": "1",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "25",
+                        "name": "Lin Huang Yu",
+                        "teamtype": "away",
+                        "single": "2",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "1",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "10",
+                        "name": "Lin Cheng fei",
+                        "teamtype": "away",
+                        "single": "1",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "27",
+                        "name": "Liu Shih Hao",
+                        "teamtype": "away",
+                        "single": "1",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "1",
+                        "runscored": "0",
+                        "baseonballshitter": "1",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "6",
+                        "name": "Chu YU Hsien",
+                        "teamtype": "away",
+                        "single": "1",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "8",
+                        "name": "Chen Chun Hsiu",
+                        "teamtype": "away",
+                        "single": "4",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "2",
+                        "runscored": "1",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "9",
+                        "name": "Kuo Yen Wen",
+                        "teamtype": "away",
+                        "single": "1",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "0",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "0",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "16",
+                        "name": "Ryan Carpenter",
+                        "teamtype": "away",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "6.2",
+                        "strikeout": "7",
+                        "earnedrun": "0",
+                        "hitallowed": "5",
+                        "baseonballpicther": "1"
+                    },
+                    {
+                        "pid": "19",
+                        "name": "Huang Tzu Peng",
+                        "teamtype": "away",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "1",
+                        "strikeout": "1",
+                        "earnedrun": "2",
+                        "hitallowed": "1",
+                        "baseonballpicther": "1"
+                    },
+                    {
+                        "pid": "18",
+                        "name": "Chen Yu-Hsun",
+                        "teamtype": "away",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "1",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "1",
+                        "baseonballpicther": "0"
+                    },
+                    {
+                        "pid": "22",
+                        "name": "Wang Yao Lin",
+                        "teamtype": "away",
+                        "single": "0",
+                        "double": "0",
+                        "triple": "0",
+                        "homerun": "0",
+                        "runsbattedin": "0",
+                        "runscored": "0",
+                        "baseonballshitter": "0",
+                        "stolenbase": "0",
+                        "inningpitched": "1.1",
+                        "strikeout": "0",
+                        "earnedrun": "0",
+                        "hitallowed": "3",
+                        "baseonballpicther": "0"
+                    }
+                ]
+            }
+        },
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "34f980a07c4290f36098e6717e41552d",
+    "modified": "2020-04-24 08:42:12",
+    "datetime": "2020-04-24 08:42:12",
+    "api_version": "1.0"
+}
+
+```
+This API contains a single match info, match team and player stats details.
+
+### Request
+* Path: /baseball/matches/mid/fantasy
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of match details object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of matches available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of matches list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+match_info | array | An array of match details. <a href="#matches-info-baseball">see match_info object reference</a>
+fantasy_squad | array | An array of home/away team players role and credit details. <a href="#fanasysquad-baseball">see fantasy squad object reference</a>
+fantasy_points | array | An array of player match fantasy points details. <a href="#fantasy-points-baseball">see player fantasy points object reference</a>
+playerstats | array | An array of player match fantasy points details. <a href="#fantasy-playerstats-baseball">see player player stats object reference</a>
+
+
+<h3 id="fanasysquad-baseball">Match Fantasy Squad Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | integer | player id
+name | string | player name
+role | string | player fantasy playing role
+rating | string | player fantasy credit
+
+
+<h3 id="fantasy-points-baseball">Fantasy Points Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | string | player id
+name | string | player name
+role | string | player fantasy playing role
+fantasy_credit | string | player fantasy credit
+point | string | total fantasy points of player
+single | string | hit for 1st base point
+double | string | hit for 2nd base point
+triple | string | hit for 3rd base point
+homerun | string | number of home runs hit point
+runsbattedin | string | rbi points
+runscored | string | runs scored points
+baseonballshitter | string | walk on ball points for hitter
+stolenbase | string | base stolen points
+inningpitched | string | number of innings pitched points
+strikeout | string | strike out points
+earnedrun | string | runs conceded as pitcher points
+hitallowed | string | number of hits conceded points for pitcher
+baseonballpicther | string | balls walk points as pitcher
+
+<h3 id="fantasy-playerstats-baseball">Fantasy Player Stats Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | string | player id
+name | string | player name
+teamtype | string | player team type home or away
+single | string | Number of hit for 1st base
+double | string | Number of hit for 2nd base
+triple | string | Number ofhit for 3rd base
+homerun | string | number of home runs hit
+runsbattedin | string | rbi stats
+runscored | string | Number of runs scored
+baseonballshitter | string | walk on ball for hitter
+stolenbase | string | Number of base stolen
+inningpitched | string | number of innings pitched
+strikeout | string | Number of strike out
+earnedrun | string | Number of runs conceded as pitcher
+hitallowed | string | Number of hits conceded as pitcher
+baseonballpicther | string | balls walk as pitcher
+
+
+
+## Teams List API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/baseball/teams?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "tid": "1",
+                "tname": "Chinatrust Brothers",
+                "fullname": "Chinatrust Brothers",
+                "abbr": "CTB",
+                "iscountry": "false",
+                "isclub": "true",
+                "founded": "",
+                "website": "",
+                "twitter": "",
+                "hashtag": "",
+                "teamlogo": "https://rest.entitysport.com/baseball/assets/team/1.png",
+                "team_url": "team/1/info"
+            },
+            {
+                "tid": "2",
+                "tname": "Rakuten Monkeys",
+                "fullname": "Rakuten Monkeys",
+                "abbr": "RM",
+                "iscountry": "false",
+                "isclub": "true",
+                "founded": "",
+                "website": "",
+                "twitter": "",
+                "hashtag": "",
+                "teamlogo": "https://rest.entitysport.com/baseball/assets/team/5e9f7111a990b.png",
+                "team_url": "team/2/info"
+            },
+            {
+                "tid": "3",
+                "tname": "Fubon Guardians",
+                "fullname": "Fubon Guardians",
+                "abbr": "FBG",
+                "iscountry": "false",
+                "isclub": "true",
+                "founded": "",
+                "website": "",
+                "twitter": "",
+                "hashtag": "",
+                "teamlogo": "https://rest.entitysport.com/baseball/assets/team/5e9f71699a2ef.png",
+                "team_url": "team/3/info"
+            },
+            {
+                "tid": "4",
+                "tname": "7-Eleven Lions",
+                "fullname": "7-Eleven Lions",
+                "abbr": "UL",
+                "iscountry": "false",
+                "isclub": "true",
+                "founded": "",
+                "website": "",
+                "twitter": "",
+                "hashtag": "",
+                "teamlogo": "https://rest.entitysport.com/baseball/assets/team/5e9f71a3898c8.png",
+                "team_url": "team/4/info"
+            }
+        ],
+        "total_items": "4",
+        "total_pages": 1
+    },
+    "etag": "96a64635ca1221b2f3c54452ed2f4a27",
+    "modified": "2020-04-24 08:58:36",
+    "datetime": "2020-04-24 08:58:36",
+    "api_version": "1.0"
+}
+
+```
+This API lists all the teams available to access.
+
+### Request
+* Path: /baseball/teams
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of teams object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of teams available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+tname | string | team name
+fullname | string | team name
+abbr | string | team short name
+iscountry | string | true if team is national team, false if not
+isclub | string | true if team is club team, false if not
+founded | string | year of team founded
+website | string | website url of team website
+twitter | string | twitter account name
+instagram | string | instagram hastag
+teamlogo | string | team logo url
+team_url | string | team info url
+team_matches_url | string | team matches list url
+
+
+## Team Info API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/baseball/team/1/info?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "tid": "1",
+                "tname": "Chinatrust Brothers",
+                "fullname": "Chinatrust Brothers",
+                "abbr": "CTB",
+                "iscountry": "false",
+                "isclub": "true",
+                "founded": "",
+                "website": "",
+                "twitter": "",
+                "hashtag": "",
+                "teamlogo": "https://rest.entitysport.com/baseball/assets/team/1.png",
+                "squads": [
+                    {
+                        "pid": "55",
+                        "fullname": "Chan Tzu Hasien",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "outfielder",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "15"
+                    },
+                    {
+                        "pid": "56",
+                        "fullname": "Chen Tzu Hao",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "outfielder",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "8.5"
+                    },
+                    {
+                        "pid": "57",
+                        "fullname": "Chen Wen Chieh",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "outfielder",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "9"
+                    },
+                    {
+                        "pid": "58",
+                        "fullname": "Chang Chih Hao",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "outfielder",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "7.5"
+                    },
+                    {
+                        "pid": "59",
+                        "fullname": "Lin Shu Yi",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "outfielder",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "6.5"
+                    },
+                    {
+                        "pid": "60",
+                        "fullname": "Chou Szu Chi",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "outfielder",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "5.5"
+                    },
+                    {
+                        "pid": "61",
+                        "fullname": "Wang Wei Chen",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "infielder",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "12.5"
+                    },
+                    {
+                        "pid": "62",
+                        "fullname": "lin Chih Sheng",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "infielder",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "11.5"
+                    },
+                    {
+                        "pid": "63",
+                        "fullname": "Wu Tung Jung",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "infielder",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "9.5"
+                    },
+                    {
+                        "pid": "64",
+                        "fullname": "Chiang Kun yu",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "infielder",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "9"
+                    },
+                    {
+                        "pid": "65",
+                        "fullname": "Yueh Tung Hua",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "infielder",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "8.5"
+                    },
+                    {
+                        "pid": "66",
+                        "fullname": "Su Wei Ta",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "infielder",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "8"
+                    },
+                    {
+                        "pid": "67",
+                        "fullname": "Pan Chih fang",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "infielder",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "6"
+                    },
+                    {
+                        "pid": "68",
+                        "fullname": "Hsu Chi Hung",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "infielder",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "5"
+                    },
+                    {
+                        "pid": "69",
+                        "fullname": "Esmil Rogers",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "pitcher",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "18.5"
+                    },
+                    {
+                        "pid": "70",
+                        "fullname": "Ariel Miranda",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "pitcher",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "17.5"
+                    },
+                    {
+                        "pid": "71",
+                        "fullname": "Jose De Paula",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "pitcher",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "15"
+                    },
+                    {
+                        "pid": "72",
+                        "fullname": "Liao Yi Chung",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "pitcher",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "13"
+                    },
+                    {
+                        "pid": "73",
+                        "fullname": "Huang En Shia",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "pitcher",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "10"
+                    },
+                    {
+                        "pid": "74",
+                        "fullname": "Lee Chen Chang",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "pitcher",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "7.5"
+                    },
+                    {
+                        "pid": "75",
+                        "fullname": "Tsai Chi Che",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "pitcher",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "7"
+                    },
+                    {
+                        "pid": "76",
+                        "fullname": "Wu chun Wei",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "pitcher",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "7"
+                    },
+                    {
+                        "pid": "77",
+                        "fullname": "Cheng Kai wen SR",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "pitcher",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "5.5"
+                    },
+                    {
+                        "pid": "78",
+                        "fullname": "Peng Shih Ying",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "pitcher",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "5"
+                    },
+                    {
+                        "pid": "79",
+                        "fullname": "Hsieh Jung Hao",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "pitcher",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "5"
+                    },
+                    {
+                        "pid": "80",
+                        "fullname": "Chou Lei",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "pitcher",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "5"
+                    },
+                    {
+                        "pid": "81",
+                        "fullname": "Huang Chun Sheng",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "catcher",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "6.5"
+                    },
+                    {
+                        "pid": "82",
+                        "fullname": "Kao Yu chieh",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "273",
+                            "name": "Chinese Taipei",
+                            "ioc": "tp"
+                        },
+                        "position": "catcher",
+                        "height": "",
+                        "weight": "",
+                        "fantasyplayerrating": "5.5"
+                    }
+                ]
+            }
+        ],
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "580d47cee7dc9bc552f4f6441d232cf2",
+    "modified": "2020-04-24 09:01:24",
+    "datetime": "2020-04-24 09:01:24",
+    "api_version": "1.0"
+}
+
+```
+This API contains team info and squad/roaster player details.
+
+### Request
+* Path: /baseball/team/tid/info
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | string | team id
+token | {ACCESS_TOKEN} | API Access token
+
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of team object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of teams available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of teams list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+tid | integer | team id
+tname | string | team name
+fullname | string | team name
+abbr | string | team short name
+iscountry | string | true if team is national team, false if not
+isclub | string | true if team is club team, false if not
+founded | string | year of team founded
+website | string | website url of team website
+twitter | string | twitter account name
+instagram | string | instagram hastag
+teamlogo | string | team logo url
+squads | array | An array of team player details. <a href="#team-player-baseball">see squads object reference</a>
+
+
+<h3 id="team-player-baseball">Squads Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | string | player id
+fullname | string | Player full name
+birthdate | string | Player Birthdate format - dd/mm/yy
+nationality | object | country details
+positionname | string | player playing position name
+height | string | player height in centimeters
+weight | string | player weight in kg
+fantasyplayerrating | string | player fantasy credit
+
+
+## Player List API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/baseball/players?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": [
+            {
+                "pid": "1",
+                "fullname": "Chen Chen Wei",
+                "birthdate": "",
+                "nationality": {
+                    "iocid": "273",
+                    "name": "Chinese Taipei",
+                    "ioc": "tp"
+                },
+                "position": "outfielder",
+                "height": "",
+                "weight": "",
+                "fantasyplayerrating": "16"
+            }
+        ],
+        "total_items": 111,
+        "total_pages": 3
+    },
+    "etag": "70b6bbff53f9a58e791917a516334451",
+    "modified": "2020-04-24 09:05:23",
+    "datetime": "2020-04-24 09:05:23",
+    "api_version": "1.0"
+}
+
+```
+This API contains list of player details.
+
+### Request
+* Path: /baseball/players
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+token | {ACCESS_TOKEN} | API Access token
+per_page | Number | Number of competition to list in each API request
+paged | Number | Page Number for request
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of player object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of players available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | string | player id
+fullname | string | Player full name
+birthdate | string | Player Birthdate format - dd/mm/yy
+nationality | object | country details
+positionname | string | player playing position name
+height | string | player height in centimeters
+weight | string | player weight in kg
+fantasyplayerrating | string | player fantasy credit
+
+
+## Player Profile API
+
+> Using Token parameter:
+
+```shell
+curl -X GET "https://rest.entitysport.com/baseball/player/1/info?token=[ACCESS_TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+    "status": "ok",
+    "response": {
+        "items": {
+            "player_info": {
+                "pid": "1",
+                "fullname": "Chen Chen Wei",
+                "birthdate": "",
+                "nationality": {
+                    "iocid": "273",
+                    "name": "Chinese Taipei",
+                    "ioc": "tp"
+                },
+                "position": "outfielder",
+                "height": "",
+                "weight": "",
+                "birthplace": "",
+                "birthcountry": "",
+                "experience": ""
+            }
+        },
+        "total_items": 1,
+        "total_pages": 1
+    },
+    "etag": "1500d189e20ef90241428e2e5ee806b0",
+    "modified": "2020-04-24 09:06:48",
+    "datetime": "2020-04-24 09:06:48",
+    "api_version": "1.0"
+}
+
+```
+This API contains player profile and career statistic details.
+
+### Request
+* Path: /baseball/player/pid/info
+* Method: GET
+* Parameters 
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | string | player id
+token | {ACCESS_TOKEN} | API Access token
+
+### Response
+
+* <code style="color:#c7254e";>status:</code> Response status. if api request was sucessful, you will get a status ok, or error. If a error is returned, check the response
+* <code style="color:#c7254e";>response.items:</code> array of player object.
+* <code style="color:#c7254e";>response.total_items:</code> total number of players available.
+* <code style="color:#c7254e";>response.total_pages:</code> total number of pages of players list.
+
+### Reference
+
+Parameter | Value | Description
+--------- | ------- | -----------
+player_info | array | array of player profile details. <a href="#player-profile-baseball">see player_info object reference</a>
+
+<h3 id="player-profile-baseball">Player Profile Object Reference</h3>
+
+Parameter | Value | Description
+--------- | ------- | -----------
+pid | string | player id
+fullname | string | Player full name
+birthdate | string | Player Birthdate format - dd/mm/yy
+nationality | object | country details
+positionname | string | player playing position name
+height | string | player height in centimeters
+weight | string | player weight in kg
+
+
+
+## Match status Reference
+
+Code | Description
+-----| ------- 
+1  |  Upcoming
+2  |  Result
+3  |  Live
+4  |  Canceled
+
+
+## Match Game State Reference
+
+<aside class="success">game_state is only used for live match</aside>
+
+Code | Description
+-----| ------- 
+0 |  Not started
+1 |  Live
+2 |  Ended
+
+
+## Playing Position Reference
+
+Description
+-------- 
+Outfielder
+Infiedler
+Pitcher
+Catcher
 
