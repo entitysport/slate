@@ -39146,10 +39146,10 @@ Code | Description
 
 ## Playing Position Reference
 
-Description
- ------- 
- Outfielder
- Infiedler
- Pitcher
- Catcher
+Code | Description
+-----| ------- 
+ |  Outfielder
+ |  Infiedler
+ |  Pitcher
+ |  Catcher
 
