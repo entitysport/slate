@@ -39139,9 +39139,9 @@ Code | Description
 
 Code | Description
 -----| ------- 
-0 |  Not started
-1 |  Live
-2 |  Ended
+1 |  Not started
+2 |  Live
+3 |  Ended
 
 
 ## Playing Position Reference
