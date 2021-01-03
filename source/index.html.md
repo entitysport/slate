@@ -2374,6 +2374,10 @@ decision | integer | numerical representation of decision made by toss winning t
 curl -X GET "https://rest.entitysport.com/v2/matches/40152/point?token=[ACCESS_TOKEN]"
 ```
 
+```shell
+curl -X GET "https://rest.entitysport.com/v2/matches/40152/newpoint?token=[ACCESS_TOKEN]"
+```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -3048,7 +3052,8 @@ curl -X GET "https://rest.entitysport.com/v2/matches/40152/point?token=[ACCESS_T
 Match Fantasy Points API provide player fantasy points value based on match performance. 
 
 ###Request
-* Path: /v2/matches/[MATCH_ID]/point
+* Path: /v2/matches/[MATCH_ID]/point - Point System 1
+* Path: /v2/matches/[MATCH_ID]/newpoint - - Point System 2
 * Method: GET
 * Parameters 
 
@@ -11658,9 +11663,7 @@ curl -X GET "https://rest.entitysport.com/soccer/competition/3/matches?token=[AC
             {
                 "mid": 65,
                 "round": {
-                    "type": "table",
-                    "round": "1",
-                    "name": 1
+                    "round": "1"
                 },
                 "result": {
                     "home": "2",
@@ -11702,7 +11705,7 @@ curl -X GET "https://rest.entitysport.com/soccer/competition/3/matches?token=[AC
                 "status_str": "result",
                 "status": 2,
                 "gamestate_str": "Ended",
-                "gamestate": 8,
+                "gamestate": 6,
                 "periodlength": "45",
                 "numberofperiods": "2",
                 "attendance": "74439",
@@ -12163,7 +12166,7 @@ curl -X GET "https://rest.entitysport.com/soccer/matches?date=2018-02-12(Date st
                 "status_str": "result",
                 "status": 2,
                 "gamestate_str": "Ended",
-                "gamestate": 8,
+                "gamestate": 6,
                 "periodlength": "45",
                 "numberofperiods": "2",
                 "attendance": "59255",
@@ -12404,7 +12407,7 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/info?token=[ACCESS_
                     "status_str": "result",
                     "status": 2,
                     "gamestate_str": "Ended",
-                    "gamestate": 9,
+                    "gamestate": 6,
                     "periodlength": "45",
                     "numberofperiods": "2",
                     "attendance": "",
@@ -14127,7 +14130,7 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/304/statsv2?token=[ACCE
                     "status_str": "result",
                     "status": 2,
                     "gamestate_str": "Ended",
-                    "gamestate": 9,
+                    "gamestate": 6,
                     "periodlength": "45",
                     "numberofperiods": "2",
                     "attendance": "53092",
@@ -14778,7 +14781,7 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/790/fantasy?token=[ACCE
                 "status_str": "result",
                 "status": 2,
                 "gamestate_str": "Ended",
-                "gamestate": 9,
+                "gamestate": 6,
                 "pre_squad": "true",
                 "periodlength": "45",
                 "numberofperiods": "2",
@@ -17014,7 +17017,7 @@ curl -X GET "https://rest.entitysport.com/soccer/team/70/matches?token=[ACCESS_T
                 "status_str": "result",
                 "status": 2,
                 "gamestate_str": "Ended",
-                "gamestate": 8,
+                "gamestate": 6,
                 "periodlength": "45",
                 "numberofperiods": "2",
                 "attendance": "59255",
@@ -17699,9 +17702,7 @@ Code | Description
 1  |  Upcoming
 2  |  Result
 3  |  Live
-4  |  Postponed
-5  |  Canceled
-6  |  Abandoned
+4  |  Canceled
 
 
 ## Match Game State Reference
@@ -17710,23 +17711,12 @@ Code | Description
 
 Code | Description
 --------- | ------- 
-0  |  None
 1  |  Not started
 2  |  1st half
 3  |  Halftime
 4  |  2nd half
-5  |  Awaiting penalties
-6  |  Penalties
-7  |  AP
-8  |  Awaiting extra time
-9  |  Ended
-10  |  AET
-11 |  Started
-12 |  Postponed
-13 |  Cancelled
-14 |  1st extra
-15 |  2nd extra
-16 |  Abandoned
+5  |  Extra Time
+6  |  Ended
 
 
 ## Playing Position Reference
