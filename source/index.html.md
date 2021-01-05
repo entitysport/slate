@@ -9395,33 +9395,35 @@ curl -X GET "https://rest.entitysport.com/soccer/season/{sid}/competitions?token
     "response": {
         "items": [
             {
-                "cid": 3,
-                "cname": "Premier League",
-                "startdate": "2018-08-10 00:00:00",
-                "enddate": "2019-05-13 23:55:00",
-                "startdatetimestamp": 1533859200,
-                "endtdatetimestamp": 1557791700,
-                "year": "18/19",
-                "category": "England",
-                "ioc_id": "240",
-                "ioc": "en",
-                "status": 3,
+                "cid": "163",
+                "cname": "UEFA Europa League",
+                "startdate": "2020-08-18 00:00:00",
+                "enddate": "2021-05-26 00:00:00",
+                "startdatetimestamp": "1597708800",
+                "endtdatetimestamp": "1621987200",
+                "year": "20/21",
+                "category": "International Clubs",
+                "tournament_id": "12",
+                "category_id": "8",
+                "ioc": "",
+                "status": "3",
                 "status_str": "live",
                 "logo": "",
-                "competition_url": "competition/3",
-                "team_url": "competition/3/squad",
-                "match_url": "competition/3/matches",
-                "stats_url": "competition/3/stats"
+                "competition_url": "competition/163",
+                "team_url": "competition/163/squad",
+                "match_url": "competition/163/matches",
+                "stats_url": "competition/163/stats"
             }
         ],
-        "total_items": 2,
-        "total_pages": 2
+        "total_items": 25,
+        "total_pages": 25
     },
-    "etag": "7b2ab0e6bed3978db9b3e21664652821",
-    "modified": "2018-08-31 17:35:28",
-    "datetime": "2018-08-31 17:35:28",
+    "etag": "1342d44d91bb71c8baa6857c0ed18a3e",
+    "modified": "2021-01-05 15:34:02",
+    "datetime": "2021-01-05 15:34:02",
     "api_version": "1.0"
 }
+
 
 ```
 This will list all available competitions those you are subscribed and can access for specified season. Season is named using 4 digit year, ex: **2018**, or Year combo, ex: **18-19**. 
@@ -9452,17 +9454,18 @@ paged | Number | Page Number for request
 
 Parameter | Value | Description
 --------- | ------- | -----------
-cid | integer | competition id
+cid | string | competition id
 cname | string | competition name/title
 startdate | string | time string in GMT of competition start date
 enddate | string | time string in GMT of competition end date
-startdatetimestamp | integer | timestamp of competition start date
-enddatetimestamp | integer | timestamp of competition end date
+startdatetimestamp | string | timestamp of competition start date
+enddatetimestamp | string | timestamp of competition end date
 year | string | Season Year
 category | string | Competition Category
-ioc_id | integer | IOC id of competition native country
+tournament_id | string | tournament id of competition native country
+category_id | string | category id of competition native country
 ioc | string | IOC 2 letter code of competition native country
-status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status | string | Competition status code 3 = live, 2 = completed, 1 = upcoming
 status_str | string | Competition status string live, completed, upcoming
 logo | string | Competition Logo URL
 competition_url | string | Competition information API end point url
@@ -9498,49 +9501,34 @@ curl -X GET "https://rest.entitysport.com/soccer/competitions?token=[ACCESS_TOKE
     "response": {
         "items": [
             {
-                "cid": 2,
-                "name": "World Cup",
-                "startdate": "2018-06-14 05:30:00",
-                "enddate": "2018-07-17 05:25:00",
-                "year": "2018",
-                "startdatetimestamp": 1528954200,
-                "endtdatetimestamp": 1531805100,
-                "category": "International",
-                "status": 2,
-                "status_str": "completed",
-                "logo": "",
-                "team_url": "competition/2/squad",
-                "match_url": "competition/2/matches",
-                "stats_url": "competition/2/stats"
-            },
-            {
-                "cid": 3,
-                "name": "Premier League",
-                "startdate": "2018-08-10 00:00:00",
-                "enddate": "2019-05-13 23:55:00",
-                "year": "18/19",
-                "startdatetimestamp": 1533859200,
-                "endtdatetimestamp": 1557791700,
-                "category": "England",
-                "ioc_id": "240",
-                "ioc": "en",
-                "status": 3,
+                "cid": "163",
+                "cname": "UEFA Europa League",
+                "startdate": "2020-08-18 00:00:00",
+                "enddate": "2021-05-26 00:00:00",
+                "startdatetimestamp": "1597708800",
+                "endtdatetimestamp": "1621987200",
+                "year": "20/21",
+                "category": "International Clubs",
+                "tournament_id": "12",
+                "category_id": "8",
+                "ioc": "",
+                "status": "3",
                 "status_str": "live",
                 "logo": "",
-                "team_url": "competition/3/squad",
-                "match_url": "competition/3/matches",
-                "stats_url": "competition/3/stats"
+                "competition_url": "competition/163",
+                "team_url": "competition/163/squad",
+                "match_url": "competition/163/matches",
+                "stats_url": "competition/163/stats"
             }
         ],
-        "total_items": 5,
-        "total_pages": 3
+        "total_items": 25,
+        "total_pages": 25
     },
-    "etag": "2017ecb236c5c116aae4f179f50d2abd",
-    "modified": "2018-08-31 17:36:37",
-    "datetime": "2018-08-31 17:36:37",
+    "etag": "1342d44d91bb71c8baa6857c0ed18a3e",
+    "modified": "2021-01-05 15:34:02",
+    "datetime": "2021-01-05 15:34:02",
     "api_version": "1.0"
 }
-
 ```
 This API lists all available competitions those user are subscribed and can access. This API is a directory of all competitions user have access.
 
@@ -9570,17 +9558,18 @@ paged | Number | Page Number for request
 
 Parameter | Value | Description
 --------- | ------- | -----------
-cid | integer | competition id
+cid | string | competition id
 cname | string | competition name/title
 startdate | string | time string in GMT of competition start date
 enddate | string | time string in GMT of competition end date
-startdatetimestamp | integer | timestamp of competition start date
-enddatetimestamp | integer | timestamp of competition end date
+startdatetimestamp | string | timestamp of competition start date
+enddatetimestamp | string | timestamp of competition end date
 year | string | Season Year
 category | string | Competition Category
-ioc_id | integer | IOC id of competition native country
+tournament_id | string | tournament id of competition native country
+category_id | string | category id of competition native country
 ioc | string | IOC 2 letter code of competition native country
-status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status | string | Competition status code 3 = live, 2 = completed, 1 = upcoming
 status_str | string | Competition status string live, completed, upcoming
 logo | string | Competition Logo URL
 competition_url | string | Competition information API end point url
@@ -9605,1322 +9594,738 @@ curl -X GET "https://rest.entitysport.com/soccer/competition/3/?token=[ACCESS_TO
     "response": {
         "items": [
             {
-                "cid": 3,
-                "name": "Premier League",
-                "startdate": "2018-08-10 00:00:00",
-                "enddate": "2019-05-13 23:55:00",
-                "startdatetimestamp": 1533859200,
-                "endtdatetimestamp": 1557791700,
-                "year": "18/19",
-                "category": "England",
-                "ioc_id": "240",
-                "ioc": "en",
-                "status": 3,
+                "cid": "165",
+                "cname": "Indian Super League",
+                "startdate": "2020-11-20 00:00:00",
+                "enddate": "2021-03-23 00:00:00",
+                "startdatetimestamp": "1605830400",
+                "endtdatetimestamp": "1616457600",
+                "year": "20/21",
+                "category": "India",
+                "tournament_id": "16",
+                "category_id": "14",
+                "ioc": "in",
+                "status": "3",
                 "status_str": "live",
                 "logo": "",
                 "teams": [
                     {
-                        "tid": 41,
-                        "tname": "Wolves",
-                        "fullname": "Wolverhampton Wanderers",
-                        "abbr": "WOL",
-                        "iscountry": false,
-                        "isclub": true,
+                        "tid": "451",
+                        "tname": "Bengaluru",
+                        "fullname": "Bengaluru FC",
+                        "abbr": "BGL",
+                        "iscountry": "false",
+                        "isclub": "true",
+                        "founded": "2013",
+                        "website": "",
+                        "twitter": "",
                         "hashtag": "",
-                        "founded": "",
-                        "website": "http://www.wolves.premiumtv.co.uk/page/Home/",
-                        "twitter": "Wolves",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/3.png"
+                        "teamlogo": "https://rest.entitysport.com/soccer/assets/team/451.png"
                     },
                     {
-                        "tid": 42,
-                        "tname": "Burnley",
-                        "fullname": "Burnley FC",
-                        "abbr": "BUR",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#BFC",
-                        "founded": "1882",
-                        "website": "http://www.burnleyfootballclub.com",
-                        "twitter": "BurnleyOfficial",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/6.png"
-                    },
-                    {
-                        "tid": 43,
-                        "tname": "Crystal Palace",
-                        "fullname": "Crystal Palace",
-                        "abbr": "CRY",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#CPFC",
-                        "founded": "1905",
-                        "website": "http://www.cpfc.premiumtv.co.uk/page/Home/",
-                        "twitter": "CPFC",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/7.png"
-                    },
-                    {
-                        "tid": 44,
-                        "tname": "Man City",
-                        "fullname": "Manchester City",
-                        "abbr": "MCI",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#MCFC",
-                        "founded": "1894",
-                        "website": "http://www.mcfc.co.uk",
-                        "twitter": "ManCity",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/17.png"
-                    },
-                    {
-                        "tid": 45,
-                        "tname": "Watford",
-                        "fullname": "Watford FC",
-                        "abbr": "WAT",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#WATFORDFC",
-                        "founded": "1881",
-                        "website": "http://www.watfordfc.premiumtv.co.uk/page/Home/0,,10400,00.html",
-                        "twitter": "WatfordFC",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/24.png"
-                    },
-                    {
-                        "tid": 46,
-                        "tname": "Brighton",
-                        "fullname": "Brighton & Hove Albion FC",
-                        "abbr": "BHA",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#BHAFC",
-                        "founded": "1901",
-                        "website": "http://www.seagulls.co.uk",
-                        "twitter": "OfficialBHAFC",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/30.png"
-                    },
-                    {
-                        "tid": 47,
-                        "tname": "Leicester",
-                        "fullname": "Leicester City",
-                        "abbr": "LEI",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#LCFC",
-                        "founded": "1884",
-                        "website": "http://www.lcfc.premiumtv.co.uk/page/World",
-                        "twitter": "LCFC",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/31.png"
-                    },
-                    {
-                        "tid": 48,
-                        "tname": "Tottenham",
-                        "fullname": "Tottenham Hotspur",
-                        "abbr": "TOT",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#COYS",
-                        "founded": "1882",
-                        "website": "http://www.spurs.co.uk",
-                        "twitter": "SpursOfficial",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/33.png"
-                    },
-                    {
-                        "tid": 49,
-                        "tname": "Man Utd",
-                        "fullname": "Manchester United",
-                        "abbr": "MUN",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#MUFC",
-                        "founded": "1878",
-                        "website": "http://www.manutd.com",
-                        "twitter": "ManUtd",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/35.png"
-                    },
-                    {
-                        "tid": 50,
-                        "tname": "West Ham",
-                        "fullname": "West Ham United",
-                        "abbr": "WHU",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#WHUFC",
-                        "founded": "1895",
-                        "website": "http://www.westhamunited.co.uk",
-                        "twitter": "WestHamUtd",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/37.png"
-                    },
-                    {
-                        "tid": 51,
-                        "tname": "Chelsea",
-                        "fullname": "Chelsea FC",
+                        "tid": "453",
+                        "tname": "Chennaiyin",
+                        "fullname": "Chennaiyin FC",
                         "abbr": "CHE",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#CFC",
-                        "founded": "1905",
-                        "website": "http://www.chelseafc.co.uk",
-                        "twitter": "ChelseaFC",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/38.png"
+                        "iscountry": "false",
+                        "isclub": "true",
+                        "founded": "2014",
+                        "website": "",
+                        "twitter": "",
+                        "hashtag": "",
+                        "teamlogo": "https://rest.entitysport.com/soccer/assets/team/453.png"
                     },
                     {
-                        "tid": 52,
-                        "tname": "Newcastle",
-                        "fullname": "Newcastle United",
-                        "abbr": "NEW",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#NUFC",
-                        "founded": "1892",
-                        "website": "http://www.nufc.co.uk",
-                        "twitter": "NUFC",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/39.png"
+                        "tid": "454",
+                        "tname": "Odisha",
+                        "fullname": "Odisha FC",
+                        "abbr": "ODI",
+                        "iscountry": "false",
+                        "isclub": "true",
+                        "founded": "2014",
+                        "website": "",
+                        "twitter": "",
+                        "hashtag": "",
+                        "teamlogo": "https://rest.entitysport.com/soccer/assets/team/454.png"
                     },
                     {
-                        "tid": 53,
-                        "tname": "Arsenal",
-                        "fullname": "Arsenal FC",
-                        "abbr": "ARS",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#Arsenal",
-                        "founded": "1886",
-                        "website": "http://www.arsenal.com",
-                        "twitter": "Arsenal",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/42.png"
+                        "tid": "455",
+                        "tname": "Goa",
+                        "fullname": "FC Goa",
+                        "abbr": "GOA",
+                        "iscountry": "false",
+                        "isclub": "true",
+                        "founded": "2014",
+                        "website": "",
+                        "twitter": "",
+                        "hashtag": "",
+                        "teamlogo": "https://rest.entitysport.com/soccer/assets/team/455.png"
                     },
                     {
-                        "tid": 54,
-                        "tname": "Fulham",
-                        "fullname": "Fulham FC",
-                        "abbr": "FUL",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#FFC",
+                        "tid": "457",
+                        "tname": "Kerala",
+                        "fullname": "Kerala Blasters FC",
+                        "abbr": "KER",
+                        "iscountry": "false",
+                        "isclub": "true",
+                        "founded": "2014",
+                        "website": "",
+                        "twitter": "",
+                        "hashtag": "",
+                        "teamlogo": "https://rest.entitysport.com/soccer/assets/team/457.png"
+                    },
+                    {
+                        "tid": "458",
+                        "tname": "Mumbai City",
+                        "fullname": "Mumbai City FC",
+                        "abbr": "MUM",
+                        "iscountry": "false",
+                        "isclub": "true",
+                        "founded": "2014",
+                        "website": "",
+                        "twitter": "",
+                        "hashtag": "",
+                        "teamlogo": "https://rest.entitysport.com/soccer/assets/team/458.png"
+                    },
+                    {
+                        "tid": "459",
+                        "tname": "Northeast Utd",
+                        "fullname": "Northeast United FC",
+                        "abbr": "NOR",
+                        "iscountry": "false",
+                        "isclub": "true",
+                        "founded": "2014",
+                        "website": "",
+                        "twitter": "",
+                        "hashtag": "",
+                        "teamlogo": "https://rest.entitysport.com/soccer/assets/team/459.png"
+                    },
+                    {
+                        "tid": "460",
+                        "tname": "Jamshedpur",
+                        "fullname": "Jamshedpur FC",
+                        "abbr": "JAM",
+                        "iscountry": "false",
+                        "isclub": "true",
+                        "founded": "2017",
+                        "website": "",
+                        "twitter": "",
+                        "hashtag": "",
+                        "teamlogo": "https://rest.entitysport.com/soccer/assets/team/460.png"
+                    },
+                    {
+                        "tid": "1500",
+                        "tname": "Hyderabad",
+                        "fullname": "Hyderabad FC",
+                        "abbr": "HYD",
+                        "iscountry": "false",
+                        "isclub": "true",
+                        "founded": "2019",
+                        "website": "",
+                        "twitter": "",
+                        "hashtag": "",
+                        "teamlogo": "https://rest.entitysport.com/soccer/assets/team/1500.png"
+                    },
+                    {
+                        "tid": "2029",
+                        "tname": "Mohun Bagan",
+                        "fullname": "ATK Mohun Bagan",
+                        "abbr": "MOH",
+                        "iscountry": "false",
+                        "isclub": "true",
                         "founded": "",
-                        "website": "http://www.fulhamfc.co.uk",
-                        "twitter": "Fulham Football Club",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/43.png"
+                        "website": "",
+                        "twitter": "",
+                        "hashtag": "",
+                        "teamlogo": "https://rest.entitysport.com/soccer/assets/team/2029.png"
                     },
                     {
-                        "tid": 55,
-                        "tname": "Liverpool",
-                        "fullname": "Liverpool FC",
-                        "abbr": "LIV",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#LFC",
-                        "founded": "1892",
-                        "website": "http://www.liverpoolfc.tv",
-                        "twitter": "LFC",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/44.png"
-                    },
-                    {
-                        "tid": 56,
-                        "tname": "Southampton",
-                        "fullname": "Southampton FC",
-                        "abbr": "SOU",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#SaintsFC",
-                        "founded": "1885",
-                        "website": "http://www.saintsfc.co.uk/index.php",
-                        "twitter": "SouthamptonFC",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/45.png"
-                    },
-                    {
-                        "tid": 57,
-                        "tname": "Everton",
-                        "fullname": "Everton FC",
-                        "abbr": "EVE",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#EFC",
-                        "founded": "1878",
-                        "website": "http://www.evertonfc.com",
-                        "twitter": "Everton",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/48.png"
-                    },
-                    {
-                        "tid": 58,
-                        "tname": "Huddersfield",
-                        "fullname": "Huddersfield Town",
-                        "abbr": "HUD",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#HTAFC",
-                        "founded": "1908",
-                        "website": "http://www.htafc.com/page/Home",
-                        "twitter": "htafcdotcom",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/59.png"
-                    },
-                    {
-                        "tid": 59,
-                        "tname": "Bournemouth",
-                        "fullname": "AFC Bournemouth",
-                        "abbr": "BOU",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#AFCB",
-                        "founded": "1899",
-                        "website": "http://www.afcb.co.uk",
-                        "twitter": "afcbournemouth",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/60.png"
-                    },
-                    {
-                        "tid": 60,
-                        "tname": "Cardiff",
-                        "fullname": "Cardiff City",
-                        "abbr": "CAR",
-                        "iscountry": false,
-                        "isclub": true,
-                        "hashtag": "#CardiffCity",
+                        "tid": "2030",
+                        "tname": "East Bengal",
+                        "fullname": "SC East Bengal",
+                        "abbr": "EBE",
+                        "iscountry": "false",
+                        "isclub": "true",
                         "founded": "",
-                        "website": "http://www.cardiffcityfc.co.uk",
-                        "twitter": "Cardiff City FC",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/61.png"
+                        "website": "",
+                        "twitter": "",
+                        "hashtag": "",
+                        "teamlogo": "https://rest.entitysport.com/soccer/assets/team/2030.png"
                     }
                 ],
                 "point_table": [
                     {
-                        "name": "Premier League",
-                        "groupname": null,
+                        "name": "Indian Super League",
+                        "groupname": "",
                         "tables": {
                             "total": [
                                 {
                                     "promotion": {
                                         "type": "promotion",
-                                        "name": "Champions League"
+                                        "name": "Playoffs"
                                     },
-                                    "position": 1,
-                                    "tid": 55,
-                                    "tname": "Liverpool",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/44.png",
-                                    "positionchange": 1,
-                                    "playedtotal": 3,
-                                    "wintotal": 3,
-                                    "drawtotal": 0,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 7,
-                                    "goalsagainsttotal": 0,
-                                    "goaldifftotal": 7,
-                                    "pointstotal": 9
+                                    "position": "1",
+                                    "tid": "458",
+                                    "tname": "Mumbai City",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/458.png",
+                                    "positionchange": "",
+                                    "playedtotal": "9",
+                                    "wintotal": "7",
+                                    "drawtotal": "1",
+                                    "losstotal": "1",
+                                    "goalsfortotal": "15",
+                                    "goalsagainsttotal": "4",
+                                    "goaldifftotal": "11",
+                                    "pointstotal": "22"
                                 },
                                 {
                                     "promotion": {
                                         "type": "promotion",
-                                        "name": "Champions League"
+                                        "name": "Playoffs"
                                     },
-                                    "position": 2,
-                                    "tid": 48,
-                                    "tname": "Tottenham",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/33.png",
-                                    "positionchange": 3,
-                                    "playedtotal": 3,
-                                    "wintotal": 3,
-                                    "drawtotal": 0,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 8,
-                                    "goalsagainsttotal": 2,
-                                    "goaldifftotal": 6,
-                                    "pointstotal": 9
+                                    "position": "2",
+                                    "tid": "2029",
+                                    "tname": "Mohun Bagan",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/2029.png",
+                                    "positionchange": "",
+                                    "playedtotal": "9",
+                                    "wintotal": "6",
+                                    "drawtotal": "2",
+                                    "losstotal": "1",
+                                    "goalsfortotal": "10",
+                                    "goalsagainsttotal": "3",
+                                    "goaldifftotal": "7",
+                                    "pointstotal": "20"
                                 },
                                 {
                                     "promotion": {
                                         "type": "promotion",
-                                        "name": "Champions League"
+                                        "name": "Playoffs"
                                     },
-                                    "position": 3,
-                                    "tid": 51,
-                                    "tname": "Chelsea",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/38.png",
-                                    "positionchange": 0,
-                                    "playedtotal": 3,
-                                    "wintotal": 3,
-                                    "drawtotal": 0,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 8,
-                                    "goalsagainsttotal": 3,
-                                    "goaldifftotal": 5,
-                                    "pointstotal": 9
+                                    "position": "3",
+                                    "tid": "455",
+                                    "tname": "Goa",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/455.png",
+                                    "positionchange": "",
+                                    "playedtotal": "9",
+                                    "wintotal": "4",
+                                    "drawtotal": "2",
+                                    "losstotal": "3",
+                                    "goalsfortotal": "12",
+                                    "goalsagainsttotal": "10",
+                                    "goaldifftotal": "2",
+                                    "pointstotal": "14"
                                 },
                                 {
                                     "promotion": {
                                         "type": "promotion",
-                                        "name": "Champions League"
+                                        "name": "Playoffs"
                                     },
-                                    "position": 4,
-                                    "tid": 45,
-                                    "tname": "Watford",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/24.png",
-                                    "positionchange": 0,
-                                    "playedtotal": 3,
-                                    "wintotal": 3,
-                                    "drawtotal": 0,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 7,
-                                    "goalsagainsttotal": 2,
-                                    "goaldifftotal": 5,
-                                    "pointstotal": 9
-                                },
-                                {
-                                    "promotion": {
-                                        "type": "promotion",
-                                        "name": "Europa League"
-                                    },
-                                    "position": 5,
-                                    "tid": 44,
-                                    "tname": "Man City",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/17.png",
-                                    "positionchange": -4,
-                                    "playedtotal": 3,
-                                    "wintotal": 2,
-                                    "drawtotal": 1,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 9,
-                                    "goalsagainsttotal": 2,
-                                    "goaldifftotal": 7,
-                                    "pointstotal": 7
+                                    "position": "4",
+                                    "tid": "460",
+                                    "tname": "Jamshedpur",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/460.png",
+                                    "positionchange": "",
+                                    "playedtotal": "9",
+                                    "wintotal": "3",
+                                    "drawtotal": "4",
+                                    "losstotal": "2",
+                                    "goalsfortotal": "10",
+                                    "goalsagainsttotal": "9",
+                                    "goaldifftotal": "1",
+                                    "pointstotal": "13"
                                 },
                                 {
                                     "promotion": "",
-                                    "position": 6,
-                                    "tid": 59,
-                                    "tname": "Bournemouth",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/60.png",
-                                    "positionchange": 0,
-                                    "playedtotal": 3,
-                                    "wintotal": 2,
-                                    "drawtotal": 1,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 6,
-                                    "goalsagainsttotal": 3,
-                                    "goaldifftotal": 3,
-                                    "pointstotal": 7
+                                    "position": "5",
+                                    "tid": "451",
+                                    "tname": "Bengaluru",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/451.png",
+                                    "positionchange": "",
+                                    "playedtotal": "9",
+                                    "wintotal": "3",
+                                    "drawtotal": "3",
+                                    "losstotal": "3",
+                                    "goalsfortotal": "12",
+                                    "goalsagainsttotal": "11",
+                                    "goaldifftotal": "1",
+                                    "pointstotal": "12"
                                 },
                                 {
                                     "promotion": "",
-                                    "position": 7,
-                                    "tid": 47,
-                                    "tname": "Leicester",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/31.png",
-                                    "positionchange": 1,
-                                    "playedtotal": 3,
-                                    "wintotal": 2,
-                                    "drawtotal": 0,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 5,
-                                    "goalsagainsttotal": 3,
-                                    "goaldifftotal": 2,
-                                    "pointstotal": 6
+                                    "position": "6",
+                                    "tid": "1500",
+                                    "tname": "Hyderabad",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/1500.png",
+                                    "positionchange": "",
+                                    "playedtotal": "9",
+                                    "wintotal": "3",
+                                    "drawtotal": "3",
+                                    "losstotal": "3",
+                                    "goalsfortotal": "11",
+                                    "goalsagainsttotal": "11",
+                                    "goaldifftotal": "0",
+                                    "pointstotal": "12"
                                 },
                                 {
                                     "promotion": "",
-                                    "position": 8,
-                                    "tid": 57,
-                                    "tname": "Everton",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/48.png",
-                                    "positionchange": -1,
-                                    "playedtotal": 3,
-                                    "wintotal": 1,
-                                    "drawtotal": 2,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 6,
-                                    "goalsagainsttotal": 5,
-                                    "goaldifftotal": 1,
-                                    "pointstotal": 5
+                                    "position": "7",
+                                    "tid": "459",
+                                    "tname": "Northeast Utd",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/459.png",
+                                    "positionchange": "",
+                                    "playedtotal": "9",
+                                    "wintotal": "2",
+                                    "drawtotal": "5",
+                                    "losstotal": "2",
+                                    "goalsfortotal": "10",
+                                    "goalsagainsttotal": "10",
+                                    "goaldifftotal": "0",
+                                    "pointstotal": "11"
                                 },
                                 {
                                     "promotion": "",
-                                    "position": 9,
-                                    "tid": 53,
-                                    "tname": "Arsenal",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/42.png",
-                                    "positionchange": 8,
-                                    "playedtotal": 3,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 2,
-                                    "goalsfortotal": 5,
-                                    "goalsagainsttotal": 6,
-                                    "goaldifftotal": -1,
-                                    "pointstotal": 3
+                                    "position": "8",
+                                    "tid": "453",
+                                    "tname": "Chennaiyin",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/453.png",
+                                    "positionchange": "",
+                                    "playedtotal": "9",
+                                    "wintotal": "2",
+                                    "drawtotal": "4",
+                                    "losstotal": "3",
+                                    "goalsfortotal": "8",
+                                    "goalsagainsttotal": "11",
+                                    "goaldifftotal": "-3",
+                                    "pointstotal": "10"
                                 },
                                 {
                                     "promotion": "",
-                                    "position": 10,
-                                    "tid": 43,
-                                    "tname": "Crystal Palace",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/7.png",
-                                    "positionchange": 0,
-                                    "playedtotal": 3,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 2,
-                                    "goalsfortotal": 3,
-                                    "goalsagainsttotal": 4,
-                                    "goaldifftotal": -1,
-                                    "pointstotal": 3
+                                    "position": "9",
+                                    "tid": "457",
+                                    "tname": "Kerala",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/457.png",
+                                    "positionchange": "",
+                                    "playedtotal": "8",
+                                    "wintotal": "1",
+                                    "drawtotal": "3",
+                                    "losstotal": "4",
+                                    "goalsfortotal": "8",
+                                    "goalsagainsttotal": "13",
+                                    "goaldifftotal": "-5",
+                                    "pointstotal": "6"
                                 },
                                 {
                                     "promotion": "",
-                                    "position": 11,
-                                    "tid": 54,
-                                    "tname": "Fulham",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/43.png",
-                                    "positionchange": 7,
-                                    "playedtotal": 3,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 2,
-                                    "goalsfortotal": 5,
-                                    "goalsagainsttotal": 7,
-                                    "goaldifftotal": -2,
-                                    "pointstotal": 3
+                                    "position": "10",
+                                    "tid": "2030",
+                                    "tname": "East Bengal",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/2030.png",
+                                    "positionchange": "",
+                                    "playedtotal": "8",
+                                    "wintotal": "1",
+                                    "drawtotal": "3",
+                                    "losstotal": "4",
+                                    "goalsfortotal": "8",
+                                    "goalsagainsttotal": "14",
+                                    "goaldifftotal": "-6",
+                                    "pointstotal": "6"
                                 },
                                 {
                                     "promotion": "",
-                                    "position": 12,
-                                    "tid": 46,
-                                    "tname": "Brighton",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/30.png",
-                                    "positionchange": -1,
-                                    "playedtotal": 3,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 2,
-                                    "goalsfortotal": 3,
-                                    "goalsagainsttotal": 5,
-                                    "goaldifftotal": -2,
-                                    "pointstotal": 3
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 13,
-                                    "tid": 49,
-                                    "tname": "Man Utd",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/35.png",
-                                    "positionchange": -4,
-                                    "playedtotal": 3,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 2,
-                                    "goalsfortotal": 4,
-                                    "goalsagainsttotal": 7,
-                                    "goaldifftotal": -3,
-                                    "pointstotal": 3
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 14,
-                                    "tid": 41,
-                                    "tname": "Wolves",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/3.png",
-                                    "positionchange": 0,
-                                    "playedtotal": 3,
-                                    "wintotal": 0,
-                                    "drawtotal": 2,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 3,
-                                    "goalsagainsttotal": 5,
-                                    "goaldifftotal": -2,
-                                    "pointstotal": 2
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 15,
-                                    "tid": 60,
-                                    "tname": "Cardiff",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/61.png",
-                                    "positionchange": 1,
-                                    "playedtotal": 3,
-                                    "wintotal": 0,
-                                    "drawtotal": 2,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 0,
-                                    "goalsagainsttotal": 2,
-                                    "goaldifftotal": -2,
-                                    "pointstotal": 2
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 16,
-                                    "tid": 52,
-                                    "tname": "Newcastle",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/39.png",
-                                    "positionchange": -4,
-                                    "playedtotal": 3,
-                                    "wintotal": 0,
-                                    "drawtotal": 1,
-                                    "losstotal": 2,
-                                    "goalsfortotal": 2,
-                                    "goalsagainsttotal": 4,
-                                    "goaldifftotal": -2,
-                                    "pointstotal": 1
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 16,
-                                    "tid": 56,
-                                    "tname": "Southampton",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/45.png",
-                                    "positionchange": -4,
-                                    "playedtotal": 3,
-                                    "wintotal": 0,
-                                    "drawtotal": 1,
-                                    "losstotal": 2,
-                                    "goalsfortotal": 2,
-                                    "goalsagainsttotal": 4,
-                                    "goaldifftotal": -2,
-                                    "pointstotal": 1
-                                },
-                                {
-                                    "promotion": {
-                                        "type": "Relegation",
-                                        "name": "Relegation"
-                                    },
-                                    "position": 18,
-                                    "tid": 42,
-                                    "tname": "Burnley",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/6.png",
-                                    "positionchange": -3,
-                                    "playedtotal": 3,
-                                    "wintotal": 0,
-                                    "drawtotal": 1,
-                                    "losstotal": 2,
-                                    "goalsfortotal": 3,
-                                    "goalsagainsttotal": 7,
-                                    "goaldifftotal": -4,
-                                    "pointstotal": 1
-                                },
-                                {
-                                    "promotion": {
-                                        "type": "Relegation",
-                                        "name": "Relegation"
-                                    },
-                                    "position": 19,
-                                    "tid": 58,
-                                    "tname": "Huddersfield",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/59.png",
-                                    "positionchange": 1,
-                                    "playedtotal": 3,
-                                    "wintotal": 0,
-                                    "drawtotal": 1,
-                                    "losstotal": 2,
-                                    "goalsfortotal": 1,
-                                    "goalsagainsttotal": 9,
-                                    "goaldifftotal": -8,
-                                    "pointstotal": 1
-                                },
-                                {
-                                    "promotion": {
-                                        "type": "Relegation",
-                                        "name": "Relegation"
-                                    },
-                                    "position": 20,
-                                    "tid": 50,
-                                    "tname": "West Ham",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/37.png",
-                                    "positionchange": -1,
-                                    "playedtotal": 3,
-                                    "wintotal": 0,
-                                    "drawtotal": 0,
-                                    "losstotal": 3,
-                                    "goalsfortotal": 2,
-                                    "goalsagainsttotal": 9,
-                                    "goaldifftotal": -7,
-                                    "pointstotal": 0
+                                    "position": "11",
+                                    "tid": "454",
+                                    "tname": "Odisha",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/454.png",
+                                    "positionchange": "",
+                                    "playedtotal": "8",
+                                    "wintotal": "0",
+                                    "drawtotal": "2",
+                                    "losstotal": "6",
+                                    "goalsfortotal": "6",
+                                    "goalsagainsttotal": "14",
+                                    "goaldifftotal": "-8",
+                                    "pointstotal": "2"
                                 }
                             ],
                             "home": [
                                 {
                                     "promotion": {
                                         "type": "promotion",
-                                        "name": "Champions League"
+                                        "name": "Playoffs"
                                     },
-                                    "position": 1,
-                                    "tid": 55,
-                                    "tname": "Liverpool",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/44.png",
-                                    "positionchange": 1,
-                                    "playedtotal": 2,
-                                    "wintotal": 2,
-                                    "drawtotal": 0,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 5,
-                                    "goalsagainsttotal": 0,
-                                    "goaldifftotal": 5,
-                                    "pointstotal": 6
+                                    "position": "1",
+                                    "tid": "458",
+                                    "tname": "Mumbai City",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/458.png",
+                                    "positionchange": "",
+                                    "playedtotal": "5",
+                                    "wintotal": "4",
+                                    "drawtotal": "1",
+                                    "losstotal": "0",
+                                    "goalsfortotal": "10",
+                                    "goalsagainsttotal": "2",
+                                    "goaldifftotal": "8",
+                                    "pointstotal": "13"
                                 },
                                 {
                                     "promotion": {
                                         "type": "promotion",
-                                        "name": "Champions League"
+                                        "name": "Playoffs"
                                     },
-                                    "position": 5,
-                                    "tid": 48,
-                                    "tname": "Tottenham",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/33.png",
-                                    "positionchange": -2,
-                                    "playedtotal": 1,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 3,
-                                    "goalsagainsttotal": 1,
-                                    "goaldifftotal": 2,
-                                    "pointstotal": 3
+                                    "position": "2",
+                                    "tid": "2029",
+                                    "tname": "Mohun Bagan",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/2029.png",
+                                    "positionchange": "",
+                                    "playedtotal": "5",
+                                    "wintotal": "4",
+                                    "drawtotal": "1",
+                                    "losstotal": "0",
+                                    "goalsfortotal": "6",
+                                    "goalsagainsttotal": "1",
+                                    "goaldifftotal": "5",
+                                    "pointstotal": "13"
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": "3",
+                                    "tid": "459",
+                                    "tname": "Northeast Utd",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/459.png",
+                                    "positionchange": "",
+                                    "playedtotal": "4",
+                                    "wintotal": "2",
+                                    "drawtotal": "1",
+                                    "losstotal": "1",
+                                    "goalsfortotal": "3",
+                                    "goalsagainsttotal": "1",
+                                    "goaldifftotal": "2",
+                                    "pointstotal": "7"
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": "4",
+                                    "tid": "457",
+                                    "tname": "Kerala",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/457.png",
+                                    "positionchange": "",
+                                    "playedtotal": "4",
+                                    "wintotal": "1",
+                                    "drawtotal": "2",
+                                    "losstotal": "1",
+                                    "goalsfortotal": "5",
+                                    "goalsagainsttotal": "4",
+                                    "goaldifftotal": "1",
+                                    "pointstotal": "5"
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": "5",
+                                    "tid": "451",
+                                    "tname": "Bengaluru",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/451.png",
+                                    "positionchange": "",
+                                    "playedtotal": "5",
+                                    "wintotal": "1",
+                                    "drawtotal": "2",
+                                    "losstotal": "2",
+                                    "goalsfortotal": "7",
+                                    "goalsagainsttotal": "7",
+                                    "goaldifftotal": "0",
+                                    "pointstotal": "5"
                                 },
                                 {
                                     "promotion": {
                                         "type": "promotion",
-                                        "name": "Champions League"
+                                        "name": "Playoffs"
                                     },
-                                    "position": 7,
-                                    "tid": 51,
-                                    "tname": "Chelsea",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/38.png",
-                                    "positionchange": 0,
-                                    "playedtotal": 1,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 3,
-                                    "goalsagainsttotal": 2,
-                                    "goaldifftotal": 1,
-                                    "pointstotal": 3
+                                    "position": "5",
+                                    "tid": "455",
+                                    "tname": "Goa",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/455.png",
+                                    "positionchange": "",
+                                    "playedtotal": "5",
+                                    "wintotal": "1",
+                                    "drawtotal": "2",
+                                    "losstotal": "2",
+                                    "goalsfortotal": "7",
+                                    "goalsagainsttotal": "7",
+                                    "goaldifftotal": "0",
+                                    "pointstotal": "5"
+                                },
+                                {
+                                    "promotion": "",
+                                    "position": "7",
+                                    "tid": "2030",
+                                    "tname": "East Bengal",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/2030.png",
+                                    "positionchange": "",
+                                    "playedtotal": "4",
+                                    "wintotal": "1",
+                                    "drawtotal": "2",
+                                    "losstotal": "1",
+                                    "goalsfortotal": "5",
+                                    "goalsagainsttotal": "5",
+                                    "goaldifftotal": "0",
+                                    "pointstotal": "5"
                                 },
                                 {
                                     "promotion": {
                                         "type": "promotion",
-                                        "name": "Champions League"
+                                        "name": "Playoffs"
                                     },
-                                    "position": 2,
-                                    "tid": 45,
-                                    "tname": "Watford",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/24.png",
-                                    "positionchange": 2,
-                                    "playedtotal": 2,
-                                    "wintotal": 2,
-                                    "drawtotal": 0,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 4,
-                                    "goalsagainsttotal": 1,
-                                    "goaldifftotal": 3,
-                                    "pointstotal": 6
-                                },
-                                {
-                                    "promotion": {
-                                        "type": "promotion",
-                                        "name": "Europa League"
-                                    },
-                                    "position": 4,
-                                    "tid": 44,
-                                    "tname": "Man City",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/17.png",
-                                    "positionchange": -3,
-                                    "playedtotal": 1,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 6,
-                                    "goalsagainsttotal": 1,
-                                    "goaldifftotal": 5,
-                                    "pointstotal": 3
+                                    "position": "8",
+                                    "tid": "460",
+                                    "tname": "Jamshedpur",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/460.png",
+                                    "positionchange": "",
+                                    "playedtotal": "4",
+                                    "wintotal": "1",
+                                    "drawtotal": "1",
+                                    "losstotal": "2",
+                                    "goalsfortotal": "6",
+                                    "goalsagainsttotal": "7",
+                                    "goaldifftotal": "-1",
+                                    "pointstotal": "4"
                                 },
                                 {
                                     "promotion": "",
-                                    "position": 3,
-                                    "tid": 59,
-                                    "tname": "Bournemouth",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/60.png",
-                                    "positionchange": 1,
-                                    "playedtotal": 2,
-                                    "wintotal": 1,
-                                    "drawtotal": 1,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 4,
-                                    "goalsagainsttotal": 2,
-                                    "goaldifftotal": 2,
-                                    "pointstotal": 4
+                                    "position": "9",
+                                    "tid": "1500",
+                                    "tname": "Hyderabad",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/1500.png",
+                                    "positionchange": "",
+                                    "playedtotal": "4",
+                                    "wintotal": "1",
+                                    "drawtotal": "1",
+                                    "losstotal": "2",
+                                    "goalsfortotal": "5",
+                                    "goalsagainsttotal": "7",
+                                    "goaldifftotal": "-2",
+                                    "pointstotal": "4"
                                 },
                                 {
                                     "promotion": "",
-                                    "position": 6,
-                                    "tid": 47,
-                                    "tname": "Leicester",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/31.png",
-                                    "positionchange": -2,
-                                    "playedtotal": 1,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 2,
-                                    "goalsagainsttotal": 0,
-                                    "goaldifftotal": 2,
-                                    "pointstotal": 3
+                                    "position": "10",
+                                    "tid": "453",
+                                    "tname": "Chennaiyin",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/453.png",
+                                    "positionchange": "",
+                                    "playedtotal": "4",
+                                    "wintotal": "0",
+                                    "drawtotal": "2",
+                                    "losstotal": "2",
+                                    "goalsfortotal": "1",
+                                    "goalsagainsttotal": "5",
+                                    "goaldifftotal": "-4",
+                                    "pointstotal": "2"
                                 },
                                 {
                                     "promotion": "",
-                                    "position": 9,
-                                    "tid": 57,
-                                    "tname": "Everton",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/48.png",
-                                    "positionchange": 0,
-                                    "playedtotal": 1,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 2,
-                                    "goalsagainsttotal": 1,
-                                    "goaldifftotal": 1,
-                                    "pointstotal": 3
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 11,
-                                    "tid": 53,
-                                    "tname": "Arsenal",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/42.png",
-                                    "positionchange": 6,
-                                    "playedtotal": 2,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 3,
-                                    "goalsagainsttotal": 3,
-                                    "goaldifftotal": 0,
-                                    "pointstotal": 3
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 20,
-                                    "tid": 43,
-                                    "tname": "Crystal Palace",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/7.png",
-                                    "positionchange": -3,
-                                    "playedtotal": 1,
-                                    "wintotal": 0,
-                                    "drawtotal": 0,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 0,
-                                    "goalsagainsttotal": 2,
-                                    "goaldifftotal": -2,
-                                    "pointstotal": 0
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 10,
-                                    "tid": 54,
-                                    "tname": "Fulham",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/43.png",
-                                    "positionchange": 7,
-                                    "playedtotal": 2,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 4,
-                                    "goalsagainsttotal": 4,
-                                    "goaldifftotal": 0,
-                                    "pointstotal": 3
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 7,
-                                    "tid": 46,
-                                    "tname": "Brighton",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/30.png",
-                                    "positionchange": 0,
-                                    "playedtotal": 1,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 3,
-                                    "goalsagainsttotal": 2,
-                                    "goaldifftotal": 1,
-                                    "pointstotal": 3
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 12,
-                                    "tid": 49,
-                                    "tname": "Man Utd",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/35.png",
-                                    "positionchange": -2,
-                                    "playedtotal": 2,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 2,
-                                    "goalsagainsttotal": 4,
-                                    "goaldifftotal": -2,
-                                    "pointstotal": 3
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 13,
-                                    "tid": 41,
-                                    "tname": "Wolves",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/3.png",
-                                    "positionchange": -2,
-                                    "playedtotal": 2,
-                                    "wintotal": 0,
-                                    "drawtotal": 2,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 3,
-                                    "goalsagainsttotal": 3,
-                                    "goaldifftotal": 0,
-                                    "pointstotal": 2
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 14,
-                                    "tid": 60,
-                                    "tname": "Cardiff",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/61.png",
-                                    "positionchange": -2,
-                                    "playedtotal": 1,
-                                    "wintotal": 0,
-                                    "drawtotal": 1,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 0,
-                                    "goalsagainsttotal": 0,
-                                    "goaldifftotal": 0,
-                                    "pointstotal": 1
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 18,
-                                    "tid": 52,
-                                    "tname": "Newcastle",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/39.png",
-                                    "positionchange": -4,
-                                    "playedtotal": 2,
-                                    "wintotal": 0,
-                                    "drawtotal": 0,
-                                    "losstotal": 2,
-                                    "goalsfortotal": 2,
-                                    "goalsagainsttotal": 4,
-                                    "goaldifftotal": -2,
-                                    "pointstotal": 0
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 15,
-                                    "tid": 56,
-                                    "tname": "Southampton",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/45.png",
-                                    "positionchange": -3,
-                                    "playedtotal": 2,
-                                    "wintotal": 0,
-                                    "drawtotal": 1,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 1,
-                                    "goalsagainsttotal": 2,
-                                    "goaldifftotal": -1,
-                                    "pointstotal": 1
-                                },
-                                {
-                                    "promotion": {
-                                        "type": "Relegation",
-                                        "name": "Relegation"
-                                    },
-                                    "position": 19,
-                                    "tid": 42,
-                                    "tname": "Burnley",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/6.png",
-                                    "positionchange": -3,
-                                    "playedtotal": 1,
-                                    "wintotal": 0,
-                                    "drawtotal": 0,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 1,
-                                    "goalsagainsttotal": 3,
-                                    "goaldifftotal": -2,
-                                    "pointstotal": 0
-                                },
-                                {
-                                    "promotion": {
-                                        "type": "Relegation",
-                                        "name": "Relegation"
-                                    },
-                                    "position": 16,
-                                    "tid": 58,
-                                    "tname": "Huddersfield",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/59.png",
-                                    "positionchange": 4,
-                                    "playedtotal": 2,
-                                    "wintotal": 0,
-                                    "drawtotal": 1,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 0,
-                                    "goalsagainsttotal": 3,
-                                    "goaldifftotal": -3,
-                                    "pointstotal": 1
-                                },
-                                {
-                                    "promotion": {
-                                        "type": "Relegation",
-                                        "name": "Relegation"
-                                    },
-                                    "position": 17,
-                                    "tid": 50,
-                                    "tname": "West Ham",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/37.png",
-                                    "positionchange": -3,
-                                    "playedtotal": 1,
-                                    "wintotal": 0,
-                                    "drawtotal": 0,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 1,
-                                    "goalsagainsttotal": 2,
-                                    "goaldifftotal": -1,
-                                    "pointstotal": 0
+                                    "position": "11",
+                                    "tid": "454",
+                                    "tname": "Odisha",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/454.png",
+                                    "positionchange": "",
+                                    "playedtotal": "4",
+                                    "wintotal": "0",
+                                    "drawtotal": "1",
+                                    "losstotal": "3",
+                                    "goalsfortotal": "3",
+                                    "goalsagainsttotal": "6",
+                                    "goaldifftotal": "-3",
+                                    "pointstotal": "1"
                                 }
                             ],
                             "away": [
                                 {
                                     "promotion": {
                                         "type": "promotion",
-                                        "name": "Champions League"
+                                        "name": "Playoffs"
                                     },
-                                    "position": 1,
-                                    "tid": 55,
-                                    "tname": "Liverpool",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/44.png",
-                                    "positionchange": -1,
-                                    "playedtotal": 1,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 2,
-                                    "goalsagainsttotal": 0,
-                                    "goaldifftotal": 2,
-                                    "pointstotal": 3
+                                    "position": "1",
+                                    "tid": "458",
+                                    "tname": "Mumbai City",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/458.png",
+                                    "positionchange": "",
+                                    "playedtotal": "4",
+                                    "wintotal": "3",
+                                    "drawtotal": "0",
+                                    "losstotal": "1",
+                                    "goalsfortotal": "5",
+                                    "goalsagainsttotal": "2",
+                                    "goaldifftotal": "3",
+                                    "pointstotal": "9"
                                 },
                                 {
                                     "promotion": {
                                         "type": "promotion",
-                                        "name": "Champions League"
+                                        "name": "Playoffs"
                                     },
-                                    "position": 2,
-                                    "tid": 48,
-                                    "tname": "Tottenham",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/33.png",
-                                    "positionchange": 0,
-                                    "playedtotal": 2,
-                                    "wintotal": 2,
-                                    "drawtotal": 0,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 5,
-                                    "goalsagainsttotal": 1,
-                                    "goaldifftotal": 4,
-                                    "pointstotal": 6
+                                    "position": "2",
+                                    "tid": "2029",
+                                    "tname": "Mohun Bagan",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/2029.png",
+                                    "positionchange": "",
+                                    "playedtotal": "4",
+                                    "wintotal": "2",
+                                    "drawtotal": "1",
+                                    "losstotal": "1",
+                                    "goalsfortotal": "4",
+                                    "goalsagainsttotal": "2",
+                                    "goaldifftotal": "2",
+                                    "pointstotal": "7"
                                 },
                                 {
                                     "promotion": {
                                         "type": "promotion",
-                                        "name": "Champions League"
+                                        "name": "Playoffs"
                                     },
-                                    "position": 3,
-                                    "tid": 51,
-                                    "tname": "Chelsea",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/38.png",
-                                    "positionchange": 1,
-                                    "playedtotal": 2,
-                                    "wintotal": 2,
-                                    "drawtotal": 0,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 5,
-                                    "goalsagainsttotal": 1,
-                                    "goaldifftotal": 4,
-                                    "pointstotal": 6
+                                    "position": "3",
+                                    "tid": "455",
+                                    "tname": "Goa",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/455.png",
+                                    "positionchange": "",
+                                    "playedtotal": "4",
+                                    "wintotal": "3",
+                                    "drawtotal": "0",
+                                    "losstotal": "1",
+                                    "goalsfortotal": "5",
+                                    "goalsagainsttotal": "3",
+                                    "goaldifftotal": "2",
+                                    "pointstotal": "9"
                                 },
                                 {
                                     "promotion": {
                                         "type": "promotion",
-                                        "name": "Champions League"
+                                        "name": "Playoffs"
                                     },
-                                    "position": 4,
-                                    "tid": 45,
-                                    "tname": "Watford",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/24.png",
-                                    "positionchange": -1,
-                                    "playedtotal": 1,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 3,
-                                    "goalsagainsttotal": 1,
-                                    "goaldifftotal": 2,
-                                    "pointstotal": 3
-                                },
-                                {
-                                    "promotion": {
-                                        "type": "promotion",
-                                        "name": "Europa League"
-                                    },
-                                    "position": 5,
-                                    "tid": 44,
-                                    "tname": "Man City",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/17.png",
-                                    "positionchange": 1,
-                                    "playedtotal": 2,
-                                    "wintotal": 1,
-                                    "drawtotal": 1,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 3,
-                                    "goalsagainsttotal": 1,
-                                    "goaldifftotal": 2,
-                                    "pointstotal": 4
+                                    "position": "4",
+                                    "tid": "460",
+                                    "tname": "Jamshedpur",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/460.png",
+                                    "positionchange": "",
+                                    "playedtotal": "5",
+                                    "wintotal": "2",
+                                    "drawtotal": "3",
+                                    "losstotal": "0",
+                                    "goalsfortotal": "4",
+                                    "goalsagainsttotal": "2",
+                                    "goaldifftotal": "2",
+                                    "pointstotal": "9"
                                 },
                                 {
                                     "promotion": "",
-                                    "position": 6,
-                                    "tid": 59,
-                                    "tname": "Bournemouth",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/60.png",
-                                    "positionchange": 0,
-                                    "playedtotal": 1,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 2,
-                                    "goalsagainsttotal": 1,
-                                    "goaldifftotal": 1,
-                                    "pointstotal": 3
+                                    "position": "5",
+                                    "tid": "451",
+                                    "tname": "Bengaluru",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/451.png",
+                                    "positionchange": "",
+                                    "playedtotal": "4",
+                                    "wintotal": "2",
+                                    "drawtotal": "1",
+                                    "losstotal": "1",
+                                    "goalsfortotal": "5",
+                                    "goalsagainsttotal": "4",
+                                    "goaldifftotal": "1",
+                                    "pointstotal": "7"
                                 },
                                 {
                                     "promotion": "",
-                                    "position": 7,
-                                    "tid": 47,
-                                    "tname": "Leicester",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/31.png",
-                                    "positionchange": 5,
-                                    "playedtotal": 2,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 3,
-                                    "goalsagainsttotal": 3,
-                                    "goaldifftotal": 0,
-                                    "pointstotal": 3
+                                    "position": "6",
+                                    "tid": "1500",
+                                    "tname": "Hyderabad",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/1500.png",
+                                    "positionchange": "",
+                                    "playedtotal": "5",
+                                    "wintotal": "2",
+                                    "drawtotal": "2",
+                                    "losstotal": "1",
+                                    "goalsfortotal": "6",
+                                    "goalsagainsttotal": "4",
+                                    "goaldifftotal": "2",
+                                    "pointstotal": "8"
                                 },
                                 {
                                     "promotion": "",
-                                    "position": 8,
-                                    "tid": 57,
-                                    "tname": "Everton",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/48.png",
-                                    "positionchange": -1,
-                                    "playedtotal": 2,
-                                    "wintotal": 0,
-                                    "drawtotal": 2,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 4,
-                                    "goalsagainsttotal": 4,
-                                    "goaldifftotal": 0,
-                                    "pointstotal": 2
+                                    "position": "7",
+                                    "tid": "459",
+                                    "tname": "Northeast Utd",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/459.png",
+                                    "positionchange": "",
+                                    "playedtotal": "5",
+                                    "wintotal": "0",
+                                    "drawtotal": "4",
+                                    "losstotal": "1",
+                                    "goalsfortotal": "7",
+                                    "goalsagainsttotal": "9",
+                                    "goaldifftotal": "-2",
+                                    "pointstotal": "4"
                                 },
                                 {
                                     "promotion": "",
-                                    "position": 9,
-                                    "tid": 53,
-                                    "tname": "Arsenal",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/42.png",
-                                    "positionchange": -2,
-                                    "playedtotal": 1,
-                                    "wintotal": 0,
-                                    "drawtotal": 0,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 2,
-                                    "goalsagainsttotal": 3,
-                                    "goaldifftotal": -1,
-                                    "pointstotal": 0
+                                    "position": "8",
+                                    "tid": "453",
+                                    "tname": "Chennaiyin",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/453.png",
+                                    "positionchange": "",
+                                    "playedtotal": "5",
+                                    "wintotal": "2",
+                                    "drawtotal": "2",
+                                    "losstotal": "1",
+                                    "goalsfortotal": "7",
+                                    "goalsagainsttotal": "6",
+                                    "goaldifftotal": "1",
+                                    "pointstotal": "8"
                                 },
                                 {
                                     "promotion": "",
-                                    "position": 10,
-                                    "tid": 43,
-                                    "tname": "Crystal Palace",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/7.png",
-                                    "positionchange": -2,
-                                    "playedtotal": 2,
-                                    "wintotal": 1,
-                                    "drawtotal": 0,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 3,
-                                    "goalsagainsttotal": 2,
-                                    "goaldifftotal": 1,
-                                    "pointstotal": 3
+                                    "position": "9",
+                                    "tid": "457",
+                                    "tname": "Kerala",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/457.png",
+                                    "positionchange": "",
+                                    "playedtotal": "4",
+                                    "wintotal": "0",
+                                    "drawtotal": "1",
+                                    "losstotal": "3",
+                                    "goalsfortotal": "3",
+                                    "goalsagainsttotal": "9",
+                                    "goaldifftotal": "-6",
+                                    "pointstotal": "1"
                                 },
                                 {
                                     "promotion": "",
-                                    "position": 11,
-                                    "tid": 54,
-                                    "tname": "Fulham",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/43.png",
-                                    "positionchange": -1,
-                                    "playedtotal": 1,
-                                    "wintotal": 0,
-                                    "drawtotal": 0,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 1,
-                                    "goalsagainsttotal": 3,
-                                    "goaldifftotal": -2,
-                                    "pointstotal": 0
+                                    "position": "10",
+                                    "tid": "2030",
+                                    "tname": "East Bengal",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/2030.png",
+                                    "positionchange": "",
+                                    "playedtotal": "4",
+                                    "wintotal": "0",
+                                    "drawtotal": "1",
+                                    "losstotal": "3",
+                                    "goalsfortotal": "3",
+                                    "goalsagainsttotal": "9",
+                                    "goaldifftotal": "-6",
+                                    "pointstotal": "1"
                                 },
                                 {
                                     "promotion": "",
-                                    "position": 12,
-                                    "tid": 46,
-                                    "tname": "Brighton",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/30.png",
-                                    "positionchange": -2,
-                                    "playedtotal": 2,
-                                    "wintotal": 0,
-                                    "drawtotal": 0,
-                                    "losstotal": 2,
-                                    "goalsfortotal": 0,
-                                    "goalsagainsttotal": 3,
-                                    "goaldifftotal": -3,
-                                    "pointstotal": 0
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 13,
-                                    "tid": 49,
-                                    "tname": "Man Utd",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/35.png",
-                                    "positionchange": -2,
-                                    "playedtotal": 1,
-                                    "wintotal": 0,
-                                    "drawtotal": 0,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 2,
-                                    "goalsagainsttotal": 3,
-                                    "goaldifftotal": -1,
-                                    "pointstotal": 0
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 14,
-                                    "tid": 41,
-                                    "tname": "Wolves",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/3.png",
-                                    "positionchange": -1,
-                                    "playedtotal": 1,
-                                    "wintotal": 0,
-                                    "drawtotal": 0,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 0,
-                                    "goalsagainsttotal": 2,
-                                    "goaldifftotal": -2,
-                                    "pointstotal": 0
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 15,
-                                    "tid": 60,
-                                    "tname": "Cardiff",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/61.png",
-                                    "positionchange": 4,
-                                    "playedtotal": 2,
-                                    "wintotal": 0,
-                                    "drawtotal": 1,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 0,
-                                    "goalsagainsttotal": 2,
-                                    "goaldifftotal": -2,
-                                    "pointstotal": 1
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 16,
-                                    "tid": 52,
-                                    "tname": "Newcastle",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/39.png",
-                                    "positionchange": -1,
-                                    "playedtotal": 1,
-                                    "wintotal": 0,
-                                    "drawtotal": 1,
-                                    "losstotal": 0,
-                                    "goalsfortotal": 0,
-                                    "goalsagainsttotal": 0,
-                                    "goaldifftotal": 0,
-                                    "pointstotal": 1
-                                },
-                                {
-                                    "promotion": "",
-                                    "position": 16,
-                                    "tid": 56,
-                                    "tname": "Southampton",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/45.png",
-                                    "positionchange": -2,
-                                    "playedtotal": 1,
-                                    "wintotal": 0,
-                                    "drawtotal": 0,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 1,
-                                    "goalsagainsttotal": 2,
-                                    "goaldifftotal": -1,
-                                    "pointstotal": 0
-                                },
-                                {
-                                    "promotion": {
-                                        "type": "Relegation",
-                                        "name": "Relegation"
-                                    },
-                                    "position": 18,
-                                    "tid": 42,
-                                    "tname": "Burnley",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/6.png",
-                                    "positionchange": -2,
-                                    "playedtotal": 2,
-                                    "wintotal": 0,
-                                    "drawtotal": 1,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 2,
-                                    "goalsagainsttotal": 4,
-                                    "goaldifftotal": -2,
-                                    "pointstotal": 1
-                                },
-                                {
-                                    "promotion": {
-                                        "type": "Relegation",
-                                        "name": "Relegation"
-                                    },
-                                    "position": 19,
-                                    "tid": 58,
-                                    "tname": "Huddersfield",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/59.png",
-                                    "positionchange": 1,
-                                    "playedtotal": 1,
-                                    "wintotal": 0,
-                                    "drawtotal": 0,
-                                    "losstotal": 1,
-                                    "goalsfortotal": 1,
-                                    "goalsagainsttotal": 6,
-                                    "goaldifftotal": -5,
-                                    "pointstotal": 0
-                                },
-                                {
-                                    "promotion": {
-                                        "type": "Relegation",
-                                        "name": "Relegation"
-                                    },
-                                    "position": 20,
-                                    "tid": 50,
-                                    "tname": "West Ham",
-                                    "logo": "https://rest.entitysport.com/soccer/assets/team/37.png",
-                                    "positionchange": -1,
-                                    "playedtotal": 2,
-                                    "wintotal": 0,
-                                    "drawtotal": 0,
-                                    "losstotal": 2,
-                                    "goalsfortotal": 1,
-                                    "goalsagainsttotal": 7,
-                                    "goaldifftotal": -6,
-                                    "pointstotal": 0
+                                    "position": "11",
+                                    "tid": "454",
+                                    "tname": "Odisha",
+                                    "logo": "https://rest.entitysport.com/soccer/assets/team/454.png",
+                                    "positionchange": "",
+                                    "playedtotal": "4",
+                                    "wintotal": "0",
+                                    "drawtotal": "1",
+                                    "losstotal": "3",
+                                    "goalsfortotal": "3",
+                                    "goalsagainsttotal": "8",
+                                    "goaldifftotal": "-5",
+                                    "pointstotal": "1"
                                 }
                             ]
                         }
@@ -10931,11 +10336,12 @@ curl -X GET "https://rest.entitysport.com/soccer/competition/3/?token=[ACCESS_TO
         "total_items": 1,
         "total_pages": 1
     },
-    "etag": "58cbdddf60452cfec71b9633c6d20692",
-    "modified": "2018-08-31 17:42:48",
-    "datetime": "2018-08-31 17:42:48",
+    "etag": "1a914e5ec7654acbe938855b13f03162",
+    "modified": "2021-01-05 15:47:06",
+    "datetime": "2021-01-05 15:47:06",
     "api_version": "1.0"
 }
+
 
 ```
 This API has competition's teams and points table information. Points table with total, home and away league standings.
@@ -10966,17 +10372,18 @@ paged | Number | Page Number for request
 
 Parameter | Value | Description
 --------- | ------- | -----------
-cid | integer | competition id
+cid | string | competition id
 cname | string | competition name/title
 startdate | string | time string in GMT of competition start date
 enddate | string | time string in GMT of competition end date
-startdatetimestamp | integer | timestamp of competition start date
-enddatetimestamp | integer | timestamp of competition end date
+startdatetimestamp | string | timestamp of competition start date
+enddatetimestamp | string | timestamp of competition end date
 year | string | Season Year
 category | string | Competition Category
-ioc_id | integer | IOC id of competition native country
+tournament_id | string | tournament id of competition native country
+category_id | string | category id of competition native country
 ioc | string | IOC 2 letter code of competition native country
-status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status | string | Competition status code 3 = live, 2 = completed, 1 = upcoming
 status_str | string | Competition status string live, completed, upcoming
 logo | string | Competition Logo URL
 teams | array | An array of all teams related to the competition. <a href="#competition-info-team">see teams object reference</a>
@@ -10987,16 +10394,16 @@ point_table | array | An array of points table of the competition. <a href="#com
 
 Parameter | Value | Description
 --------- | ------- | -----------
-tid | integer | team id
+tid | string | team id
 tname | string | team name
 fullname | string | team full name
 abbr | string | team abbrivation name
 iscountry| string | true if team is a national team and false if team is a club
 isclub| string | false if team is a national team and true if team is a club
-hastag| string | social hastag
 founded | integer | year of team founded
 website | string | website url of team website
 twitter | string | twitter account name
+hastag| string | social hastag
 logo | string | team logo url
 
 
@@ -11004,7 +10411,7 @@ logo | string | team logo url
 
 Parameter | Value | Description
 --------- | ------- | -----------
-tid | integer | team id
+tid | string | team id
 name | string | Points table name
 groupname | string | group points table name
 tables | array | An array of total, home and away performance points table. <a href="#competition-info-points-table">see points table object reference</a>
@@ -11015,19 +10422,19 @@ tables | array | An array of total, home and away performance points table. <a h
 Parameter | Value | Description
 --------- | ------- | -----------
 promotion | array | an array of promotion/relegation information. <a href="#competition-info-promotion">see promotion object reference</a> 
-position | integer | Team position in the table
-tid | integer | team id
+position | string | Team position in the table
+tid | string | team id
 tname | string | team name
 logo | string | team logo url
-positionchange | integer | position change indicater positive value for upward movement, negative value for downward movement
-playedtotal | integer | total matches played by the team
-wintotal | integer | total won matches by the team
-drawtotal | integer | total drawn matches by the team
-losstotal | integer | total lost matches by the team
-goalsfortotal | integer | total goals scored by the team
-goalsagainsttotal | integer | total goals scored against the team by opposition teams
-goaldifftotal | integer | total goal difference
-pointstotal | integer | total points won by the team
+positionchange | string | position change indicater positive value for upward movement, negative value for downward movement
+playedtotal | string | total matches played by the team
+wintotal | string | total won matches by the team
+drawtotal | string | total drawn matches by the team
+losstotal | string | total lost matches by the team
+goalsfortotal | string | total goals scored by the team
+goalsagainsttotal | string | total goals scored against the team by opposition teams
+goaldifftotal | string | total goal difference
+pointstotal | string | total points won by the team
 
 
 <h3 id="competition-info-promotion">Promotion Object Reference</h3>
@@ -11053,500 +10460,579 @@ curl -X GET "https://rest.entitysport.com/soccer/competition/3/squad?token=[ACCE
 {
     "status": "ok",
     "response": {
-        "competition": {
-            "cid": 3,
-            "cname": "Premier League",
-            "startdate": "2018-08-10 00:00:00",
-            "enddate": "2019-05-13 23:55:00",
-            "startdatetimestamp": 1533859200,
-            "endtdatetimestamp": 1557791700,
-            "year": "18/19",
-            "category": "England",
-            "ioc_id": "240",
-            "ioc": "en",
-            "status": 3,
-            "status_str": "live",
-            "logo": ""
-        },
+        "competition": [
+            {
+                "cid": "165",
+                "cname": "Indian Super League",
+                "startdate": "2020-11-20 00:00:00",
+                "enddate": "2021-03-23 00:00:00",
+                "startdatetimestamp": "1605830400",
+                "endtdatetimestamp": "1616457600",
+                "year": "20/21",
+                "category": "India",
+                "tournament_id": "16",
+                "category_id": "14",
+                "ioc": "in",
+                "status": "3",
+                "status_str": "live",
+                "logo": ""
+            }
+        ],
         "teams": [
             {
-                "tid": 41,
-                "tname": "Wolves",
-                "fullname": "Wolverhampton Wanderers",
-                "abbr": "WOL",
-                "iscountry": false,
-                "isclub": true,
+                "tid": "459",
+                "tname": "Northeast Utd",
+                "fullname": "Northeast United FC",
+                "abbr": "NOR",
+                "iscountry": "false",
+                "isclub": "true",
+                "founded": "2014",
+                "website": "",
+                "twitter": "",
                 "hashtag": "",
-                "founded": "",
-                "website": "http://www.wolves.premiumtv.co.uk/page/Home/",
-                "twitter": "Wolves",
-                "logo": "https://rest.entitysport.com/soccer/assets/team/3.png",
+                "teamlogo": "https://rest.entitysport.com/soccer/assets/team/459.png",
                 "squads": [
                     {
-                        "pid": 773,
-                        "fullname": "John Ruddy",
-                        "firstname": "John",
-                        "lastname": "Ruddy",
-                        "birthdatetimestamp": "530496000",
-                        "birthdate": "24/10/86",
+                        "pid": "6025",
+                        "fullname": "Dylan Fox",
+                        "birthdatetimestamp": "757382400",
+                        "birthdate": "1994-01-01 00:00:00",
                         "nationality": {
-                            "iocid": 240,
-                            "name": "England",
-                            "ioc": "en"
+                            "iocid": "13",
+                            "name": "Australia",
+                            "ioc": ""
                         },
-                        "positiontype": "G",
-                        "positionname": "Goalkeeper",
-                        "height": 192,
-                        "foot": "Left",
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "186",
+                        "weight": "",
+                        "foot": "",
                         "twitter": "",
-                        "facebook": ""
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
                     },
                     {
-                        "pid": 160,
-                        "fullname": "Joao Moutinho",
-                        "firstname": "Joao",
-                        "lastname": "Moutinho",
-                        "birthdatetimestamp": "526521600",
-                        "birthdate": "08/09/86",
+                        "pid": "8686",
+                        "fullname": "Ashutosh Mehta",
+                        "birthdatetimestamp": "667094400",
+                        "birthdate": "1991-02-21 00:00:00",
                         "nationality": {
-                            "iocid": 172,
-                            "name": "Portugal",
-                            "ioc": "pt"
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "176",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "8807",
+                        "fullname": "Wayne Vaz",
+                        "birthdatetimestamp": "",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "8879",
+                        "fullname": "Fanai Lalrempuia",
+                        "birthdatetimestamp": "831772800",
+                        "birthdate": "1996-05-11 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
                         },
                         "positiontype": "M",
                         "positionname": "Midfielder",
-                        "height": 170,
-                        "foot": "Right",
-                        "twitter": "https://twitter.com/joaomoutinho?lang=en",
-                        "facebook": "https://www.facebook.com/JoaoMoutinhoOficial/"
+                        "height": "172",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
                     },
                     {
-                        "pid": 163,
-                        "fullname": "Rui Patricio",
-                        "firstname": "Rui",
-                        "lastname": "Patricio",
-                        "birthdatetimestamp": "571881600",
-                        "birthdate": "15/02/88",
+                        "pid": "8896",
+                        "fullname": "Provat Lakra",
+                        "birthdatetimestamp": "871344000",
+                        "birthdate": "1997-08-12 00:00:00",
                         "nationality": {
-                            "iocid": 172,
-                            "name": "Portugal",
-                            "ioc": "pt"
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "8900",
+                        "fullname": "Subhasish Roy Chowdhury",
+                        "birthdatetimestamp": "528163200",
+                        "birthdate": "1986-09-27 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
                         },
                         "positiontype": "G",
                         "positionname": "Goalkeeper",
-                        "height": 189,
-                        "foot": "Left",
-                        "twitter": "",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 774,
-                        "fullname": "Ryan Bennett",
-                        "firstname": "Ryan",
-                        "lastname": "Bennett",
-                        "birthdatetimestamp": "636681600",
-                        "birthdate": "06/03/90",
-                        "nationality": {
-                            "iocid": 240,
-                            "name": "England",
-                            "ioc": "en"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "height": 188,
-                        "foot": "Right",
-                        "twitter": "https://twitter.com/ryanbennett_22",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 775,
-                        "fullname": "Danny Batth",
-                        "firstname": "Danny",
-                        "lastname": "Batth",
-                        "birthdatetimestamp": "653875200",
-                        "birthdate": "21/09/90",
-                        "nationality": {
-                            "iocid": 240,
-                            "name": "England",
-                            "ioc": "en"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "height": 191,
-                        "foot": "Right",
-                        "twitter": "",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 776,
-                        "fullname": "Conor Coady",
-                        "firstname": "Conor",
-                        "lastname": "Coady",
-                        "birthdatetimestamp": "730598400",
-                        "birthdate": "25/02/93",
-                        "nationality": {
-                            "iocid": 240,
-                            "name": "England",
-                            "ioc": "en"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "height": 184,
+                        "height": "182",
+                        "weight": "80",
                         "foot": "",
                         "twitter": "",
-                        "facebook": ""
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
                     },
                     {
-                        "pid": 777,
-                        "fullname": "Ivan Cavaleiro",
-                        "firstname": "Ivan",
-                        "lastname": "Cavaleiro",
-                        "birthdatetimestamp": "750902400",
-                        "birthdate": "18/10/93",
+                        "pid": "8914",
+                        "fullname": "Sanjiban Ghosh",
+                        "birthdatetimestamp": "678758400",
+                        "birthdate": "1991-07-06 00:00:00",
                         "nationality": {
-                            "iocid": 172,
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "10371",
+                        "fullname": "Luis Machado",
+                        "birthdatetimestamp": "720835200",
+                        "birthdate": "1992-11-04 00:00:00",
+                        "nationality": {
+                            "iocid": "172",
                             "name": "Portugal",
-                            "ioc": "pt"
+                            "ioc": ""
                         },
                         "positiontype": "F",
                         "positionname": "Forward",
-                        "height": 175,
+                        "height": "168",
+                        "weight": "62",
                         "foot": "Right",
                         "twitter": "",
-                        "facebook": ""
+                        "facebook": "",
+                        "fantasy_player_rating": "9.5"
                     },
                     {
-                        "pid": 778,
-                        "fullname": "Helder Costa",
-                        "firstname": "Helder",
-                        "lastname": "Costa",
-                        "birthdatetimestamp": "758332800",
-                        "birthdate": "12/01/94",
+                        "pid": "12526",
+                        "fullname": "Benjamin Lambot",
+                        "birthdatetimestamp": "546912000",
+                        "birthdate": "1987-05-02 00:00:00",
                         "nationality": {
-                            "iocid": 172,
-                            "name": "Portugal",
-                            "ioc": "pt"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "height": 178,
-                        "foot": "Left",
-                        "twitter": "",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 779,
-                        "fullname": "Willy Boly",
-                        "firstname": "Willy",
-                        "lastname": "Boly",
-                        "birthdatetimestamp": "665539200",
-                        "birthdate": "03/02/91",
-                        "nationality": {
-                            "iocid": 73,
-                            "name": "France",
-                            "ioc": "fr"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "height": 195,
-                        "foot": "Right",
-                        "twitter": "",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 780,
-                        "fullname": "Matt Doherty",
-                        "firstname": "Matt",
-                        "lastname": "Doherty",
-                        "birthdatetimestamp": "695520000",
-                        "birthdate": "16/01/92",
-                        "nationality": {
-                            "iocid": 103,
-                            "name": "Ireland",
-                            "ioc": "ie"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "height": 182,
-                        "foot": "Right",
-                        "twitter": "",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 781,
-                        "fullname": "Leo Bonatini",
-                        "firstname": "Leo",
-                        "lastname": "Bonatini",
-                        "birthdatetimestamp": "764812800",
-                        "birthdate": "28/03/94",
-                        "nationality": {
-                            "iocid": 30,
-                            "name": "Brazil",
-                            "ioc": "br"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "height": 185,
-                        "foot": "Right",
-                        "twitter": "",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 531,
-                        "fullname": "Romain Saiss",
-                        "firstname": "Romain",
-                        "lastname": "Saiss",
-                        "birthdatetimestamp": "638409600",
-                        "birthdate": "26/03/90",
-                        "nationality": {
-                            "iocid": 144,
-                            "name": "Morocco",
-                            "ioc": "ma"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "height": 190,
-                        "foot": "Right",
-                        "twitter": "",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 290,
-                        "fullname": "Leander Dendoncker",
-                        "firstname": "Leander",
-                        "lastname": "Dendoncker",
-                        "birthdatetimestamp": "797904000",
-                        "birthdate": "15/04/95",
-                        "nationality": {
-                            "iocid": 21,
+                            "iocid": "21",
                             "name": "Belgium",
-                            "ioc": "be"
+                            "ioc": ""
                         },
                         "positiontype": "D",
                         "positionname": "Defender",
-                        "height": 188,
+                        "height": "180",
+                        "weight": "81",
                         "foot": "Right",
                         "twitter": "",
-                        "facebook": ""
+                        "facebook": "",
+                        "fantasy_player_rating": "9"
                     },
                     {
-                        "pid": 556,
-                        "fullname": "Raul Jimenez",
-                        "firstname": "Raul",
-                        "lastname": "Jimenez",
-                        "birthdatetimestamp": "673401600",
-                        "birthdate": "05/05/91",
+                        "pid": "14292",
+                        "fullname": "Idrissa Sylla",
+                        "birthdatetimestamp": "660182400",
+                        "birthdate": "1990-12-03 00:00:00",
                         "nationality": {
-                            "iocid": 138,
-                            "name": "Mexico",
-                            "ioc": "mx"
+                            "iocid": "89",
+                            "name": "Guinea",
+                            "ioc": ""
                         },
                         "positiontype": "F",
                         "positionname": "Forward",
-                        "height": 188,
+                        "height": "187",
+                        "weight": "75",
                         "foot": "Right",
                         "twitter": "",
-                        "facebook": ""
+                        "facebook": "",
+                        "fantasy_player_rating": "9.5"
                     },
                     {
-                        "pid": 782,
-                        "fullname": "Jonny Castro",
-                        "firstname": "Jonny",
-                        "lastname": "Castro",
-                        "birthdatetimestamp": "762652800",
-                        "birthdate": "03/03/94",
+                        "pid": "16365",
+                        "fullname": "Kwesi Appiah",
+                        "birthdatetimestamp": "650419200",
+                        "birthdate": "1990-08-12 00:00:00",
                         "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
+                            "iocid": "81",
+                            "name": "Ghana",
+                            "ioc": ""
                         },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "height": 175,
-                        "foot": "Both",
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "height": "181",
+                        "weight": "80",
+                        "foot": "",
+                        "twitter": "https://twitter.com/kwes1appiah",
+                        "facebook": "",
+                        "fantasy_player_rating": "9.5"
+                    },
+                    {
+                        "pid": "17689",
+                        "fullname": "Khassa Camara",
+                        "birthdatetimestamp": "719712000",
+                        "birthdate": "1992-10-22 00:00:00",
+                        "nationality": {
+                            "iocid": "135",
+                            "name": "Mauritania",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": "175",
+                        "weight": "66",
+                        "foot": "Right",
                         "twitter": "",
-                        "facebook": ""
+                        "facebook": "",
+                        "fantasy_player_rating": "9"
                     },
                     {
-                        "pid": 783,
-                        "fullname": "Kortney Hause",
-                        "firstname": "Kortney",
-                        "lastname": "Hause",
-                        "birthdatetimestamp": "805852800",
-                        "birthdate": "16/07/95",
+                        "pid": "28190",
+                        "fullname": "Federico Gallego",
+                        "birthdatetimestamp": "645235200",
+                        "birthdate": "1990-06-13 00:00:00",
                         "nationality": {
-                            "iocid": 240,
-                            "name": "England",
-                            "ioc": "en"
+                            "iocid": "228",
+                            "name": "Uruguay",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": "175",
+                        "weight": "76",
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "10"
+                    },
+                    {
+                        "pid": "28221",
+                        "fullname": "Nim Dorjee Tamang",
+                        "birthdatetimestamp": "813110400",
+                        "birthdate": "1995-10-08 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
                         },
                         "positiontype": "D",
                         "positionname": "Defender",
-                        "height": 189,
+                        "height": "179",
+                        "weight": "",
                         "foot": "",
                         "twitter": "",
-                        "facebook": ""
+                        "facebook": "",
+                        "fantasy_player_rating": "8"
                     },
                     {
-                        "pid": 784,
-                        "fullname": "Ruben Neves",
-                        "firstname": "Ruben",
-                        "lastname": "Neves",
-                        "birthdatetimestamp": "858211200",
-                        "birthdate": "13/03/97",
+                        "pid": "28305",
+                        "fullname": "Gurmeet",
+                        "birthdatetimestamp": "944179200",
+                        "birthdate": "1999-12-03 00:00:00",
                         "nationality": {
-                            "iocid": 172,
-                            "name": "Portugal",
-                            "ioc": "pt"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "height": 180,
-                        "foot": "Right",
-                        "twitter": "",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 785,
-                        "fullname": "Adama Traore",
-                        "firstname": "Adama",
-                        "lastname": "Traore",
-                        "birthdatetimestamp": "822528000",
-                        "birthdate": "25/01/96",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "height": 178,
-                        "foot": "Right",
-                        "twitter": "",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 786,
-                        "fullname": "Will Norris",
-                        "firstname": "Will",
-                        "lastname": "Norris",
-                        "birthdatetimestamp": "745113600",
-                        "birthdate": "12/08/93",
-                        "nationality": {
-                            "iocid": 240,
-                            "name": "England",
-                            "ioc": "en"
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
                         },
                         "positiontype": "G",
                         "positionname": "Goalkeeper",
-                        "height": 195,
+                        "height": "",
+                        "weight": "",
                         "foot": "",
                         "twitter": "",
-                        "facebook": ""
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
                     },
                     {
-                        "pid": 787,
-                        "fullname": "Diogo Jota",
-                        "firstname": "Diogo",
-                        "lastname": "Jota",
-                        "birthdatetimestamp": "849657600",
-                        "birthdate": "04/12/96",
+                        "pid": "47173",
+                        "fullname": "Ninthoi Meetei",
+                        "birthdatetimestamp": "994982400",
+                        "birthdate": "2001-07-13 00:00:00",
                         "nationality": {
-                            "iocid": 172,
-                            "name": "Portugal",
-                            "ioc": "pt"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "height": 178,
-                        "foot": "Right",
-                        "twitter": "",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 788,
-                        "fullname": "Bright Enobakhare",
-                        "firstname": "Bright",
-                        "lastname": "Enobakhare",
-                        "birthdatetimestamp": "886896000",
-                        "birthdate": "08/02/98",
-                        "nationality": {
-                            "iocid": 156,
-                            "name": "Nigeria",
-                            "ioc": "ng"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "height": 183,
-                        "foot": "",
-                        "twitter": "",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 789,
-                        "fullname": "Ruben Vinagre",
-                        "firstname": "Ruben",
-                        "lastname": "Vinagre",
-                        "birthdatetimestamp": "923616000",
-                        "birthdate": "09/04/99",
-                        "nationality": {
-                            "iocid": 172,
-                            "name": "Portugal",
-                            "ioc": "pt"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "height": 170,
-                        "foot": "Left",
-                        "twitter": "",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 790,
-                        "fullname": "Morgan Gibbs White",
-                        "firstname": "Morgan Gibbs",
-                        "lastname": "White",
-                        "birthdatetimestamp": "948931200",
-                        "birthdate": "27/01/00",
-                        "nationality": {
-                            "iocid": 240,
-                            "name": "England",
-                            "ioc": "en"
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
                         },
                         "positiontype": "M",
                         "positionname": "Midfielder",
-                        "height": 171,
+                        "height": "163",
+                        "weight": "",
                         "foot": "Right",
                         "twitter": "",
-                        "facebook": ""
+                        "facebook": "",
+                        "fantasy_player_rating": "9"
                     },
                     {
-                        "pid": 791,
-                        "fullname": "Bernard Patrick Ashley-Seal",
-                        "firstname": "Bernard Patrick",
-                        "lastname": "Ashley-Seal",
-                        "birthdatetimestamp": "911606400",
-                        "birthdate": "21/11/98",
+                        "pid": "47174",
+                        "fullname": "Lalengmawia",
+                        "birthdatetimestamp": "971740800",
+                        "birthdate": "2000-10-17 00:00:00",
                         "nationality": {
-                            "iocid": 240,
-                            "name": "England",
-                            "ioc": "en"
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": "176",
+                        "weight": "",
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "47175",
+                        "fullname": "Rakesh Pradhan",
+                        "birthdatetimestamp": "870480000",
+                        "birthdate": "1997-08-02 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "170",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "47277",
+                        "fullname": "Pragyan Gogoi",
+                        "birthdatetimestamp": "917222400",
+                        "birthdate": "1999-01-25 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "64031",
+                        "fullname": "Gurjinder Kumar",
+                        "birthdatetimestamp": "655516800",
+                        "birthdate": "1990-10-10 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "178",
+                        "weight": "",
+                        "foot": "Left",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "64032",
+                        "fullname": "Rochharzela",
+                        "birthdatetimestamp": "892598400",
+                        "birthdate": "1998-04-15 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "64033",
+                        "fullname": "Lalkhawpuimawia Lalkhawpuimawia",
+                        "birthdatetimestamp": "694828800",
+                        "birthdate": "1992-01-08 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
                         },
                         "positiontype": "F",
                         "positionname": "Forward",
-                        "height": 0,
+                        "height": "175",
+                        "weight": "",
                         "foot": "",
                         "twitter": "",
-                        "facebook": ""
+                        "facebook": "",
+                        "fantasy_player_rating": "9"
+                    },
+                    {
+                        "pid": "64034",
+                        "fullname": "Suhair VP",
+                        "birthdatetimestamp": "712195200",
+                        "birthdate": "1992-07-27 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "9"
+                    },
+                    {
+                        "pid": "64035",
+                        "fullname": "Mashoor Thangalakath",
+                        "birthdatetimestamp": "726192000",
+                        "birthdate": "1993-01-05 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64036",
+                        "fullname": "Nikhil Deka",
+                        "birthdatetimestamp": "1034467200",
+                        "birthdate": "2002-10-13 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64091",
+                        "fullname": "Britto PM",
+                        "birthdatetimestamp": "732153600",
+                        "birthdate": "1993-03-15 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "9"
+                    },
+                    {
+                        "pid": "65362",
+                        "fullname": "Nabin Rabha",
+                        "birthdatetimestamp": "850262400",
+                        "birthdate": "1996-12-11 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "65363",
+                        "fullname": "Imran Khan",
+                        "birthdatetimestamp": "794016000",
+                        "birthdate": "1995-03-01 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8"
                     }
                 ]
             }
         ],
-        "total_items": 20,
-        "total_pages": 20
+        "total_items": 11,
+        "total_pages": 11
     },
-    "etag": "90943e4df41e53fb7aebaa1642c44402",
-    "modified": "2018-08-31 18:49:27",
-    "datetime": "2018-08-31 18:49:27",
+    "etag": "82a953d009475cf3aa3b252aac1f3e48",
+    "modified": "2021-01-05 16:06:59",
+    "datetime": "2021-01-05 16:06:59",
     "api_version": "1.0"
 }
 
@@ -11585,52 +11071,52 @@ teams | array | An array of all teams related to the competition containing an a
 
 Parameter | Value | Description
 --------- | ------- | -----------
-cid | integer | competition id
+cid | string | competition id
 cname | string | competition name/title
 startdate | string | time string in GMT of competition start date
 enddate | string | time string in GMT of competition end date
-startdatetimestamp | integer | timestamp of competition start date
-enddatetimestamp | integer | timestamp of competition end date
+startdatetimestamp | string | timestamp of competition start date
+enddatetimestamp | string | timestamp of competition end date
 year | string | Season Year
 category | string | Competition Category
-ioc_id | integer | IOC id of competition native country
+tournament_id | string | tournament id of competition native country
+category_id | string | category id of competition native country
 ioc | string | IOC 2 letter code of competition native country
-status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status | string | Competition status code 3 = live, 2 = completed, 1 = upcoming
 status_str | string | Competition status string live, completed, upcoming
 logo | string | Competition Logo URL
+teams | array | An array of all teams related to the competition.
 
 
 <h3 id="competition-squad-team">Team Object Reference</h3>
 
 Parameter | Value | Description
 --------- | ------- | -----------
-tid | integer | team id
+tid | string | team id
 tname | string | team name
 fullname | string | team full name
 abbr | string | team abbrivation name
 iscountry| string | true if team is a national team and false if team is a club
 isclub| string | false if team is a national team and true if team is a club
-hastag| string | social hastag
 founded | integer | year of team founded
 website | string | website url of team website
 twitter | string | twitter account name
-logo | string | team logo url
+hastag| string | social hastag
+teamlogo | string | team logo url
 squads | array | An array of player details. <a href="#competition-squad-player">see player object reference</a>
 
 <h3 id="competition-squad-player">Player Object Reference</h3>
 
 Parameter | Value | Description
 --------- | ------- | -----------
-pid | integer | player id
+pid | string | player id
 fullname | string | Player full name
-firstname | string | Player first name
-lastname | string | Player last name
-birthdatetimestamp | integer | Player Birthdate timestamp
+birthdatetimestamp | string | Player Birthdate timestamp
 birthdate | string | Player Birthdate format - dd/mm/yy
 nationality | array | An array of player nationality detail. <a href="#competition-squad-nationality">see nationality object reference</a>
 positiontype | string | player playing position type
 positionname | string | player playing position name
-height | integer | player height in centimeters
+height | string | player height in centimeters
 foot | string | player preferred foot
 twitter | string | twitter account url
 facebook | string | facebook account url
@@ -11640,7 +11126,7 @@ facebook | string | facebook account url
 
 Parameter | Value | Description
 --------- | ------- | -----------
-iocid | integer | country ioc code
+iocid | string | country ioc code
 name | string | country name
 ioc | string | 2 letter ioc code
 
@@ -11661,83 +11147,95 @@ curl -X GET "https://rest.entitysport.com/soccer/competition/3/matches?token=[AC
     "response": {
         "items": [
             {
-                "mid": 65,
-                "round": {
-                    "round": "1"
-                },
+                "mid": "45580",
+                "round": "",
                 "result": {
-                    "home": "2",
+                    "home": "0",
                     "away": "1",
-                    "winner": "home"
+                    "winner": "away"
                 },
                 "teams": {
                     "home": {
-                        "tid": 49,
-                        "tname": "Man Utd",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/35.png"
+                        "tid": "457",
+                        "tname": "Kerala",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/457.png",
+                        "fullname": "Kerala Blasters FC",
+                        "abbr": "KER"
                     },
                     "away": {
-                        "tid": 47,
-                        "tname": "Leicester",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/31.png"
+                        "tid": "2029",
+                        "tname": "Mohun Bagan",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/2029.png",
+                        "fullname": "ATK Mohun Bagan",
+                        "abbr": "MOH"
                     }
                 },
                 "periods": {
                     "p1": {
-                        "home": 1,
+                        "home": 0,
                         "away": 0
                     },
                     "p2": {
-                        "home": 1,
+                        "home": 0,
                         "away": 1
                     },
                     "ft": {
-                        "home": 2,
+                        "home": 0,
                         "away": 1
                     }
                 },
-                "datestart": "2018-08-10 19:00:00",
-                "dateend": "2018-08-10 20:51:28",
-                "timestampstart": 1533927600,
-                "timestampend": 1533934288,
-                "injurytime": null,
-                "time": 90,
+                "datestart": "2020-11-20 14:00:00",
+                "dateend": "2020-11-20 15:55:39",
+                "timestampstart": "1605880800",
+                "timestampend": "1605887739",
+                "injurytime": "",
+                "time": "0",
                 "status_str": "result",
-                "status": 2,
+                "status": "2",
                 "gamestate_str": "Ended",
-                "gamestate": 6,
-                "periodlength": "45",
-                "numberofperiods": "2",
-                "attendance": "74439",
-                "overtimelength": "15",
+                "gamestate": "6",
+                "pre_squad": "true",
+                "verified": "true",
+                "periodlength": "",
+                "numberofperiods": "",
+                "attendance": "",
+                "overtimelength": "",
                 "competition": {
-                    "cid": 3,
-                    "cname": "Premier League",
-                    "startdate": "2018-08-10 00:00:00",
-                    "enddate": "2019-05-13 23:55:00",
-                    "startdatetimestamp": 1533859200,
-                    "endtdatetimestamp": 1557791700,
-                    "year": "18/19",
-                    "category": "England",
-                    "iocid": "240",
-                    "ioc": "en",
-                    "status": 3,
+                    "cid": "165",
+                    "cname": "Indian Super League",
+                    "startdate": "2020-11-20 00:00:00",
+                    "enddate": "2021-03-23 00:00:00",
+                    "startdatetimestamp": "1605830400",
+                    "endtdatetimestamp": "1616457600",
+                    "year": "20/21",
+                    "category": "India",
+                    "tournament_id": "16",
+                    "category_id": "14",
+                    "ioc": "in",
+                    "status": "3",
                     "status_str": "live",
                     "logo": ""
                 },
                 "venue": {
-                    "venueid": 21,
-                    "name": "Old Trafford",
-                    "location": "Manchester, England"
-                }
+                    "venueid": "1682",
+                    "name": "GMC Stadium Bambolim",
+                    "location": "Bambolim, India",
+                    "founded": "",
+                    "capacity": "",
+                    "googlecoords": "15.467814,73.862203"
+                },
+                "lineupavailable": "true",
+                "projectionavailable": "false",
+                "eventavailable": "false",
+                "commentaryavailable": "false"
             }
         ],
-        "total_items": 380,
-        "total_pages": 380
+        "total_items": 48,
+        "total_pages": 48
     },
-    "etag": "95a57caf4a1c929fec2c493c4df734d5",
-    "modified": "2018-08-31 19:29:18",
-    "datetime": "2018-08-31 19:29:18",
+    "etag": "11eb8703c0734020851d06554fcd4856",
+    "modified": "2021-01-05 16:16:13",
+    "datetime": "2021-01-05 16:16:13",
     "api_version": "1.0"
 }
 
@@ -11768,44 +11266,39 @@ paged | Number | Page Number for request
 
 Parameter | Value | Description
 --------- | ------- | -----------
-mid | integer | match id
-round | array | An array of match round details. <a href="#competition-matches-round">see round object reference</a>
+mid | string | match id
+round | string | round details.
 result | array | An array of match result details. <a href="#competition-matches-result">see result object reference</a>
 teams | array | An array of match teams details. <a href="#competition-matches-teams">see teams object reference</a>
 period | array | An array of match period wise details. <a href="#competition-matches-period">see period object reference</a>
 datestart | string | time string in GMT of match start time
 dateend | string | time string in GMT of match end time
-timestampstart | integer | timestamp of match start time
-timestampend | integer | timestamp of match end time
-injurytime | integer | added injury time after the end of regular period time
-time | integer | match running time in minutes
+timestampstart | string | timestamp of match start time
+timestampend | string | timestamp of match end time
+injurytime | string | added injury time after the end of regular period time
+time | string | match running time in minutes
 status_str | string | Match status string live, completed, upcoming
-status | integer | Match status code 3 = live, 2 = completed, 1 = upcoming
+status | string | Match status code 3 = live, 2 = completed, 1 = upcoming
 gamestate_str | string | Match state string
-gamestate | integer | Match state code
-periodlength | integer | match period length in minutes
-numberofperiods | integer | number of periods in the match
-attendance | integer | total spectator attendance of the match
-overtimelength | integer | overtime length in minutes
+gamestate | string | Match state code
+periodlength | string | match period length in minutes
+numberofperiods | string | number of periods in the match
+attendance | string | total spectator attendance of the match
+overtimelength | string | overtime length in minutes
 competition | array | An array of competition details. <a href="#competition-matches-competition">see competition object reference</a>
 venue | array | An array of match venue details. <a href="#competition-matches-venue">see venue object reference</a>
-
-
-<h3 id="competition-matches-round">Round Object Reference</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-type | string | round type. There are 2 type of rounds table and cup.
-name | string | round
-type | string | round name
+lineupavailable | string | line up available when true, not available when false
+projectionavailable | string | match game play state available when true, not available when false
+eventavailable | string | events available when true, not available when false
+commentaryavailable | string | play by play available when true, not available when false
 
 
 <h3 id="competition-matches-result">Result Object Reference</h3>
 
 Parameter | Value | Description
 --------- | ------- | -----------
-home | integer | home team score
-away | integer | away team score
+home | string | home team score
+away | string | away team score
 winner | string | winning team name, draw in case of equal scores
 
 
@@ -11821,7 +11314,7 @@ away | array | An array of away team details. <a href="#competition-matches-team
 
 Parameter | Value | Description
 --------- | ------- | -----------
-tid | integer | team id
+tid | string | team id
 tname | string | team name
 logo | string | team logo url
 
@@ -11846,17 +11339,18 @@ away | integer | away team score
 
 Parameter | Value | Description
 --------- | ------- | -----------
-cid | integer | competition id
+cid | string | competition id
 cname | string | competition name/title
 startdate | string | time string in GMT of competition start date
 enddate | string | time string in GMT of competition end date
-startdatetimestamp | integer | timestamp of competition start date
-enddatetimestamp | integer | timestamp of competition end date
+startdatetimestamp | string | timestamp of competition start date
+enddatetimestamp | string | timestamp of competition end date
 year | string | Season Year
 category | string | Competition Category
-ioc_id | integer | IOC id of competition native country
+tournament_id | string | tournament id of competition native country
+category_id | string | category id of competition native country
 ioc | string | IOC 2 letter code of competition native country
-status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status | string | Competition status code 3 = live, 2 = completed, 1 = upcoming
 status_str | string | Competition status string live, completed, upcoming
 logo | string | Competition Logo URL
 
@@ -11865,9 +11359,12 @@ logo | string | Competition Logo URL
 
 Parameter | Value | Description
 --------- | ------- | -----------
-venueid | integer | venue id
+venueid | string | venue id
 name | string | venue name
 location | string | venue location
+founded | string | venue founded year
+capacity | string | venue capacity
+googlecoords | string | venue google co-ordinates
 
 
 ## Competitions Statistic API
@@ -12116,91 +11613,95 @@ curl -X GET "https://rest.entitysport.com/soccer/matches?date=2018-02-12(Date st
     "response": {
         "items": [
             {
-                "mid": 470,
-                "round": {
-                    "type": "table",
-                    "round": "3",
-                    "name": 3
-                },
+                "mid": "45580",
+                "round": "",
                 "result": {
-                    "home": "4",
+                    "home": "0",
                     "away": "1",
-                    "winner": "home"
+                    "winner": "away"
                 },
                 "teams": {
                     "home": {
-                        "tid": 70,
-                        "tname": "Real Madrid",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/2829.png",
-                        "fullname": "Real Madrid",
-                        "abbr": "MAD"
+                        "tid": "457",
+                        "tname": "Kerala",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/457.png",
+                        "fullname": "Kerala Blasters FC",
+                        "abbr": "KER"
                     },
                     "away": {
-                        "tid": 75,
-                        "tname": "Leganes",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/2845.png",
-                        "fullname": "CD Leganes",
-                        "abbr": "LEG"
+                        "tid": "2029",
+                        "tname": "Mohun Bagan",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/2029.png",
+                        "fullname": "ATK Mohun Bagan",
+                        "abbr": "MOH"
                     }
                 },
                 "periods": {
                     "p1": {
-                        "home": 1,
-                        "away": 1
-                    },
-                    "p2": {
-                        "home": 3,
+                        "home": 0,
                         "away": 0
                     },
+                    "p2": {
+                        "home": 0,
+                        "away": 1
+                    },
                     "ft": {
-                        "home": 4,
+                        "home": 0,
                         "away": 1
                     }
                 },
-                "datestart": "2018-09-01 18:45:00",
-                "dateend": "2018-09-01 20:37:23",
-                "timestampstart": 1535827500,
-                "timestampend": 1535834243,
-                "injurytime": null,
-                "time": 90,
+                "datestart": "2020-11-20 14:00:00",
+                "dateend": "2020-11-20 15:55:39",
+                "timestampstart": "1605880800",
+                "timestampend": "1605887739",
+                "injurytime": "",
+                "time": "0",
                 "status_str": "result",
-                "status": 2,
+                "status": "2",
                 "gamestate_str": "Ended",
-                "gamestate": 6,
-                "periodlength": "45",
-                "numberofperiods": "2",
-                "attendance": "59255",
-                "overtimelength": "15",
+                "gamestate": "6",
+                "pre_squad": "true",
+                "verified": "true",
+                "periodlength": "",
+                "numberofperiods": "",
+                "attendance": "",
+                "overtimelength": "",
                 "competition": {
-                    "cid": 4,
-                    "cname": "LaLiga",
-                    "startdate": "2018-08-17 00:00:00",
-                    "enddate": "2019-05-20 23:55:00",
-                    "startdatetimestamp": 1534464000,
-                    "endtdatetimestamp": 1558396500,
-                    "year": "18/19",
-                    "category": "Spain",
-                    "iocid": "199",
-                    "ioc": "es",
-                    "status": 3,
+                    "cid": "165",
+                    "cname": "Indian Super League",
+                    "startdate": "2020-11-20 00:00:00",
+                    "enddate": "2021-03-23 00:00:00",
+                    "startdatetimestamp": "1605830400",
+                    "endtdatetimestamp": "1616457600",
+                    "year": "20/21",
+                    "category": "India",
+                    "tournament_id": "16",
+                    "category_id": "14",
+                    "ioc": "in",
+                    "status": "3",
                     "status_str": "live",
                     "logo": ""
                 },
                 "venue": {
-                    "venueid": 43,
-                    "name": "Santiago Bernabeu",
-                    "location": "Madrid, Spain",
-                    "founded": "1944",
-                    "capacity": "80000"
-                }
+                    "venueid": "1682",
+                    "name": "GMC Stadium Bambolim",
+                    "location": "Bambolim, India",
+                    "founded": "",
+                    "capacity": "",
+                    "googlecoords": "15.467814,73.862203"
+                },
+                "lineupavailable": "true",
+                "projectionavailable": "false",
+                "eventavailable": "false",
+                "commentaryavailable": "false"
             }
         ],
-        "total_items": 164,
-        "total_pages": 164
+        "total_items": 48,
+        "total_pages": 48
     },
-    "etag": "6fae2df0dec90b6c57ee37f5601d47b6",
-    "modified": "2018-09-02 11:06:27",
-    "datetime": "2018-09-02 11:06:27",
+    "etag": "11eb8703c0734020851d06554fcd4856",
+    "modified": "2021-01-05 16:16:13",
+    "datetime": "2021-01-05 16:16:13",
     "api_version": "1.0"
 }
 
@@ -12232,44 +11733,39 @@ paged | Number | Page Number for request
 
 Parameter | Value | Description
 --------- | ------- | -----------
-mid | integer | match id
-round | array | An array of match round details. <a href="#matches-list-round">see round object reference</a>
+mid | string | match id
+round | string | round details.
 result | array | An array of match result details. <a href="#matches-list-result">see result object reference</a>
-teams | array | An array of match teams details. <a href="#matches-list-teams">see teams object reference</a>
+teams | array | An array of match teams details. <a href="#matches-list--teams">see teams object reference</a>
 period | array | An array of match period wise details. <a href="#matches-list-period">see period object reference</a>
 datestart | string | time string in GMT of match start time
 dateend | string | time string in GMT of match end time
-timestampstart | integer | timestamp of match start time
-timestampend | integer | timestamp of match end time
-injurytime | integer | added injury time after the end of regular period time
-time | integer | match running time in minutes
-status_str | string | Match status string live, result, upcoming
-status | integer | Match status code 3 = live, 2 = result, 1 = upcoming
+timestampstart | string | timestamp of match start time
+timestampend | string | timestamp of match end time
+injurytime | string | added injury time after the end of regular period time
+time | string | match running time in minutes
+status_str | string | Match status string live, completed, upcoming
+status | string | Match status code 3 = live, 2 = completed, 1 = upcoming
 gamestate_str | string | Match state string
-gamestate | integer | Match state code
-periodlength | integer | match period length in minutes
-numberofperiods | integer | number of periods in the match
-attendance | integer | total spectator attendance of the match
-overtimelength | integer | overtime length in minutes
+gamestate | string | Match state code
+periodlength | string | match period length in minutes
+numberofperiods | string | number of periods in the match
+attendance | string | total spectator attendance of the match
+overtimelength | string | overtime length in minutes
 competition | array | An array of competition details. <a href="#matches-list-competition">see competition object reference</a>
 venue | array | An array of match venue details. <a href="#matches-list-venue">see venue object reference</a>
-
-
-<h3 id="matches-list-round">Round Object Reference</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-type | string | round type. There are 2 type of rounds table and cup.
-name | string | round
-type | string | round name
+lineupavailable | string | line up available when true, not available when false
+projectionavailable | string | match game play state available when true, not available when false
+eventavailable | string | events available when true, not available when false
+commentaryavailable | string | play by play available when true, not available when false
 
 
 <h3 id="matches-list-result">Result Object Reference</h3>
 
 Parameter | Value | Description
 --------- | ------- | -----------
-home | integer | home team score
-away | integer | away team score
+home | string | home team score
+away | string | away team score
 winner | string | winning team name, draw in case of equal scores
 
 
@@ -12285,7 +11781,7 @@ away | array | An array of away team details. <a href="#matches-list-teams-detai
 
 Parameter | Value | Description
 --------- | ------- | -----------
-tid | integer | team id
+tid | string | team id
 tname | string | team name
 logo | string | team logo url
 fullname | string | team full name
@@ -12313,30 +11809,33 @@ away | integer | away team score
 
 Parameter | Value | Description
 --------- | ------- | -----------
-cid | integer | competition id
+cid | string | competition id
 cname | string | competition name/title
 startdate | string | time string in GMT of competition start date
 enddate | string | time string in GMT of competition end date
-startdatetimestamp | integer | timestamp of competition start date
-enddatetimestamp | integer | timestamp of competition end date
+startdatetimestamp | string | timestamp of competition start date
+enddatetimestamp | string | timestamp of competition end date
 year | string | Season Year
 category | string | Competition Category
-ioc_id | integer | IOC id of competition native country
+tournament_id | string | tournament id of competition native country
+category_id | string | category id of competition native country
 ioc | string | IOC 2 letter code of competition native country
-status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status | string | Competition status code 3 = live, 2 = completed, 1 = upcoming
 status_str | string | Competition status string live, completed, upcoming
 logo | string | Competition Logo URL
+
 
 
 <h3 id="matches-list-venue">Competition Object Reference</h3>
 
 Parameter | Value | Description
 --------- | ------- | -----------
-venueid | integer | venue id
+venueid | string | venue id
 name | string | venue name
 location | string | venue location
-founded | integer | year venue founded
-capacity | integer | capacity of stadium
+founded | string | venue founded year
+capacity | string | venue capacity
+googlecoords | string | venue google co-ordinates 
 
 
 ## Match Info API
@@ -12357,313 +11856,305 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/info?token=[ACCESS_
         "items": {
             "match_info": [
                 {
-                    "mid": 212,
-                    "round": {
-                        "type": "table",
-                        "round": "15",
-                        "name": 15
-                    },
+                    "mid": "45627",
+                    "round": "",
                     "result": {
-                        "home": "2",
-                        "away": "2",
-                        "winner": "draw"
+                        "home": "1",
+                        "away": "3",
+                        "winner": "away"
                     },
                     "teams": {
                         "home": {
-                            "tid": 49,
-                            "tname": "Man Utd",
-                            "logo": "https://rest.entitysport.com/soccer/assets/team/manutd.png",
-                            "fullname": "Manchester United",
-                            "abbr": "MUN"
+                            "tid": "451",
+                            "tname": "Bengaluru",
+                            "logo": "https://rest.entitysport.com/soccer/assets/team/451.png",
+                            "fullname": "Bengaluru FC",
+                            "abbr": "BGL"
                         },
                         "away": {
-                            "tid": 53,
-                            "tname": "Arsenal",
-                            "logo": "https://rest.entitysport.com/soccer/assets/team/arsenal.png",
-                            "fullname": "Arsenal FC",
-                            "abbr": "ARS"
+                            "tid": "458",
+                            "tname": "Mumbai City",
+                            "logo": "https://rest.entitysport.com/soccer/assets/team/458.png",
+                            "fullname": "Mumbai City FC",
+                            "abbr": "MUM"
                         }
                     },
                     "periods": {
                         "p1": {
-                            "home": 1,
-                            "away": 1
+                            "home": 0,
+                            "away": 2
                         },
                         "p2": {
                             "home": 1,
                             "away": 1
                         },
                         "ft": {
-                            "home": 2,
-                            "away": 2
+                            "home": 1,
+                            "away": 3
                         }
                     },
-                    "datestart": "2018-12-05 20:00:00",
-                    "dateend": "2018-12-05 21:54:46",
-                    "timestampstart": 1544040000,
-                    "timestampend": 1544046886,
-                    "injurytime": null,
-                    "time": 90,
+                    "datestart": "2021-01-05 14:00:00",
+                    "dateend": "2021-01-05 15:53:07",
+                    "timestampstart": "1609855200",
+                    "timestampend": "1609861987",
+                    "injurytime": "",
+                    "time": "90",
                     "status_str": "result",
-                    "status": 2,
+                    "status": "2",
                     "gamestate_str": "Ended",
-                    "gamestate": 6,
-                    "periodlength": "45",
-                    "numberofperiods": "2",
+                    "gamestate": "6",
+                    "pre_squad": "true",
+                    "verified": "false",
+                    "periodlength": "",
+                    "numberofperiods": "",
                     "attendance": "",
-                    "overtimelength": "15",
+                    "overtimelength": "",
                     "competition": {
-                        "cid": 3,
-                        "cname": "Premier League",
-                        "startdate": "2018-08-10 00:00:00",
-                        "enddate": "2019-05-13 23:55:00",
-                        "startdatetimestamp": 1533859200,
-                        "endtdatetimestamp": 1557791700,
-                        "year": "18/19",
-                        "category": "England",
-                        "iocid": "240",
-                        "ioc": "en",
-                        "status": 3,
+                        "cid": "165",
+                        "cname": "Indian Super League",
+                        "startdate": "2020-11-20 00:00:00",
+                        "enddate": "2021-03-23 00:00:00",
+                        "startdatetimestamp": "1605830400",
+                        "endtdatetimestamp": "1616457600",
+                        "year": "20/21",
+                        "category": "India",
+                        "tournament_id": "16",
+                        "category_id": "14",
+                        "ioc": "in",
+                        "status": "3",
                         "status_str": "live",
                         "logo": ""
                     },
                     "venue": {
-                        "venueid": 21,
-                        "name": "Old Trafford",
-                        "location": "Manchester, England",
-                        "founded": "1910",
-                        "capacity": "75635"
-                    }
+                        "venueid": "1350",
+                        "name": "Jawaharlal Nehru Stadium",
+                        "location": "Margao, India",
+                        "founded": "",
+                        "capacity": "20000",
+                        "googlecoords": "15.289208, 73.962480"
+                    },
+                    "lineupavailable": "true",
+                    "projectionavailable": "true",
+                    "eventavailable": "true",
+                    "commentaryavailable": "true"
                 }
             ],
             "shirt": {
                 "home": {
                     "player": {
-                        "shirt": "ce0000",
+                        "shirt": "3333b3",
                         "sleeve": "",
                         "number": "ffffff",
                         "stripes": ""
                     },
                     "gk": {
-                        "shirt": "006600",
+                        "shirt": "ffff33",
                         "sleeve": "",
-                        "number": "ffffff",
+                        "number": "333333",
                         "stripes": ""
                     }
                 },
                 "away": {
                     "player": {
-                        "shirt": "66cccc",
+                        "shirt": "3333ff",
                         "sleeve": "",
-                        "number": "669999",
+                        "number": "ffef9b",
                         "stripes": ""
                     },
                     "gk": {
-                        "shirt": "9933cc",
+                        "shirt": "ffff33",
                         "sleeve": "",
-                        "number": "ffffff",
+                        "number": "333333",
                         "stripes": ""
                     }
                 }
             },
-            "referee": [
-                {
-                    "pid": 1223,
-                    "fullname": "Andre Marriner",
-                    "birthdatetimestamp": "31536000",
-                    "birthdate": "01/01/71",
-                    "nationality": {
-                        "iocid": 240,
-                        "name": "England",
-                        "ioc": "en"
-                    }
-                }
-            ],
+            "referee": [],
             "match_projection": [
                 {
                     "time": 1,
                     "injurytime": 0,
-                    "value": "9"
+                    "value": "-5"
                 },
                 {
                     "time": 2,
                     "injurytime": 0,
-                    "value": "11"
+                    "value": "-8"
                 },
                 {
                     "time": 3,
                     "injurytime": 0,
-                    "value": "21"
+                    "value": "-13"
                 },
                 {
                     "time": 4,
                     "injurytime": 0,
-                    "value": "17"
+                    "value": "-10"
                 },
                 {
                     "time": 5,
                     "injurytime": 0,
-                    "value": "15"
+                    "value": "30"
                 },
                 {
                     "time": 6,
                     "injurytime": 0,
-                    "value": "-14"
+                    "value": "-10"
                 },
                 {
                     "time": 7,
                     "injurytime": 0,
-                    "value": "3"
+                    "value": "-19"
                 },
                 {
                     "time": 8,
                     "injurytime": 0,
-                    "value": "2"
+                    "value": "-30"
                 },
                 {
                     "time": 9,
                     "injurytime": 0,
-                    "value": "22"
+                    "value": "-30"
                 },
                 {
                     "time": 10,
                     "injurytime": 0,
-                    "value": "-15"
+                    "value": "-26"
                 },
                 {
                     "time": 11,
                     "injurytime": 0,
-                    "value": "-3"
+                    "value": "-8"
                 },
                 {
                     "time": 12,
                     "injurytime": 0,
-                    "value": "9"
+                    "value": "-11"
                 },
                 {
                     "time": 13,
                     "injurytime": 0,
-                    "value": "11"
+                    "value": "5"
                 },
                 {
                     "time": 14,
                     "injurytime": 0,
-                    "value": "14"
+                    "value": "-7"
                 },
                 {
                     "time": 15,
                     "injurytime": 0,
-                    "value": "-11"
+                    "value": "-30"
                 },
                 {
                     "time": 16,
                     "injurytime": 0,
-                    "value": "-18"
+                    "value": "-29"
                 },
                 {
                     "time": 17,
                     "injurytime": 0,
-                    "value": "-5"
+                    "value": "14"
                 },
                 {
                     "time": 18,
                     "injurytime": 0,
-                    "value": "11"
+                    "value": "-11"
                 },
                 {
                     "time": 19,
                     "injurytime": 0,
-                    "value": "-11"
+                    "value": "-9"
                 },
                 {
                     "time": 20,
                     "injurytime": 0,
-                    "value": "-22"
+                    "value": "-11"
                 },
                 {
                     "time": 21,
                     "injurytime": 0,
-                    "value": "-5"
+                    "value": "-10"
                 },
                 {
                     "time": 22,
                     "injurytime": 0,
-                    "value": "-11"
+                    "value": "10"
                 },
                 {
                     "time": 23,
                     "injurytime": 0,
-                    "value": "-22"
+                    "value": "-15"
                 },
                 {
                     "time": 24,
                     "injurytime": 0,
-                    "value": "-21"
+                    "value": "-3"
                 },
                 {
                     "time": 25,
                     "injurytime": 0,
-                    "value": "-28"
+                    "value": "-11"
                 },
                 {
                     "time": 26,
                     "injurytime": 0,
-                    "value": "-30"
+                    "value": "-10"
                 },
                 {
                     "time": 27,
                     "injurytime": 0,
-                    "value": "14"
+                    "value": "-3"
                 },
                 {
                     "time": 28,
                     "injurytime": 0,
-                    "value": "30"
+                    "value": "21"
                 },
                 {
                     "time": 29,
                     "injurytime": 0,
-                    "value": "22"
+                    "value": "10"
                 },
                 {
                     "time": 30,
                     "injurytime": 0,
-                    "value": "30"
+                    "value": "-12"
                 },
                 {
                     "time": 31,
                     "injurytime": 0,
-                    "value": "30"
+                    "value": "-30"
                 },
                 {
                     "time": 32,
                     "injurytime": 0,
-                    "value": "1"
+                    "value": "-30"
                 },
                 {
                     "time": 33,
                     "injurytime": 0,
-                    "value": "3"
+                    "value": "7"
                 },
                 {
                     "time": 34,
                     "injurytime": 0,
-                    "value": "-11"
+                    "value": "22"
                 },
                 {
                     "time": 35,
                     "injurytime": 0,
-                    "value": "-30"
+                    "value": "10"
                 },
                 {
                     "time": 36,
                     "injurytime": 0,
-                    "value": "-2"
+                    "value": "10"
                 },
                 {
                     "time": 37,
                     "injurytime": 0,
-                    "value": "15"
+                    "value": "-14"
                 },
                 {
                     "time": 38,
@@ -12673,107 +12164,207 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/info?token=[ACCESS_
                 {
                     "time": 39,
                     "injurytime": 0,
-                    "value": "-2"
+                    "value": "17"
                 },
                 {
                     "time": 40,
                     "injurytime": 0,
-                    "value": "-5"
+                    "value": "30"
                 },
                 {
                     "time": 41,
                     "injurytime": 0,
-                    "value": "26"
+                    "value": "30"
                 },
                 {
                     "time": 42,
                     "injurytime": 0,
-                    "value": "12"
+                    "value": "29"
                 },
                 {
                     "time": 43,
                     "injurytime": 0,
-                    "value": "-20"
+                    "value": "4"
                 },
                 {
                     "time": 44,
                     "injurytime": 0,
-                    "value": "-0"
+                    "value": "5"
                 },
                 {
                     "time": 45,
                     "injurytime": 0,
-                    "value": "-0"
+                    "value": "-7"
                 },
                 {
                     "time": 45,
                     "injurytime": 1,
-                    "value": "-14"
+                    "value": "7"
                 },
                 {
                     "time": 45,
                     "injurytime": 2,
-                    "value": "-21"
+                    "value": "23"
                 },
                 {
                     "time": 45,
                     "injurytime": 3,
-                    "value": "21"
+                    "value": "4"
                 },
                 {
                     "time": 46,
                     "injurytime": 0,
-                    "value": "2"
+                    "value": "-12"
                 },
                 {
                     "time": 47,
                     "injurytime": 0,
-                    "value": "-13"
+                    "value": "-26"
                 },
                 {
                     "time": 48,
                     "injurytime": 0,
-                    "value": "-17"
+                    "value": "-14"
+                },
+                {
+                    "time": 49,
+                    "injurytime": 0,
+                    "value": "-7"
+                },
+                {
+                    "time": 50,
+                    "injurytime": 0,
+                    "value": "-12"
+                },
+                {
+                    "time": 51,
+                    "injurytime": 0,
+                    "value": "3"
+                },
+                {
+                    "time": 52,
+                    "injurytime": 0,
+                    "value": "23"
+                },
+                {
+                    "time": 53,
+                    "injurytime": 0,
+                    "value": "26"
+                },
+                {
+                    "time": 54,
+                    "injurytime": 0,
+                    "value": "8"
                 },
                 {
                     "time": 55,
                     "injurytime": 0,
-                    "value": "-3"
+                    "value": "-1"
                 },
                 {
                     "time": 56,
                     "injurytime": 0,
-                    "value": "11"
+                    "value": "-5"
                 },
                 {
                     "time": 57,
                     "injurytime": 0,
-                    "value": "22"
+                    "value": "17"
                 },
                 {
                     "time": 58,
                     "injurytime": 0,
-                    "value": "18"
+                    "value": "30"
                 },
                 {
                     "time": 59,
                     "injurytime": 0,
-                    "value": "30"
+                    "value": "13"
                 },
                 {
                     "time": 60,
                     "injurytime": 0,
-                    "value": "-18"
+                    "value": "2"
                 },
                 {
                     "time": 61,
                     "injurytime": 0,
-                    "value": "-21"
+                    "value": "-2"
+                },
+                {
+                    "time": 62,
+                    "injurytime": 0,
+                    "value": "14"
+                },
+                {
+                    "time": 63,
+                    "injurytime": 0,
+                    "value": "15"
+                },
+                {
+                    "time": 64,
+                    "injurytime": 0,
+                    "value": "22"
+                },
+                {
+                    "time": 65,
+                    "injurytime": 0,
+                    "value": "8"
+                },
+                {
+                    "time": 66,
+                    "injurytime": 0,
+                    "value": "30"
+                },
+                {
+                    "time": 67,
+                    "injurytime": 0,
+                    "value": "16"
+                },
+                {
+                    "time": 68,
+                    "injurytime": 0,
+                    "value": "-3"
+                },
+                {
+                    "time": 69,
+                    "injurytime": 0,
+                    "value": "14"
+                },
+                {
+                    "time": 70,
+                    "injurytime": 0,
+                    "value": "-11"
+                },
+                {
+                    "time": 71,
+                    "injurytime": 0,
+                    "value": "21"
+                },
+                {
+                    "time": 72,
+                    "injurytime": 0,
+                    "value": "15"
+                },
+                {
+                    "time": 73,
+                    "injurytime": 0,
+                    "value": "15"
+                },
+                {
+                    "time": 74,
+                    "injurytime": 0,
+                    "value": "5"
+                },
+                {
+                    "time": 75,
+                    "injurytime": 0,
+                    "value": "-3"
                 },
                 {
                     "time": 76,
                     "injurytime": 0,
-                    "value": "-21"
+                    "value": "-0"
                 },
                 {
                     "time": 77,
@@ -12783,1013 +12374,1265 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/470/info?token=[ACCESS_
                 {
                     "time": 78,
                     "injurytime": 0,
-                    "value": "-14"
+                    "value": "30"
                 },
                 {
                     "time": 79,
                     "injurytime": 0,
-                    "value": "25"
+                    "value": "30"
+                },
+                {
+                    "time": 80,
+                    "injurytime": 0,
+                    "value": "15"
+                },
+                {
+                    "time": 81,
+                    "injurytime": 0,
+                    "value": "-8"
+                },
+                {
+                    "time": 82,
+                    "injurytime": 0,
+                    "value": "-30"
+                },
+                {
+                    "time": 83,
+                    "injurytime": 0,
+                    "value": "-13"
+                },
+                {
+                    "time": 84,
+                    "injurytime": 0,
+                    "value": "-30"
+                },
+                {
+                    "time": 85,
+                    "injurytime": 0,
+                    "value": "-18"
+                },
+                {
+                    "time": 86,
+                    "injurytime": 0,
+                    "value": "16"
+                },
+                {
+                    "time": 87,
+                    "injurytime": 0,
+                    "value": "-0"
+                },
+                {
+                    "time": 88,
+                    "injurytime": 0,
+                    "value": "15"
+                },
+                {
+                    "time": 89,
+                    "injurytime": 0,
+                    "value": "29"
                 },
                 {
                     "time": 90,
-                    "injurytime": 6,
-                    "value": "12"
+                    "injurytime": 0,
+                    "value": "9"
                 },
                 {
                     "time": 90,
-                    "injurytime": 7,
-                    "value": "2"
+                    "injurytime": 1,
+                    "value": "7"
+                },
+                {
+                    "time": 90,
+                    "injurytime": 2,
+                    "value": "14"
+                },
+                {
+                    "time": 90,
+                    "injurytime": 3,
+                    "value": "14"
+                },
+                {
+                    "time": 90,
+                    "injurytime": 4,
+                    "value": "26"
+                },
+                {
+                    "time": 90,
+                    "injurytime": 5,
+                    "value": "14"
                 }
             ],
             "event": [
                 {
-                    "pid": 1042,
-                    "pname": "Shkodran Mustafi",
+                    "pid": "8769",
+                    "pname": "Mourtada Fall",
                     "type": "goal",
-                    "time": 26,
-                    "seconds": 1535,
+                    "time": "9",
+                    "injurytime": "0",
                     "name": "Goal",
-                    "injurytime": 0,
                     "team": "away",
                     "assists": {
-                        "pid": 313,
-                        "pname": "Lucas Torreira"
+                        "pid": "68326",
+                        "pname": "Awad Al Nashri"
                     },
                     "goaltypeid": "3",
                     "goaltype": "header"
                 },
                 {
-                    "pid": 1042,
-                    "pname": "Shkodran Mustafi",
-                    "type": "card",
-                    "time": 37,
-                    "seconds": 2207,
-                    "name": "Yellow card",
-                    "injurytime": 0,
-                    "team": "away",
-                    "assists": "",
-                    "goaltypeid": "",
-                    "goaltype": ""
-                },
-                {
-                    "pid": 1042,
-                    "pname": "Shkodran Mustafi",
-                    "type": "card",
-                    "time": 37,
-                    "seconds": 2207,
-                    "name": "Yellow card",
-                    "injurytime": 0,
-                    "team": "away",
-                    "card": "yellow"
-                },
-                {
-                    "pid": 959,
-                    "pname": "Anthony Martial",
+                    "pid": "8698",
+                    "pname": "Th  Bipin Singh",
                     "type": "goal",
-                    "time": 30,
-                    "seconds": "",
+                    "time": "15",
+                    "injurytime": "0",
                     "name": "Goal",
-                    "injurytime": 0,
-                    "team": "home",
+                    "team": "away",
                     "assists": {
-                        "pid": 957,
-                        "pname": "Ander Herrera"
+                        "pid": "8767",
+                        "pname": "Mandar Rao Desai"
                     },
                     "goaltypeid": "",
                     "goaltype": ""
                 },
                 {
-                    "pid": 624,
-                    "pname": "Marcos Rojo",
+                    "pid": "8770",
+                    "pname": "Ahmed Jahouh",
                     "type": "card",
-                    "time": 38,
-                    "seconds": "",
+                    "time": "39",
+                    "injurytime": "0",
                     "name": "Yellow card",
-                    "injurytime": 0,
-                    "team": "home",
-                    "assists": "",
-                    "goaltypeid": "",
-                    "goaltype": ""
-                },
-                {
-                    "pid": 624,
-                    "pname": "Marcos Rojo",
-                    "type": "card",
-                    "time": 38,
-                    "seconds": "",
-                    "name": "Yellow card",
-                    "injurytime": 0,
-                    "team": "home",
-                    "card": "yellow"
-                },
-                {
-                    "pid": 243,
-                    "pname": "Jesse Lingard",
-                    "type": "card",
-                    "time": 40,
-                    "seconds": 2359,
-                    "name": "Yellow card",
-                    "injurytime": 0,
-                    "team": "home",
-                    "assists": "",
-                    "goaltypeid": "",
-                    "goaltype": ""
-                },
-                {
-                    "pid": 243,
-                    "pname": "Jesse Lingard",
-                    "type": "card",
-                    "time": 40,
-                    "seconds": 2359,
-                    "name": "Yellow card",
-                    "injurytime": 0,
-                    "team": "home",
-                    "card": "yellow"
-                },
-                {
-                    "pid": 243,
-                    "pname": "Jesse Lingard",
-                    "type": "goal",
-                    "time": 69,
-                    "seconds": 4123,
-                    "name": "Goal",
-                    "injurytime": 0,
-                    "team": "home",
-                    "assists": "",
-                    "goaltypeid": "",
-                    "goaltype": ""
-                },
-                {
-                    "pid": 1047,
-                    "pname": "Hector Bellerin",
-                    "type": "card",
-                    "time": 41,
-                    "seconds": 2440,
-                    "name": "Yellow card",
-                    "injurytime": 0,
-                    "team": "away",
-                    "assists": "",
-                    "goaltypeid": "",
-                    "goaltype": ""
-                },
-                {
-                    "pid": 1047,
-                    "pname": "Hector Bellerin",
-                    "type": "card",
-                    "time": 41,
-                    "seconds": 2440,
-                    "name": "Yellow card",
-                    "injurytime": 0,
                     "team": "away",
                     "card": "yellow"
                 },
                 {
-                    "pid": 730,
-                    "pname": "Nemanja Matic",
-                    "type": "card",
-                    "time": 42,
-                    "seconds": 2514,
-                    "name": "Yellow card",
-                    "injurytime": 0,
+                    "type": "substitution",
+                    "time": "46",
+                    "injurytime": "0",
+                    "name": "Substitution",
                     "team": "home",
-                    "assists": "",
-                    "goaltypeid": "",
-                    "goaltype": ""
+                    "player_in": "8649",
+                    "player_in_name": "Udanta Singh",
+                    "player_out": "26405",
+                    "player_out_name": "Deshorn Brown"
                 },
                 {
-                    "pid": 730,
-                    "pname": "Nemanja Matic",
+                    "type": "substitution",
+                    "time": "46",
+                    "injurytime": "0",
+                    "name": "Substitution",
+                    "team": "home",
+                    "player_in": "64022",
+                    "player_in_name": "Ajith Kumar",
+                    "player_out": "8918",
+                    "player_out_name": "Pratik Chowdhary"
+                },
+                {
+                    "pid": "8774",
+                    "pname": "Amey Ganesh Ranawade",
                     "type": "card",
-                    "time": 42,
-                    "seconds": 2514,
+                    "time": "58",
+                    "injurytime": "0",
                     "name": "Yellow card",
-                    "injurytime": 0,
+                    "team": "away",
+                    "card": "yellow"
+                },
+                {
+                    "type": "substitution",
+                    "time": "58",
+                    "injurytime": "0",
+                    "name": "Substitution",
+                    "team": "home",
+                    "player_in": "64020",
+                    "player_in_name": "Fran Gonzalez",
+                    "player_out": "8653",
+                    "player_out_name": "Rahul Bheke"
+                },
+                {
+                    "pid": "8640",
+                    "pname": "Sunil Chhetri",
+                    "type": "card",
+                    "time": "60",
+                    "injurytime": "0",
+                    "name": "Yellow card",
                     "team": "home",
                     "card": "yellow"
                 },
                 {
-                    "pid": 1039,
-                    "pname": "Alexandre Lacazette",
+                    "type": "substitution",
+                    "time": "66",
+                    "injurytime": "0",
+                    "name": "Substitution",
+                    "team": "away",
+                    "player_in": "28191",
+                    "player_in_name": "Bartholomew Ogbeche",
+                    "player_out": "5980",
+                    "player_out_name": "Adam Le Fondre"
+                },
+                {
+                    "type": "substitution",
+                    "time": "66",
+                    "injurytime": "0",
+                    "name": "Substitution",
+                    "team": "away",
+                    "player_in": "28203",
+                    "player_in_name": "Vignesh Dakshinamurthy",
+                    "player_out": "28202",
+                    "player_out_name": "Raynier Fernandes"
+                },
+                {
+                    "type": "substitution",
+                    "time": "75",
+                    "injurytime": "0",
+                    "name": "Substitution",
+                    "team": "away",
+                    "player_in": "19180",
+                    "player_in_name": "Cy Goddard",
+                    "player_out": "8765",
+                    "player_out_name": "Hugo Boumous"
+                },
+                {
+                    "type": "substitution",
+                    "time": "76",
+                    "injurytime": "0",
+                    "name": "Substitution",
+                    "team": "away",
+                    "player_in": "65365",
+                    "player_in_name": "Vikram Pratap Singh",
+                    "player_out": "8767",
+                    "player_out_name": "Mandar Rao Desai"
+                },
+                {
+                    "pid": "8640",
+                    "pname": "Sunil Chhetri",
                     "type": "goal",
-                    "time": 68,
-                    "seconds": 4044,
+                    "time": "79",
+                    "injurytime": "0",
                     "name": "Goal",
-                    "injurytime": 0,
+                    "team": "home",
+                    "assists": {
+                        "pid": "68326",
+                        "pname": "Awad Al Nashri"
+                    },
+                    "goaltypeid": "1",
+                    "goaltype": "penalty"
+                },
+                {
+                    "pid": "8642",
+                    "pname": "Harmanjot Khabra",
+                    "type": "card",
+                    "time": "81",
+                    "injurytime": "0",
+                    "name": "Yellow card",
+                    "team": "home",
+                    "card": "yellow"
+                },
+                {
+                    "type": "substitution",
+                    "time": "82",
+                    "injurytime": "0",
+                    "name": "Substitution",
+                    "team": "home",
+                    "player_in": "8644",
+                    "player_in_name": "Thongkhosiem Haokip",
+                    "player_out": "8642",
+                    "player_out_name": "Harmanjot Khabra"
+                },
+                {
+                    "pid": "28191",
+                    "pname": "Bartholomew Ogbeche",
+                    "type": "goal",
+                    "time": "84",
+                    "injurytime": "0",
+                    "name": "Goal",
                     "team": "away",
                     "assists": {
-                        "pid": 1038,
-                        "pname": "Henrikh Mkhitaryan"
+                        "pid": "19180",
+                        "pname": "Cy Goddard"
                     },
-                    "goaltypeid": "",
-                    "goaltype": ""
+                    "goaltypeid": "3",
+                    "goaltype": "header"
                 },
                 {
-                    "pid": 313,
-                    "pname": "Lucas Torreira",
+                    "pid": "8770",
+                    "pname": "Ahmed Jahouh",
                     "type": "card",
-                    "time": 86,
-                    "seconds": "",
-                    "name": "Yellow card",
-                    "injurytime": 0,
+                    "time": "86",
+                    "injurytime": "0",
+                    "name": "Yellowred card",
                     "team": "away",
-                    "assists": "",
-                    "goaltypeid": "",
-                    "goaltype": ""
+                    "card": "yellowred"
                 },
                 {
-                    "pid": 313,
-                    "pname": "Lucas Torreira",
+                    "pid": "28191",
+                    "pname": "Bartholomew Ogbeche",
                     "type": "card",
-                    "time": 86,
-                    "seconds": "",
+                    "time": "87",
+                    "injurytime": "0",
                     "name": "Yellow card",
-                    "injurytime": 0,
                     "team": "away",
                     "card": "yellow"
+                },
+                {
+                    "type": "substitution",
+                    "time": "88",
+                    "injurytime": "0",
+                    "name": "Substitution",
+                    "team": "away",
+                    "player_in": "64064",
+                    "player_in_name": "Mehtab Singh",
+                    "player_out": "8698",
+                    "player_out_name": "Th  Bipin Singh"
                 }
             ],
             "commentary": [
                 {
                     "id": 1,
-                    "injurytime": 0,
-                    "time": 0,
-                    "sentence": "The team line-ups for today's match are now available."
+                    "injurytime": "",
+                    "time": "",
+                    "sentence": "Refree blows the whistle to start the match."
                 },
                 {
                     "id": 2,
-                    "injurytime": 0,
-                    "time": 1,
-                    "sentence": "The first-half is now underway."
+                    "injurytime": "",
+                    "time": "",
+                    "sentence": "1st half is underway."
                 },
                 {
                     "id": 3,
-                    "injurytime": 0,
-                    "time": 3,
-                    "sentence": "In Manchester Man Utd's Matteo Darmian is caught offside."
+                    "injurytime": "",
+                    "time": "2",
+                    "sentence": "Bengaluru player Deshorn Brown strikes the shot off target, ball is cleared by the Mumbai City."
+                },
+                {
+                    "id": 4,
+                    "injurytime": "",
+                    "time": "2",
+                    "sentence": "Goal kick for Mumbai City."
+                },
+                {
+                    "id": 5,
+                    "injurytime": "",
+                    "time": "4",
+                    "sentence": " awards freekick to Bengaluru."
+                },
+                {
+                    "id": 6,
+                    "injurytime": "",
+                    "time": "9",
+                    "sentence": " has awarded corner kick to Mumbai City."
                 },
                 {
                     "id": 7,
-                    "injurytime": 0,
-                    "time": 13,
-                    "sentence": "Man Utd drive forward and Anthony Martial gets in a shot. Without netting, however."
+                    "event": "goal",
+                    "injurytime": "",
+                    "time": "9",
+                    "sentence": "Mourtada Fall scores the goal for Mumbai City score 0-1."
                 },
                 {
                     "id": 8,
-                    "injurytime": 0,
-                    "time": 16,
-                    "sentence": "Arsenal have been awarded a corner by Andre Marriner."
+                    "injurytime": "",
+                    "time": "11",
+                    "sentence": " has awarded corner kick to Mumbai City."
                 },
                 {
                     "id": 9,
-                    "injurytime": 0,
-                    "time": 21,
-                    "sentence": "Arsenal's Hector Bellerin breaks free at Old Trafford. But the strike goes wide of the post."
+                    "injurytime": "",
+                    "time": "12",
+                    "sentence": "Goal kick for Bengaluru."
                 },
                 {
                     "id": 10,
-                    "injurytime": 0,
-                    "time": 23,
-                    "sentence": "At Old Trafford, Arsenal are penalized for being offside."
+                    "injurytime": "",
+                    "time": "13",
+                    "sentence": " awards freekick to Bengaluru."
+                },
+                {
+                    "id": 11,
+                    "event": "goal",
+                    "injurytime": "",
+                    "time": "15",
+                    "sentence": "Bipin Singh scores the goal for Mumbai City assist by Mandar Rao Dessai score 0-2."
+                },
+                {
+                    "id": 12,
+                    "injurytime": "",
+                    "time": "17",
+                    "sentence": " awards freekick to Bengaluru."
+                },
+                {
+                    "id": 13,
+                    "injurytime": "",
+                    "time": "18",
+                    "sentence": " awards freekick to Bengaluru."
                 },
                 {
                     "id": 14,
-                    "injurytime": 0,
-                    "time": 30,
-                    "sentence": "Anthony Martial grabs a goal to bring things level at 1-1 at Old Trafford."
+                    "injurytime": "",
+                    "time": "19",
+                    "sentence": "Goal kick for Bengaluru."
                 },
                 {
                     "id": 15,
-                    "injurytime": 0,
-                    "time": 30,
-                    "sentence": "Ander Herrera with an assist there."
+                    "injurytime": "",
+                    "time": "21",
+                    "sentence": " awards freekick to Bengaluru."
                 },
                 {
                     "id": 16,
-                    "injurytime": 0,
-                    "time": 31,
-                    "sentence": "In Manchester Man Utd drive forward through Marcos Rojo. His shot is on target but it's saved."
+                    "injurytime": "",
+                    "time": "30",
+                    "sentence": " awards freekick to Mumbai City."
                 },
                 {
                     "id": 17,
-                    "injurytime": 0,
-                    "time": 32,
-                    "sentence": "Rob Holding is writhing in pain and play has been suspended for a few moments."
+                    "injurytime": "",
+                    "time": "33",
+                    "sentence": "Hugo Boumous runs offside."
+                },
+                {
+                    "id": 18,
+                    "injurytime": "",
+                    "time": "33",
+                    "sentence": " awards freekick to Bengaluru."
+                },
+                {
+                    "id": 19,
+                    "injurytime": "",
+                    "time": "34",
+                    "sentence": "Goal kick for Mumbai City."
+                },
+                {
+                    "id": 20,
+                    "injurytime": "",
+                    "time": "37",
+                    "sentence": "Mumbai City player Adam Le Fondre hits a shot, successfully blocked by Bengaluru."
+                },
+                {
+                    "id": 21,
+                    "injurytime": "",
+                    "time": "38",
+                    "sentence": " awards freekick to Bengaluru."
+                },
+                {
+                    "id": 22,
+                    "injurytime": "",
+                    "time": "39",
+                    "sentence": "Bengaluru player Kristian Opseth strikes the shot off target, ball is cleared by the Mumbai City."
+                },
+                {
+                    "id": 23,
+                    "injurytime": "",
+                    "time": "39",
+                    "sentence": "Goal kick for Mumbai City."
+                },
+                {
+                    "id": 24,
+                    "injurytime": "",
+                    "time": "39",
+                    "sentence": " awards freekick to Bengaluru."
+                },
+                {
+                    "id": 25,
+                    "event": "card",
+                    "injurytime": "",
+                    "time": "39",
+                    "sentence": "Ahmed Jahouh booked for a Yellow card."
                 },
                 {
                     "id": 26,
-                    "injurytime": 0,
-                    "time": 40,
-                    "sentence": "Jesse Lingard (Man Utd) gets a yellow card."
+                    "injurytime": "",
+                    "time": "41",
+                    "sentence": "Bengaluru player Cleiton Silva strike shot on target,  successfully cleared by the Mumbai City."
                 },
                 {
                     "id": 27,
-                    "injurytime": 0,
-                    "time": 41,
-                    "sentence": "Arsenal's Hector Bellerin has been booked in Manchester."
+                    "injurytime": "",
+                    "time": "42",
+                    "sentence": " has awarded corner kick to Bengaluru."
                 },
                 {
                     "id": 28,
-                    "injurytime": 0,
-                    "time": 42,
-                    "sentence": "Nemanja Matic for Man Utd has been booked by Andre Marriner and receives a first yellow card."
+                    "injurytime": "",
+                    "time": "42",
+                    "sentence": " awards freekick to Mumbai City."
                 },
                 {
                     "id": 29,
-                    "injurytime": 0,
-                    "time": 45,
-                    "sentence": "Attention is being given to Arsenal’s Aaron Ramsey and play has been suspended briefly."
+                    "injurytime": "",
+                    "time": "44",
+                    "sentence": "Hugo Boumous runs offside."
                 },
                 {
                     "id": 30,
-                    "injurytime": 1,
-                    "time": 45,
-                    "sentence": "Play has been resumed."
+                    "injurytime": "",
+                    "time": "44",
+                    "sentence": " awards freekick to Mumbai City."
                 },
                 {
                     "id": 31,
-                    "injurytime": 1,
-                    "time": 45,
-                    "sentence": "Aaron Ramsey is back on his feet again."
+                    "injurytime": "1",
+                    "time": "45",
+                    "sentence": "Bengaluru player Sunil Chhetri strike the header on target, successfully cleared by the Mumbai City."
                 },
                 {
                     "id": 32,
-                    "injurytime": 1,
-                    "time": 45,
-                    "sentence": "At Old Trafford the fourth official shows that 3 minutes will be added to the 1st half."
+                    "injurytime": "2",
+                    "time": "45",
+                    "sentence": " awards freekick to Bengaluru."
                 },
                 {
                     "id": 33,
-                    "injurytime": null,
-                    "time": 45,
-                    "sentence": "The first-half is over."
+                    "injurytime": "3",
+                    "time": "45",
+                    "sentence": "Goal kick for Mumbai City."
                 },
                 {
                     "id": 34,
-                    "injurytime": 0,
-                    "time": 46,
-                    "sentence": "The second half has started at Old Trafford."
+                    "injurytime": "",
+                    "time": "",
+                    "sentence": "Halftime is underway."
+                },
+                {
+                    "id": 35,
+                    "injurytime": "",
+                    "time": "",
+                    "sentence": "1st half ended scores 0-2."
+                },
+                {
+                    "id": 36,
+                    "injurytime": "",
+                    "time": "",
+                    "sentence": "2nd half is underway."
+                },
+                {
+                    "id": 37,
+                    "event": "substitution",
+                    "injurytime": "",
+                    "time": "46",
+                    "sentence": "Substitution by Bengaluru player Pratik Chaudhari make way for Ajith Kumar."
+                },
+                {
+                    "id": 38,
+                    "event": "substitution",
+                    "injurytime": "",
+                    "time": "46",
+                    "sentence": "Substitution by Bengaluru player Deshorn Brown make way for Udanta Singh."
+                },
+                {
+                    "id": 39,
+                    "injurytime": "",
+                    "time": "47",
+                    "sentence": " has awarded corner kick to Mumbai City."
+                },
+                {
+                    "id": 40,
+                    "injurytime": "",
+                    "time": "50",
+                    "sentence": " awards freekick to Bengaluru."
+                },
+                {
+                    "id": 41,
+                    "injurytime": "",
+                    "time": "53",
+                    "sentence": " awards freekick to Bengaluru."
+                },
+                {
+                    "id": 42,
+                    "injurytime": "",
+                    "time": "54",
+                    "sentence": "Bengaluru player Kristian Opseth strikes the shot off target, ball is cleared by the Mumbai City."
+                },
+                {
+                    "id": 43,
+                    "injurytime": "",
+                    "time": "54",
+                    "sentence": "Goal kick for Mumbai City."
+                },
+                {
+                    "id": 44,
+                    "injurytime": "",
+                    "time": "54",
+                    "sentence": " awards freekick to Mumbai City."
                 },
                 {
                     "id": 45,
-                    "injurytime": 0,
-                    "time": 63,
-                    "sentence": "Play has been resumed at Old Trafford."
+                    "injurytime": "",
+                    "time": "56",
+                    "sentence": " awards freekick to Bengaluru."
                 },
                 {
                     "id": 46,
-                    "injurytime": 0,
-                    "time": 65,
-                    "sentence": "Unai Emery (Arsenal) is making a third substitution, with Alexandre Lacazette replacing Alex Iwobi."
+                    "injurytime": "",
+                    "time": "57",
+                    "sentence": " awards freekick to Bengaluru."
                 },
                 {
                     "id": 47,
-                    "injurytime": 0,
-                    "time": 68,
-                    "sentence": "Arsenal take a 1-2 lead thanks to Alexandre Lacazette."
+                    "injurytime": "",
+                    "time": "58",
+                    "sentence": " awards freekick to Bengaluru."
                 },
                 {
                     "id": 48,
-                    "injurytime": 0,
-                    "time": 68,
-                    "sentence": "That's a fine assist from Henrikh Mkhitaryan."
+                    "event": "card",
+                    "injurytime": "",
+                    "time": "58",
+                    "sentence": "Amey Ranawade booked for a Yellow card."
                 },
                 {
                     "id": 49,
-                    "injurytime": 0,
-                    "time": 69,
-                    "sentence": "Jesse Lingard is on target to level the scores at 2-2."
+                    "event": "substitution",
+                    "injurytime": "",
+                    "time": "58",
+                    "sentence": "Substitution by Bengaluru player Rahul Bheke make way for Fran Gonzalez."
+                },
+                {
+                    "id": 50,
+                    "injurytime": "",
+                    "time": "59",
+                    "sentence": "Goal kick for Mumbai City."
+                },
+                {
+                    "id": 51,
+                    "injurytime": "",
+                    "time": "60",
+                    "sentence": "Goal kick for Mumbai City."
+                },
+                {
+                    "id": 52,
+                    "injurytime": "",
+                    "time": "60",
+                    "sentence": " awards freekick to Mumbai City."
+                },
+                {
+                    "id": 53,
+                    "event": "card",
+                    "injurytime": "",
+                    "time": "60",
+                    "sentence": "Sunil Chhetri booked for a Yellow card."
+                },
+                {
+                    "id": 54,
+                    "injurytime": "",
+                    "time": "62",
+                    "sentence": "Goal kick for Bengaluru."
                 },
                 {
                     "id": 55,
-                    "injurytime": 0,
-                    "time": 76,
-                    "sentence": "The home team have replaced Jesse Lingard with Paul Pogba. This is the third substitution made today by Jose Mourinho."
+                    "injurytime": "",
+                    "time": "64",
+                    "sentence": " has awarded corner kick to Bengaluru."
                 },
                 {
                     "id": 56,
-                    "injurytime": 0,
-                    "time": 76,
-                    "sentence": "Corner awarded to Arsenal."
+                    "injurytime": "",
+                    "time": "64",
+                    "sentence": " awards freekick to Mumbai City."
                 },
                 {
                     "id": 57,
-                    "injurytime": 0,
-                    "time": 81,
-                    "sentence": "Man Utd drive upfield and Marouane Fellaini gets in a shot. The strike is blocked by a Arsenal defender."
+                    "event": "substitution",
+                    "injurytime": "",
+                    "time": "66",
+                    "sentence": "Substitution by Mumbai City player Adam Le Fondre make way for Bartholomew Ogbeche."
                 },
                 {
                     "id": 58,
-                    "injurytime": 0,
-                    "time": 85,
-                    "sentence": "Marcus Rashford gets his shot on target but fails to score for Man Utd."
+                    "event": "substitution",
+                    "injurytime": "",
+                    "time": "66",
+                    "sentence": "Substitution by Mumbai City player Raynier Fernandes make way for Vignesh Dakshinamurthy."
                 },
                 {
                     "id": 59,
-                    "injurytime": 0,
-                    "time": 86,
-                    "sentence": "Arsenal's Lucas Torreira has been booked in Manchester."
+                    "injurytime": "",
+                    "time": "70",
+                    "sentence": " awards freekick to Bengaluru."
                 },
                 {
                     "id": 60,
-                    "injurytime": 0,
-                    "time": 89,
-                    "sentence": "Man Utd drive forward but Marouane Fellaini is judged offside."
+                    "injurytime": "",
+                    "time": "70",
+                    "sentence": "Mumbai City player Rowllin Borges strike shot on target,  successfully cleared by the Bengaluru."
                 },
                 {
                     "id": 61,
-                    "injurytime": 1,
-                    "time": 90,
-                    "sentence": "In Manchester Arsenal drive forward through Lucas Torreira. His shot is on target but it's saved."
+                    "injurytime": "",
+                    "time": "71",
+                    "sentence": "Bengaluru player Fran Gonzalez strikes the shot off target, ball is cleared by the Mumbai City."
+                },
+                {
+                    "id": 62,
+                    "injurytime": "",
+                    "time": "72",
+                    "sentence": "Goal kick for Mumbai City."
+                },
+                {
+                    "id": 63,
+                    "injurytime": "",
+                    "time": "73",
+                    "sentence": "Goal kick for Mumbai City."
+                },
+                {
+                    "id": 64,
+                    "injurytime": "",
+                    "time": "75",
+                    "sentence": " awards freekick to Bengaluru."
                 },
                 {
                     "id": 65,
-                    "injurytime": 6,
-                    "time": 90,
-                    "sentence": "Play has been resumed."
+                    "event": "substitution",
+                    "injurytime": "",
+                    "time": "75",
+                    "sentence": "Substitution by Mumbai City player Hugo Boumous make way for Cy Goddard."
                 },
                 {
                     "id": 66,
-                    "injurytime": null,
-                    "time": 90,
-                    "sentence": "Full-time! The final score is 2-2."
+                    "event": "substitution",
+                    "injurytime": "",
+                    "time": "76",
+                    "sentence": "Substitution by Mumbai City player Mandar Rao Dessai make way for Vikram Pratap Singh."
+                },
+                {
+                    "id": 67,
+                    "injurytime": "",
+                    "time": "78",
+                    "sentence": "Referee  points to the spot, penalty awarded to , foul committed by M Fall."
+                },
+                {
+                    "id": 68,
+                    "injurytime": "",
+                    "time": "81",
+                    "sentence": " awards freekick to Mumbai City."
+                },
+                {
+                    "id": 69,
+                    "event": "card",
+                    "injurytime": "",
+                    "time": "81",
+                    "sentence": "Harmanjot Khabra booked for a Yellow card."
+                },
+                {
+                    "id": 70,
+                    "event": "substitution",
+                    "injurytime": "",
+                    "time": "82",
+                    "sentence": "Substitution by Bengaluru player Harmanjot Khabra make way for Semboi Haokip."
+                },
+                {
+                    "id": 71,
+                    "injurytime": "",
+                    "time": "82",
+                    "sentence": "Mumbai City player Bartholomew Ogbeche strikes the header off target, ball is cleared by the Bengaluru."
+                },
+                {
+                    "id": 72,
+                    "injurytime": "",
+                    "time": "84",
+                    "sentence": " has awarded corner kick to Mumbai City."
+                },
+                {
+                    "id": 73,
+                    "event": "goal",
+                    "injurytime": "",
+                    "time": "84",
+                    "sentence": "Bartholomew Ogbeche scores the goal for Mumbai City assist by Cy Goddard score 1-3."
+                },
+                {
+                    "id": 74,
+                    "injurytime": "",
+                    "time": "86",
+                    "sentence": " awards freekick to Bengaluru."
+                },
+                {
+                    "id": 75,
+                    "injurytime": "",
+                    "time": "86",
+                    "sentence": " awards freekick to Bengaluru."
+                },
+                {
+                    "id": 76,
+                    "event": "card",
+                    "injurytime": "",
+                    "time": "87",
+                    "sentence": "Bartholomew Ogbeche booked for a Yellow card."
+                },
+                {
+                    "id": 77,
+                    "event": "substitution",
+                    "injurytime": "",
+                    "time": "88",
+                    "sentence": "Substitution by Mumbai City player Bipin Singh make way for Mehtab Singh."
+                },
+                {
+                    "id": 78,
+                    "injurytime": "",
+                    "time": "88",
+                    "sentence": " has awarded corner kick to Bengaluru."
+                },
+                {
+                    "id": 79,
+                    "injurytime": "",
+                    "time": "90",
+                    "sentence": "Goal kick for Mumbai City."
+                },
+                {
+                    "id": 80,
+                    "injurytime": "3",
+                    "time": "90",
+                    "sentence": "Mumbai City player  strike shot on target,  successfully cleared by the Bengaluru."
+                },
+                {
+                    "id": 81,
+                    "injurytime": "4",
+                    "time": "90",
+                    "sentence": " awards freekick to Bengaluru."
                 }
             ],
             "lineup": {
                 "home": {
                     "lineup": {
-                        "formation": "3-4-3",
+                        "formation": "4-2-3-1",
                         "player": [
                             {
-                                "pid": 101,
-                                "pname": " David De Gea",
+                                "pid": "8641",
+                                "pname": "Gurpreet Singh Sandhu",
                                 "name": "Goalkeeper",
-                                "order": 1,
+                                "order": "1",
                                 "matchposition": "G",
                                 "position": "G",
-                                "shirtnumber": "1",
-                                "fantasy_player_rating": 8.5
+                                "shirtnumber": "1"
                             },
                             {
-                                "pid": 961,
-                                "pname": " Eric Bailly",
-                                "name": "Central defender",
-                                "order": 2,
-                                "matchposition": "D",
-                                "position": "D",
-                                "shirtnumber": "3",
-                                "fantasy_player_rating": 8
-                            },
-                            {
-                                "pid": 956,
-                                "pname": " Chris Smalling",
-                                "name": "Central defender",
-                                "order": 3,
-                                "matchposition": "D",
-                                "position": "D",
-                                "shirtnumber": "12",
-                                "fantasy_player_rating": 8.5
-                            },
-                            {
-                                "pid": 624,
-                                "pname": " Marcos Rojo",
-                                "name": "Central defender",
-                                "order": 4,
-                                "matchposition": "D",
-                                "position": "D",
-                                "shirtnumber": "16",
-                                "fantasy_player_rating": 8.5
-                            },
-                            {
-                                "pid": 962,
-                                "pname": " Diogo Dalot",
-                                "name": "Right winger",
-                                "order": 5,
-                                "matchposition": "M",
-                                "position": "D",
-                                "shirtnumber": "20",
-                                "fantasy_player_rating": 8
-                            },
-                            {
-                                "pid": 730,
-                                "pname": " Nemanja Matic",
-                                "name": "Central midfielder",
-                                "order": 6,
+                                "pid": "8642",
+                                "pname": "Harmanjot Khabra",
+                                "name": "Midfielder",
+                                "order": "2",
                                 "matchposition": "M",
                                 "position": "M",
-                                "shirtnumber": "31",
-                                "fantasy_player_rating": 8
+                                "shirtnumber": "10"
                             },
                             {
-                                "pid": 957,
-                                "pname": "Ander Herrera",
-                                "name": "Central midfielder",
-                                "order": 7,
+                                "pid": "8918",
+                                "pname": "Pratik Chowdhary",
+                                "name": "Defender",
+                                "order": "3",
+                                "matchposition": "D",
+                                "position": "D",
+                                "shirtnumber": "4"
+                            },
+                            {
+                                "pid": "8637",
+                                "pname": "Juanan",
+                                "name": "Defender",
+                                "order": "4",
+                                "matchposition": "D",
+                                "position": "D",
+                                "shirtnumber": "5"
+                            },
+                            {
+                                "pid": "8653",
+                                "pname": "Rahul Bheke",
+                                "name": "Defender",
+                                "order": "5",
+                                "matchposition": "D",
+                                "position": "D",
+                                "shirtnumber": "2"
+                            },
+                            {
+                                "pid": "47144",
+                                "pname": "Suresh Singh",
+                                "name": "Midfielder",
+                                "order": "6",
                                 "matchposition": "M",
                                 "position": "M",
-                                "shirtnumber": "21",
-                                "fantasy_player_rating": 8.5
+                                "shirtnumber": "27"
                             },
                             {
-                                "pid": 952,
-                                "pname": " Matteo Darmian",
-                                "name": "Left winger",
-                                "order": 8,
+                                "pid": "8636",
+                                "pname": "Dimas Delgado",
+                                "name": "Midfielder",
+                                "order": "7",
                                 "matchposition": "M",
-                                "position": "D",
-                                "shirtnumber": "36",
-                                "fantasy_player_rating": 9
+                                "position": "M",
+                                "shirtnumber": "14"
                             },
                             {
-                                "pid": 243,
-                                "pname": " Jesse Lingard",
+                                "pid": "26405",
+                                "pname": "Deshorn Brown",
                                 "name": "Forward",
-                                "order": 9,
-                                "matchposition": "F",
-                                "position": "M",
-                                "shirtnumber": "14",
-                                "fantasy_player_rating": 8.5
-                            },
-                            {
-                                "pid": 246,
-                                "pname": " Marcus Rashford",
-                                "name": "Forward",
-                                "order": 10,
+                                "order": "8",
                                 "matchposition": "F",
                                 "position": "F",
-                                "shirtnumber": "10",
-                                "fantasy_player_rating": 8.5
+                                "shirtnumber": "26"
                             },
                             {
-                                "pid": 959,
-                                "pname": " Anthony Martial",
+                                "pid": "30692",
+                                "pname": "Cleiton Silva",
+                                "name": "Midfielder",
+                                "order": "9",
+                                "matchposition": "M",
+                                "position": "M",
+                                "shirtnumber": "23"
+                            },
+                            {
+                                "pid": "8640",
+                                "pname": "Sunil Chhetri",
                                 "name": "Forward",
-                                "order": 11,
+                                "order": "10",
                                 "matchposition": "F",
                                 "position": "F",
-                                "shirtnumber": "11",
-                                "fantasy_player_rating": 8.5
+                                "shirtnumber": "11"
+                            },
+                            {
+                                "pid": "20955",
+                                "pname": "Kristian Opseth",
+                                "name": "Forward",
+                                "order": "11",
+                                "matchposition": "F",
+                                "position": "F",
+                                "shirtnumber": "9"
                             }
                         ]
                     },
                     "substitutes": [
                         {
-                            "pid": 275,
-                            "pname": " Marouane Fellaini",
-                            "name": "Central defender",
-                            "matchposition": "M",
-                            "position": "M",
-                            "shirtnumber": "27",
-                            "fantasy_player_rating": 8.5
-                        },
-                        {
-                            "pid": 284,
-                            "pname": " Romelu Lukaku",
-                            "name": "Central defender",
-                            "matchposition": "F",
-                            "position": "F",
-                            "shirtnumber": "9",
-                            "fantasy_player_rating": 9.5
-                        },
-                        {
-                            "pid": 954,
-                            "pname": " Juan Mata",
-                            "name": "Central defender",
-                            "matchposition": "M",
-                            "position": "M",
-                            "shirtnumber": "8",
-                            "fantasy_player_rating": 9
-                        },
-                        {
-                            "pid": 963,
-                            "pname": " Scott McTominay",
-                            "name": "Central defender",
-                            "matchposition": "M",
-                            "position": "M",
-                            "shirtnumber": "39",
-                            "fantasy_player_rating": 8
-                        },
-                        {
-                            "pid": 33,
-                            "pname": " Paul Pogba",
-                            "name": "Central defender",
-                            "matchposition": "M",
-                            "position": "M",
-                            "shirtnumber": "6",
-                            "fantasy_player_rating": 8.5
-                        },
-                        {
-                            "pid": 953,
-                            "pname": " Sergio Romero",
-                            "name": "Central defender",
+                            "pid": "8648",
+                            "pname": "Lalthuammawia Ralte",
+                            "name": "Goalkeeper",
                             "matchposition": "G",
                             "position": "G",
-                            "shirtnumber": "22",
-                            "fantasy_player_rating": 10
+                            "shirtnumber": "28"
                         },
                         {
-                            "pid": 951,
-                            "pname": " Antonio Valencia",
-                            "name": "Central defender",
+                            "pid": "8670",
+                            "pname": "Leon Agustine Asokan",
+                            "name": "Forward",
+                            "matchposition": "F",
+                            "position": "F",
+                            "shirtnumber": "31"
+                        },
+                        {
+                            "pid": "29799",
+                            "pname": "Ajay Chhetri",
+                            "name": "Midfielder",
+                            "matchposition": "M",
+                            "position": "M",
+                            "shirtnumber": "13"
+                        },
+                        {
+                            "pid": "64022",
+                            "pname": "Ajith Kumar",
+                            "name": "Defender",
                             "matchposition": "D",
                             "position": "D",
-                            "shirtnumber": "25",
-                            "fantasy_player_rating": 9.5
+                            "shirtnumber": "19"
+                        },
+                        {
+                            "pid": "64030",
+                            "pname": "Emanuel Lalchhanchhuaha",
+                            "name": "Midfielder",
+                            "matchposition": "M",
+                            "position": "M",
+                            "shirtnumber": "33"
+                        },
+                        {
+                            "pid": "64020",
+                            "pname": "Fran Gonzalez",
+                            "name": "Defender",
+                            "matchposition": "D",
+                            "position": "D",
+                            "shirtnumber": "55"
+                        },
+                        {
+                            "pid": "8644",
+                            "pname": "Thongkhosiem Haokip",
+                            "name": "Forward",
+                            "matchposition": "F",
+                            "position": "F",
+                            "shirtnumber": "18"
+                        },
+                        {
+                            "pid": "8649",
+                            "pname": "Udanta Singh",
+                            "name": "Forward",
+                            "matchposition": "F",
+                            "position": "F",
+                            "shirtnumber": "21"
+                        },
+                        {
+                            "pid": "64021",
+                            "pname": "Namgyal Bhutia",
+                            "name": "Defender",
+                            "matchposition": "D",
+                            "position": "D",
+                            "shirtnumber": "25"
                         }
                     ],
                     "substitutions": [
                         {
-                            "playerin": 284,
-                            "playerout": 959,
-                            "time": 63
+                            "playerin": "64022",
+                            "playerout": "8918",
+                            "time": "46"
                         },
                         {
-                            "playerin": 275,
-                            "playerout": 624,
-                            "time": 73
+                            "playerin": "8649",
+                            "playerout": "26405",
+                            "time": "46"
                         },
                         {
-                            "playerin": 33,
-                            "playerout": 243,
-                            "time": 76
+                            "playerin": "64020",
+                            "playerout": "8653",
+                            "time": "58"
+                        },
+                        {
+                            "playerin": "8644",
+                            "playerout": "8642",
+                            "time": "82"
                         }
                     ],
                     "manager": [
                         {
-                            "name": "Jose Mourinho",
-                            "birthdate": "26/01/63",
+                            "pid": "47247",
+                            "name": "Carles Cuadrat",
+                            "birthdatetimestamp": "-37152000",
+                            "birthdate": "1968-10-28 00:00:00",
                             "nationality": {
-                                "iocid": 172,
-                                "name": "Portugal",
-                                "ioc": "pt"
+                                "iocid": "199",
+                                "name": "Spain",
+                                "ioc": ""
                             }
                         }
                     ]
                 },
                 "away": {
                     "lineup": {
-                        "formation": "3-4-3",
+                        "formation": "4-2-3-1",
                         "player": [
                             {
-                                "pid": 1043,
-                                "pname": " Bernd Leno",
+                                "pid": "8855",
+                                "pname": "Amrinder Singh",
                                 "name": "Goalkeeper",
-                                "order": 1,
+                                "order": "1",
                                 "matchposition": "G",
                                 "position": "G",
-                                "shirtnumber": "19",
-                                "fantasy_player_rating": 8.5
+                                "shirtnumber": "1"
                             },
                             {
-                                "pid": 1035,
-                                "pname": "Sokratis",
-                                "name": "Central defender",
-                                "order": 2,
+                                "pid": "8774",
+                                "pname": "Amey Ganesh Ranawade",
+                                "name": "Defender",
+                                "order": "2",
                                 "matchposition": "D",
                                 "position": "D",
-                                "shirtnumber": "5",
-                                "fantasy_player_rating": 8.5
+                                "shirtnumber": "4"
                             },
                             {
-                                "pid": 1042,
-                                "pname": " Shkodran Mustafi",
-                                "name": "Central defender",
-                                "order": 3,
+                                "pid": "8769",
+                                "pname": "Mourtada Fall",
+                                "name": "Defender",
+                                "order": "3",
                                 "matchposition": "D",
                                 "position": "D",
-                                "shirtnumber": "20",
-                                "fantasy_player_rating": 8
+                                "shirtnumber": "25"
                             },
                             {
-                                "pid": 1049,
-                                "pname": " Rob Holding",
-                                "name": "Central defender",
-                                "order": 4,
-                                "matchposition": "D",
-                                "position": "D",
-                                "shirtnumber": "16",
-                                "fantasy_player_rating": 8.5
-                            },
-                            {
-                                "pid": 1047,
-                                "pname": " Hector Bellerin",
-                                "name": "Right winger",
-                                "order": 5,
-                                "matchposition": "M",
-                                "position": "D",
-                                "shirtnumber": "2",
-                                "fantasy_player_rating": 8
-                            },
-                            {
-                                "pid": 313,
-                                "pname": " Lucas Torreira",
-                                "name": "Central midfielder",
-                                "order": 6,
+                                "pid": "25180",
+                                "pname": "Hernan",
+                                "name": "Midfielder",
+                                "order": "4",
                                 "matchposition": "M",
                                 "position": "M",
-                                "shirtnumber": "11",
-                                "fantasy_player_rating": 8
+                                "shirtnumber": "6"
                             },
                             {
-                                "pid": 1051,
-                                "pname": " Matteo Guendouzi",
-                                "name": "Central midfielder",
-                                "order": 7,
+                                "pid": "8767",
+                                "pname": "Mandar Rao Desai",
+                                "name": "Midfielder",
+                                "order": "5",
                                 "matchposition": "M",
                                 "position": "M",
-                                "shirtnumber": "29",
-                                "fantasy_player_rating": 8
+                                "shirtnumber": "17"
                             },
                             {
-                                "pid": 1045,
-                                "pname": " Sead Kolasinac",
-                                "name": "Left winger",
-                                "order": 8,
+                                "pid": "8888",
+                                "pname": "Rowllin Borges",
+                                "name": "Midfielder",
+                                "order": "6",
                                 "matchposition": "M",
-                                "position": "D",
-                                "shirtnumber": "31",
-                                "fantasy_player_rating": 8
-                            },
-                            {
-                                "pid": 1037,
-                                "pname": " Aaron Ramsey",
-                                "name": "Forward",
-                                "order": 9,
-                                "matchposition": "F",
                                 "position": "M",
-                                "shirtnumber": "8",
-                                "fantasy_player_rating": 8.5
+                                "shirtnumber": "14"
                             },
                             {
-                                "pid": 1041,
-                                "pname": " Pierre-Emerick Aubameyang",
-                                "name": "Forward",
-                                "order": 10,
-                                "matchposition": "F",
-                                "position": "F",
-                                "shirtnumber": "14",
-                                "fantasy_player_rating": 10
+                                "pid": "8770",
+                                "pname": "Ahmed Jahouh",
+                                "name": "Midfielder",
+                                "order": "7",
+                                "matchposition": "M",
+                                "position": "M",
+                                "shirtnumber": "5"
                             },
                             {
-                                "pid": 578,
-                                "pname": " Alex Iwobi",
+                                "pid": "28202",
+                                "pname": "Raynier Fernandes",
+                                "name": "Midfielder",
+                                "order": "8",
+                                "matchposition": "M",
+                                "position": "M",
+                                "shirtnumber": "11"
+                            },
+                            {
+                                "pid": "8765",
+                                "pname": "Hugo Boumous",
+                                "name": "Midfielder",
+                                "order": "9",
+                                "matchposition": "M",
+                                "position": "M",
+                                "shirtnumber": "7"
+                            },
+                            {
+                                "pid": "8698",
+                                "pname": "Th  Bipin Singh",
+                                "name": "Midfielder",
+                                "order": "10",
+                                "matchposition": "M",
+                                "position": "M",
+                                "shirtnumber": "29"
+                            },
+                            {
+                                "pid": "5980",
+                                "pname": "Adam Le Fondre",
                                 "name": "Forward",
-                                "order": 11,
+                                "order": "11",
                                 "matchposition": "F",
                                 "position": "F",
-                                "shirtnumber": "17",
-                                "fantasy_player_rating": 8.5
+                                "shirtnumber": "9"
                             }
                         ]
                     },
                     "substitutes": [
                         {
-                            "pid": 1034,
-                            "pname": " Petr Cech",
-                            "name": "Central midfielder",
+                            "pid": "65364",
+                            "pname": "Phurba Tempa Lachenpa",
+                            "name": "Goalkeeper",
                             "matchposition": "G",
                             "position": "G",
-                            "shirtnumber": "1",
-                            "fantasy_player_rating": 9.5
+                            "shirtnumber": "34"
                         },
                         {
-                            "pid": 461,
-                            "pname": "Elneny Mohamed",
-                            "name": "Central midfielder",
-                            "matchposition": "M",
-                            "position": "M",
-                            "shirtnumber": "4",
-                            "fantasy_player_rating": 8
-                        },
-                        {
-                            "pid": 1039,
-                            "pname": " Alexandre Lacazette",
-                            "name": "Central midfielder",
+                            "pid": "8919",
+                            "pname": "Farukh Choudhary",
+                            "name": "Forward",
                             "matchposition": "F",
                             "position": "F",
-                            "shirtnumber": "9",
-                            "fantasy_player_rating": 9.5
+                            "shirtnumber": "27"
                         },
                         {
-                            "pid": 114,
-                            "pname": " Stephan Lichtsteiner",
-                            "name": "Central midfielder",
+                            "pid": "64064",
+                            "pname": "Mehtab Singh",
+                            "name": "Midfielder",
+                            "matchposition": "M",
+                            "position": "M",
+                            "shirtnumber": "15"
+                        },
+                        {
+                            "pid": "19180",
+                            "pname": "Cy Goddard",
+                            "name": "Midfielder",
+                            "matchposition": "M",
+                            "position": "M",
+                            "shirtnumber": "21"
+                        },
+                        {
+                            "pid": "28141",
+                            "pname": "Mohammad Rakip",
+                            "name": "Defender",
                             "matchposition": "D",
                             "position": "D",
-                            "shirtnumber": "12",
-                            "fantasy_player_rating": 10
+                            "shirtnumber": "2"
                         },
                         {
-                            "pid": 1048,
-                            "pname": " Ainsley Maitland-Niles",
-                            "name": "Central midfielder",
+                            "pid": "28203",
+                            "pname": "Vignesh Dakshinamurthy",
+                            "name": "Midfielder",
                             "matchposition": "M",
                             "position": "M",
-                            "shirtnumber": "15",
-                            "fantasy_player_rating": 8
+                            "shirtnumber": "23"
                         },
                         {
-                            "pid": 1038,
-                            "pname": " Henrikh Mkhitaryan",
-                            "name": "Central midfielder",
-                            "matchposition": "M",
-                            "position": "M",
-                            "shirtnumber": "7",
-                            "fantasy_player_rating": 9
-                        },
-                        {
-                            "pid": 15317,
-                            "pname": "Eddie Nketiah",
-                            "name": "Central midfielder",
+                            "pid": "65365",
+                            "pname": "Vikram Pratap Singh",
+                            "name": "Forward",
                             "matchposition": "F",
                             "position": "F",
-                            "shirtnumber": "49",
-                            "fantasy_player_rating": 9.5
+                            "shirtnumber": "22"
+                        },
+                        {
+                            "pid": "28191",
+                            "pname": "Bartholomew Ogbeche",
+                            "name": "Forward",
+                            "matchposition": "F",
+                            "position": "F",
+                            "shirtnumber": "10"
+                        },
+                        {
+                            "pid": "28224",
+                            "pname": "Sarthak Golui",
+                            "name": "Defender",
+                            "matchposition": "D",
+                            "position": "D",
+                            "shirtnumber": "16"
                         }
                     ],
                     "substitutions": [
                         {
-                            "playerin": 114,
-                            "playerout": 1049,
-                            "time": 36
+                            "playerin": "28191",
+                            "playerout": "5980",
+                            "time": "66"
                         },
                         {
-                            "playerin": 1038,
-                            "playerout": 1037,
-                            "time": 46
+                            "playerin": "28203",
+                            "playerout": "28202",
+                            "time": "66"
                         },
                         {
-                            "playerin": 1039,
-                            "playerout": 578,
-                            "time": 65
+                            "playerin": "19180",
+                            "playerout": "8765",
+                            "time": "75"
+                        },
+                        {
+                            "playerin": "65365",
+                            "playerout": "8767",
+                            "time": "76"
+                        },
+                        {
+                            "playerin": "64064",
+                            "playerout": "8698",
+                            "time": "88"
                         }
                     ],
                     "manager": [
                         {
-                            "name": "Unai Emery",
-                            "birthdate": "03/11/71",
+                            "pid": "47265",
+                            "name": "Sergio Lobera",
+                            "birthdatetimestamp": "159062400",
+                            "birthdate": "1975-01-16 00:00:00",
                             "nationality": {
-                                "iocid": 199,
+                                "iocid": "199",
                                 "name": "Spain",
-                                "ioc": "es"
+                                "ioc": ""
                             }
                         }
                     ]
                 }
             },
-            "pre_match_odds": {
-                "3way": [
-                    {
-                        "bookmaker": {
-                            "name": "WilliamHill",
-                            "url": "http://www.williamhill.co.uk"
-                        },
-                        "home": {
-                            "odds": "2.30"
-                        },
-                        "draw": {
-                            "odds": "3.50"
-                        },
-                        "away": {
-                            "odds": "3.00"
-                        },
-                        "type": "3way"
-                    },
-                    {
-                        "bookmaker": {
-                            "name": "Bet365",
-                            "url": "http://www.bet365.co.uk"
-                        },
-                        "home": {
-                            "odds": "2.35"
-                        },
-                        "draw": {
-                            "odds": "3.60"
-                        },
-                        "away": {
-                            "odds": "3.10"
-                        },
-                        "type": "3way"
-                    },
-                    {
-                        "bookmaker": {
-                            "name": "Betfair",
-                            "url": "http://www.betfair.com"
-                        },
-                        "home": {
-                            "odds": "2.48"
-                        },
-                        "draw": {
-                            "odds": "3.60"
-                        },
-                        "away": {
-                            "odds": "3.10"
-                        },
-                        "layhome": {
-                            "odds": "2.5"
-                        },
-                        "laydraw": {
-                            "odds": "3.65"
-                        },
-                        "layaway": {
-                            "odds": "3.15"
-                        },
-                        "type": "3way"
-                    }
-                ],
-                "firstteamtoscore": [
-                    {
-                        "bookmaker": {
-                            "name": "WilliamHill",
-                            "url": "http://www.williamhill.co.uk"
-                        },
-                        "home": {
-                            "odds": "1.85"
-                        },
-                        "draw": {
-                            "odds": "12.00"
-                        },
-                        "away": {
-                            "odds": "2.00"
-                        },
-                        "type": "firstteamtoscore"
-                    },
-                    {
-                        "bookmaker": {
-                            "name": "Bet365",
-                            "url": "http://www.bet365.co.uk"
-                        },
-                        "home": {
-                            "odds": "1.72"
-                        },
-                        "draw": {
-                            "odds": "15.00"
-                        },
-                        "away": {
-                            "odds": "2.10"
-                        },
-                        "type": "firstteamtoscore"
-                    }
-                ],
-                "handicap": [
-                    {
-                        "bookmaker": {
-                            "name": "Bet365",
-                            "url": "http://www.bet365.co.uk"
-                        },
-                        "home": {
-                            "odds": "4.00"
-                        },
-                        "draw": {
-                            "odds": "4.33"
-                        },
-                        "away": {
-                            "odds": "1.57"
-                        },
-                        "type": "handicap==0:1"
-                    }
-                ],
-                "ht1x2": [
-                    {
-                        "bookmaker": {
-                            "name": "WilliamHill",
-                            "url": "http://www.williamhill.co.uk"
-                        },
-                        "home": {
-                            "odds": "2.75"
-                        },
-                        "draw": {
-                            "odds": "2.15"
-                        },
-                        "away": {
-                            "odds": "3.40"
-                        },
-                        "type": "ht1x2"
-                    },
-                    {
-                        "bookmaker": {
-                            "name": "Bet365",
-                            "url": "http://www.bet365.co.uk"
-                        },
-                        "home": {
-                            "odds": "2.87"
-                        },
-                        "draw": {
-                            "odds": "2.30"
-                        },
-                        "away": {
-                            "odds": "3.25"
-                        },
-                        "type": "ht1x2"
-                    }
-                ]
-            }
+            "pre_match_odds": []
         },
         "total_items": 1,
         "total_pages": 1
     },
-    "etag": "ed6aa00eeb8d76e07b0ea492da03bfc1",
-    "modified": "2018-12-06 12:59:36",
-    "datetime": "2018-12-06 12:59:36",
+    "etag": "b7b640e19cc40f8a7b7902a4ebbee037",
+    "modified": "2021-01-05 16:45:55",
+    "datetime": "2021-01-05 16:45:55",
     "api_version": "1.0"
 }
 
@@ -13831,27 +13674,31 @@ pre_match_odds | array | An array odds details.
 
 Parameter | Value | Description
 --------- | ------- | -----------
-mid | integer | match id
-round | array | An array of match round details. <a href="#matches-info-round">see round object reference</a>
+mid | string | match id
+round | string | round details.
 result | array | An array of match result details. <a href="#matches-info-result">see result object reference</a>
 teams | array | An array of match teams details. <a href="#matches-info-teams">see teams object reference</a>
 period | array | An array of match period wise details. <a href="#matches-info-period">see period object reference</a>
 datestart | string | time string in GMT of match start time
 dateend | string | time string in GMT of match end time
-timestampstart | integer | timestamp of match start time
-timestampend | integer | timestamp of match end time
-injurytime | integer | added injury time after the end of regular period time
-time | integer | match running time in minutes
-status_str | string | Match status string live, result, upcoming
-status | integer | Match status code 3 = live, 2 = result, 1 = upcoming
+timestampstart | string | timestamp of match start time
+timestampend | string | timestamp of match end time
+injurytime | string | added injury time after the end of regular period time
+time | string | match running time in minutes
+status_str | string | Match status string live, completed, upcoming
+status | string | Match status code 3 = live, 2 = completed, 1 = upcoming
 gamestate_str | string | Match state string
-gamestate | integer | Match state code
-periodlength | integer | match period length in minutes
-numberofperiods | integer | number of periods in the match
-attendance | integer | total spectator attendance of the match
-overtimelength | integer | overtime length in minutes
+gamestate | string | Match state code
+periodlength | string | match period length in minutes
+numberofperiods | string | number of periods in the match
+attendance | string | total spectator attendance of the match
+overtimelength | string | overtime length in minutes
 competition | array | An array of competition details. <a href="#matches-info-competition">see competition object reference</a>
 venue | array | An array of match venue details. <a href="#matches-info-venue">see venue object reference</a>
+lineupavailable | string | line up available when true, not available when false
+projectionavailable | string | match game play state available when true, not available when false
+eventavailable | string | events available when true, not available when false
+commentaryavailable | string | play by play available when true, not available when false
 
 
 <h3 id="matches-info-round">Round Object Reference</h3>
@@ -13867,8 +13714,8 @@ type | string | round name
 
 Parameter | Value | Description
 --------- | ------- | -----------
-home | integer | home team score
-away | integer | away team score
+home | string | home team score
+away | string | away team score
 winner | string | winning team name, draw in case of equal scores
 
 
@@ -13884,7 +13731,7 @@ away | array | An array of away team details. <a href="#matches-info-teams-detai
 
 Parameter | Value | Description
 --------- | ------- | -----------
-tid | integer | team id
+tid | string | team id
 tname | string | team name
 logo | string | team logo url
 fullname | string | team full name
@@ -13912,17 +13759,18 @@ away | integer | away team score
 
 Parameter | Value | Description
 --------- | ------- | -----------
-cid | integer | competition id
+cid | string | competition id
 cname | string | competition name/title
 startdate | string | time string in GMT of competition start date
 enddate | string | time string in GMT of competition end date
-startdatetimestamp | integer | timestamp of competition start date
-enddatetimestamp | integer | timestamp of competition end date
+startdatetimestamp | string | timestamp of competition start date
+enddatetimestamp | string | timestamp of competition end date
 year | string | Season Year
 category | string | Competition Category
-ioc_id | integer | IOC id of competition native country
+tournament_id | string | tournament id of competition native country
+category_id | string | category id of competition native country
 ioc | string | IOC 2 letter code of competition native country
-status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status | string | Competition status code 3 = live, 2 = completed, 1 = upcoming
 status_str | string | Competition status string live, completed, upcoming
 logo | string | Competition Logo URL
 
@@ -13931,18 +13779,19 @@ logo | string | Competition Logo URL
 
 Parameter | Value | Description
 --------- | ------- | -----------
-venueid | integer | venue id
+venueid | string | venue id
 name | string | venue name
 location | string | venue location
-founded | integer | year venue founded
-capacity | integer | capacity of stadium
+founded | string | venue founded year
+capacity | string | venue capacity
+googlecoords | string | venue google co-ordinates
 
 
 <h3 id="matches-referee">Match Referee Object Reference</h3>
 
 Parameter | Value | Description
 --------- | ------- | -----------
-pid | integer | referee id
+pid | string | referee id
 fullname | string | referee full name
 birthdatetimestamp | integer | timestamp of birthdate of referee
 birthdate | string | birth date of referee in dd/mm/yy format
@@ -13953,7 +13802,7 @@ nationality | array | array of referee nationality details. <a href="#referee-na
 
 Parameter | Value | Description
 --------- | ------- | -----------
-iocid | integer | ioc country id
+iocid | string | ioc country id
 name | string | country  name
 ioc | string | ioc 2 letter country code
 
@@ -13964,23 +13813,22 @@ Parameter | Value | Description
 --------- | ------- | -----------
 time | integer | time in minutes of match play
 injurytime | integer | injurytime in minutes
-value | integer | positive value indicates home team has ball possession, negative value indicates away team has ball possession.
+value | string | positive value indicates home team has ball possession, negative value indicates away team has ball possession.
 
 
 <h3 id="matches-event">Match Event Object Reference</h3>
 
 Parameter | Value | Description
 --------- | ------- | -----------
-pid | integer | player id
+pid | string | player id
 pname | string | player name
 type | string | event type name
-time | integer | time of event during game play in minute
-seconds | integer | time of event during game play in seconds
+time | string | time of event during game play in minute
+injurytime | string | injurytime in minutes
 name | string | event name
-injurytime | integer | injurytime in minutes
 team | string | team name
 assist | array | array of player details which assisted the goal
-goaltypeid | integer | goal type id
+goaltypeid | string | goal type id
 goaltype | string | goal type name
 
 
@@ -13989,8 +13837,8 @@ goaltype | string | goal type name
 Parameter | Value | Description
 --------- | ------- | -----------
 id | integer | text id
-injurytime | integer | injurytime in minutes
-time | integer | time of textt during game play in minute
+injurytime | string | injurytime in minutes
+time | string | time of textt during game play in minute
 sentence | string | text of play by play details
 
 
@@ -14024,33 +13872,33 @@ player | array | array of starting players details. <a href="#player-lineup">see
 
 Parameter | Value | Description
 --------- | ------- | -----------
-pid | integer | player id
+pid | string | player id
 pname | string | player name
 name | string | player position name
-order | integer | order of player in team formation
+order | string | order of player in team formation
 matchposition | string | player match playing position
 position | string | player career playing position
-shirtnumber | integer | player shirt number
+shirtnumber | string | player shirt number
 
 <h3 id="substitutes">Substitutes Object Reference</h3>
 
 Parameter | Value | Description
 --------- | ------- | -----------
-pid | integer | player id
+pid | string | player id
 pname | string | player name
 name | string | player position name
 matchposition | string | player match playing position
 position | string | player career playing position
-shirtnumber | integer | player shirt number
+shirtnumber | string | player shirt number
 
 
 <h3 id="substitutions">Substitutions Object Reference</h3>
 
 Parameter | Value | Description
 --------- | ------- | -----------
-playerin | integer | player id of player going in the team
-playerout | integer | player id of player going out of the team
-time | integer | time of substitution in minutes
+playerin | string | player id of player going in the team
+playerout | string | player id of player going out of the team
+time | string | time of substitution in minutes
 
 
 <h3 id="manager">Manager Object Reference</h3>
@@ -14080,367 +13928,288 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/304/statsv2?token=[ACCE
         "items": {
             "match_info": [
                 {
-                    "mid": 304,
-                    "round": {
-                        "type": "table",
-                        "round": "24",
-                        "name": 24
-                    },
+                    "mid": "45627",
+                    "round": "",
                     "result": {
                         "home": "1",
-                        "away": "1",
-                        "winner": "draw"
+                        "away": "3",
+                        "winner": "away"
                     },
                     "teams": {
                         "home": {
-                            "tid": 55,
-                            "tname": "Liverpool",
-                            "logo": "https://rest.entitysport.com/soccer/assets/team/liverpool.png",
-                            "fullname": "Liverpool FC",
-                            "abbr": "LIV"
+                            "tid": "451",
+                            "tname": "Bengaluru",
+                            "logo": "https://rest.entitysport.com/soccer/assets/team/451.png",
+                            "fullname": "Bengaluru FC",
+                            "abbr": "BGL"
                         },
                         "away": {
-                            "tid": 47,
-                            "tname": "Leicester",
-                            "logo": "https://rest.entitysport.com/soccer/assets/team/leicester.png",
-                            "fullname": "Leicester City",
-                            "abbr": "LEI"
+                            "tid": "458",
+                            "tname": "Mumbai City",
+                            "logo": "https://rest.entitysport.com/soccer/assets/team/458.png",
+                            "fullname": "Mumbai City FC",
+                            "abbr": "MUM"
                         }
                     },
                     "periods": {
                         "p1": {
-                            "home": 1,
-                            "away": 1
+                            "home": 0,
+                            "away": 2
                         },
                         "p2": {
-                            "home": 0,
-                            "away": 0
+                            "home": 1,
+                            "away": 1
                         },
                         "ft": {
                             "home": 1,
-                            "away": 1
+                            "away": 3
                         }
                     },
-                    "datestart": "2019-01-30 20:00:00",
-                    "dateend": "2019-01-30 21:53:27",
-                    "timestampstart": 1548878400,
-                    "timestampend": 1548885207,
-                    "injurytime": null,
-                    "time": 90,
+                    "datestart": "2021-01-05 14:00:00",
+                    "dateend": "2021-01-05 15:53:07",
+                    "timestampstart": "1609855200",
+                    "timestampend": "1609861987",
+                    "injurytime": "",
+                    "time": "90",
                     "status_str": "result",
-                    "status": 2,
+                    "status": "2",
                     "gamestate_str": "Ended",
-                    "gamestate": 6,
-                    "periodlength": "45",
-                    "numberofperiods": "2",
-                    "attendance": "53092",
-                    "overtimelength": "15",
+                    "gamestate": "6",
+                    "pre_squad": "true",
+                    "verified": "false",
+                    "periodlength": "",
+                    "numberofperiods": "",
+                    "attendance": "",
+                    "overtimelength": "",
                     "competition": {
-                        "cid": 3,
-                        "cname": "Premier League",
-                        "startdate": "2018-08-10 00:00:00",
-                        "enddate": "2019-05-13 23:55:00",
-                        "startdatetimestamp": 1533859200,
-                        "endtdatetimestamp": 1557791700,
-                        "year": "18/19",
-                        "category": "England",
-                        "iocid": "240",
-                        "ioc": "en",
-                        "status": 3,
+                        "cid": "165",
+                        "cname": "Indian Super League",
+                        "startdate": "2020-11-20 00:00:00",
+                        "enddate": "2021-03-23 00:00:00",
+                        "startdatetimestamp": "1605830400",
+                        "endtdatetimestamp": "1616457600",
+                        "year": "20/21",
+                        "category": "India",
+                        "tournament_id": "16",
+                        "category_id": "14",
+                        "ioc": "in",
+                        "status": "3",
                         "status_str": "live",
-                        "logo": "https://rest.entitysport.com/soccer/assets/competition/logo_5c4ab3a4f2025.png"
+                        "logo": ""
                     },
                     "venue": {
-                        "venueid": 27,
-                        "name": "Anfield",
-                        "location": "Liverpool, England",
-                        "founded": "1884",
-                        "capacity": "54074"
-                    }
+                        "venueid": "1350",
+                        "name": "Jawaharlal Nehru Stadium",
+                        "location": "Margao, India",
+                        "founded": "",
+                        "capacity": "20000",
+                        "googlecoords": "15.289208, 73.962480"
+                    },
+                    "lineupavailable": "true",
+                    "projectionavailable": "true",
+                    "eventavailable": "true",
+                    "commentaryavailable": "true"
                 }
             ],
-            "statistics": {
-                "0": {
+            "statistics": [
+                {
                     "name": "Yellow cards",
-                    "home": 1,
-                    "away": 3
-                },
-                "1": {
-                    "name": "Substitutions",
-                    "home": 3,
-                    "away": 3
-                },
-                "2": {
-                    "name": "Ball possession",
-                    "home": 69,
-                    "away": 31
-                },
-                "3": {
-                    "name": "Free kicks",
-                    "home": 9,
-                    "away": 18
-                },
-                "4": {
-                    "name": "Offsides",
-                    "home": 4,
-                    "away": 3
-                },
-                "5": {
-                    "name": "Corner kicks",
-                    "home": 7,
-                    "away": 1
-                },
-                "6": {
-                    "name": "Goal attempts",
-                    "home": 8,
-                    "away": 4
-                },
-                "assist": {
-                    "name": "Assist",
-                    "home": 0,
-                    "away": 1
-                },
-                "goals": {
-                    "name": "Goals",
-                    "home": 1,
-                    "away": 1
-                },
-                "totaltackle": {
-                    "name": "Total Tackle",
-                    "home": 15,
-                    "away": 14
-                },
-                "passingaccuracy": {
-                    "name": "Passing Accuracy (%)",
-                    "home": "87",
-                    "away": "70"
-                },
-                "shotsontarget": {
-                    "name": "Shots On Target",
-                    "home": 3,
-                    "away": 2
-                },
-                "shotsofftarget": {
-                    "name": "Shots Off Target",
-                    "home": 5,
-                    "away": 2
-                },
-                "shotsblocked": {
-                    "name": "Shots Blocked",
                     "home": 2,
-                    "away": 1
+                    "away": 3
                 },
-                "dribbleattempts": {
-                    "name": "Dribble Attempts",
-                    "home": 11,
-                    "away": 10
-                },
-                "dribblesuccess": {
-                    "name": "Dribble Success",
-                    "home": 20,
-                    "away": 13
-                },
-                "bigchancemissed": {
-                    "name": "Big Chance Missed",
+                {
+                    "name": "Yellow/red cards",
                     "home": 0,
                     "away": 1
                 },
-                "penaltywon": {
-                    "name": "Penalty Won",
-                    "home": 0,
-                    "away": 0
+                {
+                    "name": "Substitutions",
+                    "home": 4,
+                    "away": 5
                 },
-                "hitwoodwork": {
-                    "name": "Hit Wood Work",
-                    "home": 0,
-                    "away": 0
-                },
-                "penaltymiss": {
-                    "name": "Penalty Miss",
-                    "home": 0,
-                    "away": 0
-                },
-                "totalclearance": {
-                    "name": "Total Clearance",
-                    "home": 15,
+                {
+                    "name": "Ball possession",
+                    "home": 55,
                     "away": 45
                 },
-                "outfielderblock": {
-                    "name": "Outfielder Block",
+                {
+                    "name": "Free kicks",
+                    "home": 21,
+                    "away": 7
+                },
+                {
+                    "name": "Offsides",
+                    "home": 0,
+                    "away": 2
+                },
+                {
+                    "name": "Corner kicks",
+                    "home": 4,
+                    "away": 4
+                },
+                {
+                    "name": "Shots on target",
+                    "home": 3,
+                    "away": 5
+                },
+                {
+                    "name": "Shots off target",
+                    "home": 4,
+                    "away": 1
+                },
+                {
+                    "name": "Saves",
+                    "home": 2,
+                    "away": 2
+                },
+                {
+                    "name": "Fouls",
+                    "home": 7,
+                    "away": 19
+                },
+                {
+                    "name": "Penalties",
                     "home": 1,
-                    "away": 2
-                },
-                "interceptionwon": {
-                    "name": "Interception Won",
-                    "home": 13,
-                    "away": 9
-                },
-                "challengelost": {
-                    "name": "Challenge Lost",
-                    "home": 15,
-                    "away": 9
-                },
-                "owngoals": {
-                    "name": "Own Goals",
-                    "home": 0,
                     "away": 0
                 },
-                "penaltycommitted": {
-                    "name": "Penalty Committed",
-                    "home": 0,
-                    "away": 0
-                },
-                "errorledtoshot": {
-                    "name": "Error Led To Shot",
-                    "home": 0,
-                    "away": 0
-                },
-                "lastmantackle": {
-                    "name": "Last man tackle",
-                    "home": 0,
-                    "away": 0
-                },
-                "clearanceoffline": {
-                    "name": "Clearance off line",
-                    "home": 0,
-                    "away": 0
-                },
-                "accuratepass": {
-                    "name": "Accurate Pass",
-                    "home": 662,
-                    "away": 144
-                },
-                "totalpass": {
-                    "name": "Total Pass",
-                    "home": 761,
-                    "away": 205
-                },
-                "longballsacc": {
-                    "name": "Long balls Accuracy",
-                    "home": 25,
-                    "away": 10
-                },
-                "totalLongballs": {
-                    "name": "total Long balls",
-                    "home": 48,
-                    "away": 25
-                },
-                "totalcross": {
-                    "name": "Total Cross",
-                    "home": 23,
-                    "away": 11
-                },
-                "crossesacc": {
-                    "name": "Crosses Accuracy",
-                    "home": 5,
-                    "away": 2
-                },
-                "bigchancecreated": {
-                    "name": "Big Chance Created",
+                {
+                    "name": "Shots blocked",
                     "home": 0,
                     "away": 1
                 },
-                "errorledtogoal": {
-                    "name": "Error Led To Goal ",
-                    "home": 0,
-                    "away": 0
-                },
-                "dispossessed": {
-                    "name": "Dispossessed",
-                    "home": 10,
-                    "away": 7
-                },
-                "duelstotal": {
-                    "name": "Total Duels ",
-                    "home": 111,
-                    "away": 93
-                },
-                "duelsown": {
-                    "name": "Duels Won",
-                    "home": 47,
-                    "away": 53
-                },
-                "wasfouled": {
-                    "name": "Was Fouled",
-                    "home": 6,
-                    "away": 10
-                },
-                "fouls": {
-                    "name": "Fouls",
-                    "home": 13,
-                    "away": 6
-                },
-                "runsoutsucess": {
-                    "name": "Runs out Sucess",
-                    "home": 0,
-                    "away": 0
-                },
-                "totalrunsOut": {
-                    "name": "Total Runs Out",
-                    "home": 0,
-                    "away": 0
-                },
-                "goodhighclaim": {
-                    "name": "Good High Claim",
-                    "home": 0,
-                    "away": 0
-                },
-                "punches": {
-                    "name": "Punches",
-                    "home": 0,
-                    "away": 0
-                },
-                "saves": {
-                    "name": "Saves",
-                    "home": 0,
-                    "away": 0
-                },
-                "savesfrominsidebox": {
-                    "name": "Saves from inside box",
-                    "home": 0,
-                    "away": 0
+                {
+                    "name": "Goals",
+                    "home": 1,
+                    "away": 3
                 }
-            },
+            ],
+            "statistics_period1": [
+                {
+                    "name": "Free kicks",
+                    "home": 11,
+                    "away": 3
+                },
+                {
+                    "name": "Offsides",
+                    "home": 0,
+                    "away": 2
+                },
+                {
+                    "name": "Corner kicks",
+                    "home": 1,
+                    "away": 2
+                },
+                {
+                    "name": "Yellow cards",
+                    "home": 0,
+                    "away": 1
+                },
+                {
+                    "name": "Yellow/red cards",
+                    "home": 0,
+                    "away": 0
+                },
+                {
+                    "name": "Red cards",
+                    "home": 0,
+                    "away": 0
+                },
+                {
+                    "name": "Substitutions",
+                    "home": 0,
+                    "away": 0
+                },
+                {
+                    "name": "Ball possession",
+                    "home": 34,
+                    "away": 66
+                }
+            ],
+            "statistics_period2": [
+                {
+                    "name": "Free kicks",
+                    "home": 10,
+                    "away": 4
+                },
+                {
+                    "name": "Offsides",
+                    "home": 0,
+                    "away": 0
+                },
+                {
+                    "name": "Corner kicks",
+                    "home": 3,
+                    "away": 2
+                },
+                {
+                    "name": "Yellow cards",
+                    "home": 2,
+                    "away": 2
+                },
+                {
+                    "name": "Yellow/red cards",
+                    "home": 0,
+                    "away": 1
+                },
+                {
+                    "name": "Red cards",
+                    "home": 0,
+                    "away": 0
+                },
+                {
+                    "name": "Substitutions",
+                    "home": 4,
+                    "away": 5
+                },
+                {
+                    "name": "Ball possession",
+                    "home": 55,
+                    "away": 45
+                }
+            ],
+            "statistics_extratime": [],
             "player_statistics": {
-                "home": [
+                "away": [
                     {
-                        "pid": 1081,
-                        "pname": "Adam Lallana",
-                        "teamtype": "home",
-                        "minutesplayed": 24,
+                        "pid": 5980,
+                        "pname": "Adam Le Fondre",
+                        "role": "Forward",
+                        "teamtype": "away",
+                        "minutesplayed": 66,
                         "assist": 0,
                         "goals": 0,
                         "shotsontarget": 0,
                         "shotsofftarget": 0,
-                        "shotsblocked": 0,
+                        "shotsblocked": 2,
                         "dribbleattempts": 0,
-                        "dribblesuccess": 1,
+                        "dribblesuccess": 0,
                         "bigchancemissed": 0,
                         "penaltywon": 0,
                         "hitwoodwork": 0,
                         "penaltymiss": 0,
                         "totalclearance": 0,
                         "outfielderblock": 0,
-                        "interceptionwon": 1,
-                        "totaltackle": 1,
-                        "challengelost": 1,
+                        "interceptionwon": 0,
+                        "tacklecommitted": 0,
+                        "tacklesuccess": 0,
+                        "challengelost": 0,
                         "owngoals": 0,
                         "penaltycommitted": 0,
                         "errorledtoshot": 0,
                         "lastmantackle": 0,
                         "clearanceoffline": 0,
-                        "passingaccuracy": 85,
-                        "accuratepass": 12,
-                        "totalpass": 14,
+                        "passingaccuracy": 78.26,
+                        "accuratepass": 18,
+                        "totalpass": 23,
                         "longballsacc": 0,
-                        "totalLongballs": 0,
-                        "totalcross": 3,
-                        "crossesacc": 2,
+                        "totallongballs": 0,
+                        "totalcross": 0,
+                        "crossesacc": 0,
                         "bigchancecreated": 0,
                         "errorledtogoal": 0,
                         "dispossessed": 1,
-                        "duelstotal": 4,
-                        "duelsown": 1,
+                        "duelstotal": 1,
+                        "duelswon": 1,
                         "wasfouled": 0,
                         "fouls": 0,
                         "runsoutsucess": 0,
@@ -14449,14 +14218,1561 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/304/statsv2?token=[ACCE
                         "punches": 0,
                         "saves": 0,
                         "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
                         "yellowcard": 0,
-                        "redcard": 0
+                        "redcard": 0,
+                        "goalconceded": 0,
+                        "cleansheet": 1
                     },
                     {
-                        "pid": 1082,
-                        "pname": "Daniel Sturridge",
+                        "pid": 8698,
+                        "pname": "Th Bipin Singh",
+                        "role": "Midfielder",
+                        "teamtype": "away",
+                        "minutesplayed": 88,
+                        "assist": 0,
+                        "goals": 1,
+                        "shotsontarget": 1,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 0,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 0,
+                        "outfielderblock": 0,
+                        "interceptionwon": 1,
+                        "tacklecommitted": 2,
+                        "tacklesuccess": 2,
+                        "challengelost": 1,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 85,
+                        "accuratepass": 17,
+                        "totalpass": 20,
+                        "longballsacc": 0,
+                        "totallongballs": 2,
+                        "totalcross": 3,
+                        "crossesacc": 2,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 3,
+                        "duelswon": 3,
+                        "wasfouled": 1,
+                        "fouls": 1,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 1,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 1,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 8765,
+                        "pname": "Hugo Boumous",
+                        "role": "Midfielder",
+                        "teamtype": "away",
+                        "minutesplayed": 75,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 3,
+                        "dribblesuccess": 2,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 0,
+                        "outfielderblock": 0,
+                        "interceptionwon": 1,
+                        "tacklecommitted": 1,
+                        "tacklesuccess": 1,
+                        "challengelost": 0,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 92.5,
+                        "accuratepass": 37,
+                        "totalpass": 40,
+                        "longballsacc": 1,
+                        "totallongballs": 1,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 4,
+                        "duelswon": 4,
+                        "wasfouled": 1,
+                        "fouls": 0,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 0,
+                        "cleansheet": 1
+                    },
+                    {
+                        "pid": 8767,
+                        "pname": "Mandar Rao Desai",
+                        "role": "Defender",
+                        "teamtype": "away",
+                        "minutesplayed": 75,
+                        "assist": 1,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 0,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 0,
+                        "outfielderblock": 0,
+                        "interceptionwon": 0,
+                        "tacklecommitted": 1,
+                        "tacklesuccess": 1,
+                        "challengelost": 1,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 90.48,
+                        "accuratepass": 38,
+                        "totalpass": 42,
+                        "longballsacc": 2,
+                        "totallongballs": 4,
+                        "totalcross": 3,
+                        "crossesacc": 1,
+                        "bigchancecreated": 1,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 2,
+                        "duelswon": 2,
+                        "wasfouled": 1,
+                        "fouls": 1,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 2,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 0,
+                        "cleansheet": 1
+                    },
+                    {
+                        "pid": 8769,
+                        "pname": "Mourtada Fall",
+                        "role": "Defender",
+                        "teamtype": "away",
+                        "minutesplayed": 95,
+                        "assist": 0,
+                        "goals": 1,
+                        "shotsontarget": 1,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 0,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 9,
+                        "outfielderblock": 2,
+                        "interceptionwon": 1,
+                        "tacklecommitted": 2,
+                        "tacklesuccess": 2,
+                        "challengelost": 0,
+                        "owngoals": 0,
+                        "penaltycommitted": 1,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 92.73,
+                        "accuratepass": 51,
+                        "totalpass": 55,
+                        "longballsacc": 7,
+                        "totallongballs": 10,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 1,
+                        "duelstotal": 8,
+                        "duelswon": 8,
+                        "wasfouled": 0,
+                        "fouls": 1,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 1,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 8770,
+                        "pname": "Ahmed Jahouh",
+                        "role": "Midfielder",
+                        "teamtype": "away",
+                        "minutesplayed": 86,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 3,
+                        "dribblesuccess": 3,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 5,
+                        "outfielderblock": 0,
+                        "interceptionwon": 1,
+                        "tacklecommitted": 1,
+                        "tacklesuccess": 1,
+                        "challengelost": 1,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 82.76,
+                        "accuratepass": 48,
+                        "totalpass": 58,
+                        "longballsacc": 10,
+                        "totallongballs": 18,
+                        "totalcross": 1,
+                        "crossesacc": 1,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 1,
+                        "duelstotal": 5,
+                        "duelswon": 5,
+                        "wasfouled": 0,
+                        "fouls": 10,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 1,
+                        "yellowcard": 1,
+                        "redcard": 0,
+                        "goalconceded": 1,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 8774,
+                        "pname": "Amey Ganesh Ranawade",
+                        "role": "Defender",
+                        "teamtype": "away",
+                        "minutesplayed": 95,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 1,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 4,
+                        "outfielderblock": 0,
+                        "interceptionwon": 2,
+                        "tacklecommitted": 0,
+                        "tacklesuccess": 0,
+                        "challengelost": 0,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 80,
+                        "accuratepass": 12,
+                        "totalpass": 15,
+                        "longballsacc": 0,
+                        "totallongballs": 1,
+                        "totalcross": 1,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 1,
+                        "duelstotal": 3,
+                        "duelswon": 3,
+                        "wasfouled": 2,
+                        "fouls": 1,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 1,
+                        "redcard": 0,
+                        "goalconceded": 1,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 8855,
+                        "pname": "Amrinder Singh",
+                        "role": "Goalkeeper",
+                        "teamtype": "away",
+                        "minutesplayed": 95,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 0,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 0,
+                        "outfielderblock": 0,
+                        "interceptionwon": 0,
+                        "tacklecommitted": 0,
+                        "tacklesuccess": 0,
+                        "challengelost": 0,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 70,
+                        "accuratepass": 14,
+                        "totalpass": 20,
+                        "longballsacc": 3,
+                        "totallongballs": 9,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 1,
+                        "duelswon": 1,
+                        "wasfouled": 1,
+                        "fouls": 0,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 2,
+                        "savesfrominsidebox": 1,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 1,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 8888,
+                        "pname": "Rowllin Borges",
+                        "role": "Midfielder",
+                        "teamtype": "away",
+                        "minutesplayed": 95,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 1,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 1,
+                        "dribblesuccess": 1,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 0,
+                        "outfielderblock": 0,
+                        "interceptionwon": 4,
+                        "tacklecommitted": 1,
+                        "tacklesuccess": 1,
+                        "challengelost": 2,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 86.44,
+                        "accuratepass": 51,
+                        "totalpass": 59,
+                        "longballsacc": 1,
+                        "totallongballs": 5,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 2,
+                        "duelswon": 2,
+                        "wasfouled": 0,
+                        "fouls": 1,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 1,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 19180,
+                        "pname": "Cy Goddard",
+                        "role": "Midfielder",
+                        "teamtype": "away",
+                        "minutesplayed": 20,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 1,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 0,
+                        "outfielderblock": 0,
+                        "interceptionwon": 0,
+                        "tacklecommitted": 0,
+                        "tacklesuccess": 0,
+                        "challengelost": 0,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 60,
+                        "accuratepass": 3,
+                        "totalpass": 5,
+                        "longballsacc": 1,
+                        "totallongballs": 1,
+                        "totalcross": 1,
+                        "crossesacc": 1,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 0,
+                        "duelswon": 0,
+                        "wasfouled": 0,
+                        "fouls": 0,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 2,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 1,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 25180,
+                        "pname": "Hernan",
+                        "role": "Midfielder",
+                        "teamtype": "away",
+                        "minutesplayed": 95,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 1,
+                        "dribbleattempts": 2,
+                        "dribblesuccess": 1,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 2,
+                        "outfielderblock": 0,
+                        "interceptionwon": 2,
+                        "tacklecommitted": 1,
+                        "tacklesuccess": 1,
+                        "challengelost": 0,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 90.28,
+                        "accuratepass": 65,
+                        "totalpass": 72,
+                        "longballsacc": 3,
+                        "totallongballs": 5,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 1,
+                        "duelstotal": 5,
+                        "duelswon": 5,
+                        "wasfouled": 0,
+                        "fouls": 1,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 1,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 28191,
+                        "pname": "Bartholomew Ogbeche",
+                        "role": "Forward",
+                        "teamtype": "away",
+                        "minutesplayed": 29,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 1,
+                        "shotsofftarget": 1,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 2,
+                        "dribblesuccess": 2,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 1,
+                        "penaltymiss": 0,
+                        "totalclearance": 0,
+                        "outfielderblock": 0,
+                        "interceptionwon": 0,
+                        "tacklecommitted": 0,
+                        "tacklesuccess": 0,
+                        "challengelost": 0,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 85.71,
+                        "accuratepass": 6,
+                        "totalpass": 7,
+                        "longballsacc": 0,
+                        "totallongballs": 0,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 4,
+                        "duelswon": 4,
+                        "wasfouled": 0,
+                        "fouls": 2,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 2,
+                        "yellowcard": 1,
+                        "redcard": 0,
+                        "goalconceded": 1,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 28202,
+                        "pname": "Raynier Fernandes",
+                        "role": "Midfielder",
+                        "teamtype": "away",
+                        "minutesplayed": 66,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 3,
+                        "dribblesuccess": 2,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 0,
+                        "outfielderblock": 0,
+                        "interceptionwon": 0,
+                        "tacklecommitted": 2,
+                        "tacklesuccess": 2,
+                        "challengelost": 2,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 80.77,
+                        "accuratepass": 21,
+                        "totalpass": 26,
+                        "longballsacc": 1,
+                        "totallongballs": 3,
+                        "totalcross": 1,
+                        "crossesacc": 1,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 5,
+                        "duelswon": 5,
+                        "wasfouled": 1,
+                        "fouls": 1,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 0,
+                        "cleansheet": 1
+                    },
+                    {
+                        "pid": 28203,
+                        "pname": "Vignesh Dakshinamurthy",
+                        "role": "Defender",
+                        "teamtype": "away",
+                        "minutesplayed": 29,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 0,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 1,
+                        "outfielderblock": 0,
+                        "interceptionwon": 0,
+                        "tacklecommitted": 0,
+                        "tacklesuccess": 0,
+                        "challengelost": 0,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 80,
+                        "accuratepass": 4,
+                        "totalpass": 5,
+                        "longballsacc": 0,
+                        "totallongballs": 0,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 0,
+                        "duelswon": 0,
+                        "wasfouled": 0,
+                        "fouls": 0,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 1,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 64064,
+                        "pname": "Mehtab Singh",
+                        "role": "Defender",
+                        "teamtype": "away",
+                        "minutesplayed": 7,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 0,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 2,
+                        "outfielderblock": 0,
+                        "interceptionwon": 1,
+                        "tacklecommitted": 0,
+                        "tacklesuccess": 0,
+                        "challengelost": 0,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 0,
+                        "accuratepass": 0,
+                        "totalpass": 0,
+                        "longballsacc": 0,
+                        "totallongballs": 0,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 0,
+                        "duelswon": 0,
+                        "wasfouled": 0,
+                        "fouls": 0,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 0,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 65365,
+                        "pname": "Vikram Pratap Singh",
+                        "role": "Forward",
+                        "teamtype": "away",
+                        "minutesplayed": 20,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 1,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 1,
+                        "dribbleattempts": 0,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 1,
+                        "outfielderblock": 0,
+                        "interceptionwon": 0,
+                        "tacklecommitted": 0,
+                        "tacklesuccess": 0,
+                        "challengelost": 1,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 0,
+                        "accuratepass": 0,
+                        "totalpass": 0,
+                        "longballsacc": 0,
+                        "totallongballs": 0,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 1,
+                        "duelswon": 1,
+                        "wasfouled": 1,
+                        "fouls": 0,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 1,
+                        "cleansheet": 0
+                    }
+                ],
+                "home": [
+                    {
+                        "pid": 8636,
+                        "pname": "Dimas Delgado",
+                        "role": "Midfielder",
                         "teamtype": "home",
-                        "minutesplayed": 8,
+                        "minutesplayed": 95,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 2,
+                        "dribblesuccess": 1,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 2,
+                        "outfielderblock": 0,
+                        "interceptionwon": 2,
+                        "tacklecommitted": 0,
+                        "tacklesuccess": 0,
+                        "challengelost": 2,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 79.69,
+                        "accuratepass": 51,
+                        "totalpass": 64,
+                        "longballsacc": 9,
+                        "totallongballs": 14,
+                        "totalcross": 4,
+                        "crossesacc": 2,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 6,
+                        "duelswon": 6,
+                        "wasfouled": 5,
+                        "fouls": 0,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 3,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 8637,
+                        "pname": "Juanan",
+                        "role": "Defender",
+                        "teamtype": "home",
+                        "minutesplayed": 95,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 0,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 3,
+                        "outfielderblock": 1,
+                        "interceptionwon": 0,
+                        "tacklecommitted": 0,
+                        "tacklesuccess": 0,
+                        "challengelost": 0,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 77.27,
+                        "accuratepass": 34,
+                        "totalpass": 44,
+                        "longballsacc": 10,
+                        "totallongballs": 12,
+                        "totalcross": 1,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 2,
+                        "duelswon": 2,
+                        "wasfouled": 0,
+                        "fouls": 0,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 3,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 8640,
+                        "pname": "Sunil Chhetri",
+                        "role": "Forward",
+                        "teamtype": "home",
+                        "minutesplayed": 95,
+                        "assist": 0,
+                        "goals": 1,
+                        "shotsontarget": 2,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 1,
+                        "dribbleattempts": 0,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 0,
+                        "outfielderblock": 0,
+                        "interceptionwon": 1,
+                        "tacklecommitted": 0,
+                        "tacklesuccess": 0,
+                        "challengelost": 0,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 74.07,
+                        "accuratepass": 20,
+                        "totalpass": 27,
+                        "longballsacc": 1,
+                        "totallongballs": 1,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 1,
+                        "duelstotal": 7,
+                        "duelswon": 7,
+                        "wasfouled": 2,
+                        "fouls": 1,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 1,
+                        "yellowcard": 1,
+                        "redcard": 0,
+                        "goalconceded": 3,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 8641,
+                        "pname": "Gurpreet Singh Sandhu",
+                        "role": "Goalkeeper",
+                        "teamtype": "home",
+                        "minutesplayed": 95,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 0,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 1,
+                        "outfielderblock": 0,
+                        "interceptionwon": 0,
+                        "tacklecommitted": 0,
+                        "tacklesuccess": 0,
+                        "challengelost": 0,
+                        "owngoals": 1,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 69.57,
+                        "accuratepass": 16,
+                        "totalpass": 23,
+                        "longballsacc": 4,
+                        "totallongballs": 11,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 1,
+                        "dispossessed": 0,
+                        "duelstotal": 0,
+                        "duelswon": 0,
+                        "wasfouled": 0,
+                        "fouls": 0,
+                        "runsoutsucess": 1,
+                        "totalrunsout": 1,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 2,
+                        "savesfrominsidebox": 3,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 3,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 8642,
+                        "pname": "Harmanjot Khabra",
+                        "role": "Defender",
+                        "teamtype": "home",
+                        "minutesplayed": 82,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 1,
+                        "dribblesuccess": 1,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 0,
+                        "outfielderblock": 1,
+                        "interceptionwon": 1,
+                        "tacklecommitted": 0,
+                        "tacklesuccess": 0,
+                        "challengelost": 1,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 85,
+                        "accuratepass": 17,
+                        "totalpass": 20,
+                        "longballsacc": 2,
+                        "totallongballs": 3,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 2,
+                        "duelswon": 2,
+                        "wasfouled": 0,
+                        "fouls": 3,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 1,
+                        "redcard": 0,
+                        "goalconceded": 2,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 8644,
+                        "pname": "Thongkhosiem Haokip",
+                        "role": "Forward",
+                        "teamtype": "home",
+                        "minutesplayed": 13,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 0,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 0,
+                        "outfielderblock": 0,
+                        "interceptionwon": 0,
+                        "tacklecommitted": 1,
+                        "tacklesuccess": 1,
+                        "challengelost": 1,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 0,
+                        "accuratepass": 0,
+                        "totalpass": 0,
+                        "longballsacc": 0,
+                        "totallongballs": 0,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 1,
+                        "duelswon": 1,
+                        "wasfouled": 0,
+                        "fouls": 0,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 1,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 8649,
+                        "pname": "Udanta Singh",
+                        "role": "Midfielder",
+                        "teamtype": "home",
+                        "minutesplayed": 50,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 1,
+                        "dribblesuccess": 1,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 1,
+                        "outfielderblock": 0,
+                        "interceptionwon": 1,
+                        "tacklecommitted": 2,
+                        "tacklesuccess": 2,
+                        "challengelost": 1,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 88.89,
+                        "accuratepass": 8,
+                        "totalpass": 9,
+                        "longballsacc": 1,
+                        "totallongballs": 1,
+                        "totalcross": 1,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 1,
+                        "duelstotal": 5,
+                        "duelswon": 5,
+                        "wasfouled": 1,
+                        "fouls": 0,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 1,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 8653,
+                        "pname": "Rahul Bheke",
+                        "role": "Defender",
+                        "teamtype": "home",
+                        "minutesplayed": 58,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 0,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 0,
+                        "outfielderblock": 0,
+                        "interceptionwon": 3,
+                        "tacklecommitted": 1,
+                        "tacklesuccess": 1,
+                        "challengelost": 0,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 92,
+                        "accuratepass": 23,
+                        "totalpass": 25,
+                        "longballsacc": 2,
+                        "totallongballs": 4,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 2,
+                        "duelswon": 2,
+                        "wasfouled": 0,
+                        "fouls": 0,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 2,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 8918,
+                        "pname": "Pratik Chowdhary",
+                        "role": "Defender",
+                        "teamtype": "home",
+                        "minutesplayed": 45,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 0,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 1,
+                        "outfielderblock": 1,
+                        "interceptionwon": 0,
+                        "tacklecommitted": 0,
+                        "tacklesuccess": 0,
+                        "challengelost": 0,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 83.33,
+                        "accuratepass": 15,
+                        "totalpass": 18,
+                        "longballsacc": 3,
+                        "totallongballs": 6,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 0,
+                        "duelswon": 0,
+                        "wasfouled": 0,
+                        "fouls": 0,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 2,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 20955,
+                        "pname": "Kristian Opseth",
+                        "role": "Forward",
+                        "teamtype": "home",
+                        "minutesplayed": 95,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 2,
+                        "shotsblocked": 1,
+                        "dribbleattempts": 1,
+                        "dribblesuccess": 1,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 0,
+                        "outfielderblock": 0,
+                        "interceptionwon": 1,
+                        "tacklecommitted": 1,
+                        "tacklesuccess": 1,
+                        "challengelost": 3,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 81.25,
+                        "accuratepass": 13,
+                        "totalpass": 16,
+                        "longballsacc": 1,
+                        "totallongballs": 1,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 1,
+                        "duelstotal": 5,
+                        "duelswon": 5,
+                        "wasfouled": 1,
+                        "fouls": 1,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 3,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 26405,
+                        "pname": "Deshorn Brown",
+                        "role": "Forward",
+                        "teamtype": "home",
+                        "minutesplayed": 45,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 1,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 1,
+                        "dribblesuccess": 1,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 0,
+                        "outfielderblock": 0,
+                        "interceptionwon": 1,
+                        "tacklecommitted": 0,
+                        "tacklesuccess": 0,
+                        "challengelost": 1,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 50,
+                        "accuratepass": 3,
+                        "totalpass": 6,
+                        "longballsacc": 0,
+                        "totallongballs": 0,
+                        "totalcross": 1,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 1,
+                        "duelstotal": 2,
+                        "duelswon": 2,
+                        "wasfouled": 1,
+                        "fouls": 1,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 2,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 30692,
+                        "pname": "Cleiton Silva",
+                        "role": "Midfielder",
+                        "teamtype": "home",
+                        "minutesplayed": 95,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 1,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 2,
+                        "dribblesuccess": 2,
+                        "bigchancemissed": 0,
+                        "penaltywon": 1,
+                        "hitwoodwork": 1,
+                        "penaltymiss": 0,
+                        "totalclearance": 1,
+                        "outfielderblock": 0,
+                        "interceptionwon": 2,
+                        "tacklecommitted": 3,
+                        "tacklesuccess": 3,
+                        "challengelost": 2,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 0,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 74.29,
+                        "accuratepass": 26,
+                        "totalpass": 35,
+                        "longballsacc": 2,
+                        "totallongballs": 3,
+                        "totalcross": 1,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 0,
+                        "duelstotal": 11,
+                        "duelswon": 11,
+                        "wasfouled": 4,
+                        "fouls": 0,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 4,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 3,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 47144,
+                        "pname": "Suresh Singh",
+                        "role": "Midfielder",
+                        "teamtype": "home",
+                        "minutesplayed": 95,
+                        "assist": 0,
+                        "goals": 0,
+                        "shotsontarget": 0,
+                        "shotsofftarget": 0,
+                        "shotsblocked": 0,
+                        "dribbleattempts": 0,
+                        "dribblesuccess": 0,
+                        "bigchancemissed": 0,
+                        "penaltywon": 0,
+                        "hitwoodwork": 0,
+                        "penaltymiss": 0,
+                        "totalclearance": 1,
+                        "outfielderblock": 0,
+                        "interceptionwon": 1,
+                        "tacklecommitted": 0,
+                        "tacklesuccess": 0,
+                        "challengelost": 0,
+                        "owngoals": 0,
+                        "penaltycommitted": 0,
+                        "errorledtoshot": 1,
+                        "lastmantackle": 0,
+                        "clearanceoffline": 0,
+                        "passingaccuracy": 87.1,
+                        "accuratepass": 27,
+                        "totalpass": 31,
+                        "longballsacc": 3,
+                        "totallongballs": 4,
+                        "totalcross": 0,
+                        "crossesacc": 0,
+                        "bigchancecreated": 0,
+                        "errorledtogoal": 0,
+                        "dispossessed": 3,
+                        "duelstotal": 2,
+                        "duelswon": 2,
+                        "wasfouled": 2,
+                        "fouls": 1,
+                        "runsoutsucess": 0,
+                        "totalrunsout": 0,
+                        "goodhighclaim": 0,
+                        "punches": 0,
+                        "saves": 0,
+                        "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 1,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "goalconceded": 3,
+                        "cleansheet": 0
+                    },
+                    {
+                        "pid": 64020,
+                        "pname": "Fran Gonzalez",
+                        "role": "Defender",
+                        "teamtype": "home",
+                        "minutesplayed": 37,
                         "assist": 0,
                         "goals": 0,
                         "shotsontarget": 0,
@@ -14469,28 +15785,29 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/304/statsv2?token=[ACCE
                         "hitwoodwork": 0,
                         "penaltymiss": 0,
                         "totalclearance": 0,
-                        "outfielderblock": 0,
+                        "outfielderblock": 1,
                         "interceptionwon": 0,
-                        "totaltackle": 0,
+                        "tacklecommitted": 0,
+                        "tacklesuccess": 0,
                         "challengelost": 0,
                         "owngoals": 0,
                         "penaltycommitted": 0,
                         "errorledtoshot": 0,
                         "lastmantackle": 0,
                         "clearanceoffline": 0,
-                        "passingaccuracy": 75,
-                        "accuratepass": 3,
-                        "totalpass": 4,
-                        "longballsacc": 0,
-                        "totalLongballs": 0,
+                        "passingaccuracy": 93.75,
+                        "accuratepass": 15,
+                        "totalpass": 16,
+                        "longballsacc": 3,
+                        "totallongballs": 3,
                         "totalcross": 0,
                         "crossesacc": 0,
                         "bigchancecreated": 0,
                         "errorledtogoal": 0,
                         "dispossessed": 0,
                         "duelstotal": 1,
-                        "duelsown": 0,
-                        "wasfouled": 0,
+                        "duelswon": 1,
+                        "wasfouled": 1,
                         "fouls": 1,
                         "runsoutsucess": 0,
                         "totalrunsout": 0,
@@ -14498,99 +15815,54 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/304/statsv2?token=[ACCE
                         "punches": 0,
                         "saves": 0,
                         "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
                         "yellowcard": 0,
-                        "redcard": 0
-                    }
-                ],
-                "away": [
+                        "redcard": 0,
+                        "goalconceded": 1,
+                        "cleansheet": 0
+                    },
                     {
-                        "pid": 497,
-                        "pname": "Shinji Okazaki",
-                        "teamtype": "away",
-                        "minutesplayed": 11,
+                        "pid": 64022,
+                        "pname": "Ajith Kumar",
+                        "role": "Defender",
+                        "teamtype": "home",
+                        "minutesplayed": 50,
                         "assist": 0,
                         "goals": 0,
                         "shotsontarget": 0,
                         "shotsofftarget": 0,
                         "shotsblocked": 0,
-                        "dribbleattempts": 0,
-                        "dribblesuccess": 0,
+                        "dribbleattempts": 1,
+                        "dribblesuccess": 1,
                         "bigchancemissed": 0,
                         "penaltywon": 0,
                         "hitwoodwork": 0,
                         "penaltymiss": 0,
                         "totalclearance": 0,
                         "outfielderblock": 0,
-                        "interceptionwon": 0,
-                        "totaltackle": 0,
-                        "challengelost": 0,
-                        "owngoals": 0,
-                        "penaltycommitted": 0,
-                        "errorledtoshot": 0,
-                        "lastmantackle": 0,
-                        "clearanceoffline": 0,
-                        "passingaccuracy": 0,
-                        "accuratepass": 0,
-                        "totalpass": 0,
-                        "longballsacc": 0,
-                        "totalLongballs": 0,
-                        "totalcross": 0,
-                        "crossesacc": 0,
-                        "bigchancecreated": 0,
-                        "errorledtogoal": 0,
-                        "dispossessed": 0,
-                        "duelstotal": 1,
-                        "duelsown": 0,
-                        "wasfouled": 0,
-                        "fouls": 0,
-                        "runsoutsucess": 0,
-                        "totalrunsout": 0,
-                        "goodhighclaim": 0,
-                        "punches": 0,
-                        "saves": 0,
-                        "savesfrominsidebox": 0,
-                        "yellowcard": 0,
-                        "redcard": 0
-                    },
-                    {
-                        "pid": 906,
-                        "pname": "Jonny Evans",
-                        "teamtype": "away",
-                        "minutesplayed": 90,
-                        "assist": 0,
-                        "goals": 0,
-                        "shotsontarget": 0,
-                        "shotsofftarget": 0,
-                        "shotsblocked": 0,
-                        "dribbleattempts": 0,
-                        "dribblesuccess": 0,
-                        "bigchancemissed": 0,
-                        "penaltywon": 0,
-                        "hitwoodwork": 0,
-                        "penaltymiss": 0,
-                        "totalclearance": 6,
-                        "outfielderblock": 0,
                         "interceptionwon": 1,
-                        "totaltackle": 2,
+                        "tacklecommitted": 2,
+                        "tacklesuccess": 2,
                         "challengelost": 0,
                         "owngoals": 0,
                         "penaltycommitted": 0,
                         "errorledtoshot": 0,
                         "lastmantackle": 0,
                         "clearanceoffline": 0,
-                        "passingaccuracy": 78,
-                        "accuratepass": 25,
-                        "totalpass": 32,
-                        "longballsacc": 2,
-                        "totalLongballs": 8,
-                        "totalcross": 0,
-                        "crossesacc": 0,
+                        "passingaccuracy": 80,
+                        "accuratepass": 12,
+                        "totalpass": 15,
+                        "longballsacc": 1,
+                        "totallongballs": 1,
+                        "totalcross": 4,
+                        "crossesacc": 1,
                         "bigchancecreated": 0,
                         "errorledtogoal": 0,
-                        "dispossessed": 0,
+                        "dispossessed": 2,
                         "duelstotal": 4,
-                        "duelsown": 4,
-                        "wasfouled": 0,
+                        "duelswon": 4,
+                        "wasfouled": 1,
                         "fouls": 0,
                         "runsoutsucess": 0,
                         "totalrunsout": 0,
@@ -14598,8 +15870,12 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/304/statsv2?token=[ACCE
                         "punches": 0,
                         "saves": 0,
                         "savesfrominsidebox": 0,
+                        "penaltysave": 0,
+                        "keypass": 0,
                         "yellowcard": 0,
-                        "redcard": 0
+                        "redcard": 0,
+                        "goalconceded": 1,
+                        "cleansheet": 0
                     }
                 ]
             }
@@ -14607,9 +15883,9 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/304/statsv2?token=[ACCE
         "total_items": 1,
         "total_pages": 1
     },
-    "etag": "30ee041879fd7a122a10491aad1ca3ad",
-    "modified": "2019-02-02 16:01:49",
-    "datetime": "2019-02-02 16:01:49",
+    "etag": "bfb5f269c4ead7c2aecefc92c9c85176",
+    "modified": "2021-01-05 16:52:48",
+    "datetime": "2021-01-05 16:52:48",
     "api_version": "1.0"
 }
 
@@ -14731,1044 +16007,939 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/790/fantasy?token=[ACCE
     "response": {
         "items": {
             "match_info": {
-                "mid": 790,
-                "round": {
-                    "type": "table",
-                    "round": "35",
-                    "name": 35
-                },
+                "mid": "45627",
+                "round": "",
                 "result": {
                     "home": "1",
-                    "away": "0",
-                    "winner": "home"
+                    "away": "3",
+                    "winner": "away"
                 },
                 "teams": {
                     "home": {
-                        "tid": 64,
-                        "tname": "Vallecano",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/vallecano.png",
-                        "fullname": "Rayo Vallecano",
-                        "abbr": "RVC"
+                        "tid": "451",
+                        "tname": "Bengaluru",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/451.png",
+                        "fullname": "Bengaluru FC",
+                        "abbr": "BGL"
                     },
                     "away": {
-                        "tid": 70,
-                        "tname": "Real Madrid",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/realmadrid.png",
-                        "fullname": "Real Madrid",
-                        "abbr": "MAD"
+                        "tid": "458",
+                        "tname": "Mumbai City",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/458.png",
+                        "fullname": "Mumbai City FC",
+                        "abbr": "MUM"
                     }
                 },
                 "periods": {
                     "p1": {
-                        "home": 1,
-                        "away": 0
+                        "home": 0,
+                        "away": 2
                     },
                     "p2": {
-                        "home": 0,
-                        "away": 0
+                        "home": 1,
+                        "away": 1
                     },
                     "ft": {
                         "home": 1,
-                        "away": 0
+                        "away": 3
                     }
                 },
-                "datestart": "2019-04-28 18:45:00",
-                "dateend": "2019-04-28 20:40:48",
-                "timestampstart": 1556477100,
-                "timestampend": 1556484048,
-                "injurytime": null,
-                "time": 90,
+                "datestart": "2021-01-05 14:00:00",
+                "dateend": "2021-01-05 15:53:07",
+                "timestampstart": "1609855200",
+                "timestampend": "1609861987",
+                "injurytime": "",
+                "time": "90",
                 "status_str": "result",
-                "status": 2,
+                "status": "2",
                 "gamestate_str": "Ended",
-                "gamestate": 6,
+                "gamestate": "6",
                 "pre_squad": "true",
-                "periodlength": "45",
-                "numberofperiods": "2",
+                "verified": "false",
+                "periodlength": "",
+                "numberofperiods": "",
                 "attendance": "",
-                "overtimelength": "15",
+                "overtimelength": "",
                 "competition": {
-                    "cid": 4,
-                    "cname": "LaLiga",
-                    "startdate": "2018-08-17 00:00:00",
-                    "enddate": "2019-05-20 23:55:00",
-                    "startdatetimestamp": 1534464000,
-                    "endtdatetimestamp": 1558396500,
-                    "year": "18/19",
-                    "category": "Spain",
-                    "iocid": "199",
-                    "ioc": "es",
-                    "status": 3,
+                    "cid": "165",
+                    "cname": "Indian Super League",
+                    "startdate": "2020-11-20 00:00:00",
+                    "enddate": "2021-03-23 00:00:00",
+                    "startdatetimestamp": "1605830400",
+                    "endtdatetimestamp": "1616457600",
+                    "year": "20/21",
+                    "category": "India",
+                    "tournament_id": "16",
+                    "category_id": "14",
+                    "ioc": "in",
+                    "status": "3",
                     "status_str": "live",
-                    "logo": "https://rest.entitysport.com/soccer/assets/competition/logo_5c4ab42ff20b8.png"
+                    "logo": ""
                 },
                 "venue": {
-                    "venueid": 37,
-                    "name": "Estadio de Vallecas",
-                    "location": "Madrid, Spain",
-                    "founded": "1976",
-                    "capacity": "14708"
-                }
+                    "venueid": "1350",
+                    "name": "Jawaharlal Nehru Stadium",
+                    "location": "Margao, India",
+                    "founded": "",
+                    "capacity": "20000",
+                    "googlecoords": "15.289208, 73.962480"
+                },
+                "lineupavailable": "true",
+                "projectionavailable": "true",
+                "eventavailable": "true",
+                "commentaryavailable": "true"
             },
             "teams": {
                 "home": [
                     {
-                        "pid": 13145,
-                        "name": "Mario Suarez",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 1297,
-                        "name": "Gorka Elustondo",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 1831,
-                        "name": "Franco Di Santo",
-                        "nationality": {
-                            "iocid": 10,
-                            "name": "Argentina",
-                            "ioc": "ar"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 1298,
-                        "name": "Javi Guerra",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "fantasy_player_rating": 9
-                    },
-                    {
-                        "pid": 1299,
-                        "name": "Oscar Trejo",
-                        "nationality": {
-                            "iocid": 10,
-                            "name": "Argentina",
-                            "ioc": "ar"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 1300,
-                        "name": "Alberto Garcia",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "G",
-                        "positionname": "Goalkeeper",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 1301,
-                        "name": "Gael Kakuta",
-                        "nationality": {
-                            "iocid": 50,
-                            "name": "DR Congo",
-                            "ioc": "cd"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 1303,
-                        "name": "Tito",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 5814,
-                        "name": "Giannelli Imbula",
-                        "nationality": {
-                            "iocid": 73,
-                            "name": "France",
-                            "ioc": "fr"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 1304,
-                        "name": "Abdoulaye Ba",
-                        "nationality": {
-                            "iocid": 188,
-                            "name": "Senegal",
-                            "ioc": "sn"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 5815,
-                        "name": "Stole Dimitrievski",
-                        "nationality": {
-                            "iocid": 126,
-                            "name": "FYR Macedonia",
-                            "ioc": "mk"
-                        },
-                        "positiontype": "G",
-                        "positionname": "Goalkeeper",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 1305,
-                        "name": "Jordi Amat",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 1538,
-                        "name": "Bebe",
-                        "nationality": {
-                            "iocid": 172,
-                            "name": "Portugal",
-                            "ioc": "pt"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 1306,
-                        "name": "Raul De Tomas",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "fantasy_player_rating": 9
-                    },
-                    {
-                        "pid": 598,
-                        "name": "Luis Advincula",
-                        "nationality": {
-                            "iocid": 168,
-                            "name": "Peru",
-                            "ioc": "pe"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 1308,
-                        "name": "Emiliano Velazquez",
-                        "nationality": {
-                            "iocid": 228,
-                            "name": "Uruguay",
-                            "ioc": "uy"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 1309,
-                        "name": "Jose Pozo",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 1543,
-                        "name": "Alejandro Galvez",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 1310,
-                        "name": "Alex Moreno",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 4580,
-                        "name": "Uche",
-                        "nationality": {
-                            "iocid": 156,
-                            "name": "Nigeria",
-                            "ioc": "ng"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 1311,
-                        "name": "Alvaro Medran",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 1312,
-                        "name": "Alvaro Garcia",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 1313,
-                        "name": "Adri Embarba",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 1314,
-                        "name": "Jose Leon",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 10.5
-                    },
-                    {
-                        "pid": 1315,
-                        "name": "Joni Montiel",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 1316,
-                        "name": "Sergio Akieme Rodriguez",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 1317,
-                        "name": "Santi Comesana",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 25416,
-                        "name": "Alejandro Catena",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 1318,
-                        "name": "Miguel Angel Morro",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "G",
-                        "positionname": "Goalkeeper",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 1319,
-                        "name": "Sergio Moreno",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 31141,
-                        "name": "Luis Meseguer",
-                        "nationality": {
-                            "iocid": 65,
-                            "name": "Equatorial Guinea",
-                            "ioc": "gq"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 31143,
-                        "name": "Manuel Navarro",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 28896,
-                        "name": "Angel Algobia",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 28897,
-                        "name": "Martin Pascual",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 8.5
-                    }
-                ],
-                "away": [
-                    {
-                        "pid": 1447,
-                        "name": "Karim Benzema",
-                        "nationality": {
-                            "iocid": 73,
-                            "name": "France",
-                            "ioc": "fr"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "fantasy_player_rating": 9.5
-                    },
-                    {
-                        "pid": 91,
-                        "name": "Sergio Ramos",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 9.5
-                    },
-                    {
-                        "pid": 1448,
-                        "name": "Gareth Bale",
-                        "nationality": {
-                            "iocid": 243,
-                            "name": "Wales",
-                            "ioc": "w"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "fantasy_player_rating": 9.5
-                    },
-                    {
-                        "pid": 248,
-                        "name": "Luka Modric",
-                        "nationality": {
-                            "iocid": 54,
-                            "name": "Croatia",
-                            "ioc": "hr"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 410,
-                        "name": "Marcelo",
-                        "nationality": {
-                            "iocid": 30,
-                            "name": "Brazil",
-                            "ioc": "br"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 9
-                    },
-                    {
-                        "pid": 207,
-                        "name": "Toni Kroos",
-                        "nationality": {
-                            "iocid": 80,
-                            "name": "Germany",
-                            "ioc": "de"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 435,
-                        "name": "Keylor Navas",
-                        "nationality": {
-                            "iocid": 52,
-                            "name": "Costa Rica",
-                            "ioc": "cr"
-                        },
-                        "positiontype": "G",
-                        "positionname": "Goalkeeper",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 102,
-                        "name": "Nacho",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 282,
-                        "name": "Thibaut Courtois",
-                        "nationality": {
-                            "iocid": 21,
-                            "name": "Belgium",
-                            "ioc": "be"
-                        },
-                        "positiontype": "G",
-                        "positionname": "Goalkeeper",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 105,
-                        "name": "Isco",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 421,
-                        "name": "Casemiro",
-                        "nationality": {
-                            "iocid": 30,
-                            "name": "Brazil",
-                            "ioc": "br"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 35,
-                        "name": "Raphael Varane",
-                        "nationality": {
-                            "iocid": 73,
-                            "name": "France",
-                            "ioc": "fr"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 107,
-                        "name": "Dani Carvajal",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 4539,
-                        "name": "Mariano Diaz",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "fantasy_player_rating": 9
-                    },
-                    {
-                        "pid": 109,
-                        "name": "Lucas Vazquez",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 1451,
-                        "name": "Marcos Llorente",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 110,
-                        "name": "Alvaro Odriozola",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 1452,
-                        "name": "Jesus Vallejo",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 111,
-                        "name": "Marco Asensio",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 1453,
-                        "name": "Dani Ceballos",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 29610,
-                        "name": "Cristo Gonzalez",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 1455,
-                        "name": "Luca Zidane",
-                        "nationality": {
-                            "iocid": 73,
-                            "name": "France",
-                            "ioc": "fr"
-                        },
-                        "positiontype": "G",
-                        "positionname": "Goalkeeper",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 1456,
-                        "name": "Javi Sanchez",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 1457,
-                        "name": "Sergio Reguilon",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 10
-                    },
-                    {
-                        "pid": 29664,
-                        "name": "Jaume Grau",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 848,
-                        "name": "Brahim Diaz",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 1459,
-                        "name": "Federico Valverde",
-                        "nationality": {
-                            "iocid": 228,
-                            "name": "Uruguay",
-                            "ioc": "uy"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "fantasy_player_rating": 8
-                    },
-                    {
-                        "pid": 31147,
-                        "name": "Adrian De La Fuente",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 31148,
-                        "name": "Franchu",
-                        "nationality": {
-                            "iocid": 10,
-                            "name": "Argentina",
-                            "ioc": "ar"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 1460,
-                        "name": "Vinicius Junior",
-                        "nationality": {
-                            "iocid": 30,
-                            "name": "Brazil",
-                            "ioc": "br"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "fantasy_player_rating": 8.5
-                    },
-                    {
-                        "pid": 25961,
-                        "name": "Mohamed Mizzian Salmi",
-                        "nationality": {
-                            "iocid": 0,
-                            "name": "",
+                        "pid": "8633",
+                        "name": "Erik Paartalu",
+                        "nationality": {
+                            "iocid": "13",
+                            "name": "Australia",
                             "ioc": ""
                         },
                         "positiontype": "M",
                         "positionname": "Midfielder",
-                        "fantasy_player_rating": 8.5
+                        "fantasy_player_rating": "9"
+                    },
+                    {
+                        "pid": "8636",
+                        "name": "Dimas Delgado",
+                        "nationality": {
+                            "iocid": "199",
+                            "name": "Spain",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "8637",
+                        "name": "Juanan",
+                        "nationality": {
+                            "iocid": "199",
+                            "name": "Spain",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "8640",
+                        "name": "Sunil Chhetri",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": "10"
+                    },
+                    {
+                        "pid": "8641",
+                        "name": "Gurpreet Singh Sandhu",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "8642",
+                        "name": "Harmanjot Khabra",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "8644",
+                        "name": "Thongkhosiem Haokip",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "8648",
+                        "name": "Lalthuammawia Ralte",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "8649",
+                        "name": "Udanta Singh",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "9"
+                    },
+                    {
+                        "pid": "8653",
+                        "name": "Rahul Bheke",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "8670",
+                        "name": "Leon Agustine Asokan",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "8801",
+                        "name": "Muhammed Ashique Kuruniyan",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "9"
+                    },
+                    {
+                        "pid": "8918",
+                        "name": "Pratik Chowdhary",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "20955",
+                        "name": "Kristian Opseth",
+                        "nationality": {
+                            "iocid": "160",
+                            "name": "Norway",
+                            "ioc": ""
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": "9.5"
+                    },
+                    {
+                        "pid": "26405",
+                        "name": "Deshorn Brown",
+                        "nationality": {
+                            "iocid": "106",
+                            "name": "Jamaica",
+                            "ioc": ""
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": "9"
+                    },
+                    {
+                        "pid": "29799",
+                        "name": "Ajay Chhetri",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "29800",
+                        "name": "Edmund Lalrindika",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "30692",
+                        "name": "Cleiton Silva",
+                        "nationality": {
+                            "iocid": "30",
+                            "name": "Brazil",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "9.5"
+                    },
+                    {
+                        "pid": "31049",
+                        "name": "Parag Satish Shrivas",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "47144",
+                        "name": "Suresh Singh",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "47148",
+                        "name": "Lara Sharma",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64020",
+                        "name": "Fran Gonzalez",
+                        "nationality": {
+                            "iocid": "199",
+                            "name": "Spain",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "64021",
+                        "name": "Namgyal Bhutia",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64022",
+                        "name": "Ajith Kumar",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64023",
+                        "name": "Joe Zoherliana",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64024",
+                        "name": "Wungngayam Muirang",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64025",
+                        "name": "Naorem Roshan Singh",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64026",
+                        "name": "Thoi Singh",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "64027",
+                        "name": "Dipesh Chauhan",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "64028",
+                        "name": "Biswa Darjee",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64029",
+                        "name": "Amay Morajkar",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64030",
+                        "name": "Emanuel Lalchhanchhuaha",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "8"
+                    }
+                ],
+                "away": [
+                    {
+                        "pid": "5980",
+                        "name": "Adam Le Fondre",
+                        "nationality": {
+                            "iocid": "240",
+                            "name": "England",
+                            "ioc": ""
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": "9.5"
+                    },
+                    {
+                        "pid": "8657",
+                        "name": "Ningthoujam Bidyananda Singh",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "8698",
+                        "name": "Th Bipin Singh",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "8765",
+                        "name": "Hugo Boumous",
+                        "nationality": {
+                            "iocid": "73",
+                            "name": "France",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "10.5"
+                    },
+                    {
+                        "pid": "8767",
+                        "name": "Mandar Rao Desai",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "9"
+                    },
+                    {
+                        "pid": "8769",
+                        "name": "Mourtada Fall",
+                        "nationality": {
+                            "iocid": "188",
+                            "name": "Senegal",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "9"
+                    },
+                    {
+                        "pid": "8770",
+                        "name": "Ahmed Jahouh",
+                        "nationality": {
+                            "iocid": "144",
+                            "name": "Morocco",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "9"
+                    },
+                    {
+                        "pid": "8774",
+                        "name": "Amey Ganesh Ranawade",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "8855",
+                        "name": "Amrinder Singh",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "8868",
+                        "name": "Pranjal Bhumij",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "8888",
+                        "name": "Rowllin Borges",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "9"
+                    },
+                    {
+                        "pid": "8919",
+                        "name": "Farukh Choudhary",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "19180",
+                        "name": "Cy Goddard",
+                        "nationality": {
+                            "iocid": "105",
+                            "name": "Italy",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "25180",
+                        "name": "Hernan",
+                        "nationality": {
+                            "iocid": "199",
+                            "name": "Spain",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "9"
+                    },
+                    {
+                        "pid": "28141",
+                        "name": "Mohammad Rakip",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "28174",
+                        "name": "Tondonba Singh",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "28191",
+                        "name": "Bartholomew Ogbeche",
+                        "nationality": {
+                            "iocid": "156",
+                            "name": "Nigeria",
+                            "ioc": ""
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": "10"
+                    },
+                    {
+                        "pid": "28202",
+                        "name": "Raynier Fernandes",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "28203",
+                        "name": "Vignesh Dakshinamurthy",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "28224",
+                        "name": "Sarthak Golui",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "47156",
+                        "name": "Sourav Das",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "47158",
+                        "name": "Valpuia",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "47540",
+                        "name": "Mohammed Asif",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64064",
+                        "name": "Mehtab Singh",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64065",
+                        "name": "P C Rohlupuia",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "65364",
+                        "name": "Phurba Tempa Lachenpa",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "fantasy_player_rating": "7.5"
+                    },
+                    {
+                        "pid": "65365",
+                        "name": "Vikram Pratap Singh",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "65366",
+                        "name": "Vikram Lahkbir Singh",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "fantasy_player_rating": "7.5"
+                    },
+                    {
+                        "pid": "65367",
+                        "name": "Nishit Shetty",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "fantasy_player_rating": "7.5"
                     }
                 ]
             },
             "fantasy_points": {
                 "home": [
                     {
-                        "pid": 1300,
-                        "pname": "Alberto Garcia",
+                        "pid": 8641,
+                        "pname": "Gurpreet Singh Sandhu",
                         "role": "Goalkeeper",
-                        "points": 10,
-                        "minutesplayed": 2,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 1,
-                        "shotsontarget": 0,
-                        "cleansheet": 5,
-                        "shotssaved": 2,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 0,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 1303,
-                        "pname": "Tito",
-                        "role": "Defender",
-                        "points": 8,
-                        "minutesplayed": 2,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 1,
-                        "shotsontarget": 0,
-                        "cleansheet": 5,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 0,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 1543,
-                        "pname": "Alejandro Galvez",
-                        "role": "Defender",
-                        "points": 8,
-                        "minutesplayed": 2,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 1,
-                        "shotsontarget": 0,
-                        "cleansheet": 5,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 0,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 1304,
-                        "pname": "Abdoulaye Ba",
-                        "role": "Defender",
-                        "points": 8,
-                        "minutesplayed": 2,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 1,
-                        "shotsontarget": 0,
-                        "cleansheet": 5,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 0,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 1310,
-                        "pname": "Alex Moreno",
-                        "role": "Defender",
-                        "points": 8,
-                        "minutesplayed": 2,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 1,
-                        "shotsontarget": 0,
-                        "cleansheet": 5,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 0,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 13145,
-                        "pname": "Mario Suarez",
-                        "role": "Midfielder",
-                        "points": 4.5,
-                        "minutesplayed": 2,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 1.5,
-                        "shotsontarget": 0,
-                        "cleansheet": 1,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 0,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 4580,
-                        "pname": "Uche",
-                        "role": "Midfielder",
-                        "points": 4.5,
-                        "minutesplayed": 2,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 1.5,
-                        "shotsontarget": 0,
-                        "cleansheet": 1,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 0,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 1538,
-                        "pname": "Bebe",
-                        "role": "Midfielder",
-                        "points": 3.5,
+                        "points": -0.5,
                         "minutesplayed": 2,
                         "goalscored": 0,
                         "assist": 0,
                         "passes": 0.5,
                         "shotsontarget": 0,
-                        "cleansheet": 1,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": -2,
+                        "goalsconceded": -1,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 8642,
+                        "pname": "Harmanjot Khabra",
+                        "role": "Defender",
+                        "points": 0.5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": -1,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": -1,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 8918,
+                        "pname": "Pratik Chowdhary",
+                        "role": "Defender",
+                        "points": 0.5,
+                        "minutesplayed": 1,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
                         "shotssaved": 0,
                         "penaltysaved": 0,
                         "tacklesuccessful": 0,
                         "yellowcard": 0,
                         "redcard": 0,
                         "owngoal": 0,
-                        "goalsconceded": 0,
+                        "goalsconceded": -1,
                         "penaltymissed": 0
                     },
                     {
-                        "pid": 1309,
-                        "pname": "Jose Pozo",
-                        "role": "Midfielder",
-                        "points": 5.5,
+                        "pid": 8637,
+                        "pname": "Juanan",
+                        "role": "Defender",
+                        "points": 2.5,
                         "minutesplayed": 2,
                         "goalscored": 0,
                         "assist": 0,
                         "passes": 1.5,
-                        "shotsontarget": 1,
-                        "cleansheet": 1,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": -1,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 8653,
+                        "pname": "Rahul Bheke",
+                        "role": "Defender",
+                        "points": 2,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": -1,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 47144,
+                        "pname": "Suresh Singh",
+                        "role": "Midfielder",
+                        "points": 3,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
                         "shotssaved": 0,
                         "penaltysaved": 0,
                         "tacklesuccessful": 0,
@@ -15779,296 +16950,94 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/790/fantasy?token=[ACCE
                         "penaltymissed": 0
                     },
                     {
-                        "pid": 1313,
-                        "pname": "Adri Embarba",
+                        "pid": 8636,
+                        "pname": "Dimas Delgado",
+                        "role": "Midfielder",
+                        "points": 4.5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 2.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 26405,
+                        "pname": "Deshorn Brown",
                         "role": "Forward",
-                        "points": 12.5,
+                        "points": 1,
+                        "minutesplayed": 1,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 30692,
+                        "pname": "Cleiton Silva",
+                        "role": "Midfielder",
+                        "points": 4,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 1,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 8640,
+                        "pname": "Sunil Chhetri",
+                        "role": "Forward",
+                        "points": 11,
                         "minutesplayed": 2,
                         "goalscored": 8,
                         "assist": 0,
-                        "passes": 1.5,
-                        "shotsontarget": 0,
-                        "cleansheet": 0,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 1,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 1298,
-                        "pname": "Javi Guerra",
-                        "role": "Forward",
-                        "points": 3,
-                        "minutesplayed": 2,
-                        "goalscored": 0,
-                        "assist": 0,
                         "passes": 1,
-                        "shotsontarget": 0,
-                        "cleansheet": 0,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 0,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 1311,
-                        "pname": "Alvaro Medran",
-                        "role": "Midfielder",
-                        "points": 2,
-                        "minutesplayed": 1,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 0,
-                        "shotsontarget": 0,
-                        "cleansheet": 1,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 0,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 1312,
-                        "pname": "Alvaro Garcia",
-                        "role": "Forward",
-                        "points": 1,
-                        "minutesplayed": 1,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 0,
-                        "shotsontarget": 0,
-                        "cleansheet": 0,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 0,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 1299,
-                        "pname": "Oscar Trejo",
-                        "role": "Forward",
-                        "points": 1,
-                        "minutesplayed": 1,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 0,
-                        "shotsontarget": 0,
-                        "cleansheet": 0,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 0,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    }
-                ],
-                "away": [
-                    {
-                        "pid": 282,
-                        "pname": "Thibaut Courtois",
-                        "role": "Goalkeeper",
-                        "points": 5,
-                        "minutesplayed": 2,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 1,
-                        "shotsontarget": 0,
-                        "cleansheet": 0,
-                        "shotssaved": 2,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 0,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 107,
-                        "pname": "Dani Carvajal",
-                        "role": "Defender",
-                        "points": 4.5,
-                        "minutesplayed": 2,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 1.5,
-                        "shotsontarget": 0,
-                        "cleansheet": 0,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 1,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 1452,
-                        "pname": "Jesus Vallejo",
-                        "role": "Defender",
-                        "points": 3.5,
-                        "minutesplayed": 2,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 1.5,
-                        "shotsontarget": 0,
-                        "cleansheet": 0,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 1,
-                        "yellowcard": -1,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 35,
-                        "pname": "Raphael Varane",
-                        "role": "Defender",
-                        "points": 3.5,
-                        "minutesplayed": 2,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 1.5,
-                        "shotsontarget": 0,
-                        "cleansheet": 0,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 0,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 410,
-                        "pname": "Marcelo",
-                        "role": "Defender",
-                        "points": 3.5,
-                        "minutesplayed": 2,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 1.5,
-                        "shotsontarget": 0,
-                        "cleansheet": 0,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 0,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 207,
-                        "pname": "Toni Kroos",
-                        "role": "Midfielder",
-                        "points": 5,
-                        "minutesplayed": 2,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 2,
-                        "shotsontarget": 0,
-                        "cleansheet": 0,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 1,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 1451,
-                        "pname": "Marcos Llorente",
-                        "role": "Midfielder",
-                        "points": 3.5,
-                        "minutesplayed": 2,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 1.5,
-                        "shotsontarget": 0,
-                        "cleansheet": 0,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 0,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 248,
-                        "pname": "Luka Modric",
-                        "role": "Midfielder",
-                        "points": 2,
-                        "minutesplayed": 2,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 1,
-                        "shotsontarget": 0,
-                        "cleansheet": 0,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 0,
-                        "yellowcard": -1,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 1448,
-                        "pname": "Gareth Bale",
-                        "role": "Forward",
-                        "points": 3.5,
-                        "minutesplayed": 2,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 0.5,
                         "shotsontarget": 1,
                         "cleansheet": 0,
                         "shotssaved": 0,
                         "penaltysaved": 0,
                         "tacklesuccessful": 0,
-                        "yellowcard": 0,
+                        "yellowcard": -1,
                         "redcard": 0,
                         "owngoal": 0,
                         "goalsconceded": 0,
                         "penaltymissed": 0
                     },
                     {
-                        "pid": 4539,
-                        "pname": "Mariano Diaz",
+                        "pid": 20955,
+                        "pname": "Kristian Opseth",
                         "role": "Forward",
-                        "points": 2,
+                        "points": 2.5,
                         "minutesplayed": 2,
                         "goalscored": 0,
                         "assist": 0,
-                        "passes": 0,
+                        "passes": 0.5,
                         "shotsontarget": 0,
                         "cleansheet": 0,
                         "shotssaved": 0,
@@ -16081,49 +17050,9 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/790/fantasy?token=[ACCE
                         "penaltymissed": 0
                     },
                     {
-                        "pid": 1453,
-                        "pname": "Dani Ceballos",
-                        "role": "Midfielder",
-                        "points": 3,
-                        "minutesplayed": 2,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 1,
-                        "shotsontarget": 0,
-                        "cleansheet": 0,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 0,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 848,
-                        "pname": "Brahim Diaz",
-                        "role": "Midfielder",
-                        "points": 1,
-                        "minutesplayed": 1,
-                        "goalscored": 0,
-                        "assist": 0,
-                        "passes": 0,
-                        "shotsontarget": 0,
-                        "cleansheet": 0,
-                        "shotssaved": 0,
-                        "penaltysaved": 0,
-                        "tacklesuccessful": 0,
-                        "yellowcard": 0,
-                        "redcard": 0,
-                        "owngoal": 0,
-                        "goalsconceded": 0,
-                        "penaltymissed": 0
-                    },
-                    {
-                        "pid": 105,
-                        "pname": "Isco",
-                        "role": "Midfielder",
+                        "pid": 64022,
+                        "pname": "Ajith Kumar",
+                        "role": "Defender",
                         "points": 1.5,
                         "minutesplayed": 1,
                         "goalscored": 0,
@@ -16141,9 +17070,371 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/790/fantasy?token=[ACCE
                         "penaltymissed": 0
                     },
                     {
-                        "pid": 109,
-                        "pname": "Lucas Vazquez",
+                        "pid": 8649,
+                        "pname": "Udanta Singh",
+                        "role": "Midfielder",
+                        "points": 1,
+                        "minutesplayed": 1,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 64020,
+                        "pname": "Fran Gonzalez",
+                        "role": "Defender",
+                        "points": 1.5,
+                        "minutesplayed": 1,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 8644,
+                        "pname": "Thongkhosiem Haokip",
                         "role": "Forward",
+                        "points": 1,
+                        "minutesplayed": 1,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    }
+                ],
+                "away": [
+                    {
+                        "pid": 8855,
+                        "pname": "Amrinder Singh",
+                        "role": "Goalkeeper",
+                        "points": 2.5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 8774,
+                        "pname": "Amey Ganesh Ranawade",
+                        "role": "Defender",
+                        "points": 1.5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": -1,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 8769,
+                        "pname": "Mourtada Fall",
+                        "role": "Defender",
+                        "points": 14.5,
+                        "minutesplayed": 2,
+                        "goalscored": 10,
+                        "assist": 0,
+                        "passes": 2.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 25180,
+                        "pname": "Hernan",
+                        "role": "Midfielder",
+                        "points": 5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 3,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 8767,
+                        "pname": "Mandar Rao Desai",
+                        "role": "Defender",
+                        "points": 13.5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 5,
+                        "passes": 1.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 5,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 8888,
+                        "pname": "Rowllin Borges",
+                        "role": "Midfielder",
+                        "points": 4.5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 2.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 8770,
+                        "pname": "Ahmed Jahouh",
+                        "role": "Midfielder",
+                        "points": 3,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 2,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": -1,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 28202,
+                        "pname": "Raynier Fernandes",
+                        "role": "Midfielder",
+                        "points": 4,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1,
+                        "shotsontarget": 0,
+                        "cleansheet": 1,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 8765,
+                        "pname": "Hugo Boumous",
+                        "role": "Midfielder",
+                        "points": 4.5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 1.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 1,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 8698,
+                        "pname": "Th  Bipin Singh",
+                        "role": "Midfielder",
+                        "points": 11.5,
+                        "minutesplayed": 2,
+                        "goalscored": 9,
+                        "assist": 0,
+                        "passes": 0.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 5980,
+                        "pname": "Adam Le Fondre",
+                        "role": "Forward",
+                        "points": 2.5,
+                        "minutesplayed": 2,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0.5,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 28191,
+                        "pname": "Bartholomew Ogbeche",
+                        "role": "Forward",
+                        "points": 0,
+                        "minutesplayed": 1,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": -1,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 28203,
+                        "pname": "Vignesh Dakshinamurthy",
+                        "role": "Defender",
+                        "points": 1,
+                        "minutesplayed": 1,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 19180,
+                        "pname": "Cy Goddard",
+                        "role": "Midfielder",
+                        "points": 1,
+                        "minutesplayed": 1,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 65365,
+                        "pname": "Vikram Pratap Singh",
+                        "role": "Forward",
+                        "points": 1,
+                        "minutesplayed": 1,
+                        "goalscored": 0,
+                        "assist": 0,
+                        "passes": 0,
+                        "shotsontarget": 0,
+                        "cleansheet": 0,
+                        "shotssaved": 0,
+                        "penaltysaved": 0,
+                        "tacklesuccessful": 0,
+                        "yellowcard": 0,
+                        "redcard": 0,
+                        "owngoal": 0,
+                        "goalsconceded": 0,
+                        "penaltymissed": 0
+                    },
+                    {
+                        "pid": 64064,
+                        "pname": "Mehtab Singh",
+                        "role": "Defender",
                         "points": 1,
                         "minutesplayed": 1,
                         "goalscored": 0,
@@ -16166,9 +17457,9 @@ curl -X GET "https://rest.entitysport.com/soccer/matches/790/fantasy?token=[ACCE
         "total_items": 1,
         "total_pages": 1
     },
-    "etag": "dd0a66dd097c969b586903c3fbc892e9",
-    "modified": "2019-04-30 06:34:36",
-    "datetime": "2019-04-30 06:34:36",
+    "etag": "79c3e07a9f808bb497b09604afa96c70",
+    "modified": "2021-01-05 16:55:09",
+    "datetime": "2021-01-05 16:55:09",
     "api_version": "1.0"
 }
 
@@ -16214,7 +17505,7 @@ away | array | an array of away team players list. <a href="#fantasy-squad-socce
 
 Parameter | Value | Description
 --------- | ------- | -----------
-pid | integer | player id
+pid | string | player id
 name | string | player name
 nationality | array | player nationality details
 positiontype | string | player playing role
@@ -16272,18 +17563,17 @@ curl -X GET "https://rest.entitysport.com/soccer/teams?token=[ACCESS_TOKEN]"
     "response": {
         "items": [
             {
-                "tid": 89,
+                "tid": "89",
                 "name": "1. FSV Mainz 05",
                 "fullname": "1. FSV Mainz 05",
                 "abbr": "MAI",
-                "iscountry": false,
-                "isclub": true,
-                "haslogo": "true",
+                "iscountry": "false",
+                "isclub": "true",
                 "founded": "1905",
                 "website": "http://www.mainz05.de",
                 "twitter": "1FSVMainz05",
                 "hashtag": "#MAINZ05",
-                "teamlogo": "https://rest.entitysport.com/soccer/assets/team/2556.png",
+                "teamlogo": "https://rest.entitysport.com/soccer/assets/team/89.png",
                 "team_url": "team/89/info",
                 "team_matches_url": "team/89/matches"
             }
@@ -16323,13 +17613,13 @@ paged | Number | Page Number for request
 
 Parameter | Value | Description
 --------- | ------- | -----------
-tid | integer | team id
+tid | string | team id
 tname | string | team name
 fullname | string | team full name
 abbr | string | team abbrivation name
 iscountry| string | true if team is a national team and false if team is a club
 isclub| string | false if team is a national team and true if team is a club
-founded | integer | year of team founded
+founded | string | year of team founded
 website | string | website url of team website
 twitter | string | twitter account name
 hastag| string | social hastag
@@ -16355,500 +17645,633 @@ curl -X GET "https://rest.entitysport.com/soccer/team/70/info?token=[ACCESS_TOKE
     "response": {
         "items": [
             {
-                "tid": 70,
-                "tname": "Real Madrid",
-                "fullname": "Real Madrid",
-                "abbr": "MAD",
-                "iscountry": false,
-                "isclub": true,
-                "founded": "1902",
-                "website": "http://www.realmadrid.com",
-                "twitter": "realmadrid",
-                "hashtag": "#HalaMadrid",
-                "teamlogo": "https://rest.entitysport.com/soccer/assets/team/2829.png",
+                "tid": "451",
+                "tname": "Bengaluru",
+                "fullname": "Bengaluru FC",
+                "abbr": "BGL",
+                "iscountry": "false",
+                "isclub": "true",
+                "founded": "2013",
+                "website": "",
+                "twitter": "",
+                "hashtag": "",
+                "teamlogo": "https://rest.entitysport.com/soccer/assets/team/451.png",
                 "venue": {
-                    "venueid": 43,
-                    "name": "Santiago Bernabeu",
-                    "location": "Madrid, Spain",
-                    "founded": "1944",
-                    "capacity": "80000"
+                    "venueid": "433",
+                    "name": "Sree Kanteerava Stadium",
+                    "location": "Bangalore, India",
+                    "founded": "1997",
+                    "capacity": "24000",
+                    "googlecoords": "12.969556,77.593469"
                 },
                 "player": [
                     {
-                        "pid": 1447,
-                        "fullname": "Karim Benzema",
-                        "birthdatetimestamp": 566870400,
-                        "birthdate": "19/12/87",
+                        "pid": "8633",
+                        "fullname": "Erik Paartalu",
+                        "birthdatetimestamp": "515462400",
+                        "birthdate": "1986-05-03 00:00:00",
                         "nationality": {
-                            "iocid": 73,
-                            "name": "France",
-                            "ioc": "fr"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "height": 187,
-                        "foot": "Right",
-                        "twitter": "https://twitter.com/benzema",
-                        "facebook": "https://www.facebook.com/KarimBenzema/?ref=ts&fref=ts"
-                    },
-                    {
-                        "pid": 91,
-                        "fullname": "Sergio Ramos",
-                        "birthdatetimestamp": 512524800,
-                        "birthdate": "30/03/86",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "height": 183,
-                        "foot": "Right",
-                        "twitter": "https://twitter.com/SergioRamos",
-                        "facebook": "https://www.facebook.com/SergioRamosOficial/"
-                    },
-                    {
-                        "pid": 1448,
-                        "fullname": "Gareth Bale",
-                        "birthdatetimestamp": 616550400,
-                        "birthdate": "16/07/89",
-                        "nationality": {
-                            "iocid": 243,
-                            "name": "Wales",
-                            "ioc": "w"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "height": 183,
-                        "foot": "Left",
-                        "twitter": "https://twitter.com/GarethBale11",
-                        "facebook": "https://www.facebook.com/Bale"
-                    },
-                    {
-                        "pid": 248,
-                        "fullname": "Luka Modric",
-                        "birthdatetimestamp": 495072000,
-                        "birthdate": "09/09/85",
-                        "nationality": {
-                            "iocid": 54,
-                            "name": "Croatia",
-                            "ioc": "hr"
+                            "iocid": "13",
+                            "name": "Australia",
+                            "ioc": ""
                         },
                         "positiontype": "M",
                         "positionname": "Midfielder",
-                        "height": 172,
+                        "height": "193",
+                        "weight": "87",
                         "foot": "Both",
-                        "twitter": "https://twitter.com/lm19official",
-                        "facebook": "https://www.facebook.com/ModricLuka10"
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "9"
                     },
                     {
-                        "pid": 410,
-                        "fullname": "Marcelo",
-                        "birthdatetimestamp": 579398400,
-                        "birthdate": "12/05/88",
+                        "pid": "8636",
+                        "fullname": "Dimas Delgado",
+                        "birthdatetimestamp": "413337600",
+                        "birthdate": "1983-02-06 00:00:00",
                         "nationality": {
-                            "iocid": 30,
-                            "name": "Brazil",
-                            "ioc": "br"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "height": 174,
-                        "foot": "Left",
-                        "twitter": "https://twitter.com/12MarceloV",
-                        "facebook": "https://www.facebook.com/marcelom12"
-                    },
-                    {
-                        "pid": 1449,
-                        "fullname": "Kiko Casilla",
-                        "birthdatetimestamp": 528595200,
-                        "birthdate": "02/10/86",
-                        "nationality": {
-                            "iocid": 199,
+                            "iocid": "199",
                             "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "G",
-                        "positionname": "Goalkeeper",
-                        "height": 191,
-                        "foot": "Right",
-                        "twitter": "https://twitter.com/kikocasilla13",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 1450,
-                        "fullname": "Fabio Coentrao",
-                        "birthdatetimestamp": 574041600,
-                        "birthdate": "11/03/88",
-                        "nationality": {
-                            "iocid": 172,
-                            "name": "Portugal",
-                            "ioc": "pt"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "height": 179,
-                        "foot": "Left",
-                        "twitter": "https://twitter.com/Fabio_Coentrao",
-                        "facebook": "https://www.facebook.com/OfficialFabioCoentrao/"
-                    },
-                    {
-                        "pid": 207,
-                        "fullname": "Toni Kroos",
-                        "birthdatetimestamp": 631411200,
-                        "birthdate": "04/01/90",
-                        "nationality": {
-                            "iocid": 80,
-                            "name": "Germany",
-                            "ioc": "de"
+                            "ioc": ""
                         },
                         "positiontype": "M",
                         "positionname": "Midfielder",
-                        "height": 182,
-                        "foot": "Right",
-                        "twitter": "https://twitter.com/ToniKroos",
-                        "facebook": "https://www.facebook.com/tonikroos/"
-                    },
-                    {
-                        "pid": 435,
-                        "fullname": "Keylor Navas",
-                        "birthdatetimestamp": 534988800,
-                        "birthdate": "15/12/86",
-                        "nationality": {
-                            "iocid": 52,
-                            "name": "Costa Rica",
-                            "ioc": "cr"
-                        },
-                        "positiontype": "G",
-                        "positionname": "Goalkeeper",
-                        "height": 185,
-                        "foot": "Right",
-                        "twitter": "https://twitter.com/NavasKeylor",
-                        "facebook": "https://www.facebook.com/keylornavascr/"
-                    },
-                    {
-                        "pid": 102,
-                        "fullname": "Nacho",
-                        "birthdatetimestamp": 632620800,
-                        "birthdate": "18/01/90",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "height": 179,
-                        "foot": "Right",
-                        "twitter": "https://twitter.com/nachofi1990",
-                        "facebook": "https://www.facebook.com/Nachofernandeziglesiasoficial"
-                    },
-                    {
-                        "pid": 282,
-                        "fullname": "Thibaut Courtois",
-                        "birthdatetimestamp": 705542400,
-                        "birthdate": "11/05/92",
-                        "nationality": {
-                            "iocid": 21,
-                            "name": "Belgium",
-                            "ioc": "be"
-                        },
-                        "positiontype": "G",
-                        "positionname": "Goalkeeper",
-                        "height": 199,
-                        "foot": "Left",
-                        "twitter": "https://twitter.com/thibautcourtois",
-                        "facebook": "https://www.facebook.com/CourtoisOfficial"
-                    },
-                    {
-                        "pid": 105,
-                        "fullname": "Isco",
-                        "birthdatetimestamp": 703814400,
-                        "birthdate": "21/04/92",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "height": 176,
-                        "foot": "Right",
-                        "twitter": "https://twitter.com/isco_alarcon",
-                        "facebook": "https://www.facebook.com/iscoalarcon/?fref=ts"
-                    },
-                    {
-                        "pid": 421,
-                        "fullname": "Casemiro",
-                        "birthdatetimestamp": 698803200,
-                        "birthdate": "23/02/92",
-                        "nationality": {
-                            "iocid": 30,
-                            "name": "Brazil",
-                            "ioc": "br"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "height": 185,
+                        "height": "182",
+                        "weight": "75",
                         "foot": "Right",
                         "twitter": "",
-                        "facebook": "https://www.facebook.com/Casemiro92"
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
                     },
                     {
-                        "pid": 35,
-                        "fullname": "Raphael Varane",
-                        "birthdatetimestamp": 735696000,
-                        "birthdate": "25/04/93",
+                        "pid": "8637",
+                        "fullname": "Juanan",
+                        "birthdatetimestamp": "546480000",
+                        "birthdate": "1987-04-27 00:00:00",
                         "nationality": {
-                            "iocid": 73,
-                            "name": "France",
-                            "ioc": "fr"
+                            "iocid": "199",
+                            "name": "Spain",
+                            "ioc": ""
                         },
                         "positiontype": "D",
                         "positionname": "Defender",
-                        "height": 191,
-                        "foot": "Right",
-                        "twitter": "https://twitter.com/raphaelvarane?lang=en",
-                        "facebook": "https://www.facebook.com/raphaelvarane/"
+                        "height": "192",
+                        "weight": "92",
+                        "foot": "Left",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
                     },
                     {
-                        "pid": 107,
-                        "fullname": "Dani Carvajal",
-                        "birthdatetimestamp": 695088000,
-                        "birthdate": "11/01/92",
+                        "pid": "8640",
+                        "fullname": "Sunil Chhetri",
+                        "birthdatetimestamp": "460339200",
+                        "birthdate": "1984-08-03 00:00:00",
                         "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "height": 173,
-                        "foot": "Right",
-                        "twitter": "https://twitter.com/DaniCarvajal92",
-                        "facebook": "https://www.facebook.com/danicarvajaloficial"
-                    },
-                    {
-                        "pid": 109,
-                        "fullname": "Lucas Vazquez",
-                        "birthdatetimestamp": 678326400,
-                        "birthdate": "01/07/91",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
                         },
                         "positiontype": "F",
                         "positionname": "Forward",
-                        "height": 173,
-                        "foot": "Right",
-                        "twitter": "https://twitter.com/Lucasvazquez91",
-                        "facebook": "https://www.facebook.com/lucasvazquez1991"
-                    },
-                    {
-                        "pid": 1451,
-                        "fullname": "Marcos Llorente",
-                        "birthdatetimestamp": 791424000,
-                        "birthdate": "30/01/95",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "height": 182,
-                        "foot": "Right",
-                        "twitter": "https://twitter.com/Marcos_Llorente",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 110,
-                        "fullname": "Alvaro Odriozola",
-                        "birthdatetimestamp": 818899200,
-                        "birthdate": "14/12/95",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "height": 175,
-                        "foot": "Right",
-                        "twitter": "https://twitter.com/alvaroodriozola",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 1452,
-                        "fullname": "Jesus Vallejo",
-                        "birthdatetimestamp": 852422400,
-                        "birthdate": "05/01/97",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "height": 183,
-                        "foot": "Right",
-                        "twitter": "",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 111,
-                        "fullname": "Marco Asensio",
-                        "birthdatetimestamp": 822182400,
-                        "birthdate": "21/01/96",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "height": 182,
-                        "foot": "Left",
-                        "twitter": "https://twitter.com/marcoasensio10",
-                        "facebook": "https://www.facebook.com/marcoasensio10/"
-                    },
-                    {
-                        "pid": 1453,
-                        "fullname": "Dani Ceballos",
-                        "birthdatetimestamp": 839376000,
-                        "birthdate": "07/08/96",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "height": 176,
-                        "foot": "Right",
-                        "twitter": "https://twitter.com/daniceballos46?lang=en",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 1454,
-                        "fullname": "Borja Mayoral",
-                        "birthdatetimestamp": 860198400,
-                        "birthdate": "05/04/97",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "F",
-                        "positionname": "Forward",
-                        "height": 181,
-                        "foot": "Right",
-                        "twitter": "https://twitter.com/Mayoral_Borja",
-                        "facebook": "https://www.facebook.com/BMayoralOficial/"
-                    },
-                    {
-                        "pid": 1455,
-                        "fullname": "Luca Zidane",
-                        "birthdatetimestamp": 895017600,
-                        "birthdate": "13/05/98",
-                        "nationality": {
-                            "iocid": 73,
-                            "name": "France",
-                            "ioc": "fr"
-                        },
-                        "positiontype": "G",
-                        "positionname": "Goalkeeper",
-                        "height": 181,
-                        "foot": "Right",
-                        "twitter": "",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 1456,
-                        "fullname": "Javi Sanchez",
-                        "birthdatetimestamp": 858297600,
-                        "birthdate": "14/03/97",
-                        "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "height": 189,
+                        "height": "170",
+                        "weight": "71",
                         "foot": "",
                         "twitter": "",
-                        "facebook": ""
+                        "facebook": "",
+                        "fantasy_player_rating": "10"
                     },
                     {
-                        "pid": 1457,
-                        "fullname": "Sergio Reguilon",
-                        "birthdatetimestamp": 850694400,
-                        "birthdate": "16/12/96",
+                        "pid": "8641",
+                        "fullname": "Gurpreet Singh Sandhu",
+                        "birthdatetimestamp": "697075200",
+                        "birthdate": "1992-02-03 00:00:00",
                         "nationality": {
-                            "iocid": 199,
-                            "name": "Spain",
-                            "ioc": "es"
-                        },
-                        "positiontype": "D",
-                        "positionname": "Defender",
-                        "height": 180,
-                        "foot": "Left",
-                        "twitter": "",
-                        "facebook": ""
-                    },
-                    {
-                        "pid": 1458,
-                        "fullname": "Andriy Lunin",
-                        "birthdatetimestamp": 918691200,
-                        "birthdate": "11/02/99",
-                        "nationality": {
-                            "iocid": 223,
-                            "name": "Ukraine",
-                            "ioc": "ua"
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
                         },
                         "positiontype": "G",
                         "positionname": "Goalkeeper",
-                        "height": 191,
+                        "height": "199",
+                        "weight": "90",
                         "foot": "Right",
                         "twitter": "",
-                        "facebook": ""
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
                     },
                     {
-                        "pid": 1459,
-                        "fullname": "Federico Valverde",
-                        "birthdatetimestamp": 901065600,
-                        "birthdate": "22/07/98",
+                        "pid": "8642",
+                        "fullname": "Harmanjot Khabra",
+                        "birthdatetimestamp": "574646400",
+                        "birthdate": "1988-03-18 00:00:00",
                         "nationality": {
-                            "iocid": 228,
-                            "name": "Uruguay",
-                            "ioc": "uy"
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
                         },
-                        "positiontype": "M",
-                        "positionname": "Midfielder",
-                        "height": 181,
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "181",
+                        "weight": "",
                         "foot": "Right",
-                        "twitter": "https://twitter.com/fedeevalverde",
-                        "facebook": ""
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
                     },
                     {
-                        "pid": 1460,
-                        "fullname": "Vinicius Junior",
-                        "birthdatetimestamp": 963360000,
-                        "birthdate": "12/07/00",
+                        "pid": "8644",
+                        "fullname": "Thongkhosiem Haokip",
+                        "birthdatetimestamp": "746323200",
+                        "birthdate": "1993-08-26 00:00:00",
                         "nationality": {
-                            "iocid": 30,
-                            "name": "Brazil",
-                            "ioc": "br"
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
                         },
                         "positiontype": "F",
                         "positionname": "Forward",
-                        "height": 176,
+                        "height": "183",
+                        "weight": "70",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "8648",
+                        "fullname": "Lalthuammawia Ralte",
+                        "birthdatetimestamp": "722908800",
+                        "birthdate": "1992-11-28 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "height": "177",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "8649",
+                        "fullname": "Udanta Singh",
+                        "birthdatetimestamp": "834710400",
+                        "birthdate": "1996-06-14 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": "174",
+                        "weight": "65",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "9"
+                    },
+                    {
+                        "pid": "8653",
+                        "fullname": "Rahul Bheke",
+                        "birthdatetimestamp": "660441600",
+                        "birthdate": "1990-12-06 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "179",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "8670",
+                        "fullname": "Leon Agustine Asokan",
+                        "birthdatetimestamp": "",
+                        "birthdate": "",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "8801",
+                        "fullname": "Muhammed Ashique Kuruniyan",
+                        "birthdatetimestamp": "866246400",
+                        "birthdate": "1997-06-14 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "179",
+                        "weight": "70",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "9"
+                    },
+                    {
+                        "pid": "8918",
+                        "fullname": "Pratik Chowdhary",
+                        "birthdatetimestamp": "623462400",
+                        "birthdate": "1989-10-04 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "186",
+                        "weight": "",
                         "foot": "Right",
                         "twitter": "",
-                        "facebook": ""
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "20955",
+                        "fullname": "Kristian Opseth",
+                        "birthdatetimestamp": "631584000",
+                        "birthdate": "1990-01-06 00:00:00",
+                        "nationality": {
+                            "iocid": "160",
+                            "name": "Norway",
+                            "ioc": ""
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "height": "189",
+                        "weight": "90",
+                        "foot": "Left",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "9.5"
+                    },
+                    {
+                        "pid": "26405",
+                        "fullname": "Deshorn Brown",
+                        "birthdatetimestamp": "661824000",
+                        "birthdate": "1990-12-22 00:00:00",
+                        "nationality": {
+                            "iocid": "106",
+                            "name": "Jamaica",
+                            "ioc": ""
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "height": "187",
+                        "weight": "77",
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "9"
+                    },
+                    {
+                        "pid": "29799",
+                        "fullname": "Ajay Chhetri",
+                        "birthdatetimestamp": "931305600",
+                        "birthdate": "1999-07-07 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "29800",
+                        "fullname": "Edmund Lalrindika",
+                        "birthdatetimestamp": "924912000",
+                        "birthdate": "1999-04-24 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "height": "176",
+                        "weight": "",
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "30692",
+                        "fullname": "Cleiton Silva",
+                        "birthdatetimestamp": "539308800",
+                        "birthdate": "1987-02-03 00:00:00",
+                        "nationality": {
+                            "iocid": "30",
+                            "name": "Brazil",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": "175",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "9.5"
+                    },
+                    {
+                        "pid": "31049",
+                        "fullname": "Parag Satish Shrivas",
+                        "birthdatetimestamp": "865814400",
+                        "birthdate": "1997-06-09 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "47144",
+                        "fullname": "Suresh Singh",
+                        "birthdatetimestamp": "965606400",
+                        "birthdate": "2000-08-07 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": "166",
+                        "weight": "",
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "47148",
+                        "fullname": "Lara Sharma",
+                        "birthdatetimestamp": "938736000",
+                        "birthdate": "1999-10-01 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64020",
+                        "fullname": "Fran Gonzalez",
+                        "birthdatetimestamp": "602294400",
+                        "birthdate": "1989-02-01 00:00:00",
+                        "nationality": {
+                            "iocid": "199",
+                            "name": "Spain",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "182",
+                        "weight": "75",
+                        "foot": "Right",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "64021",
+                        "fullname": "Namgyal Bhutia",
+                        "birthdatetimestamp": "934329600",
+                        "birthdate": "1999-08-11 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64022",
+                        "fullname": "Ajith Kumar",
+                        "birthdatetimestamp": "847843200",
+                        "birthdate": "1996-11-13 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64023",
+                        "fullname": "Joe Zoherliana",
+                        "birthdatetimestamp": "926294400",
+                        "birthdate": "1999-05-10 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64024",
+                        "fullname": "Wungngayam Muirang",
+                        "birthdatetimestamp": "917913600",
+                        "birthdate": "1999-02-02 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "183",
+                        "weight": "",
+                        "foot": "Left",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64025",
+                        "fullname": "Naorem Roshan Singh",
+                        "birthdatetimestamp": "917913600",
+                        "birthdate": "1999-02-02 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "F",
+                        "positionname": "Forward",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64026",
+                        "fullname": "Thoi Singh",
+                        "birthdatetimestamp": "1083628800",
+                        "birthdate": "2004-05-04 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "64027",
+                        "fullname": "Dipesh Chauhan",
+                        "birthdatetimestamp": "1069286400",
+                        "birthdate": "2003-11-20 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "G",
+                        "positionname": "Goalkeeper",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8.5"
+                    },
+                    {
+                        "pid": "64028",
+                        "fullname": "Biswa Darjee",
+                        "birthdatetimestamp": "942019200",
+                        "birthdate": "1999-11-08 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "D",
+                        "positionname": "Defender",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64029",
+                        "fullname": "Amay Morajkar",
+                        "birthdatetimestamp": "961459200",
+                        "birthdate": "2000-06-20 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8"
+                    },
+                    {
+                        "pid": "64030",
+                        "fullname": "Emanuel Lalchhanchhuaha",
+                        "birthdatetimestamp": "1012953600",
+                        "birthdate": "2002-02-06 00:00:00",
+                        "nationality": {
+                            "iocid": "99",
+                            "name": "India",
+                            "ioc": ""
+                        },
+                        "positiontype": "M",
+                        "positionname": "Midfielder",
+                        "height": "",
+                        "weight": "",
+                        "foot": "",
+                        "twitter": "",
+                        "facebook": "",
+                        "fantasy_player_rating": "8"
                     }
                 ]
             }
@@ -16856,9 +18279,9 @@ curl -X GET "https://rest.entitysport.com/soccer/team/70/info?token=[ACCESS_TOKE
         "total_items": 1,
         "total_pages": 1
     },
-    "etag": "c85c28847c72cf512503cfe15d203221",
-    "modified": "2018-09-02 15:48:07",
-    "datetime": "2018-09-02 15:48:07",
+    "etag": "ea8a3287f9bc36d07d34178361593501",
+    "modified": "2021-01-05 16:58:06",
+    "datetime": "2021-01-05 16:58:06",
     "api_version": "1.0"
 }
 ```
@@ -16886,13 +18309,13 @@ token | {ACCESS_TOKEN} | API Access token
 
 Parameter | Value | Description
 --------- | ------- | -----------
-tid | integer | team id
+tid | string | team id
 tname | string | team name
 fullname | string | team full name
 abbr | string | team abbrivation name
 iscountry| string | true if team is a national team and false if team is a club
 isclub| string | false if team is a national team and true if team is a club
-founded | integer | year of team founded
+founded | string | year of team founded
 website | string | website url of team website
 twitter | string | twitter account name
 hastag| string | social hastag
@@ -16905,25 +18328,25 @@ player | array | An array of team player details. <a href="#team-player">see pay
 
 Parameter | Value | Description
 --------- | ------- | -----------
-venueid | integer | venue id
+venueid | string | venue id
 name | string | venue name
-location | string | location of the venue
-founded | integer | year venue founded
-capacity | integer | capacity of venue stadium
-
+location | string | venue location
+founded | string | venue founded year
+capacity | string | venue capacity
+googlecoords | string | venue google co-ordinates
 
 <h3 id="team-player">Player Object Reference</h3>
 
 Parameter | Value | Description
 --------- | ------- | -----------
-pid | integer | player id
+pid | string | player id
 fullname | string | Player full name
 birthdatetimestamp | integer | Player Birthdate timestamp
 birthdate | string | Player Birthdate format - dd/mm/yy
 nationality | array | An array of player nationality detail. <a href="#team-nationality">see nationality object reference</a>
 positiontype | string | player playing position type
 positionname | string | player playing position name
-height | integer | player height in centimeters
+height | string | player height in centimeters
 foot | string | player preferred foot
 twitter | string | twitter account url
 facebook | string | facebook account url
@@ -16933,7 +18356,7 @@ facebook | string | facebook account url
 
 Parameter | Value | Description
 --------- | ------- | -----------
-iocid | integer | country ioc code
+iocid | string | country ioc code
 name | string | country name
 ioc | string | 2 letter ioc code
 
@@ -16967,91 +18390,95 @@ curl -X GET "https://rest.entitysport.com/soccer/team/70/matches?token=[ACCESS_T
     "response": {
         "items": [
             {
-                "mid": 470,
-                "round": {
-                    "type": "table",
-                    "round": "3",
-                    "name": 3
-                },
+                "mid": "45627",
+                "round": "",
                 "result": {
-                    "home": "4",
-                    "away": "1",
-                    "winner": "home"
+                    "home": "1",
+                    "away": "3",
+                    "winner": "away"
                 },
                 "teams": {
                     "home": {
-                        "tid": 70,
-                        "tname": "Real Madrid",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/2829.png",
-                        "fullname": "Real Madrid",
-                        "abbr": "MAD"
+                        "tid": "451",
+                        "tname": "Bengaluru",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/451.png",
+                        "fullname": "Bengaluru FC",
+                        "abbr": "BGL"
                     },
                     "away": {
-                        "tid": 75,
-                        "tname": "Leganes",
-                        "logo": "https://rest.entitysport.com/soccer/assets/team/2845.png",
-                        "fullname": "Real Madrid",
-                        "abbr": "MAD"
+                        "tid": "458",
+                        "tname": "Mumbai City",
+                        "logo": "https://rest.entitysport.com/soccer/assets/team/458.png",
+                        "fullname": "Mumbai City FC",
+                        "abbr": "MUM"
                     }
                 },
                 "periods": {
                     "p1": {
+                        "home": 0,
+                        "away": 2
+                    },
+                    "p2": {
                         "home": 1,
                         "away": 1
                     },
-                    "p2": {
-                        "home": 3,
-                        "away": 0
-                    },
                     "ft": {
-                        "home": 4,
-                        "away": 1
+                        "home": 1,
+                        "away": 3
                     }
                 },
-                "datestart": "2018-09-01 18:45:00",
-                "dateend": "2018-09-01 20:37:23",
-                "timestampstart": 1535827500,
-                "timestampend": 1535834243,
-                "injurytime": null,
-                "time": 90,
+                "datestart": "2021-01-05 14:00:00",
+                "dateend": "2021-01-05 15:53:07",
+                "timestampstart": "1609855200",
+                "timestampend": "1609861987",
+                "injurytime": "",
+                "time": "90",
                 "status_str": "result",
-                "status": 2,
+                "status": "2",
                 "gamestate_str": "Ended",
-                "gamestate": 6,
-                "periodlength": "45",
-                "numberofperiods": "2",
-                "attendance": "59255",
-                "overtimelength": "15",
+                "gamestate": "6",
+                "pre_squad": "true",
+                "verified": "false",
+                "periodlength": "",
+                "numberofperiods": "",
+                "attendance": "",
+                "overtimelength": "",
                 "competition": {
-                    "cid": 4,
-                    "cname": "LaLiga",
-                    "startdate": "2018-08-17 00:00:00",
-                    "enddate": "2019-05-20 23:55:00",
-                    "startdatetimestamp": 1534464000,
-                    "endtdatetimestamp": 1558396500,
-                    "year": "18/19",
-                    "category": "Spain",
-                    "iocid": "199",
-                    "ioc": "es",
-                    "status": 3,
+                    "cid": "165",
+                    "cname": "Indian Super League",
+                    "startdate": "2020-11-20 00:00:00",
+                    "enddate": "2021-03-23 00:00:00",
+                    "startdatetimestamp": "1605830400",
+                    "endtdatetimestamp": "1616457600",
+                    "year": "20/21",
+                    "category": "India",
+                    "tournament_id": "16",
+                    "category_id": "14",
+                    "ioc": "in",
+                    "status": "3",
                     "status_str": "live",
                     "logo": ""
                 },
                 "venue": {
-                    "venueid": 43,
-                    "name": "Santiago Bernabeu",
-                    "location": "Madrid, Spain",
-                    "founded": "1944",
-                    "capacity": "80000"
-                }
+                    "venueid": "1350",
+                    "name": "Jawaharlal Nehru Stadium",
+                    "location": "Margao, India",
+                    "founded": "",
+                    "capacity": "20000",
+                    "googlecoords": "15.289208, 73.962480"
+                },
+                "lineupavailable": "true",
+                "projectionavailable": "true",
+                "eventavailable": "true",
+                "commentaryavailable": "true"
             }
         ],
-        "total_items": 3,
-        "total_pages": 3
+        "total_items": 50,
+        "total_pages": 50
     },
-    "etag": "bdd9b00472606a81d58e4daa0834b748",
-    "modified": "2018-09-02 16:17:50",
-    "datetime": "2018-09-02 16:17:50",
+    "etag": "db101e6d16759b9b0bdc064cad78167b",
+    "modified": "2021-01-05 17:03:16",
+    "datetime": "2021-01-05 17:03:16",
     "api_version": "1.0"
 }
 
@@ -17083,44 +18510,39 @@ paged | Number | Page Number for request
 
 Parameter | Value | Description
 --------- | ------- | -----------
-mid | integer | match id
-round | array | An array of match round details. <a href="#team-matches-round">see round object reference</a>
+mid | string | match id
+round | string | round details.
 result | array | An array of match result details. <a href="#team-matches-result">see result object reference</a>
 teams | array | An array of match teams details. <a href="#team-matches-teams">see teams object reference</a>
 period | array | An array of match period wise details. <a href="#team-matches-period">see period object reference</a>
 datestart | string | time string in GMT of match start time
 dateend | string | time string in GMT of match end time
-timestampstart | integer | timestamp of match start time
-timestampend | integer | timestamp of match end time
-injurytime | integer | added injury time after the end of regular period time
-time | integer | match running time in minutes
+timestampstart | string | timestamp of match start time
+timestampend | string | timestamp of match end time
+injurytime | string | added injury time after the end of regular period time
+time | string | match running time in minutes
 status_str | string | Match status string live, completed, upcoming
-status | integer | Match status code 3 = live, 2 = completed, 1 = upcoming
+status | string | Match status code 3 = live, 2 = completed, 1 = upcoming
 gamestate_str | string | Match state string
-gamestate | integer | Match state code
-periodlength | integer | match period length in minutes
-numberofperiods | integer | number of periods in the match
-attendance | integer | total spectator attendance of the match
-overtimelength | integer | overtime length in minutes
+gamestate | string | Match state code
+periodlength | string | match period length in minutes
+numberofperiods | string | number of periods in the match
+attendance | string | total spectator attendance of the match
+overtimelength | string | overtime length in minutes
 competition | array | An array of competition details. <a href="#team-matches-competition">see competition object reference</a>
 venue | array | An array of match venue details. <a href="#team-matches-venue">see venue object reference</a>
-
-
-<h3 id="team-matches-round">Round Object Reference</h3>
-
-Parameter | Value | Description
---------- | ------- | -----------
-type | string | round type. There are 2 type of rounds table and cup.
-name | string | round
-type | string | round name
+lineupavailable | string | line up available when true, not available when false
+projectionavailable | string | match game play state available when true, not available when false
+eventavailable | string | events available when true, not available when false
+commentaryavailable | string | play by play available when true, not available when false
 
 
 <h3 id="team-matches-result">Result Object Reference</h3>
 
 Parameter | Value | Description
 --------- | ------- | -----------
-home | integer | home team score
-away | integer | away team score
+home | string | home team score
+away | string | away team score
 winner | string | winning team name, draw in case of equal scores
 
 
@@ -17136,7 +18558,7 @@ away | array | An array of away team details. <a href="#team-matches-teams-detai
 
 Parameter | Value | Description
 --------- | ------- | -----------
-tid | integer | team id
+tid | string | team id
 tname | string | team name
 logo | string | team logo url
 
@@ -17159,19 +18581,18 @@ away | integer | away team score
 
 <h3 id="team-matches-competition">Competition Object Reference</h3>
 
-Parameter | Value | Description
---------- | ------- | -----------
-cid | integer | competition id
+cid | string | competition id
 cname | string | competition name/title
 startdate | string | time string in GMT of competition start date
 enddate | string | time string in GMT of competition end date
-startdatetimestamp | integer | timestamp of competition start date
-enddatetimestamp | integer | timestamp of competition end date
+startdatetimestamp | string | timestamp of competition start date
+enddatetimestamp | string | timestamp of competition end date
 year | string | Season Year
 category | string | Competition Category
-ioc_id | integer | IOC id of competition native country
+tournament_id | string | tournament id of competition native country
+category_id | string | category id of competition native country
 ioc | string | IOC 2 letter code of competition native country
-status | integer | Competition status code 3 = live, 2 = completed, 1 = upcoming
+status | string | Competition status code 3 = live, 2 = completed, 1 = upcoming
 status_str | string | Competition status string live, completed, upcoming
 logo | string | Competition Logo URL
 
@@ -17180,11 +18601,12 @@ logo | string | Competition Logo URL
 
 Parameter | Value | Description
 --------- | ------- | -----------
-venueid | integer | venue id
+venueid | string | venue id
 name | string | venue name
-location | string | location of the venue
-founded | integer | year venue founded
-capacity | integer | capacity of venue stadium
+location | string | venue location
+founded | string | venue founded year
+capacity | string | venue capacity
+googlecoords | string | venue google co-ordinates
 
 
 ## Player List API
