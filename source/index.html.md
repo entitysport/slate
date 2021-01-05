@@ -19226,7 +19226,7 @@ curl -X GET "https://rest.entitysport.com/basketball/?token=[ACCESS_TOKEN]"
 
 ```
 
-It's very easy to start using the EntitySport Soccer API. By passing your **token** as `token` to our api server, you can get access to our API data instantly.
+It's very easy to start using the EntitySport Basketball API. By passing your **token** as `token` to our api server, you can get access to our API data instantly.
 
 ### https Request
 
@@ -19334,7 +19334,7 @@ curl -X GET "https://rest.entitysport.com/basketball/seasons/?token=[ACCESS_TOKE
 }
 
 ```
-Provides information of all avaialable soccer seasons you have access. A season is named as complete year ie: 2018. for all tournaments that happens in the correspoding year, or name cross year ie: 18-19 for matches happens in multiple years or vice versa.
+Provides information of all avaialable Basketball seasons you have access. A season is named as complete year ie: 2018. for all tournaments that happens in the correspoding year, or name cross year ie: 18-19 for matches happens in multiple years or vice versa.
 
 ###Request
 * Path: /basketball/seasons/
@@ -29671,7 +29671,7 @@ curl -X GET "https://rest.entitysport.com/kabaddi/?token=[ACCESS_TOKEN]"
 
 ```
 
-It's very easy to start using the EntitySport Soccer API. By passing your **token** as `token` to our api server, you can get access to our API data instantly.
+It's very easy to start using the EntitySport Kabaddi API. By passing your **token** as `token` to our api server, you can get access to our API data instantly.
 
 ### https Request
 
@@ -32443,7 +32443,7 @@ curl -X GET "https://rest.entitysport.com/hockey/?token=[ACCESS_TOKEN]"
 
 ```
 
-It's very easy to start using the EntitySport Soccer API. By passing your **token** as `token` to our api server, you can get access to our API data instantly.
+It's very easy to start using the EntitySport Hockey API. By passing your **token** as `token` to our api server, you can get access to our API data instantly.
 
 ### https Request
 
@@ -37036,7 +37036,7 @@ curl -X GET "https://rest.entitysport.com/baseball/?token=[ACCESS_TOKEN]"
 
 ```
 
-It's very easy to start using the EntitySport Soccer API. By passing your **token** as `token` to our api server, you can get access to our API data instantly.
+It's very easy to start using the EntitySport Baseball API. By passing your **token** as `token` to our api server, you can get access to our API data instantly.
 
 ### https Request
 
